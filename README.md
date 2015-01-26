@@ -1,6 +1,6 @@
-[![Build Status](https://travis-ci.org/Gillespie59/eslint-plugin-angularjs.svg?branch=master)](https://travis-ci.org/Gillespie59/eslint-plugin-angularjs)
-[![Npm dependencies](https://david-dm.org/Gillespie59/eslint-plugin-angularjs.svg)](https://david-dm.org/Gillespie59/eslint-plugin-angularjs)
-[![devDependency Status](https://david-dm.org/Gillespie59/eslint-plugin-angularjs/dev-status.png)](https://david-dm.org/Gillespie59/eslint-plugin-angularjs#info=devDependencies)
+[![Build Status](https://travis-ci.org/Gillespie59/eslint-plugin-angular.svg?branch=master)](https://travis-ci.org/Gillespie59/eslint-plugin-angular)
+[![Npm dependencies](https://david-dm.org/Gillespie59/eslint-plugin-angular.svg)](https://david-dm.org/Gillespie59/eslint-plugin-angular)
+[![devDependency Status](https://david-dm.org/Gillespie59/eslint-plugin-angular/dev-status.png)](https://david-dm.org/Gillespie59/eslint-plugin-angular#info=devDependencies)
 
 
 This repository will give access to new rules for the ESLint tool. You should use it only if you are developping an AngularJS application. 
