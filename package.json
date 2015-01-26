@@ -25,5 +25,8 @@
     "mocha": "https://registry.npmjs.org/mocha/-/mocha-1.21.5.tgz",
     "shelljs": "^0.3.0",
     "shelljs-nodecli": "^0.1.1"
+  }, 
+  "peerDependencies": {
+    "eslint": ">=0.8.0"
   }
 }
