@@ -5,6 +5,22 @@
 
 This repository will give access to new rules for the ESLint tool. You should use it only if you are developping an AngularJS application. 
 
+# Usage
+
+1. Install `eslint-plugin-angular` as a dev-dependency:
+
+    ```shell
+    npm install --save-dev eslint-plugin-angular
+    ```
+
+2. Enable the plugin by adding it to your `.eslintrc`:
+
+    ```yaml
+    plugins:
+      - angular
+    ```
+
+
 # Rules
 
 | Name  | Description |
