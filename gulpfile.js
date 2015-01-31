@@ -20,7 +20,7 @@
 					'process': true
 				}
 			}))
-			.pipe(eslint.failOnError());
+			.pipe(eslint.format());
 	});
 
 	gulp.task('test', function (cb) {
