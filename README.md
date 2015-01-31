@@ -28,7 +28,7 @@ This repository will give access to new rules for the ESLint tool. You should us
 | ng_angularelement  | The angular.element method should be used of the $ or jQuery object (if you are using jQuery of course). If the jQuery library is imported, angular.element will be a wrapper around the jQuery object.  |
 | ng_controller_name  | All your controllers should have a name starting the parameter you can define in your config object ("ng_controller_name":  [2, "ng"]) |
 | ng_definedundefined | You should use the angular.isUndefined or angular.isDefined methods instead of using the keyword undefined (myVar === undefined) |
-| ng_di | All your DI should use the same syntax : the Array or function syntaxes ("ng_di":  [2, "function|array"])|
+| ng_di | All your DI should use the same syntax : the Array or function syntaxes ("ng_di":  [2, "function or array"])|
 | ng_directive_name | All your directives should have a name starting the parameter you can define in your config object ("ng_directive_name":  [2, "ng"]) |
 | ng_filter_name | All your filters should have a name starting the parameter you can define in your config object ("ng_filter_name":  [2, "ng"]) |
 | ng_json_functions | You should use angular.fromJson or angular.toJson instead of JSON.parse and JSON.stringify |
