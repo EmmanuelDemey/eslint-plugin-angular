@@ -15,19 +15,24 @@
   "homepage": "https://github.com/Gillespie59/eslint-plugin-angularjs",
   "devDependencies": {
     "chai": "^1.10.0",
-    "eslint": "^0.8.2",
-    "eslint-tester": "^0.3.0",
+    "eslint": "^0.13.0",
+    "eslint-tester": "^0.5.0",
     "gulp": "^3.8.10",
-    "gulp-eslint": "^0.1.8",
+    "gulp-eslint": "^0.2.2",
     "gulp-istanbul": "^0.5.0",
     "gulp-mocha": "^2.0.0",
     "istanbul": "^0.3.5",
     "mocha": "https://registry.npmjs.org/mocha/-/mocha-1.21.5.tgz",
     "shelljs": "^0.3.0",
     "shelljs-nodecli": "^0.1.1"
-  }, 
+  },
   "peerDependencies": {
     "eslint": ">=0.8.0"
-  }, 
-  "keywords": ["eslint", "eslintplugin", "angular", "angularjs"]
+  },
+  "keywords": [
+    "eslint",
+    "eslintplugin",
+    "angular",
+    "angularjs"
+  ]
 }
