@@ -5,140 +5,45 @@
 var eslint = require('../node_modules/eslint/lib/eslint'),
     ESLintTester = require('eslint-tester');
 
+var angularObjectList = ['value', 'constant', 'factory', 'service', 'provider', 'controller', 'filter', 'directive'];
+var valid = [], invalid = [];
+
+angularObjectList.forEach(function(object){
+    valid.push({
+        code: 'angular.' + object + '("name", function(){});',
+        args: [1, 'function']
+    }, {
+        code: 'angular.' + object + '("name", [function(){}]);',
+        args: [1, 'array']
+    }, {
+        code: 'angular.' + object + '("name", ["Service1", function(Service1){}]);',
+        args: [1, 'array']
+    });
+
+    invalid.push({
+        code: 'angular.' + object + '("name", function(){});',
+        args: [1, 'array'],
+        errors: [{ message: 'You should use the array syntax for DI'}]
+    }, {
+        code: 'angular.' + object + '("name", [function(){}]);',
+        args: [1, 'function'],
+        errors: [{ message: 'You should use the function syntax for DI'}]
+    }, {
+        code: 'angular.' + object + '("name", ["Service1", function(){}]);',
+        args: [1, 'array'],
+        errors: [{ message: 'The signature of the method is incorrect'}]
+    }, {
+        code: 'angular.' + object + '("name", [function(Service1){}]);',
+        args: [1, 'array'],
+        errors: [{ message: 'The signature of the method is incorrect'}]
+    });
+});
 //------------------------------------------------------------------------------
 // Tests
 //------------------------------------------------------------------------------
 
 var eslintTester = new ESLintTester(eslint);
 eslintTester.addRuleTest('rules/ng_di', {
-    valid: [{
-        code: 'angular.controller("name", function(){});',
-        args: [1, 'function']
-    }, {
-        code: 'angular.controller("name", [function(){}]);',
-        args: [1, 'array']
-    },
-    {
-        code: 'angular.directive("name", function(){});',
-        args: [1, 'function']
-    }, {
-        code: 'angular.directive("name", [function(){}]);',
-        args: [1, 'array']
-    },
-    {
-        code: 'angular.filter("name", function(){});',
-        args: [1, 'function']
-    }, {
-        code: 'angular.filter("name", [function(){}]);',
-        args: [1, 'array']
-    },
-    {
-        code: 'angular.value("name", function(){});',
-        args: [1, 'function']
-    }, {
-        code: 'angular.value("name", [function(){}]);',
-        args: [1, 'array']
-    },
-    {
-        code: 'angular.constant("name", function(){});',
-        args: [1, 'function']
-    }, {
-        code: 'angular.constant("name", [function(){}]);',
-        args: [1, 'array']
-    },
-    {
-        code: 'angular.service("name", function(){});',
-        args: [1, 'function']
-    }, {
-        code: 'angular.service("name", [function(){}]);',
-        args: [1, 'array']
-    },
-    {
-        code: 'angular.factory("name", function(){});',
-        args: [1, 'function']
-    }, {
-        code: 'angular.factory("name", [function(){}]);',
-        args: [1, 'array']
-    },
-    {
-        code: 'angular.provider("name", function(){});',
-        args: [1, 'function']
-    }, {
-        code: 'angular.provider("name", [function(){}]);',
-        args: [1, 'array']
-    }],
-    invalid: [
-        {
-            code: 'angular.controller("name", function(){});',
-            args: [1, 'array'],
-            errors: [{ message: 'You should use the array syntax for DI'}]
-        }, {
-            code: 'angular.controller("name", [function(){}]);',
-            args: [1, 'function'],
-            errors: [{ message: 'You should use the function syntax for DI'}]
-        },
-        {
-            code: 'angular.directive("name", function(){});',
-            args: [1, 'array'],
-            errors: [{ message: 'You should use the array syntax for DI'}]
-        }, {
-            code: 'angular.directive("name", [function(){}]);',
-            args: [1, 'function'],
-            errors: [{ message: 'You should use the function syntax for DI'}]
-        },
-        {
-            code: 'angular.filter("name", function(){});',
-            args: [1, 'array'],
-            errors: [{ message: 'You should use the array syntax for DI'}]
-        }, {
-            code: 'angular.filter("name", [function(){}]);',
-            args: [1, 'function'],
-            errors: [{ message: 'You should use the function syntax for DI'}]
-        },
-        {
-            code: 'angular.value("name", function(){});',
-            args: [1, 'array'],
-            errors: [{ message: 'You should use the array syntax for DI'}]
-        }, {
-            code: 'angular.value("name", [function(){}]);',
-            args: [1, 'function'],
-            errors: [{ message: 'You should use the function syntax for DI'}]
-        },
-        {
-            code: 'angular.constant("name", function(){});',
-            args: [1, 'array'],
-            errors: [{ message: 'You should use the array syntax for DI'}]
-        }, {
-            code: 'angular.constant("name", [function(){}]);',
-            args: [1, 'function'],
-            errors: [{ message: 'You should use the function syntax for DI'}]
-        },
-        {
-            code: 'angular.service("name", function(){});',
-            args: [1, 'array'],
-            errors: [{ message: 'You should use the array syntax for DI'}]
-        }, {
-            code: 'angular.service("name", [function(){}]);',
-            args: [1, 'function'],
-            errors: [{ message: 'You should use the function syntax for DI'}]
-        },
-        {
-            code: 'angular.factory("name", function(){});',
-            args: [1, 'array'],
-            errors: [{ message: 'You should use the array syntax for DI'}]
-        }, {
-            code: 'angular.factory("name", [function(){}]);',
-            args: [1, 'function'],
-            errors: [{ message: 'You should use the function syntax for DI'}]
-        },
-        {
-            code: 'angular.provider("name", function(){});',
-            args: [1, 'array'],
-            errors: [{ message: 'You should use the array syntax for DI'}]
-        }, {
-            code: 'angular.provider("name", [function(){}]);',
-            args: [1, 'function'],
-            errors: [{ message: 'You should use the function syntax for DI'}]
-        }
-    ]
+    valid: valid,
+    invalid: invalid
 });
