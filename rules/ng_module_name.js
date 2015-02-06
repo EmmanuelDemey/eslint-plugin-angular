@@ -10,6 +10,9 @@ module.exports = function(context) {
         });
     }
 
+    function isArray(node){
+        return node !== undefined && node.type === 'ArrayExpression';
+    }
     return {
 
         'CallExpression': function(node) {
@@ -19,8 +22,7 @@ module.exports = function(context) {
             if (callee.type === 'MemberExpression' && callee.property.name === 'module') {
                var name = node.arguments[0].value;
 
-               if(node.arguments[1].type === 'ArrayExpression' && name !== undefined
-                    && !(name.indexOf(prefix) === 0)){
+               if(isArray(node.arguments[1]) && name !== undefined && !(name.indexOf(prefix) === 0)){
 
                     report(node, name, prefix);
 
