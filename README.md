@@ -32,6 +32,7 @@ This repository will give access to new rules for the ESLint tool. You should us
 | ng_directive_name | All your directives should have a name starting the parameter you can define in your config object ("ng_directive_name":  [2, "ng"]) | 'ng_directive_name': 0 |
 | ng_filter_name | All your filters should have a name starting the parameter you can define in your config object ("ng_filter_name":  [2, "ng"]) | 'ng_filter_name': 0 |
 | ng_json_functions | You should use angular.fromJson or angular.toJson instead of JSON.parse and JSON.stringify | 'ng_json_functions': 2 |
+| ng_module_name  | When you create a new module, its name should start with the parameter you can define in your config object ("ng_module_name":  [2, "ng"]) | 'ng_module_name': 0 |
 | ng_on_watch | Watch and On methods on the scope object should be assigned to a variable, in order to be deleted in a $destroy event handler | 'ng_on_watch': 2 |
 | ng_service_name | All your services should have a name starting the parameter you can define in your config object ("ng_service_name":  [2, "ng"]) | 'ng_on_watch': 2 |
 | ng_timeout_service | Instead of the default setTimeout function, you should use the AngularJS wrapper service $timeout | 'ng_timeout_service': 2 |
