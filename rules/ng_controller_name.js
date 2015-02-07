@@ -22,7 +22,7 @@ module.exports = function(context) {
                     context.report(node, 'The {{controller}} controller should follow this pattern: {{prefix}}', {
                         controller: name,
                         prefix: prefix.toString()
-                    });
+                   });
                 }
 
             }

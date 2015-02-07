@@ -14,6 +14,9 @@ eslintTester.addRuleTest('rules/ng_directive_name', {
     valid: [{
         code: 'angular.directive("eslintDirective", function(){});',
         args: [1, 'eslint']
+    }, {
+        code: 'angular.directive("eslintDirective", function(){});',
+        args: [1, /^eslint/]
     }],
     invalid: [
         {
@@ -25,6 +28,11 @@ eslintTester.addRuleTest('rules/ng_directive_name', {
             code: 'angular.directive("esLintDirective", function(){});',
             args: [1, 'eslint'],
             errors: [{ message: 'The esLintDirective directive should be prefixed by eslint'}]
+        },
+        {
+            code: 'angular.directive("Directive", function(){});',
+            args: [1, /^eslint/],
+            errors: [{ message: 'The Directive directive should follow this pattern: /^eslint/'}]
         }
     ]
 });
