@@ -11,6 +11,10 @@
 
 		isEmptyFunction: function(fn){
 			return fn.body.body.length === 0;
+		},
+
+		isRegexp: function(regexp){
+			return toString.call(regexp) === '[object RegExp]';
 		}
 	};
 })();
