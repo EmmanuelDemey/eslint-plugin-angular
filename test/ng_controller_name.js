@@ -14,6 +14,9 @@ eslintTester.addRuleTest('rules/ng_controller_name', {
     valid: [{
         code: 'angular.controller("eslintController", function(){});',
         args: [1, 'eslint']
+    }, {
+        code: 'angular.controller("eslintController", function(){});',
+        args: [1, /^eslint/]
     }],
     invalid: [
         {
@@ -25,6 +28,11 @@ eslintTester.addRuleTest('rules/ng_controller_name', {
             code: 'angular.controller("esLintController", function(){});',
             args: [1, 'eslint'],
             errors: [{ message: 'The esLintController controller should be prefixed by eslint'}]
+        },
+        {
+            code: 'angular.controller("Controller", function(){});',
+            args: [1, /^eslint/],
+            errors: [{ message: 'The Controller controller should follow this pattern: /^eslint/'}]
         }
     ]
 });
