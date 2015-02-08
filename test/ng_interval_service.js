@@ -19,6 +19,8 @@ eslintTester.addRuleTest('rules/ng_interval_service', {
     ],
     invalid: [
         { code: 'window.setInterval(function(){}, 1000)', errors: [{ message: 'You should use the $interval service instead of the default window.setInterval method'}] },
-        { code: 'window.setInterval(function(){}, 1000, param1)', errors: [{ message: 'You should use the $interval service instead of the default window.setInterval method'}] }
+        { code: 'window.setInterval(function(){}, 1000, param1)', errors: [{ message: 'You should use the $interval service instead of the default window.setInterval method'}] },
+        { code: 'setInterval(function(){}, 1000)', errors: [{ message: 'You should use the $interval service instead of the default window.setInterval method'}] },
+        { code: 'setInterval(function(){}, 1000, param1)', errors: [{ message: 'You should use the $interval service instead of the default window.setInterval method'}] }
     ]
 });
