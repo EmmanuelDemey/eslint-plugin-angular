@@ -2,16 +2,20 @@ module.exports = function(context) {
 
     'use strict';
 
-    function report(node){
-        context.report(node, 'You should use the $timeout service instead of the default window.setTimeout method', {});
-    }
+    var message = 'You should use the $timeout service instead of the default window.setTimeout method';
 
     return {
 
-        'CallExpression': function(node) {
-			if(node.callee.type === 'MemberExpression' && node.callee.object.name === 'window' && node.callee.property.name === 'setTimeout'){
-				report(node);
+        'MemberExpression': function(node) {
+			if(node.object.name === 'window' && node.property.name === 'setTimeout'){
+				context.report(node, message, {});
 			}
+        },
+
+        'CallExpression': function(node) {
+            if(node.callee.name === 'setTimeout'){
+                context.report(node, message, {});
+            }
         }
     };
 

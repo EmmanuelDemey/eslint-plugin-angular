@@ -18,6 +18,8 @@ eslintTester.addRuleTest('rules/ng_timeout_service', {
     ],
     invalid: [
         { code: 'window.setTimeout(function(){}, 1000)', errors: [{ message: 'You should use the $timeout service instead of the default window.setTimeout method'}] },
-        { code: 'window.setTimeout(function(){}, 1000, param1)', errors: [{ message: 'You should use the $timeout service instead of the default window.setTimeout method'}] }
+        { code: 'window.setTimeout(function(){}, 1000, param1)', errors: [{ message: 'You should use the $timeout service instead of the default window.setTimeout method'}] },
+        { code: 'setTimeout(function(){}, 1000)', errors: [{ message: 'You should use the $timeout service instead of the default window.setTimeout method'}] },
+        { code: 'setTimeout(function(){}, 1000, param1)', errors: [{ message: 'You should use the $timeout service instead of the default window.setTimeout method'}] }
     ]
 });
