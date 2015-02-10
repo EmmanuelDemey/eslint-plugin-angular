@@ -59,3 +59,9 @@ It is an opensource project. Any help will be very useful. You can :
 - Add new Rules
 - Improve the quality
 - Reply to issues
+
+## Team
+
+[![Emmanuel DEMEY](https://avatars.githubusercontent.com/u/555768?s=117)](http://gillespie59.github.io/) |
+:---:|
+[Emmanuel DEMEY](http://gillespie59.github.io/)
