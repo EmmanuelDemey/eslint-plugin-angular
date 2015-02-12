@@ -7,6 +7,8 @@ This repository will give access to new rules for the ESLint tool. You should us
 
 # Usage
 
+[![Join the chat at https://gitter.im/Gillespie59/eslint-plugin-angular](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/Gillespie59/eslint-plugin-angular?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
 1. Install `eslint-plugin-angular` as a dev-dependency:
 
     ```shell
