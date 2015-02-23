@@ -1,7 +1,7 @@
 [![Build Status](https://travis-ci.org/Gillespie59/eslint-plugin-angular.svg?branch=master)](https://travis-ci.org/Gillespie59/eslint-plugin-angular)
 [![Npm dependencies](https://david-dm.org/Gillespie59/eslint-plugin-angular.svg)](https://david-dm.org/Gillespie59/eslint-plugin-angular)
 [![devDependency Status](https://david-dm.org/Gillespie59/eslint-plugin-angular/dev-status.png)](https://david-dm.org/Gillespie59/eslint-plugin-angular#info=devDependencies)
-
+[![Join the chat at https://gitter.im/Gillespie59/eslint-plugin-angular](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/Gillespie59/eslint-plugin-angular?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
 This repository will give access to new rules for the ESLint tool. You should use it only if you are developping an AngularJS application. 
 
@@ -62,3 +62,9 @@ It is an opensource project. Any help will be very useful. You can :
 - Add new Rules
 - Improve the quality
 - Reply to issues
+
+## Team
+
+[![Emmanuel DEMEY](https://avatars.githubusercontent.com/u/555768?s=117)](http://gillespie59.github.io/) |
+:---:|
+[Emmanuel DEMEY](http://gillespie59.github.io/)
