@@ -1,0 +1,14 @@
+module.exports = function(context) {
+
+    'use strict';
+
+    return {
+
+        'CallExpression': function(node) {
+            if(node.callee.property.type === 'Identifier' && node.callee.property.name == '$digest'){
+                context.report(node, 'Instead of using the $destroy method, you should prefer $apply()', {});
+            }
+        }
+    };
+
+};
