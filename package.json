@@ -15,6 +15,7 @@
   "homepage": "https://github.com/Gillespie59/eslint-plugin-angularjs",
   "devDependencies": {
     "chai": "^1.10.0",
+    "coveralls": "^2.11.2",
     "eslint": "^0.13.0",
     "eslint-tester": "^0.5.0",
     "gulp": "^3.8.10",

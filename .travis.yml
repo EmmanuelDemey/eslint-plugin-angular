@@ -5,3 +5,4 @@
    - chmod +x ./node_modules/.bin/gulp
  install: npm install
  script: gulp
+ after_script: "cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js"
