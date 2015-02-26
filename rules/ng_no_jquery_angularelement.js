@@ -6,13 +6,13 @@ module.exports = function(context) {
 
         'MemberExpression': function(node) {
             if(node.object.name === 'angular' && node.property.name === 'element'){
-                console.log(node.parent.parent);
-                if(node.parent !== undefined && node.parent.parent !== undefined 
-                    && node.parent.parent.type === 'CallExpression' 
-                    && node.parent.parent.callee.type === 'Identifier' 
-                    && (node.parent.parent.callee.name === 'jQuery' || node.parent.parent.callee.name === '$'))
-                
-                context.report(node, 'angular.element returns already a jQLite element. No need to wrap with the jQuery object', {});
+                if(node.parent !== undefined && node.parent.parent !== undefined
+                    && node.parent.parent.type === 'CallExpression'
+                    && node.parent.parent.callee.type === 'Identifier'
+                    && (node.parent.parent.callee.name === 'jQuery' || node.parent.parent.callee.name === '$')){
+
+                    context.report(node, 'angular.element returns already a jQLite element. No need to wrap with the jQuery object', {});
+                }
             }
         }
     };

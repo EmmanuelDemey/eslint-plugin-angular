@@ -7,7 +7,7 @@ module.exports = function(context) {
     */
     return {
         'MemberExpression': function(node){
-            if(node.object.name === 'angular' 
+            if(node.object.name === 'angular'
                 && node.parent !== undefined && node.parent.parent !== undefined && node.parent.parent.operator === '!'){
 
 
