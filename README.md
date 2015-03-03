@@ -68,6 +68,7 @@ It is an opensource project. Any help will be very useful. You can :
 
 ## Who use it ? 
 - [argo](https://github.com/albertosantini/argo)
+- [generator-gillespie59-angular](https://github.com/Gillespie59/generator-gillespie59-angular/)
 
 ## Team
 
