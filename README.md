@@ -36,7 +36,7 @@ Since the 0.0.4 release, some rules defined in [John Papa's Guideline](https://g
 | ng_document_service | Instead of the default document object, you should prefer the AngularJS wrapper service $document. [Y180](https://github.com/johnpapa/angularjs-styleguide#style-y180) | 'ng_document_service': 2 |
 | ng_empty_controller | If you have one empty controller, maybe you have linked it in your Router configuration or in one of your views. You can remove this declaration, because this controller is useless | 'ng_empty_controller': 0 |
 | ng_filter_name | All your filters should have a name starting the parameter you can define in your config object. The second parameter can be a Regexp. ("ng_filter_name":  [2, "ng"]) | 'ng_filter_name': 0 |
-| ng_interval_service | Instead of the default setInterval function, you should use the AngularJS wrapper service $interval | 'ng_interval_service': 2 |
+| ng_interval_service | Instead of the default setInterval function, you should use the AngularJS wrapper service $interval  [Y181](https://github.com/johnpapa/angularjs-styleguide#style-y181) | 'ng_interval_service': 2 |
 | ng_json_functions | You should use angular.fromJson or angular.toJson instead of JSON.parse and JSON.stringify | 'ng_json_functions': 2 |
 | ng_module_name  | When you create a new module, its name should start with the parameter you can define in your config object. The second parameter can be a Regexp. ("ng_module_name":  [2, "ng"]) | 'ng_module_name': 0 |
 | ng_no_digest | The scope's $digest() method shouldn't be used. You should prefer the $apply method. | 'ng_no_digest': 2 |
@@ -45,7 +45,7 @@ Since the 0.0.4 release, some rules defined in [John Papa's Guideline](https://g
 | ng_no_services  | Some services should be used only in a specific AngularJS service (Ajax-based service for example), in order to follow the separation of concerns paradigm | 'ng_no_services': [2, ['$http', '$resource', 'Restangular']] |
 | ng_on_watch | Watch and On methods on the scope object should be assigned to a variable, in order to be deleted in a $destroy event handler | 'ng_on_watch': 2 |
 | ng_service_name | All your services should have a name starting the parameter you can define in your config object. The second parameter can be a Regexp. ("ng_service_name":  [2, "ng"]) | 'ng_on_watch': 2 |
-| ng_timeout_service | Instead of the default setTimeout function, you should use the AngularJS wrapper service $timeout | 'ng_timeout_service': 2 |
+| ng_timeout_service | Instead of the default setTimeout function, you should use the AngularJS wrapper service $timeout [Y181](https://github.com/johnpapa/angularjs-styleguide#style-y181) | 'ng_timeout_service': 2 |
 | ng_typecheck_array | You should use the angular.isArray method instead of the default JavaScript implementation (typeof [] === "[object Array]"). | 'ng_typecheck_array': 2 |
 | ng_typecheck_boolean | You should use the angular.isBoolean method instead of the default JavaScript implementation (typeof true === "[object Boolean]"). | 'ng_typecheck_boolean': 2 |
 | ng_typecheck_date | You should use the angular.isDate method instead of the default JavaScript implementation (typeof new Date() === "[object Date]"). | 'ng_typecheck_date': 2 |
