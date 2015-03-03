@@ -33,7 +33,7 @@ Since the 0.0.4 release, some rules defined in [John Papa's Guideline](https://g
 | ng_definedundefined | You should use the angular.isUndefined or angular.isDefined methods instead of using the keyword undefined. We check also the use of !angular.isUndefined and !angular.isDefined (should prefer the reverse function)| 'ng_definedundefined': 2 |
 | ng_di | All your DI should use the same syntax : the Array or function syntaxes ("ng_di":  [2, "function or array"])| 'ng_di': [2, 'function'] |
 | ng_directive_name | All your directives should have a name starting the parameter you can define in your config object. The second parameter can be a Regexp. ("ng_directive_name":  [2, "ng"]) | 'ng_directive_name': 0 |
-| ng_document_service | Instead of the default document object, you should prefer the AngularJS wrapper service $document. | 'ng_document_service': 2 |
+| ng_document_service | Instead of the default document object, you should prefer the AngularJS wrapper service $document. [Y180](https://github.com/johnpapa/angularjs-styleguide#style-y180) | 'ng_document_service': 2 |
 | ng_empty_controller | If you have one empty controller, maybe you have linked it in your Router configuration or in one of your views. You can remove this declaration, because this controller is useless | 'ng_empty_controller': 0 |
 | ng_filter_name | All your filters should have a name starting the parameter you can define in your config object. The second parameter can be a Regexp. ("ng_filter_name":  [2, "ng"]) | 'ng_filter_name': 0 |
 | ng_interval_service | Instead of the default setInterval function, you should use the AngularJS wrapper service $interval | 'ng_interval_service': 2 |
@@ -54,7 +54,7 @@ Since the 0.0.4 release, some rules defined in [John Papa's Guideline](https://g
 | ng_typecheck_object | Yo	u should use the angular.isObject method instead of the default JavaScript implementation (typeof {} === "[object Object]").  | 'ng_typecheck_object': 2 |
 | ng_typecheck_regexp | You should use the angular.isRegexp method instead of the default JavaScript implementation (toString.call(/^A/) === "[object RegExp]"). | 'ng_typecheck_regexp': 2 |
 | ng_typecheck_string | You should use the angular.isString method instead of the default JavaScript implementation (typeof "" === "[object String]"). | 'ng_typecheck_string': 2 |
-| ng_window_service | Instead of the default window object, you should prefer the AngularJS wrapper service $window. | 'ng_window_service': 2 |
+| ng_window_service | Instead of the default window object, you should prefer the AngularJS wrapper service $window. [Y180](https://github.com/johnpapa/angularjs-styleguide#style-y180) | 'ng_window_service': 2 |
 
 # Need your help
 It is an opensource project. Any help will be very useful. You can : 
