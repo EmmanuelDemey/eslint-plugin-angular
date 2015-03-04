@@ -13,21 +13,27 @@ module.exports = function(context) {
 
             var prefix = context.options[0];
             var callee = node.callee;
-            if (callee.type === 'MemberExpression' && callee.property.name === 'module') {
+            if (callee.type === 'MemberExpression' && callee.property.name === 'module' && isArray(node.arguments[1])) {
                var name = node.arguments[0].value;
 
-               if(isArray(node.arguments[1]) && name !== undefined && !utils.isRegexp(prefix) && !(name.indexOf(prefix) === 0)){
-
-                   context.report(node, 'The {{module}} module should be prefixed by {{prefix}}', {
-                        module: name,
-                        prefix: prefix
+                if(name !== undefined && name.indexOf('ng') === 0){
+                    context.report(node, 'The {{module}} module should not start with "ng". This is reserved for AngularJS modules', {
+                        module: name
                     });
+                } else {
+                    if(name !== undefined && !utils.isRegexp(prefix) && !(name.indexOf(prefix) === 0)){
 
-                } else if(isArray(node.arguments[1]) && utils.isRegexp(prefix) && !prefix.test(name)){
-                    context.report(node, 'The {{module}} module should follow this pattern: {{prefix}}', {
-                        module: name,
-                        prefix: prefix.toString()
-                    });
+                       context.report(node, 'The {{module}} module should be prefixed by {{prefix}}', {
+                            module: name,
+                            prefix: prefix
+                        });
+
+                    } else if(utils.isRegexp(prefix) && !prefix.test(name)){
+                        context.report(node, 'The {{module}} module should follow this pattern: {{prefix}}', {
+                            module: name,
+                            prefix: prefix.toString()
+                        });
+                    }
                 }
             }
         }

@@ -33,6 +33,10 @@ eslintTester.addRuleTest('rules/ng_directive_name', {
             code: 'angular.directive("Directive", function(){});',
             args: [1, /^eslint/],
             errors: [{ message: 'The Directive directive should follow this pattern: /^eslint/'}]
+        }, {
+            code: 'angular.directive("ngDirective", []);',
+            args: [1, /^eslint/],
+            errors: [{ message: 'The ngDirective directive should not start with "ng". This is reserved for AngularJS directives'}]
         }
     ]
 });

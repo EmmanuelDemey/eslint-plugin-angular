@@ -34,6 +34,10 @@ eslintTester.addRuleTest('rules/ng_module_name', {
             code: 'angular.module("module", []);',
             args: [1, /^eslint/],
             errors: [{ message: 'The module module should follow this pattern: /^eslint/'}]
+        }, {
+            code: 'angular.module("ngModule", []);',
+            args: [1, /^ng/],
+            errors: [{ message: 'The ngModule module should not start with "ng". This is reserved for AngularJS modules'}]
         }
     ]
 });

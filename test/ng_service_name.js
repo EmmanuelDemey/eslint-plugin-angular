@@ -30,6 +30,11 @@ var valid = [], invalid = [];
         code: 'angular.' + syntax + '("Service", function(){});',
         args: [1, /^eslint/],
         errors: [{ message: 'The Service service should follow this pattern: /^eslint/'}]
+    }, 
+    {
+        code: 'angular.' + syntax + '("$Service", function(){});',
+        args: [1, /^eslint/],
+        errors: [{ message: 'The $Service service should not start with "$". This is reserved for AngularJS services'}]
     });
 });
 
