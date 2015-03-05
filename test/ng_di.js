@@ -18,6 +18,9 @@ angularObjectList.forEach(function(object){
     }, {
         code: 'angular.' + object + '("name", ["Service1", function(Service1){}]);',
         args: [1, 'array']
+    }, {
+        code: 'angular.' + object + '("name", myFunction);function MyFunction(){}',
+        args: [1, 'function']
     });
 
     invalid.push({

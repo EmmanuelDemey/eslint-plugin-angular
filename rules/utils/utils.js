@@ -9,6 +9,10 @@
 			return node !== undefined && node.type === 'FunctionExpression';
 		},
 
+		isIdentifierType: function(node){
+			return node !== undefined && node.type === 'Identifier';
+		},
+
 		isEmptyFunction: function(fn){
 			return fn.body.body.length === 0;
 		},
