@@ -9,6 +9,10 @@ module.exports = function(context) {
         'CallExpression': function(node) {
 
             var prefix = context.options[0];
+            if(prefix === undefined) {
+                return;
+            }
+
             var callee = node.callee;
             if (callee.type === 'MemberExpression' &&
                 (callee.property.name === 'provider' || callee.property.name === 'service' || callee.property.name === 'factory' || callee.property.name === 'constant' || callee.property.name === 'value')) {

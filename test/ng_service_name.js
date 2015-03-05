@@ -11,11 +11,14 @@ var eslint = require('../node_modules/eslint/lib/eslint'),
 var valid = [], invalid = [];
 ['service', 'factory', 'provider', 'constant', 'value'].forEach(function(syntax){
     valid.push({
-        code: 'angular.' + syntax + '("eslintDirective", function(){});',
+        code: 'angular.' + syntax + '("eslintService", function(){});',
         args: [1, 'eslint']
     }, {
-        code: 'angular.' + syntax + '("eslintDirective", function(){});',
+        code: 'angular.' + syntax + '("eslintService", function(){});',
         args: [1, /^eslint/]
+    }, {
+        code: 'angular.' + syntax + '("eslintService", function(){});',
+        args: [1, undefined]
     });
 
     invalid.push({

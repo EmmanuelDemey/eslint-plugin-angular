@@ -17,6 +17,9 @@ eslintTester.addRuleTest('rules/ng_filter_name', {
     }, {
         code: 'angular.filter("eslintFilter", function(){});',
         args: [1, /^eslint/]
+    }, {
+        code: 'angular.filter("eslintFilter", function(){});',
+        args: [1, undefined]
     }],
     invalid: [
         {

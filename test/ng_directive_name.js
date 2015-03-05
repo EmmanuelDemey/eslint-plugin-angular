@@ -17,6 +17,9 @@ eslintTester.addRuleTest('rules/ng_directive_name', {
     }, {
         code: 'angular.directive("eslintDirective", function(){});',
         args: [1, /^eslint/]
+    }, {
+        code: 'angular.directive("eslintDirective", function(){});',
+        args: [1, undefined]
     }],
     invalid: [
         {

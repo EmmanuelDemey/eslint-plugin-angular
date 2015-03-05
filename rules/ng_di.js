@@ -20,7 +20,7 @@ module.exports = function(context) {
             var callee = node.callee;
 
             if (callee.type === 'MemberExpression' && angularObjectList.indexOf(callee.property.name) >= 0) {
-              
+
                if(syntax === 'function' && (!utils.isFunctionType(node.arguments[1]) && !utils.isIdentifierType(node.arguments[1]))){
                   report(node, syntax);
                }

@@ -20,6 +20,9 @@ eslintTester.addRuleTest('rules/ng_module_name', {
     }, {
         code: 'angular.module("eslintModule", []);',
         args: [1, /^eslint/]
+    }, {
+        code: 'angular.module("eslintModule", []);',
+        args: [1, undefined]
     }],
     invalid: [
         {
