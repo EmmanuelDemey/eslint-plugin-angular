@@ -5,7 +5,7 @@ module.exports = function(context) {
     return {
 
         'CallExpression': function(node) {
-            if(node.callee.property.type === 'Identifier' && node.callee.property.name === '$digest'){
+			if(node.callee.type ==='MemberExpression' &&  node.callee.property.type === 'Identifier' && node.callee.property.name === '$digest'){
                 context.report(node, 'Instead of using the $destroy method, you should prefer $apply()', {});
             }
         }
