@@ -2,9 +2,6 @@ module.exports = function(context) {
 
     'use strict';
 
-    /**
-    *  Rule that check if we use angular.is(Un)defined() instead of the undefined keyword
-    */
     return {
 
         'CallExpression': function(node) {
