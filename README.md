@@ -22,7 +22,14 @@ Since the 0.0.4 release, some rules defined in [John Papa's Guideline](https://g
     plugins:
       - angular
     ```
+3. You can also configure these rules in your `.eslintrc`. All rules defined in this plugin have to be prefixed by 'angular/'
 
+    ```yaml
+    plugins:
+      - angular
+    rules:
+      - angular/ng_controller_name: 0
+    ```
 
 # Rules
 
