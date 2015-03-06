@@ -33,7 +33,7 @@
 		},
 		rulesConfig: {
 			'ng_angularelement': 1,
-			'ng_controller_name': 0,
+			'ng_controller_name': [2, /[A-Z].*Controller$/],
 			'ng_definedundefined': 2,
 			'ng_di': [2, 'function'],
 			'ng_directive_name': 0,

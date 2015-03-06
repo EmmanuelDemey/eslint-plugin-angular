@@ -20,6 +20,9 @@ eslintTester.addRuleTest('rules/ng_controller_name', {
     }, {
         code: 'angular.controller("eslintController", function(){});',
         args: [1, undefined]
+    }, {
+        code: 'angular.controller("EslintController", function(){});',
+        args: [1, /[A-Z].*Controller$/]
     }],
     invalid: [
         {
@@ -36,6 +39,16 @@ eslintTester.addRuleTest('rules/ng_controller_name', {
             code: 'angular.controller("Controller", function(){});',
             args: [1, /^eslint/],
             errors: [{ message: 'The Controller controller should follow this pattern: /^eslint/'}]
+        },
+        {
+            code: 'angular.controller("customers", function(){});',
+            args: [1, /[A-Z].*Controller$/],
+            errors: [{ message: 'The customers controller should follow this pattern: /[A-Z].*Controller$/'}]
+        },
+        {
+            code: 'angular.controller("customersController", function(){});',
+            args: [1, /[A-Z].*Controller$/],
+            errors: [{ message: 'The customersController controller should follow this pattern: /[A-Z].*Controller$/'}]
         }
     ]
 });
