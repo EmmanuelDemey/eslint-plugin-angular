@@ -41,9 +41,20 @@ angularObjectList.forEach(function(object){
         errors: [{ message: 'The signature of the method is incorrect'}]
     });
 });
+
+
+valid.push({
+    code: 'vm.navRoutes = states.filter(x).sort(y);',
+    args: [1, 'function']
+}, {
+    code: 'vm.navRoutes = states.filter(x).sort(y);',
+    args: [1, 'array']
+})
 //------------------------------------------------------------------------------
 // Tests
 //------------------------------------------------------------------------------
+
+
 
 var eslintTester = new ESLintTester(eslint);
 eslintTester.addRuleTest('rules/ng_di', {
