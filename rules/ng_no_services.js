@@ -13,7 +13,7 @@ module.exports = function(context) {
             var badServices = context.options[0];
             var callee = node.callee;
 
-            if (callee.type === 'MemberExpression' && angularObjectList.indexOf(callee.property.name) >= 0) {
+            if (utils.isAngularComponent(node) && callee.type === 'MemberExpression' && angularObjectList.indexOf(callee.property.name) >= 0) {
                if(utils.isFunctionType(node.arguments[1])){
                    node.arguments[1].params.forEach(function(service){
                     if(service.type === 'Identifier' && badServices.indexOf(service.name) >= 0){

@@ -15,8 +15,7 @@ module.exports = function(context) {
 
         'CallExpression': function(node) {
 
-            var callee = node.callee;
-            if (callee.type === 'MemberExpression' && callee.property.name === 'controller') {
+            if (utils.isAngularControllerDeclaration(node)) {
                var name = node.arguments[0].value;
 
                var fn = node.arguments[1];

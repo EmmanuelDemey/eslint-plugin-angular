@@ -4,9 +4,6 @@ module.exports = function(context) {
 
     var utils = require('./utils/utils');
 
-    function isArray(node){
-        return node !== undefined && node.type === 'ArrayExpression';
-    }
     return {
 
         'CallExpression': function(node) {
@@ -16,8 +13,7 @@ module.exports = function(context) {
                 return;
             }
 
-            var callee = node.callee;
-            if (callee.type === 'MemberExpression' && callee.property.name === 'module' && isArray(node.arguments[1])) {
+            if (utils.isAngularModuleDeclaration(node)) {
                var name = node.arguments[0].value;
 
                 if(name !== undefined && name.indexOf('ng') === 0){

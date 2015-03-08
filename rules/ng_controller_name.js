@@ -14,8 +14,7 @@ module.exports = function(context) {
                 return;
             }
 
-            var callee = node.callee;
-            if (callee.type === 'MemberExpression' && callee.property.name === 'controller') {
+            if (utils.isAngularControllerDeclaration(node)) {
                 var name = node.arguments[0].value;
 
                if(name !== undefined && !utils.isRegexp(prefix) && !(name.indexOf(prefix) === 0)){

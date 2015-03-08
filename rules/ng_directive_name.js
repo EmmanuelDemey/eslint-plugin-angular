@@ -13,8 +13,7 @@ module.exports = function(context) {
                 return;
             }
 
-            var callee = node.callee;
-            if (callee.type === 'MemberExpression' && callee.property.name === 'directive') {
+            if (utils.isAngularDirectiveDeclaration(node)) {
                 var name = node.arguments[0].value;
 
                 if(name !== undefined && name.indexOf('ng') === 0){

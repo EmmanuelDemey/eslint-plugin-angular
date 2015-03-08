@@ -13,9 +13,7 @@ module.exports = function(context) {
                 return;
             }
 
-            var callee = node.callee;
-            if (callee.type === 'MemberExpression' &&
-                (callee.property.name === 'provider' || callee.property.name === 'service' || callee.property.name === 'factory' || callee.property.name === 'constant' || callee.property.name === 'value')) {
+            if (utils.isAngularServiceDeclaration(node)) {
                 var name = node.arguments[0].value;
 
                 if(name !== undefined && name.indexOf('$') === 0){

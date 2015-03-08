@@ -2,15 +2,12 @@ module.exports = function(context) {
 
     'use strict';
 
+    var utils = require('./utils/utils');
+
     function recordError(node, origin){
         if(node.type === 'Literal' && node.value === '[object Array]') {
             context.report(origin, 'You should use the angular.isArray method', {});
         }
-    }
-
-    function checkNode(node){
-        return node.type === 'Identifier'
-            || (node.type === 'UnaryExpression' && node.operator === 'typeof');
     }
 
     return {
@@ -18,10 +15,10 @@ module.exports = function(context) {
         'BinaryExpression': function(node) {
 
             if(node.operator === '===' || node.operator === '!=='){
-                if(checkNode(node.left)){
+                if(utils.isTypeOfStatement(node.left)){
                     recordError(node.right, node);
                 }
-                else if(checkNode(node.right)){
+                else if(utils.isTypeOfStatement(node.right)){
                     recordError(node.left, node);
                 }
             }
