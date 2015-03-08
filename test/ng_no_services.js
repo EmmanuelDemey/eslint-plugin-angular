@@ -11,20 +11,20 @@ var valid = [], invalid = [];
 
 angularObjectList.forEach(function(object){
     valid.push({
-        code: 'angular.' + object + '("name", function(Service1){});',
+        code: 'app.' + object + '("name", function(Service1){});',
         args: [1, defaultBadService]
     }, {
-        code: 'angular.' + object + '("name", ["Service1", function(Service1){}]);',
+        code: 'app.' + object + '("name", ["Service1", function(Service1){}]);',
         args: [1, defaultBadService]
     });
 
     defaultBadService.forEach(function(badService){
         invalid.push({
-            code: 'angular.' + object + '("name", function(' + badService + '){});',
+            code: 'app.' + object + '("name", function(' + badService + '){});',
             args: [1, defaultBadService],
             errors: [{ message: 'REST API calls should be implemented in a specific service'}]
         }, {
-            code: 'angular.' + object + '("name", ["' + badService + '", function(' + badService + '){}]);',
+            code: 'app.' + object + '("name", ["' + badService + '", function(' + badService + '){}]);',
             args: [1, defaultBadService],
             errors: [{ message: 'REST API calls should be implemented in a specific service'}]
         });

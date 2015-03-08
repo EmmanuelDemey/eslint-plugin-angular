@@ -16,7 +16,7 @@ eslintTester.addRuleTest('rules/ng_window_service', {
         '$window.alert("")',
         'window.setInterval(function(){}, 0)',
         'window.setTimeout(function(){}, 0)',
-        'window.document', 
+        'window.document',
         'window.document.title'
     ],
     invalid: [

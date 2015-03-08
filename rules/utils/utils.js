@@ -19,6 +19,10 @@
 
 		isRegexp: function(regexp){
 			return toString.call(regexp) === '[object RegExp]';
+		},
+
+		isAngularModule: function(node){
+			return node.callee.object.name === 'angular';
 		}
 	};
 })();

@@ -11,31 +11,31 @@ var eslint = require('../node_modules/eslint/lib/eslint'),
 var valid = [], invalid = [];
 ['service', 'factory', 'provider', 'constant', 'value'].forEach(function(syntax){
     valid.push({
-        code: 'angular.' + syntax + '("eslintService", function(){});',
+        code: 'app.' + syntax + '("eslintService", function(){});',
         args: [1, 'eslint']
     }, {
-        code: 'angular.' + syntax + '("eslintService", function(){});',
+        code: 'app.' + syntax + '("eslintService", function(){});',
         args: [1, /^eslint/]
     }, {
-        code: 'angular.' + syntax + '("eslintService", function(){});',
+        code: 'app.' + syntax + '("eslintService", function(){});',
         args: [1, undefined]
     });
 
     invalid.push({
-        code: 'angular.' + syntax + '("Service", function(){});',
+        code: 'app.' + syntax + '("Service", function(){});',
         args: [1, 'eslint'],
         errors: [{ message: 'The Service service should be prefixed by eslint'}]
     }, {
-        code: 'angular.' + syntax + '("esLintService", function(){});',
+        code: 'app.' + syntax + '("esLintService", function(){});',
         args: [1, 'eslint'],
         errors: [{ message: 'The esLintService service should be prefixed by eslint'}]
     }, {
-        code: 'angular.' + syntax + '("Service", function(){});',
+        code: 'app.' + syntax + '("Service", function(){});',
         args: [1, /^eslint/],
         errors: [{ message: 'The Service service should follow this pattern: /^eslint/'}]
-    }, 
+    },
     {
-        code: 'angular.' + syntax + '("$Service", function(){});',
+        code: 'app.' + syntax + '("$Service", function(){});',
         args: [1, /^eslint/],
         errors: [{ message: 'The $Service service should not start with "$". This is reserved for AngularJS services'}]
     });

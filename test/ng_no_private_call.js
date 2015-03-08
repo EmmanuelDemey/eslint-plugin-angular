@@ -9,8 +9,8 @@ var eslint = require('../node_modules/eslint/lib/eslint'),
 // Tests
 //------------------------------------------------------------------------------
 var variables = ['$scope', '$rootScope'];
-var bad = ['$$childHead', '$$childTail', '$$prevSibling', '$$nextSibling', 
-		'$$listeners', '$$phase', '$$watchers', '$$asyncQueue', '$$postDigestQueue', 
+var bad = ['$$childHead', '$$childTail', '$$prevSibling', '$$nextSibling',
+		'$$listeners', '$$phase', '$$watchers', '$$asyncQueue', '$$postDigestQueue',
 		'$$isolateBindings', '$$postDigest(function(){})', '$$destroyed'];
 var invalid = [];
 
@@ -22,7 +22,7 @@ variables.forEach(function(variable){
 			errors: [{ message: 'Using $$-prefixed Angular objects/methods are not recommended'}]
 		});
 	});
-	
+
 });
 
 var eslintTester = new ESLintTester(eslint);

@@ -18,7 +18,7 @@ module.exports = function(context) {
 
             var syntax = context.options[0];
             var callee = node.callee;
-            if (callee.type === 'MemberExpression' && callee.object.name === 'angular' && angularObjectList.indexOf(callee.property.name) >= 0) {
+            if (callee.type === 'MemberExpression' && utils.isAngularModule(node) && angularObjectList.indexOf(callee.property.name) >= 0) {
 
                if(syntax === 'function' && (!utils.isFunctionType(node.arguments[1]) && !utils.isIdentifierType(node.arguments[1]))){
                   report(node, syntax);
