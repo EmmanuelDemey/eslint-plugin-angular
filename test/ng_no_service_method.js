@@ -12,13 +12,13 @@ var valid = [], invalid = [];
 ['factory', 'provider', 'constant', 'value'].forEach(function(syntax){
     valid.push({
         code: 'app.' + syntax + '("eslintService", function(){});',
-        args: [1, 'eslint']
+        args: 2
     }, {
         code: 'app.' + syntax + '("eslintService", function(){});',
-        args: [1, /^eslint/]
+        args: 2
     }, {
         code: 'app.' + syntax + '("eslintService", function(){});',
-        args: [1, undefined]
+        args: 2
     });
 });
 
