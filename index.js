@@ -46,7 +46,7 @@
 			'ng_no_digest': 2,
 			'ng_no_jquery_angularelement': 2,
 			'ng_no_private_call': 2,
-			'ng_no_services': [2, ['$http', '$resource', 'Restangular']],
+			'ng_no_services': [2, ['$http', '$resource', 'Restangular', '$q']],
 			'ng_on_watch': 2,
 			'ng_service_name': 0,
 			'ng_timeout_service': 2,
