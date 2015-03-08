@@ -6,7 +6,7 @@ var eslint = require('../node_modules/eslint/lib/eslint'),
     ESLintTester = require('eslint-tester');
 
 var angularObjectList = ['controller', 'filter', 'directive'];
-var defaultBadService = ['$http', '$resource', 'Restangular'];
+var defaultBadService = ['$http', '$resource', 'Restangular', '$q'];
 var valid = [], invalid = [];
 
 angularObjectList.forEach(function(object){
