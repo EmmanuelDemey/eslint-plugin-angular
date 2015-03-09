@@ -6,7 +6,7 @@ module.exports = function(context) {
 
         'CallExpression': function(node) {
 			if(node.callee.type === 'MemberExpression' && node.callee.property.type === 'Identifier' && node.callee.property.name === '$digest'){
-                context.report(node, 'Instead of using the $destroy method, you should prefer $apply()', {});
+                context.report(node, 'Instead of using the $digest() method, you should prefer $apply()', {});
             }
         }
     };
