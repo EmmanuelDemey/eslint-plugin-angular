@@ -32,9 +32,10 @@ Since the 0.0.4 release, some rules defined in [John Papa's Guideline](https://g
     ```
 
 We provide also three samples : 
-* demo/npm (lauch: npm run lint)
-* demo/grunt (lauch: grunt)
-* demo/gulp (lauch: gulp)
+* demo/npm (launch: npm run lint)
+* demo/grunt (launch: grunt)
+* demo/gulp (launch: gulp)
+
 # Rules
 
 | Name  | Description | Default Configuration |
