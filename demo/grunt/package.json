@@ -1,0 +1,17 @@
+{
+  "name": "eslint-plugin-angular-grunt-demo",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "emmanueldemey <demey.emmanuel@gmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "eslint": "^0.16.1",
+    "eslint-plugin-angular": "0.0.6",
+    "grunt-cli": "^0.1.13",
+    "grunt-eslint": "^7.0.1"
+  }
+}
