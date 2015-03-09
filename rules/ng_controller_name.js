@@ -2,8 +2,6 @@ module.exports = function(context) {
 
     'use strict';
 
-    var utils = require('./utils/utils');
-
     return {
 
         'CallExpression': function(node) {
@@ -26,7 +24,7 @@ module.exports = function(context) {
                     prefixIsRegex = true;
                 }
                 // add .* so normal strings for matching the start of a controller name still pass
-                convertedPrefix = new RegExp(convertedPrefix + ".*");
+                convertedPrefix = new RegExp(convertedPrefix + '.*');
             }
 
 
