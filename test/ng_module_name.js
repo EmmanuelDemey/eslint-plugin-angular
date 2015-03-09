@@ -22,6 +22,9 @@ eslintTester.addRuleTest('rules/ng_module_name', {
         args: [1, /^eslint/]
     }, {
         code: 'app.module("eslintModule", []);',
+        args: [1, '/^eslint/']
+    }, {
+        code: 'app.module("eslintModule", []);',
         args: [1, undefined]
     }],
     invalid: [
@@ -36,6 +39,10 @@ eslintTester.addRuleTest('rules/ng_module_name', {
         }, {
             code: 'app.module("module", []);',
             args: [1, /^eslint/],
+            errors: [{ message: 'The module module should follow this pattern: /^eslint/'}]
+        }, {
+            code: 'app.module("module", []);',
+            args: [1, "/^eslint/"],
             errors: [{ message: 'The module module should follow this pattern: /^eslint/'}]
         }, {
             code: 'app.module("ngModule", []);',

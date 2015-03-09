@@ -8,10 +8,14 @@ module.exports = function(context) {
 
         'CallExpression': function(node) {
 
-            var prefix = context.options[0];
+            var prefix = context.options[0],
+                convertedPrefix; // convert string from JSON .eslintrc to regex
+
             if(prefix === undefined) {
                 return;
             }
+
+            convertedPrefix = utils.convertPrefixToRegex(prefix);
 
             if (utils.isAngularServiceDeclaration(node)) {
                 var name = node.arguments[0].value;
@@ -20,13 +24,13 @@ module.exports = function(context) {
                     context.report(node, 'The {{service}} service should not start with "$". This is reserved for AngularJS services', {
                         service: name
                     });
-                } else {
-                    if(name !== undefined && !utils.isRegexp(prefix) && !(name.indexOf(prefix) === 0)){
+                } else if(name !== undefined && !convertedPrefix.test(name)){
+                    if(typeof prefix === 'string' && !utils.isStringRegexp(prefix)){
                         context.report(node, 'The {{service}} service should be prefixed by {{prefix}}', {
                             service: name,
                             prefix: prefix
                         });
-                    } else if(utils.isRegexp(prefix) && !prefix.test(name)){
+                    } else {
                         context.report(node, 'The {{service}} service should follow this pattern: {{prefix}}', {
                             service: name,
                             prefix: prefix.toString()

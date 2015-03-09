@@ -2,6 +2,18 @@
 	'use strict';
 	module.exports = {
 
+		convertPrefixToRegex: function(prefix){
+			if(typeof prefix !== 'string'){
+				return prefix;
+			}
+
+			if(prefix[0] === '/' && prefix[prefix.length-1] === '/'){
+				prefix = prefix.substring(1, prefix.length-2);
+			}
+
+			return new RegExp(prefix + '.*');
+		},
+
 		isTypeOfStatement: function(node){
 			return node.type === 'Identifier' || (node.type === 'UnaryExpression' && node.operator === 'typeof');
 		},
@@ -28,6 +40,10 @@
 
 		isRegexp: function(regexp){
 			return toString.call(regexp) === '[object RegExp]';
+		},
+
+		isStringRegexp: function(string){
+			return string[0] === '/' && string[string.length-1] === '/';
 		},
 
 		isAngularComponent: function(node){
