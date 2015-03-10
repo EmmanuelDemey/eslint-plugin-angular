@@ -20,6 +20,9 @@ eslintTester.addRuleTest('rules/ng_directive_name', {
     }, {
         code: 'app.directive("eslintDirective", function(){});',
         args: [1, undefined]
+    }, {
+        code: 'app.directive("eslintDirective", function(){});',
+        args: [1, '/^eslint/']
     }],
     invalid: [
         {
@@ -35,6 +38,10 @@ eslintTester.addRuleTest('rules/ng_directive_name', {
         {
             code: 'app.directive("Directive", function(){});',
             args: [1, /^eslint/],
+            errors: [{ message: 'The Directive directive should follow this pattern: /^eslint/'}]
+        }, {
+            code: 'app.directive("Directive", function(){});',
+            args: [1, '/^eslint/'],
             errors: [{ message: 'The Directive directive should follow this pattern: /^eslint/'}]
         }, {
             code: 'app.directive("ngDirective", []);',

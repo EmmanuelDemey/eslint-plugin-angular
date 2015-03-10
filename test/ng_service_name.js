@@ -19,6 +19,9 @@ var valid = [], invalid = [];
     }, {
         code: 'app.' + syntax + '("eslintService", function(){});',
         args: [1, undefined]
+    }, {
+        code: 'app.' + syntax + '("eslintService", function(){});',
+        args: [1, '/^eslint/']
     });
 
     invalid.push({
@@ -33,8 +36,11 @@ var valid = [], invalid = [];
         code: 'app.' + syntax + '("Service", function(){});',
         args: [1, /^eslint/],
         errors: [{ message: 'The Service service should follow this pattern: /^eslint/'}]
-    },
-    {
+    }, {
+        code: 'app.' + syntax + '("Service", function(){});',
+        args: [1, '/^eslint/'],
+        errors: [{ message: 'The Service service should follow this pattern: /^eslint/'}]
+    }, {
         code: 'app.' + syntax + '("$Service", function(){});',
         args: [1, /^eslint/],
         errors: [{ message: 'The $Service service should not start with "$". This is reserved for AngularJS services'}]

@@ -20,6 +20,9 @@ eslintTester.addRuleTest('rules/ng_filter_name', {
     }, {
         code: 'app.filter("eslintFilter", function(){});',
         args: [1, undefined]
+    }, {
+        code: 'app.filter("eslintFilter", function(){});',
+        args: [1, '/^eslint/']
     }],
     invalid: [
         {
@@ -33,6 +36,10 @@ eslintTester.addRuleTest('rules/ng_filter_name', {
         }, {
             code: 'app.filter("Filter", function(){});',
             args: [1, /^eslint/],
+            errors: [{ message: 'The Filter filter should follow this pattern: /^eslint/'}]
+        }, {
+            code: 'app.filter("Filter", function(){});',
+            args: [1, '/^eslint/'],
             errors: [{ message: 'The Filter filter should follow this pattern: /^eslint/'}]
         }
     ]
