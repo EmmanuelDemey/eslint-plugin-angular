@@ -10,8 +10,8 @@
   "license": "MIT",
   "devDependencies": {
     "eslint": "^0.16.1",
-    "eslint-plugin-angular": "0.0.6",
-    "grunt-cli": "^0.1.13",
+    "eslint-plugin-angular": "file:../../",
+    "grunt": "^0.4.5",
     "grunt-eslint": "^7.0.1"
   }
 }
