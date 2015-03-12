@@ -1,5 +1,13 @@
 (function(){
 	'use strict';
+
+	//this will recursively grab the callee until it hits an Identifier
+	function getCallingIdentifier(calleeObject) {
+		if (calleeObject.type && calleeObject.type === 'Identifier') {
+			return calleeObject;
+		}
+		return getCallingIdentifier(calleeObject.callee.object);
+	}
 	module.exports = {
 
 		convertPrefixToRegex: function(prefix){
@@ -75,10 +83,7 @@
 			//the route def function is .when(), so when we find that, go up through the chain and make sure
 			//$routeProvider is the calling object
 			if (node.callee.property && node.callee.property.name === 'when') {
-				var callObject = node.callee.object;
-				while (!callObject.type || callObject.type !== 'Identifier') {
-					callObject = callObject.callee.object;
-				}
+				var callObject = getCallingIdentifier(node.callee.object);
 				return callObject.name === '$routeProvider';
 			}
 			return false;
@@ -88,10 +93,7 @@
 			//the state def function is .state(), so when we find that, go up through the chain and make sure
 			//$stateProvider is the calling object
 			if (node.callee.property && node.callee.property.name === 'state') {
-				var callObject = node.callee.object;
-				while (!callObject.type || callObject.type !== 'Identifier') {
-					callObject = callObject.callee.object;
-				}
+				var callObject = getCallingIdentifier(node.callee.object);
 				return callObject.name === '$stateProvider';
 			}
 			return false;

@@ -17,7 +17,8 @@ eslintTester.addRuleTest('rules/ng_controller_as_route', {
         '$stateProvider.state("mystate", { controller: "MyController", controllerAs: "vm" })',
         '$stateProvider.state("mystate2", { controller: "MyController as vm" })',
         '$stateProvider.state("mystate2", { template: "<div></div>" })',
-        'something.when("string", { controller: "MyController" })'
+        'something.when("string", { controller: "MyController" })',
+        'when("string", { controller: "MyController" })'
     ],
     invalid: [
         { code: '$routeProvider.when("/myroute", { controller: "MyController" })',
