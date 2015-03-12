@@ -70,5 +70,31 @@
 		isAngularModuleDeclaration: function(node){
 			return this.isAngularComponent(node) && node.callee.type === 'MemberExpression' && node.callee.property.name === 'module'
 		},
+
+		isRouteDefinition: function (node) {
+			//the route def function is .when(), so when we find that, go up through the chain and make sure
+			//$routeProvider is the calling object
+			if (node.callee.property && node.callee.property.name === 'when') {
+				var callObject = node.callee.object;
+				while (!callObject.type || callObject.type !== 'Identifier') {
+					callObject = callObject.callee.object;
+				}
+				return callObject.name === '$routeProvider';
+			}
+			return false;
+		},
+
+		isUIRouterStateDefinition: function (node) {
+			//the state def function is .state(), so when we find that, go up through the chain and make sure
+			//$stateProvider is the calling object
+			if (node.callee.property && node.callee.property.name === 'state') {
+				var callObject = node.callee.object;
+				while (!callObject.type || callObject.type !== 'Identifier') {
+					callObject = callObject.callee.object;
+				}
+				return callObject.name === '$stateProvider';
+			}
+			return false;
+		}
 	};
 })();
