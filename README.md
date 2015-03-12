@@ -82,6 +82,7 @@ It is an opensource project. Any help will be very useful. You can :
 ## Who uses it ? 
 - [argo](https://github.com/albertosantini/argo)
 - [generator-gillespie59-angular](https://github.com/Gillespie59/generator-gillespie59-angular/)
+- [generator-ng-poly](https://github.com/dustinspecker/generator-ng-poly)
 
 ## Team
 
