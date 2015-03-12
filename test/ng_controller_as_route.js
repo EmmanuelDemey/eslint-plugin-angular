@@ -10,13 +10,14 @@ var eslint = require('../node_modules/eslint/lib/eslint'),
 //------------------------------------------------------------------------------
 
 var eslintTester = new ESLintTester(eslint);
-eslintTester.addRuleTest('rules/ng_controller_as', {
+eslintTester.addRuleTest('rules/ng_controller_as_route', {
     valid: [
         '$routeProvider.when("/myroute", { controller: "MyController", controllerAs: "vm" })',
         '$routeProvider.when("/myroute2", { template: "<div></div>" })',
         '$stateProvider.state("mystate", { controller: "MyController", controllerAs: "vm" })',
         '$stateProvider.state("mystate2", { controller: "MyController as vm" })',
-        '$stateProvider.state("mystate2", { template: "<div></div>" })'
+        '$stateProvider.state("mystate2", { template: "<div></div>" })',
+        'something.when("string", { controller: "MyController" })'
     ],
     invalid: [
         { code: '$routeProvider.when("/myroute", { controller: "MyController" })',
