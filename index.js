@@ -30,7 +30,8 @@
 			'ng_typecheck_object': require('./rules/ng_typecheck_object'),
 			'ng_typecheck_regexp': require('./rules/ng_typecheck_regexp'),
 			'ng_typecheck_string': require('./rules/ng_typecheck_string'),
-			'ng_window_service': require('./rules/ng_window_service')
+			'ng_window_service': require('./rules/ng_window_service'),
+			'ng_controller_as_route': require('./rules/ng_controller_as_route')
 		},
 		rulesConfig: {
 			'ng_angularelement': 1,
@@ -60,7 +61,8 @@
 			'ng_typecheck_object': 2,
 			'ng_typecheck_regexp': 2,
 			'ng_typecheck_string': 2,
-			'ng_window_service': 2
+			'ng_window_service': 2,
+			'ng_controller_as_route': 2
 		}
 		};
 })();

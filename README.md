@@ -41,6 +41,7 @@ We provide also three samples :
 | Name  | Description | Default Configuration |
 | ------------- | ------------- | ------------- |
 | ng_angularelement  | The angular.element method should be used instead of the $ or jQuery object (if you are using jQuery of course). If the jQuery library is imported, angular.element will be a wrapper around the jQuery object. | 'ng_angularelement': 1 |
+| ng_controller_as_route | You should use Angular's controllerAs syntax when defining routes or states. Partial implementation of [Y031](https://github.com/johnpapa/angularjs-styleguide#style-y031) | 'ng_controller_as_route': 2 |
 | ng_controller_name  | All your controllers should have a name starting with the parameter you can define in your config object. The second parameter can be a Regexp. ("ng_controller_name":  [2, "ng"])  [Y123](https://github.com/johnpapa/angularjs-styleguide#style-y123), [Y124](https://github.com/johnpapa/angularjs-styleguide#style-y124)| 'ng_controller_name': [2, /[A-Z].*Controller$/] |
 | ng_definedundefined | You should use the angular.isUndefined or angular.isDefined methods instead of using the keyword undefined. We also check the use of !angular.isUndefined and !angular.isDefined (should prefer the reverse function)| 'ng_definedundefined': 2 |
 | ng_di | All your DI should use the same syntax : the Array or function syntaxes ("ng_di":  [2, "function or array"])| 'ng_di': [2, 'function'] |
