@@ -22,13 +22,15 @@ module.exports = function(context) {
 
     //for each of the bad uses, find any parent nodes that are controller functions
     function reportBadUses() {
-        badStatements.forEach(function (item) {
-            item.parents.forEach(function (parent) {
-                if (isControllerFunction(parent)) {
-                    context.report(item.stmt, "You should not set properties on $scope in controllers. Use controllerAs syntax and add data to 'this'");
-                }
-            })
-        });
+        if (controllerFunctions.length > 0 || controllerNameMatcher) {
+            badStatements.forEach(function (item) {
+                item.parents.forEach(function (parent) {
+                    if (isControllerFunction(parent)) {
+                        context.report(item.stmt, "You should not set properties on $scope in controllers. Use controllerAs syntax and add data to 'this'");
+                    }
+                })
+            });
+        }
     }
 
     function findIdentiferInScope(identifier) {
