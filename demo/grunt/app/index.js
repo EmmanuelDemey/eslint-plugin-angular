@@ -1,8 +1,14 @@
-'use strict';
+(function(){
+	'use strict';
 
-function MyController () {
-    $scope.name = 'test';
-}
+	angular.module('AppModule', [])
+		.controller('appCtrl', function(){
+			var variable;
 
-//angular.module("test", []).controller("Test", test);
+			if(variable === undefined){
 
+
+			}
+
+		});
+})();

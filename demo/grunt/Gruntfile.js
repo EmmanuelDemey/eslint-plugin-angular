@@ -5,7 +5,6 @@
 		grunt.initConfig({
 			eslint: {
 				options: {
-					reset: true
 				},
 				target: ['app/**/*.js']
 			}

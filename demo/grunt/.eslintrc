@@ -8,9 +8,6 @@ rules:
     quotes:
       - 2
       - 'single'
-    angular/ng_controller_as:
-      - 2
-      - '/[A-Z].*Controller$/'
 
 globals:
     angular: true
