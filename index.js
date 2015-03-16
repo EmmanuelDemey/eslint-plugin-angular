@@ -4,6 +4,8 @@
 	module.exports = {
 		rules: {
 			'ng_angularelement': require('./rules/ng_angularelement'),
+			'ng_controller_as': require('./rules/ng_controller_as'),
+			'ng_controller_as_route': require('./rules/ng_controller_as_route'),
 			'ng_controller_name': require('./rules/ng_controller_name'),
 			'ng_definedundefined': require('./rules/ng_definedundefined'),
 			'ng_di': require('./rules/ng_di'),
@@ -30,11 +32,12 @@
 			'ng_typecheck_object': require('./rules/ng_typecheck_object'),
 			'ng_typecheck_regexp': require('./rules/ng_typecheck_regexp'),
 			'ng_typecheck_string': require('./rules/ng_typecheck_string'),
-			'ng_window_service': require('./rules/ng_window_service'),
-			'ng_controller_as_route': require('./rules/ng_controller_as_route')
+			'ng_window_service': require('./rules/ng_window_service')
 		},
 		rulesConfig: {
 			'ng_angularelement': 1,
+			'ng_controller_as': 2,
+			'ng_controller_as_route': 2,
 			'ng_controller_name': [2, /[A-Z].*Controller$/],
 			'ng_definedundefined': 2,
 			'ng_di': [2, 'function'],
@@ -61,8 +64,7 @@
 			'ng_typecheck_object': 2,
 			'ng_typecheck_regexp': 2,
 			'ng_typecheck_string': 2,
-			'ng_window_service': 2,
-			'ng_controller_as_route': 2
+			'ng_window_service': 2
 		}
-		};
+	};
 })();
