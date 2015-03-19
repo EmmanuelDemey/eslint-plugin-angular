@@ -81,6 +81,15 @@ It is an opensource project. Any help will be very useful. You can :
 - Improve the quality
 - Reply to issues
 
+
+## How to create a new rule
+Here are the things you should do before sending a Pull Request with a new Rule : 
+
+* Create a JavaScript file for the new rule in the rules directory
+* Create an unit test for this rule in the test directory
+* Update the main index.js file, in order to add the new rule in the 'rules' property, and set the default configuration in the rulesConfig property
+* Update the "Rules" part of the README.md file with a small description of the rule and its default configuration.
+
 ## Who uses it ? 
 - [argo](https://github.com/albertosantini/argo)
 - [generator-gillespie59-angular](https://github.com/Gillespie59/generator-gillespie59-angular/)
