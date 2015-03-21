@@ -107,6 +107,41 @@
 		},
 
 		scopeProperties: ['$id', '$parent', '$root', '$destroy', '$broadcast', '$emit', '$on', '$applyAsync', '$apply',
-			'$evalAsync', '$eval', '$digest', '$watchCollection', '$watchGroup', '$watch', '$new']
+			'$evalAsync', '$eval', '$digest', '$watchCollection', '$watchGroup', '$watch', '$new'],
+
+		findIdentiferInScope: function (context, identifier) {
+			var identifierNode = null;
+			context.getScope().variables.forEach(function (variable) {
+				if (variable.name === identifier.name) {
+					identifierNode = variable.defs[0].node
+					if (identifierNode.type === 'VariableDeclarator') {
+						identifierNode = identifierNode.init;
+					}
+				}
+			});
+			return identifierNode;
+		},
+
+		getControllerDefinition: function (context, node) {
+			var controllerArg = node.arguments[1];
+
+			//Three ways of creating a controller function: function expression,
+			//variable name that references a function, and an array with a function
+			//as the last item
+			if (this.isFunctionType(controllerArg)) {
+				return controllerArg;
+			} else if (this.isArrayType(controllerArg)) {
+				controllerArg = controllerArg.elements[controllerArg.elements.length - 1];
+
+				if (this.isIdentifierType(controllerArg)) {
+					return this.findIdentiferInScope(context, controllerArg);
+				} else {
+					return controllerArg;
+				}
+			}
+			else if (this.isIdentifierType(controllerArg)) {
+				return this.findIdentiferInScope(context, controllerArg);
+			}
+		}
 	};
 })();
