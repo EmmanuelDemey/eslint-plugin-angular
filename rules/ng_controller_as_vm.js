@@ -4,11 +4,12 @@ module.exports = function(context) {
 
     var utils = require('./utils/utils');
     var badStatements = [];
+    var badCaptureStatements = [];
     var controllerFunctions = [];
 
     //If your Angular code is written so that controller functions are in
     //separate files from your .controller() calls, you can specify a regex for your controller function names
-    var controllerNameMatcher = context.options[0];
+    var controllerNameMatcher = context.options[1];
     if (controllerNameMatcher && utils.isStringRegexp(controllerNameMatcher)) {
         controllerNameMatcher = utils.convertStringToRegex(controllerNameMatcher);
     }
@@ -23,12 +24,23 @@ module.exports = function(context) {
     //for each of the bad uses, find any parent nodes that are controller functions
     function reportBadUses() {
         if (controllerFunctions.length > 0 || controllerNameMatcher) {
+            badCaptureStatements.forEach(function (item) {
+                item.parents.filter(isControllerFunction).forEach(function () {
+                    context.report(item.stmt, "You should assign 'this' to a consistent variable across your project: {{capture}}",
+                        {
+                            'capture': context.options[0]
+                        }
+                    );
+                });
+            });
             badStatements.forEach(function (item) {
-                item.parents.forEach(function (parent) {
-                    if (isControllerFunction(parent)) {
-                        context.report(item.stmt, "You should not set properties on $scope in controllers. Use controllerAs syntax and add data to 'this'");
-                    }
-                })
+                item.parents.filter(isControllerFunction).forEach(function () {
+                    context.report(item.stmt, "You should not use 'this' directly. Instead, assign it to a variable called '{{capture}}'",
+                        {
+                            'capture': context.options[0]
+                        }
+                    );
+                });
             });
         }
     }
@@ -41,16 +53,12 @@ module.exports = function(context) {
             }
         },
         //statements are checked here for bad uses of $scope
-        'ExpressionStatement': function (stmt) {
-            if (stmt.expression.type === 'AssignmentExpression' &&
-                stmt.expression.left.object &&
-                stmt.expression.left.object.name === '$scope' &&
-                utils.scopeProperties.indexOf(stmt.expression.left.property.name) < 0) {
-                badStatements.push({ parents: context.getAncestors(), stmt: stmt });
-            } else if (stmt.expression.type === 'CallExpression' &&
-                stmt.expression.callee.object &&
-                stmt.expression.callee.object.name === '$scope' &&
-                utils.scopeProperties.indexOf(stmt.expression.callee.property.name) < 0) {
+        'ThisExpression': function (stmt) {
+            if (stmt.parent.type === 'VariableDeclarator') {
+                if (!stmt.parent.id || stmt.parent.id.name !== context.options[0]) {
+                    badCaptureStatements.push({ parents: context.getAncestors(), stmt: stmt });
+                }
+            } else {
                 badStatements.push({ parents: context.getAncestors(), stmt: stmt });
             }
         },
