@@ -82,6 +82,7 @@ It is an opensource project. Any help will be very useful. You can :
 - Improve the quality
 - Reply to issues
 
+All contributions should be pushed in the current GIT branch. 
 
 ## How to create a new rule
 Here are the things you should do before sending a Pull Request with a new Rule : 
