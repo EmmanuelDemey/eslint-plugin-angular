@@ -6,7 +6,10 @@
 		if (calleeObject.type && calleeObject.type === 'Identifier') {
 			return calleeObject;
 		}
-		return getCallingIdentifier(calleeObject.callee.object);
+		if (calleeObject.callee && calleeObject.callee.object) {
+			return getCallingIdentifier(calleeObject.callee.object);
+		}
+		return null;
 	}
 	module.exports = {
 
@@ -91,7 +94,7 @@
 			//$routeProvider is the calling object
 			if (node.callee.property && node.callee.property.name === 'when') {
 				var callObject = getCallingIdentifier(node.callee.object);
-				return callObject.name === '$routeProvider';
+				return callObject && callObject.name === '$routeProvider';
 			}
 			return false;
 		},
@@ -101,7 +104,7 @@
 			//$stateProvider is the calling object
 			if (node.callee.property && node.callee.property.name === 'state') {
 				var callObject = getCallingIdentifier(node.callee.object);
-				return callObject.name === '$stateProvider';
+				return callObject && callObject.name === '$stateProvider';
 			}
 			return false;
 		},
