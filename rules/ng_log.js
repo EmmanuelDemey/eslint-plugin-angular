@@ -1,0 +1,18 @@
+module.exports = function(context) {
+
+    'use strict';
+
+    var method = ['log', 'debug', 'error', 'info', 'warn'];
+
+    return {
+
+        'MemberExpression': function(node) {
+            console.log(node);
+            if (node.object.name === 'console' && method.indexOf(node.property.name) >= 0) {
+                context.report(node, 'You should use the "' + node.property.name + '" method of the AngularJS Service $log instead of the console object');
+            }
+
+        }
+    };
+
+};
