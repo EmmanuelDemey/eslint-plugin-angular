@@ -13,10 +13,8 @@ module.exports = function(context) {
     }
     return {
 
-        'MemberExpression': function(node) {
-            if(node.property.type === 'Identifier'){
-                check(node,  node.property.name);
-            }
+        'Identifier': function(node) {
+            check(node,  node.name);
         }
     };
 
