@@ -89,6 +89,18 @@
 			return this.isAngularComponent(node) && node.callee.type === 'MemberExpression' && node.callee.property.name === 'module'
 		},
 
+		isAngularModuleGetter: function(node){
+			return node.arguments.length > 0 && this.isLiteralType(node.arguments[0]) && node.callee.type === 'MemberExpression' && node.callee.property.name === 'module';
+		},
+
+		isAngularRunSection: function(node){
+			return node.callee.type === 'MemberExpression' && node.callee.property.type === 'Identifier' && node.callee.property.name === 'run';
+		},
+
+		isAngularConfigSection: function(node){
+			return node.callee.type === 'MemberExpression' && node.callee.property.type === 'Identifier' && node.callee.property.name === 'config';
+		},
+
 		isRouteDefinition: function (node) {
 			//the route def function is .when(), so when we find that, go up through the chain and make sure
 			//$routeProvider is the calling object
