@@ -53,7 +53,9 @@ We provide also three samples :
 | ng_filter_name | All your filters should have a name starting with the parameter you can define in your config object. The second parameter can be a Regexp wrapped in quotes. ("ng_filter_name":  [2, "ng"]) | 'ng_filter_name': 0 |
 | ng_interval_service | Instead of the default setInterval function, you should use the AngularJS wrapper service $interval  [Y181](https://github.com/johnpapa/angular-styleguide#style-y181) | 'ng_interval_service': 2 |
 | ng_json_functions | You should use angular.fromJson or angular.toJson instead of JSON.parse and JSON.stringify | 'ng_json_functions': 2 |
+|ng_module_getter | When using a module, avoid using a variable and instead use chaining with the getter syntax [Y022](https://github.com/johnpapa/angular-styleguide#style-y022)| 'ng_module_getter':2 |
 | ng_module_name  | When you create a new module, its name should start with the parameter you can define in your config object. The second parameter can be a Regexp wrapped in quotes. You can not prefix your modules by "ng" (reserved keyword for AngularJS modules) ("ng_module_name":  [2, "ng"])  [Y127](https://github.com/johnpapa/angular-styleguide#style-y127)| 'ng_module_name': 0 |
+|ng_module_setter | Declare modules without a variable using the setter syntax.[Y021](https://github.com/johnpapa/angular-styleguide#style-y021) | 'ng_module_setter':2 |
 | ng_no_digest | The scope's $digest() method shouldn't be used. You should prefer the $apply method. | 'ng_no_digest': 2 |
 | ng_no_jquery_angularelement | You should not wrap angular.element object into jQuery(), because angular.element already return jQLite element| 'ng_no_jquery_angularelement': 2 |
 | ng_no_private_call | All scope's properties/methods starting with $$ are used interally by AngularJS. You should not use them directly. | 'ng_no_private_call': 2 |
