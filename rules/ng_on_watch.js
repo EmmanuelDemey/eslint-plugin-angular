@@ -15,7 +15,7 @@ module.exports = function(context) {
             if(node.callee.type === 'MemberExpression' &&
                  (node.callee.object.name === '$scope' || node.callee.object.name === '$rootScope' || node.callee.object.name === 'scope')){
 
-                if(node.callee.property.name === 'on' || node.callee.property.name === 'watch'){
+                if(node.callee.property.name === '$on' || node.callee.property.name === '$watch'){
 
                     if(node.parent.type !== 'VariableDeclarator' && node.parent.type !== 'AssignmentExpression'){
                         report(node, node.callee.property.name);
