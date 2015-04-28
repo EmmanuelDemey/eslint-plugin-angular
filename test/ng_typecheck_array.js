@@ -22,6 +22,7 @@ eslintTester.addRuleTest('rules/ng_typecheck_array', {
         { code: 'typeof [] !== "[object Array]"', errors: [{ message: 'You should use the angular.isArray method'}] },
         { code: '"[object Array]" !== typeof []', errors: [{ message: 'You should use the angular.isArray method'}] },
         { code: 'variable !== "[object Array]"', errors: [{ message: 'You should use the angular.isArray method'}] },
-        { code: '"[object Array]" !== variable', errors: [{ message: 'You should use the angular.isArray method'}] }
+        { code: '"[object Array]" !== variable', errors: [{ message: 'You should use the angular.isArray method'}] },
+        { code: 'Array.isArray(variable)', errors: [{ message: 'You should use the angular.isArray method'}] }
     ]
 });
