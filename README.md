@@ -96,6 +96,18 @@ Here are the things you should do before sending a Pull Request with a new Rule 
 * Update the main index.js file, in order to add the new rule in the 'rules' property, and set the default configuration in the rulesConfig property
 * Update the "Rules" part of the README.md file with a small description of the rule and its default configuration.
 
+## Default ESLint Configuration file 
+
+Here is the basic configuration for the rules defined in the ESLint plugin, in order to be compatible with the guideline provided by @johnpapa :
+
+```json
+{
+    "rules": {
+        "no-use-before-define": 0
+    }
+}
+```
+
 ## Who uses it ? 
 - [argo](https://github.com/albertosantini/argo)
 - [generator-gillespie59-angular](https://github.com/Gillespie59/generator-gillespie59-angular/)
