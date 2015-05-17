@@ -4,25 +4,31 @@
 [![Join the chat at https://gitter.im/Gillespie59/eslint-plugin-angular](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/Gillespie59/eslint-plugin-angular?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 [![Coverage Status](https://coveralls.io/repos/Gillespie59/eslint-plugin-angular/badge.svg?branch=master)](https://coveralls.io/r/Gillespie59/eslint-plugin-angular?branch=master)
 
-This repository will give access to new rules for the ESLint tool. You should use it only if you are developing an AngularJS application. 
+This repository will give access to new rules for the ESLint tool. You should use it only if you are developing an AngularJS application.
 
-Since the 0.0.4 release, some rules defined in [John Papa's Guideline](https://github.com/johnpapa/angular-styleguide) have been implemented. In the description below, you will have a link to the corresponding part of the guideline, in order to have more information. 
+Since the 0.0.4 release, some rules defined in [John Papa's Guideline](https://github.com/johnpapa/angular-styleguide) have been implemented. In the description below, you will have a link to the corresponding part of the guideline, in order to have more information.
 
 # Usage
 
-1. Install `eslint-plugin-angular` as a dev-dependency:
+1. Install `eslint` as a dev-dependency:
+
+    ```shell
+    npm install --save-dev eslint
+    ```
+
+2. Install `eslint-plugin-angular` as a dev-dependency:
 
     ```shell
     npm install --save-dev eslint-plugin-angular
     ```
 
-2. Enable the plugin by adding it to your `.eslintrc`:
+3. Enable the plugin by adding it to your `.eslintrc`:
 
     ```yaml
     plugins:
       - angular
     ```
-3. You can also configure these rules in your `.eslintrc`. All rules defined in this plugin have to be prefixed by 'angular/'
+4. You can also configure these rules in your `.eslintrc`. All rules defined in this plugin have to be prefixed by 'angular/'
 
     ```yaml
     plugins:
@@ -31,7 +37,7 @@ Since the 0.0.4 release, some rules defined in [John Papa's Guideline](https://g
       - angular/ng_controller_name: 0
     ```
 
-We provide also three samples : 
+We provide also three samples :
 * demo/npm (launch: npm run lint)
 * demo/grunt (launch: grunt)
 * demo/gulp (launch: gulp)
@@ -77,7 +83,7 @@ We provide also three samples :
 | ng_window_service | Instead of the default window object, you should prefer the AngularJS wrapper service $window. [Y180](https://github.com/johnpapa/angular-styleguide#style-y180) | 'ng_window_service': 2 |
 
 # Need your help
-It is an opensource project. Any help will be very useful. You can : 
+It is an opensource project. Any help will be very useful. You can :
 - Create issue
 - Send Pull Request
 - Write Documentation
@@ -86,17 +92,17 @@ It is an opensource project. Any help will be very useful. You can :
 - Improve the quality
 - Reply to issues
 
-All contributions should be pushed in the current GIT branch. 
+All contributions should be pushed in the current GIT branch.
 
 ## How to create a new rule
-Here are the things you should do before sending a Pull Request with a new Rule : 
+Here are the things you should do before sending a Pull Request with a new Rule :
 
 * Create a JavaScript file for the new rule in the rules directory
 * Create an unit test for this rule in the test directory
 * Update the main index.js file, in order to add the new rule in the 'rules' property, and set the default configuration in the rulesConfig property
 * Update the "Rules" part of the README.md file with a small description of the rule and its default configuration.
 
-## Default ESLint Configuration file 
+## Default ESLint Configuration file
 
 Here is the basic configuration for the rules defined in the ESLint plugin, in order to be compatible with the guideline provided by @johnpapa :
 
@@ -108,7 +114,7 @@ Here is the basic configuration for the rules defined in the ESLint plugin, in o
 }
 ```
 
-## Who uses it ? 
+## Who uses it ?
 - [argo](https://github.com/albertosantini/argo)
 - [generator-gillespie59-angular](https://github.com/Gillespie59/generator-gillespie59-angular/)
 - [generator-ng-poly](https://github.com/dustinspecker/generator-ng-poly)
