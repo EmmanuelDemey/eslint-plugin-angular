@@ -36,7 +36,7 @@ module.exports = function(context) {
                 }
             } else if (utils.isUIRouterStateDefinition(node)) {
                 //state can be defined like .state({...}) or .state('name', {...})
-                var isObjectState = node.arguments.length === 1
+                var isObjectState = node.arguments.length === 1;
                 stateObject = isObjectState ? node.arguments[0] : node.arguments[1];
 
                 if (stateObject.properties) {

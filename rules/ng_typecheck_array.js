@@ -11,7 +11,11 @@ module.exports = function(context) {
     }
 
     return {
-
+        'MemberExpression': function(node){
+            if(node.object.name === 'Array' && node.property.name === 'isArray') {
+                context.report(node, 'You should use the angular.isArray method', {});
+            }
+        },
         'BinaryExpression': function(node) {
 
             if(node.operator === '===' || node.operator === '!=='){

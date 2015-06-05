@@ -11,7 +11,10 @@
 			.pipe(eslint({
 				rules: {
 					'no-console': 0,
-					'quotes': [2, 'single']
+					'quotes': [2, 'single'],
+                    'angular/ng_definedundefined': 0,
+                    'angular/ng_typecheck_string': 0,
+                    'angular/ng_typecheck_function': 0
 				},
 				globals: {
 					'require': false,

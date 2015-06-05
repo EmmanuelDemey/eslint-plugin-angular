@@ -18,7 +18,7 @@ module.exports = function(context) {
     function isControllerFunction(node) {
         return controllerFunctions.indexOf(node) >= 0 ||
             (controllerNameMatcher && (node.type === 'FunctionExpression' || node.type === 'FunctionDeclaration') &&
-            node.id && controllerNameMatcher.test(node.id.name))
+            node.id && controllerNameMatcher.test(node.id.name));
     }
 
     //for each of the bad uses, find any parent nodes that are controller functions
@@ -26,7 +26,7 @@ module.exports = function(context) {
         if (controllerFunctions.length > 0 || controllerNameMatcher) {
             badCaptureStatements.forEach(function (item) {
                 item.parents.filter(isControllerFunction).forEach(function () {
-                    context.report(item.stmt, "You should assign 'this' to a consistent variable across your project: {{capture}}",
+                    context.report(item.stmt, 'You should assign "this" to a consistent variable across your project: {{capture}}',
                         {
                             'capture': context.options[0]
                         }
@@ -35,7 +35,7 @@ module.exports = function(context) {
             });
             badStatements.forEach(function (item) {
                 item.parents.filter(isControllerFunction).forEach(function () {
-                    context.report(item.stmt, "You should not use 'this' directly. Instead, assign it to a variable called '{{capture}}'",
+                    context.report(item.stmt, 'You should not use "this" directly. Instead, assign it to a variable called "{{capture}}"',
                         {
                             'capture': context.options[0]
                         }
@@ -65,5 +65,5 @@ module.exports = function(context) {
         'Program:exit': function () {
             reportBadUses();
         }
-    }
+    };
 };

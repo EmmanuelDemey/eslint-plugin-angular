@@ -22,15 +22,15 @@ eslintTester.addRuleTest('rules/ng_controller_as_vm', {
     invalid: [
         { code: 'function controllerFunc() { this.test = "test"; } angular.module("test").controller("Test", controllerFunc )',
             args: [2, 'vm'],
-            errors: [{ message: 'You should not use \'this\' directly. Instead, assign it to a variable called \'vm\''}] },
+            errors: [{ message: 'You should not use "this" directly. Instead, assign it to a variable called "vm"'}] },
         { code: 'angular.module("test").controller("Test", function () { this.test(); } )',
             args: [2, 'vm'],
-            errors: [{ message: 'You should not use \'this\' directly. Instead, assign it to a variable called \'vm\''}] },
+            errors: [{ message: 'You should not use "this" directly. Instead, assign it to a variable called "vm"'}] },
         { code: 'var myController = function () { var ctrl = this; ctrl.test(); }; angular.module("test").controller("Test", myController )',
             args: [2, 'vm'],
-            errors: [{ message: 'You should assign \'this\' to a consistent variable across your project: vm'}] },
+            errors: [{ message: 'You should assign "this" to a consistent variable across your project: vm'}] },
         { code: 'function MyController () { var ctrl = this; ctrl.test(); }',
             args: [2, 'vm', '/[A-Z].*Controller/'],
-            errors: [{ message: 'You should assign \'this\' to a consistent variable across your project: vm'}] }
+            errors: [{ message: 'You should assign "this" to a consistent variable across your project: vm'}] }
     ]
 });

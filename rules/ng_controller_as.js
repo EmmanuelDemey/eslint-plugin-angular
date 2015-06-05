@@ -17,7 +17,7 @@ module.exports = function(context) {
     function isControllerFunction(node) {
         return controllerFunctions.indexOf(node) >= 0 ||
             (controllerNameMatcher && (node.type === 'FunctionExpression' || node.type === 'FunctionDeclaration') &&
-            node.id && controllerNameMatcher.test(node.id.name))
+            node.id && controllerNameMatcher.test(node.id.name));
     }
 
     //for each of the bad uses, find any parent nodes that are controller functions
@@ -26,9 +26,9 @@ module.exports = function(context) {
             badStatements.forEach(function (item) {
                 item.parents.forEach(function (parent) {
                     if (isControllerFunction(parent)) {
-                        context.report(item.stmt, "You should not set properties on $scope in controllers. Use controllerAs syntax and add data to 'this'");
+                        context.report(item.stmt, 'You should not set properties on $scope in controllers. Use controllerAs syntax and add data to "this"');
                     }
-                })
+                });
             });
         }
     }
@@ -57,5 +57,5 @@ module.exports = function(context) {
         'Program:exit': function () {
             reportBadUses();
         }
-    }
+    };
 };
