@@ -4,7 +4,7 @@ module.exports = function(context) {
 
     var utils = require('./utils/utils');
 
-    var angularObjectList = ['value', 'factory', 'service', 'provider', 'controller', 'filter', 'directive'];
+    var angularNamedObjectList = ['value', 'factory', 'service', 'provider', 'controller', 'filter', 'directive'];
 
     function report(node, syntax){
         context.report(node, 'You should use the {{syntax}} syntax for DI', {
@@ -12,26 +12,36 @@ module.exports = function(context) {
         });
     }
 
+    function checkDi(syntax, node, param){
+      if(syntax === 'function' && (!utils.isFunctionType(param) && !utils.isIdentifierType(param))){
+         report(node, syntax);
+      }
+      if(syntax === 'array'){
+         if(!utils.isArrayType(param)){
+           report(node, syntax);
+         } else {
+           var fn = param.elements[param.elements.length - 1];
+           if(utils.isFunctionType(fn) && fn.params.length !== param.elements.length - 1){
+             context.report(fn, 'The signature of the method is incorrect', {});
+           }
+         }
+      }
+    }
+
     return {
 
         'CallExpression': function(node) {
 
-            var syntax = context.options[0];
-            var callee = node.callee;
-            if (utils.isAngularComponent(node) && callee.type === 'MemberExpression' && angularObjectList.indexOf(callee.property.name) >= 0) {
-               if(syntax === 'function' && (!utils.isFunctionType(node.arguments[1]) && !utils.isIdentifierType(node.arguments[1]))){
-                  report(node, syntax);
-               }
-               if(syntax === 'array'){
-                  if(!utils.isArrayType(node.arguments[1])){
-                    report(node,  syntax);
-                  } else {
-                    var fn = node.arguments[1].elements[node.arguments[1].elements.length - 1];
-                    if(utils.isFunctionType(fn) && fn.params.length !== node.arguments[1].elements.length - 1){
-                      context.report(fn, 'The signature of the method is incorrect', {});
-                    }
-                  }
-               }
+            if (utils.isAngularComponent(node) && node.callee.type === 'MemberExpression' && angularNamedObjectList.indexOf(node.callee.property.name) >= 0) {
+              /**
+              * Check AngularJS components using functions with two parameters : name and constructor
+              */
+              checkDi(context.options[0], node, node.arguments[1]);
+            } else if(utils.isAngularRunSection(node) || utils.isAngularConfigSection(node)){
+              /**
+              * Check AngularJS components using functions with one parameter : the constructor
+              */
+              checkDi(context.options[0], node, node.arguments[0]);
             }
         }
     };

@@ -6,8 +6,44 @@ var eslint = require('../node_modules/eslint/lib/eslint'),
     ESLintTester = require('eslint-tester');
 
 var angularNamedObjectList = ['value', 'factory', 'service', 'provider', 'controller', 'filter', 'directive'];
+var angularObjectList = ['run', 'config'];
+
 
 var valid = [], invalid = [];
+
+angularObjectList.forEach(function(object){
+  valid.push({
+      code: 'angular.' + object + '(function(){});',
+      args: [1, 'function']
+  }, {
+      code: 'angular.' + object + '([function(){}]);',
+      args: [1, 'array']
+  }, {
+      code: 'angular.' + object + '(["Service1", function(Service1){}]);',
+      args: [1, 'array']
+  }, {
+      code: 'angular.' + object + '(myFunction);function MyFunction(){}',
+      args: [1, 'function']
+  });
+
+  invalid.push({
+      code: 'angular.' + object + '(function(){});',
+      args: [1, 'array'],
+      errors: [{ message: 'You should use the array syntax for DI'}]
+  }, {
+      code: 'angular.' + object + '([function(){}]);',
+      args: [1, 'function'],
+      errors: [{ message: 'You should use the function syntax for DI'}]
+  }, {
+      code: 'angular.' + object + '(["Service1", function(){}]);',
+      args: [1, 'array'],
+      errors: [{ message: 'The signature of the method is incorrect'}]
+  }, {
+      code: 'angular.' + object + '([function(Service1){}]);',
+      args: [1, 'array'],
+      errors: [{ message: 'The signature of the method is incorrect'}]
+  });
+});
 
 angularNamedObjectList.forEach(function(object){
     valid.push({
@@ -19,9 +55,6 @@ angularNamedObjectList.forEach(function(object){
     }, {
         code: 'angular.' + object + '("name", ["Service1", function(Service1){}]);',
         args: [1, 'array']
-    }, {
-        code: 'angular.' + object + '("name", myFunction);function MyFunction(){}',
-        args: [1, 'function']
     }, {
         code: 'angular.' + object + '("name", myFunction);function MyFunction(){}',
         args: [1, 'function']
@@ -52,9 +85,6 @@ valid.push({
     args: [1, 'function']
 }, {
     code: 'vm.navRoutes = states.filter(x).sort(y);',
-    args: [1, 'array']
-}, {
-    code: 'angular.module("module").config(configure)',
     args: [1, 'array']
 })
 //------------------------------------------------------------------------------
