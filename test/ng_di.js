@@ -5,10 +5,11 @@
 var eslint = require('../node_modules/eslint/lib/eslint'),
     ESLintTester = require('eslint-tester');
 
-var angularObjectList = ['value', 'constant', 'factory', 'service', 'provider', 'controller', 'filter', 'directive'];
+var angularNamedObjectList = ['value', 'factory', 'service', 'provider', 'controller', 'filter', 'directive'];
+
 var valid = [], invalid = [];
 
-angularObjectList.forEach(function(object){
+angularNamedObjectList.forEach(function(object){
     valid.push({
         code: 'angular.' + object + '("name", function(){});',
         args: [1, 'function']
@@ -18,6 +19,9 @@ angularObjectList.forEach(function(object){
     }, {
         code: 'angular.' + object + '("name", ["Service1", function(Service1){}]);',
         args: [1, 'array']
+    }, {
+        code: 'angular.' + object + '("name", myFunction);function MyFunction(){}',
+        args: [1, 'function']
     }, {
         code: 'angular.' + object + '("name", myFunction);function MyFunction(){}',
         args: [1, 'function']
@@ -48,6 +52,9 @@ valid.push({
     args: [1, 'function']
 }, {
     code: 'vm.navRoutes = states.filter(x).sort(y);',
+    args: [1, 'array']
+}, {
+    code: 'angular.module("module").config(configure)',
     args: [1, 'array']
 })
 //------------------------------------------------------------------------------

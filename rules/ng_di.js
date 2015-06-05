@@ -4,7 +4,7 @@ module.exports = function(context) {
 
     var utils = require('./utils/utils');
 
-    var angularObjectList = ['value', 'constant', 'factory', 'service', 'provider', 'controller', 'filter', 'directive'];
+    var angularObjectList = ['value', 'factory', 'service', 'provider', 'controller', 'filter', 'directive'];
 
     function report(node, syntax){
         context.report(node, 'You should use the {{syntax}} syntax for DI', {
