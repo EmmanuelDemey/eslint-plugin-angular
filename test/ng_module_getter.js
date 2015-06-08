@@ -27,7 +27,7 @@ eslintTester.addRuleTest('rules/ng_module_getter', {
         'angular.module("module").config(function() {});',
         'angular.module("module").run(function() {});',
         'angular.module("module").config(["$scope", function($scope) {}]);',
-        'angular.module("module").run(["$scope", function($scope) {}]);'
+        '"use strict";angular.module("module").run(["$scope", function($scope) {}]);'
     ],
     invalid: [{
             code: 'var app = angular.module("test", []);app.controller("TestCtrl", [function () {}]);',
