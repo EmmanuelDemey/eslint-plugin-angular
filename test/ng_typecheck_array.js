@@ -15,11 +15,11 @@ eslintTester.addRuleTest('rules/ng_typecheck_array', {
         'angular.isArray([])'
     ],
     invalid: [
-        { code: 'typeof [] === "[object Array]"', errors: [{ message: 'You should use the angular.isArray method'}] },
-        { code: '"[object Array]" === typeof []', errors: [{ message: 'You should use the angular.isArray method'}] },
+        { code: 'Object.prototype.toString.call([]) === "[object Array]"', errors: [{ message: 'You should use the angular.isArray method'}] },
+        { code: '"[object Array]" === Object.prototype.toString.call([])', errors: [{ message: 'You should use the angular.isArray method'}] },
         { code: 'variable === "[object Array]"', errors: [{ message: 'You should use the angular.isArray method'}] },
         { code: '"[object Array]" === variable', errors: [{ message: 'You should use the angular.isArray method'}] },
-        { code: 'typeof [] !== "[object Array]"', errors: [{ message: 'You should use the angular.isArray method'}] },
+        { code: 'Object.prototype.toString.call([]) !== "[object Array]"', errors: [{ message: 'You should use the angular.isArray method'}] },
         { code: '"[object Array]" !== typeof []', errors: [{ message: 'You should use the angular.isArray method'}] },
         { code: 'variable !== "[object Array]"', errors: [{ message: 'You should use the angular.isArray method'}] },
         { code: '"[object Array]" !== variable', errors: [{ message: 'You should use the angular.isArray method'}] },

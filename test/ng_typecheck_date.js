@@ -15,12 +15,12 @@ eslintTester.addRuleTest('rules/ng_typecheck_date', {
         'angular.isDate(variable)'
     ],
     invalid: [
-        { code: 'typeof variable === "[object Date]"', errors: [{ message: 'You should use the angular.isDate method'}] },
-        { code: '"[object Date]" === typeof variable', errors: [{ message: 'You should use the angular.isDate method'}] },
+        { code: 'Object.prototype.toString.call(variable) === "[object Date]"', errors: [{ message: 'You should use the angular.isDate method'}] },
+        { code: '"[object Date]" === Object.prototype.toString.call(variable)', errors: [{ message: 'You should use the angular.isDate method'}] },
         { code: 'variable === "[object Date]"', errors: [{ message: 'You should use the angular.isDate method'}] },
         { code: '"[object Date]" === variable', errors: [{ message: 'You should use the angular.isDate method'}] },
-        { code: 'typeof variable !== "[object Date]"', errors: [{ message: 'You should use the angular.isDate method'}] },
-        { code: '"[object Date]" !== typeof variable', errors: [{ message: 'You should use the angular.isDate method'}] },
+        { code: 'Object.prototype.toString.call(variable) !== "[object Date]"', errors: [{ message: 'You should use the angular.isDate method'}] },
+        { code: '"[object Date]" !== Object.prototype.toString.call(variable)', errors: [{ message: 'You should use the angular.isDate method'}] },
         { code: 'variable !== "[object Date]"', errors: [{ message: 'You should use the angular.isDate method'}] },
         { code: '"[object Date]" !== variable', errors: [{ message: 'You should use the angular.isDate method'}] }
     ]

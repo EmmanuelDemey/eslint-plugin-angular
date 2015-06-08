@@ -72,14 +72,14 @@ We provide also three samples :
 | ng_on_watch | Watch and On methods on the scope object should be assigned to a variable, in order to be deleted in a $destroy event handler [Y035](https://github.com/johnpapa/angular-styleguide#style-y035) | 'ng_on_watch': 2 |
 | ng_service_name | All your services should have a name starting with the parameter you can define in your config object. The second parameter can be a Regexp wrapped in quotes. You can not prefix your services by "$" (reserved keyword for AngularJS services) ("ng_service_name":  [2, "ng"]) [Y125](https://github.com/johnpapa/angular-styleguide#style-y125) | 'ng_on_watch': 2 |
 | ng_timeout_service | Instead of the default setTimeout function, you should use the AngularJS wrapper service $timeout [Y181](https://github.com/johnpapa/angular-styleguide#style-y181) | 'ng_timeout_service': 2 |
-| ng_typecheck_array | You should use the angular.isArray method instead of the default JavaScript implementation (typeof [] === "[object Array]"). | 'ng_typecheck_array': 2 |
-| ng_typecheck_boolean | You should use the angular.isBoolean method instead of the default JavaScript implementation (typeof true === "[object Boolean]"). | 'ng_typecheck_boolean': 2 |
-| ng_typecheck_date | You should use the angular.isDate method instead of the default JavaScript implementation (typeof new Date() === "[object Date]"). | 'ng_typecheck_date': 2 |
-| ng_typecheck_function | You should use the angular.isFunction method instead of the default JavaScript implementation (typeof function(){} ==="[object Function]"). | 'ng_typecheck_function': 2 |
-| ng_typecheck_number | You should use the angular.isNumber method instead of the default JavaScript implementation (typeof 3 === "[object Number]"). | 'ng_typecheck_number': 2 |
-| ng_typecheck_object | You should use the angular.isObject method instead of the default JavaScript implementation (typeof {} === "[object Object]").  | 'ng_typecheck_object': 2 |
-| ng_typecheck_regexp | You should use the angular.isRegexp method instead of the default JavaScript implementation (toString.call(/^A/) === "[object RegExp]"). | 'ng_typecheck_regexp': 2 |
-| ng_typecheck_string | You should use the angular.isString method instead of the default JavaScript implementation (typeof "" === "[object String]"). | 'ng_typecheck_string': 2 |
+| ng_typecheck_array | You should use the angular.isArray method instead of the default JavaScript implementation (Object.prototype.toString.call([]) === "[object Array]"). | 'ng_typecheck_array': 2 |
+| ng_typecheck_boolean | You should use the angular.isBoolean method instead of the default JavaScript implementation (Object.prototype.toString.call(true) === "[object Boolean]" or typeof true === "boolean"). | 'ng_typecheck_boolean': 2 |
+| ng_typecheck_date | You should use the angular.isDate method instead of the default JavaScript implementation (Object.prototype.toString.call(new Date()) === "[object Date]"). | 'ng_typecheck_date': 2 |
+| ng_typecheck_function | You should use the angular.isFunction method instead of the default JavaScript implementation (Object.prototype.toString.call(function(){}) ==="[object Function]" or typeof function(){} === "function"). | 'ng_typecheck_function': 2 |
+| ng_typecheck_number | You should use the angular.isNumber method instead of the default JavaScript implementation (Object.prototype.toString.call(3) === "[object Number]" or typeof 3 === "number"). | 'ng_typecheck_number': 2 |
+| ng_typecheck_object | You should use the angular.isObject method instead of the default JavaScript implementation (Object.prototype.toString.call({}) === "[object Object]" or typeof {} === "object").  | 'ng_typecheck_object': 2 |
+| ng_typecheck_regexp | You should use the angular.isRegexp method instead of the default JavaScript implementation (Object.prototype.toString.call(/^A/) === "[object RegExp]"). | 'ng_typecheck_regexp': 2 |
+| ng_typecheck_string | You should use the angular.isString method instead of the default JavaScript implementation (Object.prototype.toString.call("") === "[object String]" or typeof "" === "string"). | 'ng_typecheck_string': 2 |
 | ng_window_service | Instead of the default window object, you should prefer the AngularJS wrapper service $window. [Y180](https://github.com/johnpapa/angular-styleguide#style-y180) | 'ng_window_service': 2 |
 
 # Need your help

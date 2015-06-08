@@ -51,7 +51,7 @@ module.exports = function(context) {
         'CallExpression': function(node) {
 
             var callee = node.callee;
-            
+
             if (utils.isAngularComponent(node) && callee.type === 'MemberExpression' && angularObjectList.indexOf(callee.property.name) >= 0) {
                if(utils.isFunctionType(node.arguments[1])){
                    node.arguments[1].params.forEach(function(service){

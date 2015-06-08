@@ -36,7 +36,11 @@
 		isTypeOfStatement: function(node){
 			return node.type === 'Identifier' || (node.type === 'UnaryExpression' && node.operator === 'typeof');
 		},
-
+        
+        isToStringStatement: function(node){
+            return node.type === 'CallExpression' && node.callee.type === 'MemberExpression' && node.callee.object.type === 'MemberExpression' && node.callee.object.property.name === 'toString'  && node.callee.property.name === 'call' && node.callee.object.object.type === 'MemberExpression' && node.callee.object.object.object.name === 'Object' && node.callee.object.object.property.name === 'prototype';
+        },
+        
 		isArrayType: function(node){
 			return node !== undefined && node.type === 'ArrayExpression';
 		},

@@ -15,12 +15,12 @@ eslintTester.addRuleTest('rules/ng_typecheck_regexp', {
         'angular.isRegexp(/^T/)'
     ],
     invalid: [
-        { code: 'toString.call(value) === "[object RegExp]"', errors: [{ message: 'You should use the angular.isRegexp method'}] },
-        { code: '"[object RegExp]" === toString.call(value)', errors: [{ message: 'You should use the angular.isRegexp method'}] },
+        { code: 'Object.prototype.toString.call(value) === "[object RegExp]"', errors: [{ message: 'You should use the angular.isRegexp method'}] },
+        { code: '"[object RegExp]" === Object.prototype.toString.call(value)', errors: [{ message: 'You should use the angular.isRegexp method'}] },
         { code: 'variable === "[object RegExp]"', errors: [{ message: 'You should use the angular.isRegexp method'}] },
         { code: '"[object RegExp]" === variable', errors: [{ message: 'You should use the angular.isRegexp method'}] },
-        { code: 'toString.call(value) !== "[object RegExp]"', errors: [{ message: 'You should use the angular.isRegexp method'}] },
-        { code: '"[object RegExp]" !== toString.call(value)', errors: [{ message: 'You should use the angular.isRegexp method'}] },
+        { code: 'Object.prototype.toString.call(value) !== "[object RegExp]"', errors: [{ message: 'You should use the angular.isRegexp method'}] },
+        { code: '"[object RegExp]" !== Object.prototype.toString.call(value)', errors: [{ message: 'You should use the angular.isRegexp method'}] },
         { code: 'variable !== "[object RegExp]"', errors: [{ message: 'You should use the angular.isRegexp method'}] },
         { code: '"[object RegExp]" !== variable', errors: [{ message: 'You should use the angular.isRegexp method'}] }
     ]

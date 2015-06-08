@@ -15,10 +15,10 @@ module.exports = function(context) {
         'BinaryExpression': function(node) {
 
             if(node.operator === '===' || node.operator === '!=='){
-                if(utils.isTypeOfStatement(node.left)){
+                if(utils.isTypeOfStatement(node.left) || utils.isToStringStatement(node.left)){
                     recordError(node.right, node);
                 }
-                else if(utils.isTypeOfStatement(node.right)){
+                else if(utils.isTypeOfStatement(node.right) || utils.isToStringStatement(node.right)){
                     recordError(node.left, node);
                 }
             }
