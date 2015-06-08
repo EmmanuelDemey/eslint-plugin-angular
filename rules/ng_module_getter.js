@@ -8,11 +8,13 @@ module.exports = function(context) {
 
         'ExpressionStatement': function(node) {
 
-            var calleeObject;
-
             if ((utils.isAngularComponent(node.expression) || utils.isAngularRunSection(node.expression) || utils.isAngularConfigSection(node.expression)) && !utils.isAngularModuleDeclaration(node.expression)) {
 
-                calleeObject = node.expression.callee.object;
+                var calleeObject = node.expression.callee.object;
+                while(calleeObject.type === 'CallExpression' && !utils.isAngularModuleGetter(calleeObject)){
+                    calleeObject = calleeObject.callee.object;
+                }
+
                 if (!(calleeObject.type === 'CallExpression' && utils.isAngularModuleGetter(calleeObject))) {
                     context.report(node, 'Avoid using a variable and instead use chaining with the getter syntax.');
                 }

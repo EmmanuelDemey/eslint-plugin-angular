@@ -29,7 +29,8 @@ eslintTester.addRuleTest('rules/ng_module_getter', {
         'angular.module("module").config(["$scope", function($scope) {}]);',
         'angular.module("module").run(["$scope", function($scope) {}]);',
         '"use strict";angular.module("module").run(["$scope", function($scope) {}]);',
-        'angular.module("argo", ["ngMaterial", "ui.router", "ngSocket", "LocalStorageModule"]);'
+        'angular.module("argo", ["ngMaterial", "ui.router", "ngSocket", "LocalStorageModule"]);',
+        'angular.module("mwl.calendar").controller("MwlElementDimensionsCtrl", function($element, $scope, $parse, $attrs) {}).directive("mwlElementDimensions", function() {});'
     ],
     invalid: [{
             code: 'var app = angular.module("test", []);app.controller("TestCtrl", [function () {}]);',
