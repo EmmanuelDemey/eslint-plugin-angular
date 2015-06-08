@@ -15,7 +15,7 @@ module.exports = function(context) {
                     calleeObject = calleeObject.callee.object;
                 }
 
-                if (!(calleeObject.type === 'CallExpression' && utils.isAngularModuleGetter(calleeObject))) {
+                if (!(calleeObject !== undefined && calleeObject.type === 'CallExpression' && utils.isAngularModuleGetter(calleeObject))) {
                     context.report(node, 'Avoid using a variable and instead use chaining with the getter syntax.');
                 }
             }
