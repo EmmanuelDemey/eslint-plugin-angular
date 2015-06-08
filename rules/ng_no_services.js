@@ -50,22 +50,21 @@ module.exports = function(context) {
 
         'CallExpression': function(node) {
 
-            var callee = node.callee,
-                angularObjectName = callee.property.name;
-
-            if (utils.isAngularComponent(node) && callee.type === 'MemberExpression' && angularObjectList.indexOf(angularObjectName) >= 0) {
+            var callee = node.callee;
+            
+            if (utils.isAngularComponent(node) && callee.type === 'MemberExpression' && angularObjectList.indexOf(callee.property.name) >= 0) {
                if(utils.isFunctionType(node.arguments[1])){
                    node.arguments[1].params.forEach(function(service){
-                    if(service.type === 'Identifier' && isSetBedService(service.name, angularObjectName)){
-                      context.report(node, message + ' (' + service.name + ' in ' + angularObjectName + ')', {});
+                    if(service.type === 'Identifier' && isSetBedService(service.name, callee.property.name)){
+                      context.report(node, message + ' (' + service.name + ' in ' + callee.property.name + ')', {});
                     }
                   });
                }
 
               if(utils.isArrayType(node.arguments[1])){
                 node.arguments[1].elements.forEach(function(service){
-                  if(service.type === 'Literal' && isSetBedService(service.value, angularObjectName)){
-                    context.report(node, message + ' (' + service.value + ' in ' + angularObjectName + ')', {});
+                  if(service.type === 'Literal' && isSetBedService(service.value, callee.property.name)){
+                    context.report(node, message + ' (' + service.value + ' in ' + callee.property.name + ')', {});
                   }
                 });
               }
