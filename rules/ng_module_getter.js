@@ -10,7 +10,7 @@ module.exports = function(context) {
 
             var calleeObject;
 
-            if (utils.isAngularComponent(node.expression) || utils.isAngularRunSection(node.expression) || utils.isAngularConfigSection(node.expression)) {
+            if ((utils.isAngularComponent(node.expression) || utils.isAngularRunSection(node.expression) || utils.isAngularConfigSection(node.expression)) && !utils.isAngularModuleDeclaration(node.expression)) {
 
                 calleeObject = node.expression.callee.object;
                 if (!(calleeObject.type === 'CallExpression' && utils.isAngularModuleGetter(calleeObject))) {
