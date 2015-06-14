@@ -9,20 +9,70 @@ module.exports = function(context) {
         });
     }
 
+    /**
+     * Return true if the given node is a call expression calling a function
+     * named '$on' or '$watch' on an object named '$scope', '$rootScope' or
+     * 'scope'.
+     */
+    function isScopeOnOrWatch(node) {
+        if (node.type !== 'CallExpression') {
+            return false;
+        }
+
+        var calledFunction = node.callee;
+        if(calledFunction.type !== 'MemberExpression') {
+            return false;
+        }
+
+        // can only easily tell what name was used if a simple
+        // identifiers were used to access it.
+        var parentObject = calledFunction.object;
+        var accessedFunction = calledFunction.property;
+
+        // cannot check name of the parent object if it is returned from a
+        // complex expression.
+        if (parentObject.type !== 'Identifier' ||
+            accessedFunction.type !== 'Identifier') {
+            return false;
+        }
+
+        var objectName = parentObject.name;
+        var functionName = accessedFunction.name;
+
+        return (objectName === '$rootScope' ||
+                objectName === '$scope' ||
+                objectName === 'scope') && (functionName === '$on' ||
+                                            functionName === '$watch');
+    }
+
+    /**
+     * Return true if the given node is a call expression that has a first
+     * argument of the string '$destroy'.
+     */
+    function isFirstArgDestroy(node) {
+        if (node.type !== 'CallExpression') {
+            return false;
+        }
+
+        var args = node.arguments;
+
+        return (args.length >= 1 &&
+                args[0].type === 'Literal' &&
+                args[0].value === '$destroy');
+    }
+
     return {
 
         'CallExpression': function(node) {
-            if(node.callee.type === 'MemberExpression' &&
-                 (node.callee.object.name === '$scope' || node.callee.object.name === '$rootScope' || node.callee.object.name === 'scope')){
-
-                if(node.callee.property.name === '$on' || node.callee.property.name === '$watch'){
-
-                    if(node.parent.type !== 'VariableDeclarator' && node.parent.type !== 'AssignmentExpression'){
-                        report(node, node.callee.property.name);
-                    }
+            if (isScopeOnOrWatch(node) && !isFirstArgDestroy(node)) {
+                if (node.parent.type !== 'VariableDeclarator' &&
+                    node.parent.type !== 'AssignmentExpression' &&
+                    !(isScopeOnOrWatch(node.parent) &&
+                     isFirstArgDestroy(node.parent))) {
+                    report(node, node.callee.property.name);
                 }
-           }
+
+            }
         }
     };
-
 };
