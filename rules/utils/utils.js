@@ -11,7 +11,7 @@
 		}
 		return null;
 	}
-    
+
     module.exports = {
 
 		convertPrefixToRegex: function(prefix){
@@ -36,11 +36,11 @@
 		isTypeOfStatement: function(node){
 			return node.type === 'Identifier' || (node.type === 'UnaryExpression' && node.operator === 'typeof');
 		},
-        
+
         isToStringStatement: function(node){
             return node.type === 'CallExpression' && node.callee.type === 'MemberExpression' && node.callee.object.type === 'MemberExpression' && node.callee.object.property.name === 'toString'  && node.callee.property.name === 'call' && node.callee.object.object.type === 'MemberExpression' && node.callee.object.object.object.name === 'Object' && node.callee.object.object.property.name === 'prototype';
         },
-        
+
 		isArrayType: function(node){
 			return node !== undefined && node.type === 'ArrayExpression';
 		},
@@ -52,7 +52,7 @@
 		isIdentifierType: function(node){
 			return node !== undefined && node.type === 'Identifier';
 		},
-        
+
         isMemberExpression: function(node){
 			return node !== undefined && node.type === 'MemberExpression';
 		},
@@ -91,7 +91,7 @@
 
 		isAngularServiceDeclaration: function(node){
 			return this.isAngularComponent(node) && this.isMemberExpression(node.callee)
-				&& (node.callee.property.name === 'provider' || node.callee.property.name === 'service' || node.callee.property.name === 'factory' || node.callee.property.name === 'constant' || node.callee.property.name === 'value')
+				&& node.callee.object.name !== '$provide' && (node.callee.property.name === 'provider' || node.callee.property.name === 'service' || node.callee.property.name === 'factory' || node.callee.property.name === 'constant' || node.callee.property.name === 'value')
 		},
 
 		isAngularModuleDeclaration: function(node){

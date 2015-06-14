@@ -8,7 +8,14 @@ module.exports = function(context) {
 
         'ExpressionStatement': function(node) {
 
-            if ((utils.isAngularComponent(node.expression) || utils.isAngularRunSection(node.expression) || utils.isAngularConfigSection(node.expression)) && !utils.isAngularModuleDeclaration(node.expression)) {
+            if ((utils.isAngularControllerDeclaration(node.expression) ||
+                  utils.isAngularFilterDeclaration(node.expression) ||
+                  utils.isAngularServiceDeclaration(node.expression) ||
+                  utils.isAngularDirectiveDeclaration(node.expression) ||
+                  utils.isAngularRunSection(node.expression) ||
+                  utils.isAngularConfigSection(node.expression))
+
+                  && !utils.isAngularModuleDeclaration(node.expression)) {
 
                 var calleeObject = node.expression.callee.object;
                 while(calleeObject !== undefined && calleeObject.type === 'CallExpression' && !utils.isAngularModuleGetter(calleeObject)){
