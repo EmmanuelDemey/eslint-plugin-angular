@@ -21,6 +21,9 @@ angularObjectList.forEach(function(object){
     }, {
         code: 'app.' + object + '("name", ["Service1", function(Service1){}]);',
         args: [1, defaultBadService]
+    }, {
+        code: '"use strict";app.' + object + '("name", ["Service1", function(Service1){}]);',
+        args: [1, defaultBadService]
     });
 
     defaultBadService.forEach(function(badService){

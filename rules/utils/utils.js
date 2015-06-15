@@ -11,7 +11,8 @@
 		}
 		return null;
 	}
-	module.exports = {
+
+    module.exports = {
 
 		convertPrefixToRegex: function(prefix){
 			if(typeof prefix !== 'string'){
@@ -36,6 +37,10 @@
 			return node.type === 'Identifier' || (node.type === 'UnaryExpression' && node.operator === 'typeof');
 		},
 
+        isToStringStatement: function(node){
+            return node.type === 'CallExpression' && node.callee.type === 'MemberExpression' && node.callee.object.type === 'MemberExpression' && node.callee.object.property.name === 'toString'  && node.callee.property.name === 'call' && node.callee.object.object.type === 'MemberExpression' && node.callee.object.object.object.name === 'Object' && node.callee.object.object.property.name === 'prototype';
+        },
+
 		isArrayType: function(node){
 			return node !== undefined && node.type === 'ArrayExpression';
 		},
@@ -46,6 +51,10 @@
 
 		isIdentifierType: function(node){
 			return node !== undefined && node.type === 'Identifier';
+		},
+
+        isMemberExpression: function(node){
+			return node !== undefined && node.type === 'MemberExpression';
 		},
 
 		isLiteralType: function(node){
@@ -65,40 +74,40 @@
 		},
 
 		isAngularComponent: function(node){
-			return node.arguments.length === 2 && this.isLiteralType(node.arguments[0]) && (this.isIdentifierType(node.arguments[1]) || this.isFunctionType(node.arguments[1]) || this.isArrayType(node.arguments[1]));
+			return node.arguments !== undefined && node.arguments.length === 2 && this.isLiteralType(node.arguments[0]) && (this.isIdentifierType(node.arguments[1]) || this.isFunctionType(node.arguments[1]) || this.isArrayType(node.arguments[1]));
 		},
 
 		isAngularControllerDeclaration: function(node){
-			return this.isAngularComponent(node) && node.callee.type === 'MemberExpression' && node.callee.property.name === 'controller'
+			return this.isAngularComponent(node) && this.isMemberExpression(node.callee) && node.callee.property.name === 'controller'
 		},
 
 		isAngularFilterDeclaration: function(node){
-			return this.isAngularComponent(node) && node.callee.type === 'MemberExpression' && node.callee.property.name === 'filter'
+			return this.isAngularComponent(node) && this.isMemberExpression(node.callee) && node.callee.property.name === 'filter'
 		},
 
 		isAngularDirectiveDeclaration: function(node){
-			return this.isAngularComponent(node) && node.callee.type === 'MemberExpression' && node.callee.property.name === 'directive'
+			return this.isAngularComponent(node) && this.isMemberExpression(node.callee) && node.callee.property.name === 'directive'
 		},
 
 		isAngularServiceDeclaration: function(node){
-			return this.isAngularComponent(node) && node.callee.type === 'MemberExpression'
-				&& (node.callee.property.name === 'provider' || node.callee.property.name === 'service' || node.callee.property.name === 'factory' || node.callee.property.name === 'constant' || node.callee.property.name === 'value')
+			return this.isAngularComponent(node) && this.isMemberExpression(node.callee)
+				&& node.callee.object.name !== '$provide' && (node.callee.property.name === 'provider' || node.callee.property.name === 'service' || node.callee.property.name === 'factory' || node.callee.property.name === 'constant' || node.callee.property.name === 'value')
 		},
 
 		isAngularModuleDeclaration: function(node){
-			return this.isAngularComponent(node) && node.callee.type === 'MemberExpression' && node.callee.property.name === 'module'
+			return this.isAngularComponent(node) && node.callee !== undefined && node.callee.type === 'MemberExpression' && node.callee.property.name === 'module'
 		},
 
 		isAngularModuleGetter: function(node){
-			return node.arguments.length > 0 && this.isLiteralType(node.arguments[0]) && node.callee.type === 'MemberExpression' && node.callee.property.name === 'module';
+			return node.arguments !== undefined &&  node.arguments.length > 0 && this.isLiteralType(node.arguments[0]) && node.callee.type === 'MemberExpression' && node.callee.property.name === 'module';
 		},
 
 		isAngularRunSection: function(node){
-			return node.callee.type === 'MemberExpression' && node.callee.property.type === 'Identifier' && node.callee.property.name === 'run';
+			return this.isMemberExpression(node.callee) && node.callee.property.type === 'Identifier' && node.callee.property.name === 'run';
 		},
 
 		isAngularConfigSection: function(node){
-			return node.callee.type === 'MemberExpression' && node.callee.property.type === 'Identifier' && node.callee.property.name === 'config';
+			return this.isMemberExpression(node.callee) && node.callee.property.type === 'Identifier' && node.callee.property.name === 'config';
 		},
 
 		isRouteDefinition: function (node) {

@@ -2,6 +2,8 @@ module.exports = function(context) {
 
     'use strict';
 
+    var utils = require('./utils/utils');
+
     function recordError(node, origin){
         if(node.type === 'Literal' && node.value === '[object RegExp]') {
             context.report(origin, 'You should use the angular.isRegexp method', {});
@@ -10,10 +12,7 @@ module.exports = function(context) {
 
     function checkNode(node){
         return node.type === 'Identifier'
-            || (node.type === 'CallExpression'
-            && node.callee.type === 'MemberExpression'
-            && node.callee.object.name === 'toString'
-            && node.callee.property.name === 'call');
+            || utils.isToStringStatement(node);
     }
 
     return {

@@ -5,7 +5,7 @@ module.exports = function(context) {
     var utils = require('./utils/utils');
 
     function recordError(node, origin){
-        if(node.type === 'Literal' && node.value === 'object') {
+        if(node.type === 'Literal' && (node.value === 'object' || node.value === '[object Object]')) {
             context.report(origin, 'You should use the angular.isObject method', {});
         }
     }
@@ -14,9 +14,9 @@ module.exports = function(context) {
         'BinaryExpression': function(node) {
 
             if(node.operator === '===' || node.operator === '!=='){
-                if(utils.isTypeOfStatement(node.left)){
+                if(utils.isTypeOfStatement(node.left) || utils.isToStringStatement(node.left)){
                     recordError(node.right, node);
-                } else if(utils.isTypeOfStatement(node.right)){
+                } else if(utils.isTypeOfStatement(node.right) || utils.isToStringStatement(node.right)){
                     recordError(node.left, node);
                 }
             }
