@@ -81,10 +81,7 @@ We provide also three samples :
 | 'ng_typecheck_regexp': 2                                     | You should use the angular.isRegexp method instead of the default JavaScript implementation (toString.call(/^A/) === "[object RegExp]"). |
 | 'ng_typecheck_string': 2                                     | You should use the angular.isString method instead of the default JavaScript implementation (typeof "" === "[object String]"). |
 | 'ng_window_service': 2                                       | Instead of the default window object, you should prefer the AngularJS wrapper service $window. [Y180](https://github.com/johnpapa/angular-styleguide#style-y180) |
-<<<<<<< HEAD
-=======
 
->>>>>>> 0.0.9
 
 # Need your help
 It is an opensource project. Any help will be very useful. You can :
