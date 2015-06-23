@@ -25,7 +25,7 @@ module.exports = function(context) {
                 if(node.arguments.length === 0){
                   return;
                 }
-                
+
                 var name = node.arguments[0].value;
 
                if(name !== undefined && !convertedPrefix.test(name)){
