@@ -19,6 +19,13 @@ module.exports = function(context) {
 
             var callee = node.callee;
             if(callee.type === 'MemberExpression' && callee.property.name === 'controller') {
+                /**
+                * Issue #124 for controller() calls inside karma tests
+                */
+                if(node.arguments.length === 0){
+                  return;
+                }
+                
                 var name = node.arguments[0].value;
 
                if(name !== undefined && !convertedPrefix.test(name)){

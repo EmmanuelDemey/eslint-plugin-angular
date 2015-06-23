@@ -26,6 +26,9 @@ eslintTester.addRuleTest('rules/ng_controller_name', {
     }, {
         code: 'app.controller("EslintController", function(){});',
         args: [1, '/[A-Z].*Controller$/']
+    }, {
+        code: 'controller = el.controller();',
+        args: [1, '/[A-Z].*Controller$/']
     }],
     invalid: [
         {
