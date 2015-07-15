@@ -62,6 +62,18 @@ eslintTester.addRuleTest('rules/ng_karma_done', {
           });                                                                       \
         ',
       errors: [{message: 'Spec contains a then/catch but doesn\'t define a done() function'}]
+    //},
+    //{
+    //  code: '\
+    //      it("should fail because done is called outside the then", function(done) {       \
+    //        Service.save("paperwork").then(function () {                            \
+    //        });                                                                     \
+    //        done();                                                        \
+    //      });                                                                       \
+    //    ',
+    //  errors: [{message: 'Spec contains a then/catch that doesn\'t call the done callback'}]
+
+
     }
   ]
 });
