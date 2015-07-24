@@ -19,6 +19,7 @@
                   'ng_function_type': require('./rules/ng_function_type'),
                   'ng_interval_service': require('./rules/ng_interval_service'),
                   'ng_json_functions': require('./rules/ng_json_functions'),
+                  'ng_karma_done': require('./rules/ng_karma_done'),
                   'ng_module_getter': require('./rules/ng_module_getter'),
                   'ng_module_name': require('./rules/ng_module_name'),
                   'ng_module_setter': require('./rules/ng_module_setter'),
