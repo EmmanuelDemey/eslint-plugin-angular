@@ -14,7 +14,7 @@ module.exports = function(context) {
      * named '$on' or '$watch' on an object named '$scope', '$rootScope' or
      * 'scope'.
      */
-    function isScopeOnOrWatch(node) {
+    function isScopeOnOrWatch(node, scopes) {
         if (node.type !== 'CallExpression') {
             return false;
         }
@@ -39,9 +39,7 @@ module.exports = function(context) {
         var objectName = parentObject.name;
         var functionName = accessedFunction.name;
 
-        return (objectName === '$rootScope' ||
-                objectName === '$scope' ||
-                objectName === 'scope') && (functionName === '$on' ||
+        return scopes.indexOf(objectName) >= 0 && (functionName === '$on' ||
                                             functionName === '$watch');
     }
 
@@ -64,10 +62,10 @@ module.exports = function(context) {
     return {
 
         'CallExpression': function(node) {
-            if (isScopeOnOrWatch(node) && !isFirstArgDestroy(node)) {
+            if (isScopeOnOrWatch(node, ['$rootScope']) && !isFirstArgDestroy(node)) {
                 if (node.parent.type !== 'VariableDeclarator' &&
                     node.parent.type !== 'AssignmentExpression' &&
-                    !(isScopeOnOrWatch(node.parent) &&
+                    !(isScopeOnOrWatch(node.parent, ['$rootScope', '$scope', 'scope']) &&
                      isFirstArgDestroy(node.parent))) {
                     report(node, node.callee.property.name);
                 }
