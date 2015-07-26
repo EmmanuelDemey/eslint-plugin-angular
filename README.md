@@ -99,8 +99,8 @@ All contributions should be pushed in the current GIT branch.
 ## How to create a new rule
 Here are the things you should do before sending a Pull Request with a new Rule :
 
-* Create a JavaScript file for the new rule in the rules directory
-* Create an unit test for this rule in the test directory
+* Create a JavaScript file for the new rule in the rules directory (the name of the file should be prefixed by 'ng' for Angular 1 rules, or 'ng2' for Angular 2 rules)
+* Create an unit test for this rule in the test directory (with the same name)
 * Update the main index.js file, in order to add the new rule in the 'rules' property, and set the default configuration in the rulesConfig property
 * Update the "Rules" part of the README.md file with a small description of the rule and its default configuration.
 
