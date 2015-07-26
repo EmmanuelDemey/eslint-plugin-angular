@@ -51,6 +51,7 @@ We provide also three samples :
 | 'ng_controller_as_route': 2                                  | You should use Angular's controllerAs syntax when defining routes or states. Implements route part [Y031](https://github.com/johnpapa/angular-styleguide#style-y031) |
 | 'ng_controller_as_vm': [2, 'vm']                             | You should use a capture variable for 'this' when using the controllerAs syntax. [Y031](https://github.com/johnpapa/angular-styleguide#style-y032). The second parameter specifies the capture variable you want to use in your application. The third parameter can be a Regexp for identifying controller functions (when using something like Browserify) |
 | 'ng_controller_name': [2, /[A-Z].*Controller$/]              | All your controllers should have a name starting with the parameter you can define in your config object. The second parameter can be a Regexp wrapped in quotes. ("ng_controller_name":  [2, "ng"])  [Y123](https://github.com/johnpapa/angular-styleguide#style-y123), [Y124](https://github.com/johnpapa/angular-styleguide#style-y124)|
+| 'ng_deferred':0                                              | When you want to create a new promise, you should not use the $q.deferred anymore. Prefer the new syntax : $q(function(resolve, reject){})
 | 'ng_definedundefined': 2                                     | You should use the angular.isUndefined or angular.isDefined methods instead of using the keyword undefined. We also check the use of !angular.isUndefined and !angular.isDefined (should prefer the reverse function)|
 | 'ng_di': [2, 'function']                                     | All your DI should use the same syntax : the Array or function syntaxes ("ng_di":  [2, "function or array"])|
 | 'ng_directive_name': 0                                       | All your directives should have a name starting with the parameter you can define in your config object. The second parameter can be a Regexp wrapped in quotes. You can not prefix your directives by "ng" (reserved keyword for AngularJS directives) ("ng_directive_name":  [2, "ng"]) [Y073](https://github.com/johnpapa/angular-styleguide#style-y073), [Y126](https://github.com/johnpapa/angular-styleguide#style-y126) |
@@ -64,6 +65,7 @@ We provide also three samples :
 | 'ng_module_getter':2                                         | When using a module, avoid using a variable and instead use chaining with the getter syntax [Y022](https://github.com/johnpapa/angular-styleguide#style-y022)|
 | 'ng_module_name': 0                                          | When you create a new module, its name should start with the parameter you can define in your config object. The second parameter can be a Regexp wrapped in quotes. You can not prefix your modules by "ng" (reserved keyword for AngularJS modules) ("ng_module_name":  [2, "ng"])  [Y127](https://github.com/johnpapa/angular-styleguide#style-y127)|
 | 'ng_module_setter':2                                         | Declare modules without a variable using the setter syntax.[Y021](https://github.com/johnpapa/angular-styleguide#style-y021) |
+| 'ng_no_angular_mock':0                                       | All methods defined in the angular.mock object are also available in the object window. So you can remove angular.mock from your code
 | 'ng_no_digest': 2                                            | The scope's $digest() method shouldn't be used. You should prefer the $apply method. |
 | 'ng_no_jquery_angularelement': 2                             | You should not wrap angular.element object into jQuery(), because angular.element already return jQLite element|
 | 'ng_no_private_call': 2                                      | All scope's properties/methods starting with $$ are used internally by AngularJS. You should not use them directly. |
@@ -97,8 +99,8 @@ All contributions should be pushed in the current GIT branch.
 ## How to create a new rule
 Here are the things you should do before sending a Pull Request with a new Rule :
 
-* Create a JavaScript file for the new rule in the rules directory
-* Create an unit test for this rule in the test directory
+* Create a JavaScript file for the new rule in the rules directory (the name of the file should be prefixed by 'ng' for Angular 1 rules, or 'ng2' for Angular 2 rules)
+* Create an unit test for this rule in the test directory (with the same name)
 * Update the main index.js file, in order to add the new rule in the 'rules' property, and set the default configuration in the rulesConfig property
 * Update the "Rules" part of the README.md file with a small description of the rule and its default configuration.
 
