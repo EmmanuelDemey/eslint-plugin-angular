@@ -33,7 +33,8 @@ eslintTester.addRuleTest('rules/ng_module_getter', {
         'angular.module("mwl.calendar").controller("MwlElementDimensionsCtrl", function($element, $scope, $parse, $attrs) {}).directive("mwlElementDimensions", function() {});',
         'describe("suite test", function(){})',
         'it("test", function(){})',
-        '$provide.value("accountsService", accountsService)'
+        '$provide.value("accountsService", accountsService)',
+        'mocha.run();',
     ],
     invalid: [{
             code: 'var app = angular.module("test", []);app.controller("TestCtrl", [function () {}]);',

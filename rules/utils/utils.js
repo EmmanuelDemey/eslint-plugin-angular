@@ -103,7 +103,7 @@
 		},
 
 		isAngularRunSection: function(node){
-			return this.isMemberExpression(node.callee) && node.callee.property.type === 'Identifier' && node.callee.property.name === 'run';
+			return this.isMemberExpression(node.callee) && node.callee.property.type === 'Identifier' && node.callee.property.name === 'run' && (node.callee.object.type === 'Identifier' && node.callee.object.name !== 'mocha');
 		},
 
 		isAngularConfigSection: function(node){
