@@ -8,7 +8,34 @@ This repository will give access to new rules for the ESLint tool. You should us
 
 Since the 0.0.4 release, some rules defined in [John Papa's Guideline](https://github.com/johnpapa/angular-styleguide) have been implemented. In the description below, you will have a link to the corresponding part of the guideline, in order to have more information.
 
-# Usage
+# Usage with [shareable](http://eslint.org/docs/developer-guide/shareable-configs.html) config
+Users may use the shareable [eslint-config-angular](https://github.com/dustinspecker/eslint-config-angular) to quickly setup eslint-plugin-angular. It also marks Angular as a global variable and defines required ESLint rules to use this plugin.
+
+1. Install `eslint` as a dev-dependency:
+
+    ```shell
+    npm install --save-dev eslint
+    ```
+
+2. Install `eslint-plugin-angular` as a dev-dependency:
+
+    ```shell
+    npm install --save-dev eslint-plugin-angular
+    ```
+
+3. Install `eslint-config-angular` as a dev-dependency:
+
+    ```shell
+    npm install --save-dev eslint-config-angular
+    ```
+
+4. Use the shareable config by adding it to your `.eslintrc`:
+
+    ```yaml
+    extends: angular
+    ```
+
+# Usage without shareable config
 
 1. Install `eslint` as a dev-dependency:
 
