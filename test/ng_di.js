@@ -86,6 +86,9 @@ valid.push({
 }, {
     code: 'vm.navRoutes = states.filter(x).sort(y);',
     args: [1, 'array']
+}, {
+    code: 'mocha.run();',
+    args: [1, 'array']
 })
 //------------------------------------------------------------------------------
 // Tests
