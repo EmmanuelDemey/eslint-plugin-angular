@@ -33,7 +33,7 @@ module.exports = function(context) {
         'CallExpression': function(node) {
 
             var callee = node.callee,
-                angularObjectName = callee.property.name,
+                angularObjectName = callee.property && callee.property.name,
                 firstArgument = node.arguments[1];
 
             if(utils.isAngularComponent(node) && callee.type === 'MemberExpression' && angularObjectList.indexOf(angularObjectName) >= 0){

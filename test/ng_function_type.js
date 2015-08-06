@@ -56,6 +56,14 @@ valid.push({
     args: [1, 'anonymous', ['controller']]
 });
 
+valid.push({
+    code: 'var cleanUp;cleanUp = $rootScope.$on("$stateChangeSuccess", function () {vm.currentHor = $state.$current.path[0].self.name;});$scope.$on("$destroy", function () {cleanUp();});',
+    args: [1, 'named']
+}, {
+    code: 'var cleanUp;cleanUp = $rootScope.$on("$stateChangeSuccess", function () {vm.currentHor = $state.$current.path[0].self.name;});$scope.$on("$destroy", function () {cleanUp();});',
+    args: [1, 'anonymous']
+});
+
 invalid.push({
     code: 'app.controller("name", function(Service1){});',
     args: [1, 'named', ['controller']],
