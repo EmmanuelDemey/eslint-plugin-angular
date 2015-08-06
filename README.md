@@ -93,6 +93,7 @@ We provide also three samples :
 | 'ng_module_name': 0                                          | When you create a new module, its name should start with the parameter you can define in your config object. The second parameter can be a Regexp wrapped in quotes. You can not prefix your modules by "ng" (reserved keyword for AngularJS modules) ("ng_module_name":  [2, "ng"])  [Y127](https://github.com/johnpapa/angular-styleguide#style-y127)|
 | 'ng_module_setter':2                                         | Declare modules without a variable using the setter syntax.[Y021](https://github.com/johnpapa/angular-styleguide#style-y021) |
 | 'ng_no_angular_mock':0                                       | All methods defined in the angular.mock object are also available in the object window. So you can remove angular.mock from your code
+| 'ng_no_cookiestore':2                                        | In Angular 1.4, the $cookieStore service is now deprected. Please use the $cookies service instead|
 | 'ng_no_digest': 2                                            | The scope's $digest() method shouldn't be used. You should prefer the $apply method. |
 | 'ng_no_jquery_angularelement': 2                             | You should not wrap angular.element object into jQuery(), because angular.element already return jQLite element|
 | 'ng_no_private_call': 2                                      | All scope's properties/methods starting with $$ are used internally by AngularJS. You should not use them directly. |
