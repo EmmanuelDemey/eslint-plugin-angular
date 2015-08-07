@@ -16,6 +16,8 @@ eslintTester.addRuleTest('rules/ng_controller_as_vm', {
             args: [2, 'vm']},
         { code: 'angular.module("test").controller("Test", function () { var vm = this; vm.test(); } )',
             args: [2, 'vm']},
+        { code: 'angular.module("test").controller("Test", function () { function withItsOwnScope() { this.test = "test"; } } )',
+            args: [2, 'vm']},
         { code: 'angular.module("test").service("Test", function () { this.doSomething(); } )',
             args: [2, 'vm']}
     ],
