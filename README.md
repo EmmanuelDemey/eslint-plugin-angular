@@ -94,7 +94,7 @@ We provide also three samples :
 | 'ng_module_setter':2                                         | Declare modules without a variable using the setter syntax.[Y021](https://github.com/johnpapa/angular-styleguide#style-y021) |
 | 'ng_no_angular_mock':0                                       | All methods defined in the angular.mock object are also available in the object window. So you can remove angular.mock from your code
 | 'ng_no_cookiestore':2                                        | In Angular 1.4, the $cookieStore service is now deprected. Please use the $cookies service instead|
-| 'ng_no_digest': 2                                            | The scope's $digest() method shouldn't be used. You should prefer the $apply method. |
+| 'ng_no_digest': 2                                            | DEPRECATED! The scope's $digest() method shouldn't be used. You should prefer the $apply method. |
 | 'ng_no_jquery_angularelement': 2                             | You should not wrap angular.element object into jQuery(), because angular.element already return jQLite element|
 | 'ng_no_private_call': 2                                      | All scope's properties/methods starting with $$ are used internally by AngularJS. You should not use them directly. |
 | 'ng_no_services': [2, ['$http', '$resource', 'Restangular']] | Some services should be used only in a specific AngularJS service (Ajax-based service for example), in order to follow the separation of concerns paradigm. The second parameter specifies the services. The third parameter can be a list of angular objects (controller, factory, etc.). Or second parameter can be an object, where keys are angular object names and value is a list of services (like {controller: ['$http'], factory: ['$q']}) |
@@ -109,6 +109,7 @@ We provide also three samples :
 | 'ng_typecheck_object': 2                                     | You should use the angular.isObject method instead of the default JavaScript implementation (typeof {} === "[object Object]").  |
 | 'ng_typecheck_regexp': 2                                     | You should use the angular.isRegexp method instead of the default JavaScript implementation (toString.call(/^A/) === "[object RegExp]"). |
 | 'ng_typecheck_string': 2                                     | You should use the angular.isString method instead of the default JavaScript implementation (typeof "" === "[object String]"). |
+| 'ng_watchers_execution': [0, '$digest']                      | For the execution of the watchers, the $digest method will start from the scope in which we call the method. This will cause an performance improvement comparing to the $apply method, who start from the $rootScope |
 | 'ng_window_service': 2                                       | Instead of the default window object, you should prefer the AngularJS wrapper service $window. [Y180](https://github.com/johnpapa/angular-styleguide#style-y180) |
 
 

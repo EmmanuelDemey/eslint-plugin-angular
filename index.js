@@ -39,6 +39,7 @@
                   'ng_typecheck_object': require('./rules/ng_typecheck_object'),
                   'ng_typecheck_regexp': require('./rules/ng_typecheck_regexp'),
                   'ng_typecheck_string': require('./rules/ng_typecheck_string'),
+                  'ng_watchers_execution': require('./rules/ng_watchers_execution'),
                   'ng_window_service': require('./rules/ng_window_service')
             },
             rulesConfig: {
@@ -63,7 +64,7 @@
                   'ng_module_setter': 2,
                   'ng_no_angular_mock': 0,
                   'ng_no_cookiestore': 2,
-                  'ng_no_digest': 2,
+                  'ng_no_digest': 0,
                   'ng_no_jquery_angularelement': 2,
                   'ng_no_private_call': 2,
                   'ng_no_services': [2, ['$http', '$resource', 'Restangular', '$q']],
@@ -78,6 +79,7 @@
                   'ng_typecheck_object': 2,
                   'ng_typecheck_regexp': 2,
                   'ng_typecheck_string': 2,
+                  'ng_watchers_execution': [0, '$destroy'],
                   'ng_window_service': 2
             }
       };
