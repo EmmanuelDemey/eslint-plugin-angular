@@ -5,17 +5,13 @@ module.exports = function(context) {
     var utils = require('./utils/utils');
 
     var angularObjectList = ['controller', 'filter', 'directive', 'service', 'factory', 'provider'];
-    var services = ['$http', '$resource', 'Restangular']
+    var services = ['$http', '$resource', 'Restangular'];
     var message = 'You should use the same service ({{method}}) for REST API calls';
 
 
     return {
 
         'CallExpression': function(node) {
-
-            function checkAllElements(elements){
-                elements.forEach(checkElement);
-            }
 
             function checkElement(element){
                 if(element.type === 'Identifier' && services.indexOf(element.name) >= 0 && context.options[0] !== element.name){
@@ -29,11 +25,14 @@ module.exports = function(context) {
                 }
             }
 
+            function checkAllElements(elements){
+                elements.forEach(checkElement);
+            }
+
             var callee = node.callee;
 
             if (utils.isAngularComponent(node) && callee.type === 'MemberExpression' && angularObjectList.indexOf(callee.property.name) >= 0) {
                 if(utils.isFunctionType(node.arguments[1])){
-                    console.log(node.arguments[1].params)
                     checkAllElements(node.arguments[1].params);
                 }
 
