@@ -50,7 +50,7 @@ var valid = [], invalid = [];
 });
 
 
-eslintTester.run('rng_service_name', rule, {
+eslintTester.run('ng_service_name', rule, {
     valid: valid,
     invalid: invalid
 });

@@ -60,10 +60,4 @@ module.exports = function(context) {
     };
 };
 
-module.exports.schema = [{
-    type: 'string',
-    required: false
-}, {
-    type: 'regexp',
-    required: false
-}];
+//TODO ADD SCHEMA

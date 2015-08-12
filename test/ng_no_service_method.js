@@ -23,7 +23,6 @@ var valid = [], invalid = [];
 });
 
 
-var eslintTester = new ESLintTester(eslint);
 eslintTester.run('ng_no_service_method', rule, {
     valid: valid,
     invalid: [{

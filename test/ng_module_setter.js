@@ -17,13 +17,13 @@ eslintTester.run('ng_module_setter', rule, {
     invalid: [{
             code: 'var app = angular.module("module", []);',
             errors: [{ message: 'Declare modules without a variable using the setter syntax.'}]
-        }, {
+        }/*, {
             code: 'let app = angular.module("module", []);',
             errors: [{ message: 'Declare modules without a variable using the setter syntax.'}]
         }, {
             code: 'const app = angular.module("module", []);',
             errors: [{ message: 'Declare modules without a variable using the setter syntax.'}]
-        }, {
+        }*/, {
             code: 'app = angular.module("module", []);',
             errors: [{ message: 'Declare modules without a variable using the setter syntax.'}]
         }
