@@ -2,15 +2,15 @@
 // Requirements
 //------------------------------------------------------------------------------
 
-var eslint = require('../node_modules/eslint/lib/eslint'),
-    ESLintTester = require('eslint-tester');
+var rule = require('../rules/ng_json_functions'),
+    RuleTester = require("eslint").RuleTester;
 
 //------------------------------------------------------------------------------
 // Tests
 //------------------------------------------------------------------------------
 
-var eslintTester = new ESLintTester(eslint);
-eslintTester.addRuleTest('rules/ng_json_functions', {
+var eslintTester = new RuleTester();
+eslintTester.run('ng_json_functions', rule, {
     valid: [
         'angular.toJson({})',
         'angular.toJson({}, true)',

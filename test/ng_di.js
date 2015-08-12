@@ -2,8 +2,9 @@
 // Requirements
 //------------------------------------------------------------------------------
 
-var eslint = require('../node_modules/eslint/lib/eslint'),
-    ESLintTester = require('eslint-tester');
+var rule = require('../rules/ng_di'),
+    RuleTester = require("eslint").RuleTester;
+
 
 var angularNamedObjectList = ['value', 'factory', 'service', 'provider', 'controller', 'filter', 'directive'];
 var angularObjectList = ['run', 'config'];
@@ -14,33 +15,33 @@ var valid = [], invalid = [];
 angularObjectList.forEach(function(object){
   valid.push({
       code: 'angular.' + object + '(function(){});',
-      args: [1, 'function']
+      options: ['function']
   }, {
       code: 'angular.' + object + '([function(){}]);',
-      args: [1, 'array']
+      options: ['array']
   }, {
       code: 'angular.' + object + '(["Service1", function(Service1){}]);',
-      args: [1, 'array']
+      options: ['array']
   }, {
       code: 'angular.' + object + '(myFunction);function MyFunction(){}',
-      args: [1, 'function']
+      options: ['function']
   });
 
   invalid.push({
       code: 'angular.' + object + '(function(){});',
-      args: [1, 'array'],
+      options: ['array'],
       errors: [{ message: 'You should use the array syntax for DI'}]
   }, {
       code: 'angular.' + object + '([function(){}]);',
-      args: [1, 'function'],
+      options: ['function'],
       errors: [{ message: 'You should use the function syntax for DI'}]
   }, {
       code: 'angular.' + object + '(["Service1", function(){}]);',
-      args: [1, 'array'],
+      options: ['array'],
       errors: [{ message: 'The signature of the method is incorrect'}]
   }, {
       code: 'angular.' + object + '([function(Service1){}]);',
-      args: [1, 'array'],
+      options: ['array'],
       errors: [{ message: 'The signature of the method is incorrect'}]
   });
 });
@@ -48,33 +49,33 @@ angularObjectList.forEach(function(object){
 angularNamedObjectList.forEach(function(object){
     valid.push({
         code: 'angular.' + object + '("name", function(){});',
-        args: [1, 'function']
+        options: ['function']
     }, {
         code: 'angular.' + object + '("name", [function(){}]);',
-        args: [1, 'array']
+        options: ['array']
     }, {
         code: 'angular.' + object + '("name", ["Service1", function(Service1){}]);',
-        args: [1, 'array']
+        options: ['array']
     }, {
         code: 'angular.' + object + '("name", myFunction);function MyFunction(){}',
-        args: [1, 'function']
+        options: ['function']
     });
 
     invalid.push({
         code: 'angular.' + object + '("name", function(){});',
-        args: [1, 'array'],
+        options: ['array'],
         errors: [{ message: 'You should use the array syntax for DI'}]
     }, {
         code: 'angular.' + object + '("name", [function(){}]);',
-        args: [1, 'function'],
+        options: ['function'],
         errors: [{ message: 'You should use the function syntax for DI'}]
     }, {
         code: 'angular.' + object + '("name", ["Service1", function(){}]);',
-        args: [1, 'array'],
+        options: ['array'],
         errors: [{ message: 'The signature of the method is incorrect'}]
     }, {
         code: 'angular.' + object + '("name", [function(Service1){}]);',
-        args: [1, 'array'],
+        options: ['array'],
         errors: [{ message: 'The signature of the method is incorrect'}]
     });
 });
@@ -82,22 +83,20 @@ angularNamedObjectList.forEach(function(object){
 
 valid.push({
     code: 'vm.navRoutes = states.filter(x).sort(y);',
-    args: [1, 'function']
+    options: ['function']
 }, {
     code: 'vm.navRoutes = states.filter(x).sort(y);',
-    args: [1, 'array']
+    options: ['array']
 }, {
     code: 'mocha.run();',
-    args: [1, 'array']
+    options: ['array']
 })
 //------------------------------------------------------------------------------
 // Tests
 //------------------------------------------------------------------------------
 
-
-
-var eslintTester = new ESLintTester(eslint);
-eslintTester.addRuleTest('rules/ng_di', {
+var eslintTester = new RuleTester();
+eslintTester.run('ng_di', rule, {
     valid: valid,
     invalid: invalid
 });

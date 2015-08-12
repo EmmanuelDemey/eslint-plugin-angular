@@ -14,7 +14,7 @@ module.exports = function(context) {
     }
 
     //check node against known controller functions or pattern if specified
-    function isControllerFunction(node) {
+    function isControllerFunction(node) {console.log(node)
         return controllerFunctions.indexOf(node) >= 0 ||
             (controllerNameMatcher && (node.type === 'FunctionExpression' || node.type === 'FunctionDeclaration') &&
             node.id && controllerNameMatcher.test(node.id.name));
@@ -59,3 +59,11 @@ module.exports = function(context) {
         }
     };
 };
+
+module.exports.schema = [{
+    type: 'string',
+    required: false
+}, {
+    type: 'regexp',
+    required: false
+}];

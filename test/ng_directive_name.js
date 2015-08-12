@@ -2,50 +2,50 @@
 // Requirements
 //------------------------------------------------------------------------------
 
-var eslint = require('../node_modules/eslint/lib/eslint'),
-    ESLintTester = require('eslint-tester');
+var rule = require('../rules/ng_directive_name'),
+    RuleTester = require("eslint").RuleTester;
 
 //------------------------------------------------------------------------------
 // Tests
 //------------------------------------------------------------------------------
 
-var eslintTester = new ESLintTester(eslint);
-eslintTester.addRuleTest('rules/ng_directive_name', {
+var eslintTester = new RuleTester();
+eslintTester.run('ng_directive_name', rule, {
     valid: [{
         code: 'app.directive("eslintDirective", function(){});',
-        args: [1, 'eslint']
+        options: ['eslint']
     }, {
         code: 'app.directive("eslintDirective", function(){});',
-        args: [1, /^eslint/]
+        options: [/^eslint/]
     }, {
         code: 'app.directive("eslintDirective", function(){});',
-        args: [1, undefined]
+        options: [undefined]
     }, {
         code: 'app.directive("eslintDirective", function(){});',
-        args: [1, '/^eslint/']
+        options: ['/^eslint/']
     }],
     invalid: [
         {
             code: 'app.directive("Directive", function(){});',
-            args: [1, 'eslint'],
+            options: ['eslint'],
             errors: [{ message: 'The Directive directive should be prefixed by eslint'}]
         },
         {
             code: 'app.directive("esLintDirective", function(){});',
-            args: [1, 'eslint'],
+            options: ['eslint'],
             errors: [{ message: 'The esLintDirective directive should be prefixed by eslint'}]
         },
         {
             code: 'app.directive("Directive", function(){});',
-            args: [1, /^eslint/],
+            options: [/^eslint/],
             errors: [{ message: 'The Directive directive should follow this pattern: /^eslint/'}]
         }, {
             code: 'app.directive("Directive", function(){});',
-            args: [1, '/^eslint/'],
+            options: ['/^eslint/'],
             errors: [{ message: 'The Directive directive should follow this pattern: /^eslint/'}]
         }, {
             code: 'app.directive("ngDirective", []);',
-            args: [1, /^eslint/],
+            options: [/^eslint/],
             errors: [{ message: 'The ngDirective directive should not start with "ng". This is reserved for AngularJS directives'}]
         }
     ]

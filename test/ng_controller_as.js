@@ -2,15 +2,15 @@
 // Requirements
 //------------------------------------------------------------------------------
 
-var eslint = require('../node_modules/eslint/lib/eslint'),
-    ESLintTester = require('eslint-tester');
+var rule = require('../rules/ng_controller_as'),
+    RuleTester = require("eslint").RuleTester;
 
 //------------------------------------------------------------------------------
 // Tests
 //------------------------------------------------------------------------------
 
-var eslintTester = new ESLintTester(eslint);
-eslintTester.addRuleTest('rules/ng_controller_as', {
+var eslintTester = new RuleTester();
+eslintTester.run('ng_controller_as', rule, {
     valid: [
         'angular.module("test").controller("Test", function () { $scope.$watch() } )',
         'angular.module("test").controller("Test", function () { doSomething($scope) } )'
@@ -31,13 +31,13 @@ eslintTester.addRuleTest('rules/ng_controller_as', {
         { code: 'var controllerFunc = function () { $scope.name() }; angular.module("test").controller("Test", ["$scope", controllerFunc] );',
             errors: [{ message: 'You should not set properties on $scope in controllers. Use controllerAs syntax and add data to "this"'}] },
         { code: 'function MyController () { $scope.name() }',
-            args: [2, /MyController/],
+            options: [/MyController/],
             errors: [{ message: 'You should not set properties on $scope in controllers. Use controllerAs syntax and add data to "this"'}] },
         { code: 'module.exports = function MyController () { $scope.name() }',
-            args: [2, /MyController/],
+            options: [/MyController/],
             errors: [{ message: 'You should not set properties on $scope in controllers. Use controllerAs syntax and add data to "this"'}] },
         { code: 'module.exports = function MyController () { $scope.name() }',
-            args: [2, '/MyController/'],
+            options: ['/MyController/'],
             errors: [{ message: 'You should not set properties on $scope in controllers. Use controllerAs syntax and add data to "this"'}] }
     ]
 });

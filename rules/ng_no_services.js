@@ -73,3 +73,8 @@ module.exports = function(context) {
     };
 
 };
+
+module.exports.schema = [
+    // JSON Schema for rule options goes here
+];
+
