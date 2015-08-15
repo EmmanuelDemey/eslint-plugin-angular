@@ -74,4 +74,9 @@ module.exports = function(context) {
 
 };
 
-//TODO ADD SCHEMA
+
+module.exports.schema = [{
+    type: ['array', 'object'],
+}, {
+    type: 'array'
+}];

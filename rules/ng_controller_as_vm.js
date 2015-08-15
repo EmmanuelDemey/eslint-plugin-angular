@@ -67,5 +67,3 @@ module.exports = function(context) {
         }
     };
 };
-
-//TODO ADD SCHEMA
