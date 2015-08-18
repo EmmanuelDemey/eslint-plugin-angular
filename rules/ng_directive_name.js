@@ -3,6 +3,9 @@ module.exports = function(context) {
     'use strict';
 
     var utils = require('./utils/utils');
+    if(context.settings.angular === 2){
+        return {};
+    }
 
     return {
 
