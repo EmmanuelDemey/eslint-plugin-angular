@@ -2,15 +2,15 @@
 // Requirements
 //------------------------------------------------------------------------------
 
-var eslint = require('../node_modules/eslint/lib/eslint'),
-    ESLintTester = require('eslint-tester');
+var rule = require('../rules/ng_typecheck_number'),
+    RuleTester = require("eslint").RuleTester;
 
 //------------------------------------------------------------------------------
 // Tests
 //------------------------------------------------------------------------------
 
-var eslintTester = new ESLintTester(eslint);
-eslintTester.addRuleTest('rules/ng_typecheck_number', {
+var eslintTester = new RuleTester();
+eslintTester.run('ng_typecheck_number', rule, {
     valid: [
         'angular.isNumber(1)'
     ],

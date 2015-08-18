@@ -47,3 +47,8 @@ module.exports = function(context) {
     };
 
 };
+
+module.exports.schema = [{
+    type: 'string'
+}];
+
