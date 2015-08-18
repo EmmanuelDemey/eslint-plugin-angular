@@ -2,8 +2,14 @@
 // Requirements
 //------------------------------------------------------------------------------
 
-var eslint = require('../node_modules/eslint/lib/eslint'),
-    ESLintTester = require('eslint-tester');
+var rule = require('../rules/ng_rest_service'),
+    RuleTester = require("eslint").RuleTester;
+
+//------------------------------------------------------------------------------
+// Tests
+//------------------------------------------------------------------------------
+
+var eslintTester = new RuleTester();
 
 var angularObjectList = ['controller', 'filter', 'directive', 'service', 'factory', 'provider'];
 var possibleValues = ['$http', '$resource', 'Restangular'];
@@ -14,16 +20,15 @@ angularObjectList.forEach(function(object){
     possibleValues.forEach(function(value) {
         valid.push({
             code: 'app.' + object + '("name", function(Service1){});',
-            args: [1, value]
+            options: [value]
         },{
             code: 'app.' + object + '("name", function(Service1){});',
-            args: [1]
         }, {
             code: 'app.' + object + '("name", ["Service1", function(Service1){}]);',
-            args: [1, value]
+            options: [value]
         }, {
             code: '"use strict";app.' + object + '("name", ["Service1", function(Service1){}]);',
-            args: [1, value]
+            options: [value]
         });
     });
 
@@ -31,11 +36,11 @@ angularObjectList.forEach(function(object){
         possibleValues.filter(function(v){ return v !== value}).forEach(function(badValue){
             invalid.push({
                 code: 'app.' + object + '("name", function(' + badValue + '){});',
-                args: [1, value],
+                options: [value],
                 errors: [{ message: 'You should use the same service (' + value + ') for REST API calls'}]
             }, {
                 code: 'app.' + object + '("name", ["' + badValue + '", function(' + badValue + '){}]);',
-                args: [1, value],
+                options: [value],
                 errors: [{ message: 'You should use the same service (' + value + ') for REST API calls'}]
             });
         });
@@ -47,8 +52,7 @@ angularObjectList.forEach(function(object){
 // Tests
 //------------------------------------------------------------------------------
 
-var eslintTester = new ESLintTester(eslint);
-eslintTester.addRuleTest('rules/ng_rest_service', {
+eslintTester.run('ng_rest_service', rule, {
     valid: valid,
     invalid: invalid
 });

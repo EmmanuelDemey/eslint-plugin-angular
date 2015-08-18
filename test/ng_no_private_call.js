@@ -2,12 +2,15 @@
 // Requirements
 //------------------------------------------------------------------------------
 
-var eslint = require('../node_modules/eslint/lib/eslint'),
-    ESLintTester = require('eslint-tester');
+var rule = require('../rules/ng_no_private_call'),
+	RuleTester = require("eslint").RuleTester;
 
 //------------------------------------------------------------------------------
 // Tests
 //------------------------------------------------------------------------------
+
+var eslintTester = new RuleTester();
+
 var variables = ['$scope', '$rootScope'];
 var bad = ['$$childHead', '$$childTail', '$$prevSibling', '$$nextSibling',
 		'$$listeners', '$$phase', '$$watchers', '$$asyncQueue', '$$postDigestQueue',
@@ -25,8 +28,7 @@ variables.forEach(function(variable){
 
 });
 
-var eslintTester = new ESLintTester(eslint);
-eslintTester.addRuleTest('rules/ng_no_private_call', {
+eslintTester.run('ng_no_private_call', rule, {
     valid: [
         '$scope.$apply(function(){})',
         '$rootScope.$apply(function(){})'

@@ -2,15 +2,15 @@
 // Requirements
 //------------------------------------------------------------------------------
 
-var eslint = require('../node_modules/eslint/lib/eslint'),
-    ESLintTester = require('eslint-tester');
+var rule = require('../rules/ng_module_getter'),
+    RuleTester = require("eslint").RuleTester;
 
 //------------------------------------------------------------------------------
 // Tests
 //------------------------------------------------------------------------------
 
-var eslintTester = new ESLintTester(eslint);
-eslintTester.addRuleTest('rules/ng_module_getter', {
+var eslintTester = new RuleTester();
+eslintTester.run('ng_module_getter', rule, {
     valid: [
         'angular.module("module").controller("TestCtrl", function () {});',
         'angular.module("module").factory("TestService", function () {});',

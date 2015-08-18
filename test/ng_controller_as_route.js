@@ -2,15 +2,15 @@
 // Requirements
 //------------------------------------------------------------------------------
 
-var eslint = require('../node_modules/eslint/lib/eslint'),
-    ESLintTester = require('eslint-tester');
+var rule = require('../rules/ng_controller_as_route'),
+    RuleTester = require("eslint").RuleTester;
 
 //------------------------------------------------------------------------------
 // Tests
 //------------------------------------------------------------------------------
 
-var eslintTester = new ESLintTester(eslint);
-eslintTester.addRuleTest('rules/ng_controller_as_route', {
+var eslintTester = new RuleTester();
+eslintTester.run('ng_controller_as_route', rule, {
     valid: [
         '$routeProvider.when("/myroute", { controller: "MyController", controllerAs: "vm" })',
         '$routeProvider.when("/myroute2", { template: "<div></div>" })',

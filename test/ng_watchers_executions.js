@@ -2,25 +2,25 @@
 // Requirements
 //------------------------------------------------------------------------------
 
-var eslint = require('../node_modules/eslint/lib/eslint'),
-    ESLintTester = require('eslint-tester');
+var rule = require('../rules/ng_watchers_execution'),
+    RuleTester = require("eslint").RuleTester;
 
 //------------------------------------------------------------------------------
 // Tests
 //------------------------------------------------------------------------------
 
-var eslintTester = new ESLintTester(eslint);
-eslintTester.addRuleTest('rules/ng_watchers_execution', {
+var eslintTester = new RuleTester();
+eslintTester.run('ng_watchers_execution', rule, {
     valid: [
-        {code: '$scope.$apply(function(){})',  args: [1, '$apply']},
-        {code: '$rootScope.$apply(function(){})',  args: [1, '$apply']},
-        {code: '$scope.$digest()',  args: [1, '$digest']},
-        {code: '$rootScope.$digest()',  args: [1, '$digest']}
+        {code: '$scope.$apply(function(){})',  options: ['$apply']},
+        {code: '$rootScope.$apply(function(){})',  options: ['$apply']},
+        {code: '$scope.$digest()',  options: ['$digest']},
+        {code: '$rootScope.$digest()',  options: ['$digest']}
     ],
     invalid: [
-        {code: '$scope.$apply(function(){})',  args: [1, '$digest'], errors: [{ message: 'Instead of using the $apply() method, you should prefer $digest()'}]},
-        {code: '$rootScope.$apply(function(){})',  args: [1, '$digest'], errors: [{ message: 'Instead of using the $apply() method, you should prefer $digest()'}]},
-        {code: '$scope.$digest()',  args: [1, '$apply'], errors: [{ message: 'Instead of using the $digest() method, you should prefer $apply()'}]},
-        {code: '$rootScope.$digest()',  args: [1, '$apply'], errors: [{ message: 'Instead of using the $digest() method, you should prefer $apply()'}]}
+        {code: '$scope.$apply(function(){})',  options: ['$digest'], errors: [{ message: 'Instead of using the $apply() method, you should prefer $digest()'}]},
+        {code: '$rootScope.$apply(function(){})',  options: ['$digest'], errors: [{ message: 'Instead of using the $apply() method, you should prefer $digest()'}]},
+        {code: '$scope.$digest()',  options: ['$apply'], errors: [{ message: 'Instead of using the $digest() method, you should prefer $apply()'}]},
+        {code: '$rootScope.$digest()',  options: ['$apply'], errors: [{ message: 'Instead of using the $digest() method, you should prefer $apply()'}]}
     ]
 });

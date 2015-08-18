@@ -2,15 +2,16 @@
 // Requirements
 //------------------------------------------------------------------------------
 
-var eslint = require('../node_modules/eslint/lib/eslint'),
-    ESLintTester = require('eslint-tester');
+var rule = require('../rules/ng_on_watch'),
+    RuleTester = require("eslint").RuleTester;
 
 //------------------------------------------------------------------------------
 // Tests
 //------------------------------------------------------------------------------
 
-var eslintTester = new ESLintTester(eslint);
-eslintTester.addRuleTest('rules/ng_on_watch', {
+var eslintTester = new RuleTester();
+
+eslintTester.run('ng_on_watch', rule, {
     valid: [
         'var variable = scope.$on()',
         'var variable = scope.$watch()',

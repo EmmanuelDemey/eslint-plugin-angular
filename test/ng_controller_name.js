@@ -2,62 +2,62 @@
 // Requirements
 //------------------------------------------------------------------------------
 
-var eslint = require('../node_modules/eslint/lib/eslint'),
-    ESLintTester = require('eslint-tester');
+var rule = require('../rules/ng_controller_name'),
+    RuleTester = require("eslint").RuleTester;
 
 //------------------------------------------------------------------------------
 // Tests
 //------------------------------------------------------------------------------
 
-var eslintTester = new ESLintTester(eslint);
-eslintTester.addRuleTest('rules/ng_controller_name', {
+var eslintTester = new RuleTester();
+eslintTester.run('ng_controller_name', rule, {
     valid: [{
         code: 'app.controller("eslintController", function(){});',
-        args: [1, 'eslint']
+        options: ['eslint']
     }, {
         code: 'app.controller("eslintController", function(){});',
-        args: [1, /^eslint/]
+        options: [/^eslint/]
     }, {
         code: 'app.controller("eslintController", function(){});',
-        args: [1, undefined]
+        options: [undefined]
     }, {
         code: 'app.controller("EslintController", function(){});',
-        args: [1, /[A-Z].*Controller$/]
+        options: [/[A-Z].*Controller$/]
     }, {
         code: 'app.controller("EslintController", function(){});',
-        args: [1, '/[A-Z].*Controller$/']
+        options: ['/[A-Z].*Controller$/']
     }, {
         code: 'controller = el.controller();',
-        args: [1, '/[A-Z].*Controller$/']
+        options: ['/[A-Z].*Controller$/']
     }],
     invalid: [
         {
             code: 'app.controller("Controller", function(){});',
-            args: [1, 'eslint'],
+            options: ['eslint'],
             errors: [{ message: 'The Controller controller should be prefixed by eslint'}]
         },
         {
             code: 'app.controller("esLintController", function(){});',
-            args: [1, 'eslint'],
+            options: ['eslint'],
             errors: [{ message: 'The esLintController controller should be prefixed by eslint'}]
         },
         {
             code: 'app.controller("Controller", function(){});',
-            args: [1, /^eslint/],
+            options: [/^eslint/],
             errors: [{ message: 'The Controller controller should follow this pattern: /^eslint/'}]
         },
         {
             code: 'app.controller("customers", function(){});',
-            args: [1, /[A-Z].*Controller$/],
+            options: [/[A-Z].*Controller$/],
             errors: [{ message: 'The customers controller should follow this pattern: /[A-Z].*Controller$/'}]
         },
         {
             code: 'app.controller("customersController", function(){});',
-            args: [1, /[A-Z].*Controller$/],
+            options: [/[A-Z].*Controller$/],
             errors: [{ message: 'The customersController controller should follow this pattern: /[A-Z].*Controller$/'}]
         }, {
             code: 'app.controller("eslintController", function(){});',
-            args: [1, '/[A-Z].*Controller$/'],
+            options: ['/[A-Z].*Controller$/'],
             errors: [{ message: 'The eslintController controller should follow this pattern: /[A-Z].*Controller$/'}]
         }
     ]

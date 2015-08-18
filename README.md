@@ -134,6 +134,39 @@ Here are the things you should do before sending a Pull Request with a new Rule 
 * Update the main index.js file, in order to add the new rule in the 'rules' property, and set the default configuration in the rulesConfig property
 * Update the "Rules" part of the README.md file with a small description of the rule and its default configuration.
 
+We can use a property, defined in the ESLint configuration file, in order to know which version is used : Angular 1 or Angular 2. based on this property, you can create rules for each version. 
+
+```yaml
+plugins:
+  - angular
+
+rules:
+    angular/ng_controller_name:
+      - 2
+      - '/[A-Z].*Controller$/'
+
+globals:
+    angular: true
+
+settings:
+    angular: 2
+```
+
+And in your rule, you can access to this property thanks to the `context` object : 
+
+```javascript
+//If Angular 2 is used, we disabled the rule
+if(context.settings.angular === 2){
+    return {};
+}
+
+return {
+
+    'CallExpression': function(node) {
+    }
+};
+```
+
 ## Default ESLint Configuration file
 
 Here is the basic configuration for the rules defined in the ESLint plugin, in order to be compatible with the guideline provided by @johnpapa :

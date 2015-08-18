@@ -73,3 +73,10 @@ module.exports = function(context) {
     };
 
 };
+
+
+module.exports.schema = [{
+    type: ['array', 'object'],
+}, {
+    type: 'array'
+}];
