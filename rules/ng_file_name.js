@@ -19,17 +19,37 @@ module.exports = function (context) {
         underscore: '_'
     };
 
-    function createExpectedNameFn(options) {
-        var typeSuffixOption = options.typeSuffix;
-        var typeSuffixSeparator = typeSeparators[typeSuffixOption];
+    function passName(name) {
+        return name;
+    }
 
-        if (typeSuffixOption === 'none' || typeSuffixSeparator === undefined) {
-            return function (name) {
-                return name + fileEnding;
+    function removeTypeSuffix(name, type) {
+        var nameTypeLengthDiff = name.length - type.length;
+        if (nameTypeLengthDiff <= 0) {
+            return name;
+        }
+        var typeCamelCase = type[0].toUpperCase() + type.slice(1);
+        if (name.indexOf(typeCamelCase) === nameTypeLengthDiff) {
+            return name.slice(0, nameTypeLengthDiff);
+        } else {
+            return name;
+        }
+    }
+
+    function createExpectedNameFn(options) {
+        var typeSeparatorOption = options.typeSeparator;
+        var typeSeparatorSeparator = typeSeparators[typeSeparatorOption];
+        var ignoreTypeSuffix = !!options.ignoreTypeSuffix;
+
+        var transformFileName = ignoreTypeSuffix ? removeTypeSuffix : passName;
+
+        if (typeSeparatorOption === 'none' || typeSeparatorSeparator === undefined) {
+            return function (name, type) {
+                return transformFileName(name, type) + fileEnding;
             }
         } else {
             return function (name, type) {
-                return name + typeSuffixSeparator + type + fileEnding;
+                return transformFileName(name, type) + typeSeparatorSeparator + type + fileEnding;
             }
         }
     }

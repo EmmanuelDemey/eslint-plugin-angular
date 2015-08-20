@@ -36,11 +36,11 @@ eslintTester.run('ng_file_name', rule, {
         filename: 'beautifulDirective.js',
         code: 'app.directive("beautifulDirective", function(){});'
     }, {
-        // typeSuffix dot with filter
+        // typeSeparator dot with filter
         filename: 'src/app/myFilter.filter.js',
         code: 'app.filter("myFilter", function(){});',
         options: [{
-            typeSuffix: 'dot'
+            typeSeparator: 'dot'
         }]
     }, {
         // ignore $provide declarations
@@ -51,18 +51,58 @@ eslintTester.run('ng_file_name', rule, {
         filename: 'src/app/fooBar.spec.js',
         code: 'it("myApp", function(){})'
     },{
-        // typeSuffix dash with service (factory)
+        // typeSeparator dash with service (factory)
         filename: 'src/app/someUtil-service.js',
         code: 'app.factory("someUtil", function(){});',
         options: [{
-            typeSuffix: 'dash'
+            typeSeparator: 'dash'
         }]
     }, {
-        // typeSuffix underscore with controller
+        // typeSeparator underscore with controller
         filename: 'src/app/SomeController_controller.js',
         code: 'app.controller("SomeController", function(){});',
         options: [{
-            typeSuffix: 'underscore'
+            typeSeparator: 'underscore'
+        }]
+    }, {
+        // typeSeparator dot with controller and ignored type suffix
+        filename: 'src/app/Avengers.controller.js',
+        code: 'app.controller("AvengersController", function(){});',
+        options: [{
+            typeSeparator: 'dot',
+            ignoreTypeSuffix: true
+        }]
+    }, {
+        // typeSeparator dot with controller and ignored type suffix
+        filename: 'src/app/Avengers.controller.js',
+        code: 'app.controller("AvengersController", function(){});',
+        options: [{
+            typeSeparator: 'dot',
+            ignoreTypeSuffix: true
+        }]
+    }, {
+        // typeSeparator dot with service and ignored type suffix
+        filename: 'src/app/avengers.service.js',
+        code: 'app.factory("avengersService", function(){});',
+        options: [{
+            typeSeparator: 'dot',
+            ignoreTypeSuffix: true
+        }]
+    }, {
+        // typeSeparator dot with service and ignored type suffix
+        filename: 'src/app/avengersApi.service.js',
+        code: 'app.factory("avengersApi", function(){});',
+        options: [{
+            typeSeparator: 'dot',
+            ignoreTypeSuffix: true
+        }]
+    }, {
+        // typeSeparator dot with service and ignored type suffix (optimization: name shorter than type name)
+        filename: 'src/app/utils.service.js',
+        code: 'app.factory("utils", function(){});',
+        options: [{
+            typeSeparator: 'dot',
+            ignoreTypeSuffix: true
         }]
     }],
     invalid: [{
@@ -73,16 +113,33 @@ eslintTester.run('ng_file_name', rule, {
         filename: 'src/app/myFilter.js',
         code: 'app.filter("myFilter", function(){});',
         options: [{
-            typeSuffix: 'dot'
+            typeSeparator: 'dot'
         }],
         errors: [{ message: 'Filename must be "myFilter.filter.js"'}]
     },{
-        // typeSuffix underscore with service
+        // typeSeparator underscore with service
         filename: 'src/someService_controller.js',
         code: 'app.factory("someService", function(){});',
         options: [{
-            typeSuffix: 'underscore'
+            typeSeparator: 'underscore'
         }],
         errors: [{ message: 'Filename must be "someService_service.js"'}]
+    }, {
+        // typeSeparator dot with controller, but no ignored type suffix
+        filename: 'src/app/Avengers.controller.js',
+        code: 'app.controller("AvengersController", function(){});',
+        options: [{
+            typeSeparator: 'dot'
+        }],
+        errors: [{ message: 'Filename must be "AvengersController.controller.js"'}]
+    }, {
+        // typeSeparator dot with controller and ignored type suffix
+        filename: 'src/app/AvengersController.controller.js',
+        code: 'app.controller("AvengersController", function(){});',
+        options: [{
+            typeSeparator: 'dot',
+            ignoreTypeSuffix: true
+        }],
+        errors: [{ message: 'Filename must be "Avengers.controller.js"'}]
     }]
 });
