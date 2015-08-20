@@ -68,14 +68,14 @@ eslintTester.run('ng_file_name', rule, {
     invalid: [{
         filename: 'src/app/filters.js',
         code: 'app.filter("myFilter", function(){});',
-        errors: [{ message: 'Expected src/app/filters.js to be named myFilter.js'}]
+        errors: [{ message: 'Filename must be "myFilter.js"'}]
     },{
         filename: 'src/app/myFilter.js',
         code: 'app.filter("myFilter", function(){});',
         options: [{
             typeSuffix: 'dot'
         }],
-        errors: [{ message: 'Expected src/app/myFilter.js to be named myFilter.filter.js'}]
+        errors: [{ message: 'Filename must be "myFilter.filter.js"'}]
     },{
         // typeSuffix underscore with service
         filename: 'src/someService_controller.js',
@@ -83,6 +83,6 @@ eslintTester.run('ng_file_name', rule, {
         options: [{
             typeSuffix: 'underscore'
         }],
-        errors: [{ message: 'Expected src/someService_controller.js to be named someService_service.js'}]
+        errors: [{ message: 'Filename must be "someService_service.js"'}]
     }]
 });

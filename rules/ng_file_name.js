@@ -55,7 +55,7 @@ module.exports = function (context) {
                 expectedName = expectedNameFn(name, type);
 
                 if (expectedName !== filename) {
-                    context.report(node, 'Expected {{path}} to be named {{expectedName}}', {
+                    context.report(node, 'Filename must be "{{expectedName}}"', {
                         path: filePath,
                         expectedName: expectedName
                     });
