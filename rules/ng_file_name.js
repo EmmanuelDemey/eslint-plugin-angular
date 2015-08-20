@@ -1,58 +1,15 @@
-module.exports = function (context) {
+module.exports = (function () {
     'use strict';
 
     var utils = require('./utils/utils');
     var path = require('path');
     var fileEnding = '.js';
 
-    var options = context.options[0] || {},
-        filePath = context.getFilename(),
-        filename = filenameFromPath(filePath);
-
-    function filenameFromPath(filePath) {
-        return filePath.split(path.sep).splice(-1)[0];
-    }
-
     var typeSeparators = {
         dot: '.',
         dash: '-',
         underscore: '_'
     };
-
-    function passName(name) {
-        return name;
-    }
-
-    function removeTypeSuffix(name, type) {
-        var nameTypeLengthDiff = name.length - type.length;
-        if (nameTypeLengthDiff <= 0) {
-            return name;
-        }
-        var typeCamelCase = type[0].toUpperCase() + type.slice(1);
-        if (name.indexOf(typeCamelCase) === nameTypeLengthDiff) {
-            return name.slice(0, nameTypeLengthDiff);
-        } else {
-            return name;
-        }
-    }
-
-    function createExpectedNameFn(options) {
-        var typeSeparatorOption = options.typeSeparator;
-        var typeSeparatorSeparator = typeSeparators[typeSeparatorOption];
-        var ignoreTypeSuffix = !!options.ignoreTypeSuffix;
-
-        var transformFileName = ignoreTypeSuffix ? removeTypeSuffix : passName;
-
-        if (typeSeparatorOption === 'none' || typeSeparatorSeparator === undefined) {
-            return function (name, type) {
-                return transformFileName(name, type) + fileEnding;
-            }
-        } else {
-            return function (name, type) {
-                return transformFileName(name, type) + typeSeparatorSeparator + type + fileEnding;
-            }
-        }
-    }
 
     var componentTypeMappings = {
         module: 'module',
@@ -66,33 +23,80 @@ module.exports = function (context) {
         constant: 'constant'
     };
 
-    var expectedNameFn = createExpectedNameFn(options);
+    var filenameUtil = {
+        createComponentNameTransformFn: function (options) {
+            if (options.ignoreTypeSuffix) {
+                return this.removeTypeSuffix;
+            } else {
+                return this.pass;
+            }
+        },
+        removeTypeSuffix: function (name, type) {
+            var nameTypeLengthDiff = name.length - type.length;
+            if (nameTypeLengthDiff <= 0) {
+                return name;
+            }
+            var typeCamelCase = type[0].toUpperCase() + type.slice(1);
+            if (name.indexOf(typeCamelCase) === nameTypeLengthDiff) {
+                return name.slice(0, nameTypeLengthDiff);
+            } else {
+                return name;
+            }
+        },
+        pass: function (value) {
+            return value;
+        },
+        createAppendTypeSuffixFn: function (options) {
+            var typeSeparator = typeSeparators[options.typeSeparator];
 
-    return {
-
-        'CallExpression': function (node) {
-
-            if (utils.isAngularComponent(node) && utils.isMemberExpression(node.callee)) {
-                var name = node.arguments[0].value,
-                    type = componentTypeMappings[node.callee.property.name],
-                    expectedName;
-
-                if (!type) {
-                    return;
+            if (typeSeparator == undefined) {
+                return this.pass;
+            } else {
+                return function (name, type) {
+                    return name + typeSeparator + type;
                 }
-                if (type === 'service' && node.callee.object.name === '$provide') {
-                    return;
-                }
+            }
+        },
+        createExpectedNameFn: function (options) {
+            var typeSeparatorSeparator = typeSeparators[options.typeSeparator];
 
-                expectedName = expectedNameFn(name, type);
+            var transformComponentName = filenameUtil.createComponentNameTransformFn(options);
+            var appendTypeSuffix = filenameUtil.createAppendTypeSuffixFn(options)
 
-                if (expectedName !== filename) {
-                    context.report(node, 'Filename must be "{{expectedName}}"', {
-                        path: filePath,
-                        expectedName: expectedName
-                    });
-                }
+            return function (name, type) {
+                return appendTypeSuffix(transformComponentName(name, type), type) + fileEnding;
             }
         }
     };
-};
+
+    return function (context) {
+        var options = context.options[0] || {},
+            filename = path.basename(context.getFilename());
+
+        var expectedNameFn = filenameUtil.createExpectedNameFn(options);
+
+        return {
+
+            'CallExpression': function (node) {
+
+                if (utils.isAngularComponent(node) && utils.isMemberExpression(node.callee)) {
+                    var name = node.arguments[0].value,
+                        type = componentTypeMappings[node.callee.property.name],
+                        expectedName;
+
+                    if (type === undefined|| (type === 'service' && node.callee.object.name === '$provide')) {
+                        return;
+                    }
+
+                    expectedName = expectedNameFn(name, type);
+
+                    if (expectedName !== filename) {
+                        context.report(node, 'Filename must be "{{expectedName}}"', {
+                            expectedName: expectedName
+                        });
+                    }
+                }
+            }
+        };
+    }
+}());
