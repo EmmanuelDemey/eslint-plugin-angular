@@ -24,13 +24,6 @@ module.exports = (function () {
     };
 
     var filenameUtil = {
-        createComponentNameTransformFn: function (options) {
-            if (options.ignoreTypeSuffix) {
-                return this.removeTypeSuffix;
-            } else {
-                return this.pass;
-            }
-        },
         removeTypeSuffix: function (name, type) {
             var nameTypeLengthDiff = name.length - type.length;
             if (nameTypeLengthDiff <= 0) {
@@ -43,37 +36,24 @@ module.exports = (function () {
                 return name;
             }
         },
-        pass: function (value) {
-            return value;
-        },
-        createAppendTypeSuffixFn: function (options) {
+        createExpectedName: function (name, type, options) {
             var typeSeparator = typeSeparators[options.typeSeparator];
 
-            if (typeSeparator == undefined) {
-                return this.pass;
-            } else {
-                return function (name, type) {
-                    return name + typeSeparator + type;
-                }
+            if (options.ignoreTypeSuffix) {
+                name = filenameUtil.removeTypeSuffix(name, type);
             }
-        },
-        createExpectedNameFn: function (options) {
-            var typeSeparatorSeparator = typeSeparators[options.typeSeparator];
 
-            var transformComponentName = filenameUtil.createComponentNameTransformFn(options);
-            var appendTypeSuffix = filenameUtil.createAppendTypeSuffixFn(options)
-
-            return function (name, type) {
-                return appendTypeSuffix(transformComponentName(name, type), type) + fileEnding;
+            if (typeSeparator !== undefined) {
+                name = name + typeSeparator + type;
             }
+
+            return name + fileEnding;
         }
     };
 
     return function (context) {
         var options = context.options[0] || {},
             filename = path.basename(context.getFilename());
-
-        var expectedNameFn = filenameUtil.createExpectedNameFn(options);
 
         return {
 
@@ -88,7 +68,7 @@ module.exports = (function () {
                         return;
                     }
 
-                    expectedName = expectedNameFn(name, type);
+                    expectedName = filenameUtil.createExpectedName(name, type, options);
 
                     if (expectedName !== filename) {
                         context.report(node, 'Filename must be "{{expectedName}}"', {
