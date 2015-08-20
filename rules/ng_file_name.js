@@ -54,6 +54,18 @@ module.exports = function (context) {
         }
     }
 
+    var componentTypeMappings = {
+        module: 'module',
+        controller: 'controller',
+        directive: 'directive',
+        filter: 'filter',
+        service: 'service',
+        factory: 'service',
+        provider: 'service',
+        value: 'service',
+        constant: 'constant'
+    };
+
     var expectedNameFn = createExpectedNameFn(options);
 
     return {
@@ -62,14 +74,14 @@ module.exports = function (context) {
 
             if (utils.isAngularComponent(node) && utils.isMemberExpression(node.callee)) {
                 var name = node.arguments[0].value,
-                    type = node.callee.property.name,
+                    type = componentTypeMappings[node.callee.property.name],
                     expectedName;
 
-                if (type === 'provider' || type === 'service' || type === 'factory' || type === 'constant' || type === 'value') {
-                    if (node.callee.object.name === '$provide') {
-                        return;
-                    }
-                    type = 'service';
+                if (!type) {
+                    return;
+                }
+                if (type === 'service' && node.callee.object.name === '$provide') {
+                    return;
                 }
 
                 expectedName = expectedNameFn(name, type);

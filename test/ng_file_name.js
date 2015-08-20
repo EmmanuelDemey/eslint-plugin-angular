@@ -50,7 +50,11 @@ eslintTester.run('ng_file_name', rule, {
         // ignore test declarations
         filename: 'src/app/fooBar.spec.js',
         code: 'it("myApp", function(){})'
-    },{
+    }, {
+        // ignore test declarations
+        filename: 'src/app/myService.spec.js',
+        code: '$httpBackend.expectGET("/api/my/service").respond(200, dummyVorversicherer)'
+    }, {
         // typeSeparator dash with service (factory)
         filename: 'src/app/someUtil-service.js',
         code: 'app.factory("someUtil", function(){});',
