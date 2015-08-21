@@ -108,6 +108,22 @@ eslintTester.run('ng_file_name', rule, {
             typeSeparator: 'dot',
             ignoreTypeSuffix: true
         }]
+    }, {
+        // nameStyle dash and typeSeparator dash with service
+        filename: 'src/app/app-utils-service.js',
+        code: 'app.factory("appUtils", function(){});',
+        options: [{
+            typeSeparator: 'dash',
+            nameStyle: 'dash'
+        }]
+    }, {
+        // nameStyle underscore and typeSeparator dot with directive
+        filename: 'src/app/my_tab.directive.js',
+        code: 'app.directive("myTab", function(){});',
+        options: [{
+            typeSeparator: 'dot',
+            nameStyle: 'underscore'
+        }]
     }],
     invalid: [{
         filename: 'src/app/filters.js',
@@ -145,5 +161,14 @@ eslintTester.run('ng_file_name', rule, {
             ignoreTypeSuffix: true
         }],
         errors: [{ message: 'Filename must be "Avengers.controller.js"'}]
+    }, {
+        // nameStyle dash and typeSeparator dot with directive
+        filename: 'src/app/avangerProfile.directive.js',
+        code: 'app.directive("avangerProfile", function(){});',
+        options: [{
+            typeSeparator: 'dot',
+            nameStyle: 'dash'
+        }],
+        errors: [{ message: 'Filename must be "avanger-profile.directive.js"'}]
     }]
 });

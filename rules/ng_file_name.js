@@ -5,7 +5,7 @@ module.exports = (function () {
     var path = require('path');
     var fileEnding = '.js';
 
-    var typeSeparators = {
+    var separators = {
         dot: '.',
         dash: '-',
         underscore: '_'
@@ -24,30 +24,44 @@ module.exports = (function () {
     };
 
     var filenameUtil = {
+        firstToUpper: function (value) {
+            return value[0].toUpperCase() + value.slice(1);
+        },
         removeTypeSuffix: function (name, type) {
             var nameTypeLengthDiff = name.length - type.length;
             if (nameTypeLengthDiff <= 0) {
                 return name;
             }
-            var typeCamelCase = type[0].toUpperCase() + type.slice(1);
+            var typeCamelCase = this.firstToUpper(type);
             if (name.indexOf(typeCamelCase) === nameTypeLengthDiff) {
                 return name.slice(0, nameTypeLengthDiff);
             } else {
                 return name;
             }
         },
+        transformComponentName: function (name, options) {
+            var nameStyle = options.nameStyle;
+            var nameSeparator = separators[nameStyle];
+            if (nameSeparator) {
+                var replacement = "$1" + nameSeparator + "$2";
+                name = name.replace(/([a-z])([A-Z])/g, replacement).toLowerCase();
+            }
+            return name;
+        },
         createExpectedName: function (name, type, options) {
-            var typeSeparator = typeSeparators[options.typeSeparator];
+            var typeSeparator = separators[options.typeSeparator];
 
             if (options.ignoreTypeSuffix) {
                 name = filenameUtil.removeTypeSuffix(name, type);
             }
-
+            if (options.nameStyle) {
+                name = filenameUtil.transformComponentName(name, options);
+            }
             if (typeSeparator !== undefined) {
                 name = name + typeSeparator + type;
             }
-
             return name + fileEnding;
+
         }
     };
 
