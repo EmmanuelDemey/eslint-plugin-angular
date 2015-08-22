@@ -15,6 +15,7 @@ eslintTester.run('ng_di_order', rule, {
         'app.controller("", function($http, $q){});',
         'app.directive("", function($http, $q){});',
         'app.factory("", function($http, $q){});',
+        'app.factory("", fsctoryName);',
         'app.filter("", function($http, $q){});',
         'app.provider("", function($http, $q){});',
         'app.service("", function($http, $q){});',

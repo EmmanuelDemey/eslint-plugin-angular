@@ -37,7 +37,7 @@ module.exports = function(context) {
 
         'CallExpression': function(node) {
             // An Angular component definition.
-            if(utils.isAngularComponent(node) && node.callee.type === 'MemberExpression' && angularNamedObjectList.indexOf(node.callee.property.name) >= 0){
+            if(utils.isAngularComponent(node) && node.callee.type === 'MemberExpression' && node.arguments[1].type === 'FunctionExpression' && angularNamedObjectList.indexOf(node.callee.property.name) >= 0){
                 return checkOrder(node, node.arguments[1]);
             }
             // Injected values in unittests.
