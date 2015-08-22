@@ -12,6 +12,10 @@ module.exports = function(context) {
         'provider',
         'service'
     ];
+    var setupCalls = [
+        'config',
+        'run'
+    ];
 
     function checkOrder(fn) {
         var args = fn.params.map(function(arg) {
@@ -39,6 +43,10 @@ module.exports = function(context) {
             // An Angular component definition.
             if(utils.isAngularComponent(node) && node.callee.type === 'MemberExpression' && node.arguments[1].type === 'FunctionExpression' && angularNamedObjectList.indexOf(node.callee.property.name) >= 0){
                 return checkOrder(node.arguments[1]);
+            }
+            // Config and run functions.
+            if(node.callee.type === 'MemberExpression' && node.arguments.length > 0 && setupCalls.indexOf(node.callee.property.name) !== -1 && node.arguments[0].type === 'FunctionExpression') {
+                return checkOrder(node.arguments[0]);
             }
             // Injected values in unittests.
             if(node.callee.type === 'Identifier' && node.callee.name === 'inject') {

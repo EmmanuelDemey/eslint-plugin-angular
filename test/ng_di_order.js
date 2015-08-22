@@ -19,6 +19,8 @@ eslintTester.run('ng_di_order', rule, {
         'app.filter("", function($http, $q){});',
         'app.provider("", function($http, $q){});',
         'app.service("", function($http, $q){});',
+        'app.config(function($httpProvider, $routeProvider){});',
+        'app.run(function($http, $q){});',
         'inject(function($http, $q){});',
         'it(inject(function($http, $q){}));',
         'this.$get = function($http, $q){};',
@@ -40,6 +42,12 @@ eslintTester.run('ng_di_order', rule, {
         errors: [{message: 'Injected values should be sorted alphabetically'}]
     }, {
         code: 'app.service("", function($q, $http){});',
+        errors: [{message: 'Injected values should be sorted alphabetically'}]
+    }, {
+        code: 'app.config(function($routeProvider, $httpProvider){});',
+        errors: [{message: 'Injected values should be sorted alphabetically'}]
+    }, {
+        code: 'app.run(function($q, $http){});',
         errors: [{message: 'Injected values should be sorted alphabetically'}]
     }, {
         code: 'inject(function($q, $http){});',
