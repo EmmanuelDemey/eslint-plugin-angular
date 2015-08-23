@@ -95,7 +95,7 @@
 		},
 
 		isAngularModuleDeclaration: function(node){
-			return this.isAngularComponent(node) && node.callee !== undefined && node.callee.type === 'MemberExpression' && node.callee.property.name === 'module'
+			return this.isAngularComponent(node) && this.isMemberExpression(node.callee) && node.callee.property.name === 'module'
 		},
 
 		isAngularModuleGetter: function(node){
