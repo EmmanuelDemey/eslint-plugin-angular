@@ -22,6 +22,9 @@ module.exports = function(context) {
             return;
         }
         var args = fn.params.map(function(arg) {
+            if(context.options[0] !== false) {
+                return arg.name.replace(/^_(.+)_$/, '$1')
+            }
             return arg.name;
         });
         var sortedArgs = args.slice().sort();

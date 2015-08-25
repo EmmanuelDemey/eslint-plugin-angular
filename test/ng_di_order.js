@@ -24,7 +24,12 @@ eslintTester.run('ng_di_order', rule, {
         'inject(function($http, $q){});',
         'it(inject(function($http, $q){}));',
         'this.$get = function($http, $q){};',
-        'this.$get = get;'
+        'this.$get = get;',
+        'it(inject(function(_$http_, _$httpBackend_){}));',
+        {
+            code: 'it(inject(function(_$httpBackend_, _$http_){}));',
+            options: [false],
+        }
     ],
     invalid: [{
         code: 'app.controller("", function($q, $http){});',
@@ -55,6 +60,13 @@ eslintTester.run('ng_di_order', rule, {
         errors: [{message: 'Injected values should be sorted alphabetically'}]
     }, {
         code: 'it(inject(function($q, $http){}));',
+        errors: [{message: 'Injected values should be sorted alphabetically'}]
+    }, {
+        code: 'it(inject(function(_$http_, _$httpBackend_){}));',
+        options: [false],
+        errors: [{message: 'Injected values should be sorted alphabetically'}]
+    }, {
+        code: 'it(inject(function(_$httpBackend_, _$http_){}));',
         errors: [{message: 'Injected values should be sorted alphabetically'}]
     }, {
         code: 'this.$get = function($q, $http){};',
