@@ -24,6 +24,7 @@ eslintTester.run('ng_di_order', rule, {
         'inject(function($http, $q){});',
         'it(inject(function($http, $q){}));',
         'this.$get = function($http, $q){};',
+        'this.$get = get;'
     ],
     invalid: [{
         code: 'app.controller("", function($q, $http){});',

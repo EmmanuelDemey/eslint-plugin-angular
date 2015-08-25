@@ -18,6 +18,9 @@ module.exports = function(context) {
     ];
 
     function checkOrder(fn) {
+        if(!fn || !fn.params) {
+            return;
+        }
         var args = fn.params.map(function(arg) {
             return arg.name;
         });
