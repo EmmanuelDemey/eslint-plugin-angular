@@ -81,7 +81,7 @@ We provide also three samples :
 | 'ng_deferred':0                                              | When you want to create a new promise, you should not use the $q.deferred anymore. Prefer the new syntax : $q(function(resolve, reject){})
 | 'ng_definedundefined': 2                                     | You should use the angular.isUndefined or angular.isDefined methods instead of using the keyword undefined. We also check the use of !angular.isUndefined and !angular.isDefined (should prefer the reverse function)|
 | 'ng_di': [2, 'function']                                     | All your DI should use the same syntax : the Array or function syntaxes ("ng_di":  [2, "function or array"])|
-| 'ng_di_order': 0                                             | Injected dependencies should be sorted alphabetically. |
+| 'ng_di_order': [0, true]                                     | Injected dependencies should be sorted alphabetically. If the second parameter is set to false, values which start and end with an underscore those underscores are stripped. This means for example that `_$httpBackend_` goes before `_$http_`. |
 | 'ng_directive_name': 0                                       | All your directives should have a name starting with the parameter you can define in your config object. The second parameter can be a Regexp wrapped in quotes. You can not prefix your directives by "ng" (reserved keyword for AngularJS directives) ("ng_directive_name":  [2, "ng"]) [Y073](https://github.com/johnpapa/angular-styleguide#style-y073), [Y126](https://github.com/johnpapa/angular-styleguide#style-y126) |
 | 'ng_document_service': 2                                     | Instead of the default document object, you should prefer the AngularJS wrapper service $document. [Y180](https://github.com/johnpapa/angular-styleguide#style-y180) |
 | 'ng_empty_controller': 0                                     | If you have one empty controller, maybe you have linked it in your Router configuration or in one of your views. You can remove this declaration because this controller is useless |
@@ -136,7 +136,7 @@ Here are the things you should do before sending a Pull Request with a new Rule 
 * Update the main index.js file, in order to add the new rule in the 'rules' property, and set the default configuration in the rulesConfig property
 * Update the "Rules" part of the README.md file with a small description of the rule and its default configuration.
 
-We can use a property, defined in the ESLint configuration file, in order to know which version is used : Angular 1 or Angular 2. based on this property, you can create rules for each version. 
+We can use a property, defined in the ESLint configuration file, in order to know which version is used : Angular 1 or Angular 2. based on this property, you can create rules for each version.
 
 ```yaml
 plugins:
@@ -154,7 +154,7 @@ settings:
     angular: 2
 ```
 
-And in your rule, you can access to this property thanks to the `context` object : 
+And in your rule, you can access to this property thanks to the `context` object :
 
 ```javascript
 //If Angular 2 is used, we disabled the rule
