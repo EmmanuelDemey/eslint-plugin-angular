@@ -24,4 +24,12 @@
         files: testFiles
     });
 
+    testUtils.detectMissingRuleDefinitionForFiles(ruleFiles, {
+        ruleNames: ruleNames
+    });
+
+    testUtils.detectMissingRuleDefinitionForFiles(testFiles, {
+        ruleNames: ruleNames
+    });
+
 })();

@@ -19,6 +19,16 @@
                     throw new Error('Missing ' + options.type + ' "' + basePath + expectedFilename + '" for rule "' + ruleName + '"');
                 }
             })
+        },
+        detectMissingRuleDefinitionForFiles: function (files, options) {
+            var basePath = files.basePath;
+            var ruleNames = options.ruleNames;
+            files.forEach(function (fileName) {
+                var expectedRulename = fileName.replace(/\.js$/, '');
+                if (ruleNames.indexOf(expectedRulename) < 0) {
+                    throw new Error('Missing rule definition "' + expectedRulename + '" for "' + basePath + fileName + '"');
+                }
+            });
         }
     };
 })();
