@@ -27,6 +27,9 @@ module.exports = (function () {
         firstToUpper: function (value) {
             return value[0].toUpperCase() + value.slice(1);
         },
+        firstToLower: function (value) {
+            return value[0].toLowerCase() + value.slice(1);
+        },
         removeTypeSuffix: function (name, type) {
             var nameTypeLengthDiff = name.length - type.length;
             if (nameTypeLengthDiff <= 0) {
@@ -35,6 +38,13 @@ module.exports = (function () {
             var typeCamelCase = this.firstToUpper(type);
             if (name.indexOf(typeCamelCase) === nameTypeLengthDiff) {
                 return name.slice(0, nameTypeLengthDiff);
+            } else {
+                return name;
+            }
+        },
+        removePrefix: function (name, options) {
+            if (new RegExp('^' + options.ignorePrefix + '[A-Z]').test(name)) {
+                return this.firstToLower(name.slice(options.ignorePrefix.length));
             } else {
                 return name;
             }
@@ -53,6 +63,9 @@ module.exports = (function () {
 
             if (options.ignoreTypeSuffix) {
                 name = filenameUtil.removeTypeSuffix(name, type);
+            }
+            if (options.ignorePrefix && options.ignorePrefix.length > 0) {
+                name = filenameUtil.removePrefix(name, options);
             }
             if (options.nameStyle) {
                 name = filenameUtil.transformComponentName(name, options);

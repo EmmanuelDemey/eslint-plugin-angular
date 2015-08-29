@@ -124,6 +124,31 @@ eslintTester.run('file-name', rule, {
             typeSeparator: 'dot',
             nameStyle: 'underscore'
         }]
+    }, {
+        // ignorePrefix xp with typeSeparator dot and ignoreTypeSuffix
+        filename: 'src/app/asset.service.js',
+        code: 'angular.factory("xpAssetService", xpAssetService)',
+        options: [{
+            typeSeparator: 'dot',
+            ignoreTypeSuffix: true,
+            ignorePrefix: 'xp'
+        }]
+    }, {
+        // ignorePrefix st with typeSeparator dash
+        filename: 'src/app/appUtils-service.js',
+        code: 'angular.factory("stAppUtils", stAppUtils)',
+        options: [{
+            typeSeparator: 'dash',
+            ignorePrefix: 'st'
+        }]
+    }, {
+        // test to detect false positives for ignorePrefix
+        filename: 'staging_service.js',
+        code: 'angular.factory("staging", staging)',
+        options: [{
+            typeSeparator: 'underscore',
+            ignorePrefix: 'st'
+        }]
     }],
     invalid: [{
         filename: 'src/app/filters.js',
@@ -170,5 +195,15 @@ eslintTester.run('file-name', rule, {
             nameStyle: 'dash'
         }],
         errors: [{ message: 'Filename must be "avanger-profile.directive.js"'}]
+    }, {
+        // ignorePrefix xp
+        filename: 'src/app/xpAsset.service.js',
+        code: 'angular.factory("xpAssetService", xpAssetService)',
+        options: [{
+            typeSeparator: 'dot',
+            ignoreTypeSuffix: true,
+            ignorePrefix: 'xp'
+        }],
+        errors: [{ message: 'Filename must be "asset.service.js"'}]
     }]
 });
