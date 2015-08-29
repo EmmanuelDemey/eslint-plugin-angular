@@ -1,8 +1,8 @@
 /**
- * @ruleName di
- * @description
- *
  * All your DI should use the same syntax : the Array or function syntaxes ("di":  [2, "function or array"])
+ *
+ * @ruleName di
+ * @config [2, 'function']
  */
 module.exports = function(context) {
 

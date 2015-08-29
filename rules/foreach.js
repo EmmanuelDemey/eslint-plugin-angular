@@ -1,8 +1,8 @@
 /**
- * @ruleName foreach
- * @description
- *
  * You should use the angular.forEach method instead of the default JavaScript implementation [].forEach.
+ *
+ * @ruleName foreach
+ * @config 0
  */
 module.exports = function(context) {
 

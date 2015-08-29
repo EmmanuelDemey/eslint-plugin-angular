@@ -1,9 +1,9 @@
 /**
- * @ruleName rest-service
- * @description
- *
  * Check the service used to send request to your REST API.
  * This rule can have one parameter, with one of the following values: $http, $resource or Restangular ('rest-service': [0, '$http']).
+ *
+ * @ruleName rest-service
+ * @config 0
  */
 module.exports = function(context) {
 

@@ -1,8 +1,8 @@
 /**
- * @ruleName log
- * @description
- *
  * You should use $log service instead of console for the methods 'log', 'debug', 'error', 'info', 'warn'
+ *
+ * @ruleName log
+ * @config 2
  */
 module.exports = function(context) {
 

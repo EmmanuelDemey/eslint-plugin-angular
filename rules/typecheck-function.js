@@ -1,8 +1,8 @@
 /**
- * @ruleName typecheck-function
- * @description
- *
  * You should use the angular.isFunction method instead of the default JavaScript implementation (typeof function(){} ==="[object Function]").
+ *
+ * @ruleName typecheck-function
+ * @config 2
  */
 module.exports = function(context) {
 

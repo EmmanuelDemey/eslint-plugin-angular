@@ -1,9 +1,9 @@
 /**
- * @ruleName window-service
- * @description
- *
  * Instead of the default window object, you should prefer the AngularJS wrapper service $window.
  * [Y180](https://github.com/johnpapa/angular-styleguide#style-y180)
+ *
+ * @ruleName window-service
+ * @config 2
  */
 module.exports = function(context) {
 

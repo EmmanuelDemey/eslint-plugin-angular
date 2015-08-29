@@ -1,9 +1,9 @@
 /**
- * @ruleName no-angular-mock
- * @description
- *
  * All methods defined in the angular.mock object are also available in the object window.
  * So you can remove angular.mock from your code
+ *
+ * @ruleName no-angular-mock
+ * @config 0
  */
 module.exports = function(context) {
 

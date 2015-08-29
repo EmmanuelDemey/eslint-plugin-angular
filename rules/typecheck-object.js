@@ -1,8 +1,8 @@
 /**
- * @ruleName typecheck-object
- * @description
- *
  * You should use the angular.isObject method instead of the default JavaScript implementation (typeof {} === "[object Object]").
+ *
+ * @ruleName typecheck-object
+ * @config 2
  */
 module.exports = function(context) {
 

@@ -1,9 +1,9 @@
 /**
- * @ruleName deferred
- * @description
- *
  * When you want to create a new promise, you should not use the $q.deferred anymore.
  * Prefer the new syntax : $q(function(resolve, reject){})
+ *
+ * @ruleName deferred
+ * @config 0
  */
 module.exports = function(context) {
 
