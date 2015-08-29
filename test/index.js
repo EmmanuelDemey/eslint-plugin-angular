@@ -2,7 +2,10 @@
 	var eslintAngularIndex = require('../index.js'),
         testUtils = require("./utils/testUtils.js");
 
-    var ruleNames = Object.keys(eslintAngularIndex.rules);
+    var ruleNames = Object.keys(eslintAngularIndex.rules).filter(function (ruleName) {
+        // filter legacy rules
+        return !/^ng_/.test(ruleName);
+    });
 
     var ruleFiles = testUtils.getFiles({
         basePath: './rules/',
