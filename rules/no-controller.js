@@ -1,3 +1,9 @@
+/**
+ * @ruleName no-controller
+ * @description
+ *
+ * According to the Component-First pattern, we should avoid the use of AngularJS controller.
+ */
 module.exports = function(context) {
 
     'use strict';

@@ -1,3 +1,10 @@
+/**
+ * @ruleName no-private-call
+ * @description
+ *
+ * All scope's properties/methods starting with $$ are used internally by AngularJS.
+ * You should not use them directly.
+ */
 module.exports = function(context) {
 
     'use strict';

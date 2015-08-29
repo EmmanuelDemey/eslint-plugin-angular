@@ -1,3 +1,10 @@
+/**
+ * @ruleName controller-as-route
+ * @description
+ *
+ * You should use Angular's controllerAs syntax when defining routes or states.
+ * Implements route part [Y031](https://github.com/johnpapa/angular-styleguide#style-y031)
+ */
 module.exports = function(context) {
 
     'use strict';

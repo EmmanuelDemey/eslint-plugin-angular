@@ -1,3 +1,10 @@
+/**
+ * @ruleName no-digest
+ * @description
+ *
+ * DEPRECATED! The scope's $digest() method shouldn't be used.
+ * You should prefer the $apply method.
+ */
 module.exports = function(context) {
 
     'use strict';

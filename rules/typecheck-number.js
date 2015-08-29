@@ -1,3 +1,9 @@
+/**
+ * @ruleName typecheck-number
+ * @description
+ *
+ * You should use the angular.isNumber method instead of the default JavaScript implementation (typeof 3 === "[object Number]").
+ */
 module.exports = function(context) {
     'use strict';
 

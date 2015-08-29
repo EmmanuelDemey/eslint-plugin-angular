@@ -1,3 +1,9 @@
+/**
+ * @ruleName log
+ * @description
+ *
+ * You should use $log service instead of console for the methods 'log', 'debug', 'error', 'info', 'warn'
+ */
 module.exports = function(context) {
 
     'use strict';

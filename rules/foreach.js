@@ -1,3 +1,9 @@
+/**
+ * @ruleName foreach
+ * @description
+ *
+ * You should use the angular.forEach method instead of the default JavaScript implementation [].forEach.
+ */
 module.exports = function(context) {
 
     'use strict';

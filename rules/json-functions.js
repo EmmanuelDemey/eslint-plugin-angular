@@ -1,3 +1,9 @@
+/**
+ * @ruleName json-functions
+ * @description
+ *
+ * You should use angular.fromJson or angular.toJson instead of JSON.parse and JSON.stringify
+ */
 module.exports = function(context) {
 
     'use strict';

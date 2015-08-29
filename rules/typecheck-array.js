@@ -1,3 +1,9 @@
+/**
+ * @ruleName typecheck-array
+ * @description
+ *
+ * You should use the angular.isArray method instead of the default JavaScript implementation (typeof [] === "[object Array]").
+ */
 module.exports = function(context) {
 
     'use strict';

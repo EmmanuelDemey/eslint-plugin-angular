@@ -1,3 +1,9 @@
+/**
+ * @ruleName typecheck-string
+ * @description
+ *
+ * You should use the angular.isString method instead of the default JavaScript implementation (typeof "" === "[object String]").
+ */
 module.exports = function(context) {
 
     'use strict';
