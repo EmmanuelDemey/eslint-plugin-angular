@@ -2,7 +2,7 @@ plugins:
   - angular
 
 rules:
-    angular/ng_controller_name:
+    angular/controller-name:
       - 2
       - '/[A-Z].*Controller$/'
     quotes:
