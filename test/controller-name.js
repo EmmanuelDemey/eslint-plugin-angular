@@ -29,6 +29,9 @@ eslintTester.run('controller-name', rule, {
     }, {
         code: 'controller = el.controller();',
         options: ['/[A-Z].*Controller$/']
+    }, {
+        code: 'controller = el.controller("no-match");',
+        options: ['/^SpamController$/']
     }],
     invalid: [
         {
