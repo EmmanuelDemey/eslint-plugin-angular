@@ -161,7 +161,7 @@ Users may use the shareable [eslint-config-angular](https://github.com/dustinspe
 | Name | Description |
 | ------------- | ------------- |
 | angularelement            | The angular.element method should be used instead of the $ or jQuery object (if you are using jQuery of course). If the jQuery library is imported, angular.element will be a wrapper around the jQuery object. |
-| component-limit           | The number of AngularJS in one file should be limited. The default limit is one, which follows  [Y001](https://github.com/johnpapa/angular-styleguide#style-y001) |
+| component-limit           | The number of AngularJS components in one file should be limited. The default limit is one, which follows  [Y001](https://github.com/johnpapa/angular-styleguide#style-y001) |
 | controller-as             | You should not set properties on $scope in controllers. Use controllerAs syntax and add data to 'this'. Implements 'this' check part of [Y031](https://github.com/johnpapa/angular-styleguide#style-y031). The second parameter can be a Regexp for identifying controller functions (when using something like Browserify) |
 | controller-as-route       | You should use Angular's controllerAs syntax when defining routes or states. Implements route part [Y031](https://github.com/johnpapa/angular-styleguide#style-y031) |
 | controller-as-vm          | You should use a capture variable for 'this' when using the controllerAs syntax. [Y031](https://github.com/johnpapa/angular-styleguide#style-y032). The second parameter specifies the capture variable you want to use in your application. The third parameter can be a Regexp for identifying controller functions (when using something like Browserify) |

@@ -17,7 +17,7 @@ module.exports = function(context) {
 
         'Program:exit': function() {
             if(components.length > limit) {
-                components.forEach(function(node) {
+                components.slice(limit).forEach(function(node) {
                     context.report(node, 'There may be at most {{limit}} AngularJS {{component}} per file', {
                         limit: limit,
                         component: limit === 1 ? 'component' : 'components'
