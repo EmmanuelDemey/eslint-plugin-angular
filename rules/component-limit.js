@@ -18,9 +18,10 @@ module.exports = function(context) {
         'Program:exit': function() {
             if(components.length > limit) {
                 components.slice(limit).forEach(function(node) {
-                    context.report(node, 'There may be at most {{limit}} AngularJS {{component}} per file', {
+                    context.report(node, 'There may be at most {{limit}} AngularJS {{component}} per file, but found {{number}}', {
                         limit: limit,
-                        component: limit === 1 ? 'component' : 'components'
+                        component: limit === 1 ? 'component' : 'components',
+                        number: components.length
                     });
                 })
             }
