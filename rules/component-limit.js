@@ -10,7 +10,7 @@ module.exports = function(context) {
     return {
 
         'CallExpression': function(node) {
-            if(utils.isAngularComponent(node)) {
+            if(utils.isAngularComponent(node) && utils.isMemberExpression(node.callee)) {
                 components.push(node);
             }
         },

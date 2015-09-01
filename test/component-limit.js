@@ -18,6 +18,8 @@ eslintTester.run('component-limit', rule, {
         'app.filter("", function(){});',
         'app.filter("", function(){ var emptyArray = [1,2,3].filter(function() {}); });',
         'app.provider("", function(){});',
+        'it("", function() {});it("", function() {});',
+        'describe("", function () {it("", function() {});it("", function() {}); });',
         'app.service("", function(){});',
         {
             code: 'app.controller("", function(){}).directive("", function(){}).factory("", function(){}).filter("", function(){}).provider("", function(){}).service("", function(){});',
