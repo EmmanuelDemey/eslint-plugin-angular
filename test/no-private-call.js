@@ -14,7 +14,7 @@ var eslintTester = new RuleTester();
 var variables = ['$scope', '$rootScope'];
 var bad = ['$$childHead', '$$childTail', '$$prevSibling', '$$nextSibling',
 		'$$listeners', '$$phase', '$$watchers', '$$asyncQueue', '$$postDigestQueue',
-		'$$isolateBindings', '$$postDigest(function(){})', '$$destroyed'];
+		'$$isolateBindings', '$$postDigest(function(){})', '$$destroyed', '$$unknownFutureVariable'];
 var invalid = [];
 
 variables.forEach(function(variable){
@@ -31,7 +31,14 @@ variables.forEach(function(variable){
 eslintTester.run('no-private-call', rule, {
     valid: [
         '$scope.$apply(function(){})',
-        '$rootScope.$apply(function(){})'
+        '$rootScope.$apply(function(){})',
+        {
+            code: '$scope.$$watchers',
+            options: [{
+                ignore: ['$$watchers']
+            }]
+        }
+
     ],
     invalid: invalid
 });
