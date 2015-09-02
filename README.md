@@ -188,7 +188,7 @@ Users may use the shareable [eslint-config-angular](https://github.com/dustinspe
 | no-cookiestore            | In Angular 1.4, the $cookieStore service is now deprected. Please use the $cookies service instead|
 | no-digest                 | DEPRECATED! The scope's $digest() method shouldn't be used. You should prefer the $apply method. |
 | no-jquery-angularelement  | You should not wrap angular.element object into jQuery(), because angular.element already return jQLite element|
-| no-private-call           | All scope's properties/methods starting with $$ are used internally by AngularJS. You should not use them directly. |
+| no-private-call           | All scope's properties/methods starting with $$ are used internally by AngularJS. You should not use them directly. Exception can be allowed with this option: {allow:['$$watchers']} |
 | no-service-method         | You should prefer the factory() method instead of service() [Y040](https://github.com/johnpapa/angular-styleguide#style-y040)|
 | no-services               | Some services should be used only in a specific AngularJS service (Ajax-based service for example), in order to follow the separation of concerns paradigm. The second parameter specifies the services. The third parameter can be a list of angular objects (controller, factory, etc.). Or second parameter can be an object, where keys are angular object names and value is a list of services (like {controller: ['$http'], factory: ['$q']}) |
 | on-watch                  | Watch and On methods on the scope object should be assigned to a variable, in order to be deleted in a $destroy event handler |
