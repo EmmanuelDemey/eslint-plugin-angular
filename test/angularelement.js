@@ -13,11 +13,11 @@ var RuleTester = require('eslint').RuleTester;
 
 var eslintTester = new RuleTester();
 eslintTester.run('angularelement', rule, {
-  valid: [
-    'angular.element("#id")'
-  ],
-  invalid: [
-    {code: '$( )', errors: [{message: 'You should use angular.element instead of the jQuery $ object'}]},
-    {code: 'jQuery( )', errors: [{message: 'You should use angular.element instead of the jQuery $ object'}]}
-  ]
+    valid: [
+        'angular.element("#id")'
+    ],
+    invalid: [
+        {code: '$( )', errors: [{message: 'You should use angular.element instead of the jQuery $ object'}]},
+        {code: 'jQuery( )', errors: [{message: 'You should use angular.element instead of the jQuery $ object'}]}
+    ]
 });

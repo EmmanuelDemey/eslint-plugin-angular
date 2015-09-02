@@ -157,8 +157,8 @@ rules:
     - declaration
   indent:
     - 2
-    - 2
-    - SwitchCase: 2
+    - 4
+    - SwitchCase: 4
   key-spacing:
     - 2
     - beforeColon: false

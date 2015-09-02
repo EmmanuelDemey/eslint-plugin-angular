@@ -13,11 +13,11 @@ var RuleTester = require('eslint').RuleTester;
 
 var eslintTester = new RuleTester();
 eslintTester.run('no-jquery-angularelement', rule, {
-  valid: [
-    'angular.element("#id")'
-  ],
-  invalid: [
-    {code: '$(angular.element("#id"))', errors: [{message: 'angular.element returns already a jQLite element. No need to wrap with the jQuery object'}]},
-    {code: 'jQuery(angular.element("#id"))', errors: [{message: 'angular.element returns already a jQLite element. No need to wrap with the jQuery object'}]}
-  ]
+    valid: [
+        'angular.element("#id")'
+    ],
+    invalid: [
+        {code: '$(angular.element("#id"))', errors: [{message: 'angular.element returns already a jQLite element. No need to wrap with the jQuery object'}]},
+        {code: 'jQuery(angular.element("#id"))', errors: [{message: 'angular.element returns already a jQLite element. No need to wrap with the jQuery object'}]}
+    ]
 });
