@@ -116,6 +116,7 @@ Users may use the shareable [eslint-config-angular](https://github.com/dustinspe
         "angular/di": [2, "function"],
         "angular/di-order": [0, true],
         "angular/directive-name": 0,
+        "angular/component-limit": [0, 1],
         "angular/document-service": 2,
         "angular/empty-controller": 0,
         "angular/file-name": 0,
@@ -160,6 +161,7 @@ Users may use the shareable [eslint-config-angular](https://github.com/dustinspe
 | Name | Description |
 | ------------- | ------------- |
 | angularelement            | The angular.element method should be used instead of the $ or jQuery object (if you are using jQuery of course). If the jQuery library is imported, angular.element will be a wrapper around the jQuery object. |
+| component-limit           | The number of AngularJS components in one file should be limited. The default limit is one, which follows  [Y001](https://github.com/johnpapa/angular-styleguide#style-y001) |
 | controller-as             | You should not set properties on $scope in controllers. Use controllerAs syntax and add data to 'this'. Implements 'this' check part of [Y031](https://github.com/johnpapa/angular-styleguide#style-y031). The second parameter can be a Regexp for identifying controller functions (when using something like Browserify) |
 | controller-as-route       | You should use Angular's controllerAs syntax when defining routes or states. Implements route part [Y031](https://github.com/johnpapa/angular-styleguide#style-y031) |
 | controller-as-vm          | You should use a capture variable for 'this' when using the controllerAs syntax. [Y031](https://github.com/johnpapa/angular-styleguide#style-y032). The second parameter specifies the capture variable you want to use in your application. The third parameter can be a Regexp for identifying controller functions (when using something like Browserify) |
@@ -186,7 +188,7 @@ Users may use the shareable [eslint-config-angular](https://github.com/dustinspe
 | no-cookiestore            | In Angular 1.4, the $cookieStore service is now deprected. Please use the $cookies service instead|
 | no-digest                 | DEPRECATED! The scope's $digest() method shouldn't be used. You should prefer the $apply method. |
 | no-jquery-angularelement  | You should not wrap angular.element object into jQuery(), because angular.element already return jQLite element|
-| no-private-call           | All scope's properties/methods starting with $$ are used internally by AngularJS. You should not use them directly. |
+| no-private-call           | All scope's properties/methods starting with $$ are used internally by AngularJS. You should not use them directly. Exception can be allowed with this option: {allow:['$$watchers']} |
 | no-service-method         | You should prefer the factory() method instead of service() [Y040](https://github.com/johnpapa/angular-styleguide#style-y040)|
 | no-services               | Some services should be used only in a specific AngularJS service (Ajax-based service for example), in order to follow the separation of concerns paradigm. The second parameter specifies the services. The third parameter can be a list of angular objects (controller, factory, etc.). Or second parameter can be an object, where keys are angular object names and value is a list of services (like {controller: ['$http'], factory: ['$q']}) |
 | on-watch                  | Watch and On methods on the scope object should be assigned to a variable, in order to be deleted in a $destroy event handler |

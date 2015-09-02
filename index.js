@@ -4,6 +4,7 @@
     var rulesConfiguration = require('./rules/utils/rulesConfiguration.js')
 
     rulesConfiguration.addRule('angularelement', 1);
+    rulesConfiguration.addRule('component-limit', [0, 1]);
     rulesConfiguration.addRule('controller-as', 2);
     rulesConfiguration.addRule('controller-as-route', 2);
     rulesConfiguration.addRule('controller-as-vm', [2, 'vm']);
