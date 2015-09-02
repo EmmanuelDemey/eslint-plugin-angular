@@ -35,7 +35,7 @@ eslintTester.run('no-private-call', rule, {
         {
             code: '$scope.$$watchers',
             options: [{
-                ignore: ['$$watchers']
+                allow: ['$$watchers']
             }]
         }
 
