@@ -20,9 +20,9 @@ module.exports = function(context) {
             var callee = node.callee;
             if(callee.type === 'MemberExpression' && callee.property.name === 'controller') {
                 /**
-                * Issue #124 for controller() calls inside karma tests
-                */
-                if(node.arguments.length === 0){
+                 * Allow the usage of element.controller() and element.controller('directiveName') in unittests
+                 */
+                if(node.arguments.length < 2){
                   return;
                 }
 
