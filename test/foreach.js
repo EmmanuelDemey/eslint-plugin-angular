@@ -13,10 +13,10 @@ var RuleTester = require('eslint').RuleTester;
 
 var eslintTester = new RuleTester();
 eslintTester.run('foreach', rule, {
-  valid: [
-    'angular.forEach(variable, function() {})'
-  ],
-  invalid: [
-    {code: 'variable.forEach(function() {})', errors: [{message: 'You should use the angular.forEach method'}]}
-  ]
+    valid: [
+        'angular.forEach(variable, function() {})'
+    ],
+    invalid: [
+        {code: 'variable.forEach(function() {})', errors: [{message: 'You should use the angular.forEach method'}]}
+    ]
 });
