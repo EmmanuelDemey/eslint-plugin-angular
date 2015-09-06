@@ -6,16 +6,8 @@ module.exports = function(context) {
     var options = context.options[0] || {};
     var restrictOpt = options.restrict || 'AE';
     var explicitRestrict = options.explicit === 'always';
-    var restrictChars = [];
+    var restrictChars = restrictOpt.split('');
 
-    restrictOpt.split('').forEach(function(char) {
-        if ('ACEM'.indexOf(char) === -1) {
-            return;
-        }
-        restrictChars.push(char);
-    });
-
-    restrictOpt = restrictChars.join('');
     // Example RegExp for ACEM: /^A?C?E?M?$/
     var restrictRegExp = new RegExp('^' + restrictChars.join('?') + '?$');
     var uncheckedDirectives = [];
@@ -88,7 +80,7 @@ module.exports.schema = [{
     properties: {
         restrict: {
             type: 'string',
-            pattern: '^[ACEM]{1,4}$'
+            pattern: '^((A?C?E?M?)|(M?E?C?A?))$'
         },
         explicit: {
             enum: ['always', 'never']
