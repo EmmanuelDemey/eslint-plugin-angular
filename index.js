@@ -30,6 +30,7 @@ rulesConfiguration.addRule('no-angular-mock', 0);
 rulesConfiguration.addRule('no-controller', 0);
 rulesConfiguration.addRule('no-cookiestore', 2);
 rulesConfiguration.addRule('no-digest', 0);
+rulesConfiguration.addRule('no-http-callback', 0);
 rulesConfiguration.addRule('no-jquery-angularelement', 2);
 rulesConfiguration.addRule('no-private-call', 2);
 rulesConfiguration.addRule('no-services', [2, ['$http', '$resource', 'Restangular', '$q']]);
