@@ -25,11 +25,11 @@ eslintTester.run('directive-restrict', rule, {
         'app.directive("", function() {return {restrict:"E"}})',
         // Allowed with custom restrict
         {
-            code: 'app.directive("", function() {return {restrict:"M"}})',
-            options: [{restrict: 'AEM'}]
+            code: 'app.directive("", function() {return {restrict:"A"}})',
+            options: [{restrict: 'A'}]
         }, {
-            code: 'app.directive("", function() {return {restrict:"CM"}})',
-            options: [{restrict: 'CM'}]
+            code: 'app.directive("", function() {return {restrict:"E"}})',
+            options: [{restrict: 'EA'}]
         },
         // Allowed with explicit restrict
         {
@@ -65,12 +65,18 @@ eslintTester.run('directive-restrict', rule, {
         // Disallowed with custom restrict
         {
             code: 'app.directive("", function() {return {restrict:"M"}})',
-            options: [{restrict: 'ACE'}],
-            errors: [{message: 'Disallowed directive restriction. It must be one of ACE in that order'}]
+            options: [{restrict: 'EA'}],
+            errors: [{message: 'Disallowed directive restriction. It must be one of EA in that order'}]
         }, {
-            code: 'app.directive("", function() {return {restrict:"AC"}})',
-            options: [{restrict: 'CM'}],
-            errors: [{message: 'Disallowed directive restriction. It must be one of CM in that order'}]
+            code: 'app.directive("", function() {return {restrict:"E"}})',
+            options: [{restrict: 'A'}],
+            errors: [{message: 'Disallowed directive restriction. It must be one of A in that order'}]
+        },
+        // Disallowed with wrong order
+        {
+            code: 'app.directive("", function() {return {restrict:"EA"}})',
+            options: [{restrict: 'AE', explicit: 'always'}],
+            errors: [{message: 'Disallowed directive restriction. It must be one of AE in that order'}]
         },
         // Disallowed with explicit restrict
         {
