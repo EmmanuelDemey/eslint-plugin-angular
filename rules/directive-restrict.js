@@ -6,19 +6,12 @@ module.exports = function(context) {
     var options = context.options[0] || {};
     var restrictOpt = options.restrict || 'AE';
     var explicitRestrict = options.explicit === 'always';
-    var restrictChars = [];
+    var restrictChars = restrictOpt.split('');
 
-    restrictOpt.split('').forEach(function(char) {
-        if ('ACEM'.indexOf(char) === -1) {
-            return;
-        }
-        restrictChars.push(char);
-    });
-
-    restrictOpt = restrictChars.join('');
     // Example RegExp for ACEM: /^A?C?E?M?$/
     var restrictRegExp = new RegExp('^' + restrictChars.join('?') + '?$');
-    var uncheckedDirectives = [];
+    var foundDirectives = [];
+    var checkedDirectives = [];
     var defaultRestrictions = ['AE', 'EA'];
 
     function checkLiteralNode(node) {
@@ -40,19 +33,20 @@ module.exports = function(context) {
             context.report(node, 'No need to explicitly specify a default directive restriction');
             return;
         }
-        if (restrictRegExp.test(node.value)) {
-            uncheckedDirectives.splice(uncheckedDirectives.indexOf(directiveNode), 1);
-            return;
+
+        if (!restrictRegExp.test(node.value)) {
+            context.report(directiveNode, 'Disallowed directive restriction. It must be one of {{allowed}} in that order', {
+                allowed: restrictOpt
+            });
         }
-        context.report(directiveNode, 'Disallowed directive restriction. It must be one of {{allowed}} in that order', {
-            allowed: restrictOpt
-        });
+
+        checkedDirectives.push(directiveNode);
     }
 
     return {
         CallExpression: function(node) {
             if (utils.isAngularDirectiveDeclaration(node)) {
-                uncheckedDirectives.push(node);
+                foundDirectives.push(node);
             }
         },
         AssignmentExpression: function(node) {
@@ -75,7 +69,9 @@ module.exports = function(context) {
         },
         'Program:exit': function() {
             if (explicitRestrict) {
-                uncheckedDirectives.forEach(function(directiveNode) {
+                foundDirectives.filter(function(directive) {
+                    return checkedDirectives.indexOf(directive) < 0;
+                }).forEach(function(directiveNode) {
                     context.report(directiveNode, 'Missing directive restriction');
                 });
             }
@@ -88,7 +84,7 @@ module.exports.schema = [{
     properties: {
         restrict: {
             type: 'string',
-            pattern: '^[ACEM]{1,4}$'
+            pattern: '^A|E|(AE)|(EA)$'
         },
         explicit: {
             enum: ['always', 'never']
