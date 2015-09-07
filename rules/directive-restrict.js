@@ -8,7 +8,7 @@ module.exports = function(context) {
     var explicitRestrict = options.explicit === 'always';
     var restrictChars = restrictOpt.split('');
 
-    // Example RegExp for ACEM: /^A?C?E?M?$/
+    // Example RegExp for AE: /^A?E?$/
     var restrictRegExp = new RegExp('^' + restrictChars.join('?') + '?$');
     var foundDirectives = [];
     var checkedDirectives = [];
