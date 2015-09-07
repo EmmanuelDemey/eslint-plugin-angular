@@ -116,6 +116,7 @@ Users may use the shareable [eslint-config-angular](https://github.com/dustinspe
         "angular/di": [2, "function"],
         "angular/di-order": [0, true],
         "angular/directive-name": 0,
+        "angular/directive-restrict": [0, {"restrict": "AE", "explicit": "never"}],
         "angular/component-limit": [0, 1],
         "angular/document-service": 2,
         "angular/empty-controller": 0,
@@ -134,6 +135,7 @@ Users may use the shareable [eslint-config-angular](https://github.com/dustinspe
         "angular/no-cookiestore": 2,
         "angular/no-digest": 2,
         "angular/no-http-callback": 2,
+        "angular/no-inline-template": [0, {"allowSimple": true}],
         "angular/no-jquery-angularelement": 2,
         "angular/no-private-call": 2,
         "angular/no-service-method": 2,
@@ -172,6 +174,7 @@ Users may use the shareable [eslint-config-angular](https://github.com/dustinspe
 | di                        | All your DI should use the same syntax : the Array or function syntaxes ("di":  [2, "function or array"])|
 | di-order                  | Injected dependencies should be sorted alphabetically. If the second parameter is set to false, values which start and end with an underscore those underscores are stripped. This means for example that `_$httpBackend_` goes before `_$http_`. |
 | directive-name            | All your directives should have a name starting with the parameter you can define in your config object. The second parameter can be a Regexp wrapped in quotes. You can not prefix your directives by "ng" (reserved keyword for AngularJS directives) ("directive-name":  [2, "ng"]) [Y073](https://github.com/johnpapa/angular-styleguide#style-y073), [Y126](https://github.com/johnpapa/angular-styleguide#style-y126) |
+| directive-restrict        | Not all directive restrictions may be desirable. Also it might be desirable to define default restrictions, or explicitly not. The default configuration limits the restrictions `AE` [Y074](https://github.com/johnpapa/angular-styleguide#style-y074) and disallows explicitly specifying a default. ("directive-restrict": [0, {"restrict": "AE", "explicit": "never"}]) |
 | document-service          | Instead of the default document object, you should prefer the AngularJS wrapper service $document. [Y180](https://github.com/johnpapa/angular-styleguide#style-y180) |
 | empty-controller          | If you have one empty controller, maybe you have linked it in your Router configuration or in one of your views. You can remove this declaration because this controller is useless |
 | file-name                 | All your file names should match the angular component name. The second parameter can be a config object [2, {nameStyle: 'dash', typeSeparator: 'dot', ignoreTypeSuffix: true, ignorePrefix: 'ui'}] to match 'avenger-profile.directive.js' or 'avanger-api.service.js'. Possible values for 'typeSeparator' and 'nameStyle' are 'dot', 'dash' and 'underscore'. The options 'ignoreTypeSuffix' ignores camel cased suffixes like 'someController' or 'myService' and 'ignorePrefix' ignores namespace prefixes like 'ui'. [Y120](https://github.com/johnpapa/angular-styleguide#style-y120) [Y121](https://github.com/johnpapa/angular-styleguide#style-y121) |
@@ -188,8 +191,9 @@ Users may use the shareable [eslint-config-angular](https://github.com/dustinspe
 | no-controller             | According to the Component-First pattern, we should avoid the use of AngularJS controller. |
 | no-cookiestore            | In Angular 1.4, the $cookieStore service is now deprected. Please use the $cookies service instead|
 | no-digest                 | DEPRECATED! The scope's $digest() method shouldn't be used. You should prefer the $apply method. |
-| no-jquery-angularelement  | You should not wrap angular.element object into jQuery(), because angular.element already return jQLite element|
 | no-http-callback          | Disallow the $http success and error function. Instead the standard promise API should be used. |
+| no-inline-template        | Instead of using inline HTML templates, it is better to load the HTML from an external file. Simple HTML templates are accepted by default. ('no-inline-template': [0, {allowSimple: true}]) |
+| no-jquery-angularelement  | You should not wrap angular.element object into jQuery(), because angular.element already return jQLite element|
 | no-private-call           | All scope's properties/methods starting with $$ are used internally by AngularJS. You should not use them directly. Exception can be allowed with this option: {allow:['$$watchers']} |
 | no-service-method         | You should prefer the factory() method instead of service() [Y040](https://github.com/johnpapa/angular-styleguide#style-y040)|
 | no-services               | Some services should be used only in a specific AngularJS service (Ajax-based service for example), in order to follow the separation of concerns paradigm. The second parameter specifies the services. The third parameter can be a list of angular objects (controller, factory, etc.). Or second parameter can be an object, where keys are angular object names and value is a list of services (like {controller: ['$http'], factory: ['$q']}) |
