@@ -134,6 +134,7 @@ Users may use the shareable [eslint-config-angular](https://github.com/dustinspe
         "angular/no-controller": 0,
         "angular/no-cookiestore": 2,
         "angular/no-digest": 2,
+        "angular/no-http-callback": 2,
         "angular/no-inline-template": [0, {"allowSimple": true}],
         "angular/no-jquery-angularelement": 2,
         "angular/no-private-call": 2,
@@ -190,6 +191,7 @@ Users may use the shareable [eslint-config-angular](https://github.com/dustinspe
 | no-controller             | According to the Component-First pattern, we should avoid the use of AngularJS controller. |
 | no-cookiestore            | In Angular 1.4, the $cookieStore service is now deprected. Please use the $cookies service instead|
 | no-digest                 | DEPRECATED! The scope's $digest() method shouldn't be used. You should prefer the $apply method. |
+| no-http-callback          | Disallow the $http success and error function. Instead the standard promise API should be used. |
 | no-inline-template        | Instead of using inline HTML templates, it is better to load the HTML from an external file. Simple HTML templates are accepted by default. ('no-inline-template': [0, {allowSimple: true}]) |
 | no-jquery-angularelement  | You should not wrap angular.element object into jQuery(), because angular.element already return jQLite element|
 | no-private-call           | All scope's properties/methods starting with $$ are used internally by AngularJS. You should not use them directly. Exception can be allowed with this option: {allow:['$$watchers']} |
