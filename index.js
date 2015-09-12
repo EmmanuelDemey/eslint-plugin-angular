@@ -24,6 +24,7 @@ rulesConfiguration.addRule('function-type', 0);
 rulesConfiguration.addRule('interval-service', 2);
 rulesConfiguration.addRule('json-functions', 2);
 rulesConfiguration.addRule('log', 2);
+rulesConfiguration.addRule('module-dependency-order', [0, {mode: 'grouped', prefix: null}]);
 rulesConfiguration.addRule('module-getter', 2);
 rulesConfiguration.addRule('module-name', 0);
 rulesConfiguration.addRule('module-setter', 2);
