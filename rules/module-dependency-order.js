@@ -154,5 +154,13 @@ module.exports = function(context) {
 };
 
 module.exports.schema = [{
-    type: 'object'
+    type: 'object',
+    properties: {
+        grouped: {
+            type: 'boolean'
+        },
+        prefix: {
+            type: 'string'
+        }
+    }
 }];
