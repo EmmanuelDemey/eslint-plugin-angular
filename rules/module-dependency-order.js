@@ -4,9 +4,9 @@ module.exports = function(context) {
     var utils = require('./utils/utils');
 
     var options = context.options[0] || {};
-    var mode = options.mode || 'grouped';
+    var groupedMode = options.grouped !== false;
     var moduleRegex;
-    if (mode === 'grouped') {
+    if (groupedMode) {
         moduleRegex = utils.convertPrefixToRegex(options.prefix);
     }
 
@@ -144,10 +144,10 @@ module.exports = function(context) {
                 context.report(deps, 'Dependencies should be a literal array');
                 return;
             }
-            if (mode === 'combined') {
-                checkCombined(deps);
-            } else {
+            if (groupedMode) {
                 checkGrouped(deps);
+            } else {
+                checkCombined(deps);
             }
         }
     };

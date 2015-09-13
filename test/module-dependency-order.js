@@ -19,7 +19,7 @@ eslintTester.run('module-dependency-order', rule, {
         // combined mode
         {
             code: 'angular.module("", ["app.filters","ngCordova","ngMaterial","ui.router"])',
-            options: [{mode: 'combined'}]
+            options: [{grouped: false}]
         },
         // grouped mode
         'angular.module("", ["ng","ngAnimate","ngAria","ngCookies","ngLocale","ngMaterial","ngMessageFormat","ngMessages","ngMock","ngNewRouter","ngResource","ngRoute","ngSanitize","ngTouch"])',
@@ -39,14 +39,14 @@ eslintTester.run('module-dependency-order', rule, {
         // combined mode
         {
             code: 'angular.module("", [dep])',
-            options: [{mode: 'combined'}],
+            options: [{grouped: false}],
             errors: [
                 {message: 'Unexpected non-literal value'}
             ]
         },
         {
             code: 'angular.module("", ["ngCordova","app.filters","app.resources","ngMaterial","app.user","ui.router"])',
-            options: [{mode: 'combined'}],
+            options: [{grouped: false}],
             errors: [
                 {message: 'app.filters should be sorted before ngCordova'},
                 {message: 'app.resources should be sorted before ngCordova'},
