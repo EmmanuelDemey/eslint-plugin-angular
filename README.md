@@ -127,6 +127,7 @@ Users may use the shareable [eslint-config-angular](https://github.com/dustinspe
         "angular/interval-service": 2,
         "angular/json-functions": 2,
         "angular/log": 2,
+        "angular/module-dependency-order": [0, {"grouped": true, "prefix": null}],
         "angular/module-getter": 2,
         "angular/module-name": 0,
         "angular/module-setter": 2,
@@ -184,6 +185,7 @@ Users may use the shareable [eslint-config-angular](https://github.com/dustinspe
 | interval-service          | Instead of the default setInterval function, you should use the AngularJS wrapper service $interval  [Y181](https://github.com/johnpapa/angular-styleguide#style-y181) |
 | json-functions            | You should use angular.fromJson or angular.toJson instead of JSON.parse and JSON.stringify |
 | log                       | You should use $log service instead of console for the methods 'log', 'debug', 'error', 'info', 'warn' |
+| module-dependency-order   | Module dependencies should be sorted in a logical manner. This rule provides two ways to sort modules, grouped or ungrouped. In grouped mode the modules should be grouped in the order: standard modules - third party modules - custom modules. The modules should be sorted alphabetically within its group. A prefix can be specified to determine which prefix the custom modules have. Without grouped set to `false` all dependencies combined should be sorted alphabetically. ('module-dependency-order', [2, {grouped: true, prefix: "app"}]) |
 | module-getter             | When using a module, avoid using a variable and instead use chaining with the getter syntax [Y022](https://github.com/johnpapa/angular-styleguide#style-y022)|
 | module-name               | When you create a new module, its name should start with the parameter you can define in your config object. The second parameter can be a Regexp wrapped in quotes. You can not prefix your modules by "ng" (reserved keyword for AngularJS modules) ("module-name":  [2, "ng"])  [Y127](https://github.com/johnpapa/angular-styleguide#style-y127)|
 | module-setter             | Declare modules without a variable using the setter syntax.[Y021](https://github.com/johnpapa/angular-styleguide#style-y021) |
