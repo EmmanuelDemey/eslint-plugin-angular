@@ -1,9 +1,7 @@
+'use strict';
+
 module.exports = function(context) {
-
-    'use strict';
-
-    function report(node, method){
-
+    function report(node, method) {
         context.report(node, 'The "{{method}}" call should be assigned to a variable, in order to be destroyed during the $destroy event', {
             method: method
         });
@@ -20,7 +18,7 @@ module.exports = function(context) {
         }
 
         var calledFunction = node.callee;
-        if(calledFunction.type !== 'MemberExpression') {
+        if (calledFunction.type !== 'MemberExpression') {
             return false;
         }
 
@@ -61,7 +59,7 @@ module.exports = function(context) {
 
     return {
 
-        'CallExpression': function(node) {
+        CallExpression: function(node) {
             if (isScopeOnOrWatch(node, ['$rootScope']) && !isFirstArgDestroy(node)) {
                 if (node.parent.type !== 'VariableDeclarator' &&
                     node.parent.type !== 'AssignmentExpression' &&
@@ -69,7 +67,6 @@ module.exports = function(context) {
                      isFirstArgDestroy(node.parent))) {
                     report(node, node.callee.property.name);
                 }
-
             }
         }
     };

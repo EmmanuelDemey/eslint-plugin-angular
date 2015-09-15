@@ -1,20 +1,18 @@
+'use strict';
+
 module.exports = function(context) {
-
-    'use strict';
-
     return {
 
-        'MemberExpression': function(node) {
-            if(node.object.name === 'JSON'){
-                if(node.property.name === 'stringify'){
+        MemberExpression: function(node) {
+            if (node.object.name === 'JSON') {
+                if (node.property.name === 'stringify') {
                     context.report(node, 'You should use the toJson method instead of JSON.stringify', {});
-                } else if(node.property.name === 'parse'){
+                } else if (node.property.name === 'parse') {
                     context.report(node, 'You should use the fromJson method instead of JSON.parse', {});
                 }
             }
         }
     };
-
 };
 
 module.exports.schema = [

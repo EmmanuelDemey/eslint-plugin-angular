@@ -1,16 +1,16 @@
 (function () {
-   'use strict';
+   
    var gulp = require('gulp'),
-		eslint = require('gulp-eslint');
+  eslint = require('gulp-eslint');
 
-	gulp.task('quality', function() {
+ gulp.task('quality', function() {
 
-		gulp.src(['app/**/*.js'])
-			.pipe(eslint({
-				
-			}))
-			.pipe(eslint.format());
-	});
+  gulp.src(['app/**/*.js'])
+   .pipe(eslint({
+    
+   }))
+   .pipe(eslint.format());
+ });
 
-	gulp.task('default', ['quality']);
+ gulp.task('default', ['quality']);
 }());

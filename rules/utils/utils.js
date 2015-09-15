@@ -1,171 +1,201 @@
-(function(){
-	'use strict';
+'use strict';
 
-	//this will recursively grab the callee until it hits an Identifier
-	function getCallingIdentifier(calleeObject) {
-		if (calleeObject.type && calleeObject.type === 'Identifier') {
-			return calleeObject;
-		}
-		if (calleeObject.callee && calleeObject.callee.object) {
-			return getCallingIdentifier(calleeObject.callee.object);
-		}
-		return null;
-	}
 
-    module.exports = {
+// this will recursively grab the callee until it hits an Identifier
+function getCallingIdentifier(calleeObject) {
+    if (calleeObject.type && calleeObject.type === 'Identifier') {
+        return calleeObject;
+    }
+    if (calleeObject.callee && calleeObject.callee.object) {
+        return getCallingIdentifier(calleeObject.callee.object);
+    }
+    return null;
+}
 
-		convertPrefixToRegex: function(prefix){
-			if(typeof prefix !== 'string'){
-				return prefix;
-			}
+module.exports = {
 
-			if(prefix[0] === '/' && prefix[prefix.length-1] === '/'){
-				prefix = prefix.substring(1, prefix.length-2);
-			}
+    convertPrefixToRegex: function(prefix) {
+        if (typeof prefix !== 'string') {
+            return prefix;
+        }
 
-			return new RegExp(prefix + '.*');
-		},
+        if (prefix[0] === '/' && prefix[prefix.length - 1] === '/') {
+            prefix = prefix.substring(1, prefix.length - 2);
+        }
 
-		convertStringToRegex: function (string) {
-			if(string[0] === '/' && string[string.length-1] === '/'){
-				string = string.substring(1, string.length-2);
-			}
-			return new RegExp(string);
-		},
+        return new RegExp(prefix + '.*');
+    },
 
-		isTypeOfStatement: function(node){
-			return node.type === 'Identifier' || (node.type === 'UnaryExpression' && node.operator === 'typeof');
-		},
+    convertStringToRegex: function(string) {
+        if (string[0] === '/' && string[string.length - 1] === '/') {
+            string = string.substring(1, string.length - 2);
+        }
+        return new RegExp(string);
+    },
 
-        isToStringStatement: function(node){
-            return node.type === 'CallExpression' && node.callee.type === 'MemberExpression' && node.callee.object.type === 'MemberExpression' && node.callee.object.property.name === 'toString'  && node.callee.property.name === 'call' && node.callee.object.object.type === 'MemberExpression' && node.callee.object.object.object.name === 'Object' && node.callee.object.object.property.name === 'prototype';
-        },
+    isTypeOfStatement: function(node) {
+        return node.type === 'Identifier' || (node.type === 'UnaryExpression' && node.operator === 'typeof');
+    },
 
-		isArrayType: function(node){
-			return node !== undefined && node.type === 'ArrayExpression';
-		},
+    isToStringStatement: function(node) {
+        return node.type === 'CallExpression' &&
+            node.callee.type === 'MemberExpression' &&
+            node.callee.object.type === 'MemberExpression' &&
+            node.callee.object.property.name === 'toString' &&
+            node.callee.property.name === 'call' &&
+            node.callee.object.object.type === 'MemberExpression' &&
+            node.callee.object.object.object.name === 'Object' &&
+            node.callee.object.object.property.name === 'prototype';
+    },
 
-		isFunctionType: function(node){
-			return node !== undefined && node.type === 'FunctionExpression';
-		},
+    isArrayType: function(node) {
+        return node !== undefined && node.type === 'ArrayExpression';
+    },
 
-		isIdentifierType: function(node){
-			return node !== undefined && node.type === 'Identifier';
-		},
+    isFunctionType: function(node) {
+        return node !== undefined && node.type === 'FunctionExpression';
+    },
 
-        isMemberExpression: function(node){
-			return node !== undefined && node.type === 'MemberExpression';
-		},
+    isIdentifierType: function(node) {
+        return node !== undefined && node.type === 'Identifier';
+    },
 
-		isLiteralType: function(node){
-			return node !== undefined && node.type === 'Literal';
-		},
+    isMemberExpression: function(node) {
+        return node !== undefined && node.type === 'MemberExpression';
+    },
 
-		isEmptyFunction: function(fn){
-			return fn.body.body.length === 0;
-		},
+    isLiteralType: function(node) {
+        return node !== undefined && node.type === 'Literal';
+    },
 
-		isRegexp: function(regexp){
-			return toString.call(regexp) === '[object RegExp]';
-		},
+    isEmptyFunction: function(fn) {
+        return fn.body.body.length === 0;
+    },
 
-		isStringRegexp: function(string){
-			return string[0] === '/' && string[string.length-1] === '/';
-		},
+    isRegexp: function(regexp) {
+        return toString.call(regexp) === '[object RegExp]';
+    },
 
-		isAngularComponent: function(node){
-			return node.arguments !== undefined && node.arguments.length === 2 && this.isLiteralType(node.arguments[0]) && (this.isIdentifierType(node.arguments[1]) || this.isFunctionType(node.arguments[1]) || this.isArrayType(node.arguments[1]));
-		},
+    isStringRegexp: function(string) {
+        return string[0] === '/' && string[string.length - 1] === '/';
+    },
 
-		isAngularControllerDeclaration: function(node){
-			return this.isAngularComponent(node) && this.isMemberExpression(node.callee) && node.callee.property.name === 'controller'
-		},
+    isAngularComponent: function(node) {
+        return node.arguments !== undefined && node.arguments.length === 2 && this.isLiteralType(node.arguments[0]) && (this.isIdentifierType(node.arguments[1]) || this.isFunctionType(node.arguments[1]) || this.isArrayType(node.arguments[1]));
+    },
 
-		isAngularFilterDeclaration: function(node){
-			return this.isAngularComponent(node) && this.isMemberExpression(node.callee) && node.callee.property.name === 'filter'
-		},
+    isAngularControllerDeclaration: function(node) {
+        return this.isAngularComponent(node) &&
+            this.isMemberExpression(node.callee) &&
+            node.callee.property.name === 'controller';
+    },
 
-		isAngularDirectiveDeclaration: function(node){
-			return this.isAngularComponent(node) && this.isMemberExpression(node.callee) && node.callee.property.name === 'directive'
-		},
+    isAngularFilterDeclaration: function(node) {
+        return this.isAngularComponent(node) &&
+            this.isMemberExpression(node.callee) &&
+            node.callee.property.name === 'filter';
+    },
 
-		isAngularServiceDeclaration: function(node){
-			return this.isAngularComponent(node) && this.isMemberExpression(node.callee)
-				&& node.callee.object.name !== '$provide' && (node.callee.property.name === 'provider' || node.callee.property.name === 'service' || node.callee.property.name === 'factory' || node.callee.property.name === 'constant' || node.callee.property.name === 'value')
-		},
+    isAngularDirectiveDeclaration: function(node) {
+        return this.isAngularComponent(node) &&
+            this.isMemberExpression(node.callee) &&
+            node.callee.property.name === 'directive';
+    },
 
-		isAngularModuleDeclaration: function(node){
-			return this.isAngularComponent(node) && this.isMemberExpression(node.callee) && node.callee.property.name === 'module'
-		},
+    isAngularServiceDeclaration: function(node) {
+        return this.isAngularComponent(node) &&
+            this.isMemberExpression(node.callee) &&
+            node.callee.object.name !== '$provide' &&
+            (node.callee.property.name === 'provider' ||
+             node.callee.property.name === 'service' ||
+             node.callee.property.name === 'factory' ||
+             node.callee.property.name === 'constant' ||
+             node.callee.property.name === 'value');
+    },
 
-		isAngularModuleGetter: function(node){
-			return node.arguments !== undefined &&  node.arguments.length > 0 && this.isLiteralType(node.arguments[0]) && node.callee.type === 'MemberExpression' && node.callee.property.name === 'module';
-		},
+    isAngularModuleDeclaration: function(node) {
+        return this.isAngularComponent(node) &&
+            this.isMemberExpression(node.callee) &&
+            node.callee.property.name === 'module';
+    },
 
-		isAngularRunSection: function(node){
-			return this.isMemberExpression(node.callee) && node.callee.property.type === 'Identifier' && node.callee.property.name === 'run' && (node.callee.object.type === 'Identifier' && node.callee.object.name !== 'mocha');
-		},
+    isAngularModuleGetter: function(node) {
+        return node.arguments !== undefined &&
+            node.arguments.length > 0 &&
+            this.isLiteralType(node.arguments[0]) &&
+            node.callee.type === 'MemberExpression' &&
+            node.callee.property.name === 'module';
+    },
 
-		isAngularConfigSection: function(node){
-			return this.isMemberExpression(node.callee) && node.callee.property.type === 'Identifier' && node.callee.property.name === 'config';
-		},
+    isAngularRunSection: function(node) {
+        return this.isMemberExpression(node.callee) &&
+            node.callee.property.type === 'Identifier' &&
+            node.callee.property.name === 'run' &&
+            (node.callee.object.type === 'Identifier' &&
+             node.callee.object.name !== 'mocha');
+    },
 
-		isRouteDefinition: function (node) {
-			//the route def function is .when(), so when we find that, go up through the chain and make sure
-			//$routeProvider is the calling object
-			if (node.callee.property && node.callee.property.name === 'when') {
-				var callObject = getCallingIdentifier(node.callee.object);
-				return callObject && callObject.name === '$routeProvider';
-			}
-			return false;
-		},
+    isAngularConfigSection: function(node) {
+        return this.isMemberExpression(node.callee) &&
+            node.callee.property.type === 'Identifier' &&
+            node.callee.property.name === 'config';
+    },
 
-		isUIRouterStateDefinition: function (node) {
-			//the state def function is .state(), so when we find that, go up through the chain and make sure
-			//$stateProvider is the calling object
-			if (node.callee.property && node.callee.property.name === 'state') {
-				var callObject = getCallingIdentifier(node.callee.object);
-				return callObject && callObject.name === '$stateProvider';
-			}
-			return false;
-		},
+    isRouteDefinition: function(node) {
+        // the route def function is .when(), so when we find that, go up through the chain and make sure
+        // $routeProvider is the calling object
+        if (node.callee.property && node.callee.property.name === 'when') {
+            var callObject = getCallingIdentifier(node.callee.object);
+            return callObject && callObject.name === '$routeProvider';
+        }
+        return false;
+    },
 
-		scopeProperties: ['$id', '$parent', '$root', '$destroy', '$broadcast', '$emit', '$on', '$applyAsync', '$apply',
-			'$evalAsync', '$eval', '$digest', '$watchCollection', '$watchGroup', '$watch', '$new'],
+    isUIRouterStateDefinition: function(node) {
+        // the state def function is .state(), so when we find that, go up through the chain and make sure
+        // $stateProvider is the calling object
+        if (node.callee.property && node.callee.property.name === 'state') {
+            var callObject = getCallingIdentifier(node.callee.object);
+            return callObject && callObject.name === '$stateProvider';
+        }
+        return false;
+    },
 
-		findIdentiferInScope: function (context, identifier) {
-			var identifierNode = null;
-			context.getScope().variables.forEach(function (variable) {
-				if (variable.name === identifier.name) {
-					identifierNode = variable.defs[0].node
-					if (identifierNode.type === 'VariableDeclarator') {
-						identifierNode = identifierNode.init;
-					}
-				}
-			});
-			return identifierNode;
-		},
+    scopeProperties: ['$id', '$parent', '$root', '$destroy', '$broadcast', '$emit', '$on', '$applyAsync', '$apply',
+     '$evalAsync', '$eval', '$digest', '$watchCollection', '$watchGroup', '$watch', '$new'],
 
-		getControllerDefinition: function (context, node) {
-			var controllerArg = node.arguments[1];
+    findIdentiferInScope: function(context, identifier) {
+        var identifierNode = null;
+        context.getScope().variables.forEach(function(variable) {
+            if (variable.name === identifier.name) {
+                identifierNode = variable.defs[0].node;
+                if (identifierNode.type === 'VariableDeclarator') {
+                    identifierNode = identifierNode.init;
+                }
+            }
+        });
+        return identifierNode;
+    },
 
-			//Three ways of creating a controller function: function expression,
-			//variable name that references a function, and an array with a function
-			//as the last item
-			if (this.isFunctionType(controllerArg)) {
-				return controllerArg;
-			} else if (this.isArrayType(controllerArg)) {
-				controllerArg = controllerArg.elements[controllerArg.elements.length - 1];
+    getControllerDefinition: function(context, node) {
+        var controllerArg = node.arguments[1];
 
-				if (this.isIdentifierType(controllerArg)) {
-					return this.findIdentiferInScope(context, controllerArg);
-				} else {
-					return controllerArg;
-				}
-			}
-			else if (this.isIdentifierType(controllerArg)) {
-				return this.findIdentiferInScope(context, controllerArg);
-			}
-		}
-	};
-})();
+        // Three ways of creating a controller function: function expression,
+        // variable name that references a function, and an array with a function
+        // as the last item
+        if (this.isFunctionType(controllerArg)) {
+            return controllerArg;
+        }
+        if (this.isArrayType(controllerArg)) {
+            controllerArg = controllerArg.elements[controllerArg.elements.length - 1];
+
+            if (this.isIdentifierType(controllerArg)) {
+                return this.findIdentiferInScope(context, controllerArg);
+            }
+            return controllerArg;
+        }
+        if (this.isIdentifierType(controllerArg)) {
+            return this.findIdentiferInScope(context, controllerArg);
+        }
+    }
+};

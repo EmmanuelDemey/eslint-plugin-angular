@@ -116,6 +116,7 @@ Users may use the shareable [eslint-config-angular](https://github.com/dustinspe
         "angular/di": [2, "function"],
         "angular/di-order": [0, true],
         "angular/directive-name": 0,
+        "angular/directive-restrict": [0, {"restrict": "AE", "explicit": "never"}],
         "angular/component-limit": [0, 1],
         "angular/document-service": 2,
         "angular/empty-controller": 0,
@@ -126,6 +127,7 @@ Users may use the shareable [eslint-config-angular](https://github.com/dustinspe
         "angular/interval-service": 2,
         "angular/json-functions": 2,
         "angular/log": 2,
+        "angular/module-dependency-order": [0, {"grouped": true, "prefix": null}],
         "angular/module-getter": 2,
         "angular/module-name": 0,
         "angular/module-setter": 2,
@@ -133,6 +135,8 @@ Users may use the shareable [eslint-config-angular](https://github.com/dustinspe
         "angular/no-controller": 0,
         "angular/no-cookiestore": 2,
         "angular/no-digest": 2,
+        "angular/no-http-callback": 2,
+        "angular/no-inline-template": [0, {"allowSimple": true}],
         "angular/no-jquery-angularelement": 2,
         "angular/no-private-call": 2,
         "angular/no-service-method": 2,
@@ -171,6 +175,7 @@ Users may use the shareable [eslint-config-angular](https://github.com/dustinspe
 | di                        | All your DI should use the same syntax : the Array or function syntaxes ("di":  [2, "function or array"])|
 | di-order                  | Injected dependencies should be sorted alphabetically. If the second parameter is set to false, values which start and end with an underscore those underscores are stripped. This means for example that `_$httpBackend_` goes before `_$http_`. |
 | directive-name            | All your directives should have a name starting with the parameter you can define in your config object. The second parameter can be a Regexp wrapped in quotes. You can not prefix your directives by "ng" (reserved keyword for AngularJS directives) ("directive-name":  [2, "ng"]) [Y073](https://github.com/johnpapa/angular-styleguide#style-y073), [Y126](https://github.com/johnpapa/angular-styleguide#style-y126) |
+| directive-restrict        | Not all directive restrictions may be desirable. Also it might be desirable to define default restrictions, or explicitly not. The default configuration limits the restrictions `AE` [Y074](https://github.com/johnpapa/angular-styleguide#style-y074) and disallows explicitly specifying a default. ("directive-restrict": [0, {"restrict": "AE", "explicit": "never"}]) |
 | document-service          | Instead of the default document object, you should prefer the AngularJS wrapper service $document. [Y180](https://github.com/johnpapa/angular-styleguide#style-y180) |
 | empty-controller          | If you have one empty controller, maybe you have linked it in your Router configuration or in one of your views. You can remove this declaration because this controller is useless |
 | file-name                 | All your file names should match the angular component name. The second parameter can be a config object [2, {nameStyle: 'dash', typeSeparator: 'dot', ignoreTypeSuffix: true, ignorePrefix: 'ui'}] to match 'avenger-profile.directive.js' or 'avanger-api.service.js'. Possible values for 'typeSeparator' and 'nameStyle' are 'dot', 'dash' and 'underscore'. The options 'ignoreTypeSuffix' ignores camel cased suffixes like 'someController' or 'myService' and 'ignorePrefix' ignores namespace prefixes like 'ui'. [Y120](https://github.com/johnpapa/angular-styleguide#style-y120) [Y121](https://github.com/johnpapa/angular-styleguide#style-y121) |
@@ -180,6 +185,7 @@ Users may use the shareable [eslint-config-angular](https://github.com/dustinspe
 | interval-service          | Instead of the default setInterval function, you should use the AngularJS wrapper service $interval  [Y181](https://github.com/johnpapa/angular-styleguide#style-y181) |
 | json-functions            | You should use angular.fromJson or angular.toJson instead of JSON.parse and JSON.stringify |
 | log                       | You should use $log service instead of console for the methods 'log', 'debug', 'error', 'info', 'warn' |
+| module-dependency-order   | Module dependencies should be sorted in a logical manner. This rule provides two ways to sort modules, grouped or ungrouped. In grouped mode the modules should be grouped in the order: standard modules - third party modules - custom modules. The modules should be sorted alphabetically within its group. A prefix can be specified to determine which prefix the custom modules have. Without grouped set to `false` all dependencies combined should be sorted alphabetically. ('module-dependency-order', [2, {grouped: true, prefix: "app"}]) |
 | module-getter             | When using a module, avoid using a variable and instead use chaining with the getter syntax [Y022](https://github.com/johnpapa/angular-styleguide#style-y022)|
 | module-name               | When you create a new module, its name should start with the parameter you can define in your config object. The second parameter can be a Regexp wrapped in quotes. You can not prefix your modules by "ng" (reserved keyword for AngularJS modules) ("module-name":  [2, "ng"])  [Y127](https://github.com/johnpapa/angular-styleguide#style-y127)|
 | module-setter             | Declare modules without a variable using the setter syntax.[Y021](https://github.com/johnpapa/angular-styleguide#style-y021) |
@@ -187,6 +193,8 @@ Users may use the shareable [eslint-config-angular](https://github.com/dustinspe
 | no-controller             | According to the Component-First pattern, we should avoid the use of AngularJS controller. |
 | no-cookiestore            | In Angular 1.4, the $cookieStore service is now deprected. Please use the $cookies service instead|
 | no-digest                 | DEPRECATED! The scope's $digest() method shouldn't be used. You should prefer the $apply method. |
+| no-http-callback          | Disallow the $http success and error function. Instead the standard promise API should be used. |
+| no-inline-template        | Instead of using inline HTML templates, it is better to load the HTML from an external file. Simple HTML templates are accepted by default. ('no-inline-template': [0, {allowSimple: true}]) |
 | no-jquery-angularelement  | You should not wrap angular.element object into jQuery(), because angular.element already return jQLite element|
 | no-private-call           | All scope's properties/methods starting with $$ are used internally by AngularJS. You should not use them directly. Exception can be allowed with this option: {allow:['$$watchers']} |
 | no-service-method         | You should prefer the factory() method instead of service() [Y040](https://github.com/johnpapa/angular-styleguide#style-y040)|
@@ -226,10 +234,10 @@ All contributions should be pushed in the current GIT branch.
 
 Here are the things you should do before sending a Pull Request with a new Rule :
 
-- Create a JavaScript file for the new rule in the rules directory (the name of the file should be prefixed by 'ng' for Angular 1 rules, or 'ng2' for Angular 2 rules)
+- Create a JavaScript file for the new rule in the rules directory
 - Create an unit test for this rule in the test directory (with the same name)
 - Update the main index.js file, in order to add the new rule in the 'rules' property, and set the default configuration in the rulesConfig property
-- Update the "Rules" part of the README.md file with a small description of the rule and its default configuration.
+- Update the "Rules" part of the README.md file with a small description of the rule and its default configuration. In this file, you have to add your rule in the default JSON configuration object. 
 
 We can use a property, defined in the ESLint configuration file, in order to know which version is used : Angular 1 or Angular 2. based on this property, you can create rules for each version.
 

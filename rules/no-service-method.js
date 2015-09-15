@@ -1,15 +1,13 @@
+'use strict';
+
 module.exports = function(context) {
-
-    'use strict';
-
     var utils = require('./utils/utils');
 
     return {
 
-        'CallExpression': function(node) {
-
+        CallExpression: function(node) {
             var prefix = context.options[0];
-            if(prefix === undefined) {
+            if (prefix === undefined) {
                 return;
             }
 
@@ -18,5 +16,4 @@ module.exports = function(context) {
             }
         }
     };
-
 };

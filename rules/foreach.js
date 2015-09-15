@@ -1,12 +1,11 @@
+'use strict';
+
 module.exports = function(context) {
-
-    'use strict';
-
     return {
-        'MemberExpression': function(node){
-           if(node.object.type === 'Identifier' && node.object.name !== 'angular' && node.property.name === 'forEach'){
-               context.report(node, 'You should use the angular.forEach method', {});
-           }
+        MemberExpression: function(node) {
+            if (node.object.type === 'Identifier' && node.object.name !== 'angular' && node.property.name === 'forEach') {
+                context.report(node, 'You should use the angular.forEach method', {});
+            }
         }
     };
 };
