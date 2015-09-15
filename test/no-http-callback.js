@@ -44,7 +44,7 @@ eslintTester.run('no-http-callback', rule, {
         }, {
             code: '$http().error().success()',
             errors: [
-            {message: '$http success is deprecated. Use then instead'},
+                {message: '$http success is deprecated. Use then instead'},
                 {message: '$http error is deprecated. Use then or catch instead'}
             ]
         },
