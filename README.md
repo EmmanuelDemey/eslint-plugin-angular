@@ -234,10 +234,10 @@ All contributions should be pushed in the current GIT branch.
 
 Here are the things you should do before sending a Pull Request with a new Rule :
 
-- Create a JavaScript file for the new rule in the rules directory (the name of the file should be prefixed by 'ng' for Angular 1 rules, or 'ng2' for Angular 2 rules)
+- Create a JavaScript file for the new rule in the rules directory
 - Create an unit test for this rule in the test directory (with the same name)
 - Update the main index.js file, in order to add the new rule in the 'rules' property, and set the default configuration in the rulesConfig property
-- Update the "Rules" part of the README.md file with a small description of the rule and its default configuration.
+- Update the "Rules" part of the README.md file with a small description of the rule and its default configuration. In this file, you have to add your rule in the default JSON configuration object. 
 
 We can use a property, defined in the ESLint configuration file, in order to know which version is used : Angular 1 or Angular 2. based on this property, you can create rules for each version.
 
