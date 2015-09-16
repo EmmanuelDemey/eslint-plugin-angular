@@ -53,7 +53,7 @@ module.exports = {
     },
 
     isFunctionType: function(node) {
-        return node !== undefined && node.type === 'FunctionExpression';
+        return node !== undefined && (node.type === 'FunctionExpression' || node.type === 'ArrowFunctionExpression');
     },
 
     isIdentifierType: function(node) {
