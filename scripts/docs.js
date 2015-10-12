@@ -1,7 +1,6 @@
 'use strict';
 
 var fs = require('fs');
-var process = require('process');
 var parseComments = require('parse-comments');
 var _ = require('lodash');
 var eslintAngularIndex = require('../index.js');
@@ -66,7 +65,8 @@ var docs = {
 
 module.exports = docs;
 
-if (process.mainModule !== undefined) {
+// run as node script (global process for 0.12 compatibility)
+if ((process || require('process')).mainModule !== undefined) {
     docs.createDocFiles();
     docs.updateReadme('README.md');
 }
