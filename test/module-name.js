@@ -1,13 +1,15 @@
-//------------------------------------------------------------------------------
+'use strict';
+
+// ------------------------------------------------------------------------------
 // Requirements
-//------------------------------------------------------------------------------
+// ------------------------------------------------------------------------------
 
-var rule = require('../rules/module-name'),
-    RuleTester = require("eslint").RuleTester;
+var rule = require('../rules/module-name');
+var RuleTester = require('eslint').RuleTester;
 
-//------------------------------------------------------------------------------
+// ------------------------------------------------------------------------------
 // Tests
-//------------------------------------------------------------------------------
+// ------------------------------------------------------------------------------
 
 var eslintTester = new RuleTester();
 eslintTester.run('module-name', rule, {
@@ -31,23 +33,23 @@ eslintTester.run('module-name', rule, {
         {
             code: 'app.module("module", []);',
             options: ['eslint'],
-            errors: [{ message: 'The module module should be prefixed by eslint'}]
+            errors: [{message: 'The module module should be prefixed by eslint'}]
         }, {
             code: 'app.module("ESLintModule", []);',
             options: ['eslint'],
-            errors: [{ message: 'The ESLintModule module should be prefixed by eslint'}]
+            errors: [{message: 'The ESLintModule module should be prefixed by eslint'}]
         }, {
             code: 'app.module("module", []);',
             options: [/^eslint/],
-            errors: [{ message: 'The module module should follow this pattern: /^eslint/'}]
+            errors: [{message: 'The module module should follow this pattern: /^eslint/'}]
         }, {
             code: 'app.module("module", []);',
-            options: ["/^eslint/"],
-            errors: [{ message: 'The module module should follow this pattern: /^eslint/'}]
+            options: ['/^eslint/'],
+            errors: [{message: 'The module module should follow this pattern: /^eslint/'}]
         }, {
             code: 'app.module("ngModule", []);',
             options: [/^ng/],
-            errors: [{ message: 'The ngModule module should not start with "ng". This is reserved for AngularJS modules'}]
+            errors: [{message: 'The ngModule module should not start with "ng". This is reserved for AngularJS modules'}]
         }
     ]
 });

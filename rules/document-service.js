@@ -5,19 +5,16 @@
  * @ruleName document-service
  * @config 2
  */
+'use strict';
+
 module.exports = function(context) {
-
-    'use strict';
-
     return {
-
-        'MemberExpression': function(node) {
-            if(node.object.name === 'document' || (node.object.name === 'window' && node.property.name === 'document')){
+        MemberExpression: function(node) {
+            if (node.object.name === 'document' || (node.object.name === 'window' && node.property.name === 'document')) {
                 context.report(node, 'You should use the $document service instead of the default document object', {});
             }
         }
     };
-
 };
 
 module.exports.schema = [

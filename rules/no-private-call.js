@@ -5,29 +5,36 @@
  * @ruleName no-private-call
  * @config 2
  */
+'use strict';
+
 module.exports = function(context) {
+    var options = context.options[0] || {};
+    var allowed = options.allow || [];
 
-    'use strict';
-
-    var bad = ['$$childHead', '$$childTail', '$$prevSibling', '$$nextSibling', '$$listeners',
-        '$$phase', '$$watchers', '$$asyncQueue', '$$postDigest', '$$postDigestQueue',
-        '$$isolateBindings', '$$destroyed'];
-
-    function check(node, name){
-        if(bad.indexOf(name) >= 0){
+    function check(node, name) {
+        if (name.slice(0, 2) === '$$' && allowed.indexOf(name) < 0) {
             context.report(node, 'Using $$-prefixed Angular objects/methods are not recommended', {});
         }
     }
     return {
 
-        'Identifier': function(node) {
-            check(node,  node.name);
+        Identifier: function(node) {
+            check(node, node.name);
         }
     };
-
 };
 
 module.exports.schema = [
-    // JSON Schema for rule options goes here
+    {
+        type: 'object',
+        properties: {
+            allow: {
+                type: 'array',
+                items: {
+                    type: 'string'
+                }
+            }
+        },
+        additionalProperties: false
+    }
 ];
-

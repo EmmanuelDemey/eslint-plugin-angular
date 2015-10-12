@@ -1,58 +1,56 @@
-(function(){
-	var eslintAngularIndex = require('../index.js'),
-        testUtils = require("./utils/testUtils.js");
+'use strict';
 
-    var ruleNames = Object.keys(eslintAngularIndex.rules).filter(function (ruleName) {
-        // filter legacy rules
-        return !/^ng_/.test(ruleName);
-    });
+var eslintAngularIndex = require('../index.js');
+var testUtils = require('./utils/testUtils.js');
 
-    // ----- rules -----
-    var ruleFiles = testUtils.getFiles({
-        basePath: './rules/',
-        ignoreFiles: ['index.js', 'utils']
-    });
+var ruleNames = Object.keys(eslintAngularIndex.rules).filter(function(ruleName) {
+    // filter legacy rules
+    return !/^ng_/.test(ruleName);
+});
 
-    testUtils.detectMissingFilesForRules(ruleNames, {
-        type: 'file',
-        files: ruleFiles
-    });
+// ----- rules -----
+var ruleFiles = testUtils.getFiles({
+    basePath: './rules/',
+    ignoreFiles: ['index.js', 'utils']
+});
 
-    testUtils.detectMissingRuleDefinitionForFiles(ruleFiles, {
-        ruleNames: ruleNames
-    });
+testUtils.detectMissingFilesForRules(ruleNames, {
+    type: 'file',
+    files: ruleFiles
+});
 
-    // ----- tests  -----
-    var testFiles = testUtils.getFiles({
-        basePath: './test/',
-        ignoreFiles: ['index.js', 'utils']
-    });
+testUtils.detectMissingRuleDefinitionForFiles(ruleFiles, {
+    ruleNames: ruleNames
+});
 
-    testUtils.detectMissingFilesForRules(ruleNames, {
-        type: 'test',
-        files: testFiles
-    });
+// ----- tests  -----
+var testFiles = testUtils.getFiles({
+    basePath: './test/',
+    ignoreFiles: ['index.js', 'utils']
+});
 
-    testUtils.detectMissingRuleDefinitionForFiles(testFiles, {
-        ruleNames: ruleNames
-    });
+testUtils.detectMissingFilesForRules(ruleNames, {
+    type: 'test',
+    files: testFiles
+});
 
-    // ----- docs -----
-    var docFiles = testUtils.getFiles({
-        basePath: './docs/',
-        fileEnding: '.md'
-    });
+testUtils.detectMissingRuleDefinitionForFiles(testFiles, {
+    ruleNames: ruleNames
+});
 
-    testUtils.detectMissingFilesForRules(ruleNames, {
-        type: 'docs',
-        files: docFiles,
-        fileEnding: '.md'
-    });
+// ----- docs -----
+var docFiles = testUtils.getFiles({
+    basePath: './docs/',
+    fileEnding: '.md'
+});
 
-    testUtils.detectMissingRuleDefinitionForFiles(docFiles, {
-        ruleNames: ruleNames,
-        fileEnding: '.md'
-    });
+testUtils.detectMissingFilesForRules(ruleNames, {
+    type: 'docs',
+    files: docFiles,
+    fileEnding: '.md'
+});
 
-
-})();
+testUtils.detectMissingRuleDefinitionForFiles(docFiles, {
+    ruleNames: ruleNames,
+    fileEnding: '.md'
+});

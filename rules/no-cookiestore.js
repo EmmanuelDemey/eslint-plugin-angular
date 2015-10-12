@@ -5,20 +5,17 @@
  * @ruleName no-cookiestore
  * @config 2
  */
+'use strict';
+
 module.exports = function(context) {
-
-    'use strict';
-
     return {
 
-        'MemberExpression': function(node) {
-            if(node.object && node.object.name === '$cookieStore'){
+        MemberExpression: function(node) {
+            if (node.object && node.object.name === '$cookieStore') {
                 context.report(node, 'Since Angular 1.4, the $cookieStore service is depreacted. Please use now the $cookies service.', {});
             }
-
         }
     };
-
 };
 
 module.exports.schema = [

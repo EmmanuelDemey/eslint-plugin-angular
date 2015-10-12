@@ -8,9 +8,9 @@
  * @ruleName file-name
  * @config 0
  */
-module.exports = (function () {
-    'use strict';
+'use strict';
 
+module.exports = (function() {
     var utils = require('./utils/utils');
     var path = require('path');
     var fileEnding = '.js';
@@ -34,10 +34,13 @@ module.exports = (function () {
     };
 
     var filenameUtil = {
-        firstToUpper: function (value) {
+        firstToUpper: function(value) {
             return value[0].toUpperCase() + value.slice(1);
         },
-        removeTypeSuffix: function (name, type) {
+        firstToLower: function(value) {
+            return value[0].toLowerCase() + value.slice(1);
+        },
+        removeTypeSuffix: function(name, type) {
             var nameTypeLengthDiff = name.length - type.length;
             if (nameTypeLengthDiff <= 0) {
                 return name;
@@ -45,24 +48,32 @@ module.exports = (function () {
             var typeCamelCase = this.firstToUpper(type);
             if (name.indexOf(typeCamelCase) === nameTypeLengthDiff) {
                 return name.slice(0, nameTypeLengthDiff);
-            } else {
-                return name;
             }
+            return name;
         },
-        transformComponentName: function (name, options) {
+        removePrefix: function(name, options) {
+            if (new RegExp('^' + options.ignorePrefix + '[A-Z]').test(name)) {
+                return this.firstToLower(name.slice(options.ignorePrefix.length));
+            }
+            return name;
+        },
+        transformComponentName: function(name, options) {
             var nameStyle = options.nameStyle;
             var nameSeparator = separators[nameStyle];
             if (nameSeparator) {
-                var replacement = "$1" + nameSeparator + "$2";
+                var replacement = '$1' + nameSeparator + '$2';
                 name = name.replace(/([a-z])([A-Z])/g, replacement).toLowerCase();
             }
             return name;
         },
-        createExpectedName: function (name, type, options) {
+        createExpectedName: function(name, type, options) {
             var typeSeparator = separators[options.typeSeparator];
 
             if (options.ignoreTypeSuffix) {
                 name = filenameUtil.removeTypeSuffix(name, type);
+            }
+            if (options.ignorePrefix && options.ignorePrefix.length > 0) {
+                name = filenameUtil.removePrefix(name, options);
             }
             if (options.nameStyle) {
                 name = filenameUtil.transformComponentName(name, options);
@@ -71,24 +82,22 @@ module.exports = (function () {
                 name = name + typeSeparator + type;
             }
             return name + fileEnding;
-
         }
     };
 
-    return function (context) {
-        var options = context.options[0] || {},
-            filename = path.basename(context.getFilename());
+    return function(context) {
+        var options = context.options[0] || {};
+        var filename = path.basename(context.getFilename());
 
         return {
 
-            'CallExpression': function (node) {
-
+            CallExpression: function(node) {
                 if (utils.isAngularComponent(node) && utils.isMemberExpression(node.callee)) {
-                    var name = node.arguments[0].value,
-                        type = componentTypeMappings[node.callee.property.name],
-                        expectedName;
+                    var name = node.arguments[0].value;
+                    var type = componentTypeMappings[node.callee.property.name];
+                    var expectedName;
 
-                    if (type === undefined|| (type === 'service' && node.callee.object.name === '$provide')) {
+                    if (type === undefined || (type === 'service' && node.callee.object.name === '$provide')) {
                         return;
                     }
 
@@ -102,5 +111,5 @@ module.exports = (function () {
                 }
             }
         };
-    }
+    };
 }());
