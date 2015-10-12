@@ -1,6 +1,8 @@
 /**
  * In Angular 1.4, the $cookieStore service is now deprected.
  * Please use the $cookies service instead
+ *
+ * @linkDescription use `$cookies` instead of `$cookieStore`
  */
 'use strict';
 

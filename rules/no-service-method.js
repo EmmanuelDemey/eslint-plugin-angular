@@ -1,5 +1,7 @@
 /**
  * You should prefer the factory() method instead of service() [Y040](https://github.com/johnpapa/angular-styleguide#style-y040)
+ *
+ * @linkDescription use `factory()` instread of `service()`
  */
 'use strict';
 

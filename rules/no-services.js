@@ -3,6 +3,8 @@
  * The second parameter specifies the services.
  * The third parameter can be a list of angular objects (controller, factory, etc.).
  * Or second parameter can be an object, where keys are angular object names and value is a list of services (like {controller: ['$http'], factory: ['$q']})
+ *
+ * @linkDescription disallow DI of specified services for other angular components (`$http` for controllers, filters and directives)
  */
 'use strict';
 

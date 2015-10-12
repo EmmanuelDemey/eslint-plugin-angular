@@ -6,6 +6,8 @@
  * A prefix can be specified to determine which prefix the custom modules have.
  * Without grouped set to `false` all dependencies combined should be sorted alphabetically.
  * ('module-dependency-order', [2, {grouped: true, prefix: "app"}])
+ *
+ * @linkDescription require a consistent order of module dependencies
  */
 'use strict';
 

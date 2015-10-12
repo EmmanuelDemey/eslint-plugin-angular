@@ -1,5 +1,7 @@
 /**
  * You should use the angular.isString method instead of the default JavaScript implementation (typeof "" === "[object String]").
+ *
+ * @linkDescription use `angular.isString` instead of `typeof` comparisons
  */
 'use strict';
 

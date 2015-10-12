@@ -1,6 +1,8 @@
 /**
  * DEPRECATED! The scope's $digest() method shouldn't be used.
  * You should prefer the $apply method.
+ *
+ * @linkDescription DEPRECATED! use `$apply()` instead of `$digest()` (replaced by [watchers-execution](docs/watchers-execution.md))
  */
 'use strict';
 

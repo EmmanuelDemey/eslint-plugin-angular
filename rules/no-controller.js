@@ -1,5 +1,7 @@
 /**
  * According to the Component-First pattern, we should avoid the use of AngularJS controller.
+ *
+ * @linkDescription disallow use of controllers (according to the component first pattern)
  */
 'use strict';
 

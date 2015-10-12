@@ -1,5 +1,7 @@
 /**
  * You should use the angular.isFunction method instead of the default JavaScript implementation (typeof function(){} ==="[object Function]").
+ *
+ * @linkDescription use `angular.isFunction` instead of `typeof` comparisons
  */
 'use strict';
 

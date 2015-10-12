@@ -4,6 +4,8 @@
  * Possible values for 'typeSeparator' and 'nameStyle' are 'dot', 'dash' and 'underscore'.
  * The options 'ignoreTypeSuffix' ignores camel cased suffixes like 'someController' or 'myService' and 'ignorePrefix' ignores namespace prefixes like 'ui'.
  * [Y120](https://github.com/johnpapa/angular-styleguide#style-y120) [Y121](https://github.com/johnpapa/angular-styleguide#style-y121)
+ *
+ * @linkDescription require and specify a consistent component name pattern
  */
 'use strict';
 
