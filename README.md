@@ -162,55 +162,55 @@ Users may use the shareable [eslint-config-angular](https://github.com/dustinspe
 
 ## Rules
 
- * [angularelement](docs/angularelement.md) - The angular.element method should be used instead of the $ or jQuery object (if you are using jQuery of course)
- * [component-limit](docs/component-limit.md) - The number of AngularJS components in one file should be limited
- * [controller-as](docs/controller-as.md) - You should not set properties on $scope in controllers
- * [controller-as-route](docs/controller-as-route.md) - You should use Angular's controllerAs syntax when defining routes or states
- * [controller-as-vm](docs/controller-as-vm.md) - You should use a capture variable for 'this' when using the controllerAs syntax
- * [controller-name](docs/controller-name.md) - All your controllers should have a name starting with the parameter you can define in your config object
- * [deferred](docs/deferred.md) - When you want to create a new promise, you should not use the $q.deferred anymore
- * [definedundefined](docs/definedundefined.md) - You should use the angular.isUndefined or angular.isDefined methods instead of using the keyword undefined
- * [di](docs/di.md) - All your DI should use the same syntax : the Array or function syntaxes ("di":  [2, "function or array"])
- * [di-order](docs/di-order.md) - Injected dependencies should be sorted alphabetically
- * [di-unused](docs/di-unused.md) - Unused dependencies should not be injected.
- * [directive-name](docs/directive-name.md) - All your directives should have a name starting with the parameter you can define in your config object
- * [directive-restrict](docs/directive-restrict.md) - Not all directive restrictions may be desirable
- * [document-service](docs/document-service.md) - Instead of the default document object, you should prefer the AngularJS wrapper service $document
- * [empty-controller](docs/empty-controller.md) - If you have one empty controller, maybe you have linked it in your Router configuration or in one of your views
- * [foreach](docs/foreach.md) - You should use the angular.forEach method instead of the default JavaScript implementation [].forEach.
- * [file-name](docs/file-name.md) - All your file names should match the angular component name
- * [filter-name](docs/filter-name.md) - All your filters should have a name starting with the parameter you can define in your config object
- * [function-type](docs/function-type.md) - Anonymous or named functions inside AngularJS components
- * [interval-service](docs/interval-service.md) - Instead of the default setInterval function, you should use the AngularJS wrapper service $interval  [Y181](https://github.com/johnpapa/angular-styleguide#style-y181)
- * [json-functions](docs/json-functions.md) - You should use angular.fromJson or angular.toJson instead of JSON.parse and JSON.stringify
- * [log](docs/log.md) - You should use $log service instead of console for the methods 'log', 'debug', 'error', 'info', 'warn'
- * [module-dependency-order](docs/module-dependency-order.md) - Module dependencies should be sorted in a logical manner
- * [module-getter](docs/module-getter.md) - When using a module, avoid using a variable and instead use chaining with the getter syntax [Y022](https://github.com/johnpapa/angular-styleguide#style-y022)
- * [module-name](docs/module-name.md) - When you create a new module, its name should start with the parameter you can define in your config object
- * [module-setter](docs/module-setter.md) - Declare modules without a variable using the setter syntax.[Y021](https://github.com/johnpapa/angular-styleguide#style-y021)
- * [no-angular-mock](docs/no-angular-mock.md) - All methods defined in the angular.mock object are also available in the object window
- * [no-controller](docs/no-controller.md) - According to the Component-First pattern, we should avoid the use of AngularJS controller.
- * [no-cookiestore](docs/no-cookiestore.md) - In Angular 1.4, the $cookieStore service is now deprected
- * [no-digest](docs/no-digest.md) - DEPRECATED! The scope's $digest() method shouldn't be used
- * [no-http-callback](docs/no-http-callback.md) - Disallow the $http success and error function
- * [no-inline-template](docs/no-inline-template.md) - Instead of using inline HTML templates, it is better to load the HTML from an external file
- * [no-jquery-angularelement](docs/no-jquery-angularelement.md) - You should not wrap angular.element object into jQuery(), because angular.element already return jQLite element
- * [no-private-call](docs/no-private-call.md) - All scope's properties/methods starting with $$ are used internally by AngularJS
- * [no-services](docs/no-services.md) - Some services should be used only in a specific AngularJS service (Ajax-based service for example), in order to follow the separation of concerns paradigm
- * [no-service-method](docs/no-service-method.md) - You should prefer the factory() method instead of service() [Y040](https://github.com/johnpapa/angular-styleguide#style-y040)
- * [on-watch](docs/on-watch.md) - Watch and On methods on the scope object should be assigned to a variable, in order to be deleted in a $destroy event handler
- * [rest-service](docs/rest-service.md) - Check the service used to send request to your REST API
- * [service-name](docs/service-name.md) - All your services should have a name starting with the parameter you can define in your config object
- * [timeout-service](docs/timeout-service.md) - Instead of the default setTimeout function, you should use the AngularJS wrapper service $timeout [Y181](https://github.com/johnpapa/angular-styleguide#style-y181)
- * [typecheck-array](docs/typecheck-array.md) - You should use the angular.isArray method instead of the default JavaScript implementation (typeof [] === "[object Array]").
- * [typecheck-date](docs/typecheck-date.md) - You should use the angular.isDate method instead of the default JavaScript implementation (typeof new Date() === "[object Date]").
- * [typecheck-function](docs/typecheck-function.md) - You should use the angular.isFunction method instead of the default JavaScript implementation (typeof function(){} ==="[object Function]").
- * [typecheck-number](docs/typecheck-number.md) - You should use the angular.isNumber method instead of the default JavaScript implementation (typeof 3 === "[object Number]").
- * [typecheck-object](docs/typecheck-object.md) - You should use the angular.isObject method instead of the default JavaScript implementation (typeof {} === "[object Object]").
- * [typecheck-regexp](docs/typecheck-regexp.md) - You should use the angular.isRegexp method instead of the default JavaScript implementation (toString.call(/^A/) === "[object RegExp]").
- * [typecheck-string](docs/typecheck-string.md) - You should use the angular.isString method instead of the default JavaScript implementation (typeof "" === "[object String]").
- * [watchers-execution](docs/watchers-execution.md) - For the execution of the watchers, the $digest method will start from the scope in which we call the method
- * [window-service](docs/window-service.md) - Instead of the default window object, you should prefer the AngularJS wrapper service $window
+ * [angularelement](docs/angularelement.md) - use `angular.element` instead of `$` or `jQuery`
+ * [component-limit](docs/component-limit.md) - limits the number of angular components per file
+ * [controller-as](docs/controller-as.md) - disallow assignments to `$scope` in controllers
+ * [controller-as-route](docs/controller-as-route.md) - require the use of controllerAs in routes or states
+ * [controller-as-vm](docs/controller-as-vm.md) - require and specify a capture variable for `this` in controllers
+ * [controller-name](docs/controller-name.md) - require and specify a prefix for all controller names
+ * [deferred](docs/deferred.md) - use `$q(function(resolve, reject){})` instead of `$q.deferred`
+ * [definedundefined](docs/definedundefined.md) - use `angular.isDefined` and `angular.isUndefined` instead of other undefined checks
+ * [di](docs/di.md) - require a consistent DI syntax
+ * [di-order](docs/di-order.md) - require DI parameters to be sorted alphabetically
+ * [di-unused](docs/di-unused.md) - disallow unused DI parameters
+ * [directive-name](docs/directive-name.md) - require and specify a prefix for all directive names
+ * [directive-restrict](docs/directive-restrict.md) - disallow any other directive restrict than 'A' or 'E'
+ * [document-service](docs/document-service.md) - use `$document` instead of `document`
+ * [empty-controller](docs/empty-controller.md) - disallow empty controllers
+ * [file-name](docs/file-name.md) - require and specify a consistent component name pattern
+ * [filter-name](docs/filter-name.md) - require and specify a prefix for all filter names
+ * [foreach](docs/foreach.md) - use `angular.forEach` instead of native `Array.prototype.forEach`
+ * [function-type](docs/function-type.md) - require and specify a consistent function style for components ('named' or 'anonymous')
+ * [interval-service](docs/interval-service.md) - use `$interval` instead of `setInterval`
+ * [json-functions](docs/json-functions.md) - use `angular.fromJson` and 'angular.toJson' instead of `JSON.parse` and `JSON.stringify`
+ * [log](docs/log.md) - use the `$log` service instead of the `console` methods
+ * [module-dependency-order](docs/module-dependency-order.md) - require a consistent order of module dependencies
+ * [module-getter](docs/module-getter.md) - disallow to reference modules with variables and require to use the getter syntax instead `angular.module('myModule')`
+ * [module-name](docs/module-name.md) - require and specify a prefix for all module names
+ * [module-setter](docs/module-setter.md) - disallow to assign modules to variables (linked to [module-getter](docs/module-getter.md)
+ * [no-angular-mock](docs/no-angular-mock.md) - require to use `angular.mock` methods directly
+ * [no-controller](docs/no-controller.md) - disallow use of controllers (according to the component first pattern)
+ * [no-cookiestore](docs/no-cookiestore.md) - use `$cookies` instead of `$cookieStore`
+ * [no-digest](docs/no-digest.md) - DEPRECATED! use `$apply()` instead of `$digest()` (replaced by [watchers-execution](docs/watchers-execution.md))
+ * [no-http-callback](docs/no-http-callback.md) - disallow the `$http` methods `success()` and `error()`
+ * [no-inline-template](docs/no-inline-template.md) - disallow the use of inline templates
+ * [no-jquery-angularelement](docs/no-jquery-angularelement.md) - disallow to wrap `angular.element` objects with `jQuery` or `$`
+ * [no-private-call](docs/no-private-call.md) - disallow use of internal angular properties prefixed with $$
+ * [no-services](docs/no-services.md) - disallow DI of specified services for other angular components (`$http` for controllers, filters and directives)
+ * [no-service-method](docs/no-service-method.md) - use `factory()` instread of `service()`
+ * [on-watch](docs/on-watch.md) - require `$on` and `$watch` deregistration callbacks to be saved in a variable
+ * [rest-service](docs/rest-service.md) - disallow different rest service and specify one of '$http', '$resource', 'Restangular'
+ * [service-name](docs/service-name.md) - require and specify a prefix for all service names
+ * [timeout-service](docs/timeout-service.md) - use `$timeout` instead of `setTimeout`
+ * [typecheck-array](docs/typecheck-array.md) - use `angular.isArray` instead of `typeof` comparisons
+ * [typecheck-date](docs/typecheck-date.md) - use `angular.isDate` instead of `typeof` comparisons
+ * [typecheck-function](docs/typecheck-function.md) - use `angular.isFunction` instead of `typeof` comparisons
+ * [typecheck-number](docs/typecheck-number.md) - use `angular.isNumber` instead of `typeof` comparisons
+ * [typecheck-object](docs/typecheck-object.md) - use `angular.isObject` instead of `typeof` comparisons
+ * [typecheck-regexp](docs/typecheck-regexp.md) - use `angular.isRegexp` instead of other comparisons
+ * [typecheck-string](docs/typecheck-string.md) - use `angular.isString` instead of `typeof` comparisons
+ * [watchers-execution](docs/watchers-execution.md) - require and specify consistent use `$scope.digest()` or `$scope.apply()`
+ * [window-service](docs/window-service.md) - use `$window` instead of `window`
 
 
 
