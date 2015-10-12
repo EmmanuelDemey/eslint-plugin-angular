@@ -1,9 +1,6 @@
 /**
  * DEPRECATED! The scope's $digest() method shouldn't be used.
  * You should prefer the $apply method.
- *
- * @ruleName no-digest
- * @config 2
  */
 'use strict';
 

@@ -1,8 +1,5 @@
 /**
  * You should use the angular.isRegexp method instead of the default JavaScript implementation (toString.call(/^A/) === "[object RegExp]").
- *
- * @ruleName typecheck-regexp
- * @config 2
  */
 'use strict';
 

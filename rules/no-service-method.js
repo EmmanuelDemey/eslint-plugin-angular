@@ -1,8 +1,5 @@
 /**
  * You should prefer the factory() method instead of service() [Y040](https://github.com/johnpapa/angular-styleguide#style-y040)
- *
- * @ruleName no-service-method
- * @config 2
  */
 'use strict';
 

@@ -1,3 +1,6 @@
+/**
+ * Unused dependencies should not be injected.
+ */
 'use strict';
 
 module.exports = function(context) {

@@ -1,8 +1,5 @@
 /**
  * You should use angular.fromJson or angular.toJson instead of JSON.parse and JSON.stringify
- *
- * @ruleName json-functions
- * @config 2
  */
 'use strict';
 

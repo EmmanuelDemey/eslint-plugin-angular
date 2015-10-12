@@ -1,8 +1,5 @@
 /**
  * You should use the angular.isDate method instead of the default JavaScript implementation (typeof new Date() === "[object Date]").
- *
- * @ruleName typecheck-date
- * @config 2
  */
 'use strict';
 

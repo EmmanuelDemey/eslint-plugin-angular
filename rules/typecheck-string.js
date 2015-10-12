@@ -1,8 +1,5 @@
 /**
  * You should use the angular.isString method instead of the default JavaScript implementation (typeof "" === "[object String]").
- *
- * @ruleName typecheck-string
- * @config 2
  */
 'use strict';
 

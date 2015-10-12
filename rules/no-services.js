@@ -3,9 +3,6 @@
  * The second parameter specifies the services.
  * The third parameter can be a list of angular objects (controller, factory, etc.).
  * Or second parameter can be an object, where keys are angular object names and value is a list of services (like {controller: ['$http'], factory: ['$q']})
- *
- * @ruleName no-services
- * @config [2, ['$http', '$resource', 'Restangular']]
  */
 'use strict';
 
