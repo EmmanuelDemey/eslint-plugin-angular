@@ -1,6 +1,7 @@
  language: node_js
  node_js:
    - "4.1"
+   - "0.12"
  before_script:
    - chmod +x ./node_modules/.bin/gulp
  install: npm install
