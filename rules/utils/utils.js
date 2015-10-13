@@ -56,6 +56,10 @@ module.exports = {
         return node !== undefined && node.type === 'FunctionExpression';
     },
 
+    isNamedInlineFunction: function (node) {
+        return this.isFunctionType(node) && node.id && node.id.name && node.id.name.length > 0;
+    },
+
     isIdentifierType: function(node) {
         return node !== undefined && node.type === 'Identifier';
     },

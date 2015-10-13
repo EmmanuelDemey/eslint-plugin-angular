@@ -39,6 +39,10 @@ angularObjectList.forEach(function(object) {
         code: 'function func(Service1) {};app.' + object + '("name", ["Service1", func]);',
         options: ['anonymous'],
         errors: [{message: 'Use anonymous functions instead of named function'}]
+    }, {
+        code: 'angular.module("myModule").' + object + '("myService", function myService($http, $log) {});',
+        options: ['anonymous'],
+        errors: [{message: 'Use anonymous functions instead of named function'}]
     });
 
     valid.push({
@@ -48,7 +52,7 @@ angularObjectList.forEach(function(object) {
         code: 'function func(Service1) {};app.' + object + '("name", ["Service1", func]);',
         options: ['named']
     }, {
-        code: 'angular.module("myModule").factory("myService", function myService($http, $log) {});',
+        code: 'angular.module("myModule").' + object + '("myService", function myService($http, $log) {});',
         options: ['named']
     });
 });
