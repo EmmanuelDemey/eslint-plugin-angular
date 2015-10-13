@@ -51,7 +51,13 @@ module.exports = function(context) {
 };
 
 module.exports.schema = [{
-    type: 'string'
+    enum: [
+        'named',
+        'anonymous'
+    ]
 }, {
-    type: 'array'
+    type: 'array',
+    items: {
+        type: 'string'
+    }
 }];
