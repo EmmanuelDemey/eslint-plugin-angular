@@ -4,20 +4,14 @@ module.exports = function(context) {
     var utils = require('./utils/utils');
     var angularObjectList = ['controller', 'filter', 'factory', 'service'];
     var configType = context.options[0];
-    var message;
+    var messageByConfigType = {
+        anonymous: 'Use anonymous functions instead of named function',
+        named: 'Use named functions instead of anonymous function'
+    };
+    var message = messageByConfigType[configType];
 
-    function isArray(item) {
-        return Object.prototype.toString.call(item) === '[object Array]';
-    }
-
-    if (isArray(context.options[1])) {
+    if (context.options[1]) {
         angularObjectList = context.options[1];
-    }
-
-    if (configType === 'anonymous') {
-        message = 'Use anonymous functions instead of named function';
-    } else if (configType === 'named') {
-        message = 'Use named functions instead of anonymous function';
     }
 
     function checkType(arg) {
