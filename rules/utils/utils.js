@@ -32,6 +32,7 @@ module.exports = {
     isToStringStatement: isToStringStatement,
     isArrayType: isArrayType,
     isFunctionType: isFunctionType,
+    isNamedInlineFunction: isNamedInlineFunction,
     isIdentifierType: isIdentifierType,
     isMemberExpression: isMemberExpression,
     isLiteralType: isLiteralType,
