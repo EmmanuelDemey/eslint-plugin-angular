@@ -47,6 +47,9 @@ angularObjectList.forEach(function(object) {
     }, {
         code: 'function func(Service1) {};app.' + object + '("name", ["Service1", func]);',
         options: ['named']
+    }, {
+        code: 'angular.module("myModule").factory("myService", function myService($http, $log) {});',
+        options: ['named']
     });
 });
 
