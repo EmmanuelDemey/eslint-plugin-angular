@@ -46,10 +46,6 @@ module.exports = function(context) {
      * argument of the string '$destroy'.
      */
     function isFirstArgDestroy(node) {
-        if (node.type !== 'CallExpression') {
-            return false;
-        }
-
         var args = node.arguments;
 
         return (args.length >= 1 &&
