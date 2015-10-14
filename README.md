@@ -18,7 +18,6 @@ Since the 0.0.4 release, some rules defined in [John Papa's Guideline](https://g
 
 - [Usage with shareable config](#usage-with-shareable-config)
 - [Usage without shareable config](#usage-without-shareable-config)
-- [Sample configs](sample-configs)
 - [Defaults](#defaults)
 - [Rules](#rules)
 - [Need your help](#need-your-help)
@@ -87,14 +86,6 @@ Users may use the shareable [eslint-config-angular](https://github.com/dustinspe
     rules:
       - angular/controller_name: 0
     ```
-
-
-
-## Sample configs
-
-- [demo/npm](https://github.com/Gillespie59/eslint-plugin-angular/tree/master/demo/npm) (launch: npm run lint)
-- [demo/grunt](https://github.com/Gillespie59/eslint-plugin-angular/tree/master/demo/grunt) (launch: grunt)
-- [demo/gulp](https://github.com/Gillespie59/eslint-plugin-angular/tree/master/demo/gulp) (launch: gulp)
 
 
 
