@@ -32,6 +32,7 @@ module.exports = {
     isToStringStatement: isToStringStatement,
     isArrayType: isArrayType,
     isFunctionType: isFunctionType,
+    isNamedInlineFunction: isNamedInlineFunction,
     isIdentifierType: isIdentifierType,
     isMemberExpression: isMemberExpression,
     isLiteralType: isLiteralType,
@@ -147,6 +148,16 @@ function isArrayType(node) {
  */
 function isFunctionType(node) {
     return node !== undefined && node.type === 'FunctionExpression';
+}
+
+/**
+ * Check whether or not a node is an named FunctionExpression.
+ *
+ * @param {Object} node The node to check.
+ * @returns {boolean} Whether or not the node is an named FunctionExpression.
+ */
+function isNamedInlineFunction(node) {
+    return this.isFunctionType(node) && node.id && node.id.name && node.id.name.length > 0;
 }
 
 /**
