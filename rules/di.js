@@ -26,7 +26,7 @@ module.exports = function(context) {
             } else {
                 report(node, syntax);
             }
-        } else if (syntax === 'function.$inject') {
+        } else if (syntax === '$inject') {
             if (utils.isIdentifierType(param)) {
                 noninjectedFunctions[param.name] = node;
             } else {
@@ -36,7 +36,7 @@ module.exports = function(context) {
     }
 
     function maybeNoteInjection(syntax, node) {
-        if (syntax === 'function.$inject' && node.left && node.left.property &&
+        if (syntax === '$inject' && node.left && node.left.property &&
             ((utils.isLiteralType(node.left.property) && node.left.property.value === '$inject') ||
              (utils.isIdentifierType(node.left.property) && node.left.property.name === '$inject'))) {
             injectedFunctions.push(node.left.object.name);
@@ -44,7 +44,7 @@ module.exports = function(context) {
     }
 
     function verifyInjections(syntax) {
-        if (syntax === 'function.$inject') {
+        if (syntax === '$inject') {
             injectedFunctions.forEach(function(f) {
                 delete noninjectedFunctions[f];
             });
