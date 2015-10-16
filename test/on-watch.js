@@ -30,7 +30,13 @@ eslintTester.run('on-watch', rule, {
         'scope.$on()',
         'scope.$watch()',
         '$scope.$on()',
-        '$scope.$watch()'
+        '$scope.$watch()',
+
+        // false positive check
+        '$on()',
+
+        // uncovered edgecase
+        '$scope["$on"]()'
 
     ],
     invalid: [
