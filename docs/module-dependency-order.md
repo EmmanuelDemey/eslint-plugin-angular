@@ -1,4 +1,4 @@
-# module-dependency-order
+# module-dependency-order - require a consistent order of module dependencies
 
 Module dependencies should be sorted in a logical manner.
 This rule provides two ways to sort modules, grouped or ungrouped.

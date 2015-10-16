@@ -1,4 +1,4 @@
-# file-name
+# file-name - require and specify a consistent component name pattern
 
 All your file names should match the angular component name.
 The second parameter can be a config object [2, {nameStyle: 'dash', typeSeparator: 'dot', ignoreTypeSuffix: true, ignorePrefix: 'ui'}] to match 'avenger-profile.directive.js' or 'avanger-api.service.js'.

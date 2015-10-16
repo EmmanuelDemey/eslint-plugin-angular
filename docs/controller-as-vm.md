@@ -1,4 +1,4 @@
-# controller-as-vm
+# controller-as-vm - require and specify a capture variable for `this` in controllers
 
 You should use a capture variable for 'this' when using the controllerAs syntax.
 [Y031](https://github.com/johnpapa/angular-styleguide#style-y032).

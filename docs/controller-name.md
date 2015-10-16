@@ -1,4 +1,4 @@
-# controller-name
+# controller-name - require and specify a prefix for all controller names
 
 All your controllers should have a name starting with the parameter you can define in your config object.
 The second parameter can be a Regexp wrapped in quotes.

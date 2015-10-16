@@ -8,7 +8,7 @@ var eslintAngularIndex = require('../index.js');
 var templates = {
     ruleSourcePath: _.template('rules/<%= ruleName %>.js'),
     ruleDocumentationPath: _.template('docs/<%= ruleName %>.md'),
-    ruleDocumentationContent: _.template('# <%= ruleName %>\n\n<%= description %>\n'),
+    ruleDocumentationContent: _.template('# <%= ruleName %> - <%= lead %>\n\n<%= description %>\n'),
     readmeRuleLine: _.template(' * [<%= ruleName %>](<%= documentationPath %>) - <%= linkDescription %>'),
     readmeRuleSectionContent: _.template('## Rules\n\n<%= content %>\n\n\n\n##')
 };
@@ -28,13 +28,22 @@ function createRule(ruleName) {
     var ruleComments = parseComments(fs.readFileSync(rule.sourcePath).toString());
     var mainComment = ruleComments[0];
 
-    var descriptionLines = mainComment.description.trim().split(/\.\s+/g);
-    rule.description = descriptionLines.join('.\n');
+    rule.lead = mainComment.lead;
+
+    var firstExampleIndex = mainComment.description.indexOf('```');
+    if (firstExampleIndex !== -1) {
+        firstExampleIndex -= 2;
+    } else {
+        firstExampleIndex = mainComment.length;
+    }
+
+    // slice examples
+    rule.description = mainComment.description.slice(0, firstExampleIndex).trim();
 
     if (mainComment.linkDescription) {
         rule.linkDescription = mainComment.linkDescription;
     } else {
-        rule.linkDescription = descriptionLines[0];
+        rule.linkDescription = mainComment.lead;
     }
 
     return rule;

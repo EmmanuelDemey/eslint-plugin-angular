@@ -1,4 +1,4 @@
-# directive-restrict
+# directive-restrict - disallow any other directive restrict than 'A' or 'E'
 
 Not all directive restrictions may be desirable.
 Also it might be desirable to define default restrictions, or explicitly not.

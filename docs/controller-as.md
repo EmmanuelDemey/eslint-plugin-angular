@@ -1,4 +1,4 @@
-# controller-as
+# controller-as - disallow assignments to `$scope` in controllers
 
 You should not set properties on $scope in controllers.
 Use controllerAs syntax and add data to 'this'.

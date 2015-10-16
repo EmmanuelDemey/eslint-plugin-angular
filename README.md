@@ -163,7 +163,7 @@ Users may use the shareable [eslint-config-angular](https://github.com/dustinspe
 ## Rules
 
  * [angularelement](docs/angularelement.md) - use `angular.element` instead of `$` or `jQuery`
- * [component-limit](docs/component-limit.md) - limits the number of angular components per file
+ * [component-limit](docs/component-limit.md) - limit the number of angular components per file
  * [controller-as](docs/controller-as.md) - disallow assignments to `$scope` in controllers
  * [controller-as-route](docs/controller-as-route.md) - require the use of controllerAs in routes or states
  * [controller-as-vm](docs/controller-as-vm.md) - require and specify a capture variable for `this` in controllers
@@ -197,7 +197,7 @@ Users may use the shareable [eslint-config-angular](https://github.com/dustinspe
  * [no-jquery-angularelement](docs/no-jquery-angularelement.md) - disallow to wrap `angular.element` objects with `jQuery` or `$`
  * [no-private-call](docs/no-private-call.md) - disallow use of internal angular properties prefixed with $$
  * [no-services](docs/no-services.md) - disallow DI of specified services for other angular components (`$http` for controllers, filters and directives)
- * [no-service-method](docs/no-service-method.md) - use `factory()` instread of `service()`
+ * [no-service-method](docs/no-service-method.md) - use `factory()` instead of `service()`
  * [on-watch](docs/on-watch.md) - require `$on` and `$watch` deregistration callbacks to be saved in a variable
  * [rest-service](docs/rest-service.md) - disallow different rest service and specify one of '$http', '$resource', 'Restangular'
  * [service-name](docs/service-name.md) - require and specify a prefix for all service names

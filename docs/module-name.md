@@ -1,4 +1,4 @@
-# module-name
+# module-name - require and specify a prefix for all module names
 
 When you create a new module, its name should start with the parameter you can define in your config object.
 The second parameter can be a Regexp wrapped in quotes.

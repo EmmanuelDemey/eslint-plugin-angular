@@ -1,7 +1,7 @@
 /**
- * You should use the angular.isNumber method instead of the default JavaScript implementation (typeof 3 === "[object Number]").
+ * use `angular.isNumber` instead of `typeof` comparisons
  *
- * @linkDescription use `angular.isNumber` instead of `typeof` comparisons
+ * You should use the angular.isNumber method instead of the default JavaScript implementation (typeof 3 === "[object Number]").
  */
 'use strict';
 

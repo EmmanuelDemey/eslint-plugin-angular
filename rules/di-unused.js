@@ -1,7 +1,7 @@
 /**
- * Unused dependencies should not be injected.
+ * disallow unused DI parameters
  *
- * @linkDescription disallow unused DI parameters
+ * Unused dependencies should not be injected.
  */
 'use strict';
 

@@ -1,7 +1,7 @@
 /**
- * You should use the angular.isDate method instead of the default JavaScript implementation (typeof new Date() === "[object Date]").
+ * use `angular.isDate` instead of `typeof` comparisons
  *
- * @linkDescription use `angular.isDate` instead of `typeof` comparisons
+ * You should use the angular.isDate method instead of the default JavaScript implementation (typeof new Date() === "[object Date]").
  */
 'use strict';
 
