@@ -212,6 +212,7 @@ Users may use the shareable [eslint-config-angular](https://github.com/dustinspe
  * [watchers-execution](docs/watchers-execution.md) - require and specify consistent use `$scope.digest()` or `$scope.apply()`
  * [window-service](docs/window-service.md) - use `$window` instead of `window`
 
+----
 
 
 ## Need your help

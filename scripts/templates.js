@@ -4,9 +4,7 @@ var _ = require('lodash');
 
 var templates = {
     ruleSourcePath: _.template('rules/<%= ruleName %>.js'),
-    ruleDocumentationPath: _.template('docs/<%= ruleName %>.md'),
-    readmeRuleLine: _.template(' * [<%= ruleName %>](<%= documentationPath %>) - <%= linkDescription %>'),
-    readmeRuleSectionContent: _.template('## Rules\n\n<%= content %>\n\n\n\n##')
+    ruleDocumentationPath: _.template('docs/<%= ruleName %>.md')
 };
 
 var templatesDir = './scripts/templates/';

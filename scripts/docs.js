@@ -37,14 +37,11 @@ function createDocFiles(cb) {
 }
 
 function updateReadme(readmePath, cb) {
-    var readmeRuleSection = templates.readmeRuleSectionContent({
-        content: this.rules.map(templates.readmeRuleLine).join('\n')
-    });
-
+    var readmeRuleSection = templates.readmeRuleSectionContent(this);
     var readmeContent = fs.readFileSync(readmePath).toString();
 
     // use split and join to prevent the replace() and dollar sign problem (http://stackoverflow.com/questions/9423722)
-    var updatedReadmeContent = readmeContent.split(/## Rules[\S\s]*?##/).join(readmeRuleSection);
+    var updatedReadmeContent = readmeContent.split(/## Rules[\S\s]*?----\n/).join(readmeRuleSection);
 
     fs.writeFileSync(readmePath, updatedReadmeContent);
     (cb || _.noop)();
