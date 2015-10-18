@@ -1,3 +1,4 @@
+'use strict';
 
 var fs = require('fs');
 var _ = require('lodash');
@@ -10,30 +11,28 @@ var templates = {
 var templatesDir = './scripts/templates/';
 var templateSettings = {
     imports: {
-        formatConfigAsJson: function (examples) {
+        formatConfigAsJson: function(examples) {
             var config = examples[0].options;
             if (!config) {
-                return 2
-            } else {
-                return JSON.stringify([2].concat(config));
+                return 2;
             }
+            return JSON.stringify([2].concat(config));
         },
-        formatConfigAsMarkdown: function (examples) {
+        formatConfigAsMarkdown: function(examples) {
             var config = examples[0].options;
             if (!config) {
                 return '';
-            } else {
-                return '`' + config.map(JSON.stringify).join('` and `') + '`';
             }
+            return '`' + config.map(JSON.stringify).join('` and `') + '`';
         },
-        indent: function (content, indentation) {
+        indent: function(content, indentation) {
             var spaces = new Array(indentation + 1).join(' ');
             return content.replace(/\n/g, '\n' + spaces);
         }
     }
 };
 
-fs.readdirSync(templatesDir).forEach(function (templateFilename) {
+fs.readdirSync(templatesDir).forEach(function(templateFilename) {
     var templateName = templateFilename.split('.')[0];
     if (templates[templateName] !== undefined) {
         throw new Error('Can not create from template "' + templateFilename + '" because template key "' +
