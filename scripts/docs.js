@@ -72,7 +72,7 @@ function _normalizeExamples(example, valid) {
     example.jsonOptions = example.options ? JSON.stringify(example.options) : '';
 
     if (example.errors && example.errors.length > 0) {
-        example.errorMesssage = example.errors[0].message;
+        example.errorMessage = example.errors[0].message;
     }
     return example;
 }
