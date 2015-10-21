@@ -4,3 +4,14 @@ Some services should be used only in a specific AngularJS service (Ajax-based se
 The second parameter specifies the services.
 The third parameter can be a list of angular objects (controller, factory, etc.).
 Or second parameter can be an object, where keys are angular object names and value is a list of services (like {controller: ['$http'], factory: ['$q']})
+
+## Examples
+
+Examples with the configuration `["$http","$resource","Restangular","$q"]`
+
+    /*eslint angular/no-services: [2,["$http","$resource","Restangular","$q"]]*/
+
+    // valid
+    app.controller("SomeController", function(myService) {
+        // ...
+    });

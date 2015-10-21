@@ -87,3 +87,13 @@ module.exports.schema = [{
 }, {
     type: 'array'
 }];
+
+module.exports.examples = {
+    valid: [
+        {
+            code: 'app.controller("SomeController", function(myService) {\n    // ...\n});',
+            options: [['$http', '$resource', 'Restangular', '$q']]
+        }
+    ],
+    invalid: []
+};

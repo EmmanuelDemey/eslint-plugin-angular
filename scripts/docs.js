@@ -51,7 +51,7 @@ function testDocs() {
     this.rules.forEach(function(rule) {
         if (rule.module.examples !== undefined) {
             var eslintTester = new RuleTester();
-            eslintTester.run(rule.ruleName, rule.module, rule.module.examples);
+            eslintTester.run(rule.ruleName, rule.module, rule.examples);
         }
     });
 }
@@ -83,8 +83,8 @@ function _prepareExamples(rule) {
         return '';
     }
 
-    var validExamples = (rule.module.examples.valid || []).map(_.partial(_normalizeExamples, _, true));
-    var invalidExamples = (rule.module.examples.invalid || []).map(_.partial(_normalizeExamples, _, false));
+    var validExamples = rule.examples.valid.map(_.partial(_normalizeExamples, _, true));
+    var invalidExamples = rule.examples.invalid.map(_.partial(_normalizeExamples, _, false));
 
     var allExamples = validExamples.concat(invalidExamples);
 
@@ -116,6 +116,11 @@ function _createRule(ruleName) {
     }
 
     rule.module = require('../rules/' + rule.ruleName);
+
+    rule.examples = !rule.module.examples ? null : {
+        valid: rule.module.examples.valid || [],
+        invalid: rule.module.examples.invalid || []
+    };
 
     rule.examplesGroupedByConfiguration = _prepareExamples(rule);
     return rule;

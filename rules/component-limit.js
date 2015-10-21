@@ -37,3 +37,32 @@ module.exports = function(context) {
 module.exports.schema = [{
     type: 'integer'
 }];
+
+module.exports.examples = {
+    valid: [
+        'app.controller("SomeController", function() {\n    // ...\n});',
+        'angular.module("myModule").directive("myDirective", function() {\n    // ...\n});',
+        {
+            code: 'app.controller("ControllerOne", function() {\n    // ...\n})' +
+            '.directive("directiveTwo", function() {\n    // ...\n})' +
+            '.factory("serviceThree", function() {\n    // ...\n});',
+            options: [3]
+        }
+    ],
+    invalid: [{
+        code: 'app.controller("ControllerOne", function() {\n    // ...\n})' +
+        '.directive("directiveTwo", function() {\n    // ...\n});',
+        errors: [{
+            message: 'There may be at most 1 AngularJS component per file, but found 2'
+        }]
+    }, {
+        code: 'app.controller("ControllerOne", function() {\n    // ...\n})' +
+        '.directive("directiveTwo", function() {\n    // ...\n})' +
+        '.factory("serviceThree", function() {\n    // ...\n})' +
+        '.filter("filterFour", function() {\n    // ...\n});',
+        options: [3],
+        errors: [{
+            message: 'There may be at most 3 AngularJS components per file, but found 4'
+        }]
+    }]
+}

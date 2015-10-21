@@ -66,3 +66,27 @@ module.exports = function(context) {
         }
     };
 };
+
+module.exports.examples = {
+    valid: [
+        'angular.module("myModule").controller("SomeController", function($scope) {\n' +
+        '    // this for values\n' +
+        '    this.value = 42;\n' +
+        '    \n' +
+        '    // $scope is fine for watchers\n' +
+        '    $scope.$watch(angular.bind(this, function () {\n' +
+        '        return this.value\n' +
+        '    }), function () {\n' +
+        '        // ...\n' +
+        '    });\n' +
+        '});'
+    ],
+    invalid: [{
+        code: 'angular.module("myModule").controller("SomeController", function($scope) {\n' +
+            '    $scope.value = 42;\n' +
+            '});',
+        errors: [{
+            message: 'You should not set properties on $scope in controllers. Use controllerAs syntax and add data to "this"'
+        }]
+    }]
+};

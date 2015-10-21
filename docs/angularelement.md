@@ -2,3 +2,18 @@
 
 The angular.element method should be used instead of the $ or jQuery object (if you are using jQuery of course).
 If the jQuery library is imported, angular.element will be a wrapper around the jQuery object.
+
+## Examples
+
+Examples with default configuration
+
+    /*eslint angular/angularelement: 2*/
+
+    // valid
+    angular.element(".some-class");
+
+    // invalid
+    $(".some-class"); // error: You should use angular.element instead of the jQuery $ object
+
+    // invalid
+    jQuery(".another-class"); // error: You should use angular.element instead of the jQuery $ object
