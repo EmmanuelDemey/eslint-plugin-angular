@@ -200,7 +200,7 @@ Users may use the shareable [eslint-config-angular](https://github.com/dustinspe
 | typecheck-function        | You should use the angular.isFunction method instead of the default JavaScript implementation (typeof function(){} ==="[object Function]"). |
 | typecheck-number          | You should use the angular.isNumber method instead of the default JavaScript implementation (typeof 3 === "[object Number]"). |
 | typecheck-object          | You should use the angular.isObject method instead of the default JavaScript implementation (typeof {} === "[object Object]").  |
-| typecheck-regexp          | You should use the angular.isRegexp method instead of the default JavaScript implementation (toString.call(/^A/) === "[object RegExp]"). |
+| typecheck-regexp          | DEPRECATED! You should use the angular.isRegexp method instead of the default JavaScript implementation (toString.call(/^A/) === "[object RegExp]"). |
 | typecheck-string          | You should use the angular.isString method instead of the default JavaScript implementation (typeof "" === "[object String]"). |
 | watchers-execution        | For the execution of the watchers, the $digest method will start from the scope in which we call the method. This will cause an performance improvement comparing to the $apply method, who start from the $rootScope |
 | window-service            | Instead of the default window object, you should prefer the AngularJS wrapper service $window. [Y180](https://github.com/johnpapa/angular-styleguide#style-y180) |
