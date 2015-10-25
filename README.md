@@ -18,7 +18,6 @@ Since the 0.0.4 release, some rules defined in [John Papa's Guideline](https://g
 
 - [Usage with shareable config](#usage-with-shareable-config)
 - [Usage without shareable config](#usage-without-shareable-config)
-- [Sample configs](sample-configs)
 - [Defaults](#defaults)
 - [Rules](#rules)
 - [Need your help](#need-your-help)
@@ -87,14 +86,6 @@ Users may use the shareable [eslint-config-angular](https://github.com/dustinspe
     rules:
       - angular/controller_name: 0
     ```
-
-
-
-## Sample configs
-
-- [demo/npm](https://github.com/Gillespie59/eslint-plugin-angular/tree/master/demo/npm) (launch: npm run lint)
-- [demo/grunt](https://github.com/Gillespie59/eslint-plugin-angular/tree/master/demo/grunt) (launch: grunt)
-- [demo/gulp](https://github.com/Gillespie59/eslint-plugin-angular/tree/master/demo/gulp) (launch: gulp)
 
 
 
@@ -172,8 +163,9 @@ Users may use the shareable [eslint-config-angular](https://github.com/dustinspe
 | controller-name           | All your controllers should have a name starting with the parameter you can define in your config object. The second parameter can be a Regexp wrapped in quotes. ("controller-name":  [2, "ng"])  [Y123](https://github.com/johnpapa/angular-styleguide#style-y123), [Y124](https://github.com/johnpapa/angular-styleguide#style-y124)|
 | deferred                  | When you want to create a new promise, you should not use the $q.deferred anymore. Prefer the new syntax : $q(function(resolve, reject){}) |
 | definedundefined          | You should use the angular.isUndefined or angular.isDefined methods instead of using the keyword undefined. We also check the use of !angular.isUndefined and !angular.isDefined (should prefer the reverse function)|
-| di                        | All your DI should use the same syntax : the Array or function syntaxes ("di":  [2, "function or array"])|
+| di                        | All your DI should use the same syntax : the Array, function, or $inject syntaxes ("di":  [2, "array, function, or $inject"])|
 | di-order                  | Injected dependencies should be sorted alphabetically. If the second parameter is set to false, values which start and end with an underscore those underscores are stripped. This means for example that `_$httpBackend_` goes before `_$http_`. |
+| di-unused                 | Unused dependencies should not be injected. |
 | directive-name            | All your directives should have a name starting with the parameter you can define in your config object. The second parameter can be a Regexp wrapped in quotes. You can not prefix your directives by "ng" (reserved keyword for AngularJS directives) ("directive-name":  [2, "ng"]) [Y073](https://github.com/johnpapa/angular-styleguide#style-y073), [Y126](https://github.com/johnpapa/angular-styleguide#style-y126) |
 | directive-restrict        | Not all directive restrictions may be desirable. Also it might be desirable to define default restrictions, or explicitly not. The default configuration limits the restrictions `AE` [Y074](https://github.com/johnpapa/angular-styleguide#style-y074) and disallows explicitly specifying a default. ("directive-restrict": [0, {"restrict": "AE", "explicit": "never"}]) |
 | document-service          | Instead of the default document object, you should prefer the AngularJS wrapper service $document. [Y180](https://github.com/johnpapa/angular-styleguide#style-y180) |
@@ -208,7 +200,7 @@ Users may use the shareable [eslint-config-angular](https://github.com/dustinspe
 | typecheck-function        | You should use the angular.isFunction method instead of the default JavaScript implementation (typeof function(){} ==="[object Function]"). |
 | typecheck-number          | You should use the angular.isNumber method instead of the default JavaScript implementation (typeof 3 === "[object Number]"). |
 | typecheck-object          | You should use the angular.isObject method instead of the default JavaScript implementation (typeof {} === "[object Object]").  |
-| typecheck-regexp          | You should use the angular.isRegexp method instead of the default JavaScript implementation (toString.call(/^A/) === "[object RegExp]"). |
+| typecheck-regexp          | DEPRECATED! You should use the angular.isRegexp method instead of the default JavaScript implementation (toString.call(/^A/) === "[object RegExp]"). |
 | typecheck-string          | You should use the angular.isString method instead of the default JavaScript implementation (typeof "" === "[object String]"). |
 | watchers-execution        | For the execution of the watchers, the $digest method will start from the scope in which we call the method. This will cause an performance improvement comparing to the $apply method, who start from the $rootScope |
 | window-service            | Instead of the default window object, you should prefer the AngularJS wrapper service $window. [Y180](https://github.com/johnpapa/angular-styleguide#style-y180) |
