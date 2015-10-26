@@ -18,7 +18,6 @@ Since the 0.0.4 release, some rules defined in [John Papa's Guideline](https://g
 
 - [Usage with shareable config](#usage-with-shareable-config)
 - [Usage without shareable config](#usage-without-shareable-config)
-- [Sample configs](sample-configs)
 - [Defaults](#defaults)
 - [Rules](#rules)
 - [Need your help](#need-your-help)
@@ -90,14 +89,6 @@ Users may use the shareable [eslint-config-angular](https://github.com/dustinspe
 
 
 
-## Sample configs
-
-- [demo/npm](https://github.com/Gillespie59/eslint-plugin-angular/tree/master/demo/npm) (launch: npm run lint)
-- [demo/grunt](https://github.com/Gillespie59/eslint-plugin-angular/tree/master/demo/grunt) (launch: grunt)
-- [demo/gulp](https://github.com/Gillespie59/eslint-plugin-angular/tree/master/demo/gulp) (launch: gulp)
-
-
-
 ## Defaults
 
 ```json
@@ -162,6 +153,7 @@ Users may use the shareable [eslint-config-angular](https://github.com/dustinspe
 
 ## Rules
 
+
  * [angularelement](docs/angularelement.md) - use `angular.element` instead of `$` or `jQuery`
  * [component-limit](docs/component-limit.md) - limit the number of angular components per file
  * [controller-as](docs/controller-as.md) - disallow assignments to `$scope` in controllers
@@ -207,7 +199,7 @@ Users may use the shareable [eslint-config-angular](https://github.com/dustinspe
  * [typecheck-function](docs/typecheck-function.md) - use `angular.isFunction` instead of `typeof` comparisons
  * [typecheck-number](docs/typecheck-number.md) - use `angular.isNumber` instead of `typeof` comparisons
  * [typecheck-object](docs/typecheck-object.md) - use `angular.isObject` instead of `typeof` comparisons
- * [typecheck-regexp](docs/typecheck-regexp.md) - use `angular.isRegexp` instead of other comparisons
+ * [typecheck-regexp](docs/typecheck-regexp.md) - DEPRECATED! use `angular.isRegexp` instead of other comparisons (no native angular method)
  * [typecheck-string](docs/typecheck-string.md) - use `angular.isString` instead of `typeof` comparisons
  * [watchers-execution](docs/watchers-execution.md) - require and specify consistent use `$scope.digest()` or `$scope.apply()`
  * [window-service](docs/window-service.md) - use `$window` instead of `window`
