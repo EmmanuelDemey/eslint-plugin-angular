@@ -2,3 +2,5 @@
 
 For the execution of the watchers, the $digest method will start from the scope in which we call the method.
 This will cause an performance improvement comparing to the $apply method, who start from the $rootScope
+
+<!-- WARNING: Generated documentation. Edit docs and examples in the rule and examples file ('rules/watchers-execution.js', 'examples/watchers-execution.js'). -->

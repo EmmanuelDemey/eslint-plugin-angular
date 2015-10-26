@@ -83,7 +83,7 @@ function _parseExample(exampleSource) {
 }
 
 function _loadExamples(rule) {
-    var examplesSource = fs.readFileSync(templates.ruleExamplePath(rule)).toString();
+    var examplesSource = fs.readFileSync(rule.examplesPath).toString();
     var exampleRegex = /\s*\/\/\s*example\s*-/;
     if (!exampleRegex.test(examplesSource)) {
         return [];
@@ -98,6 +98,7 @@ function _createRule(ruleName) {
     };
     rule.sourcePath = templates.ruleSourcePath(rule);
     rule.documentationPath = templates.ruleDocumentationPath(rule);
+    rule.examplesPath = templates.ruleExamplesPath(rule);
 
     var ruleComments = parseComments(fs.readFileSync(rule.sourcePath).toString());
     var mainComment = ruleComments[0];

@@ -95,3 +95,5 @@ Examples with the configuration `{"typeSeparator":"dot","ignorePrefix":"ui"}`
 
     // valid with filename: src/app/userUtils.service.js
     angular.factory('uiUserUtils', uiUserUtils)
+
+<!-- WARNING: Generated documentation. Edit docs and examples in the rule and examples file ('rules/file-name.js', 'examples/file-name.js'). -->

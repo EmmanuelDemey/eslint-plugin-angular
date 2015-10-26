@@ -15,3 +15,5 @@ Examples with the configuration `["$http","$resource","Restangular","$q"]`
     app.controller('SomeController', function(myService) {
         // ...
     });
+
+<!-- WARNING: Generated documentation. Edit docs and examples in the rule and examples file ('rules/no-services.js', 'examples/no-services.js'). -->

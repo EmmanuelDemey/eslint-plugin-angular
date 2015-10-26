@@ -2,3 +2,5 @@
 
 When you want to create a new promise, you should not use the $q.deferred anymore.
 Prefer the new syntax : $q(function(resolve, reject){})
+
+<!-- WARNING: Generated documentation. Edit docs and examples in the rule and examples file ('rules/deferred.js', 'examples/deferred.js'). -->

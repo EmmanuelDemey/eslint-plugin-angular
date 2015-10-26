@@ -17,3 +17,5 @@ Examples with default configuration
 
     // invalid
     jQuery('.another-class'); // error: You should use angular.element instead of the jQuery $ object
+
+<!-- WARNING: Generated documentation. Edit docs and examples in the rule and examples file ('rules/angularelement.js', 'examples/angularelement.js'). -->

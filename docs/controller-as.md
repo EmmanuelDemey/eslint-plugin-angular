@@ -28,3 +28,5 @@ Examples with default configuration
     angular.module("myModule").controller("SomeController", function($scope) {
         $scope.value = 42;
     }); // error: You should not set properties on $scope in controllers. Use controllerAs syntax and add data to "this"
+
+<!-- WARNING: Generated documentation. Edit docs and examples in the rule and examples file ('rules/controller-as.js', 'examples/controller-as.js'). -->

@@ -1,3 +1,5 @@
+<!-- WARNING: Generated documentation. Edit docs and examples in the rule and examples file ('<%= sourcePath %>', '<%= examplesPath %>'). -->
+
 # <%= ruleName %> - <%= lead %>
 
 <%= description %>

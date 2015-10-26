@@ -7,3 +7,5 @@ The modules should be sorted alphabetically within its group.
 A prefix can be specified to determine which prefix the custom modules have.
 Without grouped set to `false` all dependencies combined should be sorted alphabetically.
 ('module-dependency-order', [2, {grouped: true, prefix: "app"}])
+
+<!-- WARNING: Generated documentation. Edit docs and examples in the rule and examples file ('rules/module-dependency-order.js', 'examples/module-dependency-order.js'). -->

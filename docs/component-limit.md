@@ -49,3 +49,5 @@ Examples with the configuration `3`
     }).filter('filterFour', function() {
         // ...
     }); // error: There may be at most 3 AngularJS components per file, but found 4
+
+<!-- WARNING: Generated documentation. Edit docs and examples in the rule and examples file ('rules/component-limit.js', 'examples/component-limit.js'). -->
