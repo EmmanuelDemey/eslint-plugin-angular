@@ -2,7 +2,7 @@
 
 <%= description %>
 
-<% if(examplesGroupedByConfiguration) { %>
+<% if(allExamples.length > 0) { %>
 ## Examples
 
 <% _.each(examplesGroupedByConfiguration, function (examples, config) { %>

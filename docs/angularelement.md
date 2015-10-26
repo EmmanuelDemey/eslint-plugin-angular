@@ -10,10 +10,10 @@ Examples with default configuration
     /*eslint angular/angularelement: 2*/
 
     // valid
-    angular.element(".some-class");
+    angular.element('.some-class');
 
     // invalid
-    $(".some-class"); // error: You should use angular.element instead of the jQuery $ object
+    $('.some-class'); // error: You should use angular.element instead of the jQuery $ object
 
     // invalid
-    jQuery(".another-class"); // error: You should use angular.element instead of the jQuery $ object
+    jQuery('.another-class'); // error: You should use angular.element instead of the jQuery $ object

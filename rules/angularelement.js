@@ -18,13 +18,3 @@ module.exports = function(context) {
 };
 
 module.exports.schema = [];
-
-module.exports.examples = {
-    valid: [
-        'angular.element(".some-class");'
-    ],
-    invalid: [
-        {code: '$(".some-class");', errors: [{message: 'You should use angular.element instead of the jQuery $ object'}]},
-        {code: 'jQuery(".another-class");', errors: [{message: 'You should use angular.element instead of the jQuery $ object'}]}
-    ]
-};

@@ -12,6 +12,6 @@ Examples with the configuration `["$http","$resource","Restangular","$q"]`
     /*eslint angular/no-services: [2,["$http","$resource","Restangular","$q"]]*/
 
     // valid
-    app.controller("SomeController", function(myService) {
+    app.controller('SomeController', function(myService) {
         // ...
     });

@@ -10,19 +10,19 @@ Examples with default configuration
     /*eslint angular/component-limit: 2*/
 
     // valid
-    app.controller("SomeController", function() {
+    app.controller('SomeController', function() {
         // ...
     });
 
     // valid
-    angular.module("myModule").directive("myDirective", function() {
+    angular.module('myModule').directive('myDirective', function() {
         // ...
     });
 
     // invalid
-    app.controller("ControllerOne", function() {
+    app.controller('ControllerOne', function() {
         // ...
-    }).directive("directiveTwo", function() {
+    }).directive('directiveTwo', function() {
         // ...
     }); // error: There may be at most 1 AngularJS component per file, but found 2
 
@@ -31,21 +31,21 @@ Examples with the configuration `3`
     /*eslint angular/component-limit: [2,3]*/
 
     // valid
-    app.controller("ControllerOne", function() {
+    app.controller('ControllerOne', function() {
         // ...
-    }).directive("directiveTwo", function() {
+    }).directive('directiveTwo', function() {
         // ...
-    }).factory("serviceThree", function() {
+    }).factory('serviceThree', function() {
         // ...
     });
 
     // invalid
-    app.controller("ControllerOne", function() {
+    app.controller('ControllerOne', function() {
         // ...
-    }).directive("directiveTwo", function() {
+    }).directive('directiveTwo', function() {
         // ...
-    }).factory("serviceThree", function() {
+    }).factory('serviceThree', function() {
         // ...
-    }).filter("filterFour", function() {
+    }).filter('filterFour', function() {
         // ...
     }); // error: There may be at most 3 AngularJS components per file, but found 4

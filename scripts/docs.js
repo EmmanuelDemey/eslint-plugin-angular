@@ -49,7 +49,7 @@ function updateReadme(readmePath, cb) {
 
 function testDocs() {
     this.rules.forEach(function(rule) {
-        if (rule.module.examples !== undefined) {
+        if (rule.examples !== undefined) {
             var eslintTester = new RuleTester();
             eslintTester.run(rule.ruleName, rule.module, rule.examples);
         }
@@ -60,39 +60,37 @@ function trimTrailingSpacesAndMultilineBreaks(content) {
     return content.replace(/( )+\n/g, '\n').replace(/\n\n+\n/g, '\n\n').replace(/\n+$/g, '\n');
 }
 
-function _normalizeExamples(example, valid) {
-    if (_.isString(example)) {
-        example = {
-            code: example
-        };
-    } else {
-        example = _.cloneDeep(example);
-    }
-    example.valid = valid;
-    example.jsonOptions = example.options ? JSON.stringify(example.options) : '';
-
-    if (example.errors && example.errors.length > 0) {
-        example.errorMessage = example.errors[0].message;
-    }
+function _parseConfigLine(configLine) {
+    // surround config keys with quotes for json parsing
+    var preparedConfigLine = configLine.replace(/(\w+):/g, '"$1":');
+    var example = JSON.parse('{' + preparedConfigLine + '}');
     return example;
 }
 
-function _prepareExamples(rule) {
-    if (rule.module.examples === undefined) {
-        console.error('No examples for ' + rule.ruleName);
-        return '';
+function _parseExample(exampleSource) {
+    var lines = exampleSource.split('\n');
+    var example = _parseConfigLine(lines[0]);
+    example.code = lines.slice(1).join('\n').trim();
+
+    if (example.errorMessage) {
+        example.errors = [{
+            message: example.errorMessage
+        }];
     }
+    example.jsonOptions = example.options ? JSON.stringify(example.options) : '';
 
-    var validExamples = rule.examples.valid.map(_.partial(_normalizeExamples, _, true));
-    var invalidExamples = rule.examples.invalid.map(_.partial(_normalizeExamples, _, false));
-
-    var allExamples = validExamples.concat(invalidExamples);
-
-    var groupedExamples = _.groupBy(allExamples, 'jsonOptions');
-
-    return groupedExamples;
+    return example;
 }
 
+function _loadExamples(rule) {
+    var examplesSource = fs.readFileSync(templates.ruleExamplePath(rule)).toString();
+    var exampleRegex = /\s*\/\/\s*example\s*-/;
+    if (!exampleRegex.test(examplesSource)) {
+        return [];
+    }
+
+    return examplesSource.split(exampleRegex).slice(1).map(_parseExample);
+}
 
 function _createRule(ruleName) {
     var rule = {
@@ -116,12 +114,13 @@ function _createRule(ruleName) {
     }
 
     rule.module = require('../rules/' + rule.ruleName);
+    rule.allExamples = _loadExamples(rule);
 
-    rule.examples = !rule.module.examples ? null : {
-        valid: rule.module.examples.valid || [],
-        invalid: rule.module.examples.invalid || []
+    rule.examples = {
+        valid: _.filter(rule.allExamples, {valid: true}) || [],
+        invalid: _.filter(rule.allExamples, {valid: false}) || []
     };
 
-    rule.examplesGroupedByConfiguration = _prepareExamples(rule);
+    rule.examplesGroupedByConfiguration = _.groupBy(rule.allExamples, 'jsonOptions');
     return rule;
 }
