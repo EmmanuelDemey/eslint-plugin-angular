@@ -1,3 +1,5 @@
+<!-- WARNING: Generated documentation. Edit docs and examples in the rule and examples file ('rules/no-services.js', 'examples/no-services.js'). -->
+
 # no-services - disallow DI of specified services
 
 Some services should be used only in a specific AngularJS service (Ajax-based service for example), in order to follow the separation of concerns paradigm.
@@ -16,4 +18,7 @@ Examples with the configuration `["$http","$resource","Restangular","$q"]`
         // ...
     });
 
-<!-- WARNING: Generated documentation. Edit docs and examples in the rule and examples file ('rules/no-services.js', 'examples/no-services.js'). -->
+## Links
+
+* [Rule source](../rules/no-services.js)
+* [Example source](../examples/no-services.js)

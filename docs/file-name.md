@@ -1,3 +1,5 @@
+<!-- WARNING: Generated documentation. Edit docs and examples in the rule and examples file ('rules/file-name.js', 'examples/file-name.js'). -->
+
 # file-name - require and specify a consistent component name pattern
 
 All your file names should match the angular component name.
@@ -96,4 +98,7 @@ Examples with the configuration `{"typeSeparator":"dot","ignorePrefix":"ui"}`
     // valid with filename: src/app/userUtils.service.js
     angular.factory('uiUserUtils', uiUserUtils)
 
-<!-- WARNING: Generated documentation. Edit docs and examples in the rule and examples file ('rules/file-name.js', 'examples/file-name.js'). -->
+## Links
+
+* [Rule source](../rules/file-name.js)
+* [Example source](../examples/file-name.js)

@@ -1,3 +1,5 @@
+<!-- WARNING: Generated documentation. Edit docs and examples in the rule and examples file ('rules/module-dependency-order.js', 'examples/module-dependency-order.js'). -->
+
 # module-dependency-order - require a consistent order of module dependencies
 
 Module dependencies should be sorted in a logical manner.
@@ -8,4 +10,7 @@ A prefix can be specified to determine which prefix the custom modules have.
 Without grouped set to `false` all dependencies combined should be sorted alphabetically.
 ('module-dependency-order', [2, {grouped: true, prefix: "app"}])
 
-<!-- WARNING: Generated documentation. Edit docs and examples in the rule and examples file ('rules/module-dependency-order.js', 'examples/module-dependency-order.js'). -->
+## Links
+
+* [Rule source](../rules/module-dependency-order.js)
+* [Example source](../examples/module-dependency-order.js)

@@ -1,3 +1,5 @@
+<!-- WARNING: Generated documentation. Edit docs and examples in the rule and examples file ('rules/controller-as.js', 'examples/controller-as.js'). -->
+
 # controller-as - disallow assignments to `$scope` in controllers
 
 You should not set properties on $scope in controllers.
@@ -29,4 +31,7 @@ Examples with default configuration
         $scope.value = 42;
     }); // error: You should not set properties on $scope in controllers. Use controllerAs syntax and add data to "this"
 
-<!-- WARNING: Generated documentation. Edit docs and examples in the rule and examples file ('rules/controller-as.js', 'examples/controller-as.js'). -->
+## Links
+
+* [Rule source](../rules/controller-as.js)
+* [Example source](../examples/controller-as.js)

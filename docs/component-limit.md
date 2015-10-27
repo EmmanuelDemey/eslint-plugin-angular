@@ -1,3 +1,5 @@
+<!-- WARNING: Generated documentation. Edit docs and examples in the rule and examples file ('rules/component-limit.js', 'examples/component-limit.js'). -->
+
 # component-limit - limit the number of angular components per file
 
 The number of AngularJS components in one file should be limited.
@@ -50,4 +52,7 @@ Examples with the configuration `3`
         // ...
     }); // error: There may be at most 3 AngularJS components per file, but found 4
 
-<!-- WARNING: Generated documentation. Edit docs and examples in the rule and examples file ('rules/component-limit.js', 'examples/component-limit.js'). -->
+## Links
+
+* [Rule source](../rules/component-limit.js)
+* [Example source](../examples/component-limit.js)

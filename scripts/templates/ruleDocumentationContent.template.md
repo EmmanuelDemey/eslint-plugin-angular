@@ -22,3 +22,7 @@ Examples with default configuration
 <% }) %>
 <% } %>
 
+## Links
+
+* [Rule source](../<%= sourcePath %>)
+* [Example source](../<%= examplesPath %>)
