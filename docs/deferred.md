@@ -5,6 +5,20 @@
 When you want to create a new promise, you should not use the $q.deferred anymore.
 Prefer the new syntax : $q(function(resolve, reject){})
 
+## Examples
+
+Examples with default configuration
+
+    /*eslint angular/deferred: 2*/
+
+    // valid
+    $q(function() {
+        // ...
+    });
+
+    // invalid
+    var deferred = $q.defer(); // error: You should not create a new promise with this syntax. Use the $q(function(resolve, reject) {}) syntax.
+
 ## Links
 
 * [Rule source](../rules/deferred.js)

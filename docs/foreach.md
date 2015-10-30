@@ -4,6 +4,22 @@
 
 You should use the angular.forEach method instead of the default JavaScript implementation [].forEach.
 
+## Examples
+
+Examples with default configuration
+
+    /*eslint angular/foreach: 2*/
+
+    // valid
+    angular.forEach(someArray, function (element) {
+        // ...
+    });
+
+    // invalid
+    someArray.forEach(function (element) {
+        // ...
+    }); // error: You should use the angular.forEach method
+
 ## Links
 
 * [Rule source](../rules/foreach.js)

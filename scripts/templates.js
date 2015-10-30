@@ -13,14 +13,14 @@ var templatesDir = './scripts/templates/';
 var templateSettings = {
     imports: {
         formatConfigAsJson: function(examples) {
-            var config = examples[0].options;
+            var config = examples[0].displayOptions;
             if (!config) {
                 return 2;
             }
             return JSON.stringify([2].concat(config));
         },
         formatConfigAsMarkdown: function(examples) {
-            var config = examples[0].options;
+            var config = examples[0].displayOptions;
             if (!config) {
                 return '';
             }

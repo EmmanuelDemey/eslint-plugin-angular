@@ -7,6 +7,43 @@ The first parameter sets which type of function is required and can be 'named' o
 The second parameter is an optional list of angular object names.
 [Y024](https://github.com/johnpapa/angular-styleguide/blob/master/README.md#style-y024)
 
+## Examples
+
+Examples with the configuration `"anonymous"`
+
+    /*eslint angular/function-type: [2,"anonymous"]*/
+
+    // valid
+    angular.module('myModule').factory('myService', function () {
+        // ...
+    });
+
+    // invalid
+    angular.module('myModule').factory('myService', myServiceFn);
+    function myServiceFn() {
+        // ...
+    } // error: Use anonymous functions instead of named function
+
+Examples with the configuration `"named"`
+
+    /*eslint angular/function-type: [2,"named"]*/
+
+    // valid
+    angular.module('myModule').factory('myService', function myService() {
+        // ...
+    });
+
+    // valid
+    angular.module('myModule').factory('myService', myServiceFn);
+    function myServiceFn() {
+        // ...
+    }
+
+    // invalid
+    angular.module('myModule').factory('myService', function () {
+        // ...
+    }); // error: Use named functions instead of anonymous function
+
 ## Links
 
 * [Rule source](../rules/function-type.js)

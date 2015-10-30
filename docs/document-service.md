@@ -5,6 +5,21 @@
 Instead of the default document object, you should prefer the AngularJS wrapper service $document.
 [Y180](https://github.com/johnpapa/angular-styleguide#style-y180)
 
+## Examples
+
+Examples with default configuration
+
+    /*eslint angular/document-service: 2*/
+
+    // valid
+    $document[0].title = ""
+
+    // invalid
+    document.title // error: You should use the $document service instead of the default document object
+
+    // invalid
+    document.title // error: You should use the $document service instead of the default document object
+
 ## Links
 
 * [Rule source](../rules/document-service.js)

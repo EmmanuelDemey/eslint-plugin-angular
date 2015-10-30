@@ -5,6 +5,30 @@
 You should use the angular.isUndefined or angular.isDefined methods instead of using the keyword undefined.
 We also check the use of !angular.isUndefined and !angular.isDefined (should prefer the reverse function)
 
+## Examples
+
+Examples with default configuration
+
+    /*eslint angular/definedundefined: 2*/
+
+    // valid
+    angular.isUndefined(value)
+
+    // valid
+    angular.isDefined(value)
+
+    // invalid
+    value === undefined // error: You should not use directly the "undefined" keyword. Prefer angular.isUndefined or angular.isDefined
+
+    // invalid
+    value !== undefined // error: You should not use directly the "undefined" keyword. Prefer angular.isUndefined or angular.isDefined
+
+    // invalid
+    !angular.isUndefined(value) // error: Instead of !angular.isUndefined, you can use the out-of-box angular.isDefined method
+
+    // invalid
+    !angular.isDefined(value) // error: Instead of !angular.isDefined, you can use the out-of-box angular.isUndefined method
+
 ## Links
 
 * [Rule source](../rules/definedundefined.js)

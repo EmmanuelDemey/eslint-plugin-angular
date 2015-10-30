@@ -56,12 +56,13 @@ function trimTrailingSpacesAndMultilineBreaks(content) {
 
 function _parseConfigLine(configLine) {
     // surround config keys with quotes for json parsing
-    var preparedConfigLine = configLine.replace(/(\w+):/g, '"$1":');
+    var preparedConfigLine = configLine.replace(/(\w+):/g, '"$1":').replace('\\:', ':');
     var example = JSON.parse('{' + preparedConfigLine + '}');
     return example;
 }
 
 function _parseExample(exampleSource) {
+    var rule = this;
     var lines = exampleSource.split('\n');
     var example = _parseConfigLine(lines[0]);
     example.code = lines.slice(1).join('\n').trim();
@@ -71,7 +72,23 @@ function _parseExample(exampleSource) {
             message: example.errorMessage
         }];
     }
+
+    if (!example.valid && !example.errorMessage) {
+        throw new Error('Example config requires "errorMessage" when valid: false');
+    }
+
+    // json options as group key
     example.jsonOptions = example.options ? JSON.stringify(example.options) : '';
+
+    if (example.options) {
+        example.displayOptions = example.options;
+    } else {
+        // set default options for tests
+        var defaultOptions = eslintAngularIndex.rulesConfig[rule.ruleName];
+        if (_.isArray(defaultOptions)) {
+            example.options = defaultOptions.slice(1);
+        }
+    }
 
     return example;
 }
@@ -83,7 +100,7 @@ function _loadExamples(rule) {
         return [];
     }
 
-    return examplesSource.split(exampleRegex).slice(1).map(_parseExample);
+    return examplesSource.split(exampleRegex).slice(1).map(_parseExample.bind(rule));
 }
 
 function _createRule(ruleName) {

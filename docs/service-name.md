@@ -6,6 +6,40 @@ All your services should have a name starting with the parameter you can define 
 The second parameter can be a Regexp wrapped in quotes.
 You can not prefix your services by "$" (reserved keyword for AngularJS services) ("service-name":  [2, "ng"]) [Y125](https://github.com/johnpapa/angular-styleguide#style-y125)
 
+## Examples
+
+Examples with the configuration `"prefix"`
+
+    /*eslint angular/service-name: [2,"prefix"]*/
+
+    // valid
+    angular.module('myModule').factory('prefixService', function () {
+        // ...
+    });
+
+Examples with the configuration `"/^xyz/"`
+
+    /*eslint angular/service-name: [2,"/^xyz/"]*/
+
+    // valid
+    angular.module('myModule').factory('xyzService', function () {
+        // ...
+    });
+
+    // invalid
+    angular.module('myModule').factory('otherService', function () {
+        // ...
+    }); // error: The otherService service should follow this pattern: /^xyz/
+
+Examples with the configuration `"xyz"`
+
+    /*eslint angular/service-name: [2,"xyz"]*/
+
+    // invalid
+    angular.module('myModule').factory('myService', function () {
+        // ...
+    }); // error: The myService service should be prefixed by xyz
+
 ## Links
 
 * [Rule source](../rules/service-name.js)
