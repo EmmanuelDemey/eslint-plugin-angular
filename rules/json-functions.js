@@ -13,9 +13,9 @@ module.exports = function(context) {
         MemberExpression: function(node) {
             if (node.object.name === 'JSON') {
                 if (node.property.name === 'stringify') {
-                    context.report(node, 'You should use the toJson method instead of JSON.stringify', {});
+                    context.report(node, 'You should use the angular.toJson method instead of JSON.stringify', {});
                 } else if (node.property.name === 'parse') {
-                    context.report(node, 'You should use the fromJson method instead of JSON.parse', {});
+                    context.report(node, 'You should use the angular.fromJson method instead of JSON.parse', {});
                 }
             }
         }
