@@ -22,13 +22,6 @@ var docs = {
 
 module.exports = docs;
 
-// run as node script (global process for 0.12 compatibility)
-if ((process || require('process')).mainModule !== undefined) {
-    docs.createDocFiles();
-    docs.updateReadme('README.md');
-    docs.testDocs();
-}
-
 function createDocFiles(cb) {
     this.rules.forEach(function(rule) {
         fs.writeFileSync(rule.documentationPath, trimTrailingSpacesAndMultilineBreaks(templates.ruleDocumentationContent(rule)));
@@ -47,13 +40,14 @@ function updateReadme(readmePath, cb) {
     (cb || _.noop)();
 }
 
-function testDocs() {
+function testDocs(cb) {
     this.rules.forEach(function(rule) {
         if (rule.examples !== undefined) {
             var eslintTester = new RuleTester();
             eslintTester.run(rule.ruleName, rule.module, rule.examples);
         }
     });
+    (cb || _.noop)();
 }
 
 function trimTrailingSpacesAndMultilineBreaks(content) {

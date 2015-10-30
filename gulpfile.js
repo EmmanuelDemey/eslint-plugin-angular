@@ -29,7 +29,8 @@ gulp.task('test', function(cb) {
 
 gulp.task('docs', function(cb) {
     docs.updateReadme('README.md');
-    docs.createDocFiles(cb);
+    docs.createDocFiles();
+    docs.testDocs(cb);
 });
 
 gulp.task('default', ['quality', 'docs', 'test']);
