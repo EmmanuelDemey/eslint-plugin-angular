@@ -5,6 +5,18 @@
 Instead of the default window object, you should prefer the AngularJS wrapper service $window.
 [Y180](https://github.com/johnpapa/angular-styleguide#style-y180)
 
+## Examples
+
+Examples with default configuration
+
+    /*eslint angular/window-service: 2*/
+
+    // valid
+    $window.alert('Hello world!');
+
+    // invalid
+    window.alert('Hello world!'); // error: You should use the $window service instead of the default window object
+
 ## Links
 
 * [Rule source](../rules/window-service.js)

@@ -5,6 +5,24 @@
 In Angular 1.4, the $cookieStore service is now deprected.
 Please use the $cookies service instead
 
+## Examples
+
+Examples with default configuration
+
+    /*eslint angular/no-cookiestore: 2*/
+
+    // valid
+    $cookies.put('favoriteMeal', 'pizza');
+
+    // valid
+    $cookies.get('favoriteMeal');
+
+    // invalid
+    $cookieStore.put('favoriteMeal', 'pizza'); // error: Since Angular 1.4, the $cookieStore service is depreacted. Please use now the $cookies service.
+
+    // invalid
+    $cookieStore.get('favoriteMeal'); // error: Since Angular 1.4, the $cookieStore service is depreacted. Please use now the $cookies service.
+
 ## Links
 
 * [Rule source](../rules/no-cookiestore.js)

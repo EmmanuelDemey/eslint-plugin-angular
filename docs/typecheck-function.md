@@ -4,6 +4,18 @@
 
 You should use the angular.isFunction method instead of the default JavaScript implementation (typeof function(){} ==="[object Function]").
 
+## Examples
+
+Examples with default configuration
+
+    /*eslint angular/typecheck-function: 2*/
+
+    // valid
+    angular.isFunction(someFunction);
+
+    // invalid
+    typeof someFunction === 'function' // error: You should use the angular.isFunction method
+
 ## Links
 
 * [Rule source](../rules/typecheck-function.js)

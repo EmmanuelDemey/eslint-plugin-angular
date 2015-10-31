@@ -4,6 +4,27 @@
 
 According to the Component-First pattern, we should avoid the use of AngularJS controller.
 
+## Examples
+
+Examples with default configuration
+
+    /*eslint angular/no-controller: 2*/
+
+    // valid
+    angular.module('myModule').directive('helloWorld', function () {
+        return {
+            template: '<div>{{ text }}',
+            controller: function ($scope) {
+                $scope.text = 'Hello World';
+            }
+        };
+    });
+
+    // invalid
+    angular.module('myModule').controller('HelloWorldController', function ($scope) {
+        $scope.text = 'Hello World';
+    }); // error: Based on the Component-First Pattern, you should avoid the use of controllers
+
 ## Links
 
 * [Rule source](../rules/no-controller.js)

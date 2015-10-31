@@ -4,6 +4,27 @@
 
 Instead of the default setTimeout function, you should use the AngularJS wrapper service $timeout [Y181](https://github.com/johnpapa/angular-styleguide#style-y181)
 
+## Examples
+
+Examples with default configuration
+
+    /*eslint angular/timeout-service: 2*/
+
+    // valid
+    $timeout(function() {
+        // ...
+    }, 1000)
+
+    // invalid
+    setTimeout(function() {
+        // ...
+    }, 1000) // error: You should use the $timeout service instead of the default window.setTimeout method
+
+    // invalid
+    window.setTimeout(function() {
+        // ...
+    }, 1000) // error: You should use the $timeout service instead of the default window.setTimeout method
+
 ## Links
 
 * [Rule source](../rules/timeout-service.js)

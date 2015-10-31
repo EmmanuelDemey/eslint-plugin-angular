@@ -4,6 +4,27 @@
 
 Watch and On methods on the scope object should be assigned to a variable, in order to be deleted in a $destroy event handler
 
+## Examples
+
+Examples with default configuration
+
+    /*eslint angular/on-watch: 2*/
+
+    // valid
+    $scope.$on('event', function () {
+        // ...
+    });
+
+    // valid
+    var unregister = $rootScope.$on('event', function () {
+        // ...
+    });
+
+    // invalid
+    $rootScope.$on('event', function () {
+        // ...
+    }); // error: The "$on" call should be assigned to a variable, in order to be destroyed during the $destroy event
+
 ## Links
 
 * [Rule source](../rules/on-watch.js)

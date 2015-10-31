@@ -4,6 +4,18 @@
 
 You should use the angular.isObject method instead of the default JavaScript implementation (typeof {} === "[object Object]").
 
+## Examples
+
+Examples with default configuration
+
+    /*eslint angular/typecheck-object: 2*/
+
+    // valid
+    angular.isObject(someObject);
+
+    // invalid
+    typeof someObject === 'object' // error: You should use the angular.isObject method
+
 ## Links
 
 * [Rule source](../rules/typecheck-object.js)

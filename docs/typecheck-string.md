@@ -4,6 +4,18 @@
 
 You should use the angular.isString method instead of the default JavaScript implementation (typeof "" === "[object String]").
 
+## Examples
+
+Examples with default configuration
+
+    /*eslint angular/typecheck-string: 2*/
+
+    // valid
+    angular.isString(someString);
+
+    // invalid
+    typeof someString === 'string' // error: You should use the angular.isString method
+
 ## Links
 
 * [Rule source](../rules/typecheck-string.js)

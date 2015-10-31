@@ -9,14 +9,76 @@ Or second parameter can be an object, where keys are angular object names and va
 
 ## Examples
 
-Examples with the configuration `["$http","$resource","Restangular","$q"]`
+Examples with default configuration
 
-    /*eslint angular/no-services: [2,["$http","$resource","Restangular","$q"]]*/
+    /*eslint angular/no-services: 2*/
 
     // valid
-    app.controller('SomeController', function(myService) {
+    app.controller('MyController', function(myService) {
         // ...
     });
+
+    // invalid
+    app.controller('MyController', function($http) {
+        // ...
+    }); // error: REST API calls should be implemented in a specific service ($http in controller)
+
+    // invalid
+    app.directive('helloWorld', function($resource) {
+        // ...
+    }); // error: REST API calls should be implemented in a specific service ($resource in directive)
+
+Examples with the configuration `["$http","$q"]`
+
+    /*eslint angular/no-services: [2,["$http","$q"]]*/
+
+    // valid
+    app.directive('helloWorld', function($resource) {
+        // ...
+    });
+
+    // invalid
+    app.directive('helloWorld', function($q) {
+        // ...
+    }); // error: REST API calls should be implemented in a specific service ($q in directive)
+
+Examples with the configuration `["$http","$q"]` and `["directive"]`
+
+    /*eslint angular/no-services: [2,["$http","$q"],["directive"]]*/
+
+    // valid
+    app.controller('MyController', function($http) {
+        // ...
+    });
+
+    // invalid
+    app.directive('MyController', function($http) {
+        // ...
+    }); // error: REST API calls should be implemented in a specific service ($http in directive)
+
+Examples with the configuration `{"directive":["$http","$q"],"controller":["$resource"]}`
+
+    /*eslint angular/no-services: [2,{"directive":["$http","$q"],"controller":["$resource"]}]*/
+
+    // valid
+    app.controller('MyController', function($http, $q, $log) {
+        // ...
+    });
+
+    // valid
+    app.directive('helloWorld', function($resource, $log) {
+        // ...
+    });
+
+    // invalid
+    app.controller('MyController', function($resource, $log) {
+        // ...
+    }); // error: REST API calls should be implemented in a specific service ($resource in controller)
+
+    // invalid
+    app.directive('helloWorld', function($http, $log) {
+        // ...
+    }); // error: REST API calls should be implemented in a specific service ($http in directive)
 
 ## Links
 

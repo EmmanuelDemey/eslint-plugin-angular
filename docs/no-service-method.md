@@ -4,6 +4,27 @@
 
 You should prefer the factory() method instead of service() [Y040](https://github.com/johnpapa/angular-styleguide#style-y040)
 
+## Examples
+
+Examples with default configuration
+
+    /*eslint angular/no-service-method: 2*/
+
+    // valid
+    angular.module('myModule').factory('myService', function () {
+        // ...
+    });
+
+    // valid
+    angular.module('myModule').value('someValue', {
+        // ...
+    });
+
+    // invalid
+    angular.module('myModule').service('myService', function() {
+        // ...
+    }); // error: You should prefer the factory() method instead of service()
+
 ## Links
 
 * [Rule source](../rules/no-service-method.js)

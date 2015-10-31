@@ -4,6 +4,22 @@
 
 When using a module, avoid using a variable and instead use chaining with the getter syntax [Y022](https://github.com/johnpapa/angular-styleguide#style-y022)
 
+## Examples
+
+Examples with default configuration
+
+    /*eslint angular/module-getter: 2*/
+
+    // valid
+    angular.module('myModule').controller('MyController', function () {
+        // ...
+    });
+
+    // invalid
+    app.controller('MyController', function () {
+        // ...
+    }); // error: Avoid using a variable and instead use chaining with the getter syntax.
+
 ## Links
 
 * [Rule source](../rules/module-getter.js)

@@ -10,6 +10,38 @@ A prefix can be specified to determine which prefix the custom modules have.
 Without grouped set to `false` all dependencies combined should be sorted alphabetically.
 ('module-dependency-order', [2, {grouped: true, prefix: "app"}])
 
+## Examples
+
+Examples with default configuration
+
+    /*eslint angular/module-dependency-order: 2*/
+
+    // valid
+    angular.module('myModule', ['app', 'appFilters', 'ngAnimate', 'ngRoute', 'ui.router']);
+
+    // invalid
+    angular.module('myModule', ['ngRoute', 'ngAnimate']); // error: ngAnimate should be sorted before ngRoute
+
+Examples with the configuration `{"grouped":true}`
+
+    /*eslint angular/module-dependency-order: [2,{"grouped":true}]*/
+
+    // valid
+    angular.module('myModule', ['ngAnimate', 'ngRoute', 'app', 'appFilters', 'ui.router']);
+
+    // invalid
+    angular.module('myModule', ['app', 'ngAnimate']); // error: ngAnimate is a standard module and should be sorted before app
+
+Examples with the configuration `{"grouped":true,"prefix":"app"}`
+
+    /*eslint angular/module-dependency-order: [2,{"grouped":true,"prefix":"app"}]*/
+
+    // valid
+    angular.module('myModule', ['ngAnimate', 'ngRoute', 'ui.router', 'app', 'appFilters']);
+
+    // invalid
+    angular.module('myModule', ['ngRoute', 'app', 'ui.router']); // error: ui.router is a third party module and should be sorted before app
+
 ## Links
 
 * [Rule source](../rules/module-dependency-order.js)

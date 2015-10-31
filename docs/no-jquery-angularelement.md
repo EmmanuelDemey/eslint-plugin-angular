@@ -4,6 +4,21 @@
 
 You should not wrap angular.element object into jQuery(), because angular.element already return jQLite element
 
+## Examples
+
+Examples with default configuration
+
+    /*eslint angular/no-jquery-angularelement: 2*/
+
+    // valid
+    angular.element("#id")
+
+    // invalid
+    $(angular.element("#id")) // error: angular.element returns already a jQLite element. No need to wrap with the jQuery object
+
+    // invalid
+    jQuery(angular.element("#id")) // error: angular.element returns already a jQLite element. No need to wrap with the jQuery object
+
 ## Links
 
 * [Rule source](../rules/no-jquery-angularelement.js)
