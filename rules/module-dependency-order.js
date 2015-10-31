@@ -160,7 +160,7 @@ module.exports.schema = [{
             type: 'boolean'
         },
         prefix: {
-            type: 'string'
+            type: ['string', 'null']
         }
     }
 }];
