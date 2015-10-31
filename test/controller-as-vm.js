@@ -16,6 +16,8 @@ eslintTester.run('controller-as-vm', rule, {
     valid: [
         {code: 'angular.module("test").controller("Test", function() {var vm = this; vm.test = "test";} )',
             options: ['vm']},
+        {code: 'angular.module("test").controller("Test", function() {var viewModel = this; viewModel.test = "test";} )',
+            options: ['viewModel']},
         {code: 'angular.module("test").controller("Test", function() {var vm = this; vm.test();} )',
             options: ['vm']},
         {code: 'angular.module("test").service("Test", function() {this.doSomething();} )',
@@ -31,6 +33,9 @@ eslintTester.run('controller-as-vm', rule, {
         {code: 'var myController = function() {var ctrl = this; ctrl.test();}; angular.module("test").controller("Test", myController )',
             options: ['vm'],
             errors: [{message: 'You should assign "this" to a consistent variable across your project: vm'}]},
+        {code: 'angular.module("test").controller("Test", function() {var vm = this; vm.test = "test";} )',
+            options: ['viewModel'],
+            errors: [{message: 'You should assign "this" to a consistent variable across your project: viewModel'}]},
         {code: 'function MyController () {var ctrl = this; ctrl.test();}',
             options: ['vm', '/[A-Z].*Controller/'],
             errors: [{message: 'You should assign "this" to a consistent variable across your project: vm'}]}
