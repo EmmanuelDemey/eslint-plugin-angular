@@ -85,5 +85,9 @@ module.exports = function(context) {
 };
 
 module.exports.schema = [{
-    type: 'string'
+    enum: [
+        'function',
+        'array',
+        '$inject'
+    ]
 }];
