@@ -1,3 +1,14 @@
+/**
+ * require and specify a consistent function style for components
+ *
+ * Anonymous or named functions inside AngularJS components.
+ * The first parameter sets which type of function is required and can be 'named' or 'anonymous'.
+ * The second parameter is an optional list of angular object names.
+ *
+ * @linkDescription require and specify a consistent function style for components ('named' or 'anonymous')
+ * @styleguideReference {johnpapa} `y024` Named vs Anonymous Functions
+ * @version 0.1.0
+ */
 'use strict';
 
 module.exports = function(context) {

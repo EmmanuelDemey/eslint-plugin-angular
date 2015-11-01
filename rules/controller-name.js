@@ -1,3 +1,14 @@
+/**
+ * require and specify a prefix for all controller names
+ *
+ * All your controllers should have a name starting with the parameter you can define in your config object.
+ * The second parameter can be a Regexp wrapped in quotes.
+ * ("controller-name":  [2, "ng"])
+ *
+ * @styleguideReference {johnpapa} `y123` Controller Names
+ * @styleguideReference {johnpapa} `y124` Controller Name Suffix
+ * @version 0.1.0
+ */
 'use strict';
 
 module.exports = function(context) {
