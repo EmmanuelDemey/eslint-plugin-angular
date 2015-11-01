@@ -26,6 +26,10 @@ Examples with default configuration
     // invalid
     var data = JSON.parse('{"message": "Hello World!"}'); // error: You should use the angular.fromJson method instead of JSON.parse
 
+## Version
+
+This rule was introduced in eslint-plugin-angular 0.1.0
+
 ## Links
 
 * [Rule source](../rules/json-functions.js)

@@ -22,6 +22,10 @@ Examples with default configuration
     // invalid
     console.error('Some error!'); // error: You should use the "error" method of the AngularJS Service $log instead of the console object
 
+## Version
+
+This rule was introduced in eslint-plugin-angular 0.1.0
+
 ## Links
 
 * [Rule source](../rules/log.js)

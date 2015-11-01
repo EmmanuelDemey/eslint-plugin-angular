@@ -25,6 +25,10 @@ Examples with default configuration
         controller: 'MyController'
     }) // error: Route "/myroute" should use controllerAs syntax
 
+## Version
+
+This rule was introduced in eslint-plugin-angular 0.1.0
+
 ## Links
 
 * [Rule source](../rules/controller-as-route.js)

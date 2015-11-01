@@ -6,6 +6,7 @@
  * The third parameter can be a Regexp for identifying controller functions (when using something like Browserify)
  *
  * @styleguideReference {johnpapa} `y032` controllerAs with vm
+ * @version 0.1.0
  */
 'use strict';
 

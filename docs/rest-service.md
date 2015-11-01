@@ -49,6 +49,10 @@ Examples with the configuration `"Restangular"`
         // ...
     }); // error: You should use the same service (Restangular) for REST API calls
 
+## Version
+
+This rule was introduced in eslint-plugin-angular 0.5.0
+
 ## Links
 
 * [Rule source](../rules/rest-service.js)

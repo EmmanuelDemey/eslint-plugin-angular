@@ -43,6 +43,10 @@ Examples with the configuration `"viewModel"`
         vm.test = 'test';
     }); // error: You should assign "this" to a consistent variable across your project: viewModel
 
+## Version
+
+This rule was introduced in eslint-plugin-angular 0.1.0
+
 ## Links
 
 * [Rule source](../rules/controller-as-vm.js)

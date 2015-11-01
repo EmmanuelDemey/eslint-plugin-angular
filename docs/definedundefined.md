@@ -29,6 +29,10 @@ Examples with default configuration
     // invalid
     !angular.isDefined(value) // error: Instead of !angular.isDefined, you can use the out-of-box angular.isUndefined method
 
+## Version
+
+This rule was introduced in eslint-plugin-angular 0.1.0
+
 ## Links
 
 * [Rule source](../rules/definedundefined.js)

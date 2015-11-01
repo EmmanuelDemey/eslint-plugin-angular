@@ -25,6 +25,10 @@ Examples with default configuration
         // ...
     }); // error: The "$on" call should be assigned to a variable, in order to be destroyed during the $destroy event
 
+## Version
+
+This rule was introduced in eslint-plugin-angular 0.1.0
+
 ## Links
 
 * [Rule source](../rules/on-watch.js)

@@ -6,6 +6,7 @@
  * You can not prefix your services by "$" (reserved keyword for AngularJS services) ("service-name":  [2, "ng"])
  **
  * @styleguideReference {johnpapa} `y125` Naming - Factory and Service Names
+ * @version 0.1.0
  */
 'use strict';
 

@@ -143,6 +143,11 @@ function _createRule(ruleName) {
     rule.description = mainRuleComment.description.trim();
     rule.linkDescription = mainRuleComment.linkDescription ? mainRuleComment.linkDescription : rule.lead;
     rule.styleguideReferences = mainRuleComment.styleguideReferences || [];
+    rule.version = mainRuleComment.version;
+
+    if (!rule.version) {
+        throw new Error('No @version found for ' + ruleName);
+    }
 
     // load rule module for tests
     rule.module = require('../rules/' + rule.ruleName);

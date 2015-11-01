@@ -27,6 +27,10 @@ Examples with default configuration
 <% }) %>
 <% } %>
 
+## Version
+
+This rule was introduced in eslint-plugin-angular <%= version %>
+
 ## Links
 
 * [Rule source](../<%= sourcePath %>)

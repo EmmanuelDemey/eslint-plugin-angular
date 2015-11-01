@@ -30,6 +30,10 @@ Examples with default configuration
         // ...
     }, 1000) // error: You should use the $timeout service instead of the default window.setTimeout method
 
+## Version
+
+This rule was introduced in eslint-plugin-angular 0.1.0
+
 ## Links
 
 * [Rule source](../rules/timeout-service.js)

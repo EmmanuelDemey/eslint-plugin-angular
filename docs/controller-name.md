@@ -55,6 +55,10 @@ Examples with the configuration `"/[A-Z].*Ctrl/"`
         // ...
     }); // error: The MyController controller should follow this pattern: /[A-Z].*Ctrl/
 
+## Version
+
+This rule was introduced in eslint-plugin-angular 0.1.0
+
 ## Links
 
 * [Rule source](../rules/controller-name.js)

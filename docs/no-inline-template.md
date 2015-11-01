@@ -76,6 +76,10 @@ Examples with the configuration `{"allowSimple":false}`
         });
     }); // error: Inline templates are not allowed. Use an external template instead
 
+## Version
+
+This rule was introduced in eslint-plugin-angular 0.12.0
+
 ## Links
 
 * [Rule source](../rules/no-inline-template.js)

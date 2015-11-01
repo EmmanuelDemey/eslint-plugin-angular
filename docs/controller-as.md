@@ -34,6 +34,10 @@ Examples with default configuration
         $scope.value = 42;
     }); // error: You should not set properties on $scope in controllers. Use controllerAs syntax and add data to "this"
 
+## Version
+
+This rule was introduced in eslint-plugin-angular 0.1.0
+
 ## Links
 
 * [Rule source](../rules/controller-as.js)

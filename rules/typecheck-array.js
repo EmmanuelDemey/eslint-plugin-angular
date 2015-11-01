@@ -2,6 +2,8 @@
  * use `angular.isArray` instead of `typeof` comparisons
  *
  * You should use the angular.isArray method instead of the default JavaScript implementation (typeof [] === "[object Array]").
+ *
+ * @version 0.1.0
  */
 'use strict';
 

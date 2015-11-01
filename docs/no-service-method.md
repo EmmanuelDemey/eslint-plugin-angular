@@ -29,6 +29,10 @@ Examples with default configuration
         // ...
     }); // error: You should prefer the factory() method instead of service()
 
+## Version
+
+This rule was introduced in eslint-plugin-angular 0.1.0
+
 ## Links
 
 * [Rule source](../rules/no-service-method.js)

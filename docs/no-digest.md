@@ -5,6 +5,10 @@
 DEPRECATED! The scope's $digest() method shouldn't be used.
 You should prefer the $apply method.
 
+## Version
+
+This rule was introduced in eslint-plugin-angular 0.1.0
+
 ## Links
 
 * [Rule source](../rules/no-digest.js)

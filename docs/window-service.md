@@ -20,6 +20,10 @@ Examples with default configuration
     // invalid
     window.alert('Hello world!'); // error: You should use the $window service instead of the default window object
 
+## Version
+
+This rule was introduced in eslint-plugin-angular 0.1.0
+
 ## Links
 
 * [Rule source](../rules/window-service.js)

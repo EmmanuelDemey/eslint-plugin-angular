@@ -80,6 +80,10 @@ Examples with the configuration `{"directive":["$http","$q"],"controller":["$res
         // ...
     }); // error: REST API calls should be implemented in a specific service ($http in directive)
 
+## Version
+
+This rule was introduced in eslint-plugin-angular 0.1.0
+
 ## Links
 
 * [Rule source](../rules/no-services.js)

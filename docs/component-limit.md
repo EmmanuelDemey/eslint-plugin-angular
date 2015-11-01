@@ -56,6 +56,10 @@ Examples with the configuration `3`
         // ...
     }); // error: There may be at most 3 AngularJS components per file, but found 4
 
+## Version
+
+This rule was introduced in eslint-plugin-angular 0.11.0
+
 ## Links
 
 * [Rule source](../rules/component-limit.js)

@@ -20,6 +20,10 @@ Examples with default configuration
     // invalid
     jQuery('.another-class'); // error: You should use angular.element instead of the jQuery $ object
 
+## Version
+
+This rule was introduced in eslint-plugin-angular 0.1.0
+
 ## Links
 
 * [Rule source](../rules/angularelement.js)

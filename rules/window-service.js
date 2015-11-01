@@ -4,6 +4,7 @@
  * Instead of the default window object, you should prefer the AngularJS wrapper service $window.
  *
  * @styleguideReference {johnpapa} `y180` Angular $ Wrapper Services - $document and $window
+ * @version 0.1.0
  */
 'use strict';
 

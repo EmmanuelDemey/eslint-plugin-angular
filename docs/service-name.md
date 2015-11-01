@@ -45,6 +45,10 @@ Examples with the configuration `"xyz"`
         // ...
     }); // error: The myService service should be prefixed by xyz
 
+## Version
+
+This rule was introduced in eslint-plugin-angular 0.1.0
+
 ## Links
 
 * [Rule source](../rules/service-name.js)

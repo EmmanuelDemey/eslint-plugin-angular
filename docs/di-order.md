@@ -70,6 +70,10 @@ Examples with the configuration `false`
         // ...
     })); // error: Injected values should be sorted alphabetically
 
+## Version
+
+This rule was introduced in eslint-plugin-angular 0.6.0
+
 ## Links
 
 * [Rule source](../rules/di-order.js)

@@ -31,6 +31,10 @@ Examples with the configuration `"$digest"`
         // ...
     }); // error: Instead of using the $apply() method, you should prefer $digest()
 
+## Version
+
+This rule was introduced in eslint-plugin-angular 0.4.0
+
 ## Links
 
 * [Rule source](../rules/watchers-execution.js)

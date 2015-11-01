@@ -23,6 +23,10 @@ Examples with default configuration
     // invalid
     document.title // error: You should use the $document service instead of the default document object
 
+## Version
+
+This rule was introduced in eslint-plugin-angular 0.1.0
+
 ## Links
 
 * [Rule source](../rules/document-service.js)

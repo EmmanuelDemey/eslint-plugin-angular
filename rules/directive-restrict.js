@@ -7,6 +7,7 @@
  * ("directive-restrict": [0, {"restrict": "AE", "explicit": "never"}])
  *
  * @styleguideReference {johnpapa} `y074` Restrict to Elements and Attributes
+ * @version 0.12.0
  */
 'use strict';
 

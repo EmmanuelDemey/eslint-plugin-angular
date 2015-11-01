@@ -7,6 +7,7 @@
  *
  * @styleguideReference {johnpapa} `y073` Provide a Unique Directive Prefix
  * @styleguideReference {johnpapa} `y126` Directive Component Names
+ * @version 0.1.0
  */
 'use strict';
 

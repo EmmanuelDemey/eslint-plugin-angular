@@ -3,6 +3,8 @@
  *
  * Disallow the $http success and error function.
  * Instead the standard promise API should be used.
+ *
+ * @version 0.12.0
  */
 'use strict';
 

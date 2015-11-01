@@ -22,6 +22,10 @@ Examples with default configuration
         });
     }); // error: Unused injected value $q
 
+## Version
+
+This rule was introduced in eslint-plugin-angular 0.8.0
+
 ## Links
 
 * [Rule source](../rules/di-unused.js)

@@ -102,6 +102,10 @@ Examples with the configuration `{"typeSeparator":"dot","ignorePrefix":"ui"}`
     // valid with filename: src/app/userUtils.service.js
     angular.factory('uiUserUtils', uiUserUtils)
 
+## Version
+
+This rule was introduced in eslint-plugin-angular 0.7.0
+
 ## Links
 
 * [Rule source](../rules/file-name.js)

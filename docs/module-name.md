@@ -36,6 +36,10 @@ Examples with the configuration `"xyz"`
     // invalid
     angular.module('myModule', []); // error: The myModule module should be prefixed by xyz
 
+## Version
+
+This rule was introduced in eslint-plugin-angular 0.1.0
+
 ## Links
 
 * [Rule source](../rules/module-name.js)

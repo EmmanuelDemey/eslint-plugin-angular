@@ -20,6 +20,10 @@ Examples with default configuration
     angular.module('myModule').controller('EmptyController', function () {
     }); // error: The EmptyController controller is useless because empty. You can remove it from your Router configuration or in one of your view
 
+## Version
+
+This rule was introduced in eslint-plugin-angular 0.1.0
+
 ## Links
 
 * [Rule source](../rules/empty-controller.js)

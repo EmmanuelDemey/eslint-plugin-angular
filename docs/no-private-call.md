@@ -34,6 +34,10 @@ Examples with the configuration `{"allow":["$$watchers"]}`
         // ...
     }); // error: Using $$-prefixed Angular objects/methods are not recommended
 
+## Version
+
+This rule was introduced in eslint-plugin-angular 0.1.0
+
 ## Links
 
 * [Rule source](../rules/no-private-call.js)

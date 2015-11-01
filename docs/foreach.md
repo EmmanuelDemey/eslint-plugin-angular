@@ -20,6 +20,10 @@ Examples with default configuration
         // ...
     }); // error: You should use the angular.forEach method
 
+## Version
+
+This rule was introduced in eslint-plugin-angular 0.1.0
+
 ## Links
 
 * [Rule source](../rules/foreach.js)

@@ -40,6 +40,10 @@ Examples with the configuration `"$inject"`
         // ...
     }
 
+## Version
+
+This rule was introduced in eslint-plugin-angular 0.1.0
+
 ## Links
 
 * [Rule source](../rules/di.js)

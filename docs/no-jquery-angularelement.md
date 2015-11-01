@@ -19,6 +19,10 @@ Examples with default configuration
     // invalid
     jQuery(angular.element("#id")) // error: angular.element returns already a jQLite element. No need to wrap with the jQuery object
 
+## Version
+
+This rule was introduced in eslint-plugin-angular 0.1.0
+
 ## Links
 
 * [Rule source](../rules/no-jquery-angularelement.js)

@@ -16,6 +16,10 @@ Examples with default configuration
     // invalid
     typeof someObject === 'object' // error: You should use the angular.isObject method
 
+## Version
+
+This rule was introduced in eslint-plugin-angular 0.1.0
+
 ## Links
 
 * [Rule source](../rules/typecheck-object.js)

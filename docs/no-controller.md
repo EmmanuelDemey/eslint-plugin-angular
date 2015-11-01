@@ -25,6 +25,10 @@ Examples with default configuration
         $scope.text = 'Hello World';
     }); // error: Based on the Component-First Pattern, you should avoid the use of controllers
 
+## Version
+
+This rule was introduced in eslint-plugin-angular 0.9.0
+
 ## Links
 
 * [Rule source](../rules/no-controller.js)

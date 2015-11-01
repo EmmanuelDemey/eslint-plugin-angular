@@ -45,6 +45,10 @@ Examples with the configuration `"ui"`
         // ...
     }); // error: The tabs directive should be prefixed by ui
 
+## Version
+
+This rule was introduced in eslint-plugin-angular 0.1.0
+
 ## Links
 
 * [Rule source](../rules/directive-name.js)

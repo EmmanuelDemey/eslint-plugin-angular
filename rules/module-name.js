@@ -6,6 +6,7 @@
  * You can not prefix your modules by "ng" (reserved keyword for AngularJS modules) ("module-name":  [2, "ng"])
  *
  * @styleguideReference {johnpapa} `y127` Naming - Modules
+ * @version 0.1.0
  */
 'use strict';
 

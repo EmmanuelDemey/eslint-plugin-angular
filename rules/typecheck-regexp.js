@@ -4,6 +4,7 @@
  * DEPRECATED! You should use the angular.isRegexp method instead of the default JavaScript implementation (toString.call(/^A/) === "[object RegExp]").
  *
  * @linkDescription DEPRECATED! use `angular.isRegexp` instead of other comparisons (no native angular method)
+ * @version 0.1.0
  */
 'use strict';
 

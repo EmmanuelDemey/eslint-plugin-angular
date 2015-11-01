@@ -20,6 +20,10 @@ Examples with default configuration
     // invalid
     var app = angular.module('myModule', []); // error: Declare modules without a variable using the setter syntax.
 
+## Version
+
+This rule was introduced in eslint-plugin-angular 0.1.0
+
 ## Links
 
 * [Rule source](../rules/module-setter.js)

@@ -23,6 +23,10 @@ Examples with default configuration
     // invalid
     $cookieStore.get('favoriteMeal'); // error: Since Angular 1.4, the $cookieStore service is depreacted. Please use now the $cookies service.
 
+## Version
+
+This rule was introduced in eslint-plugin-angular 0.3.0
+
 ## Links
 
 * [Rule source](../rules/no-cookiestore.js)

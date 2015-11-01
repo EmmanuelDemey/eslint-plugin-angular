@@ -24,6 +24,10 @@ Examples with default configuration
         // ...
     }); // error: Avoid using a variable and instead use chaining with the getter syntax.
 
+## Version
+
+This rule was introduced in eslint-plugin-angular 0.1.0
+
 ## Links
 
 * [Rule source](../rules/module-getter.js)
