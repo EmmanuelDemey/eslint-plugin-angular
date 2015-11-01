@@ -2,7 +2,11 @@
 
 # module-setter - disallow to assign modules to variables
 
-Declare modules without a variable using the setter syntax.[Y021](https://github.com/johnpapa/angular-styleguide#style-y021)
+Declare modules without a variable using the setter syntax.
+
+**Styleguide Reference**
+
+* [y021 by johnpapa - Module - Definitions (aka Setters)](https://github.com/johnpapa/angular-styleguide#style-y021)
 
 ## Examples
 

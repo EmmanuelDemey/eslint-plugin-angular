@@ -1,7 +1,9 @@
 /**
  * use `$interval` instead of `setInterval`
  *
- * Instead of the default setInterval function, you should use the AngularJS wrapper service $interval  [Y181](https://github.com/johnpapa/angular-styleguide#style-y181)
+ * Instead of the default setInterval function, you should use the AngularJS wrapper service $interval
+ *
+ * @styleguideReference {johnpapa} `y181` Angular $ Wrapper Services - $timeout and $interval
  */
 'use strict';
 

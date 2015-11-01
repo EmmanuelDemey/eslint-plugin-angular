@@ -6,12 +6,27 @@ var _ = require('lodash');
 var templates = {
     ruleSourcePath: _.template('rules/<%= ruleName %>.js'),
     ruleDocumentationPath: _.template('docs/<%= ruleName %>.md'),
-    ruleExamplesPath: _.template('examples/<%= ruleName %>.js')
+    ruleExamplesPath: _.template('examples/<%= ruleName %>.js'),
+    styleguide: _.template('[<%= name %> by <%= type %> - <%= description %>](<%= link %>)'),
+    styleguideLinks: {
+        johnpapa: _.template('https://github.com/johnpapa/angular-styleguide#style-<%= name %>')
+    }
 };
 
 var templatesDir = './scripts/templates/';
 var templateSettings = {
     imports: {
+        formatStyleguideReference: function(styleRef) {
+            var linkTemplate = templates.styleguideLinks[styleRef.type];
+            if (!linkTemplate) {
+                throw new Error('No styleguide link template for styleguide type: "' + styleRef.type);
+            }
+            var templateContext = _.extend({
+                link: linkTemplate(styleRef)
+            }, styleRef);
+
+            return templates.styleguide(templateContext);
+        },
         formatConfigAsJson: function(examples) {
             var config = examples[0].displayOptions;
             if (!config) {

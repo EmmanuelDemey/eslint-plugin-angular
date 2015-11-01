@@ -1,7 +1,9 @@
 /**
  * use `factory()` instead of `service()`
  *
- * You should prefer the factory() method instead of service() [Y040](https://github.com/johnpapa/angular-styleguide#style-y040)
+ * You should prefer the factory() method instead of service()
+ *
+ * @styleguideReference {johnpapa} `y040` Services - Singletons
  */
 'use strict';
 

@@ -2,7 +2,11 @@
 
 # interval-service - use `$interval` instead of `setInterval`
 
-Instead of the default setInterval function, you should use the AngularJS wrapper service $interval  [Y181](https://github.com/johnpapa/angular-styleguide#style-y181)
+Instead of the default setInterval function, you should use the AngularJS wrapper service $interval
+
+**Styleguide Reference**
+
+* [y181 by johnpapa - Angular $ Wrapper Services - $timeout and $interval](https://github.com/johnpapa/angular-styleguide#style-y181)
 
 ## Examples
 

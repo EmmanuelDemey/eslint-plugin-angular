@@ -3,7 +3,10 @@
 # window-service - use `$window` instead of `window`
 
 Instead of the default window object, you should prefer the AngularJS wrapper service $window.
-[Y180](https://github.com/johnpapa/angular-styleguide#style-y180)
+
+**Styleguide Reference**
+
+* [y180 by johnpapa - Angular $ Wrapper Services - $document and $window](https://github.com/johnpapa/angular-styleguide#style-y180)
 
 ## Examples
 

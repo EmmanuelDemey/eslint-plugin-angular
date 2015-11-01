@@ -4,6 +4,11 @@
 
 <%= description %>
 
+<% if(styleguideReferences.length > 0) { %>
+**Styleguide Reference**
+<% _.each(styleguideReferences, function(styleRef) { %>
+* <%= formatStyleguideReference(styleRef) %><% }); } %>
+
 <% if(allExamples.length > 0) { %>
 ## Examples
 

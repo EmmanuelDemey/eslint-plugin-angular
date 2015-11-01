@@ -1,9 +1,10 @@
 /**
  * disallow to assign modules to variables
  *
- * Declare modules without a variable using the setter syntax.[Y021](https://github.com/johnpapa/angular-styleguide#style-y021)
+ * Declare modules without a variable using the setter syntax.
  *
  * @linkDescription disallow to assign modules to variables (linked to [module-getter](docs/module-getter.md)
+ * @styleguideReference {johnpapa} `y021` Module - Definitions (aka Setters)
  */
 'use strict';
 

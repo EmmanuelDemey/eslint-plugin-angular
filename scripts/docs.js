@@ -138,10 +138,11 @@ function _createRule(ruleName) {
     // parse rule comments
     var mainRuleComment = parseComments(fs.readFileSync(rule.sourcePath).toString())[0];
 
-    // set lead, description and linkDescription
+    // set lead, description, linkDescription and styleguideReferences
     rule.lead = mainRuleComment.lead;
     rule.description = mainRuleComment.description.trim();
     rule.linkDescription = mainRuleComment.linkDescription ? mainRuleComment.linkDescription : rule.lead;
+    rule.styleguideReferences = mainRuleComment.styleguideReferences || [];
 
     // load rule module for tests
     rule.module = require('../rules/' + rule.ruleName);
