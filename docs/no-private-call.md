@@ -8,19 +8,23 @@ Exception can be allowed with this option: {allow:['$$watchers']}
 
 ## Examples
 
-Examples with default configuration
+The following patterns are **not** considered problems with default config;
 
     /*eslint angular/no-private-call: 2*/
 
     // valid
     $scope.$apply();
 
+The following patterns are considered problems with default config;
+
+    /*eslint angular/no-private-call: 2*/
+
     // invalid
     $scope.$$watchers.forEach(function (watcher) {
         // ...
     }); // error: Using $$-prefixed Angular objects/methods are not recommended
 
-Examples with the configuration `{"allow":["$$watchers"]}`
+The following patterns are **not** considered problems when configured `{"allow":["$$watchers"]}`:
 
     /*eslint angular/no-private-call: [2,{"allow":["$$watchers"]}]*/
 
@@ -28,6 +32,10 @@ Examples with the configuration `{"allow":["$$watchers"]}`
     $scope.$$watchers.forEach(function (watcher) {
         // ...
     });
+
+The following patterns are considered problems when configured `{"allow":["$$watchers"]}`:
+
+    /*eslint angular/no-private-call: [2,{"allow":["$$watchers"]}]*/
 
     // invalid
     $scope.$$listeners.forEach(function (listener) {

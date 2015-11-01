@@ -7,7 +7,7 @@ Please use the $cookies service instead
 
 ## Examples
 
-Examples with default configuration
+The following patterns are **not** considered problems;
 
     /*eslint angular/no-cookiestore: 2*/
 
@@ -16,6 +16,10 @@ Examples with default configuration
 
     // valid
     $cookies.get('favoriteMeal');
+
+The following patterns are considered problems;
+
+    /*eslint angular/no-cookiestore: 2*/
 
     // invalid
     $cookieStore.put('favoriteMeal', 'pizza'); // error: Since Angular 1.4, the $cookieStore service is depreacted. Please use now the $cookies service.

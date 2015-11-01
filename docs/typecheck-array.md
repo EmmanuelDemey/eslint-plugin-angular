@@ -6,12 +6,16 @@ You should use the angular.isArray method instead of the default JavaScript impl
 
 ## Examples
 
-Examples with default configuration
+The following patterns are **not** considered problems;
 
     /*eslint angular/typecheck-array: 2*/
 
     // valid
     angular.isArray(someArray);
+
+The following patterns are considered problems;
+
+    /*eslint angular/typecheck-array: 2*/
 
     // invalid
     Object.prototype.toString.call(someArray) === '[object Array]'; // error: You should use the angular.isArray method

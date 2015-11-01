@@ -13,7 +13,7 @@ You can not prefix your directives by "ng" (reserved keyword for AngularJS direc
 
 ## Examples
 
-Examples with the configuration `"prefix"`
+The following patterns are **not** considered problems when configured `"prefix"`:
 
     /*eslint angular/directive-name: [2,"prefix"]*/
 
@@ -22,7 +22,7 @@ Examples with the configuration `"prefix"`
         // ...
     });
 
-Examples with the configuration `"/^ui/"`
+The following patterns are **not** considered problems when configured `"/^ui/"`:
 
     /*eslint angular/directive-name: [2,"/^ui/"]*/
 
@@ -31,12 +31,16 @@ Examples with the configuration `"/^ui/"`
         // ...
     });
 
+The following patterns are considered problems when configured `"/^ui/"`:
+
+    /*eslint angular/directive-name: [2,"/^ui/"]*/
+
     // invalid
     angular.module('myModule').directive('navigation', function () {
         // ...
     }); // error: The navigation directive should follow this pattern: /^ui/
 
-Examples with the configuration `"ui"`
+The following patterns are considered problems when configured `"ui"`:
 
     /*eslint angular/directive-name: [2,"ui"]*/
 

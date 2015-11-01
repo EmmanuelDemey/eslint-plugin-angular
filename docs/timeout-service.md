@@ -11,7 +11,7 @@ Instead of the default setTimeout function, you should use the AngularJS wrapper
 
 ## Examples
 
-Examples with default configuration
+The following patterns are **not** considered problems;
 
     /*eslint angular/timeout-service: 2*/
 
@@ -19,6 +19,10 @@ Examples with default configuration
     $timeout(function() {
         // ...
     }, 1000)
+
+The following patterns are considered problems;
+
+    /*eslint angular/timeout-service: 2*/
 
     // invalid
     setTimeout(function() {

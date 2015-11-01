@@ -6,7 +6,7 @@ You should use the angular.forEach method instead of the default JavaScript impl
 
 ## Examples
 
-Examples with default configuration
+The following patterns are **not** considered problems;
 
     /*eslint angular/foreach: 2*/
 
@@ -14,6 +14,10 @@ Examples with default configuration
     angular.forEach(someArray, function (element) {
         // ...
     });
+
+The following patterns are considered problems;
+
+    /*eslint angular/foreach: 2*/
 
     // invalid
     someArray.forEach(function (element) {

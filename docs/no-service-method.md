@@ -10,7 +10,7 @@ You should prefer the factory() method instead of service()
 
 ## Examples
 
-Examples with default configuration
+The following patterns are **not** considered problems;
 
     /*eslint angular/no-service-method: 2*/
 
@@ -23,6 +23,10 @@ Examples with default configuration
     angular.module('myModule').value('someValue', {
         // ...
     });
+
+The following patterns are considered problems;
+
+    /*eslint angular/no-service-method: 2*/
 
     // invalid
     angular.module('myModule').service('myService', function() {

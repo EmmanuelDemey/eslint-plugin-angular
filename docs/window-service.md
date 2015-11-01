@@ -10,12 +10,16 @@ Instead of the default window object, you should prefer the AngularJS wrapper se
 
 ## Examples
 
-Examples with default configuration
+The following patterns are **not** considered problems;
 
     /*eslint angular/window-service: 2*/
 
     // valid
     $window.alert('Hello world!');
+
+The following patterns are considered problems;
+
+    /*eslint angular/window-service: 2*/
 
     // invalid
     window.alert('Hello world!'); // error: You should use the $window service instead of the default window object

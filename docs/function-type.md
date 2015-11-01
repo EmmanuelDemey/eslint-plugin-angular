@@ -12,7 +12,7 @@ The second parameter is an optional list of angular object names.
 
 ## Examples
 
-Examples with the configuration `"anonymous"`
+The following patterns are **not** considered problems when configured `"anonymous"`:
 
     /*eslint angular/function-type: [2,"anonymous"]*/
 
@@ -21,13 +21,17 @@ Examples with the configuration `"anonymous"`
         // ...
     });
 
+The following patterns are considered problems when configured `"anonymous"`:
+
+    /*eslint angular/function-type: [2,"anonymous"]*/
+
     // invalid
     angular.module('myModule').factory('myService', myServiceFn);
     function myServiceFn() {
         // ...
     } // error: Use anonymous functions instead of named function
 
-Examples with the configuration `"named"`
+The following patterns are **not** considered problems when configured `"named"`:
 
     /*eslint angular/function-type: [2,"named"]*/
 
@@ -41,6 +45,10 @@ Examples with the configuration `"named"`
     function myServiceFn() {
         // ...
     }
+
+The following patterns are considered problems when configured `"named"`:
+
+    /*eslint angular/function-type: [2,"named"]*/
 
     // invalid
     angular.module('myModule').factory('myService', function () {

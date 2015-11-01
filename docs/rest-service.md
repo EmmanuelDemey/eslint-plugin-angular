@@ -7,7 +7,7 @@ This rule can have one parameter, with one of the following values: $http, $reso
 
 ## Examples
 
-Examples with the configuration `"$http"`
+The following patterns are **not** considered problems when configured `"$http"`:
 
     /*eslint angular/rest-service: [2,"$http"]*/
 
@@ -16,12 +16,16 @@ Examples with the configuration `"$http"`
         // ...
     });
 
+The following patterns are considered problems when configured `"$http"`:
+
+    /*eslint angular/rest-service: [2,"$http"]*/
+
     // invalid
     angular.module('myModule').service('myService', function($resource) {
         // ...
     }); // error: You should use the same service ($http) for REST API calls
 
-Examples with the configuration `"$resource"`
+The following patterns are **not** considered problems when configured `"$resource"`:
 
     /*eslint angular/rest-service: [2,"$resource"]*/
 
@@ -30,12 +34,16 @@ Examples with the configuration `"$resource"`
         // ...
     });
 
+The following patterns are considered problems when configured `"$resource"`:
+
+    /*eslint angular/rest-service: [2,"$resource"]*/
+
     // invalid
     angular.module('myModule').service('myService', function($http) {
         // ...
     }); // error: You should use the same service ($resource) for REST API calls
 
-Examples with the configuration `"Restangular"`
+The following patterns are **not** considered problems when configured `"Restangular"`:
 
     /*eslint angular/rest-service: [2,"Restangular"]*/
 
@@ -43,6 +51,10 @@ Examples with the configuration `"Restangular"`
     angular.module('myModule').service('myService', function(Restangular) {
         // ...
     });
+
+The following patterns are considered problems when configured `"Restangular"`:
+
+    /*eslint angular/rest-service: [2,"Restangular"]*/
 
     // invalid
     angular.module('myModule').service('myService', function($http) {

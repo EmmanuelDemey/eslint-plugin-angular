@@ -6,12 +6,16 @@ You should use the angular.isString method instead of the default JavaScript imp
 
 ## Examples
 
-Examples with default configuration
+The following patterns are **not** considered problems;
 
     /*eslint angular/typecheck-string: 2*/
 
     // valid
     angular.isString(someString);
+
+The following patterns are considered problems;
+
+    /*eslint angular/typecheck-string: 2*/
 
     // invalid
     typeof someString === 'string' // error: You should use the angular.isString method

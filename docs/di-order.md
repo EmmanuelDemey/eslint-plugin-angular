@@ -8,7 +8,7 @@ This means for example that `_$httpBackend_` goes before `_$http_`.
 
 ## Examples
 
-Examples with default configuration
+The following patterns are **not** considered problems with default config;
 
     /*eslint angular/di-order: 2*/
 
@@ -27,6 +27,10 @@ Examples with default configuration
         // ...
     });
 
+The following patterns are considered problems with default config;
+
+    /*eslint angular/di-order: 2*/
+
     // invalid
     angular.module('myModule').factory('myService', function($q, $http) {
         // ...
@@ -42,7 +46,7 @@ Examples with default configuration
         // ...
     }); // error: Injected values should be sorted alphabetically
 
-Examples with the configuration `true`
+The following patterns are **not** considered problems when configured `true`:
 
     /*eslint angular/di-order: [2,true]*/
 
@@ -51,12 +55,16 @@ Examples with the configuration `true`
         // ...
     }));
 
+The following patterns are considered problems when configured `true`:
+
+    /*eslint angular/di-order: [2,true]*/
+
     // invalid
     beforeEach(inject(function ($httpBackend, _$compile_, _$log_, _$rootScope_) {
         // ...
     })); // error: Injected values should be sorted alphabetically
 
-Examples with the configuration `false`
+The following patterns are **not** considered problems when configured `false`:
 
     /*eslint angular/di-order: [2,false]*/
 
@@ -64,6 +72,10 @@ Examples with the configuration `false`
     beforeEach(inject(function ($httpBackend, _$compile_, _$log_, _$rootScope_) {
         // ...
     }));
+
+The following patterns are considered problems when configured `false`:
+
+    /*eslint angular/di-order: [2,false]*/
 
     // invalid
     beforeEach(inject(function (_$compile_, $httpBackend, _$log_, _$rootScope_) {

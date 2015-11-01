@@ -124,6 +124,21 @@ function _loadExamples(rule) {
     return examplesSource.split(exampleRegex).slice(1).map(_parseExample.bind(rule));
 }
 
+function _filterByValidity(examples, validity) {
+    return _.filter(examples, {valid: validity}) || [];
+}
+
+function _appendGroupedExamplesByValidity(groupedExamples, examples, config, validity) {
+    var examplesByValidity = _filterByValidity(examples, validity);
+    if (examplesByValidity.length > 0) {
+        groupedExamples.push({
+            config: config,
+            valid: validity,
+            examples: examplesByValidity
+        });
+    }
+}
+
 function _createRule(ruleName) {
     // create basic rule object
     var rule = {
@@ -155,9 +170,20 @@ function _createRule(ruleName) {
     // load examples, prepare them for the tests and group the for the template
     rule.allExamples = _loadExamples(rule);
     rule.examples = {
-        valid: _.filter(rule.allExamples, {valid: true}) || [],
-        invalid: _.filter(rule.allExamples, {valid: false}) || []
+        valid: _filterByValidity(rule.allExamples, true),
+        invalid: _filterByValidity(rule.allExamples, false)
     };
-    rule.examplesGroupedByConfiguration = _.groupBy(rule.allExamples, 'jsonOptions');
+
+    rule.groupedExamples = [];
+    var examplesGroupedByConfig = _.groupBy(rule.allExamples, 'jsonOptions');
+    _.each(examplesGroupedByConfig, function(examples, config) {
+        // append valid examples if existing
+        _appendGroupedExamplesByValidity(rule.groupedExamples, examples, config, true);
+
+        // append invalid examples if existing
+        _appendGroupedExamplesByValidity(rule.groupedExamples, examples, config, false);
+    });
+    rule.hasOnlyOneConfig = Object.keys(examplesGroupedByConfig).length === 1;
+
     return rule;
 }

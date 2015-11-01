@@ -12,24 +12,28 @@ You can not prefix your modules by "ng" (reserved keyword for AngularJS modules)
 
 ## Examples
 
-Examples with the configuration `"prefix"`
+The following patterns are **not** considered problems when configured `"prefix"`:
 
     /*eslint angular/module-name: [2,"prefix"]*/
 
     // valid
     angular.module('prefixModule', []);
 
-Examples with the configuration `"/^xyz/"`
+The following patterns are **not** considered problems when configured `"/^xyz/"`:
 
     /*eslint angular/module-name: [2,"/^xyz/"]*/
 
     // valid
     angular.module('xyzModule', []);
 
+The following patterns are considered problems when configured `"/^xyz/"`:
+
+    /*eslint angular/module-name: [2,"/^xyz/"]*/
+
     // invalid
     angular.module('otherModule', []); // error: The otherModule module should follow this pattern: /^xyz/
 
-Examples with the configuration `"xyz"`
+The following patterns are considered problems when configured `"xyz"`:
 
     /*eslint angular/module-name: [2,"xyz"]*/
 

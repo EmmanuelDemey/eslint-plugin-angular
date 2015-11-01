@@ -6,7 +6,7 @@ Unused dependencies should not be injected.
 
 ## Examples
 
-Examples with default configuration
+The following patterns are **not** considered problems;
 
     /*eslint angular/di-unused: 2*/
 
@@ -14,6 +14,10 @@ Examples with default configuration
     angular.module('myModule').factory('myService', function ($log, anotherService) {
         $log.log(anotherService.getSomeData());
     });
+
+The following patterns are considered problems;
+
+    /*eslint angular/di-unused: 2*/
 
     // invalid
     angular.module('myModule').factory('myService', function ($http, $q, $log) {

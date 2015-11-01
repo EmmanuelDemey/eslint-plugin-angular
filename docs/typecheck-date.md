@@ -6,12 +6,16 @@ You should use the angular.isDate method instead of the default JavaScript imple
 
 ## Examples
 
-Examples with default configuration
+The following patterns are **not** considered problems;
 
     /*eslint angular/typecheck-date: 2*/
 
     // valid
     angular.isDate(someDate);
+
+The following patterns are considered problems;
+
+    /*eslint angular/typecheck-date: 2*/
 
     // invalid
     Object.prototype.toString.call(someDate) === '[object Date]'; // error: You should use the angular.isDate method

@@ -8,7 +8,7 @@ The second parameter can be a Regexp wrapped in quotes.
 
 ## Examples
 
-Examples with the configuration `"prefix"`
+The following patterns are **not** considered problems when configured `"prefix"`:
 
     /*eslint angular/filter-name: [2,"prefix"]*/
 
@@ -17,7 +17,7 @@ Examples with the configuration `"prefix"`
         // ...
     });
 
-Examples with the configuration `"/^xyz/"`
+The following patterns are **not** considered problems when configured `"/^xyz/"`:
 
     /*eslint angular/filter-name: [2,"/^xyz/"]*/
 
@@ -26,12 +26,16 @@ Examples with the configuration `"/^xyz/"`
         // ...
     });
 
+The following patterns are considered problems when configured `"/^xyz/"`:
+
+    /*eslint angular/filter-name: [2,"/^xyz/"]*/
+
     // invalid
     angular.module('myModule').filter('otherFilter', function () {
         // ...
     }); // error: The otherFilter filter should follow this pattern: /^xyz/
 
-Examples with the configuration `"xyz"`
+The following patterns are considered problems when configured `"xyz"`:
 
     /*eslint angular/filter-name: [2,"xyz"]*/
 

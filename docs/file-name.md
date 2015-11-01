@@ -14,7 +14,7 @@ The options 'ignoreTypeSuffix' ignores camel cased suffixes like 'someController
 
 ## Examples
 
-Examples with default configuration
+The following patterns are **not** considered problems with default config;
 
     /*eslint angular/file-name: 2*/
 
@@ -30,34 +30,42 @@ Examples with default configuration
     // valid with filename: src/app/awesomeModule/beautifulDirective.js
     app.directive('beautifulDirective', function() {});
 
+The following patterns are considered problems with default config;
+
+    /*eslint angular/file-name: 2*/
+
     // invalid with filename: src/app/filters.js
     app.filter('usefulFilter', function() {}); // error: Filename must be "usefulFilter.js"
 
-Examples with the configuration `{"typeSeparator":"dot"}`
+The following patterns are **not** considered problems when configured `{"typeSeparator":"dot"}`:
 
     /*eslint angular/file-name: [2,{"typeSeparator":"dot"}]*/
 
     // valid with filename: src/app/usefulFilter.filter.js
     app.filter('usefulFilter', function() {});
 
+The following patterns are considered problems when configured `{"typeSeparator":"dot"}`:
+
+    /*eslint angular/file-name: [2,{"typeSeparator":"dot"}]*/
+
     // invalid with filename: src/app/Some.controller.js
     app.controller('SomeController', function() {}); // error: Filename must be "SomeController.controller.js"
 
-Examples with the configuration `{"typeSeparator":"dash"}`
+The following patterns are **not** considered problems when configured `{"typeSeparator":"dash"}`:
 
     /*eslint angular/file-name: [2,{"typeSeparator":"dash"}]*/
 
     // valid with filename: app/utils/myUtils-service.js
     app.factory('myUtils', function() {});
 
-Examples with the configuration `{"typeSeparator":"underscore"}`
+The following patterns are **not** considered problems when configured `{"typeSeparator":"underscore"}`:
 
     /*eslint angular/file-name: [2,{"typeSeparator":"underscore"}]*/
 
     // valid with filename: src/app/awesomeModule/beautifulDirective_directive.js
     app.directive('beautifulDirective', function() {});
 
-Examples with the configuration `{"typeSeparator":"dot","ignoreTypeSuffix":true}`
+The following patterns are **not** considered problems when configured `{"typeSeparator":"dot","ignoreTypeSuffix":true}`:
 
     /*eslint angular/file-name: [2,{"typeSeparator":"dot","ignoreTypeSuffix":true}]*/
 
@@ -67,35 +75,35 @@ Examples with the configuration `{"typeSeparator":"dot","ignoreTypeSuffix":true}
     // valid with filename: src/app/Some.controller.js
     app.controller('SomeController', function() {});
 
-Examples with the configuration `{"typeSeparator":"dash","ignoreTypeSuffix":true}`
+The following patterns are **not** considered problems when configured `{"typeSeparator":"dash","ignoreTypeSuffix":true}`:
 
     /*eslint angular/file-name: [2,{"typeSeparator":"dash","ignoreTypeSuffix":true}]*/
 
     // valid with filename: app/utils/myUtils-service.js
     app.factory('myUtils', function() {});
 
-Examples with the configuration `{"typeSeparator":"underscore","ignoreTypeSuffix":true}`
+The following patterns are **not** considered problems when configured `{"typeSeparator":"underscore","ignoreTypeSuffix":true}`:
 
     /*eslint angular/file-name: [2,{"typeSeparator":"underscore","ignoreTypeSuffix":true}]*/
 
     // valid with filename: src/app/awesomeModule/beautiful_directive.js
     app.directive('beautifulDirective', function() {});
 
-Examples with the configuration `{"typeSeparator":"underscore","nameStyle":"underscore"}`
+The following patterns are **not** considered problems when configured `{"typeSeparator":"underscore","nameStyle":"underscore"}`:
 
     /*eslint angular/file-name: [2,{"typeSeparator":"underscore","nameStyle":"underscore"}]*/
 
     // valid with filename: src/app/tab_navigation_directive.js
     app.directive('tabNavigation', function() {});
 
-Examples with the configuration `{"typeSeparator":"dot","nameStyle":"dash","ignoreTypeSuffix":true}`
+The following patterns are **not** considered problems when configured `{"typeSeparator":"dot","nameStyle":"dash","ignoreTypeSuffix":true}`:
 
     /*eslint angular/file-name: [2,{"typeSeparator":"dot","nameStyle":"dash","ignoreTypeSuffix":true}]*/
 
     // valid with filename: src/app/user-profile.directive.js
     app.directive('userProfileDirective', function() {});
 
-Examples with the configuration `{"typeSeparator":"dot","ignorePrefix":"ui"}`
+The following patterns are **not** considered problems when configured `{"typeSeparator":"dot","ignorePrefix":"ui"}`:
 
     /*eslint angular/file-name: [2,{"typeSeparator":"dot","ignorePrefix":"ui"}]*/
 

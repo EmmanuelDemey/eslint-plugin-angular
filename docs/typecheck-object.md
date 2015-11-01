@@ -6,12 +6,16 @@ You should use the angular.isObject method instead of the default JavaScript imp
 
 ## Examples
 
-Examples with default configuration
+The following patterns are **not** considered problems;
 
     /*eslint angular/typecheck-object: 2*/
 
     // valid
     angular.isObject(someObject);
+
+The following patterns are considered problems;
+
+    /*eslint angular/typecheck-object: 2*/
 
     // invalid
     typeof someObject === 'object' // error: You should use the angular.isObject method

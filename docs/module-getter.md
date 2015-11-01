@@ -10,7 +10,7 @@ When using a module, avoid using a variable and instead use chaining with the ge
 
 ## Examples
 
-Examples with default configuration
+The following patterns are **not** considered problems;
 
     /*eslint angular/module-getter: 2*/
 
@@ -18,6 +18,10 @@ Examples with default configuration
     angular.module('myModule').controller('MyController', function () {
         // ...
     });
+
+The following patterns are considered problems;
+
+    /*eslint angular/module-getter: 2*/
 
     // invalid
     app.controller('MyController', function () {

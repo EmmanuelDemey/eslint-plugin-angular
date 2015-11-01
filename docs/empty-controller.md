@@ -7,7 +7,7 @@ You can remove this declaration because this controller is useless
 
 ## Examples
 
-Examples with default configuration
+The following patterns are **not** considered problems;
 
     /*eslint angular/empty-controller: 2*/
 
@@ -15,6 +15,10 @@ Examples with default configuration
     angular.module('myModule').controller('MyController', function ($log) {
         $log.log('Hello World!');
     });
+
+The following patterns are considered problems;
+
+    /*eslint angular/empty-controller: 2*/
 
     // invalid
     angular.module('myModule').controller('EmptyController', function () {

@@ -10,7 +10,7 @@ Instead of the default setInterval function, you should use the AngularJS wrappe
 
 ## Examples
 
-Examples with default configuration
+The following patterns are **not** considered problems;
 
     /*eslint angular/interval-service: 2*/
 
@@ -18,6 +18,10 @@ Examples with default configuration
     $interval(function() {
         // ...
     }, 1000)
+
+The following patterns are considered problems;
+
+    /*eslint angular/interval-service: 2*/
 
     // invalid
     setInterval(function() {

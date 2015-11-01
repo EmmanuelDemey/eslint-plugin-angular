@@ -6,7 +6,7 @@ According to the Component-First pattern, we should avoid the use of AngularJS c
 
 ## Examples
 
-Examples with default configuration
+The following patterns are **not** considered problems;
 
     /*eslint angular/no-controller: 2*/
 
@@ -19,6 +19,10 @@ Examples with default configuration
             }
         };
     });
+
+The following patterns are considered problems;
+
+    /*eslint angular/no-controller: 2*/
 
     // invalid
     angular.module('myModule').controller('HelloWorldController', function ($scope) {

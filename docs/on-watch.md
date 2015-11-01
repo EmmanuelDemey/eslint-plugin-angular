@@ -6,7 +6,7 @@ Watch and On methods on the scope object should be assigned to a variable, in or
 
 ## Examples
 
-Examples with default configuration
+The following patterns are **not** considered problems;
 
     /*eslint angular/on-watch: 2*/
 
@@ -19,6 +19,10 @@ Examples with default configuration
     var unregister = $rootScope.$on('event', function () {
         // ...
     });
+
+The following patterns are considered problems;
+
+    /*eslint angular/on-watch: 2*/
 
     // invalid
     $rootScope.$on('event', function () {

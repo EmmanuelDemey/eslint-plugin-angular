@@ -13,7 +13,7 @@ The second parameter can be a Regexp wrapped in quotes.
 
 ## Examples
 
-Examples with default configuration
+The following patterns are **not** considered problems with default config;
 
     /*eslint angular/controller-name: 2*/
 
@@ -22,12 +22,16 @@ Examples with default configuration
        // ...
     });
 
+The following patterns are considered problems with default config;
+
+    /*eslint angular/controller-name: 2*/
+
     // invalid
     angular.module('myModule').controller('MyCtrl', function () {
         // ...
     }); // error: The MyCtrl controller should follow this pattern: /[A-Z].*Controller$/
 
-Examples with the configuration `"ui"`
+The following patterns are **not** considered problems when configured `"ui"`:
 
     /*eslint angular/controller-name: [2,"ui"]*/
 
@@ -36,12 +40,16 @@ Examples with the configuration `"ui"`
         // ...
     });
 
+The following patterns are considered problems when configured `"ui"`:
+
+    /*eslint angular/controller-name: [2,"ui"]*/
+
     // invalid
     angular.module('myModule').controller('TabsController', function () {
         // ...
     }); // error: The TabsController controller should be prefixed by ui
 
-Examples with the configuration `"/[A-Z].*Ctrl/"`
+The following patterns are **not** considered problems when configured `"/[A-Z].*Ctrl/"`:
 
     /*eslint angular/controller-name: [2,"/[A-Z].*Ctrl/"]*/
 
@@ -49,6 +57,10 @@ Examples with the configuration `"/[A-Z].*Ctrl/"`
     angular.module('myModule').controller('MyCtrl', function () {
         // ...
     });
+
+The following patterns are considered problems when configured `"/[A-Z].*Ctrl/"`:
+
+    /*eslint angular/controller-name: [2,"/[A-Z].*Ctrl/"]*/
 
     // invalid
     angular.module('myModule').controller('MyController', function () {

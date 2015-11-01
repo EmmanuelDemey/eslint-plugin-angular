@@ -6,12 +6,16 @@ You should use the angular.isFunction method instead of the default JavaScript i
 
 ## Examples
 
-Examples with default configuration
+The following patterns are **not** considered problems;
 
     /*eslint angular/typecheck-function: 2*/
 
     // valid
     angular.isFunction(someFunction);
+
+The following patterns are considered problems;
+
+    /*eslint angular/typecheck-function: 2*/
 
     // invalid
     typeof someFunction === 'function' // error: You should use the angular.isFunction method

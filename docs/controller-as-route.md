@@ -10,7 +10,7 @@ You should use Angular's controllerAs syntax when defining routes or states.
 
 ## Examples
 
-Examples with default configuration
+The following patterns are **not** considered problems;
 
     /*eslint angular/controller-as-route: 2*/
 
@@ -19,6 +19,10 @@ Examples with default configuration
         controller: 'MyController',
         controllerAs: 'vm'
     });
+
+The following patterns are considered problems;
+
+    /*eslint angular/controller-as-route: 2*/
 
     // invalid
     $routeProvider.when('/myroute', {

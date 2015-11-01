@@ -7,7 +7,7 @@ This will cause an performance improvement comparing to the $apply method, who s
 
 ## Examples
 
-Examples with the configuration `"$apply"`
+The following patterns are **not** considered problems when configured `"$apply"`:
 
     /*eslint angular/watchers-execution: [2,"$apply"]*/
 
@@ -16,15 +16,23 @@ Examples with the configuration `"$apply"`
         // ...
     });
 
+The following patterns are considered problems when configured `"$apply"`:
+
+    /*eslint angular/watchers-execution: [2,"$apply"]*/
+
     // invalid
     $scope.$digest(); // error: Instead of using the $digest() method, you should prefer $apply()
 
-Examples with the configuration `"$digest"`
+The following patterns are **not** considered problems when configured `"$digest"`:
 
     /*eslint angular/watchers-execution: [2,"$digest"]*/
 
     // valid
     $scope.$digest();
+
+The following patterns are considered problems when configured `"$digest"`:
+
+    /*eslint angular/watchers-execution: [2,"$digest"]*/
 
     // invalid
     $scope.$apply(function() {

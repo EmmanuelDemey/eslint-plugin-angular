@@ -12,7 +12,7 @@ The second parameter can be a Regexp for identifying controller functions (when 
 
 ## Examples
 
-Examples with default configuration
+The following patterns are **not** considered problems;
 
     /*eslint angular/controller-as: 2*/
 
@@ -28,6 +28,10 @@ Examples with default configuration
             // ...
         });
     });
+
+The following patterns are considered problems;
+
+    /*eslint angular/controller-as: 2*/
 
     // invalid
     angular.module("myModule").controller("SomeController", function($scope) {

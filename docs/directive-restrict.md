@@ -13,7 +13,7 @@ The default configuration limits the restrictions `AE` and disallows explicitly 
 
 ## Examples
 
-Examples with default configuration
+The following patterns are **not** considered problems with default config;
 
     /*eslint angular/directive-restrict: 2*/
 
@@ -33,7 +33,7 @@ Examples with default configuration
         };
     });
 
-Examples with the configuration `{"explicit":"always"}`
+The following patterns are considered problems when configured `{"explicit":"always"}`:
 
     /*eslint angular/directive-restrict: [2,{"explicit":"always"}]*/
 
@@ -44,7 +44,7 @@ Examples with the configuration `{"explicit":"always"}`
         };
     }); // error: Missing directive restriction
 
-Examples with the configuration `{"explicit":"never"}`
+The following patterns are considered problems when configured `{"explicit":"never"}`:
 
     /*eslint angular/directive-restrict: [2,{"explicit":"never"}]*/
 
@@ -56,7 +56,7 @@ Examples with the configuration `{"explicit":"never"}`
         };
     }); // error: No need to explicitly specify a default directive restriction
 
-Examples with the configuration `{"restrict":"A"}`
+The following patterns are considered problems when configured `{"restrict":"A"}`:
 
     /*eslint angular/directive-restrict: [2,{"restrict":"A"}]*/
 

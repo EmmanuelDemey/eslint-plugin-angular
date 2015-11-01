@@ -13,7 +13,7 @@ You can not prefix your services by "$" (reserved keyword for AngularJS services
 
 ## Examples
 
-Examples with the configuration `"prefix"`
+The following patterns are **not** considered problems when configured `"prefix"`:
 
     /*eslint angular/service-name: [2,"prefix"]*/
 
@@ -22,7 +22,7 @@ Examples with the configuration `"prefix"`
         // ...
     });
 
-Examples with the configuration `"/^xyz/"`
+The following patterns are **not** considered problems when configured `"/^xyz/"`:
 
     /*eslint angular/service-name: [2,"/^xyz/"]*/
 
@@ -31,12 +31,16 @@ Examples with the configuration `"/^xyz/"`
         // ...
     });
 
+The following patterns are considered problems when configured `"/^xyz/"`:
+
+    /*eslint angular/service-name: [2,"/^xyz/"]*/
+
     // invalid
     angular.module('myModule').factory('otherService', function () {
         // ...
     }); // error: The otherService service should follow this pattern: /^xyz/
 
-Examples with the configuration `"xyz"`
+The following patterns are considered problems when configured `"xyz"`:
 
     /*eslint angular/service-name: [2,"xyz"]*/
 

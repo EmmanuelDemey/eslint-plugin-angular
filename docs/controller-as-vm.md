@@ -12,7 +12,7 @@ The third parameter can be a Regexp for identifying controller functions (when u
 
 ## Examples
 
-Examples with default configuration
+The following patterns are **not** considered problems with default config;
 
     /*eslint angular/controller-as-vm: 2*/
 
@@ -22,12 +22,16 @@ Examples with default configuration
         vm.test = 'test';
     });
 
+The following patterns are considered problems with default config;
+
+    /*eslint angular/controller-as-vm: 2*/
+
     // invalid
     angular.module('test').controller('TestController', function() {
         this.test = 'test';
     }); // error: You should not use "this" directly. Instead, assign it to a variable called "vm"
 
-Examples with the configuration `"viewModel"`
+The following patterns are **not** considered problems when configured `"viewModel"`:
 
     /*eslint angular/controller-as-vm: [2,"viewModel"]*/
 
@@ -36,6 +40,10 @@ Examples with the configuration `"viewModel"`
         var viewModel = this;
         viewModel.test = 'test';
     });
+
+The following patterns are considered problems when configured `"viewModel"`:
+
+    /*eslint angular/controller-as-vm: [2,"viewModel"]*/
 
     // invalid
     angular.module('test').controller('TestController', function() {

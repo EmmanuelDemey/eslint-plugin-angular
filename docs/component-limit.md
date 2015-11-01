@@ -11,7 +11,7 @@ The default limit is one.
 
 ## Examples
 
-Examples with default configuration
+The following patterns are **not** considered problems with default config;
 
     /*eslint angular/component-limit: 2*/
 
@@ -25,6 +25,10 @@ Examples with default configuration
         // ...
     });
 
+The following patterns are considered problems with default config;
+
+    /*eslint angular/component-limit: 2*/
+
     // invalid
     app.controller('ControllerOne', function() {
         // ...
@@ -32,7 +36,7 @@ Examples with default configuration
         // ...
     }); // error: There may be at most 1 AngularJS component per file, but found 2
 
-Examples with the configuration `3`
+The following patterns are **not** considered problems when configured `3`:
 
     /*eslint angular/component-limit: [2,3]*/
 
@@ -44,6 +48,10 @@ Examples with the configuration `3`
     }).factory('serviceThree', function() {
         // ...
     });
+
+The following patterns are considered problems when configured `3`:
+
+    /*eslint angular/component-limit: [2,3]*/
 
     // invalid
     app.controller('ControllerOne', function() {

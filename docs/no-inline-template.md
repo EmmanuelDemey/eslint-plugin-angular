@@ -8,7 +8,7 @@ Simple HTML templates are accepted by default.
 
 ## Examples
 
-Examples with default configuration
+The following patterns are **not** considered problems with default config;
 
     /*eslint angular/no-inline-template: 2*/
 
@@ -33,6 +33,10 @@ Examples with default configuration
         });
     });
 
+The following patterns are considered problems with default config;
+
+    /*eslint angular/no-inline-template: 2*/
+
     // invalid
     angular.module('myModule').directive('helloWorld', function () {
         return {
@@ -40,7 +44,7 @@ Examples with default configuration
         };
     }); // error: Inline template is too complex. Use an external template instead
 
-Examples with the configuration `{"allowSimple":true}`
+The following patterns are **not** considered problems when configured `{"allowSimple":true}`:
 
     /*eslint angular/no-inline-template: [2,{"allowSimple":true}]*/
 
@@ -51,6 +55,10 @@ Examples with the configuration `{"allowSimple":true}`
         });
     });
 
+The following patterns are considered problems when configured `{"allowSimple":true}`:
+
+    /*eslint angular/no-inline-template: [2,{"allowSimple":true}]*/
+
     // invalid
     angular.module('myModule').config(function ($routeProvider) {
         $routeProvider.when('/dashboard', {
@@ -58,7 +66,7 @@ Examples with the configuration `{"allowSimple":true}`
         });
     }); // error: Inline template is too complex. Use an external template instead
 
-Examples with the configuration `{"allowSimple":false}`
+The following patterns are **not** considered problems when configured `{"allowSimple":false}`:
 
     /*eslint angular/no-inline-template: [2,{"allowSimple":false}]*/
 
@@ -68,6 +76,10 @@ Examples with the configuration `{"allowSimple":false}`
             templateUrl: 'templates/dashboard.html'
         });
     });
+
+The following patterns are considered problems when configured `{"allowSimple":false}`:
+
+    /*eslint angular/no-inline-template: [2,{"allowSimple":false}]*/
 
     // invalid
     angular.module('myModule').config(function ($routeProvider) {

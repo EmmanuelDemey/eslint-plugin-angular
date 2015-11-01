@@ -7,7 +7,7 @@ So you can remove angular.mock from your code
 
 ## Examples
 
-Examples with default configuration
+The following patterns are **not** considered problems;
 
     /*eslint angular/no-angular-mock: 2*/
 
@@ -21,6 +21,10 @@ Examples with default configuration
 
     // valid
     module('myModule');
+
+The following patterns are considered problems;
+
+    /*eslint angular/no-angular-mock: 2*/
 
     // invalid
     angular.mock.dump($scope); // error: You should use the "dump" method available in the window object.

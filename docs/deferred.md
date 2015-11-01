@@ -7,7 +7,7 @@ Prefer the new syntax : $q(function(resolve, reject){})
 
 ## Examples
 
-Examples with default configuration
+The following patterns are **not** considered problems;
 
     /*eslint angular/deferred: 2*/
 
@@ -15,6 +15,10 @@ Examples with default configuration
     $q(function() {
         // ...
     });
+
+The following patterns are considered problems;
+
+    /*eslint angular/deferred: 2*/
 
     // invalid
     var deferred = $q.defer(); // error: You should not create a new promise with this syntax. Use the $q(function(resolve, reject) {}) syntax.

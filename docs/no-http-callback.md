@@ -7,7 +7,7 @@ Instead the standard promise API should be used.
 
 ## Examples
 
-Examples with default configuration
+The following patterns are **not** considered problems;
 
     /*eslint angular/no-http-callback: 2*/
 
@@ -17,6 +17,10 @@ Examples with default configuration
     }, function onReject() {
        // ...
     });
+
+The following patterns are considered problems;
+
+    /*eslint angular/no-http-callback: 2*/
 
     // invalid
     $http.get('api/data').success(function onSuccess() {
