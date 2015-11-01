@@ -13,22 +13,33 @@ var ruleNames = Object.keys(eslintAngularIndex.rules).filter(function(ruleName) 
     return !/^ng_/.test(ruleName);
 });
 
-var docs = {
-    rules: ruleNames.map(_createRule),
+// create rule documentation objects from ruleNames
+var rules = ruleNames.map(_createRule);
+
+module.exports = {
+    rules: rules,
     createDocFiles: createDocFiles,
     updateReadme: updateReadme,
     testDocs: testDocs
 };
 
-module.exports = docs;
-
+/**
+ * Create a markdown documentation for each rule from rule comments and examples.
+ *
+ * @param cb callback
+ */
 function createDocFiles(cb) {
     this.rules.forEach(function(rule) {
-        fs.writeFileSync(rule.documentationPath, trimTrailingSpacesAndMultilineBreaks(templates.ruleDocumentationContent(rule)));
+        fs.writeFileSync(rule.documentationPath, _trimTrailingSpacesAndMultilineBreaks(templates.ruleDocumentationContent(rule)));
     });
     (cb || _.noop)();
 }
 
+/**
+ * Update the rules section in the readme file.
+ *
+ * @param cb callback
+ */
 function updateReadme(readmePath, cb) {
     var readmeRuleSection = templates.readmeRuleSectionContent(this);
     var readmeContent = fs.readFileSync(readmePath).toString();
@@ -40,6 +51,11 @@ function updateReadme(readmePath, cb) {
     (cb || _.noop)();
 }
 
+/**
+ * Test documentation examples.
+ *
+ * @param cb callback
+ */
 function testDocs(cb) {
     this.rules.forEach(function(rule) {
         if (rule.examples !== undefined) {
@@ -50,7 +66,7 @@ function testDocs(cb) {
     (cb || _.noop)();
 }
 
-function trimTrailingSpacesAndMultilineBreaks(content) {
+function _trimTrailingSpacesAndMultilineBreaks(content) {
     return content.replace(/( )+\n/g, '\n').replace(/\n\n+\n/g, '\n\n').replace(/\n+$/g, '\n');
 }
 
@@ -64,22 +80,27 @@ function _parseConfigLine(configLine) {
 function _parseExample(exampleSource) {
     var rule = this;
     var lines = exampleSource.split('\n');
+
+    // parse first example line as config
     var example = _parseConfigLine(lines[0]);
+
+    // other lines are the example code
     example.code = lines.slice(1).join('\n').trim();
 
+    // wrap the errorMessage in the format needed for the eslint rule tester.
     if (example.errorMessage) {
-        example.errors = [{
-            message: example.errorMessage
-        }];
+        example.errors = [{message: example.errorMessage}];
     }
 
+    // invalid examples require an errorMessage
     if (!example.valid && !example.errorMessage) {
         throw new Error('Example config requires "errorMessage" when valid: false');
     }
 
-    // json options as group key
+    // json options needed as group key
     example.jsonOptions = example.options ? JSON.stringify(example.options) : '';
 
+    // use options for tests or default options of no options are configured
     if (example.options) {
         example.displayOptions = example.options;
     } else {
@@ -104,35 +125,33 @@ function _loadExamples(rule) {
 }
 
 function _createRule(ruleName) {
+    // create basic rule object
     var rule = {
         ruleName: ruleName
     };
+
+    // add paths
     rule.sourcePath = templates.ruleSourcePath(rule);
     rule.documentationPath = templates.ruleDocumentationPath(rule);
     rule.examplesPath = templates.ruleExamplesPath(rule);
 
-    var ruleComments = parseComments(fs.readFileSync(rule.sourcePath).toString());
-    var mainComment = ruleComments[0];
+    // parse rule comments
+    var mainRuleComment = parseComments(fs.readFileSync(rule.sourcePath).toString())[0];
 
-    rule.lead = mainComment.lead;
+    // set lead, description and linkDescription
+    rule.lead = mainRuleComment.lead;
+    rule.description = mainRuleComment.description.trim();
+    rule.linkDescription = mainRuleComment.linkDescription ? mainRuleComment.linkDescription : rule.lead;
 
-    // slice examples
-    rule.description = mainComment.description.trim();
-
-    if (mainComment.linkDescription) {
-        rule.linkDescription = mainComment.linkDescription;
-    } else {
-        rule.linkDescription = mainComment.lead;
-    }
-
+    // load rule module for tests
     rule.module = require('../rules/' + rule.ruleName);
-    rule.allExamples = _loadExamples(rule);
 
+    // load examples, prepare them for the tests and group the for the template
+    rule.allExamples = _loadExamples(rule);
     rule.examples = {
         valid: _.filter(rule.allExamples, {valid: true}) || [],
         invalid: _.filter(rule.allExamples, {valid: false}) || []
     };
-
     rule.examplesGroupedByConfiguration = _.groupBy(rule.allExamples, 'jsonOptions');
     return rule;
 }
