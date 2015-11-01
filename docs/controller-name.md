@@ -13,15 +13,6 @@ The second parameter can be a Regexp wrapped in quotes.
 
 ## Examples
 
-The following patterns are **not** considered problems with default config;
-
-    /*eslint angular/controller-name: 2*/
-
-    // valid
-    angular.module('myModule').controller('MyController', function () {
-       // ...
-    });
-
 The following patterns are considered problems with default config;
 
     /*eslint angular/controller-name: 2*/
@@ -31,13 +22,13 @@ The following patterns are considered problems with default config;
         // ...
     }); // error: The MyCtrl controller should follow this pattern: /[A-Z].*Controller$/
 
-The following patterns are **not** considered problems when configured `"ui"`:
+The following patterns are **not** considered problems with default config;
 
-    /*eslint angular/controller-name: [2,"ui"]*/
+    /*eslint angular/controller-name: 2*/
 
     // valid
-    angular.module('myModule').controller('uiTabsController', function () {
-        // ...
+    angular.module('myModule').controller('MyController', function () {
+       // ...
     });
 
 The following patterns are considered problems when configured `"ui"`:
@@ -49,12 +40,12 @@ The following patterns are considered problems when configured `"ui"`:
         // ...
     }); // error: The TabsController controller should be prefixed by ui
 
-The following patterns are **not** considered problems when configured `"/[A-Z].*Ctrl/"`:
+The following patterns are **not** considered problems when configured `"ui"`:
 
-    /*eslint angular/controller-name: [2,"/[A-Z].*Ctrl/"]*/
+    /*eslint angular/controller-name: [2,"ui"]*/
 
     // valid
-    angular.module('myModule').controller('MyCtrl', function () {
+    angular.module('myModule').controller('uiTabsController', function () {
         // ...
     });
 
@@ -66,6 +57,15 @@ The following patterns are considered problems when configured `"/[A-Z].*Ctrl/"`
     angular.module('myModule').controller('MyController', function () {
         // ...
     }); // error: The MyController controller should follow this pattern: /[A-Z].*Ctrl/
+
+The following patterns are **not** considered problems when configured `"/[A-Z].*Ctrl/"`:
+
+    /*eslint angular/controller-name: [2,"/[A-Z].*Ctrl/"]*/
+
+    // valid
+    angular.module('myModule').controller('MyCtrl', function () {
+        // ...
+    });
 
 ## Version
 

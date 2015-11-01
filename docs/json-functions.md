@@ -6,18 +6,6 @@ You should use angular.fromJson or angular.toJson instead of JSON.parse and JSON
 
 ## Examples
 
-The following patterns are **not** considered problems;
-
-    /*eslint angular/json-functions: 2*/
-
-    // valid
-    angular.toJson({
-        // ...
-    });
-
-    // valid
-    var data = angular.fromJson('{"message": "Hello World!"}');
-
 The following patterns are considered problems;
 
     /*eslint angular/json-functions: 2*/
@@ -29,6 +17,18 @@ The following patterns are considered problems;
 
     // invalid
     var data = JSON.parse('{"message": "Hello World!"}'); // error: You should use the angular.fromJson method instead of JSON.parse
+
+The following patterns are **not** considered problems;
+
+    /*eslint angular/json-functions: 2*/
+
+    // valid
+    angular.toJson({
+        // ...
+    });
+
+    // valid
+    var data = angular.fromJson('{"message": "Hello World!"}');
 
 ## Version
 

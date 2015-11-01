@@ -7,16 +7,6 @@ We also check the use of !angular.isUndefined and !angular.isDefined (should pre
 
 ## Examples
 
-The following patterns are **not** considered problems;
-
-    /*eslint angular/definedundefined: 2*/
-
-    // valid
-    angular.isUndefined(value)
-
-    // valid
-    angular.isDefined(value)
-
 The following patterns are considered problems;
 
     /*eslint angular/definedundefined: 2*/
@@ -32,6 +22,16 @@ The following patterns are considered problems;
 
     // invalid
     !angular.isDefined(value) // error: Instead of !angular.isDefined, you can use the out-of-box angular.isUndefined method
+
+The following patterns are **not** considered problems;
+
+    /*eslint angular/definedundefined: 2*/
+
+    // valid
+    angular.isUndefined(value)
+
+    // valid
+    angular.isDefined(value)
 
 ## Version
 

@@ -7,17 +7,6 @@ Instead the standard promise API should be used.
 
 ## Examples
 
-The following patterns are **not** considered problems;
-
-    /*eslint angular/no-http-callback: 2*/
-
-    // valid
-    $http.get('api/data').then(function onSuccess() {
-        // ...
-    }, function onReject() {
-       // ...
-    });
-
 The following patterns are considered problems;
 
     /*eslint angular/no-http-callback: 2*/
@@ -31,6 +20,17 @@ The following patterns are considered problems;
     $http.get('api/data').error(function onReject() {
         // ...
     }); // error: $http error is deprecated. Use then or catch instead
+
+The following patterns are **not** considered problems;
+
+    /*eslint angular/no-http-callback: 2*/
+
+    // valid
+    $http.get('api/data').then(function onSuccess() {
+        // ...
+    }, function onReject() {
+       // ...
+    });
 
 ## Version
 

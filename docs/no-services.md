@@ -9,15 +9,6 @@ Or second parameter can be an object, where keys are angular object names and va
 
 ## Examples
 
-The following patterns are **not** considered problems with default config;
-
-    /*eslint angular/no-services: 2*/
-
-    // valid
-    app.controller('MyController', function(myService) {
-        // ...
-    });
-
 The following patterns are considered problems with default config;
 
     /*eslint angular/no-services: 2*/
@@ -32,12 +23,12 @@ The following patterns are considered problems with default config;
         // ...
     }); // error: REST API calls should be implemented in a specific service ($resource in directive)
 
-The following patterns are **not** considered problems when configured `["$http","$q"]`:
+The following patterns are **not** considered problems with default config;
 
-    /*eslint angular/no-services: [2,["$http","$q"]]*/
+    /*eslint angular/no-services: 2*/
 
     // valid
-    app.directive('helloWorld', function($resource) {
+    app.controller('MyController', function(myService) {
         // ...
     });
 
@@ -50,12 +41,12 @@ The following patterns are considered problems when configured `["$http","$q"]`:
         // ...
     }); // error: REST API calls should be implemented in a specific service ($q in directive)
 
-The following patterns are **not** considered problems when configured `["$http","$q"]` and `["directive"]`:
+The following patterns are **not** considered problems when configured `["$http","$q"]`:
 
-    /*eslint angular/no-services: [2,["$http","$q"],["directive"]]*/
+    /*eslint angular/no-services: [2,["$http","$q"]]*/
 
     // valid
-    app.controller('MyController', function($http) {
+    app.directive('helloWorld', function($resource) {
         // ...
     });
 
@@ -68,17 +59,12 @@ The following patterns are considered problems when configured `["$http","$q"]` 
         // ...
     }); // error: REST API calls should be implemented in a specific service ($http in directive)
 
-The following patterns are **not** considered problems when configured `{"directive":["$http","$q"],"controller":["$resource"]}`:
+The following patterns are **not** considered problems when configured `["$http","$q"]` and `["directive"]`:
 
-    /*eslint angular/no-services: [2,{"directive":["$http","$q"],"controller":["$resource"]}]*/
-
-    // valid
-    app.controller('MyController', function($http, $q, $log) {
-        // ...
-    });
+    /*eslint angular/no-services: [2,["$http","$q"],["directive"]]*/
 
     // valid
-    app.directive('helloWorld', function($resource, $log) {
+    app.controller('MyController', function($http) {
         // ...
     });
 
@@ -95,6 +81,20 @@ The following patterns are considered problems when configured `{"directive":["$
     app.directive('helloWorld', function($http, $log) {
         // ...
     }); // error: REST API calls should be implemented in a specific service ($http in directive)
+
+The following patterns are **not** considered problems when configured `{"directive":["$http","$q"],"controller":["$resource"]}`:
+
+    /*eslint angular/no-services: [2,{"directive":["$http","$q"],"controller":["$resource"]}]*/
+
+    // valid
+    app.controller('MyController', function($http, $q, $log) {
+        // ...
+    });
+
+    // valid
+    app.directive('helloWorld', function($resource, $log) {
+        // ...
+    });
 
 ## Version
 

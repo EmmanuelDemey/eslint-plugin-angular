@@ -6,19 +6,19 @@ You should use the angular.isNumber method instead of the default JavaScript imp
 
 ## Examples
 
-The following patterns are **not** considered problems;
-
-    /*eslint angular/typecheck-number: 2*/
-
-    // valid
-    angular.isNumber(someNumber);
-
 The following patterns are considered problems;
 
     /*eslint angular/typecheck-number: 2*/
 
     // invalid
     typeof someNumber === 'number' // error: You should use the angular.isNumber method
+
+The following patterns are **not** considered problems;
+
+    /*eslint angular/typecheck-number: 2*/
+
+    // valid
+    angular.isNumber(someNumber);
 
 ## Version
 

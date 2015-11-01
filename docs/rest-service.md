@@ -7,15 +7,6 @@ This rule can have one parameter, with one of the following values: $http, $reso
 
 ## Examples
 
-The following patterns are **not** considered problems when configured `"$http"`:
-
-    /*eslint angular/rest-service: [2,"$http"]*/
-
-    // valid
-    angular.module('myModule').service('myService', function($http) {
-        // ...
-    });
-
 The following patterns are considered problems when configured `"$http"`:
 
     /*eslint angular/rest-service: [2,"$http"]*/
@@ -25,12 +16,12 @@ The following patterns are considered problems when configured `"$http"`:
         // ...
     }); // error: You should use the same service ($http) for REST API calls
 
-The following patterns are **not** considered problems when configured `"$resource"`:
+The following patterns are **not** considered problems when configured `"$http"`:
 
-    /*eslint angular/rest-service: [2,"$resource"]*/
+    /*eslint angular/rest-service: [2,"$http"]*/
 
     // valid
-    angular.module('myModule').service('myService', function($resource) {
+    angular.module('myModule').service('myService', function($http) {
         // ...
     });
 
@@ -43,12 +34,12 @@ The following patterns are considered problems when configured `"$resource"`:
         // ...
     }); // error: You should use the same service ($resource) for REST API calls
 
-The following patterns are **not** considered problems when configured `"Restangular"`:
+The following patterns are **not** considered problems when configured `"$resource"`:
 
-    /*eslint angular/rest-service: [2,"Restangular"]*/
+    /*eslint angular/rest-service: [2,"$resource"]*/
 
     // valid
-    angular.module('myModule').service('myService', function(Restangular) {
+    angular.module('myModule').service('myService', function($resource) {
         // ...
     });
 
@@ -60,6 +51,15 @@ The following patterns are considered problems when configured `"Restangular"`:
     angular.module('myModule').service('myService', function($http) {
         // ...
     }); // error: You should use the same service (Restangular) for REST API calls
+
+The following patterns are **not** considered problems when configured `"Restangular"`:
+
+    /*eslint angular/rest-service: [2,"Restangular"]*/
+
+    // valid
+    angular.module('myModule').service('myService', function(Restangular) {
+        // ...
+    });
 
 ## Version
 

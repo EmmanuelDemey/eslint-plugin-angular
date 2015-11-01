@@ -12,6 +12,15 @@ The second parameter can be a Regexp for identifying controller functions (when 
 
 ## Examples
 
+The following patterns are considered problems;
+
+    /*eslint angular/controller-as: 2*/
+
+    // invalid
+    angular.module("myModule").controller("SomeController", function($scope) {
+        $scope.value = 42;
+    }); // error: You should not set properties on $scope in controllers. Use controllerAs syntax and add data to "this"
+
 The following patterns are **not** considered problems;
 
     /*eslint angular/controller-as: 2*/
@@ -28,15 +37,6 @@ The following patterns are **not** considered problems;
             // ...
         });
     });
-
-The following patterns are considered problems;
-
-    /*eslint angular/controller-as: 2*/
-
-    // invalid
-    angular.module("myModule").controller("SomeController", function($scope) {
-        $scope.value = 42;
-    }); // error: You should not set properties on $scope in controllers. Use controllerAs syntax and add data to "this"
 
 ## Version
 

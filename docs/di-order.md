@@ -8,25 +8,6 @@ This means for example that `_$httpBackend_` goes before `_$http_`.
 
 ## Examples
 
-The following patterns are **not** considered problems with default config;
-
-    /*eslint angular/di-order: 2*/
-
-    // valid
-    angular.module('myModule').factory('myService', function($http, $location, $q, myService, someService) {
-        // ...
-    });
-
-    // valid
-    beforeEach(inject(function (_$compile_, $httpBackend, _$log_, _$rootScope_) {
-        // ...
-    }));
-
-    // valid
-    angular.module('myModule').factory('myService', function(CONFIG, URLs, authService, zero) {
-        // ...
-    });
-
 The following patterns are considered problems with default config;
 
     /*eslint angular/di-order: 2*/
@@ -46,14 +27,24 @@ The following patterns are considered problems with default config;
         // ...
     }); // error: Injected values should be sorted alphabetically
 
-The following patterns are **not** considered problems when configured `true`:
+The following patterns are **not** considered problems with default config;
 
-    /*eslint angular/di-order: [2,true]*/
+    /*eslint angular/di-order: 2*/
+
+    // valid
+    angular.module('myModule').factory('myService', function($http, $location, $q, myService, someService) {
+        // ...
+    });
 
     // valid
     beforeEach(inject(function (_$compile_, $httpBackend, _$log_, _$rootScope_) {
         // ...
     }));
+
+    // valid
+    angular.module('myModule').factory('myService', function(CONFIG, URLs, authService, zero) {
+        // ...
+    });
 
 The following patterns are considered problems when configured `true`:
 
@@ -64,12 +55,12 @@ The following patterns are considered problems when configured `true`:
         // ...
     })); // error: Injected values should be sorted alphabetically
 
-The following patterns are **not** considered problems when configured `false`:
+The following patterns are **not** considered problems when configured `true`:
 
-    /*eslint angular/di-order: [2,false]*/
+    /*eslint angular/di-order: [2,true]*/
 
     // valid
-    beforeEach(inject(function ($httpBackend, _$compile_, _$log_, _$rootScope_) {
+    beforeEach(inject(function (_$compile_, $httpBackend, _$log_, _$rootScope_) {
         // ...
     }));
 
@@ -81,6 +72,15 @@ The following patterns are considered problems when configured `false`:
     beforeEach(inject(function (_$compile_, $httpBackend, _$log_, _$rootScope_) {
         // ...
     })); // error: Injected values should be sorted alphabetically
+
+The following patterns are **not** considered problems when configured `false`:
+
+    /*eslint angular/di-order: [2,false]*/
+
+    // valid
+    beforeEach(inject(function ($httpBackend, _$compile_, _$log_, _$rootScope_) {
+        // ...
+    }));
 
 ## Version
 

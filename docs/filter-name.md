@@ -17,15 +17,6 @@ The following patterns are **not** considered problems when configured `"prefix"
         // ...
     });
 
-The following patterns are **not** considered problems when configured `"/^xyz/"`:
-
-    /*eslint angular/filter-name: [2,"/^xyz/"]*/
-
-    // valid
-    angular.module('myModule').filter('xyzFilter', function () {
-        // ...
-    });
-
 The following patterns are considered problems when configured `"/^xyz/"`:
 
     /*eslint angular/filter-name: [2,"/^xyz/"]*/
@@ -34,6 +25,15 @@ The following patterns are considered problems when configured `"/^xyz/"`:
     angular.module('myModule').filter('otherFilter', function () {
         // ...
     }); // error: The otherFilter filter should follow this pattern: /^xyz/
+
+The following patterns are **not** considered problems when configured `"/^xyz/"`:
+
+    /*eslint angular/filter-name: [2,"/^xyz/"]*/
+
+    // valid
+    angular.module('myModule').filter('xyzFilter', function () {
+        // ...
+    });
 
 The following patterns are considered problems when configured `"xyz"`:
 

@@ -12,13 +12,6 @@ Without grouped set to `false` all dependencies combined should be sorted alphab
 
 ## Examples
 
-The following patterns are **not** considered problems with default config;
-
-    /*eslint angular/module-dependency-order: 2*/
-
-    // valid
-    angular.module('myModule', ['app', 'appFilters', 'ngAnimate', 'ngRoute', 'ui.router']);
-
 The following patterns are considered problems with default config;
 
     /*eslint angular/module-dependency-order: 2*/
@@ -26,12 +19,12 @@ The following patterns are considered problems with default config;
     // invalid
     angular.module('myModule', ['ngRoute', 'ngAnimate']); // error: ngAnimate should be sorted before ngRoute
 
-The following patterns are **not** considered problems when configured `{"grouped":true}`:
+The following patterns are **not** considered problems with default config;
 
-    /*eslint angular/module-dependency-order: [2,{"grouped":true}]*/
+    /*eslint angular/module-dependency-order: 2*/
 
     // valid
-    angular.module('myModule', ['ngAnimate', 'ngRoute', 'app', 'appFilters', 'ui.router']);
+    angular.module('myModule', ['app', 'appFilters', 'ngAnimate', 'ngRoute', 'ui.router']);
 
 The following patterns are considered problems when configured `{"grouped":true}`:
 
@@ -40,12 +33,12 @@ The following patterns are considered problems when configured `{"grouped":true}
     // invalid
     angular.module('myModule', ['app', 'ngAnimate']); // error: ngAnimate is a standard module and should be sorted before app
 
-The following patterns are **not** considered problems when configured `{"grouped":true,"prefix":"app"}`:
+The following patterns are **not** considered problems when configured `{"grouped":true}`:
 
-    /*eslint angular/module-dependency-order: [2,{"grouped":true,"prefix":"app"}]*/
+    /*eslint angular/module-dependency-order: [2,{"grouped":true}]*/
 
     // valid
-    angular.module('myModule', ['ngAnimate', 'ngRoute', 'ui.router', 'app', 'appFilters']);
+    angular.module('myModule', ['ngAnimate', 'ngRoute', 'app', 'appFilters', 'ui.router']);
 
 The following patterns are considered problems when configured `{"grouped":true,"prefix":"app"}`:
 
@@ -53,6 +46,13 @@ The following patterns are considered problems when configured `{"grouped":true,
 
     // invalid
     angular.module('myModule', ['ngRoute', 'app', 'ui.router']); // error: ui.router is a third party module and should be sorted before app
+
+The following patterns are **not** considered problems when configured `{"grouped":true,"prefix":"app"}`:
+
+    /*eslint angular/module-dependency-order: [2,{"grouped":true,"prefix":"app"}]*/
+
+    // valid
+    angular.module('myModule', ['ngAnimate', 'ngRoute', 'ui.router', 'app', 'appFilters']);
 
 ## Version
 

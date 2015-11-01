@@ -19,19 +19,19 @@ The following patterns are **not** considered problems when configured `"prefix"
     // valid
     angular.module('prefixModule', []);
 
-The following patterns are **not** considered problems when configured `"/^xyz/"`:
-
-    /*eslint angular/module-name: [2,"/^xyz/"]*/
-
-    // valid
-    angular.module('xyzModule', []);
-
 The following patterns are considered problems when configured `"/^xyz/"`:
 
     /*eslint angular/module-name: [2,"/^xyz/"]*/
 
     // invalid
     angular.module('otherModule', []); // error: The otherModule module should follow this pattern: /^xyz/
+
+The following patterns are **not** considered problems when configured `"/^xyz/"`:
+
+    /*eslint angular/module-name: [2,"/^xyz/"]*/
+
+    // valid
+    angular.module('xyzModule', []);
 
 The following patterns are considered problems when configured `"xyz"`:
 

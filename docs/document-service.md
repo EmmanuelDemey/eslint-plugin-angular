@@ -10,13 +10,6 @@ Instead of the default document object, you should prefer the AngularJS wrapper 
 
 ## Examples
 
-The following patterns are **not** considered problems;
-
-    /*eslint angular/document-service: 2*/
-
-    // valid
-    $document[0].title = ""
-
 The following patterns are considered problems;
 
     /*eslint angular/document-service: 2*/
@@ -26,6 +19,13 @@ The following patterns are considered problems;
 
     // invalid
     document.title // error: You should use the $document service instead of the default document object
+
+The following patterns are **not** considered problems;
+
+    /*eslint angular/document-service: 2*/
+
+    // valid
+    $document[0].title = ""
 
 ## Version
 

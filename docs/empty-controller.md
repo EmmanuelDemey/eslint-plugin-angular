@@ -7,6 +7,14 @@ You can remove this declaration because this controller is useless
 
 ## Examples
 
+The following patterns are considered problems;
+
+    /*eslint angular/empty-controller: 2*/
+
+    // invalid
+    angular.module('myModule').controller('EmptyController', function () {
+    }); // error: The EmptyController controller is useless because empty. You can remove it from your Router configuration or in one of your view
+
 The following patterns are **not** considered problems;
 
     /*eslint angular/empty-controller: 2*/
@@ -15,14 +23,6 @@ The following patterns are **not** considered problems;
     angular.module('myModule').controller('MyController', function ($log) {
         $log.log('Hello World!');
     });
-
-The following patterns are considered problems;
-
-    /*eslint angular/empty-controller: 2*/
-
-    // invalid
-    angular.module('myModule').controller('EmptyController', function () {
-    }); // error: The EmptyController controller is useless because empty. You can remove it from your Router configuration or in one of your view
 
 ## Version
 

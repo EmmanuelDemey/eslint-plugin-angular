@@ -14,6 +14,13 @@ The options 'ignoreTypeSuffix' ignores camel cased suffixes like 'someController
 
 ## Examples
 
+The following patterns are considered problems with default config;
+
+    /*eslint angular/file-name: 2*/
+
+    // invalid with filename: src/app/filters.js
+    app.filter('usefulFilter', function() {}); // error: Filename must be "usefulFilter.js"
+
 The following patterns are **not** considered problems with default config;
 
     /*eslint angular/file-name: 2*/
@@ -30,12 +37,12 @@ The following patterns are **not** considered problems with default config;
     // valid with filename: src/app/awesomeModule/beautifulDirective.js
     app.directive('beautifulDirective', function() {});
 
-The following patterns are considered problems with default config;
+The following patterns are considered problems when configured `{"typeSeparator":"dot"}`:
 
-    /*eslint angular/file-name: 2*/
+    /*eslint angular/file-name: [2,{"typeSeparator":"dot"}]*/
 
-    // invalid with filename: src/app/filters.js
-    app.filter('usefulFilter', function() {}); // error: Filename must be "usefulFilter.js"
+    // invalid with filename: src/app/Some.controller.js
+    app.controller('SomeController', function() {}); // error: Filename must be "SomeController.controller.js"
 
 The following patterns are **not** considered problems when configured `{"typeSeparator":"dot"}`:
 
@@ -43,13 +50,6 @@ The following patterns are **not** considered problems when configured `{"typeSe
 
     // valid with filename: src/app/usefulFilter.filter.js
     app.filter('usefulFilter', function() {});
-
-The following patterns are considered problems when configured `{"typeSeparator":"dot"}`:
-
-    /*eslint angular/file-name: [2,{"typeSeparator":"dot"}]*/
-
-    // invalid with filename: src/app/Some.controller.js
-    app.controller('SomeController', function() {}); // error: Filename must be "SomeController.controller.js"
 
 The following patterns are **not** considered problems when configured `{"typeSeparator":"dash"}`:
 

@@ -11,20 +11,6 @@ The default limit is one.
 
 ## Examples
 
-The following patterns are **not** considered problems with default config;
-
-    /*eslint angular/component-limit: 2*/
-
-    // valid
-    app.controller('SomeController', function() {
-        // ...
-    });
-
-    // valid
-    angular.module('myModule').directive('myDirective', function() {
-        // ...
-    });
-
 The following patterns are considered problems with default config;
 
     /*eslint angular/component-limit: 2*/
@@ -36,16 +22,17 @@ The following patterns are considered problems with default config;
         // ...
     }); // error: There may be at most 1 AngularJS component per file, but found 2
 
-The following patterns are **not** considered problems when configured `3`:
+The following patterns are **not** considered problems with default config;
 
-    /*eslint angular/component-limit: [2,3]*/
+    /*eslint angular/component-limit: 2*/
 
     // valid
-    app.controller('ControllerOne', function() {
+    app.controller('SomeController', function() {
         // ...
-    }).directive('directiveTwo', function() {
-        // ...
-    }).factory('serviceThree', function() {
+    });
+
+    // valid
+    angular.module('myModule').directive('myDirective', function() {
         // ...
     });
 
@@ -63,6 +50,19 @@ The following patterns are considered problems when configured `3`:
     }).filter('filterFour', function() {
         // ...
     }); // error: There may be at most 3 AngularJS components per file, but found 4
+
+The following patterns are **not** considered problems when configured `3`:
+
+    /*eslint angular/component-limit: [2,3]*/
+
+    // valid
+    app.controller('ControllerOne', function() {
+        // ...
+    }).directive('directiveTwo', function() {
+        // ...
+    }).factory('serviceThree', function() {
+        // ...
+    });
 
 ## Version
 

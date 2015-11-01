@@ -22,15 +22,6 @@ The following patterns are **not** considered problems when configured `"prefix"
         // ...
     });
 
-The following patterns are **not** considered problems when configured `"/^ui/"`:
-
-    /*eslint angular/directive-name: [2,"/^ui/"]*/
-
-    // valid
-    angular.module('myModule').directive('uiNavigation', function () {
-        // ...
-    });
-
 The following patterns are considered problems when configured `"/^ui/"`:
 
     /*eslint angular/directive-name: [2,"/^ui/"]*/
@@ -39,6 +30,15 @@ The following patterns are considered problems when configured `"/^ui/"`:
     angular.module('myModule').directive('navigation', function () {
         // ...
     }); // error: The navigation directive should follow this pattern: /^ui/
+
+The following patterns are **not** considered problems when configured `"/^ui/"`:
+
+    /*eslint angular/directive-name: [2,"/^ui/"]*/
+
+    // valid
+    angular.module('myModule').directive('uiNavigation', function () {
+        // ...
+    });
 
 The following patterns are considered problems when configured `"ui"`:
 

@@ -6,15 +6,6 @@ You should use the angular.forEach method instead of the default JavaScript impl
 
 ## Examples
 
-The following patterns are **not** considered problems;
-
-    /*eslint angular/foreach: 2*/
-
-    // valid
-    angular.forEach(someArray, function (element) {
-        // ...
-    });
-
 The following patterns are considered problems;
 
     /*eslint angular/foreach: 2*/
@@ -23,6 +14,15 @@ The following patterns are considered problems;
     someArray.forEach(function (element) {
         // ...
     }); // error: You should use the angular.forEach method
+
+The following patterns are **not** considered problems;
+
+    /*eslint angular/foreach: 2*/
+
+    // valid
+    angular.forEach(someArray, function (element) {
+        // ...
+    });
 
 ## Version
 

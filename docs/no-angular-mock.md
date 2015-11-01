@@ -7,21 +7,6 @@ So you can remove angular.mock from your code
 
 ## Examples
 
-The following patterns are **not** considered problems;
-
-    /*eslint angular/no-angular-mock: 2*/
-
-    // valid
-    dump($scope);
-
-    // valid
-    inject(function (someService) {
-        // ...
-    });
-
-    // valid
-    module('myModule');
-
 The following patterns are considered problems;
 
     /*eslint angular/no-angular-mock: 2*/
@@ -36,6 +21,21 @@ The following patterns are considered problems;
 
     // invalid
     angular.mock.module('myModule'); // error: You should use the "module" method available in the window object.
+
+The following patterns are **not** considered problems;
+
+    /*eslint angular/no-angular-mock: 2*/
+
+    // valid
+    dump($scope);
+
+    // valid
+    inject(function (someService) {
+        // ...
+    });
+
+    // valid
+    module('myModule');
 
 ## Version
 

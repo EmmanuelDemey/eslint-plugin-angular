@@ -8,6 +8,17 @@ Simple HTML templates are accepted by default.
 
 ## Examples
 
+The following patterns are considered problems with default config;
+
+    /*eslint angular/no-inline-template: 2*/
+
+    // invalid
+    angular.module('myModule').directive('helloWorld', function () {
+        return {
+            template: '<div>Hello World! <button>Say hello!</button></div>'
+        };
+    }); // error: Inline template is too complex. Use an external template instead
+
 The following patterns are **not** considered problems with default config;
 
     /*eslint angular/no-inline-template: 2*/
@@ -33,15 +44,15 @@ The following patterns are **not** considered problems with default config;
         });
     });
 
-The following patterns are considered problems with default config;
+The following patterns are considered problems when configured `{"allowSimple":true}`:
 
-    /*eslint angular/no-inline-template: 2*/
+    /*eslint angular/no-inline-template: [2,{"allowSimple":true}]*/
 
     // invalid
-    angular.module('myModule').directive('helloWorld', function () {
-        return {
-            template: '<div>Hello World! <button>Say hello!</button></div>'
-        };
+    angular.module('myModule').config(function ($routeProvider) {
+        $routeProvider.when('/dashboard', {
+            template: '<div><h1>Dashboard</h1><dashboard></dashboard></div>'
+        });
     }); // error: Inline template is too complex. Use an external template instead
 
 The following patterns are **not** considered problems when configured `{"allowSimple":true}`:
@@ -55,16 +66,16 @@ The following patterns are **not** considered problems when configured `{"allowS
         });
     });
 
-The following patterns are considered problems when configured `{"allowSimple":true}`:
+The following patterns are considered problems when configured `{"allowSimple":false}`:
 
-    /*eslint angular/no-inline-template: [2,{"allowSimple":true}]*/
+    /*eslint angular/no-inline-template: [2,{"allowSimple":false}]*/
 
     // invalid
     angular.module('myModule').config(function ($routeProvider) {
         $routeProvider.when('/dashboard', {
-            template: '<div><h1>Dashboard</h1><dashboard></dashboard></div>'
+            template: '<dashboard></dashboard>'
         });
-    }); // error: Inline template is too complex. Use an external template instead
+    }); // error: Inline templates are not allowed. Use an external template instead
 
 The following patterns are **not** considered problems when configured `{"allowSimple":false}`:
 
@@ -76,17 +87,6 @@ The following patterns are **not** considered problems when configured `{"allowS
             templateUrl: 'templates/dashboard.html'
         });
     });
-
-The following patterns are considered problems when configured `{"allowSimple":false}`:
-
-    /*eslint angular/no-inline-template: [2,{"allowSimple":false}]*/
-
-    // invalid
-    angular.module('myModule').config(function ($routeProvider) {
-        $routeProvider.when('/dashboard', {
-            template: '<dashboard></dashboard>'
-        });
-    }); // error: Inline templates are not allowed. Use an external template instead
 
 ## Version
 

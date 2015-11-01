@@ -6,15 +6,6 @@ All your DI should use the same syntax : the Array, function, or $inject syntaxe
 
 ## Examples
 
-The following patterns are **not** considered problems with default config;
-
-    /*eslint angular/di: 2*/
-
-    // valid
-    angular.module('myModule').factory('myService', function ($http, $log, anotherService) {
-       // ...
-    });
-
 The following patterns are considered problems with default config;
 
     /*eslint angular/di: 2*/
@@ -23,6 +14,15 @@ The following patterns are considered problems with default config;
     angular.module('myModule').factory('myService', ['$http', '$log', 'anotherService', function ($http, $log, anotherService) {
         // ...
     }]); // error: You should use the function syntax for DI
+
+The following patterns are **not** considered problems with default config;
+
+    /*eslint angular/di: 2*/
+
+    // valid
+    angular.module('myModule').factory('myService', function ($http, $log, anotherService) {
+       // ...
+    });
 
 The following patterns are **not** considered problems when configured `"array"`:
 

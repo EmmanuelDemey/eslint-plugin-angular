@@ -22,15 +22,6 @@ The following patterns are **not** considered problems when configured `"prefix"
         // ...
     });
 
-The following patterns are **not** considered problems when configured `"/^xyz/"`:
-
-    /*eslint angular/service-name: [2,"/^xyz/"]*/
-
-    // valid
-    angular.module('myModule').factory('xyzService', function () {
-        // ...
-    });
-
 The following patterns are considered problems when configured `"/^xyz/"`:
 
     /*eslint angular/service-name: [2,"/^xyz/"]*/
@@ -39,6 +30,15 @@ The following patterns are considered problems when configured `"/^xyz/"`:
     angular.module('myModule').factory('otherService', function () {
         // ...
     }); // error: The otherService service should follow this pattern: /^xyz/
+
+The following patterns are **not** considered problems when configured `"/^xyz/"`:
+
+    /*eslint angular/service-name: [2,"/^xyz/"]*/
+
+    // valid
+    angular.module('myModule').factory('xyzService', function () {
+        // ...
+    });
 
 The following patterns are considered problems when configured `"xyz"`:
 

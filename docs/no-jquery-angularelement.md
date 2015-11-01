@@ -6,13 +6,6 @@ You should not wrap angular.element object into jQuery(), because angular.elemen
 
 ## Examples
 
-The following patterns are **not** considered problems;
-
-    /*eslint angular/no-jquery-angularelement: 2*/
-
-    // valid
-    angular.element("#id")
-
 The following patterns are considered problems;
 
     /*eslint angular/no-jquery-angularelement: 2*/
@@ -22,6 +15,13 @@ The following patterns are considered problems;
 
     // invalid
     jQuery(angular.element("#id")) // error: angular.element returns already a jQLite element. No need to wrap with the jQuery object
+
+The following patterns are **not** considered problems;
+
+    /*eslint angular/no-jquery-angularelement: 2*/
+
+    // valid
+    angular.element("#id")
 
 ## Version
 

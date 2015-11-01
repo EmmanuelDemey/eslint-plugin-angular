@@ -7,6 +7,13 @@ Prefer the new syntax : $q(function(resolve, reject){})
 
 ## Examples
 
+The following patterns are considered problems;
+
+    /*eslint angular/deferred: 2*/
+
+    // invalid
+    var deferred = $q.defer(); // error: You should not create a new promise with this syntax. Use the $q(function(resolve, reject) {}) syntax.
+
 The following patterns are **not** considered problems;
 
     /*eslint angular/deferred: 2*/
@@ -15,13 +22,6 @@ The following patterns are **not** considered problems;
     $q(function() {
         // ...
     });
-
-The following patterns are considered problems;
-
-    /*eslint angular/deferred: 2*/
-
-    // invalid
-    var deferred = $q.defer(); // error: You should not create a new promise with this syntax. Use the $q(function(resolve, reject) {}) syntax.
 
 ## Version
 

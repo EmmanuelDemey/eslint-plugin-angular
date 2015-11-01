@@ -12,16 +12,6 @@ The third parameter can be a Regexp for identifying controller functions (when u
 
 ## Examples
 
-The following patterns are **not** considered problems with default config;
-
-    /*eslint angular/controller-as-vm: 2*/
-
-    // valid
-    angular.module('test').controller('TestController', function() {
-        var vm = this;
-        vm.test = 'test';
-    });
-
 The following patterns are considered problems with default config;
 
     /*eslint angular/controller-as-vm: 2*/
@@ -31,14 +21,14 @@ The following patterns are considered problems with default config;
         this.test = 'test';
     }); // error: You should not use "this" directly. Instead, assign it to a variable called "vm"
 
-The following patterns are **not** considered problems when configured `"viewModel"`:
+The following patterns are **not** considered problems with default config;
 
-    /*eslint angular/controller-as-vm: [2,"viewModel"]*/
+    /*eslint angular/controller-as-vm: 2*/
 
     // valid
     angular.module('test').controller('TestController', function() {
-        var viewModel = this;
-        viewModel.test = 'test';
+        var vm = this;
+        vm.test = 'test';
     });
 
 The following patterns are considered problems when configured `"viewModel"`:
@@ -50,6 +40,16 @@ The following patterns are considered problems when configured `"viewModel"`:
         var vm = this;
         vm.test = 'test';
     }); // error: You should assign "this" to a consistent variable across your project: viewModel
+
+The following patterns are **not** considered problems when configured `"viewModel"`:
+
+    /*eslint angular/controller-as-vm: [2,"viewModel"]*/
+
+    // valid
+    angular.module('test').controller('TestController', function() {
+        var viewModel = this;
+        viewModel.test = 'test';
+    });
 
 ## Version
 

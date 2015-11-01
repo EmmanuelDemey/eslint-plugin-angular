@@ -6,16 +6,6 @@ You should use $log service instead of console for the methods 'log', 'debug', '
 
 ## Examples
 
-The following patterns are **not** considered problems;
-
-    /*eslint angular/log: 2*/
-
-    // valid
-    $log.log('Hello world!');
-
-    // valid
-    $log.error('Some error!');
-
 The following patterns are considered problems;
 
     /*eslint angular/log: 2*/
@@ -25,6 +15,16 @@ The following patterns are considered problems;
 
     // invalid
     console.error('Some error!'); // error: You should use the "error" method of the AngularJS Service $log instead of the console object
+
+The following patterns are **not** considered problems;
+
+    /*eslint angular/log: 2*/
+
+    // valid
+    $log.log('Hello world!');
+
+    // valid
+    $log.error('Some error!');
 
 ## Version
 

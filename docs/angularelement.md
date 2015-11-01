@@ -7,13 +7,6 @@ If the jQuery library is imported, angular.element will be a wrapper around the 
 
 ## Examples
 
-The following patterns are **not** considered problems;
-
-    /*eslint angular/angularelement: 2*/
-
-    // valid
-    angular.element('.some-class');
-
 The following patterns are considered problems;
 
     /*eslint angular/angularelement: 2*/
@@ -23,6 +16,13 @@ The following patterns are considered problems;
 
     // invalid
     jQuery('.another-class'); // error: You should use angular.element instead of the jQuery $ object
+
+The following patterns are **not** considered problems;
+
+    /*eslint angular/angularelement: 2*/
+
+    // valid
+    angular.element('.some-class');
 
 ## Version
 

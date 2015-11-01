@@ -177,11 +177,11 @@ function _createRule(ruleName) {
     rule.groupedExamples = [];
     var examplesGroupedByConfig = _.groupBy(rule.allExamples, 'jsonOptions');
     _.each(examplesGroupedByConfig, function(examples, config) {
-        // append valid examples if existing
-        _appendGroupedExamplesByValidity(rule.groupedExamples, examples, config, true);
-
         // append invalid examples if existing
         _appendGroupedExamplesByValidity(rule.groupedExamples, examples, config, false);
+
+        // append valid examples if existing
+        _appendGroupedExamplesByValidity(rule.groupedExamples, examples, config, true);
     });
     rule.hasOnlyOneConfig = Object.keys(examplesGroupedByConfig).length === 1;
 

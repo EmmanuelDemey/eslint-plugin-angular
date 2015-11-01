@@ -10,19 +10,19 @@ Declare modules without a variable using the setter syntax.
 
 ## Examples
 
-The following patterns are **not** considered problems;
-
-    /*eslint angular/module-setter: 2*/
-
-    // valid
-    angular.module('myModule', [])
-
 The following patterns are considered problems;
 
     /*eslint angular/module-setter: 2*/
 
     // invalid
     var app = angular.module('myModule', []); // error: Declare modules without a variable using the setter syntax.
+
+The following patterns are **not** considered problems;
+
+    /*eslint angular/module-setter: 2*/
+
+    // valid
+    angular.module('myModule', [])
 
 ## Version
 

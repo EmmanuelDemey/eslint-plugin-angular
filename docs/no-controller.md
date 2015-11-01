@@ -6,6 +6,15 @@ According to the Component-First pattern, we should avoid the use of AngularJS c
 
 ## Examples
 
+The following patterns are considered problems;
+
+    /*eslint angular/no-controller: 2*/
+
+    // invalid
+    angular.module('myModule').controller('HelloWorldController', function ($scope) {
+        $scope.text = 'Hello World';
+    }); // error: Based on the Component-First Pattern, you should avoid the use of controllers
+
 The following patterns are **not** considered problems;
 
     /*eslint angular/no-controller: 2*/
@@ -19,15 +28,6 @@ The following patterns are **not** considered problems;
             }
         };
     });
-
-The following patterns are considered problems;
-
-    /*eslint angular/no-controller: 2*/
-
-    // invalid
-    angular.module('myModule').controller('HelloWorldController', function ($scope) {
-        $scope.text = 'Hello World';
-    }); // error: Based on the Component-First Pattern, you should avoid the use of controllers
 
 ## Version
 

@@ -7,6 +7,13 @@ This will cause an performance improvement comparing to the $apply method, who s
 
 ## Examples
 
+The following patterns are considered problems when configured `"$apply"`:
+
+    /*eslint angular/watchers-execution: [2,"$apply"]*/
+
+    // invalid
+    $scope.$digest(); // error: Instead of using the $digest() method, you should prefer $apply()
+
 The following patterns are **not** considered problems when configured `"$apply"`:
 
     /*eslint angular/watchers-execution: [2,"$apply"]*/
@@ -16,20 +23,6 @@ The following patterns are **not** considered problems when configured `"$apply"
         // ...
     });
 
-The following patterns are considered problems when configured `"$apply"`:
-
-    /*eslint angular/watchers-execution: [2,"$apply"]*/
-
-    // invalid
-    $scope.$digest(); // error: Instead of using the $digest() method, you should prefer $apply()
-
-The following patterns are **not** considered problems when configured `"$digest"`:
-
-    /*eslint angular/watchers-execution: [2,"$digest"]*/
-
-    // valid
-    $scope.$digest();
-
 The following patterns are considered problems when configured `"$digest"`:
 
     /*eslint angular/watchers-execution: [2,"$digest"]*/
@@ -38,6 +31,13 @@ The following patterns are considered problems when configured `"$digest"`:
     $scope.$apply(function() {
         // ...
     }); // error: Instead of using the $apply() method, you should prefer $digest()
+
+The following patterns are **not** considered problems when configured `"$digest"`:
+
+    /*eslint angular/watchers-execution: [2,"$digest"]*/
+
+    // valid
+    $scope.$digest();
 
 ## Version
 
