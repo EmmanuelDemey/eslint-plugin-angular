@@ -15,7 +15,7 @@ gulp.task('quality', function() {
 });
 
 gulp.task('test', function(cb) {
-    gulp.src(['rules/*.js'])
+    gulp.src(['rules/**/*.js'])
         .pipe(istanbul()) // Covering files
         .pipe(istanbul.hookRequire()) // Force `require` to return covered files
         .on('finish', function() {
