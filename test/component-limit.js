@@ -6,6 +6,7 @@
 
 var rule = require('../rules/component-limit');
 var RuleTester = require('eslint').RuleTester;
+var commonFalsePositives = require('./utils/commonFalsePositives');
 
 // ------------------------------------------------------------------------------
 // Tests
@@ -27,7 +28,7 @@ eslintTester.run('component-limit', rule, {
             code: 'app.controller("", function() {}).directive("", function() {}).factory("", function() {}).filter("", function() {}).provider("", function() {}).service("", function() {});',
             options: [6]
         }
-    ],
+    ].concat(commonFalsePositives),
     invalid: [{
         code: 'app.controller("", function() {}).directive("", function() {});',
         errors: [{

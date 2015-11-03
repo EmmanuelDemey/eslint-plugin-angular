@@ -6,6 +6,7 @@
 
 var rule = require('../rules/controller-name');
 var RuleTester = require('eslint').RuleTester;
+var commonFalsePositives = require('./utils/commonFalsePositives');
 
 // ------------------------------------------------------------------------------
 // Tests
@@ -34,7 +35,7 @@ eslintTester.run('controller-name', rule, {
     }, {
         code: 'controller = el.controller("no-match");',
         options: ['/^SpamController$/']
-    }],
+    }].concat(commonFalsePositives),
     invalid: [
         {
             code: 'app.controller("Controller", function() {});',

@@ -6,6 +6,7 @@
 
 var rule = require('../rules/json-functions');
 var RuleTester = require('eslint').RuleTester;
+var commonFalsePositives = require('./utils/commonFalsePositives');
 
 // ------------------------------------------------------------------------------
 // Tests
@@ -21,7 +22,7 @@ eslintTester.run('json-functions', rule, {
         'angular.toJson([], true)',
         'angular.toJson([], 2)',
         'angular.fromJson("{}")'
-    ],
+    ].concat(commonFalsePositives),
     invalid: [
         {code: 'JSON.parse("{}")', errors: [{message: 'You should use the fromJson method instead of JSON.parse'}]},
         {code: 'JSON.stringify({})', errors: [{message: 'You should use the toJson method instead of JSON.stringify'}]},

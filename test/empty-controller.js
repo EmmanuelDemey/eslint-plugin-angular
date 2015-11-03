@@ -6,6 +6,7 @@
 
 var rule = require('../rules/empty-controller');
 var RuleTester = require('eslint').RuleTester;
+var commonFalsePositives = require('./utils/commonFalsePositives');
 
 // ------------------------------------------------------------------------------
 // Tests
@@ -18,7 +19,7 @@ eslintTester.run('empty-controller', rule, {
     },
     {
         code: 'app.controller("ctrl", ["service1", function(service1) {console.log("ok");}]);'
-    }],
+    }].concat(commonFalsePositives),
     invalid: [
         {
             code: 'app.controller("ctrl", function() {});',

@@ -6,6 +6,7 @@
 
 var rule = require('../rules/module-name');
 var RuleTester = require('eslint').RuleTester;
+var commonFalsePositives = require('./utils/commonFalsePositives');
 
 // ------------------------------------------------------------------------------
 // Tests
@@ -28,7 +29,7 @@ eslintTester.run('module-name', rule, {
     }, {
         code: 'app.module("eslintModule", []);',
         options: [undefined]
-    }],
+    }].concat(commonFalsePositives),
     invalid: [
         {
             code: 'app.module("module", []);',

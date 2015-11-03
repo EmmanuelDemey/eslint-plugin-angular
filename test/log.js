@@ -6,6 +6,7 @@
 
 var rule = require('../rules/log');
 var RuleTester = require('eslint').RuleTester;
+var commonFalsePositives = require('./utils/commonFalsePositives');
 
 // ------------------------------------------------------------------------------
 // Tests
@@ -19,7 +20,7 @@ eslintTester.run('log', rule, {
         '$log.warn("log")',
         '$log.error("log")',
         '$log.debug("log")'
-    ],
+    ].concat(commonFalsePositives),
     invalid: [
         {code: 'console.log("log")', errors: [{message: 'You should use the "log" method of the AngularJS Service $log instead of the console object'}]},
         {code: 'console.debug("log")', errors: [{message: 'You should use the "debug" method of the AngularJS Service $log instead of the console object'}]},

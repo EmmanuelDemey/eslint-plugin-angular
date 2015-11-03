@@ -6,6 +6,7 @@
 
 var rule = require('../rules/di-unused');
 var RuleTester = require('eslint').RuleTester;
+var commonFalsePositives = require('./utils/commonFalsePositives');
 
 // ------------------------------------------------------------------------------
 // Tests
@@ -26,7 +27,7 @@ eslintTester.run('di-unused', rule, {
         'app.run(function($q) {$q()})',
         'inject(function($q) {_$q_ = $q;});',
         'this.$get = function($q) {return $q;};'
-    ],
+    ].concat(commonFalsePositives),
     invalid: [{
         code: 'app.controller("", function($q) {});',
         errors: [{message: 'Unused injected value $q'}]

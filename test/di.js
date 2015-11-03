@@ -6,6 +6,7 @@
 
 var rule = require('../rules/di');
 var RuleTester = require('eslint').RuleTester;
+var commonFalsePositives = require('./utils/commonFalsePositives');
 
 
 var angularNamedObjectList = ['value', 'factory', 'service', 'provider', 'controller', 'filter', 'directive'];
@@ -159,6 +160,6 @@ valid.push({
 
 var eslintTester = new RuleTester();
 eslintTester.run('di', rule, {
-    valid: valid,
+    valid: valid.concat(commonFalsePositives),
     invalid: invalid
 });
