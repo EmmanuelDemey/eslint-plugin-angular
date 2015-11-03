@@ -1,7 +1,5 @@
 'use strict';
 
-var noop = require('lodash').noop;
-
 function Rule(name, config) {
     this.name = name;
     this.config = config;
@@ -28,7 +26,7 @@ Rule.prototype = {
         /* eslint-disable no-console */
         console.warn('WARNING: Deprecated rule name ' + context.id + ' use angular/' + this.name + ' instead (will be removed in v1.0).');
         /* eslint-enable no-console */
-        this.logWarningOnce = noop;
+        this.logWarningOnce = function() { };
     }
 };
 
