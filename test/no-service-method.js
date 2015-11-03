@@ -27,7 +27,7 @@ var valid = [];
 
 
 eslintTester.run('no-service-method', rule, {
-    valid: valid,
+    valid: valid.concat('describe("", function () {})'),
     invalid: [{
         code: 'app.service("Service", function() {});',
         errors: [{message: 'You should prefer the factory() method instead of service()'}]

@@ -6,7 +6,7 @@ module.exports = function(context) {
     return {
 
         CallExpression: function(node) {
-            if (utils.isAngularComponent(node) && node.callee.property.name === 'service') {
+            if (utils.isAngularComponent(node) && node.callee.property && node.callee.property.name === 'service') {
                 context.report(node, 'You should prefer the factory() method instead of service()', {});
             }
         }
