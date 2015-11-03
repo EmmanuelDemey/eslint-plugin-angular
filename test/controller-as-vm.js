@@ -6,6 +6,7 @@
 
 var rule = require('../rules/controller-as-vm');
 var RuleTester = require('eslint').RuleTester;
+var commonFalsePositives = require('./utils/commonFalsePositives');
 
 // ------------------------------------------------------------------------------
 // Tests
@@ -22,7 +23,7 @@ eslintTester.run('controller-as-vm', rule, {
             options: ['vm']},
         {code: 'angular.module("test").service("Test", function() {this.doSomething();} )',
             options: ['vm']}
-    ],
+    ].concat(commonFalsePositives),
     invalid: [
         {code: 'function controllerFunc() {this.test = "test";} angular.module("test").controller("Test", controllerFunc )',
             options: ['vm'],

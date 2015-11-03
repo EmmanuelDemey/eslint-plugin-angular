@@ -6,6 +6,7 @@
 
 var rule = require('../rules/no-angular-mock');
 var RuleTester = require('eslint').RuleTester;
+var commonFalsePositives = require('./utils/commonFalsePositives');
 
 // ------------------------------------------------------------------------------
 // Tests
@@ -17,7 +18,7 @@ eslintTester.run('no-angular-mock', rule, {
         'dump();',
         'inject();',
         'module();'
-    ],
+    ].concat(commonFalsePositives),
     invalid: [{
         code: 'angular.mock.dump();',
         errors: [{message: 'You should use the "dump" method available in the window object.'}]

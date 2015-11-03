@@ -6,6 +6,7 @@
 
 var rule = require('../rules/no-service-method');
 var RuleTester = require('eslint').RuleTester;
+var commonFalsePositives = require('./utils/commonFalsePositives');
 
 // ------------------------------------------------------------------------------
 // Tests
@@ -27,7 +28,7 @@ var valid = [];
 
 
 eslintTester.run('no-service-method', rule, {
-    valid: valid.concat('describe("", function () {})'),
+    valid: valid.concat(commonFalsePositives),
     invalid: [{
         code: 'app.service("Service", function() {});',
         errors: [{message: 'You should prefer the factory() method instead of service()'}]

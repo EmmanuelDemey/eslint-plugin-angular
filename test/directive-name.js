@@ -6,6 +6,7 @@
 
 var rule = require('../rules/directive-name');
 var RuleTester = require('eslint').RuleTester;
+var commonFalsePositives = require('./utils/commonFalsePositives');
 
 // ------------------------------------------------------------------------------
 // Tests
@@ -33,7 +34,7 @@ eslintTester.run('directive-name', rule, {
         code: 'app.directive("Directive", function() {});',
         options: ['eslint'],
         settings: {angular: 2}
-    }],
+    }].concat(commonFalsePositives),
     invalid: [
         {
             code: 'app.directive("Directive", function() {});',

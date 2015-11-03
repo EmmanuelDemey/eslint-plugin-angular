@@ -6,6 +6,7 @@
 
 var rule = require('../rules/no-private-call');
 var RuleTester = require('eslint').RuleTester;
+var commonFalsePositives = require('./utils/commonFalsePositives');
 
 // ------------------------------------------------------------------------------
 // Tests
@@ -39,6 +40,6 @@ eslintTester.run('no-private-call', rule, {
             }]
         }
 
-    ],
+    ].concat(commonFalsePositives),
     invalid: invalid
 });

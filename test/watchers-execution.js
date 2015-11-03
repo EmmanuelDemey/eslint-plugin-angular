@@ -6,6 +6,7 @@
 
 var rule = require('../rules/watchers-execution');
 var RuleTester = require('eslint').RuleTester;
+var commonFalsePositives = require('./utils/commonFalsePositives');
 
 // ------------------------------------------------------------------------------
 // Tests
@@ -18,7 +19,7 @@ eslintTester.run('watchers-execution', rule, {
         {code: '$rootScope.$apply(function() {})', options: ['$apply']},
         {code: '$scope.$digest()', options: ['$digest']},
         {code: '$rootScope.$digest()', options: ['$digest']}
-    ],
+    ].concat(commonFalsePositives),
     invalid: [
         {code: '$scope.$apply(function() {})', options: ['$digest'], errors: [{message: 'Instead of using the $apply() method, you should prefer $digest()'}]},
         {code: '$rootScope.$apply(function() {})', options: ['$digest'], errors: [{message: 'Instead of using the $apply() method, you should prefer $digest()'}]},
