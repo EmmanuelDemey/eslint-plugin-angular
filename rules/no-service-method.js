@@ -1,3 +1,11 @@
+/**
+ * use `factory()` instead of `service()`
+ *
+ * You should prefer the factory() method instead of service()
+ *
+ * @styleguideReference {johnpapa} `y040` Services - Singletons
+ * @version 0.1.0
+ */
 'use strict';
 
 module.exports = function(context) {

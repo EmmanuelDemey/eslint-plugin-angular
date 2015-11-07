@@ -1,3 +1,10 @@
+/**
+ * use `angular.forEach` instead of native `Array.prototype.forEach`
+ *
+ * You should use the angular.forEach method instead of the default JavaScript implementation [].forEach.
+ *
+ * @version 0.1.0
+ */
 'use strict';
 
 module.exports = function(context) {

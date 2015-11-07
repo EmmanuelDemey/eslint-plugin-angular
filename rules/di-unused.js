@@ -1,3 +1,10 @@
+/**
+ * disallow unused DI parameters
+ *
+ * Unused dependencies should not be injected.
+ *
+ * @version 0.8.0
+ */
 'use strict';
 
 module.exports = function(context) {

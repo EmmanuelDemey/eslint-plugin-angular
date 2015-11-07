@@ -1,3 +1,13 @@
+/**
+ * disallow assignments to `$scope` in controllers
+ *
+ * You should not set properties on $scope in controllers.
+ * Use controllerAs syntax and add data to 'this'.
+ * The second parameter can be a Regexp for identifying controller functions (when using something like Browserify)
+ *
+ * @styleguideReference {johnpapa} `y031` controllerAs Controller Syntax
+ * @version 0.1.0
+ */
 'use strict';
 
 module.exports = function(context) {

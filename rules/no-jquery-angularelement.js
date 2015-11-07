@@ -1,3 +1,9 @@
+/**
+ * disallow to wrap `angular.element` objects with `jQuery` or `$`
+ *
+ * You should not wrap angular.element object into jQuery(), because angular.element already return jQLite element
+ * @version 0.1.0
+ */
 'use strict';
 
 module.exports = function(context) {
