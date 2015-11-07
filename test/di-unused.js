@@ -15,59 +15,59 @@ var commonFalsePositives = require('./utils/commonFalsePositives');
 var eslintTester = new RuleTester();
 eslintTester.run('di-unused', rule, {
     valid: [
-        'app.controller("", function($q) {return $q;});',
-        'app.directive("", function($q) {return $q;});',
-        'app.factory("", function($q) {return $q;});',
-        'app.factory("", function($q) {return function() {return $q;};});',
-        'app.factory("", function() {var myVar;});',
-        'app.filter("", function($q) {return $q;});',
-        'app.provider("", function($httpProvider) {return $httpProvider;});',
-        'app.service("", function($q) {return $q;});',
-        'app.config(function($httpProvider) {$httpProvider.defaults.headers.post.answer="42"})',
-        'app.run(function($q) {$q()})',
+        'angular.module("").controller("", function($q) {return $q;});',
+        'angular.module("").directive("", function($q) {return $q;});',
+        'angular.module("").factory("", function($q) {return $q;});',
+        'angular.module("").factory("", function($q) {return function() {return $q;};});',
+        'angular.module("").factory("", function() {var myVar;});',
+        'angular.module("").filter("", function($q) {return $q;});',
+        'angular.module("").provider("", function($httpProvider) {return $httpProvider;});',
+        'angular.module("").service("", function($q) {return $q;});',
+        'angular.module("").config(function($httpProvider) {$httpProvider.defaults.headers.post.answer="42"})',
+        'angular.module("").run(function($q) {$q()})',
         'inject(function($q) {_$q_ = $q;});',
-        'this.$get = function($q) {return $q;};'
+        'angular.module("").provider("", function() {this.$get = function($q) {return $q};});'
     ].concat(commonFalsePositives),
     invalid: [{
-        code: 'app.controller("", function($q) {});',
+        code: 'angular.module("").controller("", function($q) {});',
         errors: [{message: 'Unused injected value $q'}]
     }, {
-        code: 'app.directive("", function($q) {});',
+        code: 'angular.module("").directive("", function($q) {});',
         errors: [{message: 'Unused injected value $q'}]
     }, {
-        code: 'app.factory("", function($q) {});',
+        code: 'angular.module("").factory("", function($q) {});',
         errors: [{message: 'Unused injected value $q'}]
     }, {
-        code: 'app.factory("", function($http, $q) {});',
+        code: 'angular.module("").factory("", function($http, $q) {});',
         errors: [
             {message: 'Unused injected value $http'},
             {message: 'Unused injected value $q'}
         ]
     }, {
-        code: 'app.factory("", function($http, $q) {return $q.resolve()});',
+        code: 'angular.module("").factory("", function($http, $q) {return $q.resolve()});',
         errors: [
             {message: 'Unused injected value $http'}
         ]
     }, {
-        code: 'app.filter("", function($q) {});',
+        code: 'angular.module("").filter("", function($q) {});',
         errors: [{message: 'Unused injected value $q'}]
     }, {
-        code: 'app.provider("", function($httpProvider) {});',
+        code: 'angular.module("").provider("", function($httpProvider) {});',
         errors: [{message: 'Unused injected value $httpProvider'}]
     }, {
-        code: 'app.service("", function($q) {});',
+        code: 'angular.module("").service("", function($q) {});',
         errors: [{message: 'Unused injected value $q'}]
     }, {
-        code: 'app.config(function($httpProvider) {})',
+        code: 'angular.module("").config(function($httpProvider) {})',
         errors: [{message: 'Unused injected value $httpProvider'}]
     }, {
-        code: 'app.run(function($q) {});',
+        code: 'angular.module("").run(function($q) {});',
         errors: [{message: 'Unused injected value $q'}]
     }, {
         code: 'inject(function($q) {});',
         errors: [{message: 'Unused injected value $q'}]
     }, {
-        code: 'this.$get = function($q) {};',
+        code: 'angular.module("").provider("", function() {this.$get = function($q) {};});',
         errors: [{message: 'Unused injected value $q'}]
     }]
 });
