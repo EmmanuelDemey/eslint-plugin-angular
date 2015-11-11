@@ -27,7 +27,10 @@ eslintTester.run('component-limit', rule, {
         {
             code: 'app.controller("", function() {}).directive("", function() {}).factory("", function() {}).filter("", function() {}).provider("", function() {}).service("", function() {});',
             options: [6]
-        }
+        },
+        // complex component limit specific false positives
+        'app.service("", function(myService) { var data = {}; myService.someMethod("", data); })',
+        '$httpBackend.expectGET("").respond(200, dummyData);$httpBackend.expectGET("").respond(200, dummyData);'
     ].concat(commonFalsePositives),
     invalid: [{
         code: 'app.controller("", function() {}).directive("", function() {});',
