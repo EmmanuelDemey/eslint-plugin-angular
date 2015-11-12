@@ -22,6 +22,7 @@ var angularChainableNames = [
 
 function angularRule(ruleDefinition) {
     var angularModuleCalls;
+    var angularModuleIdentifiers;
     var angularChainables;
     var injectCalls;
 
@@ -29,6 +30,7 @@ function angularRule(ruleDefinition) {
 
     function reset() {
         angularModuleCalls = [];
+        angularModuleIdentifiers = [];
         angularChainables = [];
         injectCalls = [];
     }
@@ -102,10 +104,28 @@ function angularRule(ruleDefinition) {
         if (callee.type === 'MemberExpression') {
             if (callee.object.name === 'angular' && callee.property.name === 'module') {
                 angularModuleCalls.push(callExpressionNode);
+            } else if (angularChainableNames.indexOf(callee.property.name !== -1) && (angularModuleCalls.indexOf(callee.object) !== -1 || angularChainables.indexOf(callee.object) !== -1)) {
+                angularChainables.push(callExpressionNode);
+            } else if (callee.object.type === 'Identifier') {
+                var scope = context.getScope();
+                var isAngularModule = scope.variables.some(function(variable) {
+                    if (callee.object.name !== variable.name) {
+                        return false;
+                    }
+                    return variable.identifiers.some(function(id) {
+                        return angularModuleIdentifiers.indexOf(id) !== -1;
+                    });
+                });
+                if (isAngularModule) {
+                    angularChainables.push(callExpressionNode);
+                } else {
+                    return;
+                }
+            } else {
                 return;
             }
-            if (angularChainableNames.indexOf(callee.property.name !== -1) && (angularModuleCalls.indexOf(callee.object) !== -1 || angularChainables.indexOf(callee.object) !== -1)) {
-                angularChainables.push(callExpressionNode);
+            if (callExpressionNode.parent.type === 'VariableDeclarator') {
+                angularModuleIdentifiers.push(callExpressionNode.parent.id);
             }
         }
     }
