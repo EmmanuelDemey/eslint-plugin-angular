@@ -20,6 +20,26 @@ var angularChainableNames = [
 ];
 
 
+/**
+ * An angularRule defines a simplified interface for AngularJS component based rules.
+ *
+ * A full rule definition containing rules for all supported rules looks like this:
+ * ```js
+ * module.exports = angularRule(function(context) {
+ *   return {
+ *     'angular.config': function(configCallee, configFn) {},
+ *     'angular.controller': function(controllerCallee, controllerFn) {},
+ *     'angular.directive': function(directiveCallee, directiveFn) {},
+ *     'angular.factory': function(factoryCallee, factoryFn) {},
+ *     'angular.filter': function(filterCallee, filterFn) {},
+ *     'angular.inject': function(injectCallee, injectFn) {},  // inject() calls from angular-mocks
+ *     'angular.run': function(runCallee, runFn) {},
+ *     'angular.service': function(serviceCallee, serviceFn) {},
+ *     'angular.provider': function(providerCallee, providerFn, provider$getFn) {}
+ *   };
+ * })
+ * ```
+ */
 function angularRule(ruleDefinition) {
     var angularModuleCalls;
     var angularModuleIdentifiers;
@@ -97,16 +117,24 @@ function angularRule(ruleDefinition) {
         var callee = callExpressionNode.callee;
         if (callee.type === 'Identifier') {
             if (callee.name === 'inject') {
+                // inject()
+                // ^^^^^^
                 injectCalls.push(callExpressionNode);
             }
             return;
         }
         if (callee.type === 'MemberExpression') {
             if (callee.object.name === 'angular' && callee.property.name === 'module') {
+                // angular.module()
+                //         ^^^^^^
                 angularModuleCalls.push(callExpressionNode);
             } else if (angularChainableNames.indexOf(callee.property.name !== -1) && (angularModuleCalls.indexOf(callee.object) !== -1 || angularChainables.indexOf(callee.object) !== -1)) {
+                // angular.module().factory().controller()
+                //                  ^^^^^^^   ^^^^^^^^^^
                 angularChainables.push(callExpressionNode);
             } else if (callee.object.type === 'Identifier') {
+                // var app = angular.module(); app.factory()
+                //                                 ^^^^^^^
                 var scope = context.getScope();
                 var isAngularModule = scope.variables.some(function(variable) {
                     if (callee.object.name !== variable.name) {
@@ -125,11 +153,16 @@ function angularRule(ruleDefinition) {
                 return;
             }
             if (callExpressionNode.parent.type === 'VariableDeclarator') {
+                // var app = angular.module()
+                //     ^^^
                 angularModuleIdentifiers.push(callExpressionNode.parent.id);
             }
         }
     }
 
+    /**
+     * Call the Angular specific rules defined by the rule definition.
+     */
     function callAngularRules(ruleObject) {
         angularChainables.forEach(function(chainable) {
             var name = chainable.callee.property.name;
@@ -147,6 +180,9 @@ function angularRule(ruleDefinition) {
         }
     }
 
+    /**
+     * Assemble the arguments for an Angular callee check.
+     */
     function assembleArguments(node) {
         switch (node.callee.property.name) {
             case 'controller':
@@ -163,18 +199,35 @@ function angularRule(ruleDefinition) {
         }
     }
 
+    /**
+     * Assemble the arguments for typical Angular components which take 2 arguments.
+     *
+     * The arguments consist of the callee node and the function defining the component.
+     * This does not include providers.
+     */
     function assembleComponentArguments(node) {
         return [node, node.arguments[1]];
     }
 
+    /**
+     * Assemble arguments for a provider rule.
+     *
+     * On top of a regular Angular component rule, the provider rule gets called with the $get function as its 3rd argument.
+     */
     function assembleProviderArguments(node) {
         return [node, node.arguments[1], findProviderGet(node.arguments[1])];
     }
 
+    /**
+     * Assemble arguments for injectible functions which only take a function as an argument.
+     */
     function assembleRunConfigOrInjectArguments(node) {
         return [node, node.arguments[0]];
     }
 
+    /**
+     * Find the $get function of a provider based on the provider function body.
+     */
     function findProviderGet(providerFn) {
         var getFn;
         providerFn.body.body.some(function(statement) {
