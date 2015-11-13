@@ -8,7 +8,7 @@ var rule = require('../rules/function-type');
 var RuleTester = require('eslint').RuleTester;
 
 
-var angularObjectList = ['controller', 'filter', 'factory', 'service'];
+var angularObjectList = ['animation', 'config', 'constant', 'controller', 'directive', 'factory', 'filter', 'provider', 'service', 'value', 'decorator'];
 var valid = [];
 var invalid = [];
 
