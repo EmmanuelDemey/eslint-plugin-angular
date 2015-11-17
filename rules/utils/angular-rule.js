@@ -41,6 +41,7 @@ var angularChainableNames = [
  * ```
  */
 function angularRule(ruleDefinition) {
+    var angularComponents;
     var angularModuleCalls;
     var angularModuleIdentifiers;
     var angularChainables;
@@ -49,6 +50,7 @@ function angularRule(ruleDefinition) {
     return wrapper;
 
     function reset() {
+        angularComponents = [];
         angularModuleCalls = [];
         angularModuleIdentifiers = [];
         angularChainables = [];
@@ -132,6 +134,10 @@ function angularRule(ruleDefinition) {
                 // angular.module().factory().controller()
                 //                  ^^^^^^^   ^^^^^^^^^^
                 angularChainables.push(callExpressionNode);
+                angularComponents.push({
+                    callExpression: callExpressionNode,
+                    fn: findFunctionByNode(callExpressionNode, context.getScope())
+                });
             } else if (callee.object.type === 'Identifier') {
                 // var app = angular.module(); app.factory()
                 //                                 ^^^^^^^
@@ -146,6 +152,10 @@ function angularRule(ruleDefinition) {
                 });
                 if (isAngularModule) {
                     angularChainables.push(callExpressionNode);
+                    angularComponents.push({
+                        callExpression: callExpressionNode,
+                        fn: findFunctionByNode(callExpressionNode, context.getScope())
+                    });
                 } else {
                     return;
                 }
@@ -161,16 +171,50 @@ function angularRule(ruleDefinition) {
     }
 
     /**
+     * Find the function expression or function declaration by an Angular component callee.
+     */
+    function findFunctionByNode(callExpressionNode, scope) {
+        var node;
+        if (callExpressionNode.callee.property.name === 'run' || callExpressionNode.callee.property.name === 'config') {
+            node = callExpressionNode.arguments[0];
+        } else {
+            node = callExpressionNode.arguments[1];
+        }
+        if (!node) {
+            return;
+        }
+        if (node.type === 'FunctionExpression' || node.type === 'FunctionDeclaration') {
+            return node;
+        }
+        if (node.type !== 'Identifier') {
+            return;
+        }
+        var func;
+        scope.variables.some(function(variable) {
+            if (variable.name === node.name) {
+                variable.defs.forEach(function(def) {
+                    if (def.node.type === 'FunctionDeclaration') {
+                        func = def.node;
+                        return true;
+                    }
+                });
+                return true;
+            }
+        });
+        return func;
+    }
+
+    /**
      * Call the Angular specific rules defined by the rule definition.
      */
-    function callAngularRules(ruleObject) {
-        angularChainables.forEach(function(chainable) {
-            var name = chainable.callee.property.name;
+    function callAngularRules(ruleObject, context) {
+        angularComponents.forEach(function(component) {
+            var name = component.callExpression.callee.property.name;
             var fn = ruleObject['angular:' + name];
             if (!fn) {
                 return;
             }
-            fn.apply(ruleObject, assembleArguments(chainable));
+            fn.apply(ruleObject, assembleArguments(component, context));
         });
         var injectRule = ruleObject['angular:inject'];
         if (injectRule) {
@@ -184,29 +228,18 @@ function angularRule(ruleDefinition) {
      * Assemble the arguments for an Angular callee check.
      */
     function assembleArguments(node) {
-        switch (node.callee.property.name) {
+        switch (node.callExpression.callee.property.name) {
+            case 'config':
             case 'controller':
             case 'directive':
             case 'factory':
             case 'filter':
+            case 'run':
             case 'service':
-                return assembleComponentArguments(node);
+                return [node.callExpression.callee, node.fn];
             case 'provider':
                 return assembleProviderArguments(node);
-            case 'config':
-            case 'run':
-                return assembleRunConfigOrInjectArguments(node);
         }
-    }
-
-    /**
-     * Assemble the arguments for typical Angular components which take 2 arguments.
-     *
-     * The arguments consist of the callee node and the function defining the component.
-     * This does not include providers.
-     */
-    function assembleComponentArguments(node) {
-        return [node, node.arguments[1]];
     }
 
     /**
@@ -215,7 +248,7 @@ function angularRule(ruleDefinition) {
      * On top of a regular Angular component rule, the provider rule gets called with the $get function as its 3rd argument.
      */
     function assembleProviderArguments(node) {
-        return [node, node.arguments[1], findProviderGet(node.arguments[1])];
+        return [node.callExpression, node.fn, findProviderGet(node.fn)];
     }
 
     /**

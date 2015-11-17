@@ -38,6 +38,9 @@ eslintTester.run('di-unused', rule, {
         code: 'var app = angular.module(""); app.controller("", function($q) {});',
         errors: [{message: 'Unused injected value $q'}]
     }, {
+        code: 'angular.module("").controller("", LoginController); function LoginController($q) {}',
+        errors: [{message: 'Unused injected value $q'}]
+    }, {
         code: 'angular.module("").directive("", function($q) {});',
         errors: [{message: 'Unused injected value $q'}]
     }, {
