@@ -6,6 +6,7 @@
 
 var rule = require('../rules/typecheck-number');
 var RuleTester = require('eslint').RuleTester;
+var commonFalsePositives = require('./utils/commonFalsePositives');
 
 // ------------------------------------------------------------------------------
 // Tests
@@ -15,7 +16,7 @@ var eslintTester = new RuleTester();
 eslintTester.run('typecheck-number', rule, {
     valid: [
         'angular.isNumber(1)'
-    ],
+    ].concat(commonFalsePositives),
     invalid: [
         {code: 'Object.prototype.toString.call(variable) === "[object Number]"', errors: [{message: 'You should use the angular.isNumber method'}]},
         {code: '"[object Number]" === Object.prototype.toString.call(variable)', errors: [{message: 'You should use the angular.isNumber method'}]},

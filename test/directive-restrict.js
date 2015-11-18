@@ -6,6 +6,7 @@
 
 var rule = require('../rules/directive-restrict');
 var RuleTester = require('eslint').RuleTester;
+var commonFalsePositives = require('./utils/commonFalsePositives');
 
 // ------------------------------------------------------------------------------
 // Tests
@@ -49,7 +50,7 @@ eslintTester.run('directive-restrict', rule, {
         }, {
             code: 'app.directive("", function() {directive = {}; directive.custom = "A"; return directive})'
         }
-    ],
+    ].concat(commonFalsePositives),
     invalid: [
         // Disallowed with default configuration
         {

@@ -6,6 +6,7 @@
 
 var rule = require('../rules/module-dependency-order');
 var RuleTester = require('eslint').RuleTester;
+var commonFalsePositives = require('./utils/commonFalsePositives');
 
 // ------------------------------------------------------------------------------
 // Tests
@@ -28,7 +29,7 @@ eslintTester.run('module-dependency-order', rule, {
             code: 'angular.module("", ["ngAnimate","ngResource","ngCordova","app.filters"])',
             options: [{prefix: 'app'}]
         }
-    ],
+    ].concat(commonFalsePositives),
     invalid: [
         {
             code: 'angular.module("", deps)',

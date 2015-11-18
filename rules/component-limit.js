@@ -1,3 +1,12 @@
+/**
+ * limit the number of angular components per file
+ *
+ * The number of AngularJS components in one file should be limited.
+ * The default limit is one.
+ *
+ * @styleguideReference {johnpapa} `y001` Define 1 component per file
+ * @version 0.11.0
+ */
 'use strict';
 
 module.exports = function(context) {

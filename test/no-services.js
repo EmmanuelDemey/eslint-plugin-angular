@@ -6,6 +6,7 @@
 
 var rule = require('../rules/no-services');
 var RuleTester = require('eslint').RuleTester;
+var commonFalsePositives = require('./utils/commonFalsePositives');
 
 // ------------------------------------------------------------------------------
 // Tests
@@ -97,6 +98,6 @@ angularObjectList.forEach(function(object) {
 // ------------------------------------------------------------------------------
 
 eslintTester.run('no-services', rule, {
-    valid: valid,
+    valid: valid.concat(commonFalsePositives),
     invalid: invalid
 });

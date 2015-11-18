@@ -6,6 +6,7 @@
 
 var rule = require('../rules/di-order');
 var RuleTester = require('eslint').RuleTester;
+var commonFalsePositives = require('./utils/commonFalsePositives');
 
 // ------------------------------------------------------------------------------
 // Tests
@@ -32,7 +33,7 @@ eslintTester.run('di-order', rule, {
             code: 'it(inject(function(_$httpBackend_, _$http_) {}));',
             options: [false]
         }
-    ],
+    ].concat(commonFalsePositives),
     invalid: [{
         code: 'app.controller("", function($q, $http) {});',
         errors: [{message: 'Injected values should be sorted alphabetically'}]

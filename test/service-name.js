@@ -6,6 +6,7 @@
 
 var rule = require('../rules/service-name');
 var RuleTester = require('eslint').RuleTester;
+var commonFalsePositives = require('./utils/commonFalsePositives');
 
 // ------------------------------------------------------------------------------
 // Tests
@@ -54,6 +55,6 @@ var invalid = [];
 
 
 eslintTester.run('service-name', rule, {
-    valid: valid,
+    valid: valid.concat(commonFalsePositives),
     invalid: invalid
 });

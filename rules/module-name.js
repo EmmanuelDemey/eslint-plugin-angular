@@ -1,3 +1,13 @@
+/**
+ * require and specify a prefix for all module names
+ *
+ * When you create a new module, its name should start with the parameter you can define in your config object.
+ * The second parameter can be a Regexp wrapped in quotes.
+ * You can not prefix your modules by "ng" (reserved keyword for AngularJS modules) ("module-name":  [2, "ng"])
+ *
+ * @styleguideReference {johnpapa} `y127` Naming - Modules
+ * @version 0.1.0
+ */
 'use strict';
 
 module.exports = function(context) {

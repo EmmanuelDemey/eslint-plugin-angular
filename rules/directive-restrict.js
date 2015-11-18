@@ -1,3 +1,14 @@
+/**
+ * disallow any other directive restrict than 'A' or 'E'
+ *
+ * Not all directive restrictions may be desirable.
+ * Also it might be desirable to define default restrictions, or explicitly not.
+ * The default configuration limits the restrictions `AE` and disallows explicitly specifying a default.
+ * ("directive-restrict": [0, {"restrict": "AE", "explicit": "never"}])
+ *
+ * @styleguideReference {johnpapa} `y074` Restrict to Elements and Attributes
+ * @version 0.12.0
+ */
 'use strict';
 
 module.exports = function(context) {

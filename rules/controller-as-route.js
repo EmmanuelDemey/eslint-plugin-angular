@@ -1,3 +1,11 @@
+/**
+ * require the use of controllerAs in routes or states
+ *
+ * You should use Angular's controllerAs syntax when defining routes or states.
+ *
+ * @styleguideReference {johnpapa} `y031` controllerAs Controller Syntax
+ * @version 0.1.0
+ */
 'use strict';
 
 module.exports = function(context) {

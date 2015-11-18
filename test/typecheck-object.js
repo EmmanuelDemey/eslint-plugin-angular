@@ -6,6 +6,7 @@
 
 var rule = require('../rules/typecheck-object');
 var RuleTester = require('eslint').RuleTester;
+var commonFalsePositives = require('./utils/commonFalsePositives');
 
 // ------------------------------------------------------------------------------
 // Tests
@@ -15,7 +16,7 @@ var eslintTester = new RuleTester();
 eslintTester.run('typecheck-object', rule, {
     valid: [
         'angular.isObject({})'
-    ],
+    ].concat(commonFalsePositives),
     invalid: [
         {code: 'typeof variable === "object"', errors: [{message: 'You should use the angular.isObject method'}]},
         {code: '"object" === typeof variable', errors: [{message: 'You should use the angular.isObject method'}]},

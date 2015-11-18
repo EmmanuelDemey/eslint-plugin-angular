@@ -1,0 +1,61 @@
+'use strict';
+
+var fs = require('fs');
+var _ = require('lodash');
+
+var templates = {
+    ruleSourcePath: _.template('rules/<%= ruleName %>.js'),
+    ruleDocumentationPath: _.template('docs/<%= ruleName %>.md'),
+    ruleExamplesPath: _.template('examples/<%= ruleName %>.js'),
+    styleguide: _.template('[<%= name %> by <%= type %> - <%= description %>](<%= link %>)'),
+    styleguideLinks: {
+        johnpapa: _.template('https://github.com/johnpapa/angular-styleguide#style-<%= name %>')
+    }
+};
+
+var templatesDir = './scripts/templates/';
+var templateSettings = {
+    imports: {
+        formatStyleguideReference: function(styleRef) {
+            var linkTemplate = templates.styleguideLinks[styleRef.type];
+            if (!linkTemplate) {
+                throw new Error('No styleguide link template for styleguide type: "' + styleRef.type);
+            }
+            var templateContext = _.extend({
+                link: linkTemplate(styleRef)
+            }, styleRef);
+
+            return templates.styleguide(templateContext);
+        },
+        formatConfigAsJson: function(examples) {
+            var config = examples[0].displayOptions;
+            if (!config) {
+                return 2;
+            }
+            return JSON.stringify([2].concat(config));
+        },
+        formatConfigAsMarkdown: function(examples) {
+            var config = examples[0].displayOptions;
+            if (!config) {
+                return '';
+            }
+            return '`' + config.map(JSON.stringify).join('` and `') + '`';
+        },
+        indent: function(content, indentation) {
+            var spaces = new Array(indentation + 1).join(' ');
+            return content.replace(/\n/g, '\n' + spaces);
+        }
+    }
+};
+
+fs.readdirSync(templatesDir).forEach(function(templateFilename) {
+    var templateName = templateFilename.split('.')[0];
+    if (templates[templateName] !== undefined) {
+        throw new Error('Can not create from template "' + templateFilename + '" because template key "' +
+            templateName + '" already exists.');
+    }
+
+    templates[templateName] = _.template(fs.readFileSync(templatesDir + templateFilename), templateSettings);
+});
+
+module.exports = templates;

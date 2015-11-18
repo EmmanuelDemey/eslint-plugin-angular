@@ -6,6 +6,7 @@
 
 var rule = require('../rules/timeout-service');
 var RuleTester = require('eslint').RuleTester;
+var commonFalsePositives = require('./utils/commonFalsePositives');
 
 // ------------------------------------------------------------------------------
 // Tests
@@ -18,7 +19,7 @@ eslintTester.run('timeout-service', rule, {
         '$timeout(function() {})',
         '$timeout(function() {}, 1000)',
         '$timeout(function() {}, 1000, true)'
-    ],
+    ].concat(commonFalsePositives),
     invalid: [
         {code: 'window.setTimeout(function() {}, 1000)', errors: [{message: 'You should use the $timeout service instead of the default window.setTimeout method'}]},
         {code: 'window.setTimeout(function() {}, 1000, param1)', errors: [{message: 'You should use the $timeout service instead of the default window.setTimeout method'}]},

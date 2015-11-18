@@ -6,6 +6,7 @@
 
 var rule = require('../rules/controller-as-route');
 var RuleTester = require('eslint').RuleTester;
+var commonFalsePositives = require('./utils/commonFalsePositives');
 
 // ------------------------------------------------------------------------------
 // Tests
@@ -26,7 +27,7 @@ eslintTester.run('controller-as-route', rule, {
         'something[type][changeType][state](test)',
         'var when = "mystate2"',
         'something[type][changeType][when](test)'
-    ],
+    ].concat(commonFalsePositives),
     invalid: [
         {code: '$routeProvider.when("/myroute", {controller: "MyController"})',
             errors: [{message: 'Route "/myroute" should use controllerAs syntax'}]},

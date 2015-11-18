@@ -1,3 +1,11 @@
+/**
+ * use `$document` instead of `document`
+ *
+ * Instead of the default document object, you should prefer the AngularJS wrapper service $document.
+ *
+ * @styleguideReference {johnpapa} `y180` Angular $ Wrapper Services - $document and $window
+ * @version 0.1.0
+ */
 'use strict';
 
 module.exports = function(context) {

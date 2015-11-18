@@ -6,6 +6,7 @@
 
 var rule = require('../rules/file-name');
 var RuleTester = require('eslint').RuleTester;
+var commonFalsePositives = require('./utils/commonFalsePositives');
 
 // ------------------------------------------------------------------------------
 // Tests
@@ -151,7 +152,7 @@ eslintTester.run('file-name', rule, {
             typeSeparator: 'underscore',
             ignorePrefix: 'st'
         }]
-    }],
+    }].concat(commonFalsePositives),
     invalid: [{
         filename: 'src/app/filters.js',
         code: 'app.filter("myFilter", function() {});',
