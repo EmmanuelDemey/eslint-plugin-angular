@@ -37,7 +37,8 @@ eslintTester.run('module-getter', rule, {
         'describe("suite test", function() {})',
         'it("test", function() {})',
         '$provide.value("accountsService", accountsService)',
-        'mocha.run();'
+        'mocha.run();',
+        'var MODULE_NAME = \'mymodule\'; angular.module(MODULE_NAME).service(\'TestService\', function () {});'
     ].concat(commonFalsePositives),
     invalid: [
         {
