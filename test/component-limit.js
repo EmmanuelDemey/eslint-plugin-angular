@@ -35,6 +35,11 @@ eslintTester.run('component-limit', rule, {
             message: 'There may be at most 1 AngularJS component per file, but found 2'
         }]
     }, {
+        code: 'angular.module("").animation("", function() {}).filter("", function() {});',
+        errors: [{
+            message: 'There may be at most 1 AngularJS component per file, but found 2'
+        }]
+    }, {
         code: 'angular.module("").factory("", function() {}).filter("", function() {});',
         errors: [{
             message: 'There may be at most 1 AngularJS component per file, but found 2'

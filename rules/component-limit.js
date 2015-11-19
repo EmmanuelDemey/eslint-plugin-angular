@@ -29,6 +29,7 @@ module.exports = angularRule(function(context) {
     }
 
     return {
+        'angular:animation': checkLimit,
         'angular:config': checkLimit,
         'angular:controller': checkLimit,
         'angular:directive': checkLimit,

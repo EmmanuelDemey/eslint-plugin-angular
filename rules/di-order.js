@@ -35,6 +35,7 @@ module.exports = angularRule(function(context) {
     }
 
     return {
+        'angular:animation': checkOrder,
         'angular:config': checkOrder,
         'angular:controller': checkOrder,
         'angular:directive': checkOrder,

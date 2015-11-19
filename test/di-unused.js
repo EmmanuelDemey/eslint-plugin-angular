@@ -16,6 +16,7 @@ var eslintTester = new RuleTester();
 eslintTester.run('di-unused', rule, {
     valid: [
         'angular.module("").controller("", function($q) {return $q;});',
+        'angular.module("").animation("", function($q) {return $q;});',
         'angular.module("").directive("", function($q) {return $q;});',
         'angular.module("").factory("", function($q) {return $q;});',
         'angular.module("").factory("", function($q) {return function() {return $q;};});',
@@ -29,6 +30,9 @@ eslintTester.run('di-unused', rule, {
         'angular.module("").provider("", function() {this.$get = function($q) {return $q};});'
     ].concat(commonFalsePositives),
     invalid: [{
+        code: 'angular.module("").animation("", function($q) {});',
+        errors: [{message: 'Unused injected value $q'}]
+    }, {
         code: 'angular.module("").controller("", function($q) {});',
         errors: [{message: 'Unused injected value $q'}]
     }, {

@@ -48,6 +48,7 @@ module.exports = angularRule(function(context) {
     }
 
     return {
+        'angular:animation': reportUnusedVariables,
         'angular:config': reportUnusedVariables,
         'angular:controller': reportUnusedVariables,
         'angular:directive': reportUnusedVariables,

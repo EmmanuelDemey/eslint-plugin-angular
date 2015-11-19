@@ -15,6 +15,7 @@ var commonFalsePositives = require('./utils/commonFalsePositives');
 var eslintTester = new RuleTester();
 eslintTester.run('di-order', rule, {
     valid: [
+        'angular.module("").animation("", function($http, $q) {});',
         'angular.module("").controller("", function($http, $q) {});',
         'angular.module("").directive("", function($http, $q) {});',
         'angular.module("").factory("", function($http, $q) {});',
@@ -33,6 +34,9 @@ eslintTester.run('di-order', rule, {
         }
     ].concat(commonFalsePositives),
     invalid: [{
+        code: 'angular.module("").animation("", function($q, $http) {});',
+        errors: [{message: 'Injected values should be sorted alphabetically'}]
+    }, {
         code: 'angular.module("").controller("", function($q, $http) {});',
         errors: [{message: 'Injected values should be sorted alphabetically'}]
     }, {

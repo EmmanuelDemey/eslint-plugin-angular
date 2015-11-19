@@ -7,6 +7,7 @@ module.exports = angularRule;
  * Method names from an AngularJS module which can be chained.
  */
 var angularChainableNames = [
+    'animation',
     'config',
     'constant',
     'controller',
@@ -27,6 +28,7 @@ var angularChainableNames = [
  * ```js
  * module.exports = angularRule(function(context) {
  *   return {
+ *     'angular:animation': function(configCallee, configFn) {},
  *     'angular:config': function(configCallee, configFn) {},
  *     'angular:controller': function(controllerCallee, controllerFn) {},
  *     'angular:directive': function(directiveCallee, directiveFn) {},
@@ -90,6 +92,8 @@ function angularRule(ruleDefinition) {
      * ```js
      * angular.module()
      *         ^^^^^^
+     * .animation('', function() {})
+     *  ^^^^^^^^^     ^^^^^^^^^^
      * .config(function() {})
      *  ^^^^^^ ^^^^^^^^^^
      * .constant()
@@ -229,6 +233,7 @@ function angularRule(ruleDefinition) {
      */
     function assembleArguments(node) {
         switch (node.callExpression.callee.property.name) {
+            case 'animation':
             case 'config':
             case 'controller':
             case 'directive':
