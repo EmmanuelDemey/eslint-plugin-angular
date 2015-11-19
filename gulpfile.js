@@ -34,3 +34,4 @@ gulp.task('docs', function(cb) {
 });
 
 gulp.task('default', ['quality', 'docs', 'test']);
+gulp.task('dev', ['quality', 'test']);

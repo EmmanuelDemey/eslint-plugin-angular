@@ -38,6 +38,21 @@ eslintTester.run('di-order', rule, {
         code: 'app.controller("", function($q, $http) {});',
         errors: [{message: 'Injected values should be sorted alphabetically'}]
     }, {
+        code: 'app.controller("", func); function func($q, $http){}',
+        errors: [{message: 'Injected values should be sorted alphabetically'}]
+    }, {
+        code: 'app.controller("", func); var func = function($q, $http){};',
+        errors: [{message: 'Injected values should be sorted alphabetically'}]
+    }, {
+        code: 'app.controller("", ["$q", "$http", function($q, $http) {}]);',
+        errors: [{message: 'Injected values should be sorted alphabetically'}]
+    }, {
+        code: 'app.controller("", ["$q", "$http", func]); function func($q, $http) {}',
+        errors: [{message: 'Injected values should be sorted alphabetically'}]
+    }, {
+        code: 'app.controller("", ["$q", "$http", func]); var func = function($q, $http) {};',
+        errors: [{message: 'Injected values should be sorted alphabetically'}]
+    }, {
         code: 'app.directive("", function($q, $http) {});',
         errors: [{message: 'Injected values should be sorted alphabetically'}]
     }, {
