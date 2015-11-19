@@ -1,5 +1,6 @@
 'use strict';
 
+var _ = require('lodash');
 
 var scopeProperties = [
     '$id',
@@ -51,7 +52,8 @@ module.exports = {
     isRouteDefinition: isRouteDefinition,
     isUIRouterStateDefinition: isUIRouterStateDefinition,
     findIdentiferInScope: findIdentiferInScope,
-    getControllerDefinition: getControllerDefinition
+    getControllerDefinition: getControllerDefinition,
+    getFunctionDeclaration: getFunctionDeclaration
 };
 
 
@@ -505,5 +507,51 @@ function getControllerDefinition(context, node) {
     }
     if (isIdentifierType(controllerArg)) {
         return findIdentiferInScope(context, controllerArg);
+    }
+}
+
+function findFunctionDeclarationByDeclaration(body, fName) {
+    return _.find(body, function(item) {
+        return item.type === 'FunctionDeclaration' && item.id.name === fName;
+    });
+}
+
+function findFunctionDeclarationByVariableDeclaration(body, fName) {
+    var fn;
+    _.forEach(body, function(item) {
+        if (fn) {
+            return;
+        }
+        if (item.type === 'VariableDeclaration') {
+            _.forEach(item.declarations, function(declaration) {
+                if (declaration.type === 'VariableDeclarator' &&
+                    declaration.id &&
+                    declaration.id.name === fName &&
+                    declaration.init &&
+                    declaration.init.type === 'FunctionExpression'
+                ) {
+                    fn = declaration.init;
+                }
+            });
+        }
+    });
+    return fn;
+}
+
+function getFunctionDeclaration(node, fName) {
+    if (node.type === 'BlockStatement' || node.type === 'Program') {
+        if (node.body) {
+            var fn = findFunctionDeclarationByDeclaration(node.body, fName);
+            if (fn) {
+                return fn;
+            }
+            fn = findFunctionDeclarationByVariableDeclaration(node.body, fName);
+            if (fn) {
+                return fn;
+            }
+        }
+    }
+    if (node.parent) {
+        return getFunctionDeclaration(node.parent, fName);
     }
 }
