@@ -8,6 +8,7 @@ module.exports = angularRule;
  */
 var angularChainableNames = [
     'animation',
+    'component',
     'config',
     'constant',
     'controller',
