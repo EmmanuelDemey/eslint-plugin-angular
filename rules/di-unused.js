@@ -41,12 +41,6 @@ module.exports = function(context) {
         AssignmentExpression: function(node) {
             // Colllect the $get function of a providers.
             if (node.left.type === 'MemberExpression' && node.left.property.name === '$get') {
-                if (node.right.type === 'ArrayExpression') {
-                    return injectFunctions.push({
-                        node: node.right.elements[node.right.elements.length - 1]
-                    });
-                }
-
                 injectFunctions.push({
                     node: node.right
                 });
@@ -55,48 +49,22 @@ module.exports = function(context) {
 
         CallExpression: function(node) {
             // An Angular component definition.
-            if (utils.isAngularComponent(node) && node.callee.type === 'MemberExpression' && angularNamedObjectList.indexOf(node.callee.property.name) >= 0) {
-                if (node.arguments[1].type === 'FunctionExpression') {
-                    return injectFunctions.push({
-                        node: node.arguments[1]
-                    });
-                }
-
-                if (node.arguments[1].type === 'ArrayExpression') {
-                    return injectFunctions.push({
-                        node: node.arguments[1].elements[node.arguments[1].elements.length - 1]
-                    });
-                }
+            if (utils.isAngularComponent(node) && node.callee.type === 'MemberExpression' && node.arguments[1].type === 'FunctionExpression' && angularNamedObjectList.indexOf(node.callee.property.name) >= 0) {
+                return injectFunctions.push({
+                    node: node.arguments[1]
+                });
             }
-
             // Config and run functions.
-            if (node.callee.type === 'MemberExpression' && node.arguments.length > 0 && setupCalls.indexOf(node.callee.property.name) !== -1) {
-                if (node.arguments[0].type === 'FunctionExpression') {
-                    return injectFunctions.push({
-                        node: node.arguments[0]
-                    });
-                }
-
-                if (node.arguments[0].type === 'ArrayExpression') {
-                    return injectFunctions.push({
-                        node: node.arguments[0].elements[node.arguments[0].elements.length - 1]
-                    });
-                }
+            if (node.callee.type === 'MemberExpression' && node.arguments.length > 0 && setupCalls.indexOf(node.callee.property.name) !== -1 && node.arguments[0].type === 'FunctionExpression') {
+                return injectFunctions.push({
+                    node: node.arguments[0]
+                });
             }
-
             // Injected values in unittests.
             if (node.callee.type === 'Identifier' && node.callee.name === 'inject') {
-                if (node.arguments[0].type === 'FunctionExpression') {
-                    return injectFunctions.push({
-                        node: node.arguments[0]
-                    });
-                }
-
-                if (node.arguments[0].type === 'ArrayExpression') {
-                    return injectFunctions.push({
-                        node: node.arguments[0].elements[node.arguments[0].elements.length - 1]
-                    });
-                }
+                return injectFunctions.push({
+                    node: node.arguments[0]
+                });
             }
         },
 
