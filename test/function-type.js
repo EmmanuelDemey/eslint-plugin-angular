@@ -9,7 +9,7 @@ var RuleTester = require('eslint').RuleTester;
 var commonFalsePositives = require('./utils/commonFalsePositives');
 
 
-var angularObjectList = ['controller', 'filter', 'factory', 'service'];
+var angularObjectList = ['animation', 'config', 'constant', 'controller', 'directive', 'factory', 'filter', 'provider', 'service', 'value', 'decorator'];
 var valid = [];
 var invalid = [];
 
