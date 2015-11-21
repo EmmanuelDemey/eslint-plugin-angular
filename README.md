@@ -220,7 +220,9 @@ It is an opensource project. Any help will be very useful. You can :
 - Improve the quality
 - Reply to issues
 
-All contributions should be pushed in the current GIT branch.
+All development happens on the `development` branch. This means all pull requests should be made to the `development` branch.
+
+If it is time to release, @Gillespie59 will bump the version in `package.json`, create a Git tag and merge the `development` branch into `master`. @Gillespie59 will then publish the new release to the npm registry.
 
 
 
