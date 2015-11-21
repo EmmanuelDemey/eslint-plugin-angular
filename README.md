@@ -132,7 +132,7 @@ Users may use the shareable [eslint-config-angular](https://github.com/dustinspe
         "angular/no-private-call": 2,
         "angular/no-service-method": 2,
         "angular/no-services": [2, ["$http", "$resource", "Restangular"]],
-        "angular/on-watch": 2,
+        "angular/on": 2,
         "angular/rest-service": 0,
         "angular/service-name": 2,
         "angular/timeout-service": 2,
@@ -191,7 +191,7 @@ Users may use the shareable [eslint-config-angular](https://github.com/dustinspe
 | no-private-call           | All scope's properties/methods starting with $$ are used internally by AngularJS. You should not use them directly. Exception can be allowed with this option: {allow:['$$watchers']} |
 | no-service-method         | You should prefer the factory() method instead of service() [Y040](https://github.com/johnpapa/angular-styleguide#style-y040)|
 | no-services               | Some services should be used only in a specific AngularJS service (Ajax-based service for example), in order to follow the separation of concerns paradigm. The second parameter specifies the services. The third parameter can be a list of angular objects (controller, factory, etc.). Or second parameter can be an object, where keys are angular object names and value is a list of services (like {controller: ['$http'], factory: ['$q']}) |
-| on-watch                  | Watch and On methods on the scope object should be assigned to a variable, in order to be deleted in a $destroy event handler |
+| on                        | "On" methods on the scope object should be assigned to a variable, in order to be deleted in a $destroy event handler |
 | rest-service              | Check the service used to send request to your REST API. This rule can have one parameter, with one of the following values: $http, $resource or Restangular ('rest-service': [0, '$http']). |
 | service-name              | All your services should have a name starting with the parameter you can define in your config object. The second parameter can be a Regexp wrapped in quotes. You can not prefix your services by "$" (reserved keyword for AngularJS services) ("service-name":  [2, "ng"]) [Y125](https://github.com/johnpapa/angular-styleguide#style-y125) |
 | timeout-service           | Instead of the default setTimeout function, you should use the AngularJS wrapper service $timeout [Y181](https://github.com/johnpapa/angular-styleguide#style-y181) |

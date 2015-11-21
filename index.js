@@ -38,7 +38,7 @@ rulesConfiguration.addRule('no-jquery-angularelement', 2);
 rulesConfiguration.addRule('no-private-call', 2);
 rulesConfiguration.addRule('no-services', [2, ['$http', '$resource', 'Restangular', '$q']]);
 rulesConfiguration.addRule('no-service-method', 2);
-rulesConfiguration.addRule('on-watch', 2);
+rulesConfiguration.addRule('on', 2);
 rulesConfiguration.addRule('rest-service', 0);
 rulesConfiguration.addRule('service-name', 0);
 rulesConfiguration.addRule('timeout-service', 2);

@@ -9,10 +9,9 @@ module.exports = function(context) {
 
     /**
      * Return true if the given node is a call expression calling a function
-     * named '$on' or '$watch' on an object named '$scope', '$rootScope' or
-     * 'scope'.
+     * named '$on' on an object named '$scope' or 'scope'.
      */
-    function isScopeOnOrWatch(node, scopes) {
+    function isScopeOn(node) {
         if (node.type !== 'CallExpression') {
             return false;
         }
@@ -37,18 +36,18 @@ module.exports = function(context) {
         var objectName = parentObject.name;
         var functionName = accessedFunction.name;
 
-        return scopes.indexOf(objectName) >= 0 && (functionName === '$on' ||
-                                            functionName === '$watch');
+        return ['$scope', 'scope'].indexOf(objectName) >= 0 && functionName === '$on';
     }
 
     /**
-     * Return true if the given node is a call expression that has a first
+     * Return true if the given node or its parent is a call expression that has a first
      * argument of the string '$destroy'.
      */
     function isFirstArgDestroy(node) {
-        var args = node.arguments;
+        var args = (node.arguments || []).length > 0 ? node.arguments : node.parent.arguments;
 
-        return (args.length >= 1 &&
+        return args &&
+                (args.length >= 1 &&
                 args[0].type === 'Literal' &&
                 args[0].value === '$destroy');
     }
@@ -56,13 +55,16 @@ module.exports = function(context) {
     return {
 
         CallExpression: function(node) {
-            if (isScopeOnOrWatch(node, ['$rootScope']) && !isFirstArgDestroy(node)) {
-                if (node.parent.type !== 'VariableDeclarator' &&
-                    node.parent.type !== 'AssignmentExpression' &&
-                    !(isScopeOnOrWatch(node.parent, ['$rootScope', '$scope', 'scope']) &&
-                     isFirstArgDestroy(node.parent))) {
-                    report(node, node.callee.property.name);
-                }
+            if (!isScopeOn(node)) {
+                return;
+            }
+
+            if (isFirstArgDestroy(node)) {
+                return;
+            }
+
+            if (node.parent.type !== 'VariableDeclarator' && node.parent.type !== 'AssignmentExpression') {
+                report(node, node.callee.property.name);
             }
         }
     };
