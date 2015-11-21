@@ -126,7 +126,10 @@ function angularRule(ruleDefinition) {
             if (callee.name === 'inject') {
                 // inject()
                 // ^^^^^^
-                injectCalls.push(callExpressionNode);
+                injectCalls.push({
+                    callExpression: callExpressionNode,
+                    fn: findFunctionByNode(callExpressionNode, context.getScope())
+                });
             }
             return;
         }
@@ -180,13 +183,21 @@ function angularRule(ruleDefinition) {
      */
     function findFunctionByNode(callExpressionNode, scope) {
         var node;
-        if (callExpressionNode.callee.property.name === 'run' || callExpressionNode.callee.property.name === 'config') {
+        if (callExpressionNode.callee.type === 'Identifier') {
+            if (callExpressionNode.callee.name !== 'inject') {
+                return;
+            }
+            node = callExpressionNode.arguments[0];
+        } else if (callExpressionNode.callee.property.name === 'run' || callExpressionNode.callee.property.name === 'config') {
             node = callExpressionNode.arguments[0];
         } else {
             node = callExpressionNode.arguments[1];
         }
         if (!node) {
             return;
+        }
+        if (node.type === 'ArrayExpression') {
+            node = node.elements[node.elements.length - 1];
         }
         if (node.type === 'FunctionExpression' || node.type === 'FunctionDeclaration') {
             return node;
@@ -224,7 +235,7 @@ function angularRule(ruleDefinition) {
         var injectRule = ruleObject['angular:inject'];
         if (injectRule) {
             injectCalls.forEach(function(node) {
-                injectRule.apply(ruleObject, assembleRunConfigOrInjectArguments(node));
+                injectRule.call(ruleObject, node.CallExpression, node.fn);
             });
         }
     }
@@ -258,13 +269,6 @@ function angularRule(ruleDefinition) {
     }
 
     /**
-     * Assemble arguments for injectible functions which only take a function as an argument.
-     */
-    function assembleRunConfigOrInjectArguments(node) {
-        return [node, node.arguments[0]];
-    }
-
-    /**
      * Find the $get function of a provider based on the provider function body.
      */
     function findProviderGet(providerFn) {
@@ -279,6 +283,12 @@ function angularRule(ruleDefinition) {
                 return true;
             }
         });
+        if (!getFn) {
+            return;
+        }
+        if (getFn.type === 'ArrayExpression') {
+            return getFn.elements[getFn.elements.length - 1];
+        }
         return getFn;
     }
 }
