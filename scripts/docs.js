@@ -95,19 +95,22 @@ function _parseExample(exampleSource) {
 
     // wrap the errorMessage in the format needed for the eslint rule tester.
     if (example.errorMessage) {
-        if (_.isArray(example.errorMessage)) {
-            example.errors = example.errorMessage.map(_wrapErrorMessage);
-            console.log(example.errors);
-        } else if (_.isString(example.errorMessage)) {
+        if (_.isString(example.errorMessage)) {
             example.errors = [_wrapErrorMessage(example.errorMessage)];
         } else {
-            throw new Error('Example "errorMessage" must be a string or an array.');
+            throw new Error('Example "errorMessage" must be a string');
+        }
+    } else if (example.errorMessages) {
+        if (_.isArray(example.errorMessages)) {
+            example.errors = example.errorMessages.map(_wrapErrorMessage);
+        } else {
+            throw new Error('Example "errorMessages" must be an array');
         }
     }
 
     // invalid examples require an errorMessage
-    if (!example.valid && !example.errorMessage) {
-        throw new Error('Example config requires "errorMessage" when valid: false');
+    if (!example.valid && !(example.errorMessage || example.errorMessages)) {
+        throw new Error('Example config requires "errorMessage(s)" when valid: false');
     }
 
     // json options needed as group key
