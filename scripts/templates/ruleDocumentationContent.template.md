@@ -22,7 +22,8 @@ The following patterns are <%= exampleGroup.valid ? '**not** ' : '' %>considered
     <% _.each(exampleGroup.examples, function (example) { %>
     // <%= example.valid ? 'valid' : 'invalid' %> <%= example.filename ? 'with filename: ' + example.filename : '' %>
     <%= indent(example.code, 4) %> <%= example.errorMessage ? '// error: ' + example.errorMessage : '' %>
-    <% }) %>
+    <%= example.errorMessages ? '// error: ' + example.errorMessages.join(', ') : '' %>
+<% }) %>
 <% }) %>
 <% } %>
 
