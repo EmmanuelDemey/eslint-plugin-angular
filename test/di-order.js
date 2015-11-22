@@ -41,6 +41,12 @@ eslintTester.run('di-order', rule, {
         }, {
             code: 'angular.module("").animation("", ["q", "$http", function($q, $http) {}]);',
             errors: [{message: 'Injected values should be sorted alphabetically'}]
+        }, {
+            code: 'var app = angular.module(""); app.animation("", ["q", "$http", function($q, $http) {}]);',
+            errors: [{message: 'Injected values should be sorted alphabetically'}]
+        }, {
+            code: 'angular.module("").animation("", fn); function fn($q, $http) {}',
+            errors: [{message: 'Injected values should be sorted alphabetically'}]
         },
         // controller
         {
@@ -48,6 +54,12 @@ eslintTester.run('di-order', rule, {
             errors: [{message: 'Injected values should be sorted alphabetically'}]
         }, {
             code: 'angular.module("").controller("", ["q", "$http", function($q, $http) {}]);',
+            errors: [{message: 'Injected values should be sorted alphabetically'}]
+        }, {
+            code: 'var app = angular.module(""); app.controller("", ["q", "$http", function($q, $http) {}]);',
+            errors: [{message: 'Injected values should be sorted alphabetically'}]
+        }, {
+            code: 'angular.module("").controller("", fn); function fn($q, $http) {}',
             errors: [{message: 'Injected values should be sorted alphabetically'}]
         },
         // directive
@@ -57,6 +69,12 @@ eslintTester.run('di-order', rule, {
         }, {
             code: 'angular.module("").directive("", ["q", "$http", function($q, $http) {}]);',
             errors: [{message: 'Injected values should be sorted alphabetically'}]
+        }, {
+            code: 'var app = angular.module(""); app.directive("", ["q", "$http", function($q, $http) {}]);',
+            errors: [{message: 'Injected values should be sorted alphabetically'}]
+        }, {
+            code: 'angular.module("").directive("", fn); function fn($q, $http) {}',
+            errors: [{message: 'Injected values should be sorted alphabetically'}]
         },
         // factory
         {
@@ -64,6 +82,12 @@ eslintTester.run('di-order', rule, {
             errors: [{message: 'Injected values should be sorted alphabetically'}]
         }, {
             code: 'angular.module("").factory("", ["q", "$http", function($q, $http) {}]);',
+            errors: [{message: 'Injected values should be sorted alphabetically'}]
+        }, {
+            code: 'var app = angular.module(""); app.factory("", ["q", "$http", function($q, $http) {}]);',
+            errors: [{message: 'Injected values should be sorted alphabetically'}]
+        }, {
+            code: 'angular.module("").factory("", fn); function fn($q, $http) {}',
             errors: [{message: 'Injected values should be sorted alphabetically'}]
         },
         // filter
@@ -73,6 +97,12 @@ eslintTester.run('di-order', rule, {
         }, {
             code: 'angular.module("").filter("", ["q", "$http", function($q, $http) {}]);',
             errors: [{message: 'Injected values should be sorted alphabetically'}]
+        }, {
+            code: 'var app = angular.module(""); app.filter("", ["q", "$http", function($q, $http) {}]);',
+            errors: [{message: 'Injected values should be sorted alphabetically'}]
+        }, {
+            code: 'angular.module("").filter("", fn); function fn($q, $http) {}',
+            errors: [{message: 'Injected values should be sorted alphabetically'}]
         },
         // provider
         {
@@ -80,6 +110,12 @@ eslintTester.run('di-order', rule, {
             errors: [{message: 'Injected values should be sorted alphabetically'}]
         }, {
             code: 'angular.module("").provider("", ["q", "$http", function($q, $http) {}]);',
+            errors: [{message: 'Injected values should be sorted alphabetically'}]
+        }, {
+            code: 'var app = angular.module(""); app.provider("", ["q", "$http", function($q, $http) {}]);',
+            errors: [{message: 'Injected values should be sorted alphabetically'}]
+        }, {
+            code: 'angular.module("").provider("", fn); function fn($q, $http) {}',
             errors: [{message: 'Injected values should be sorted alphabetically'}]
         },
         // service
@@ -89,6 +125,12 @@ eslintTester.run('di-order', rule, {
         }, {
             code: 'angular.module("").service("", ["q", "$http", function($q, $http) {}]);',
             errors: [{message: 'Injected values should be sorted alphabetically'}]
+        }, {
+            code: 'var app = angular.module(""); app.service("", ["q", "$http", function($q, $http) {}]);',
+            errors: [{message: 'Injected values should be sorted alphabetically'}]
+        }, {
+            code: 'angular.module("").service("", fn); function fn($q, $http) {}',
+            errors: [{message: 'Injected values should be sorted alphabetically'}]
         },
         // config
         {
@@ -97,6 +139,12 @@ eslintTester.run('di-order', rule, {
         }, {
             code: 'angular.module("").config(["$routeProvider", "$httpProvider", function($routeProvider, $httpProvider) {}]);',
             errors: [{message: 'Injected values should be sorted alphabetically'}]
+        }, {
+            code: 'var app = angular.module(""); app.config(["q", "$http", function($q, $http) {}]);',
+            errors: [{message: 'Injected values should be sorted alphabetically'}]
+        }, {
+            code: 'angular.module("").config(fn); function fn($q, $http) {}',
+            errors: [{message: 'Injected values should be sorted alphabetically'}]
         },
         // run
         {
@@ -104,6 +152,12 @@ eslintTester.run('di-order', rule, {
             errors: [{message: 'Injected values should be sorted alphabetically'}]
         }, {
             code: 'angular.module("").run(["q", "$http", function($q, $http) {}]);',
+            errors: [{message: 'Injected values should be sorted alphabetically'}]
+        }, {
+            code: 'var app = angular.module(""); app.run(["q", "$http", function($q, $http) {}]);',
+            errors: [{message: 'Injected values should be sorted alphabetically'}]
+        }, {
+            code: 'angular.module("").run(fn); function fn($q, $http) {}',
             errors: [{message: 'Injected values should be sorted alphabetically'}]
         },
         // inject
@@ -133,6 +187,9 @@ eslintTester.run('di-order', rule, {
             errors: [{message: 'Injected values should be sorted alphabetically'}]
         }, {
             code: 'angular.module("").provider("", function() {this.$get = ["$q", "$http", function($q, $http) {}];});',
+            errors: [{message: 'Injected values should be sorted alphabetically'}]
+        }, {
+            code: 'var app = angular.module(""); app.provider("", function() {this.$get = function($q, $http) {};});',
             errors: [{message: 'Injected values should be sorted alphabetically'}]
         }
     ]
