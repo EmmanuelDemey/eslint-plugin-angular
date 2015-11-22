@@ -259,6 +259,7 @@ Have a look at the existing issues, they may exist similar issues with useful in
 
 * Check that the `gulp` is working
 * Commit generated changes the README.md and the documentation markdown
+* Open your PR to the `development` branch NOT `master`
 
 ### Rules specific for Angular 1 or 2
 
