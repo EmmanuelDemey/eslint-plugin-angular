@@ -228,11 +228,11 @@ If it is time to release, @Gillespie59 will bump the version in `package.json`, 
 
 ## How to create a new rule
 
-We appreciate contributions and the following notes will help you before you send a Pull Request.
+We appreciate contributions and the following notes will help you before you open a Pull Request.
 
 ### Check the issues
 
-Have a look at the existing issues, they may exist similar issues with useful information.
+Have a look at the existing issues. There may exist similar issues with useful information.
 
 ### Files you have to create
 
@@ -257,8 +257,8 @@ Have a look at the existing issues, they may exist similar issues with useful in
 
 ### Before you open your PR
 
-* Check that the `gulp` is working
-* Commit generated changes the README.md and the documentation markdown
+* Check that the `gulp` task is working
+* Commit generated changes in `README.md` and `docs/<your-rule>.js`
 * Open your PR to the `development` branch NOT `master`
 
 ### Rules specific for Angular 1 or 2
