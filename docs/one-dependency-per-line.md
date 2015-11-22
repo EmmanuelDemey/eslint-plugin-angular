@@ -44,6 +44,10 @@ The following patterns are considered problems;
 
     function MyController($http, $q) {} // error: Do not use multiple dependencies in one line
 
+    // invalid
+    app.controller('MyController', ['$http', '$q', function($http, $q) {}]);
+    // error: Do not use multiple dependencies in one line, Do not use multiple dependencies in one line
+
 The following patterns are **not** considered problems;
 
     /*eslint angular/one-dependency-per-line: 2*/
