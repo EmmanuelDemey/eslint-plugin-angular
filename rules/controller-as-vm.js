@@ -1,3 +1,13 @@
+/**
+ * require and specify a capture variable for `this` in controllers
+ *
+ * You should use a capture variable for 'this' when using the controllerAs syntax.
+ * The second parameter specifies the capture variable you want to use in your application.
+ * The third parameter can be a Regexp for identifying controller functions (when using something like Browserify)
+ *
+ * @styleguideReference {johnpapa} `y032` controllerAs with vm
+ * @version 0.1.0
+ */
 'use strict';
 
 module.exports = function(context) {

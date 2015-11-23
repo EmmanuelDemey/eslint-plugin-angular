@@ -6,6 +6,7 @@
 
 var rule = require('../rules/no-inline-template');
 var RuleTester = require('eslint').RuleTester;
+var commonFalsePositives = require('./utils/commonFalsePositives');
 
 // ------------------------------------------------------------------------------
 // Tests
@@ -18,7 +19,7 @@ eslintTester.run('no-inline-template', rule, {
         'function foo() {return {template:getTemplate()};}',
         'function foo() {return {bar:"baz"};}',
         'function foo() {return {template:"<img/>"};}'
-    ],
+    ].concat(commonFalsePositives),
     invalid: [
         {
             code: 'function foo() {return {template:"<div><div></div></div>"};}',

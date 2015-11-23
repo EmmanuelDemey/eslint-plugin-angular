@@ -4,17 +4,18 @@ var gulp = require('gulp');
 var eslint = require('gulp-eslint');
 var istanbul = require('gulp-istanbul');
 var mocha = require('gulp-mocha');
+var docs = require('./scripts/docs.js');
 
 
 gulp.task('quality', function() {
-    return gulp.src(['*.js', '{rules,test}/**/*.js'])
+    return gulp.src(['*.js', '{rules,test,scripts}/**/*.js'])
         .pipe(eslint())
         .pipe(eslint.format())
         .pipe(eslint.failAfterError());
 });
 
 gulp.task('test', function(cb) {
-    gulp.src(['rules/*.js'])
+    gulp.src(['index.js', 'rules/**/*.js'])
         .pipe(istanbul()) // Covering files
         .pipe(istanbul.hookRequire()) // Force `require` to return covered files
         .on('finish', function() {
@@ -25,4 +26,11 @@ gulp.task('test', function(cb) {
         });
 });
 
-gulp.task('default', ['quality', 'test']);
+
+gulp.task('docs', function(cb) {
+    docs.updateReadme('README.md');
+    docs.createDocFiles();
+    docs.testDocs(cb);
+});
+
+gulp.task('default', ['quality', 'docs', 'test']);

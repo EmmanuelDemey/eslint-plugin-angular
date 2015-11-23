@@ -1,0 +1,36 @@
+// example - valid: true
+angular.module('myModule').controller('SomeController', function() {
+    // ...
+});
+
+// example - valid: true
+angular.module('myModule').directive('myDirective', function() {
+    // ...
+});
+
+// example - valid: false, errorMessage: "There may be at most 1 AngularJS component per file, but found 2"
+angular.module('myModule').controller('ControllerOne', function() {
+    // ...
+}).directive('directiveTwo', function() {
+    // ...
+});
+
+// example - valid: true, options: [3]
+angular.module('myModule').controller('ControllerOne', function() {
+    // ...
+}).directive('directiveTwo', function() {
+    // ...
+}).factory('serviceThree', function() {
+    // ...
+});
+
+// example - valid: false, options: [3], errorMessage: "There may be at most 3 AngularJS components per file, but found 4"
+angular.module('myModule').controller('ControllerOne', function() {
+    // ...
+}).directive('directiveTwo', function() {
+    // ...
+}).factory('serviceThree', function() {
+    // ...
+}).filter('filterFour', function() {
+    // ...
+});

@@ -6,6 +6,7 @@
 
 var rule = require('../rules/controller-as');
 var RuleTester = require('eslint').RuleTester;
+var commonFalsePositives = require('./utils/commonFalsePositives');
 
 // ------------------------------------------------------------------------------
 // Tests
@@ -16,7 +17,7 @@ eslintTester.run('controller-as', rule, {
     valid: [
         'angular.module("test").controller("Test", function() {$scope.$watch()} )',
         'angular.module("test").controller("Test", function() {doSomething($scope)} )'
-    ],
+    ].concat(commonFalsePositives),
     invalid: [
         {code: 'angular.module("test").controller("Test", function() {$scope.name = "test"} );',
             errors: [{message: 'You should not set properties on $scope in controllers. Use controllerAs syntax and add data to "this"'}]},

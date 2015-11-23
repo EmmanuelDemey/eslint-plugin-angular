@@ -6,6 +6,7 @@
 
 var rule = require('../rules/no-http-callback');
 var RuleTester = require('eslint').RuleTester;
+var commonFalsePositives = require('./utils/commonFalsePositives');
 
 // ------------------------------------------------------------------------------
 // Tests
@@ -26,7 +27,7 @@ eslintTester.run('no-http-callback', rule, {
         'get().success()',
         '$http.get.success()',
         '$http.custom().then()'
-    ],
+    ].concat(commonFalsePositives),
     invalid: [
         // $http
         {

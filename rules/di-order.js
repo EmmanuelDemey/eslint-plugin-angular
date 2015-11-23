@@ -1,27 +1,26 @@
+/**
+ * require DI parameters to be sorted alphabetically
+ *
+ * Injected dependencies should be sorted alphabetically.
+ * If the second parameter is set to false, values which start and end with an underscore those underscores are stripped.
+ * This means for example that `_$httpBackend_` goes before `_$http_`.
+ *
+ * @version 0.6.0
+ */
 'use strict';
 
-module.exports = function(context) {
-    var utils = require('./utils/utils');
+var angularRule = require('./utils/angular-rule');
 
-    var angularNamedObjectList = [
-        'controller',
-        'directive',
-        'factory',
-        'filter',
-        'provider',
-        'service'
-    ];
-    var setupCalls = [
-        'config',
-        'run'
-    ];
 
-    function checkOrder(fn) {
+module.exports = angularRule(function(context) {
+    var stripUnderscores = context.options[0] !== false;
+
+    function checkOrder(callee, fn) {
         if (!fn || !fn.params) {
             return;
         }
         var args = fn.params.map(function(arg) {
-            if (context.options[0] !== false) {
+            if (stripUnderscores) {
                 return arg.name.replace(/^_(.+)_$/, '$1');
             }
             return arg.name;
@@ -36,27 +35,18 @@ module.exports = function(context) {
     }
 
     return {
-
-        AssignmentExpression: function(node) {
-            // The $get function of a provider.
-            if (node.left.type === 'MemberExpression' && node.left.property.name === '$get') {
-                return checkOrder(node.right);
-            }
-        },
-
-        CallExpression: function(node) {
-            // An Angular component definition.
-            if (utils.isAngularComponent(node) && node.callee.type === 'MemberExpression' && node.arguments[1].type === 'FunctionExpression' && angularNamedObjectList.indexOf(node.callee.property.name) >= 0) {
-                return checkOrder(node.arguments[1]);
-            }
-            // Config and run functions.
-            if (node.callee.type === 'MemberExpression' && node.arguments.length > 0 && setupCalls.indexOf(node.callee.property.name) !== -1 && node.arguments[0].type === 'FunctionExpression') {
-                return checkOrder(node.arguments[0]);
-            }
-            // Injected values in unittests.
-            if (node.callee.type === 'Identifier' && node.callee.name === 'inject') {
-                return checkOrder(node.arguments[0]);
-            }
+        'angular:animation': checkOrder,
+        'angular:config': checkOrder,
+        'angular:controller': checkOrder,
+        'angular:directive': checkOrder,
+        'angular:factory': checkOrder,
+        'angular:filter': checkOrder,
+        'angular:inject': checkOrder,
+        'angular:run': checkOrder,
+        'angular:service': checkOrder,
+        'angular:provider': function(callee, providerFn, $get) {
+            checkOrder(null, providerFn);
+            checkOrder(null, $get);
         }
     };
-};
+});

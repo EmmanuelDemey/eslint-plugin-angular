@@ -1,3 +1,10 @@
+/**
+ * require a consistent DI syntax
+ *
+ * All your DI should use the same syntax : the Array, function, or $inject syntaxes ("di":  [2, "array, function, or $inject"])
+ *
+ * @version 0.1.0
+ */
 'use strict';
 
 module.exports = function(context) {
@@ -80,5 +87,9 @@ module.exports = function(context) {
 };
 
 module.exports.schema = [{
-    type: 'string'
+    enum: [
+        'function',
+        'array',
+        '$inject'
+    ]
 }];

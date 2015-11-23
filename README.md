@@ -133,6 +133,7 @@ Users may use the shareable [eslint-config-angular](https://github.com/dustinspe
         "angular/no-service-method": 2,
         "angular/no-services": [2, ["$http", "$resource", "Restangular"]],
         "angular/on-watch": 2,
+        "angular/one-dependency-per-line": 0,
         "angular/rest-service": 0,
         "angular/service-name": 2,
         "angular/timeout-service": 2,
@@ -153,58 +154,59 @@ Users may use the shareable [eslint-config-angular](https://github.com/dustinspe
 
 ## Rules
 
-| Name | Description |
-| ------------- | ------------- |
-| angularelement            | The angular.element method should be used instead of the $ or jQuery object (if you are using jQuery of course). If the jQuery library is imported, angular.element will be a wrapper around the jQuery object. |
-| component-limit           | The number of AngularJS components in one file should be limited. The default limit is one, which follows  [Y001](https://github.com/johnpapa/angular-styleguide#style-y001) |
-| controller-as             | You should not set properties on $scope in controllers. Use controllerAs syntax and add data to 'this'. Implements 'this' check part of [Y031](https://github.com/johnpapa/angular-styleguide#style-y031). The second parameter can be a Regexp for identifying controller functions (when using something like Browserify) |
-| controller-as-route       | You should use Angular's controllerAs syntax when defining routes or states. Implements route part [Y031](https://github.com/johnpapa/angular-styleguide#style-y031) |
-| controller-as-vm          | You should use a capture variable for 'this' when using the controllerAs syntax. [Y031](https://github.com/johnpapa/angular-styleguide#style-y032). The second parameter specifies the capture variable you want to use in your application. The third parameter can be a Regexp for identifying controller functions (when using something like Browserify) |
-| controller-name           | All your controllers should have a name starting with the parameter you can define in your config object. The second parameter can be a Regexp wrapped in quotes. ("controller-name":  [2, "ng"])  [Y123](https://github.com/johnpapa/angular-styleguide#style-y123), [Y124](https://github.com/johnpapa/angular-styleguide#style-y124)|
-| deferred                  | When you want to create a new promise, you should not use the $q.deferred anymore. Prefer the new syntax : $q(function(resolve, reject){}) |
-| definedundefined          | You should use the angular.isUndefined or angular.isDefined methods instead of using the keyword undefined. We also check the use of !angular.isUndefined and !angular.isDefined (should prefer the reverse function)|
-| di                        | All your DI should use the same syntax : the Array, function, or $inject syntaxes ("di":  [2, "array, function, or $inject"])|
-| di-order                  | Injected dependencies should be sorted alphabetically. If the second parameter is set to false, values which start and end with an underscore those underscores are stripped. This means for example that `_$httpBackend_` goes before `_$http_`. |
-| di-unused                 | Unused dependencies should not be injected. |
-| directive-name            | All your directives should have a name starting with the parameter you can define in your config object. The second parameter can be a Regexp wrapped in quotes. You can not prefix your directives by "ng" (reserved keyword for AngularJS directives) ("directive-name":  [2, "ng"]) [Y073](https://github.com/johnpapa/angular-styleguide#style-y073), [Y126](https://github.com/johnpapa/angular-styleguide#style-y126) |
-| directive-restrict        | Not all directive restrictions may be desirable. Also it might be desirable to define default restrictions, or explicitly not. The default configuration limits the restrictions `AE` [Y074](https://github.com/johnpapa/angular-styleguide#style-y074) and disallows explicitly specifying a default. ("directive-restrict": [0, {"restrict": "AE", "explicit": "never"}]) |
-| document-service          | Instead of the default document object, you should prefer the AngularJS wrapper service $document. [Y180](https://github.com/johnpapa/angular-styleguide#style-y180) |
-| empty-controller          | If you have one empty controller, maybe you have linked it in your Router configuration or in one of your views. You can remove this declaration because this controller is useless |
-| file-name                 | All your file names should match the angular component name. The second parameter can be a config object [2, {nameStyle: 'dash', typeSeparator: 'dot', ignoreTypeSuffix: true, ignorePrefix: 'ui'}] to match 'avenger-profile.directive.js' or 'avanger-api.service.js'. Possible values for 'typeSeparator' and 'nameStyle' are 'dot', 'dash' and 'underscore'. The options 'ignoreTypeSuffix' ignores camel cased suffixes like 'someController' or 'myService' and 'ignorePrefix' ignores namespace prefixes like 'ui'. [Y120](https://github.com/johnpapa/angular-styleguide#style-y120) [Y121](https://github.com/johnpapa/angular-styleguide#style-y121) |
-| filter-name               | All your filters should have a name starting with the parameter you can define in your config object. The second parameter can be a Regexp wrapped in quotes. ("filter-name":  [2, "ng"]) |
-| foreach                   | You should use the angular.forEach method instead of the default JavaScript implementation [].forEach. |
-| function-type             | Anonymous or named functions inside AngularJS components. The first parameter sets which type of function is required and can be 'named' or 'anonymous'. The second parameter is an optional list of angular object names. [Y024](https://github.com/johnpapa/angular-styleguide/blob/master/README.md#style-y024) |
-| interval-service          | Instead of the default setInterval function, you should use the AngularJS wrapper service $interval  [Y181](https://github.com/johnpapa/angular-styleguide#style-y181) |
-| json-functions            | You should use angular.fromJson or angular.toJson instead of JSON.parse and JSON.stringify |
-| log                       | You should use $log service instead of console for the methods 'log', 'debug', 'error', 'info', 'warn' |
-| module-dependency-order   | Module dependencies should be sorted in a logical manner. This rule provides two ways to sort modules, grouped or ungrouped. In grouped mode the modules should be grouped in the order: standard modules - third party modules - custom modules. The modules should be sorted alphabetically within its group. A prefix can be specified to determine which prefix the custom modules have. Without grouped set to `false` all dependencies combined should be sorted alphabetically. ('module-dependency-order', [2, {grouped: true, prefix: "app"}]) |
-| module-getter             | When using a module, avoid using a variable and instead use chaining with the getter syntax [Y022](https://github.com/johnpapa/angular-styleguide#style-y022)|
-| module-name               | When you create a new module, its name should start with the parameter you can define in your config object. The second parameter can be a Regexp wrapped in quotes. You can not prefix your modules by "ng" (reserved keyword for AngularJS modules) ("module-name":  [2, "ng"])  [Y127](https://github.com/johnpapa/angular-styleguide#style-y127)|
-| module-setter             | Declare modules without a variable using the setter syntax.[Y021](https://github.com/johnpapa/angular-styleguide#style-y021) |
-| no-angular-mock           | All methods defined in the angular.mock object are also available in the object window. So you can remove angular.mock from your code |
-| no-controller             | According to the Component-First pattern, we should avoid the use of AngularJS controller. |
-| no-cookiestore            | In Angular 1.4, the $cookieStore service is now deprected. Please use the $cookies service instead|
-| no-digest                 | DEPRECATED! The scope's $digest() method shouldn't be used. You should prefer the $apply method. |
-| no-http-callback          | Disallow the $http success and error function. Instead the standard promise API should be used. |
-| no-inline-template        | Instead of using inline HTML templates, it is better to load the HTML from an external file. Simple HTML templates are accepted by default. ('no-inline-template': [0, {allowSimple: true}]) |
-| no-jquery-angularelement  | You should not wrap angular.element object into jQuery(), because angular.element already return jQLite element|
-| no-private-call           | All scope's properties/methods starting with $$ are used internally by AngularJS. You should not use them directly. Exception can be allowed with this option: {allow:['$$watchers']} |
-| no-service-method         | You should prefer the factory() method instead of service() [Y040](https://github.com/johnpapa/angular-styleguide#style-y040)|
-| no-services               | Some services should be used only in a specific AngularJS service (Ajax-based service for example), in order to follow the separation of concerns paradigm. The second parameter specifies the services. The third parameter can be a list of angular objects (controller, factory, etc.). Or second parameter can be an object, where keys are angular object names and value is a list of services (like {controller: ['$http'], factory: ['$q']}) |
-| on-watch                  | Watch and On methods on the scope object should be assigned to a variable, in order to be deleted in a $destroy event handler |
-| rest-service              | Check the service used to send request to your REST API. This rule can have one parameter, with one of the following values: $http, $resource or Restangular ('rest-service': [0, '$http']). |
-| service-name              | All your services should have a name starting with the parameter you can define in your config object. The second parameter can be a Regexp wrapped in quotes. You can not prefix your services by "$" (reserved keyword for AngularJS services) ("service-name":  [2, "ng"]) [Y125](https://github.com/johnpapa/angular-styleguide#style-y125) |
-| timeout-service           | Instead of the default setTimeout function, you should use the AngularJS wrapper service $timeout [Y181](https://github.com/johnpapa/angular-styleguide#style-y181) |
-| typecheck-array           | You should use the angular.isArray method instead of the default JavaScript implementation (typeof [] === "[object Array]"). |
-| typecheck-date            | You should use the angular.isDate method instead of the default JavaScript implementation (typeof new Date() === "[object Date]"). |
-| typecheck-function        | You should use the angular.isFunction method instead of the default JavaScript implementation (typeof function(){} ==="[object Function]"). |
-| typecheck-number          | You should use the angular.isNumber method instead of the default JavaScript implementation (typeof 3 === "[object Number]"). |
-| typecheck-object          | You should use the angular.isObject method instead of the default JavaScript implementation (typeof {} === "[object Object]").  |
-| typecheck-regexp          | DEPRECATED! You should use the angular.isRegexp method instead of the default JavaScript implementation (toString.call(/^A/) === "[object RegExp]"). |
-| typecheck-string          | You should use the angular.isString method instead of the default JavaScript implementation (typeof "" === "[object String]"). |
-| watchers-execution        | For the execution of the watchers, the $digest method will start from the scope in which we call the method. This will cause an performance improvement comparing to the $apply method, who start from the $rootScope |
-| window-service            | Instead of the default window object, you should prefer the AngularJS wrapper service $window. [Y180](https://github.com/johnpapa/angular-styleguide#style-y180) |
 
+ * [angularelement](docs/angularelement.md) - use `angular.element` instead of `$` or `jQuery`
+ * [component-limit](docs/component-limit.md) - limit the number of angular components per file
+ * [controller-as](docs/controller-as.md) - disallow assignments to `$scope` in controllers
+ * [controller-as-route](docs/controller-as-route.md) - require the use of controllerAs in routes or states
+ * [controller-as-vm](docs/controller-as-vm.md) - require and specify a capture variable for `this` in controllers
+ * [controller-name](docs/controller-name.md) - require and specify a prefix for all controller names
+ * [deferred](docs/deferred.md) - use `$q(function(resolve, reject){})` instead of `$q.deferred`
+ * [definedundefined](docs/definedundefined.md) - use `angular.isDefined` and `angular.isUndefined` instead of other undefined checks
+ * [di](docs/di.md) - require a consistent DI syntax
+ * [di-order](docs/di-order.md) - require DI parameters to be sorted alphabetically
+ * [di-unused](docs/di-unused.md) - disallow unused DI parameters
+ * [directive-name](docs/directive-name.md) - require and specify a prefix for all directive names
+ * [directive-restrict](docs/directive-restrict.md) - disallow any other directive restrict than 'A' or 'E'
+ * [document-service](docs/document-service.md) - use `$document` instead of `document`
+ * [empty-controller](docs/empty-controller.md) - disallow empty controllers
+ * [file-name](docs/file-name.md) - require and specify a consistent component name pattern
+ * [filter-name](docs/filter-name.md) - require and specify a prefix for all filter names
+ * [foreach](docs/foreach.md) - use `angular.forEach` instead of native `Array.prototype.forEach`
+ * [function-type](docs/function-type.md) - require and specify a consistent function style for components ('named' or 'anonymous')
+ * [interval-service](docs/interval-service.md) - use `$interval` instead of `setInterval`
+ * [json-functions](docs/json-functions.md) - use `angular.fromJson` and 'angular.toJson' instead of `JSON.parse` and `JSON.stringify`
+ * [log](docs/log.md) - use the `$log` service instead of the `console` methods
+ * [module-dependency-order](docs/module-dependency-order.md) - require a consistent order of module dependencies
+ * [module-getter](docs/module-getter.md) - disallow to reference modules with variables and require to use the getter syntax instead `angular.module('myModule')`
+ * [module-name](docs/module-name.md) - require and specify a prefix for all module names
+ * [module-setter](docs/module-setter.md) - disallow to assign modules to variables (linked to [module-getter](docs/module-getter.md)
+ * [no-angular-mock](docs/no-angular-mock.md) - require to use `angular.mock` methods directly
+ * [no-controller](docs/no-controller.md) - disallow use of controllers (according to the component first pattern)
+ * [no-cookiestore](docs/no-cookiestore.md) - use `$cookies` instead of `$cookieStore`
+ * [no-digest](docs/no-digest.md) - DEPRECATED! use `$apply()` instead of `$digest()` (replaced by [watchers-execution](docs/watchers-execution.md))
+ * [no-http-callback](docs/no-http-callback.md) - disallow the `$http` methods `success()` and `error()`
+ * [no-inline-template](docs/no-inline-template.md) - disallow the use of inline templates
+ * [no-jquery-angularelement](docs/no-jquery-angularelement.md) - disallow to wrap `angular.element` objects with `jQuery` or `$`
+ * [no-private-call](docs/no-private-call.md) - disallow use of internal angular properties prefixed with $$
+ * [no-services](docs/no-services.md) - disallow DI of specified services for other angular components (`$http` for controllers, filters and directives)
+ * [no-service-method](docs/no-service-method.md) - use `factory()` instead of `service()`
+ * [on-watch](docs/on-watch.md) - require `$on` and `$watch` deregistration callbacks to be saved in a variable
+ * [one-dependency-per-line](docs/one-dependency-per-line.md) - require all DI parameters to be located in their own line
+ * [rest-service](docs/rest-service.md) - disallow different rest service and specify one of '$http', '$resource', 'Restangular'
+ * [service-name](docs/service-name.md) - require and specify a prefix for all service names
+ * [timeout-service](docs/timeout-service.md) - use `$timeout` instead of `setTimeout`
+ * [typecheck-array](docs/typecheck-array.md) - use `angular.isArray` instead of `typeof` comparisons
+ * [typecheck-date](docs/typecheck-date.md) - use `angular.isDate` instead of `typeof` comparisons
+ * [typecheck-function](docs/typecheck-function.md) - use `angular.isFunction` instead of `typeof` comparisons
+ * [typecheck-number](docs/typecheck-number.md) - use `angular.isNumber` instead of `typeof` comparisons
+ * [typecheck-object](docs/typecheck-object.md) - use `angular.isObject` instead of `typeof` comparisons
+ * [typecheck-regexp](docs/typecheck-regexp.md) - DEPRECATED! use `angular.isRegexp` instead of other comparisons (no native angular method)
+ * [typecheck-string](docs/typecheck-string.md) - use `angular.isString` instead of `typeof` comparisons
+ * [watchers-execution](docs/watchers-execution.md) - require and specify consistent use `$scope.digest()` or `$scope.apply()`
+ * [window-service](docs/window-service.md) - use `$window` instead of `window`
+
+----
 
 
 ## Need your help
@@ -218,18 +220,48 @@ It is an opensource project. Any help will be very useful. You can :
 - Improve the quality
 - Reply to issues
 
-All contributions should be pushed in the current GIT branch.
+All development happens on the `development` branch. This means all pull requests should be made to the `development` branch.
+
+If it is time to release, @Gillespie59 will bump the version in `package.json`, create a Git tag and merge the `development` branch into `master`. @Gillespie59 will then publish the new release to the npm registry.
 
 
 
 ## How to create a new rule
 
-Here are the things you should do before sending a Pull Request with a new Rule :
+We appreciate contributions and the following notes will help you before you open a Pull Request.
 
-- Create a JavaScript file for the new rule in the rules directory
-- Create an unit test for this rule in the test directory (with the same name)
-- Update the main index.js file, in order to add the new rule in the 'rules' property, and set the default configuration in the rulesConfig property
-- Update the "Rules" part of the README.md file with a small description of the rule and its default configuration. In this file, you have to add your rule in the default JSON configuration object. 
+### Check the issues
+
+Have a look at the existing issues. There may exist similar issues with useful information.
+
+### Files you have to create
+
+* `rules/<your-rule>.js`
+    * JavaScript file with the new rule
+    * The filename `<your-rule>` is exactly the usage name in eslint configs `angular/<your-rule>`
+    * Have a look at the `angularRule` wrapper and the `utils` (both in `rules/utils/`) - they probably make things easier for you
+    * Add a documentation comment to generate a markdown documentation with the `gulp docs` task
+* `test/<your-rule>.js`
+    * Write some tests and execute them with `gulp test`
+    * Have a look at the coverage reports `coverage/lcov-report/index.html`
+* `examples/<your-rule>.js`
+    * Add some examples for the documentation
+    * Run the `gulp docs` task to test the examples and update the markdown documentation
+* `docs/<your-rule>.js`
+    * Generated by the `gulp docs` task
+
+### Files you have to touch
+
+* `index.js`
+   * Add your rule `rulesConfiguration.addRule('<your-rule>', [0, {someConfig: 'someValue'])`
+
+### Before you open your PR
+
+* Check that the `gulp` task is working
+* Commit generated changes in `README.md` and `docs/<your-rule>.js`
+* Open your PR to the `development` branch NOT `master`
+
+### Rules specific for Angular 1 or 2
 
 We can use a property, defined in the ESLint configuration file, in order to know which version is used : Angular 1 or Angular 2. based on this property, you can create rules for each version.
 
