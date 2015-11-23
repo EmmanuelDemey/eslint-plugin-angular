@@ -18,6 +18,7 @@
   "homepage": "https://github.com/Gillespie59/eslint-plugin-angularjs",
   "devDependencies": {
     "chai": "^3.4.0",
+    "chai-spies": "^0.7.1",
     "coveralls": "^2.11.4",
     "eslint": "^1.8.0",
     "espree": "^2.2.5",

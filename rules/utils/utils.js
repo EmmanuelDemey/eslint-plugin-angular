@@ -37,7 +37,6 @@ module.exports = {
     isMemberExpression: isMemberExpression,
     isLiteralType: isLiteralType,
     isEmptyFunction: isEmptyFunction,
-    isRegexp: isRegexp,
     isStringRegexp: isStringRegexp,
     isAngularComponent: isAngularComponent,
     isAngularControllerDeclaration: isAngularControllerDeclaration,
@@ -198,16 +197,6 @@ function isLiteralType(node) {
  */
 function isEmptyFunction(fn) {
     return fn.body.body.length === 0;
-}
-
-/**
- * Check whether or not an object is a RegExp object.
- *
- * @param regexp The object for which to check if it is a RegExp object.
- * @returns {boolean} Shether or not an object is a RegExp object.
- */
-function isRegexp(regexp) {
-    return toString.call(regexp) === '[object RegExp]';
 }
 
 /**

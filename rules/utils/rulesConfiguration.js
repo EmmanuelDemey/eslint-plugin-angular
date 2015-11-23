@@ -24,9 +24,9 @@ Rule.prototype = {
     },
     logWarningOnce: function(context) {
         /* eslint-disable no-console */
-        console.log('WARNING: Deprecated rule name ' + context.id + ' use angular/' + this.name + ' instead (will be removed in v1.0).');
+        console.warn('WARNING: Deprecated rule name ' + context.id + ' use angular/' + this.name + ' instead (will be removed in v1.0).');
         /* eslint-enable no-console */
-        this.logWarningOnce = function() {};
+        this.logWarningOnce = function() { };
     }
 };
 
