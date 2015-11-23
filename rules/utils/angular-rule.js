@@ -272,6 +272,9 @@ function angularRule(ruleDefinition) {
      * Find the $get function of a provider based on the provider function body.
      */
     function findProviderGet(providerFn) {
+        if (!providerFn) {
+            return;
+        }
         var getFn;
         providerFn.body.body.some(function(statement) {
             var expression = statement.expression;
