@@ -133,6 +133,7 @@ Users may use the shareable [eslint-config-angular](https://github.com/dustinspe
         "angular/no-service-method": 2,
         "angular/no-services": [2, ["$http", "$resource", "Restangular"]],
         "angular/on-watch": 2,
+        "angular/one-dependency-per-line": 0,
         "angular/rest-service": 0,
         "angular/service-name": 2,
         "angular/timeout-service": 2,
@@ -191,6 +192,7 @@ Users may use the shareable [eslint-config-angular](https://github.com/dustinspe
  * [no-services](docs/no-services.md) - disallow DI of specified services for other angular components (`$http` for controllers, filters and directives)
  * [no-service-method](docs/no-service-method.md) - use `factory()` instead of `service()`
  * [on-watch](docs/on-watch.md) - require `$on` and `$watch` deregistration callbacks to be saved in a variable
+ * [one-dependency-per-line](docs/one-dependency-per-line.md) - require all DI parameters to be located in their own line
  * [rest-service](docs/rest-service.md) - disallow different rest service and specify one of '$http', '$resource', 'Restangular'
  * [service-name](docs/service-name.md) - require and specify a prefix for all service names
  * [timeout-service](docs/timeout-service.md) - use `$timeout` instead of `setTimeout`
@@ -218,7 +220,9 @@ It is an opensource project. Any help will be very useful. You can :
 - Improve the quality
 - Reply to issues
 
-All contributions should be pushed in the current GIT branch.
+All development happens on the `development` branch. This means all pull requests should be made to the `development` branch.
+
+If it is time to release, @Gillespie59 will bump the version in `package.json`, create a Git tag and merge the `development` branch into `master`. @Gillespie59 will then publish the new release to the npm registry.
 
 
 

@@ -15,17 +15,17 @@ var commonFalsePositives = require('./utils/commonFalsePositives');
 var eslintTester = new RuleTester();
 eslintTester.run('component-limit', rule, {
     valid: [
-        'app.controller("", function() {});',
-        'app.directive("", function() {});',
-        'app.factory("", function() {});',
-        'app.filter("", function() {});',
-        'app.filter("", function() {var emptyArray = [1, 2, 3].filter(function() {});});',
-        'app.provider("", function() {});',
+        'angular.module("").controller("", function() {});',
+        'angular.module("").directive("", function() {});',
+        'angular.module("").factory("", function() {});',
+        'angular.module("").filter("", function() {});',
+        'angular.module("").filter("", function() {var emptyArray = [1, 2, 3].filter(function() {});});',
+        'angular.module("").provider("", function() {});',
         'it("", function() {});it("", function() {});',
         'describe("", function() {it("", function() {});it("", function() {});});',
-        'app.service("", function() {});',
+        'angular.module("").service("", function() {});',
         {
-            code: 'app.controller("", function() {}).directive("", function() {}).factory("", function() {}).filter("", function() {}).provider("", function() {}).service("", function() {});',
+            code: 'angular.module("").controller("", function() {}).directive("", function() {}).factory("", function() {}).filter("", function() {}).provider("", function() {}).service("", function() {});',
             options: [6]
         },
         // complex component limit specific false positives
@@ -33,22 +33,27 @@ eslintTester.run('component-limit', rule, {
         '$httpBackend.expectGET("").respond(200, dummyData);$httpBackend.expectGET("").respond(200, dummyData);'
     ].concat(commonFalsePositives),
     invalid: [{
-        code: 'app.controller("", function() {}).directive("", function() {});',
+        code: 'angular.module("").controller("", function() {}).directive("", function() {});',
         errors: [{
             message: 'There may be at most 1 AngularJS component per file, but found 2'
         }]
     }, {
-        code: 'app.factory("", function() {}).filter("", function() {});',
+        code: 'angular.module("").animation("", function() {}).filter("", function() {});',
         errors: [{
             message: 'There may be at most 1 AngularJS component per file, but found 2'
         }]
     }, {
-        code: 'app.provider("", function() {}).service("", function() {});',
+        code: 'angular.module("").factory("", function() {}).filter("", function() {});',
         errors: [{
             message: 'There may be at most 1 AngularJS component per file, but found 2'
         }]
     }, {
-        code: 'app.controller("", function() {}).directive("", function() {}).factory("", function() {}).filter("", function() {}).provider("", function() {}).service("", function() {});',
+        code: 'angular.module("").provider("", function() {}).service("", function() {});',
+        errors: [{
+            message: 'There may be at most 1 AngularJS component per file, but found 2'
+        }]
+    }, {
+        code: 'angular.module("").controller("", function() {}).directive("", function() {}).factory("", function() {}).filter("", function() {}).provider("", function() {}).service("", function() {});',
         options: [5],
         errors: [{
             message: 'There may be at most 5 AngularJS components per file, but found 6'

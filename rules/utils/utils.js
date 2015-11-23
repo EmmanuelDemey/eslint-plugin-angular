@@ -349,7 +349,7 @@ function isAngularModuleDeclaration(node) {
 function isAngularModuleGetter(node) {
     return node.arguments !== undefined &&
         node.arguments.length > 0 &&
-        isLiteralType(node.arguments[0]) &&
+        (isLiteralType(node.arguments[0]) || isIdentifierType(node.arguments[0])) &&
         node.callee.type === 'MemberExpression' &&
         node.callee.property.name === 'module';
 }

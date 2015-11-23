@@ -16,7 +16,7 @@ The following patterns are considered problems with default config;
     /*eslint angular/component-limit: 2*/
 
     // invalid
-    app.controller('ControllerOne', function() {
+    angular.module('myModule').controller('ControllerOne', function() {
         // ...
     }).directive('directiveTwo', function() {
         // ...
@@ -27,7 +27,7 @@ The following patterns are **not** considered problems with default config;
     /*eslint angular/component-limit: 2*/
 
     // valid
-    app.controller('SomeController', function() {
+    angular.module('myModule').controller('SomeController', function() {
         // ...
     });
 
@@ -41,7 +41,7 @@ The following patterns are considered problems when configured `3`:
     /*eslint angular/component-limit: [2,3]*/
 
     // invalid
-    app.controller('ControllerOne', function() {
+    angular.module('myModule').controller('ControllerOne', function() {
         // ...
     }).directive('directiveTwo', function() {
         // ...
@@ -56,7 +56,7 @@ The following patterns are **not** considered problems when configured `3`:
     /*eslint angular/component-limit: [2,3]*/
 
     // valid
-    app.controller('ControllerOne', function() {
+    angular.module('myModule').controller('ControllerOne', function() {
         // ...
     }).directive('directiveTwo', function() {
         // ...

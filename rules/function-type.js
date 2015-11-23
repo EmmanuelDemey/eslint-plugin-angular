@@ -13,7 +13,7 @@
 
 module.exports = function(context) {
     var utils = require('./utils/utils');
-    var angularObjectList = ['controller', 'filter', 'factory', 'service'];
+    var angularObjectList = ['animation', 'config', 'constant', 'controller', 'directive', 'factory', 'filter', 'provider', 'service', 'value', 'decorator'];
     var configType = context.options[0] || 'anonymous';
     var messageByConfigType = {
         anonymous: 'Use anonymous functions instead of named function',
