@@ -20,6 +20,7 @@ eslintTester.run('no-controller', rule, {
     ].concat(commonFalsePositives),
     invalid: [
         {code: 'app.controller("", function() {})', errors: [{message: 'Based on the Component-First Pattern, you should avoid the use of controllers'}]},
-        {code: 'angular.module("").controller("", function() {})', errors: [{message: 'Based on the Component-First Pattern, you should avoid the use of controllers'}]}
+        {code: 'angular.module("").controller("", function() {})', errors: [{message: 'Based on the Component-First Pattern, you should avoid the use of controllers'}]},
+        {code: 'app.controller("", require(""))', errors: [{message: 'Based on the Component-First Pattern, you should avoid the use of controllers'}]}
     ]
 });

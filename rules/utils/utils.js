@@ -190,6 +190,16 @@ function isLiteralType(node) {
 }
 
 /**
+ * Check whether or not a node is a CallExpression.
+ *
+ * @param {Object} node The node to check.
+ * @returns {boolean} Whether or not the node is an Literal.
+ */
+function isCallExpression(node) {
+    return node !== undefined && node.type === 'CallExpression';
+}
+
+/**
  * Check whether or not a node is an isEmptyFunction.
  *
  * @param {Object} node The node to check.
@@ -237,7 +247,8 @@ function isAngularComponent(node) {
         isLiteralType(node.arguments[0]) &&
         (isIdentifierType(node.arguments[1]) ||
          isFunctionType(node.arguments[1]) ||
-         isArrayType(node.arguments[1]));
+         isArrayType(node.arguments[1]) ||
+         isCallExpression(node.arguments[1]));
 }
 
 /**

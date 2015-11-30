@@ -34,6 +34,10 @@ eslintTester.run('directive-name', rule, {
         code: 'app.directive("Directive", function() {});',
         options: ['eslint'],
         settings: {angular: 2}
+    }, {
+        code: 'app.directive("eslintDirective", require(""));',
+        options: ['/^eslint/'],
+        settings: {angular: 1}
     }].concat(commonFalsePositives),
     invalid: [
         {
