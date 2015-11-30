@@ -193,7 +193,7 @@ function isLiteralType(node) {
  * Check whether or not a node is a CallExpression.
  *
  * @param {Object} node The node to check.
- * @returns {boolean} Whether or not the node is an Literal.
+ * @returns {boolean} Whether or not the node is a CallExpression.
  */
 function isCallExpression(node) {
     return node !== undefined && node.type === 'CallExpression';
