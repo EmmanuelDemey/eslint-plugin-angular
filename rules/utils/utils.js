@@ -232,6 +232,8 @@ function isStringRegexp(string) {
  *     ^^^^^^^
  * app.factory('kittenService', [])
  *     ^^^^^^^
+ * app.factory('kittenService', require(""))
+ *     ^^^^^^^
  * asyncFn('value', callback)
  * ^^^^^^^
  * ```
