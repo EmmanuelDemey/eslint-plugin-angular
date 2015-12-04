@@ -180,6 +180,7 @@ These are rules designed to prevent you from making mistakes. They either prescr
  * [empty-controller](docs/empty-controller.md) - disallow empty controllers
  * [no-controller](docs/no-controller.md) - disallow use of controllers (according to the component first pattern)
  * [no-inline-template](docs/no-inline-template.md) - disallow the use of inline templates
+ * [no-run-logic](docs/no-run-logic.md) - keep run functions clean and simple ([y171](https://github.com/johnpapa/angular-styleguide#style-y171))
  * [no-services](docs/no-services.md) - disallow DI of specified services for other angular components (`$http` for controllers, filters and directives)
  * [on-watch](docs/on-watch.md) - require `$on` and `$watch` deregistration callbacks to be saved in a variable
 
@@ -242,12 +243,6 @@ These rules will be removed in version 1.0.0
 
  * [no-digest](docs/no-digest.md) - DEPRECATED! use `$apply()` instead of `$digest()` (replaced by [watchers-execution](docs/watchers-execution.md))
  * [typecheck-regexp](docs/typecheck-regexp.md) - DEPRECATED! use `angular.isRegexp` instead of other comparisons (no native angular method)
-
-## Uncategorized rule (only for development)
-
-Add a @category tag to your rule.
-
- * [no-run-logic](docs/no-run-logic.md) - keep run functions clean and simple ([y171](https://github.com/johnpapa/angular-styleguide#style-y171))
 
 
 ----
