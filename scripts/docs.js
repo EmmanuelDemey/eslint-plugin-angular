@@ -47,8 +47,8 @@ function updateReadme(readmePath, cb) {
 
     // filter categories without rules
     ruleCategories.categoryOrder = ruleCategories.categoryOrder.filter(function(categoryName) {
-        var rules = ruleCategories.rulesByCategory[categoryName]
-        return rules && rules.length > 0;
+        var rulesForCategory = ruleCategories.rulesByCategory[categoryName];
+        return rulesForCategory && rulesForCategory.length > 0;
     });
 
     var readmeRuleSection = templates.readmeRuleSectionContent(ruleCategories);
