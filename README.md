@@ -130,6 +130,7 @@ Users may use the shareable [eslint-config-angular](https://github.com/dustinspe
         "angular/no-inline-template": [0, {"allowSimple": true}],
         "angular/no-jquery-angularelement": 2,
         "angular/no-private-call": 2,
+        "angular/no-run-logic": [0, {"allowParams": true}],
         "angular/no-service-method": 2,
         "angular/no-services": [2, ["$http", "$resource", "Restangular"]],
         "angular/on-watch": 2,
@@ -241,6 +242,12 @@ These rules will be removed in version 1.0.0
 
  * [no-digest](docs/no-digest.md) - DEPRECATED! use `$apply()` instead of `$digest()` (replaced by [watchers-execution](docs/watchers-execution.md))
  * [typecheck-regexp](docs/typecheck-regexp.md) - DEPRECATED! use `angular.isRegexp` instead of other comparisons (no native angular method)
+
+## Uncategorized rule (only for development)
+
+Add a @category tag to your rule.
+
+ * [no-run-logic](docs/no-run-logic.md) - keep run functions clean and simple ([y171](https://github.com/johnpapa/angular-styleguide#style-y171))
 
 
 ----
