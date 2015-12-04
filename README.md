@@ -156,31 +156,31 @@ Users may use the shareable [eslint-config-angular](https://github.com/dustinspe
 
 
  * [angularelement](docs/angularelement.md) - use `angular.element` instead of `$` or `jQuery`
- * [component-limit](docs/component-limit.md) - limit the number of angular components per file
- * [controller-as](docs/controller-as.md) - disallow assignments to `$scope` in controllers
- * [controller-as-route](docs/controller-as-route.md) - require the use of controllerAs in routes or states
- * [controller-as-vm](docs/controller-as-vm.md) - require and specify a capture variable for `this` in controllers
- * [controller-name](docs/controller-name.md) - require and specify a prefix for all controller names
+ * [component-limit](docs/component-limit.md) - limit the number of angular components per file ([y001](https://github.com/johnpapa/angular-styleguide#style-y001))
+ * [controller-as](docs/controller-as.md) - disallow assignments to `$scope` in controllers ([y031](https://github.com/johnpapa/angular-styleguide#style-y031))
+ * [controller-as-route](docs/controller-as-route.md) - require the use of controllerAs in routes or states ([y031](https://github.com/johnpapa/angular-styleguide#style-y031))
+ * [controller-as-vm](docs/controller-as-vm.md) - require and specify a capture variable for `this` in controllers ([y032](https://github.com/johnpapa/angular-styleguide#style-y032))
+ * [controller-name](docs/controller-name.md) - require and specify a prefix for all controller names ([y123](https://github.com/johnpapa/angular-styleguide#style-y123), [y124](https://github.com/johnpapa/angular-styleguide#style-y124))
  * [deferred](docs/deferred.md) - use `$q(function(resolve, reject){})` instead of `$q.deferred`
  * [definedundefined](docs/definedundefined.md) - use `angular.isDefined` and `angular.isUndefined` instead of other undefined checks
  * [di](docs/di.md) - require a consistent DI syntax
  * [di-order](docs/di-order.md) - require DI parameters to be sorted alphabetically
  * [di-unused](docs/di-unused.md) - disallow unused DI parameters
- * [directive-name](docs/directive-name.md) - require and specify a prefix for all directive names
- * [directive-restrict](docs/directive-restrict.md) - disallow any other directive restrict than 'A' or 'E'
- * [document-service](docs/document-service.md) - use `$document` instead of `document`
+ * [directive-name](docs/directive-name.md) - require and specify a prefix for all directive names ([y073](https://github.com/johnpapa/angular-styleguide#style-y073), [y126](https://github.com/johnpapa/angular-styleguide#style-y126))
+ * [directive-restrict](docs/directive-restrict.md) - disallow any other directive restrict than 'A' or 'E' ([y074](https://github.com/johnpapa/angular-styleguide#style-y074))
+ * [document-service](docs/document-service.md) - use `$document` instead of `document` ([y180](https://github.com/johnpapa/angular-styleguide#style-y180))
  * [empty-controller](docs/empty-controller.md) - disallow empty controllers
- * [file-name](docs/file-name.md) - require and specify a consistent component name pattern
+ * [file-name](docs/file-name.md) - require and specify a consistent component name pattern ([y120](https://github.com/johnpapa/angular-styleguide#style-y120), [y121](https://github.com/johnpapa/angular-styleguide#style-y121))
  * [filter-name](docs/filter-name.md) - require and specify a prefix for all filter names
  * [foreach](docs/foreach.md) - use `angular.forEach` instead of native `Array.prototype.forEach`
- * [function-type](docs/function-type.md) - require and specify a consistent function style for components ('named' or 'anonymous')
- * [interval-service](docs/interval-service.md) - use `$interval` instead of `setInterval`
+ * [function-type](docs/function-type.md) - require and specify a consistent function style for components ('named' or 'anonymous') ([y024](https://github.com/johnpapa/angular-styleguide#style-y024))
+ * [interval-service](docs/interval-service.md) - use `$interval` instead of `setInterval` ([y181](https://github.com/johnpapa/angular-styleguide#style-y181))
  * [json-functions](docs/json-functions.md) - use `angular.fromJson` and 'angular.toJson' instead of `JSON.parse` and `JSON.stringify`
  * [log](docs/log.md) - use the `$log` service instead of the `console` methods
  * [module-dependency-order](docs/module-dependency-order.md) - require a consistent order of module dependencies
- * [module-getter](docs/module-getter.md) - disallow to reference modules with variables and require to use the getter syntax instead `angular.module('myModule')`
- * [module-name](docs/module-name.md) - require and specify a prefix for all module names
- * [module-setter](docs/module-setter.md) - disallow to assign modules to variables (linked to [module-getter](docs/module-getter.md)
+ * [module-getter](docs/module-getter.md) - disallow to reference modules with variables and require to use the getter syntax instead `angular.module('myModule')` ([y022](https://github.com/johnpapa/angular-styleguide#style-y022))
+ * [module-name](docs/module-name.md) - require and specify a prefix for all module names ([y127](https://github.com/johnpapa/angular-styleguide#style-y127))
+ * [module-setter](docs/module-setter.md) - disallow to assign modules to variables (linked to [module-getter](docs/module-getter.md) ([y021](https://github.com/johnpapa/angular-styleguide#style-y021))
  * [no-angular-mock](docs/no-angular-mock.md) - require to use `angular.mock` methods directly
  * [no-controller](docs/no-controller.md) - disallow use of controllers (according to the component first pattern)
  * [no-cookiestore](docs/no-cookiestore.md) - use `$cookies` instead of `$cookieStore`
@@ -190,12 +190,12 @@ Users may use the shareable [eslint-config-angular](https://github.com/dustinspe
  * [no-jquery-angularelement](docs/no-jquery-angularelement.md) - disallow to wrap `angular.element` objects with `jQuery` or `$`
  * [no-private-call](docs/no-private-call.md) - disallow use of internal angular properties prefixed with $$
  * [no-services](docs/no-services.md) - disallow DI of specified services for other angular components (`$http` for controllers, filters and directives)
- * [no-service-method](docs/no-service-method.md) - use `factory()` instead of `service()`
+ * [no-service-method](docs/no-service-method.md) - use `factory()` instead of `service()` ([y040](https://github.com/johnpapa/angular-styleguide#style-y040))
  * [on-watch](docs/on-watch.md) - require `$on` and `$watch` deregistration callbacks to be saved in a variable
  * [one-dependency-per-line](docs/one-dependency-per-line.md) - require all DI parameters to be located in their own line
  * [rest-service](docs/rest-service.md) - disallow different rest service and specify one of '$http', '$resource', 'Restangular'
- * [service-name](docs/service-name.md) - require and specify a prefix for all service names
- * [timeout-service](docs/timeout-service.md) - use `$timeout` instead of `setTimeout`
+ * [service-name](docs/service-name.md) - require and specify a prefix for all service names ([y125](https://github.com/johnpapa/angular-styleguide#style-y125))
+ * [timeout-service](docs/timeout-service.md) - use `$timeout` instead of `setTimeout` ([y181](https://github.com/johnpapa/angular-styleguide#style-y181))
  * [typecheck-array](docs/typecheck-array.md) - use `angular.isArray` instead of `typeof` comparisons
  * [typecheck-date](docs/typecheck-date.md) - use `angular.isDate` instead of `typeof` comparisons
  * [typecheck-function](docs/typecheck-function.md) - use `angular.isFunction` instead of `typeof` comparisons
@@ -204,8 +204,7 @@ Users may use the shareable [eslint-config-angular](https://github.com/dustinspe
  * [typecheck-regexp](docs/typecheck-regexp.md) - DEPRECATED! use `angular.isRegexp` instead of other comparisons (no native angular method)
  * [typecheck-string](docs/typecheck-string.md) - use `angular.isString` instead of `typeof` comparisons
  * [watchers-execution](docs/watchers-execution.md) - require and specify consistent use `$scope.digest()` or `$scope.apply()`
- * [window-service](docs/window-service.md) - use `$window` instead of `window`
-
+ * [window-service](docs/window-service.md) - use `$window` instead of `window` ([y180](https://github.com/johnpapa/angular-styleguide#style-y180))
 ----
 
 
