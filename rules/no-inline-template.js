@@ -6,6 +6,7 @@
  * ('no-inline-template': [0, {allowSimple: true}])
  *
  * @version 0.12.0
+ * @category bestPractice
  */
 'use strict';
 

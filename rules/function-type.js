@@ -8,6 +8,7 @@
  * @linkDescription require and specify a consistent function style for components ('named' or 'anonymous')
  * @styleguideReference {johnpapa} `y024` Named vs Anonymous Functions
  * @version 0.1.0
+ * @category conventions
  */
 'use strict';
 

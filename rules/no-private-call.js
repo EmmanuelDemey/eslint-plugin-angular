@@ -6,6 +6,7 @@
  * Exception can be allowed with this option: {allow:['$$watchers']}
  *
  * @version 0.1.0
+ * @category possibleError
  */
 'use strict';
 

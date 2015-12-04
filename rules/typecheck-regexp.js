@@ -5,6 +5,7 @@
  *
  * @linkDescription DEPRECATED! use `angular.isRegexp` instead of other comparisons (no native angular method)
  * @version 0.1.0
+ * @category deprecatedRule
  */
 'use strict';
 

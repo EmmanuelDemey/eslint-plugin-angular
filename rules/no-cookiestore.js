@@ -5,6 +5,7 @@
  * Please use the $cookies service instead
  *
  * @version 0.3.0
+ * @category deprecatedAngularFeature
  */
 'use strict';
 

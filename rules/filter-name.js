@@ -6,6 +6,7 @@
  * ("filter-name":  [2, "ng"])
  *
  * @version 0.1.0
+ * @category naming
  */
 'use strict';
 

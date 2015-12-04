@@ -5,6 +5,7 @@
  *
  * @styleguideReference {johnpapa} `y181` Angular $ Wrapper Services - $timeout and $interval
  * @version 0.1.0
+ * @category angularWrapper
  */
 'use strict';
 

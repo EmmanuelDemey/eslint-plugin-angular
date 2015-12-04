@@ -6,6 +6,7 @@
  *
  * @linkDescription DEPRECATED! use `$apply()` instead of `$digest()` (replaced by [watchers-execution](docs/watchers-execution.md))
  * @version 0.1.0
+ * @category deprecatedRule
  */
 'use strict';
 

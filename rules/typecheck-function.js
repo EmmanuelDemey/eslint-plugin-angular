@@ -4,6 +4,7 @@
  * You should use the angular.isFunction method instead of the default JavaScript implementation (typeof function(){} ==="[object Function]").
  *
  * @version 0.1.0
+ * @category angularWrapper
  */
 'use strict';
 

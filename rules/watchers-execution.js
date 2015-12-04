@@ -5,6 +5,7 @@
  * This will cause an performance improvement comparing to the $apply method, who start from the $rootScope
  *
  * @version 0.4.0
+ * @category conventions
  */
 'use strict';
 

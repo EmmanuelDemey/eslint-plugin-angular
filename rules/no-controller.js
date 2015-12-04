@@ -4,6 +4,7 @@
  * According to the Component-First pattern, we should avoid the use of AngularJS controller.
  *
  * @version 0.9.0
+ * @category bestPractice
  */
 'use strict';
 

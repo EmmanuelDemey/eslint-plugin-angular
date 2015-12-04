@@ -5,6 +5,7 @@
  *
  * @styleguideReference {johnpapa} `y040` Services - Singletons
  * @version 0.1.0
+ * @category conventions
  */
 'use strict';
 

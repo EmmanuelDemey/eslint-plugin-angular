@@ -41,7 +41,17 @@ function createDocFiles(cb) {
  * @param cb callback
  */
 function updateReadme(readmePath, cb) {
-    var readmeRuleSection = templates.readmeRuleSectionContent(this);
+    var ruleCategories = require('./ruleCategories.json');
+
+    ruleCategories.rulesByCategory = _.groupBy(this.rules, 'category');
+
+    // filter categories without rules
+    ruleCategories.categoryOrder = ruleCategories.categoryOrder.filter(function(categoryName) {
+        var rules = ruleCategories.rulesByCategory[categoryName]
+        return rules && rules.length > 0;
+    });
+
+    var readmeRuleSection = templates.readmeRuleSectionContent(ruleCategories);
     var readmeContent = fs.readFileSync(readmePath).toString();
 
     // use split and join to prevent the replace() and dollar sign problem (http://stackoverflow.com/questions/9423722)
@@ -175,6 +185,7 @@ function _createRule(ruleName) {
     rule.linkDescription = mainRuleComment.linkDescription ? mainRuleComment.linkDescription : rule.lead;
     rule.styleguideReferences = mainRuleComment.styleguideReferences || [];
     rule.version = mainRuleComment.version;
+    rule.category = mainRuleComment.category || 'uncategorizedRule';
 
     if (!rule.version) {
         throw new Error('No @version found for ' + ruleName);
