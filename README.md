@@ -130,6 +130,7 @@ Users may use the shareable [eslint-config-angular](https://github.com/dustinspe
         "angular/no-inline-template": [0, {"allowSimple": true}],
         "angular/no-jquery-angularelement": 2,
         "angular/no-private-call": 2,
+        "angular/no-run-logic": [0, {"allowParams": true}],
         "angular/no-service-method": 2,
         "angular/no-services": [2, ["$http", "$resource", "Restangular"]],
         "angular/on-watch": 2,
@@ -189,6 +190,7 @@ Users may use the shareable [eslint-config-angular](https://github.com/dustinspe
  * [no-inline-template](docs/no-inline-template.md) - disallow the use of inline templates
  * [no-jquery-angularelement](docs/no-jquery-angularelement.md) - disallow to wrap `angular.element` objects with `jQuery` or `$`
  * [no-private-call](docs/no-private-call.md) - disallow use of internal angular properties prefixed with $$
+ * [no-run-logic](docs/no-run-logic.md) - keep run functions clean and simple ([y171](https://github.com/johnpapa/angular-styleguide#style-y171))
  * [no-services](docs/no-services.md) - disallow DI of specified services for other angular components (`$http` for controllers, filters and directives)
  * [no-service-method](docs/no-service-method.md) - use `factory()` instead of `service()` ([y040](https://github.com/johnpapa/angular-styleguide#style-y040))
  * [on-watch](docs/on-watch.md) - require `$on` and `$watch` deregistration callbacks to be saved in a variable
