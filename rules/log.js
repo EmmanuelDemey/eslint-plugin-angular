@@ -3,6 +3,7 @@
  *
  * You should use $log service instead of console for the methods 'log', 'debug', 'error', 'info', 'warn'
  * @version 0.1.0
+ * @category angularWrapper
  */
 'use strict';
 

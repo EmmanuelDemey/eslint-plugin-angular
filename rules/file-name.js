@@ -9,6 +9,7 @@
  * @styleguideReference {johnpapa} `y120` Naming - Naming Guidelines
  * @styleguideReference {johnpapa} `y121` Naming - Feature File Names
  * @version 0.7.0
+ * @category naming
  */
 'use strict';
 

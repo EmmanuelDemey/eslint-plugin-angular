@@ -36,7 +36,7 @@ The following patterns are considered problems when configured `{"allowParams":f
     /*eslint angular/no-run-logic: [2,{"allowParams":false}]*/
 
     // invalid
-    angular.module('app').run(function(kittenService, startup) {
+    angular.module('app').run(function(startup) {
         startup('foo', true, 1);
     }); // error: Run function call expressions may not take any arguments
 

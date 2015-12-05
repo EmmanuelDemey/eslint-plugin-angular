@@ -7,6 +7,7 @@
  **
  * @styleguideReference {johnpapa} `y125` Naming - Factory and Service Names
  * @version 0.1.0
+ * @category naming
  */
 'use strict';
 

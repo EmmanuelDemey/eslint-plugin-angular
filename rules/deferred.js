@@ -4,6 +4,7 @@
  * When you want to create a new promise, you should not use the $q.deferred anymore.
  * Prefer the new syntax : $q(function(resolve, reject){})
  * @version 0.1.0
+ * @category bestPractice
  */
 'use strict';
 

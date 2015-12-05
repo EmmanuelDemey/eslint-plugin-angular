@@ -6,6 +6,7 @@
  * @linkDescription disallow to assign modules to variables (linked to [module-getter](docs/module-getter.md)
  * @styleguideReference {johnpapa} `y021` Module - Definitions (aka Setters)
  * @version 0.1.0
+ * @category possibleError
  */
 'use strict';
 

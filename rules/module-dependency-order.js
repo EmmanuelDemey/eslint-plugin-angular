@@ -10,6 +10,7 @@
  * ('module-dependency-order', [2, {grouped: true, prefix: "app"}])
  *
  * @version 0.12.0
+ * @category conventions
  */
 'use strict';
 

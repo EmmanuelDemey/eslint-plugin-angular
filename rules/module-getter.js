@@ -6,6 +6,7 @@
  * @linkDescription disallow to reference modules with variables and require to use the getter syntax instead `angular.module('myModule')`
  * @styleguideReference {johnpapa} `y022` Module - Getters
  * @version 0.1.0
+ * @category possibleError
  */
 'use strict';
 

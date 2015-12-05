@@ -5,6 +5,7 @@
  * We also check the use of !angular.isUndefined and !angular.isDefined (should prefer the reverse function)
  *
  * @version 0.1.0
+ * @category angularWrapper
  */
 'use strict';
 

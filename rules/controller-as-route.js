@@ -5,6 +5,7 @@
  *
  * @styleguideReference {johnpapa} `y031` controllerAs Controller Syntax
  * @version 0.1.0
+ * @category bestPractice
  */
 'use strict';
 
