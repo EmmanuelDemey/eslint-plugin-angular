@@ -15,6 +15,7 @@ var ruleNames = Object.keys(eslintAngularIndex.rules).filter(function(ruleName) 
 
 // create rule documentation objects from ruleNames
 var rules = ruleNames.map(_createRule);
+_readRuleDefaults();
 
 module.exports = {
     rules: rules,
@@ -51,13 +52,15 @@ function updateReadme(readmePath, cb) {
         return rulesForCategory && rulesForCategory.length > 0;
     });
 
-    var readmeRuleSection = templates.readmeRuleSectionContent(ruleCategories);
     var readmeContent = fs.readFileSync(readmePath).toString();
+    var newRuleSection = templates.readmeRuleSectionContent(ruleCategories);
+    var newDefaultsSection = templates.defaultsRuleSectionContent(this);
 
     // use split and join to prevent the replace() and dollar sign problem (http://stackoverflow.com/questions/9423722)
-    var updatedReadmeContent = readmeContent.split(/## Rules[\S\s]*?----\n/).join(readmeRuleSection);
+    readmeContent = readmeContent.split(/## Rules[\S\s]*?----\n/).join(newRuleSection);
+    readmeContent = readmeContent.split(/## Defaults[\S\s]*?----\n/).join(newDefaultsSection);
 
-    fs.writeFileSync(readmePath, updatedReadmeContent);
+    fs.writeFileSync(readmePath, readmeContent);
     (cb || _.noop)();
 }
 
@@ -213,4 +216,27 @@ function _createRule(ruleName) {
     rule.hasOnlyOneConfig = Object.keys(examplesGroupedByConfig).length === 1;
 
     return rule;
+}
+
+function _readRuleDefaults() {
+    var indexContent = fs.readFileSync('index.js').toString();
+
+    var match;
+    var lines = indexContent.split('\n');
+    _.forEach(lines, function(line) {
+        match = line.match(/^rulesConfiguration.addRule\('([\w\-]+)', (.*)\);$/m);
+        if (match !== null) {
+            _setRuleDefaults(match[1], match[2]);
+        }
+    });
+}
+
+function _setRuleDefaults(ruleName, defaults) {
+    defaults = defaults.replace(/'/g, '"');
+    defaults = defaults.replace(/(\w+):/g, '"$1":');
+    defaults = defaults.replace(/(\/.*\/)/g, '"$1"');
+    var rule = _.find(rules, function(r) {
+        return r.ruleName === ruleName;
+    });
+    rule.defaults = defaults;
 }
