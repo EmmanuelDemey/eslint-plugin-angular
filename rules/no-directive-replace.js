@@ -44,14 +44,16 @@ module.exports = function(context) {
 
     return {
         ReturnStatement: function(node) {
+            // only check identifiers, because expression in return statements are already checked by the Property callback
             if (node.argument.type === 'Identifier') {
                 var reportedNodes = reportedNodesByName[node.argument.name];
                 if (!reportedNodes) {
                     return;
                 }
                 reportedNodes.forEach(function(report) {
+                    // only reports nodes that belong to the same expression
                     if (report.block === node.parent) {
-                        context.report(node, 'Directive definition property replace is deprecated.');
+                        context.report(report.node, 'Directive definition property replace is deprecated.');
                     }
                 });
             }
@@ -80,13 +82,15 @@ module.exports = function(context) {
             }
 
             // assumption: Property always belongs to a ObjectExpression
-            var objectExpression = node.parent;
+            var objectExpressionParent = node.parent.parent;
 
-            if (objectExpression.parent.type === 'VariableDeclarator') {
-                addPotentialReplaceNode(objectExpression.parent.id.name, node);
+            // add to potential replace nodes if the object is defined in a variable
+            if (objectExpressionParent.type === 'VariableDeclarator') {
+                addPotentialReplaceNode(objectExpressionParent.id.name, node);
             }
 
-            if (objectExpression.parent.type === 'ReturnStatement' && inDirectiveBody(objectExpression.parent)) {
+            // report directly if object is part of a return statement and inside a directive body
+            if (objectExpressionParent.type === 'ReturnStatement' && inDirectiveBody(objectExpressionParent)) {
                 context.report(node, 'Directive definition property replace is deprecated.');
             }
         }
