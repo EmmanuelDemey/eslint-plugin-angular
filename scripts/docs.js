@@ -3,7 +3,8 @@
 var fs = require('fs');
 var parseComments = require('parse-comments');
 var _ = require('lodash');
-var eslintAngularIndex = require('../index.js');
+var eslintAngularIndex = require('../index');
+var ruleCategories = require('./ruleCategories.json');
 var RuleTester = require('eslint').RuleTester;
 
 var templates = require('./templates.js');
@@ -41,8 +42,6 @@ function createDocFiles(cb) {
  * @param cb callback
  */
 function updateReadme(readmePath, cb) {
-    var ruleCategories = require('./ruleCategories.json');
-
     ruleCategories.rulesByCategory = _.groupBy(this.rules, 'category');
 
     // filter categories without rules
@@ -192,7 +191,7 @@ function _createRule(ruleName) {
     }
 
     // load rule module for tests
-    rule.module = require('../rules/' + rule.ruleName);
+    rule.module = require('../rules/' + rule.ruleName);  // eslint-disable-line global-require
 
     // load examples, prepare them for the tests and group the for the template
     rule.allExamples = _loadExamples(rule);
