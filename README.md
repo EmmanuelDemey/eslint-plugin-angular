@@ -186,7 +186,7 @@ These are rules designed to prevent you from making mistakes. They either prescr
 
 ## Deprecated Angular Features
 
-There rules prevent you from using deprecated angular features.
+These rules prevent you from using deprecated angular features.
 
  * [no-cookiestore](docs/no-cookiestore.md) - use `$cookies` instead of `$cookieStore`
  * [no-http-callback](docs/no-http-callback.md) - disallow the `$http` methods `success()` and `error()`
