@@ -16,6 +16,7 @@ rulesConfiguration.addRule('di-unused', 0);
 rulesConfiguration.addRule('directive-name', 0);
 rulesConfiguration.addRule('directive-restrict', 0);
 rulesConfiguration.addRule('document-service', 2);
+rulesConfiguration.addRule('dumb-inject', 2);
 rulesConfiguration.addRule('empty-controller', 0);
 rulesConfiguration.addRule('file-name', 0);
 rulesConfiguration.addRule('filter-name', 0);
