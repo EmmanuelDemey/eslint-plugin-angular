@@ -21,11 +21,6 @@ module.exports = function(context) {
         return fnExpression.parent.type === 'CallExpression' && utils.isAngularDirectiveDeclaration(fnExpression.parent);
     }
 
-    function inDirectiveBody(node) {
-        var block = utils.findNodeTypeInParents(node, 'BlockStatement');
-        return block && isDirectiveDefinitionFunction(block.parent);
-    }
-
     var reportedNodesByName = {};
 
     function addPotentialReplaceNode(variableName, node) {
@@ -34,7 +29,7 @@ module.exports = function(context) {
         var report = {
             name: variableName,
             node: node,
-            block: utils.findNodeTypeInParents(node, 'BlockStatement')
+            block: context.getScope().block.body
         };
 
         nodeList.push(report);
@@ -90,7 +85,7 @@ module.exports = function(context) {
             }
 
             // report directly if object is part of a return statement and inside a directive body
-            if (objectExpressionParent.type === 'ReturnStatement' && inDirectiveBody(objectExpressionParent)) {
+            if (objectExpressionParent.type === 'ReturnStatement' && isDirectiveDefinitionFunction(context.getScope().block)) {
                 context.report(node, 'Directive definition property replace is deprecated.');
             }
         }

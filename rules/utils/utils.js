@@ -50,7 +50,6 @@ module.exports = {
     isRouteDefinition: isRouteDefinition,
     isUIRouterStateDefinition: isUIRouterStateDefinition,
     findIdentiferInScope: findIdentiferInScope,
-    findNodeTypeInParents: findNodeTypeInParents,
     getControllerDefinition: getControllerDefinition
 };
 
@@ -466,20 +465,6 @@ function findIdentiferInScope(context, identifier) {
         }
     });
     return identifierNode;
-}
-
-/**
- * Find the closest parent node with the specified nodeType.
- *
- * @param {Object} node The node to start the search.
- * @param {String} nodeType The node type (e.g. 'BlockStatement')
- * @returns {Object} The first parent node with the specified nodeType or undefined;
- */
-function findNodeTypeInParents(node, nodeType) {
-    if (!node || node.type === nodeType) {
-        return node;
-    }
-    return findNodeTypeInParents(node.parent, nodeType);
 }
 
 /**
