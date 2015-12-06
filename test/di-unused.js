@@ -106,6 +106,11 @@ eslintTester.run('di-unused', rule, {
             errors: [
                 {message: 'Unused injected value $http'}
             ]
+        }, {
+            code: 'angular.module("").factory("", ["$http", "$q", function($http, $q) {return $q.resolve()}]);',
+            errors: [
+                {message: 'Unused injected value $http'}
+            ]
         },
         // filter
         {
@@ -192,6 +197,11 @@ eslintTester.run('di-unused', rule, {
         }, {
             code: 'angular.module("").provider("", function() {this.$get = ["q", function($q) {}];});',
             errors: [{message: 'Unused injected value $q'}]
+        },
+        // examples from issue #287
+        {
+            code: 'angular.module("myapp").filter("myfilter", [ "$translate", "$filter", function ($translate, $filter) { return function (value) { return $filter(value, 4) * 100; } } ]);',
+            errors: [{message: 'Unused injected value $translate'}]
         }
     ]
 });
