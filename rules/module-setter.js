@@ -10,9 +10,9 @@
  */
 'use strict';
 
+var utils = require('./utils/utils');
 
 module.exports = function(context) {
-    var utils = require('./utils/utils');
 
     return {
 

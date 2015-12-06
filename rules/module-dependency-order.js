@@ -14,8 +14,9 @@
  */
 'use strict';
 
+var utils = require('./utils/utils');
+
 module.exports = function(context) {
-    var utils = require('./utils/utils');
 
     var options = context.options[0] || {};
     var groupedMode = options.grouped !== false;

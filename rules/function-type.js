@@ -12,8 +12,9 @@
  */
 'use strict';
 
+var utils = require('./utils/utils');
+
 module.exports = function(context) {
-    var utils = require('./utils/utils');
     var angularObjectList = ['animation', 'config', 'constant', 'controller', 'directive', 'factory', 'filter', 'provider', 'service', 'value', 'decorator'];
     var configType = context.options[0] || 'anonymous';
     var messageByConfigType = {

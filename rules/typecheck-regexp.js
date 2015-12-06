@@ -9,8 +9,9 @@
  */
 'use strict';
 
+var utils = require('./utils/utils');
+
 module.exports = function(context) {
-    var utils = require('./utils/utils');
 
     function recordError(node, origin) {
         if (node.type === 'Literal' && node.value === '[object RegExp]') {
