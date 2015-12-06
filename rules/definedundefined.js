@@ -38,9 +38,9 @@ module.exports = function(context) {
         },
         BinaryExpression: function(node) {
             if (isCompareOperator(node.operator)) {
-                if (utils.isTypeOfStatement(node.left) || utils.isToStringStatement(node.left)) {
+                if (utils.isTypeOfStatement(node.left) && node.right.value === 'undefined') {
                     reportError(node);
-                } else if (utils.isTypeOfStatement(node.right) || utils.isToStringStatement(node.right)) {
+                } else if (utils.isTypeOfStatement(node.right) && node.left.value === 'undefined') {
                     reportError(node);
                 } else if (node.left.type === 'Identifier' && node.left.name === 'undefined') {
                     reportError(node);
