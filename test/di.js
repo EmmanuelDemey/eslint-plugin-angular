@@ -9,7 +9,7 @@ var RuleTester = require('eslint').RuleTester;
 var commonFalsePositives = require('./utils/commonFalsePositives');
 
 
-var angularNamedObjectList = ['value', 'factory', 'service', 'provider', 'controller', 'filter', 'directive'];
+var angularNamedObjectList = ['factory', 'service', 'provider', 'controller', 'filter', 'directive'];
 var angularObjectList = ['run', 'config'];
 
 
@@ -153,7 +153,19 @@ valid.push({
 }, {
     code: 'mocha.run();',
     options: ['array']
+}, {
+    code: 'mocha.run();',
+    options: ['array']
+}, {
+    // value false positive with function
+    code: 'angular.module("") .value("", function () {});',
+    options: ['array']
+}, {
+    // value false positive with array (example from issue #99)
+    code: 'angular.module("") .value("", [{ }, { }]);',
+    options: ['function']
 });
+
 // ------------------------------------------------------------------------------
 // Tests
 // ------------------------------------------------------------------------------
