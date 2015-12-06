@@ -118,6 +118,7 @@ rules:
 
   # http://eslint.org/docs/rules/#nodejs
   callback-return: 2
+  global-require: 2
   handle-callback-err:
     - 2
     - ^(e|err|error)$

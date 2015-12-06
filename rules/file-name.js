@@ -13,10 +13,11 @@
  */
 'use strict';
 
+var path = require('path');
+
 var utils = require('./utils/utils');
 
 module.exports = (function() {
-    var path = require('path');
     var fileEnding = '.js';
 
     var separators = {
