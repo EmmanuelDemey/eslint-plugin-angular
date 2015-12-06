@@ -21,7 +21,7 @@
         },
         "deprecatedAngularFeature": {
             "headline": "Deprecated Angular Features",
-            "description": "There rules prevent you from using deprecated angular features."
+            "description": "These rules prevent you from using deprecated angular features."
         },
         "naming": {
             "headline": "Naming",
