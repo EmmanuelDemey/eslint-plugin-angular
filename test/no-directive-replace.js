@@ -55,6 +55,15 @@ eslintTester.run('no-directive-replace', rule, {
             code: 'angular.module("").directive("", function() {return {replace:0}})',
             options: [{ignoreReplaceFalse: true}],
             errors: [{message: 'Directive definition property replace is deprecated.'}]
+        },
+        // named functions
+        {
+            code: 'angular.module("").directive("", directive); function directive() { return {replace:true} };',
+            errors: [{message: 'Directive definition property replace is deprecated.'}]
+        },
+        {
+            code: 'angular.module("").directive("", directive); function directive() { var def = {}; def.replace = true; return def; };',
+            errors: [{message: 'Directive definition property replace is deprecated.'}]
         }
     ]
 });

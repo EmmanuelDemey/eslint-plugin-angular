@@ -11,47 +11,46 @@
  */
 'use strict';
 
-module.exports = function(context) {
-    var utils = require('./utils/utils');
+var angularRule = require('./utils/angular-rule');
 
+module.exports = angularRule(function(context) {
     var options = context.options[0] || {};
     var ignoreReplaceFalse = !!options.ignoreReplaceFalse;
 
-    function isDirectiveDefinitionFunction(fnExpression) {
-        return fnExpression.parent.type === 'CallExpression' && utils.isAngularDirectiveDeclaration(fnExpression.parent);
-    }
-
-    var reportedNodesByName = {};
+    var potentialReplaceNodes = {};
 
     function addPotentialReplaceNode(variableName, node) {
-        var nodeList = reportedNodesByName[variableName] || [];
+        var nodeList = potentialReplaceNodes[variableName] || [];
 
-        var report = {
+        nodeList.push({
             name: variableName,
             node: node,
             block: context.getScope().block.body
-        };
+        });
 
-        nodeList.push(report);
-
-        reportedNodesByName[variableName] = nodeList;
+        potentialReplaceNodes[variableName] = nodeList;
     }
 
     return {
-        ReturnStatement: function(node) {
-            // only check identifiers, because expression in return statements are already checked by the Property callback
-            if (node.argument.type === 'Identifier') {
-                var reportedNodes = reportedNodesByName[node.argument.name];
-                if (!reportedNodes) {
-                    return;
-                }
-                reportedNodes.forEach(function(report) {
-                    // only reports nodes that belong to the same expression
-                    if (report.block === node.parent) {
-                        context.report(report.node, 'Directive definition property replace is deprecated.');
-                    }
-                });
+        'angular:directive': function(callExpressionNode, fnNode) {
+            if (!fnNode || !fnNode.body) {
+                return;
             }
+            fnNode.body.body.forEach(function(statement) {
+                if (statement.type === 'ReturnStatement') {
+                    // get potential replace node by argument name of empty string for object expressions
+                    var potentialNodes = potentialReplaceNodes[statement.argument.name || ''];
+                    if (!potentialNodes) {
+                        return;
+                    }
+                    potentialNodes.forEach(function(report) {
+                        // only reports nodes that belong to the same expression
+                        if (report.block === statement.parent) {
+                            context.report(report.node, 'Directive definition property replace is deprecated.');
+                        }
+                    });
+                }
+            });
         },
         AssignmentExpression: function(node) {
             // Only check for literal member property assignments.
@@ -85,12 +84,12 @@ module.exports = function(context) {
             }
 
             // report directly if object is part of a return statement and inside a directive body
-            if (objectExpressionParent.type === 'ReturnStatement' && isDirectiveDefinitionFunction(context.getScope().block)) {
-                context.report(node, 'Directive definition property replace is deprecated.');
+            if (objectExpressionParent.type === 'ReturnStatement') {
+                addPotentialReplaceNode('', node);
             }
         }
     };
-};
+});
 
 module.exports.schema = [{
     type: 'object',
