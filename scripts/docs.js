@@ -187,6 +187,13 @@ function _createRule(ruleName) {
     rule.version = mainRuleComment.version;
     rule.category = mainRuleComment.category || 'uncategorizedRule';
 
+    rule.deprecated = !!mainRuleComment.deprecated;
+
+    if (rule.deprecated) {
+        rule.deprecationReason = mainRuleComment.deprecated;
+        rule.category = 'deprecatedRule';
+    }
+
     if (!rule.version) {
         throw new Error('No @version found for ' + ruleName);
     }
