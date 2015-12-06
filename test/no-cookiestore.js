@@ -19,10 +19,10 @@ eslintTester.run('no-cookiestore', rule, {
     ].concat(commonFalsePositives),
     invalid: [{
         code: '$cookieStore.get("");',
-        errors: [{message: 'Since Angular 1.4, the $cookieStore service is depreacted. Please use now the $cookies service.'}]
+        errors: [{message: 'Since Angular 1.4, the $cookieStore service is deprecated. Please use now the $cookies service.'}]
     }, {
         code: '$cookieStore.put("", "");',
-        errors: [{message: 'Since Angular 1.4, the $cookieStore service is depreacted. Please use now the $cookies service.'}]
+        errors: [{message: 'Since Angular 1.4, the $cookieStore service is deprecated. Please use now the $cookies service.'}]
     }
     ]
 });

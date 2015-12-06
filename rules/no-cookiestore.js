@@ -14,7 +14,7 @@ module.exports = function(context) {
 
         MemberExpression: function(node) {
             if (node.object && node.object.name === '$cookieStore') {
-                context.report(node, 'Since Angular 1.4, the $cookieStore service is depreacted. Please use now the $cookies service.', {});
+                context.report(node, 'Since Angular 1.4, the $cookieStore service is deprecated. Please use now the $cookies service.', {});
             }
         }
     };
