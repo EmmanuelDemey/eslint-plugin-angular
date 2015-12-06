@@ -17,7 +17,6 @@
 var utils = require('./utils/utils');
 
 module.exports = function(context) {
-
     var options = context.options[0] || {};
     var groupedMode = options.grouped !== false;
     var moduleRegex;

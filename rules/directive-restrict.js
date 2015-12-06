@@ -15,7 +15,6 @@
 var utils = require('./utils/utils');
 
 module.exports = function(context) {
-
     var options = context.options[0] || {};
     var restrictOpt = options.restrict || 'AE';
     var explicitRestrict = options.explicit === 'always';

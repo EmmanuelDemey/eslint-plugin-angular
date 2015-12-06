@@ -13,7 +13,6 @@
 var utils = require('./utils/utils');
 
 module.exports = function(context) {
-
     return {
 
         ExpressionStatement: function(node) {

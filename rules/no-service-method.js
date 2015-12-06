@@ -12,7 +12,6 @@
 var utils = require('./utils/utils');
 
 module.exports = function(context) {
-
     return {
 
         CallExpression: function(node) {

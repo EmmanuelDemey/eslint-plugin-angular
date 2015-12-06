@@ -11,7 +11,6 @@
 var utils = require('./utils/utils');
 
 module.exports = function(context) {
-
     function recordError(node, origin) {
         if (node.type === 'Literal' && (node.value === 'number' || node.value === '[object Number]')) {
             context.report(origin, 'You should use the angular.isNumber method', {});

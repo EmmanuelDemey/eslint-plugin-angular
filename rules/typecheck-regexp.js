@@ -12,7 +12,6 @@
 var utils = require('./utils/utils');
 
 module.exports = function(context) {
-
     function recordError(node, origin) {
         if (node.type === 'Literal' && node.value === '[object RegExp]') {
             context.report(origin, 'You should use the angular.isRegexp method', {});
