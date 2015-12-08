@@ -244,8 +244,8 @@ These rules help you to enforce the usage of angular wrappers.
 
 These rules will be removed in version 1.0.0
 
- * [no-digest](docs/no-digest.md) - DEPRECATED! use `$apply()` instead of `$digest()` (replaced by [watchers-execution](docs/watchers-execution.md))
- * [typecheck-regexp](docs/typecheck-regexp.md) - DEPRECATED! use `angular.isRegexp` instead of other comparisons (no native angular method)
+ * [no-digest](docs/no-digest.md) - use `$apply()` instead of `$digest()` (replaced by [watchers-execution](docs/watchers-execution.md))
+ * [typecheck-regexp](docs/typecheck-regexp.md) - use `angular.isRegexp` instead of other comparisons (no native angular method)
 
 
 ----
