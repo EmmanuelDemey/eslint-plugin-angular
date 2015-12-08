@@ -24,7 +24,17 @@ eslintTester.run('no-run-logic', rule, {
         'angular.module("").run(function() {foo(null)});',
         'angular.module("").run(function() {foo(undefined)});',
         'angular.module("").run(function() {foo("bar")});',
-        'angular.module("").run(function() {foo(bar)});'
+        'angular.module("").run(function() {foo(bar)});',
+        // don't crash on component definitions
+        'angular.module("").animation();',
+        'angular.module("").config();',
+        'angular.module("").controller();',
+        'angular.module("").directive();',
+        'angular.module("").factory();',
+        'angular.module("").filter();',
+        'angular.module("").provider();',
+        'angular.module("").run();',
+        'angular.module("").service();'
     ],
     invalid: [
         // Nested function declarations
