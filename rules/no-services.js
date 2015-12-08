@@ -12,9 +12,9 @@
  */
 'use strict';
 
-module.exports = function(context) {
-    var utils = require('./utils/utils');
+var utils = require('./utils/utils');
 
+module.exports = function(context) {
     var angularObjectList = ['controller', 'filter', 'directive'];
     var badServices;
     var map;

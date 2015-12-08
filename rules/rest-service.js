@@ -9,9 +9,9 @@
  */
 'use strict';
 
-module.exports = function(context) {
-    var utils = require('./utils/utils');
+var utils = require('./utils/utils');
 
+module.exports = function(context) {
     var angularObjectList = ['controller', 'filter', 'directive', 'service', 'factory', 'provider'];
     var services = ['$http', '$resource', 'Restangular'];
     var message = 'You should use the same service ({{method}}) for REST API calls';

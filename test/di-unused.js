@@ -37,7 +37,17 @@ eslintTester.run('di-unused', rule, {
         'angular.module("").run(["$q", function($q) {return $q;}]);',
         'inject(function($q) {_$q_ = $q;});',
         'angular.module("").provider("", function() {this.$get = function($q) {return $q};});',
-        'angular.module("").provider("", function() {this.$get = ["$q", function($q) {return $q}];});'
+        'angular.module("").provider("", function() {this.$get = ["$q", function($q) {return $q}];});',
+        // Potential crashes
+        'angular.module("").animation("", "");',
+        'angular.module("").config("");',
+        'angular.module("").controller("", "");',
+        'angular.module("").directive("", "");',
+        'angular.module("").factory("", "");',
+        'angular.module("").filter("", "");',
+        'angular.module("").provider("", "");',
+        'angular.module("").run("");',
+        'angular.module("").service("", "");'
     ].concat(commonFalsePositives),
     invalid: [
         // animation

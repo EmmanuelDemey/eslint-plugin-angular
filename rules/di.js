@@ -8,9 +8,9 @@
  */
 'use strict';
 
-module.exports = function(context) {
-    var utils = require('./utils/utils');
+var utils = require('./utils/utils');
 
+module.exports = function(context) {
     var angularNamedObjectList = ['factory', 'service', 'provider', 'controller', 'filter', 'directive'];
 
     function report(node, syntax) {
