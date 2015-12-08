@@ -10,7 +10,11 @@
     "type": "git",
     "url": "https://github.com/Gillespie59/eslint-plugin-angularjs.git"
   },
-  "author": "Emmanuel DEMEY",
+  "contributors": [
+    "Emmanuel Demey (http://gillespie59.github.io/)",
+    "Tilman Potthof (https://github.com/tilmanpotthof)",
+    "Remco Haszing (https://github.com/remcohaszing)"
+  ],
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/Gillespie59/eslint-plugin-angularjs/issues"
