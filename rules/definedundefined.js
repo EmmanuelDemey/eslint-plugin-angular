@@ -9,7 +9,17 @@
  */
 'use strict';
 
+var utils = require('./utils/utils');
+
+
 module.exports = function(context) {
+    function isCompareOperator(operator) {
+        return operator === '===' || operator === '!==' || operator === '==' || operator === '!=';
+    }
+    function reportError(node) {
+        context.report(node, 'You should not use directly the "undefined" keyword. Prefer ' +
+            'angular.isUndefined or angular.isDefined', {});
+    }
     /**
     *    Rule that check if we use angular.is(Un)defined() instead of the undefined keyword
     */
@@ -27,15 +37,15 @@ module.exports = function(context) {
             }
         },
         BinaryExpression: function(node) {
-            if (node.operator === '===' || node.operator === '!==') {
-                if (node.left.type === 'Identifier' && node.left.name === 'undefined') {
-                    context.report(node, 'You should not use directly the "undefined" keyword. Prefer ' +
-                        'angular.isUndefined or angular.isDefined', {});
-                }
-
-                if (node.right.type === 'Identifier' && node.right.name === 'undefined') {
-                    context.report(node, 'You should not use directly the "undefined" keyword. Prefer ' +
-                        'angular.isUndefined or angular.isDefined', {});
+            if (isCompareOperator(node.operator)) {
+                if (utils.isTypeOfStatement(node.left) && node.right.value === 'undefined') {
+                    reportError(node);
+                } else if (utils.isTypeOfStatement(node.right) && node.left.value === 'undefined') {
+                    reportError(node);
+                } else if (node.left.type === 'Identifier' && node.left.name === 'undefined') {
+                    reportError(node);
+                } else if (node.right.type === 'Identifier' && node.right.name === 'undefined') {
+                    reportError(node);
                 }
             }
         }
