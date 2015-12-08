@@ -361,6 +361,6 @@ Here is the basic configuration for the rules defined in the ESLint plugin, in o
 
 ## Team
 
-[![Emmanuel DEMEY](https://avatars.githubusercontent.com/u/555768?s=117)](http://gillespie59.github.io/) |
-:---:|
-[Emmanuel DEMEY](http://gillespie59.github.io/)
+[![Emmanuel Demey](https://avatars.githubusercontent.com/u/555768?s=117)](http://gillespie59.github.io/) | [![Tilman Potthof](https://avatars.githubusercontent.com/u/157532?s=117)](https://github.com/tilmanpotthof) | [![Remco Haszing](https://avatars.githubusercontent.com/u/779047?s=117)](https://github.com/remcohaszing) |
+:---:|:---:|:---:|
+[Emmanuel Demey](http://gillespie59.github.io/) | [Tilman Potthof](https://github.com/tilmanpotthof) | [Remco Haszing](https://github.com/remcohaszing) |
