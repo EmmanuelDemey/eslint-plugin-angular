@@ -1,10 +1,12 @@
-[![Build Status](https://travis-ci.org/Gillespie59/eslint-plugin-angular.svg?branch=master)](https://travis-ci.org/Gillespie59/eslint-plugin-angular)
-[![Npm dependencies](https://david-dm.org/Gillespie59/eslint-plugin-angular.svg)](https://david-dm.org/Gillespie59/eslint-plugin-angular)
-[![devDependency Status](https://david-dm.org/Gillespie59/eslint-plugin-angular/dev-status.png)](https://david-dm.org/Gillespie59/eslint-plugin-angular#info=devDependencies)
-[![Join the chat at https://gitter.im/Gillespie59/eslint-plugin-angular](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/Gillespie59/eslint-plugin-angular?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
-[![Coverage Status](https://coveralls.io/repos/Gillespie59/eslint-plugin-angular/badge.svg?branch=master)](https://coveralls.io/r/Gillespie59/eslint-plugin-angular?branch=master)
+# eslint plugin angular [![Npm version](https://img.shields.io/npm/v/eslint-plugin-angular.svg)](https://www.npmjs.com/package/eslint-plugin-angular) [![Npm downloads per month](https://img.shields.io/npm/dm/eslint-plugin-angular.svg)](https://www.npmjs.com/package/eslint-plugin-angular)
 
+> ESLint rules for your angular project with checks for best-practices, conventions or potential errors.
 
+[![Build Status](https://img.shields.io/travis/Gillespie59/eslint-plugin-angular/master.svg)](https://travis-ci.org/Gillespie59/eslint-plugin-angular)
+[![Npm dependencies](https://img.shields.io/david/Gillespie59/eslint-plugin-angular.svg)](https://david-dm.org/Gillespie59/eslint-plugin-angular)
+[![devDependency Status](https://img.shields.io/david/dev/Gillespie59/eslint-plugin-angular.svg)](https://david-dm.org/Gillespie59/eslint-plugin-angular#info=devDependencies)
+[![Join the chat at https://gitter.im/Gillespie59/eslint-plugin-angular](https://img.shields.io/gitter/room/nwjs/nw.js.svg)](https://gitter.im/Gillespie59/eslint-plugin-angular?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+[![Coverage Status](https://img.shields.io/coveralls/Gillespie59/eslint-plugin-angular/master.svg)](https://coveralls.io/r/Gillespie59/eslint-plugin-angular?branch=master)
 
 ## Summary
 
