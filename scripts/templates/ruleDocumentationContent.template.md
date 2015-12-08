@@ -2,6 +2,10 @@
 
 # <%= ruleName %> - <%= lead %>
 
+<% if(deprecated) { %>
+**This rule is deprecated and will be removed in future versions. Explanation: <%= deprecationReason %>**
+<% } %>
+
 <%= description %>
 
 <% if(styleguideReferences.length > 0) { %>

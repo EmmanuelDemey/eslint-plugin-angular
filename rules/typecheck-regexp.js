@@ -1,17 +1,17 @@
 /**
  * use `angular.isRegexp` instead of other comparisons
  *
- * DEPRECATED! You should use the angular.isRegexp method instead of the default JavaScript implementation (toString.call(/^A/) === "[object RegExp]").
+ * You should use the angular.isRegexp method instead of the default JavaScript implementation (toString.call(/^A/) === "[object RegExp]").
  *
- * @linkDescription DEPRECATED! use `angular.isRegexp` instead of other comparisons (no native angular method)
+ * @linkDescription use `angular.isRegexp` instead of other comparisons (no native angular method)
  * @version 0.1.0
- * @category deprecatedRule
+ * @deprecated `angular.isRegexp` is no built-in angular method.
  */
 'use strict';
 
-module.exports = function(context) {
-    var utils = require('./utils/utils');
+var utils = require('./utils/utils');
 
+module.exports = function(context) {
     function recordError(node, origin) {
         if (node.type === 'Literal' && node.value === '[object RegExp]') {
             context.report(origin, 'You should use the angular.isRegexp method', {});

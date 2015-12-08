@@ -2,8 +2,12 @@
 
 # no-digest - use `$apply()` instead of `$digest()`
 
-DEPRECATED! The scope's $digest() method shouldn't be used.
+**This rule is deprecated and will be removed in future versions. Explanation: There is no reason to forbid the use of `$digest()` in general.**
+
+The scope's $digest() method shouldn't be used.
 You should prefer the $apply method.
+
+The `watchers-execution` rule can be configured to enforce the use of `$apply()` or `$digest()`.
 
 ## Version
 

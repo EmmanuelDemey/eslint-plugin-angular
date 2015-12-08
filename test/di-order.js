@@ -28,6 +28,16 @@ eslintTester.run('di-order', rule, {
         'inject(function($http, $q) {});',
         'it(inject(function($http, $q) {}));',
         'it(inject(function(_$http_, _$httpBackend_) {}));',
+        // Potential crashes
+        'angular.module("").animation("", "");',
+        'angular.module("").config("");',
+        'angular.module("").controller("", "");',
+        'angular.module("").directive("", "");',
+        'angular.module("").factory("", "");',
+        'angular.module("").filter("", "");',
+        'angular.module("").provider("", "");',
+        'angular.module("").run("");',
+        'angular.module("").service("", "");',
         {
             code: 'it(inject(function(_$httpBackend_, _$http_) {}));',
             options: [false]

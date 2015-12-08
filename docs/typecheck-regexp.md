@@ -2,7 +2,9 @@
 
 # typecheck-regexp - use `angular.isRegexp` instead of other comparisons
 
-DEPRECATED! You should use the angular.isRegexp method instead of the default JavaScript implementation (toString.call(/^A/) === "[object RegExp]").
+**This rule is deprecated and will be removed in future versions. Explanation: `angular.isRegexp` is no built-in angular method.**
+
+You should use the angular.isRegexp method instead of the default JavaScript implementation (toString.call(/^A/) === "[object RegExp]").
 
 ## Version
 
