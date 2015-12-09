@@ -1,11 +1,14 @@
 /**
  * use `$apply()` instead of `$digest()`
  *
- * DEPRECATED! The scope's $digest() method shouldn't be used.
+ * The scope's $digest() method shouldn't be used.
  * You should prefer the $apply method.
  *
- * @linkDescription DEPRECATED! use `$apply()` instead of `$digest()` (replaced by [watchers-execution](docs/watchers-execution.md))
+ * The `watchers-execution` rule can be configured to enforce the use of `$apply()` or `$digest()`.
+ *
+ * @linkDescription use `$apply()` instead of `$digest()` (replaced by [watchers-execution](docs/watchers-execution.md))
  * @version 0.1.0
+ * @deprecated There is no reason to forbid the use of `$digest()` in general.
  */
 'use strict';
 

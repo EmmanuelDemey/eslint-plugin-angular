@@ -5,12 +5,13 @@
  * This rule can have one parameter, with one of the following values: $http, $resource or Restangular ('rest-service': [0, '$http']).
  *
  * @version 0.5.0
+ * @category conventions
  */
 'use strict';
 
-module.exports = function(context) {
-    var utils = require('./utils/utils');
+var utils = require('./utils/utils');
 
+module.exports = function(context) {
     var angularObjectList = ['controller', 'filter', 'directive', 'service', 'factory', 'provider'];
     var services = ['$http', '$resource', 'Restangular'];
     var message = 'You should use the same service ({{method}}) for REST API calls';

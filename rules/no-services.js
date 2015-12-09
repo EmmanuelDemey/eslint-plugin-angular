@@ -8,12 +8,13 @@
  *
  * @linkDescription disallow DI of specified services for other angular components (`$http` for controllers, filters and directives)
  * @version 0.1.0
+ * @category bestPractice
  */
 'use strict';
 
-module.exports = function(context) {
-    var utils = require('./utils/utils');
+var utils = require('./utils/utils');
 
+module.exports = function(context) {
     var angularObjectList = ['controller', 'filter', 'directive'];
     var badServices;
     var map;

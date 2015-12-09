@@ -5,12 +5,13 @@
  *
  * @styleguideReference {johnpapa} `y040` Services - Singletons
  * @version 0.1.0
+ * @category conventions
  */
 'use strict';
 
-module.exports = function(context) {
-    var utils = require('./utils/utils');
+var utils = require('./utils/utils');
 
+module.exports = function(context) {
     return {
 
         CallExpression: function(node) {

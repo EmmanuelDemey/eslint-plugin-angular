@@ -7,11 +7,13 @@
  *
  * @styleguideReference {johnpapa} `y032` controllerAs with vm
  * @version 0.1.0
+ * @category bestPractice
  */
 'use strict';
 
+var utils = require('./utils/utils');
+
 module.exports = function(context) {
-    var utils = require('./utils/utils');
     var badStatements = [];
     var badCaptureStatements = [];
     var controllerFunctions = [];

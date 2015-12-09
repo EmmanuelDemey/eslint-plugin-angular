@@ -9,12 +9,15 @@
  * @styleguideReference {johnpapa} `y120` Naming - Naming Guidelines
  * @styleguideReference {johnpapa} `y121` Naming - Feature File Names
  * @version 0.7.0
+ * @category naming
  */
 'use strict';
 
+var path = require('path');
+
+var utils = require('./utils/utils');
+
 module.exports = (function() {
-    var utils = require('./utils/utils');
-    var path = require('path');
     var fileEnding = '.js';
 
     var separators = {

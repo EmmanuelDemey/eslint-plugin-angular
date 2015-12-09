@@ -10,12 +10,13 @@
  * ('module-dependency-order', [2, {grouped: true, prefix: "app"}])
  *
  * @version 0.12.0
+ * @category conventions
  */
 'use strict';
 
-module.exports = function(context) {
-    var utils = require('./utils/utils');
+var utils = require('./utils/utils');
 
+module.exports = function(context) {
     var options = context.options[0] || {};
     var groupedMode = options.grouped !== false;
     var moduleRegex;

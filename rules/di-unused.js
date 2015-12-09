@@ -4,6 +4,7 @@
  * Unused dependencies should not be injected.
  *
  * @version 0.8.0
+ * @category bestPractice
  */
 'use strict';
 

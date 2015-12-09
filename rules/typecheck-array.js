@@ -4,12 +4,13 @@
  * You should use the angular.isArray method instead of the default JavaScript implementation (typeof [] === "[object Array]").
  *
  * @version 0.1.0
+ * @category angularWrapper
  */
 'use strict';
 
-module.exports = function(context) {
-    var utils = require('./utils/utils');
+var utils = require('./utils/utils');
 
+module.exports = function(context) {
     function recordError(node, origin) {
         if (node.type === 'Literal' && node.value === '[object Array]') {
             context.report(origin, 'You should use the angular.isArray method', {});

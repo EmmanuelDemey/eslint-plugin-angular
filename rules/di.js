@@ -4,13 +4,14 @@
  * All your DI should use the same syntax : the Array, function, or $inject syntaxes ("di":  [2, "array, function, or $inject"])
  *
  * @version 0.1.0
+ * @category conventions
  */
 'use strict';
 
-module.exports = function(context) {
-    var utils = require('./utils/utils');
+var utils = require('./utils/utils');
 
-    var angularNamedObjectList = ['value', 'factory', 'service', 'provider', 'controller', 'filter', 'directive'];
+module.exports = function(context) {
+    var angularNamedObjectList = ['factory', 'service', 'provider', 'controller', 'filter', 'directive'];
 
     function report(node, syntax) {
         context.report(node, 'You should use the {{syntax}} syntax for DI', {

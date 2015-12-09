@@ -8,6 +8,7 @@ var templates = {
     ruleDocumentationPath: _.template('docs/<%= ruleName %>.md'),
     ruleExamplesPath: _.template('examples/<%= ruleName %>.js'),
     styleguide: _.template('[<%= name %> by <%= type %> - <%= description %>](<%= link %>)'),
+    styleguideShort: _.template('[<%= name %>](<%= link %>)'),
     styleguideLinks: {
         johnpapa: _.template('https://github.com/johnpapa/angular-styleguide#style-<%= name %>')
     }
@@ -17,15 +18,16 @@ var templatesDir = './scripts/templates/';
 var templateSettings = {
     imports: {
         formatStyleguideReference: function(styleRef) {
-            var linkTemplate = templates.styleguideLinks[styleRef.type];
-            if (!linkTemplate) {
-                throw new Error('No styleguide link template for styleguide type: "' + styleRef.type);
+            return templates.styleguide(styleguideReferenceTemplateContext(styleRef));
+        },
+        formatStyleguideReferenceListShort: function(rule) {
+            if (!rule.styleguideReferences || rule.styleguideReferences.length === 0) {
+                return '';
             }
-            var templateContext = _.extend({
-                link: linkTemplate(styleRef)
-            }, styleRef);
-
-            return templates.styleguide(templateContext);
+            return ' (' + rule.styleguideReferences
+                    .map(styleguideReferenceTemplateContext)
+                    .map(templates.styleguideShort).join(', ') +
+                ')';
         },
         formatConfigAsJson: function(examples) {
             var config = examples[0].displayOptions;
@@ -59,3 +61,13 @@ fs.readdirSync(templatesDir).forEach(function(templateFilename) {
 });
 
 module.exports = templates;
+
+function styleguideReferenceTemplateContext(styleRef) {
+    var linkTemplate = templates.styleguideLinks[styleRef.type];
+    if (!linkTemplate) {
+        throw new Error('No styleguide link template for styleguide type: "' + styleRef.type);
+    }
+    return _.extend({
+        link: linkTemplate(styleRef)
+    }, styleRef);
+}

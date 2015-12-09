@@ -8,11 +8,13 @@
  * @linkDescription require and specify a consistent function style for components ('named' or 'anonymous')
  * @styleguideReference {johnpapa} `y024` Named vs Anonymous Functions
  * @version 0.1.0
+ * @category conventions
  */
 'use strict';
 
+var utils = require('./utils/utils');
+
 module.exports = function(context) {
-    var utils = require('./utils/utils');
     var angularObjectList = ['animation', 'config', 'constant', 'controller', 'directive', 'factory', 'filter', 'provider', 'service', 'value', 'decorator'];
     var configType = context.options[0] || 'anonymous';
     var messageByConfigType = {

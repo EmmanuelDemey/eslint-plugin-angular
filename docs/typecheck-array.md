@@ -13,6 +13,9 @@ The following patterns are considered problems;
     // invalid
     Object.prototype.toString.call(someArray) === '[object Array]'; // error: You should use the angular.isArray method
 
+    // invalid
+    Array.isArray(someArray) // error: You should use the angular.isArray method
+
 The following patterns are **not** considered problems;
 
     /*eslint angular/typecheck-array: 2*/

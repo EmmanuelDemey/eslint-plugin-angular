@@ -4,12 +4,13 @@
  * According to the Component-First pattern, we should avoid the use of AngularJS controller.
  *
  * @version 0.9.0
+ * @category bestPractice
  */
 'use strict';
 
-module.exports = function(context) {
-    var utils = require('./utils/utils');
+var utils = require('./utils/utils');
 
+module.exports = function(context) {
     return {
 
         CallExpression: function(node) {

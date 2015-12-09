@@ -7,11 +7,13 @@
  *
  * @styleguideReference {johnpapa} `y031` controllerAs Controller Syntax
  * @version 0.1.0
+ * @category bestPractice
  */
 'use strict';
 
+var utils = require('./utils/utils');
+
 module.exports = function(context) {
-    var utils = require('./utils/utils');
     var badStatements = [];
     var controllerFunctions = [];
 

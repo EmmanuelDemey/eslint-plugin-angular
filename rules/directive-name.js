@@ -8,11 +8,13 @@
  * @styleguideReference {johnpapa} `y073` Provide a Unique Directive Prefix
  * @styleguideReference {johnpapa} `y126` Directive Component Names
  * @version 0.1.0
+ * @category naming
  */
 'use strict';
 
+var utils = require('./utils/utils');
+
 module.exports = function(context) {
-    var utils = require('./utils/utils');
     if (context.settings.angular === 2) {
         return {};
     }

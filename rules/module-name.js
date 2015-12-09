@@ -7,12 +7,13 @@
  *
  * @styleguideReference {johnpapa} `y127` Naming - Modules
  * @version 0.1.0
+ * @category naming
  */
 'use strict';
 
-module.exports = function(context) {
-    var utils = require('./utils/utils');
+var utils = require('./utils/utils');
 
+module.exports = function(context) {
     return {
 
         CallExpression: function(node) {

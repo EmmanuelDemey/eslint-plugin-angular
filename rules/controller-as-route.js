@@ -5,12 +5,13 @@
  *
  * @styleguideReference {johnpapa} `y031` controllerAs Controller Syntax
  * @version 0.1.0
+ * @category bestPractice
  */
 'use strict';
 
-module.exports = function(context) {
-    var utils = require('./utils/utils');
+var utils = require('./utils/utils');
 
+module.exports = function(context) {
     return {
         CallExpression: function(node) {
             var routeObject = null;
@@ -45,7 +46,7 @@ module.exports = function(context) {
                 var isObjectState = node.arguments.length === 1;
                 stateObject = isObjectState ? node.arguments[0] : node.arguments[1];
 
-                if (stateObject.properties) {
+                if (stateObject && stateObject.properties) {
                     stateObject.properties.forEach(function(prop) {
                         if (prop.key.name === 'controller') {
                             controllerProp = prop;

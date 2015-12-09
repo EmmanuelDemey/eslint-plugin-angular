@@ -8,12 +8,13 @@
  *
  * @styleguideReference {johnpapa} `y074` Restrict to Elements and Attributes
  * @version 0.12.0
+ * @category bestPractice
  */
 'use strict';
 
-module.exports = function(context) {
-    var utils = require('./utils/utils');
+var utils = require('./utils/utils');
 
+module.exports = function(context) {
     var options = context.options[0] || {};
     var restrictOpt = options.restrict || 'AE';
     var explicitRestrict = options.explicit === 'always';

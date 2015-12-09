@@ -3,7 +3,8 @@
 var fs = require('fs');
 var parseComments = require('parse-comments');
 var _ = require('lodash');
-var eslintAngularIndex = require('../index.js');
+var eslintAngularIndex = require('../index');
+var ruleCategories = require('./ruleCategories.json');
 var RuleTester = require('eslint').RuleTester;
 
 var templates = require('./templates.js');
@@ -41,7 +42,15 @@ function createDocFiles(cb) {
  * @param cb callback
  */
 function updateReadme(readmePath, cb) {
-    var readmeRuleSection = templates.readmeRuleSectionContent(this);
+    ruleCategories.rulesByCategory = _.groupBy(this.rules, 'category');
+
+    // filter categories without rules
+    ruleCategories.categoryOrder = ruleCategories.categoryOrder.filter(function(categoryName) {
+        var rulesForCategory = ruleCategories.rulesByCategory[categoryName];
+        return rulesForCategory && rulesForCategory.length > 0;
+    });
+
+    var readmeRuleSection = templates.readmeRuleSectionContent(ruleCategories);
     var readmeContent = fs.readFileSync(readmePath).toString();
 
     // use split and join to prevent the replace() and dollar sign problem (http://stackoverflow.com/questions/9423722)
@@ -175,13 +184,21 @@ function _createRule(ruleName) {
     rule.linkDescription = mainRuleComment.linkDescription ? mainRuleComment.linkDescription : rule.lead;
     rule.styleguideReferences = mainRuleComment.styleguideReferences || [];
     rule.version = mainRuleComment.version;
+    rule.category = mainRuleComment.category || 'uncategorizedRule';
+
+    rule.deprecated = !!mainRuleComment.deprecated;
+
+    if (rule.deprecated) {
+        rule.deprecationReason = mainRuleComment.deprecated;
+        rule.category = 'deprecatedRule';
+    }
 
     if (!rule.version) {
         throw new Error('No @version found for ' + ruleName);
     }
 
     // load rule module for tests
-    rule.module = require('../rules/' + rule.ruleName);
+    rule.module = require('../rules/' + rule.ruleName);  // eslint-disable-line global-require
 
     // load examples, prepare them for the tests and group the for the template
     rule.allExamples = _loadExamples(rule);

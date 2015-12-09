@@ -3,7 +3,7 @@
 function Rule(name, config) {
     this.name = name;
     this.config = config;
-    this._requireRule = require('../' + this.name);
+    this._requireRule = require('../' + this.name);  // eslint-disable-line global-require
 }
 
 Rule.prototype = {

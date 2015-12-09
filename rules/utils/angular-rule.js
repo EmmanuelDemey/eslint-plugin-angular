@@ -184,9 +184,6 @@ function angularRule(ruleDefinition) {
     function findFunctionByNode(callExpressionNode, scope) {
         var node;
         if (callExpressionNode.callee.type === 'Identifier') {
-            if (callExpressionNode.callee.name !== 'inject') {
-                return;
-            }
             node = callExpressionNode.arguments[0];
         } else if (callExpressionNode.callee.property.name === 'run' || callExpressionNode.callee.property.name === 'config') {
             node = callExpressionNode.arguments[0];

@@ -4,12 +4,13 @@
  * You should use the angular.isNumber method instead of the default JavaScript implementation (typeof 3 === "[object Number]").
  *
  * @version 0.1.0
+ * @category angularWrapper
  */
 'use strict';
 
-module.exports = function(context) {
-    var utils = require('./utils/utils');
+var utils = require('./utils/utils');
 
+module.exports = function(context) {
     function recordError(node, origin) {
         if (node.type === 'Literal' && (node.value === 'number' || node.value === '[object Number]')) {
             context.report(origin, 'You should use the angular.isNumber method', {});
