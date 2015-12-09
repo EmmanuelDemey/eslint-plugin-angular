@@ -191,6 +191,7 @@ These are rules designed to prevent you from making mistakes. They either prescr
 These rules prevent you from using deprecated angular features.
 
  * [no-cookiestore](docs/no-cookiestore.md) - use `$cookies` instead of `$cookieStore`
+ * [no-directive-replace](docs/no-directive-replace.md) - disallow the deprecated directive replace property
  * [no-http-callback](docs/no-http-callback.md) - disallow the `$http` methods `success()` and `error()`
 
 ## Naming
