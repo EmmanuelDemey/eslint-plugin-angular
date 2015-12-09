@@ -26,7 +26,8 @@ eslintTester.run('controller-as-route', rule, {
         'var state = "mystate2"',
         'something[type][changeType][state](test)',
         'var when = "mystate2"',
-        'something[type][changeType][when](test)'
+        'something[type][changeType][when](test)',
+        '$stateProvider.state();'
     ].concat(commonFalsePositives),
     invalid: [
         {code: '$routeProvider.when("/myroute", {controller: "MyController"})',

@@ -46,7 +46,7 @@ module.exports = function(context) {
                 var isObjectState = node.arguments.length === 1;
                 stateObject = isObjectState ? node.arguments[0] : node.arguments[1];
 
-                if (stateObject.properties) {
+                if (stateObject && stateObject.properties) {
                     stateObject.properties.forEach(function(prop) {
                         if (prop.key.name === 'controller') {
                             controllerProp = prop;
