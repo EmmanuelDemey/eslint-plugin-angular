@@ -276,6 +276,14 @@ We appreciate contributions and the following notes will help you before you ope
 
 Have a look at the existing issues. There may exist similar issues with useful information.
 
+### Read the documentation
+
+There are some useful references for creating new rules. Specificly useful are:
+
+* [The Context Object](http://eslint.org/docs/developer-guide/working-with-rules#the-context-object) - This is the most basic understanding needed for adding or modifying a rule.
+* [Options Schemas](http://eslint.org/docs/developer-guide/working-with-rules#options-schemas) - This is the preferred way for validating configuration options.
+* [Scope](http://estools.github.io/escope/Scope.html) - This is the scope object returned by `context.getScope()`.
+
 ### Files you have to create
 
 * `rules/<your-rule>.js`
