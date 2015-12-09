@@ -113,6 +113,7 @@ Users may use the shareable [eslint-config-angular](https://github.com/dustinspe
         "angular/directive-name": 0,
         "angular/directive-restrict": 0,
         "angular/document-service": 2,
+        "angular/dumb-inject": 0,
         "angular/empty-controller": 0,
         "angular/file-name": 0,
         "angular/filter-name": 0,
@@ -129,7 +130,9 @@ Users may use the shareable [eslint-config-angular](https://github.com/dustinspe
         "angular/no-controller": 0,
         "angular/no-cookiestore": 2,
         "angular/no-digest": 0,
-        "angular/no-http-callback": 0,
+        "angular/no-directive": 0,
+        "angular/no-directive-replace": 0,
+        "angular/no-http-callback": -1,
         "angular/no-inline-template": [0, {"allowSimple": true}],
         "angular/no-jquery-angularelement": 2,
         "angular/no-private-call": 2,
@@ -183,6 +186,7 @@ These are rules designed to prevent you from making mistakes. They either prescr
  * [directive-restrict](docs/directive-restrict.md) - disallow any other directive restrict than 'A' or 'E' ([y074](https://github.com/johnpapa/angular-styleguide#style-y074))
  * [empty-controller](docs/empty-controller.md) - disallow empty controllers
  * [no-controller](docs/no-controller.md) - disallow use of controllers (according to the component first pattern)
+ * [no-directive](docs/no-directive.md) - 
  * [no-inline-template](docs/no-inline-template.md) - disallow the use of inline templates
  * [no-run-logic](docs/no-run-logic.md) - keep run functions clean and simple ([y171](https://github.com/johnpapa/angular-styleguide#style-y171))
  * [no-services](docs/no-services.md) - disallow DI of specified services for other angular components (`$http` for controllers, filters and directives)
@@ -216,7 +220,6 @@ Angular often provide multi ways to to something. These rules help you to define
  * [dumb-inject](docs/dumb-inject.md) - unittest `inject` functions should only consist of assignments from injected values to describe block variables
  * [function-type](docs/function-type.md) - require and specify a consistent function style for components ('named' or 'anonymous') ([y024](https://github.com/johnpapa/angular-styleguide#style-y024))
  * [module-dependency-order](docs/module-dependency-order.md) - require a consistent order of module dependencies
- * [no-directive](docs/no-directive.md) - 
  * [no-service-method](docs/no-service-method.md) - use `factory()` instead of `service()` ([y040](https://github.com/johnpapa/angular-styleguide#style-y040))
  * [one-dependency-per-line](docs/one-dependency-per-line.md) - require all DI parameters to be located in their own line
  * [rest-service](docs/rest-service.md) - disallow different rest service and specify one of '$http', '$resource', 'Restangular'

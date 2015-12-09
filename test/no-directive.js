@@ -14,12 +14,12 @@ var RuleTester = require('eslint').RuleTester;
 var eslintTester = new RuleTester();
 eslintTester.run('no-directive', rule, {
     valid: [
-        'module.component("", {})',
-        'module.component("", obj)'
+        'angular.module("").component("", {})',
+        'angular.module("").component("", obj)'
     ],
     invalid: [
-        {code: 'module.directive("", function(){});', errors: [{message: 'Directive should be implemented wiith the "component" method'}]},
-        {code: 'module.directive("", fn);', errors: [{message: 'Directive should be implemented wiith the "component" method'}]}
+        {code: 'angular.module("").directive("", function(){});', errors: [{message: 'Directive should be implemented with the component method'}]},
+        {code: 'angular.module("").directive("", fn);', errors: [{message: 'Directive should be implemented with the component method'}]}
     ]
 });
 
