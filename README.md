@@ -100,6 +100,7 @@ Users may use the shareable [eslint-config-angular](https://github.com/dustinspe
     ],
     "rules": {
         "angular/angularelement": 1,
+        "angular/component-limit": [0, 1],
         "angular/controller-as": 2,
         "angular/controller-as-route": 2,
         "angular/controller-as-vm": [2, "vm"],
@@ -107,10 +108,10 @@ Users may use the shareable [eslint-config-angular](https://github.com/dustinspe
         "angular/deferred": 0,
         "angular/definedundefined": 2,
         "angular/di": [2, "function"],
-        "angular/di-order": [0, true],
+        "angular/di-order": 0,
+        "angular/di-unused": 0,
         "angular/directive-name": 0,
-        "angular/directive-restrict": [0, {"restrict": "AE", "explicit": "never"}],
-        "angular/component-limit": [0, 1],
+        "angular/directive-restrict": 0,
         "angular/document-service": 2,
         "angular/empty-controller": 0,
         "angular/file-name": 0,
@@ -120,25 +121,25 @@ Users may use the shareable [eslint-config-angular](https://github.com/dustinspe
         "angular/interval-service": 2,
         "angular/json-functions": 2,
         "angular/log": 2,
-        "angular/module-dependency-order": [0, {"grouped": true, "prefix": null}],
+        "angular/module-dependency-order": [0, {"grouped": false, "prefix": null}],
         "angular/module-getter": 2,
         "angular/module-name": 0,
         "angular/module-setter": 2,
         "angular/no-angular-mock": 0,
         "angular/no-controller": 0,
         "angular/no-cookiestore": 2,
-        "angular/no-digest": 2,
-        "angular/no-http-callback": 2,
+        "angular/no-digest": 0,
+        "angular/no-http-callback": 0,
         "angular/no-inline-template": [0, {"allowSimple": true}],
         "angular/no-jquery-angularelement": 2,
         "angular/no-private-call": 2,
-        "angular/no-run-logic": [0, {"allowParams": true}],
+        "angular/no-run-logic": 0,
+        "angular/no-services": [2, ["$http", "$resource", "Restangular", "$q"]],
         "angular/no-service-method": 2,
-        "angular/no-services": [2, ["$http", "$resource", "Restangular"]],
         "angular/on-watch": 2,
         "angular/one-dependency-per-line": 0,
         "angular/rest-service": 0,
-        "angular/service-name": 2,
+        "angular/service-name": 0,
         "angular/timeout-service": 2,
         "angular/typecheck-array": 2,
         "angular/typecheck-date": 2,
@@ -153,6 +154,7 @@ Users may use the shareable [eslint-config-angular](https://github.com/dustinspe
 }
 ```
 
+----
 
 
 ## Rules
@@ -191,6 +193,7 @@ These are rules designed to prevent you from making mistakes. They either prescr
 These rules prevent you from using deprecated angular features.
 
  * [no-cookiestore](docs/no-cookiestore.md) - use `$cookies` instead of `$cookieStore`
+ * [no-directive-replace](docs/no-directive-replace.md) - disallow the deprecated directive replace property
  * [no-http-callback](docs/no-http-callback.md) - disallow the `$http` methods `success()` and `error()`
 
 ## Naming
