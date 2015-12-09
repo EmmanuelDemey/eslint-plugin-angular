@@ -35,7 +35,7 @@ rulesConfiguration.addRule('no-cookiestore', 2);
 rulesConfiguration.addRule('no-digest', 0);
 rulesConfiguration.addRule('no-directive-replace', 0);
 rulesConfiguration.addRule('no-http-callback', 0);
-rulesConfiguration.addRule('no-inline-template', [0, {'allow-simple': true}]);
+rulesConfiguration.addRule('no-inline-template', [0, {allowSimple: true}]);
 rulesConfiguration.addRule('no-jquery-angularelement', 2);
 rulesConfiguration.addRule('no-private-call', 2);
 rulesConfiguration.addRule('no-run-logic', 0);
@@ -53,7 +53,7 @@ rulesConfiguration.addRule('typecheck-number', 2);
 rulesConfiguration.addRule('typecheck-object', 2);
 rulesConfiguration.addRule('typecheck-regexp', 2);
 rulesConfiguration.addRule('typecheck-string', 2);
-rulesConfiguration.addRule('watchers-execution', [0, '$destroy']);
+rulesConfiguration.addRule('watchers-execution', [0, '$digest']);
 rulesConfiguration.addRule('window-service', 2);
 
 module.exports = rulesConfiguration.moduleExports();
