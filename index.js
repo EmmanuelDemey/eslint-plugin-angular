@@ -33,7 +33,6 @@ rulesConfiguration.addRule('no-angular-mock', 0);
 rulesConfiguration.addRule('no-controller', 0);
 rulesConfiguration.addRule('no-cookiestore', 2);
 rulesConfiguration.addRule('no-digest', 0);
-rulesConfiguration.addRule('no-directive', 0);
 rulesConfiguration.addRule('no-directive-replace', 0);
 rulesConfiguration.addRule('no-http-callback', -1);
 rulesConfiguration.addRule('no-inline-template', [0, {allowSimple: true}]);
@@ -44,6 +43,7 @@ rulesConfiguration.addRule('no-services', [2, ['$http', '$resource', 'Restangula
 rulesConfiguration.addRule('no-service-method', 2);
 rulesConfiguration.addRule('on-watch', 2);
 rulesConfiguration.addRule('one-dependency-per-line', 0);
+rulesConfiguration.addRule('prefer-component', 0);
 rulesConfiguration.addRule('rest-service', 0);
 rulesConfiguration.addRule('service-name', 0);
 rulesConfiguration.addRule('timeout-service', 2);
