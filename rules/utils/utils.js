@@ -50,7 +50,8 @@ module.exports = {
     isRouteDefinition: isRouteDefinition,
     isUIRouterStateDefinition: isUIRouterStateDefinition,
     findIdentiferInScope: findIdentiferInScope,
-    getControllerDefinition: getControllerDefinition
+    getControllerDefinition: getControllerDefinition,
+    isAngularServiceImport: isAngularServiceImport
 };
 
 
@@ -495,4 +496,17 @@ function getControllerDefinition(context, node) {
     if (isIdentifierType(controllerArg)) {
         return findIdentiferInScope(context, controllerArg);
     }
+}
+
+/**
+ * Check if the imported service support these two syntaxes : serviceName and _serviceName_
+ *
+ * @param {string} parameterName The label of the parameter.
+ * @param {string} serviceName The name of the service.
+ *
+ * @returns {boolean} True if the service use on of these previous syntaxes.
+ */
+function isAngularServiceImport(parameterName, serviceName) {
+    var r = new RegExp('^\_?' + serviceName.replace(/[!@#$%^&*()+=\-[\]\\';,./{}|":<>?~_]/g, '\\$&') + '\_?$', 'i');
+    return r.test(parameterName);
 }
