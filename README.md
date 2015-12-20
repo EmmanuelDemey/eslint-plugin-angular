@@ -113,6 +113,7 @@ Users may use the shareable [eslint-config-angular](https://github.com/dustinspe
         "angular/directive-name": 0,
         "angular/directive-restrict": 0,
         "angular/document-service": 2,
+        "angular/dumb-inject": 0,
         "angular/empty-controller": 0,
         "angular/file-name": 0,
         "angular/filter-name": 0,
@@ -129,7 +130,8 @@ Users may use the shareable [eslint-config-angular](https://github.com/dustinspe
         "angular/no-controller": 0,
         "angular/no-cookiestore": 2,
         "angular/no-digest": 0,
-        "angular/no-http-callback": 0,
+        "angular/no-directive-replace": 0,
+        "angular/no-http-callback": -1,
         "angular/no-inline-template": [0, {"allowSimple": true}],
         "angular/no-jquery-angularelement": 2,
         "angular/no-private-call": 2,
@@ -138,6 +140,7 @@ Users may use the shareable [eslint-config-angular](https://github.com/dustinspe
         "angular/no-service-method": 2,
         "angular/on-watch": 2,
         "angular/one-dependency-per-line": 0,
+        "angular/prefer-component": 0,
         "angular/rest-service": 0,
         "angular/service-name": 0,
         "angular/timeout-service": 2,
@@ -187,6 +190,7 @@ These are rules designed to prevent you from making mistakes. They either prescr
  * [no-run-logic](docs/no-run-logic.md) - keep run functions clean and simple ([y171](https://github.com/johnpapa/angular-styleguide#style-y171))
  * [no-services](docs/no-services.md) - disallow DI of specified services for other angular components (`$http` for controllers, filters and directives)
  * [on-watch](docs/on-watch.md) - require `$on` and `$watch` deregistration callbacks to be saved in a variable
+ * [prefer-component](docs/prefer-component.md) - 
 
 ## Deprecated Angular Features
 
