@@ -22,8 +22,19 @@ module.exports = angularRule(function(context) {
         });
     }
 
+    var nonInjectedFunctions = {};
+    var injectedFunctions = [];
+
+    function maybeNoteInjection(node) {
+        if (syntax === '$inject' && node.left && node.left.property &&
+            ((utils.isLiteralType(node.left.property) && node.left.property.value === '$inject') ||
+            (utils.isIdentifierType(node.left.property) && node.left.property.name === '$inject'))) {
+            injectedFunctions.push(node.left.object.name);
+        }
+    }
+
     function checkDi(callee, fn) {
-        if (!fn || !fn.params) {
+        if (!fn) {
             return;
         }
 
@@ -46,6 +57,26 @@ module.exports = angularRule(function(context) {
                 report(fn);
             }
         }
+
+        if (syntax === '$inject') {
+            if (fn.params.length === 0) {
+                return;
+            }
+            if (fn && fn.id && utils.isIdentifierType(fn.id)) {
+                nonInjectedFunctions[fn.id.name] = fn;
+            } else {
+                report(fn);
+            }
+
+            // verify injections
+            injectedFunctions.forEach(function(f) {
+                delete nonInjectedFunctions[f];
+            });
+
+            for (var func in nonInjectedFunctions) {
+                report(nonInjectedFunctions[func]);
+            }
+        }
     }
 
     return {
@@ -61,6 +92,9 @@ module.exports = angularRule(function(context) {
         'angular:provider': function(callee, providerFn, $get) {
             checkDi(null, providerFn);
             checkDi(null, $get);
+        },
+        AssignmentExpression: function(node) {
+            maybeNoteInjection(node);
         }
     };
 });

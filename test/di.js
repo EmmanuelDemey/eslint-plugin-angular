@@ -36,7 +36,7 @@ angularObjectList.forEach(function(object) {
         code: 'angular.module("myModule").' + object + '(myFunction);myFunction.$inject=[];function myFunction() {}',
         options: ['$inject']
     }, {
-        code: 'angular.module("myModule").' + object + '(myFunction);myFunction["$inject"]=[];function myFunction() {}',
+        code: 'angular.module("myModule").' + object + '(myFunction);myFunction["$inject"]=["myService"];function myFunction(myService) {}',
         options: ['$inject']
     }, {
         code: 'myFunction.$inject=[];function myFunction() {} angular.module("myModule").' + object + '(myFunction);',
@@ -65,6 +65,14 @@ angularObjectList.forEach(function(object) {
         code: 'angular.module("myModule").' + object + '([function(Service1) {}]);',
         options: ['array'],
         errors: [{message: 'The signature of the method is incorrect'}]
+    }, {
+        code: 'angular.module("myModule").' + object + '(myFunction); function myFunction(myService) {}',
+        options: ['$inject'],
+        errors: [{message: 'You should use the $inject syntax for DI'}]
+    }, {
+        code: 'function myFunction(myService) {} angular.module("myModule").' + object + '(myFunction);',
+        options: ['$inject'],
+        errors: [{message: 'You should use the $inject syntax for DI'}]
     });
 });
 
@@ -85,16 +93,19 @@ angularNamedObjectList.forEach(function(object) {
         code: 'angular.module("myModule").' + object + '("name", myFunction);function MyFunction() {}',
         options: ['function']
     }, {
-        code: 'angular.module("myModule").' + object + '("name", myFunction);myFunction.$inject=[];function myFunction() {}',
+        code: 'angular.module("myModule").' + object + '("name", function() {});',
         options: ['$inject']
     }, {
-        code: 'myFunction.$inject=[];function myFunction() {} angular.module("myModule").' + object + '("name", myFunction);',
+        code: 'angular.module("myModule").' + object + '("name", myFunction);myFunction.$inject=["myService"];function myFunction(myService) {}',
         options: ['$inject']
     }, {
-        code: 'function myFunction() {} myFunction.$inject=[];angular.module("myModule").' + object + '("name", myFunction);',
+        code: 'myFunction.$inject=["myService"];function myFunction(myService) {} angular.module("myModule").' + object + '("name", myFunction);',
         options: ['$inject']
     }, {
-        code: 'var myFunction = function() {}; myFunction.$inject=[];angular.module("myModule").' + object + '("name", myFunction);',
+        code: 'function myFunction(myService) {} myFunction.$inject=["myService"];angular.module("myModule").' + object + '("name", myFunction);',
+        options: ['$inject']
+    }, {
+        code: 'var myFunction = function(myService) {}; myFunction.$inject=["myService"];angular.module("myModule").' + object + '("name", myFunction);',
         options: ['$inject']
     });
 
@@ -114,6 +125,18 @@ angularNamedObjectList.forEach(function(object) {
         code: 'angular.module("myModule").' + object + '("name", [function(Service1) {}]);',
         options: ['array'],
         errors: [{message: 'The signature of the method is incorrect'}]
+    }, {
+        code: 'angular.module("myModule").' + object + '("name", function (myService) {});',
+        options: ['$inject'],
+        errors: [{message: 'You should use the $inject syntax for DI'}]
+    }, {
+        code: 'angular.module("myModule").' + object + '("name", myFunction); function myFunction(myService) {}',
+        options: ['$inject'],
+        errors: [{message: 'You should use the $inject syntax for DI'}]
+    }, {
+        code: 'function myFunction(myService) {} angular.module("myModule").' + object + '("name", myFunction);',
+        options: ['$inject'],
+        errors: [{message: 'You should use the $inject syntax for DI'}]
     });
 });
 
