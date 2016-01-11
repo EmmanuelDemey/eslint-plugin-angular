@@ -21,6 +21,9 @@ angularObjectList.forEach(function(object) {
         code: 'angular.' + object + '(function() {});',
         options: ['function']
     }, {
+        code: 'angular.' + object + '(function() {});',
+        options: ['array']
+    }, {
         code: 'angular.' + object + '([function() {}]);',
         options: ['array']
     }, {
@@ -47,7 +50,7 @@ angularObjectList.forEach(function(object) {
     });
 
     invalid.push({
-        code: 'angular.' + object + '(function() {});',
+        code: 'angular.' + object + '(function(myService) {});',
         options: ['array'],
         errors: [{message: 'You should use the array syntax for DI'}]
     }, {
@@ -86,6 +89,9 @@ angularNamedObjectList.forEach(function(object) {
         code: 'angular.' + object + '("name", function() {});',
         options: ['function']
     }, {
+        code: 'angular.' + object + '("name", function() {});',
+        options: ['array']
+    }, {
         code: 'angular.' + object + '("name", [function() {}]);',
         options: ['array']
     }, {
@@ -109,7 +115,7 @@ angularNamedObjectList.forEach(function(object) {
     });
 
     invalid.push({
-        code: 'angular.' + object + '("name", function() {});',
+        code: 'angular.' + object + '("name", function(myService) {});',
         options: ['array'],
         errors: [{message: 'You should use the array syntax for DI'}]
     }, {

@@ -31,7 +31,7 @@ module.exports = function(context) {
                 if (utils.isFunctionType(fn) && fn.params.length !== param.elements.length - 1) {
                     context.report(fn, 'The signature of the method is incorrect', {});
                 }
-            } else {
+            } else if (!(utils.isFunctionType(param) && param.params.length === 0)) {
                 report(node, syntax);
             }
         } else if (syntax === '$inject') {
