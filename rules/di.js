@@ -22,14 +22,13 @@ module.exports = angularRule(function(context) {
         });
     }
 
-    var nonInjectedFunctions = {};
-    var injectedFunctions = [];
+    var $injectProperties = {};
 
     function maybeNoteInjection(node) {
         if (syntax === '$inject' && node.left && node.left.property &&
             ((utils.isLiteralType(node.left.property) && node.left.property.value === '$inject') ||
             (utils.isIdentifierType(node.left.property) && node.left.property.name === '$inject'))) {
-            injectedFunctions.push(node.left.object.name);
+            $injectProperties[node.left.object.name] = node.right;
         }
     }
 
@@ -63,18 +62,17 @@ module.exports = angularRule(function(context) {
                 return;
             }
             if (fn && fn.id && utils.isIdentifierType(fn.id)) {
-                nonInjectedFunctions[fn.id.name] = fn;
+                var $injectArray = $injectProperties[fn.id.name];
+                if ($injectArray && utils.isArrayType($injectArray)) {
+                    if ($injectArray.elements.length !== fn.params.length) {
+                        context.report(fn, 'The signature of the method is incorrect', {});
+                        return;
+                    }
+                } else {
+                    report(fn);
+                }
             } else {
                 report(fn);
-            }
-
-            // verify injections
-            injectedFunctions.forEach(function(f) {
-                delete nonInjectedFunctions[f];
-            });
-
-            for (var func in nonInjectedFunctions) {
-                report(nonInjectedFunctions[func]);
             }
         }
     }

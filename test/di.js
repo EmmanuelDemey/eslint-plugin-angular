@@ -73,6 +73,10 @@ angularObjectList.forEach(function(object) {
         code: 'function myFunction(myService) {} angular.module("myModule").' + object + '(myFunction);',
         options: ['$inject'],
         errors: [{message: 'You should use the $inject syntax for DI'}]
+    }, {
+        code: 'function myFunction(myService) {} myFunction.$inject=[];angular.module("myModule").' + object + '(myFunction);',
+        options: ['$inject'],
+        errors: [{message: 'The signature of the method is incorrect'}]
     });
 });
 
