@@ -83,6 +83,9 @@ module.exports = (function() {
             if (options.nameStyle) {
                 name = filenameUtil.transformComponentName(name, options);
             }
+            if (options.fileEnding) {
+                fileEnding = options.fileEnding;
+            }
             if (typeSeparator !== undefined) {
                 name = name + typeSeparator + type;
             }
@@ -100,18 +103,34 @@ module.exports = (function() {
                 if (utils.isAngularComponent(node) && utils.isMemberExpression(node.callee)) {
                     var name = node.arguments[0].value;
                     var type = componentTypeMappings[node.callee.property.name];
-                    var expectedName;
+                    var expectedName, exts, fileNameMatches;
 
                     if (type === undefined || (type === 'service' && node.callee.object.name === '$provide')) {
                         return;
                     }
 
                     expectedName = filenameUtil.createExpectedName(name, type, options);
+                    
+                    if (options.fileEnding) {
+                        exts = options.fileEnding;
+                        fileNameMatches = exts.reduce(function (result, ext) {
+                            return result || (expectedName + ext) === filename;
+                        }, false);
+                    } else {
+                        fileNameMatches = (expectedName + fileEnding) === filename;
+                    }
 
-                    if (expectedName !== filename) {
-                        context.report(node, 'Filename must be "{{expectedName}}"', {
-                            expectedName: expectedName
-                        });
+                    if (!fileNameMatches) {
+                        if (options.fileEnding) {
+                            context.report(node, 'Filename must be "{{expectedName}}"', {
+                                expectedName: expectedName
+                            });
+                        } else {
+                            context.report(node, 'Filename must be "{{expectedName}}"', {
+                                expectedName: expectedName + fileEnding
+                            });
+                        }
+
                     }
                 }
             }
