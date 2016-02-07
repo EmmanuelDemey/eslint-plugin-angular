@@ -83,9 +83,7 @@ module.exports = (function() {
             if (options.nameStyle) {
                 name = filenameUtil.transformComponentName(name, options);
             }
-            if (options.fileEnding) {
-                fileEnding = options.fileEnding;
-            }
+            
             if (typeSeparator !== undefined) {
                 name = name + typeSeparator + type;
             }
