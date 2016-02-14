@@ -34,4 +34,3 @@ eslintTester.run('ng_angularelement', rules.ng_angularelement, {
         {code: '$( )', errors: [{message: 'You should use angular.element instead of the jQuery $ object'}]}
     ]
 });
-

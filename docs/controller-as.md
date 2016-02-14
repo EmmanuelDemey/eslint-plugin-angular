@@ -29,7 +29,7 @@ The following patterns are **not** considered problems;
     angular.module("myModule").controller("SomeController", function($scope) {
         // this for values
         this.value = 42;
-
+    
         // $scope is fine for watchers
         $scope.$watch(angular.bind(this, function () {
             return this.value
