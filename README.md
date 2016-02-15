@@ -96,7 +96,7 @@ Users may use the shareable [eslint-config-angular](https://github.com/dustinspe
 ```json
 {
     "plugins": [
-        "angular/angular"
+        "angular"
     ],
     "rules": {
         "angular/angularelement": 0,
