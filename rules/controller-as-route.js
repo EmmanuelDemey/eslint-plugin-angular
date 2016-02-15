@@ -28,8 +28,19 @@ module.exports = function(context) {
                     routeObject.properties.forEach(function(prop) {
                         if (prop.key.name === 'controller') {
                             controllerProp = prop;
+
+                            if (new RegExp('\\sas\\s').test(prop.value.value)) {
+                                hasControllerAs = true;
+                            }
                         }
+
                         if (prop.key.name === 'controllerAs') {
+                            if (hasControllerAs) {
+                                context.report(node, 'The controllerAs syntax is defined twice for the route "{{route}}"', {
+                                    route: node.arguments[0].value
+                                });
+                            }
+
                             hasControllerAs = true;
                         }
                     });

@@ -16,6 +16,7 @@ var eslintTester = new RuleTester();
 eslintTester.run('controller-as-route', rule, {
     valid: [
         '$routeProvider.when("/myroute", {controller: "MyController", controllerAs: "vm"})',
+        '$routeProvider.when("/myroute", {controller: "MyController as vm"})',
         '$routeProvider.when("/myroute2", {template: "<div></div>"})',
         '$stateProvider.state("mystate", {controller: "MyController", controllerAs: "vm"})',
         '$stateProvider.state("mystate2", {controller: "MyController as vm"})',
@@ -30,6 +31,8 @@ eslintTester.run('controller-as-route', rule, {
         '$stateProvider.state();'
     ].concat(commonFalsePositives),
     invalid: [
+        {code: '$routeProvider.when("/myroute", {controller: "MyController as vm", controllerAs: "vm"})',
+            errors: [{message: 'The controllerAs syntax is defined twice for the route "/myroute"'}]},
         {code: '$routeProvider.when("/myroute", {controller: "MyController"})',
             errors: [{message: 'Route "/myroute" should use controllerAs syntax'}]},
         {code: '$routeProvider.when("/myroute", {controller: "MyController", controllerAs: "vm"}).when("/myroute2", {controller: "MyController"})',

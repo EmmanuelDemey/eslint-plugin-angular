@@ -136,7 +136,7 @@ Users may use the shareable [eslint-config-angular](https://github.com/dustinspe
         "angular/no-jquery-angularelement": 2,
         "angular/no-private-call": 2,
         "angular/no-run-logic": 0,
-        "angular/no-services": [2, ["$http", "$resource", "Restangular", "$q"]],
+        "angular/no-services": [2, ["$http", "$resource", "Restangular", "$q", "$filter"]],
         "angular/no-service-method": 2,
         "angular/on-watch": 2,
         "angular/one-dependency-per-line": 0,
