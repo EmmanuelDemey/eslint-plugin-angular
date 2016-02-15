@@ -15,11 +15,11 @@ The following patterns are considered problems;
     describe(function() {
         var $httpBackend;
         var $rootScope;
-    
+
         beforeEach(inject(function(_$httpBackend_, _$rootScope_) {
             $httpBackend = _$httpBackend_;
             $rootScope = _$rootScope_;
-    
+
             $httpBackend.whenGET('/data').respond([]);
         }));
     }); // error: inject functions may only consist of assignments in the form myService = _myService_
@@ -28,7 +28,7 @@ The following patterns are considered problems;
     describe(function() {
         var $httpBackend;
         var $rootScope;
-    
+
         beforeEach(inject(function(_$httpBackend_, _$rootScope_) {
             $rootScope = _$rootScope_;
             $httpBackend = _$httpBackend_;
@@ -43,12 +43,12 @@ The following patterns are **not** considered problems;
     describe(function() {
         var $httpBackend;
         var $rootScope;
-    
+
         beforeEach(inject(function(_$httpBackend_, _$rootScope_) {
             $httpBackend = _$httpBackend_;
             $rootScope = _$rootScope_;
         }));
-    
+
         beforeEach(function() {
             $httpBackend.whenGET('/data').respond([]);
         });

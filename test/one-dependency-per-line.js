@@ -58,3 +58,4 @@ eslintTester.run('one-dependency-per-line', rule, {
         errors: [{message: 'Do not use multiple dependencies in one line'}]
     }]
 });
+

@@ -12,7 +12,7 @@ The following patterns are considered problems;
 
     // invalid
     app.controller('MyController', MyController);
-    
+
     function MyController($http, $q) {} // error: Do not use multiple dependencies in one line
 
     // invalid
@@ -32,7 +32,7 @@ The following patterns are considered problems;
 
     // invalid
     app.controller('MyController', ['$http', '$q', MyController]);
-    
+
     function MyController($http,
                           $q) {} // error: Do not use multiple dependencies in one line
 
@@ -41,7 +41,7 @@ The following patterns are considered problems;
         '$http',
         '$q',
         MyController]);
-    
+
     function MyController($http, $q) {} // error: Do not use multiple dependencies in one line
 
     // invalid
@@ -54,7 +54,7 @@ The following patterns are **not** considered problems;
 
     // valid
     app.controller('MyController', MyController);
-    
+
     function MyController($http,
                           $q) {
     }
@@ -77,7 +77,7 @@ The following patterns are **not** considered problems;
         '$http',
         '$q',
         MyController]);
-    
+
     function MyController($http,
                           $q) {
     }

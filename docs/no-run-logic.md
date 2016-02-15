@@ -17,7 +17,7 @@ The following patterns are considered problems with default config;
     // invalid
     angular.module('app').run(function($window) {
         $window.addEventListener('deviceready', deviceready);
-    
+
         function deviceready() {}
     }); // error: The run function may only contain call expressions
 
