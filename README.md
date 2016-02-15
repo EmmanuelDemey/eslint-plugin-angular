@@ -129,7 +129,6 @@ Users may use the shareable [eslint-config-angular](https://github.com/dustinspe
         "angular/no-angular-mock": 0,
         "angular/no-controller": 0,
         "angular/no-cookiestore": 2,
-        "angular/no-digest": 0,
         "angular/no-directive-replace": 0,
         "angular/no-http-callback": 0,
         "angular/no-inline-template": [0, {"allowSimple": true}],
@@ -148,7 +147,6 @@ Users may use the shareable [eslint-config-angular](https://github.com/dustinspe
         "angular/typecheck-function": 2,
         "angular/typecheck-number": 2,
         "angular/typecheck-object": 2,
-        "angular/typecheck-regexp": 2,
         "angular/typecheck-string": 2,
         "angular/watchers-execution": [0, "$digest"],
         "angular/window-service": 2
@@ -244,13 +242,6 @@ These rules help you to enforce the usage of angular wrappers.
  * [typecheck-object](docs/typecheck-object.md) - use `angular.isObject` instead of `typeof` comparisons
  * [typecheck-string](docs/typecheck-string.md) - use `angular.isString` instead of `typeof` comparisons
  * [window-service](docs/window-service.md) - use `$window` instead of `window` ([y180](https://github.com/johnpapa/angular-styleguide#style-y180))
-
-## Deprecated rules
-
-These rules will be removed in version 1.0.0
-
- * [no-digest](docs/no-digest.md) - use `$apply()` instead of `$digest()` (replaced by [watchers-execution](docs/watchers-execution.md))
- * [typecheck-regexp](docs/typecheck-regexp.md) - use `angular.isRegexp` instead of other comparisons (no native angular method)
 
 
 ----
