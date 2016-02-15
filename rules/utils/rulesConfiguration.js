@@ -19,9 +19,6 @@ Rule.prototype = {
         legacyRule.schema = self._requireRule.schema;
         return legacyRule;
     },
-    getLegacyName: function() {
-        return 'ng_' + this.name.replace(/-/g, '_');
-    },
     logWarningOnce: function(context) {
         /* eslint-disable no-console */
         console.warn('WARNING: Deprecated rule name ' + context.id + ' use angular/' + this.name + ' instead (will be removed in v1.0).');
@@ -42,13 +39,8 @@ module.exports = {
         };
 
         this.rules.forEach(function(rule) {
-            var legacyName = rule.getLegacyName();
-
             exportObject.rules[rule.name] = rule.requireRule();
             exportObject.rulesConfig[rule.name] = rule.config;
-
-            exportObject.rules[legacyName] = rule.requireLegacyRule();
-            exportObject.rulesConfig[legacyName] = 0;
         });
         return exportObject;
     }
