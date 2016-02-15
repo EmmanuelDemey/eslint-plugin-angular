@@ -15,7 +15,7 @@ var commonFalsePositives = require('./utils/commonFalsePositives');
 var eslintTester = new RuleTester();
 
 var angularObjectList = ['controller', 'filter', 'directive'];
-var defaultBadService = ['$http', '$resource', 'Restangular', '$q'];
+var defaultBadService = ['$http', '$resource', 'Restangular', '$q', '$filter'];
 var mapAngularObjectToBarServices = {
     controller: defaultBadService,
     filter: defaultBadService,
