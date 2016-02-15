@@ -162,10 +162,10 @@ rules:
     - 4
     - SwitchCase: 1
   keyword-spacing:
-  - 2
-  - before: true
-    after: true
-    overrides: {}
+    - 2
+    - before: true
+      after: true
+      overrides: {}
   key-spacing:
     - 2
     - beforeColon: false
