@@ -19,13 +19,10 @@ eslintTester.run('controller-name', rule, {
         options: ['eslint']
     }, {
         code: 'app.controller("eslintController", function() {});',
-        options: [/^eslint/]
-    }, {
-        code: 'app.controller("eslintController", function() {});',
-        options: [undefined]
+        options: ['/^eslint/']
     }, {
         code: 'app.controller("EslintController", function() {});',
-        options: [/[A-Z].*Controller$/]
+        options: ['/[A-Z].*Controller$/']
     }, {
         code: 'app.controller("EslintController", function() {});',
         options: ['/[A-Z].*Controller$/']
@@ -49,17 +46,17 @@ eslintTester.run('controller-name', rule, {
         },
         {
             code: 'app.controller("Controller", function() {});',
-            options: [/^eslint/],
+            options: ['/^eslint/'],
             errors: [{message: 'The Controller controller should follow this pattern: /^eslint/'}]
         },
         {
             code: 'app.controller("customers", function() {});',
-            options: [/[A-Z].*Controller$/],
+            options: ['/[A-Z].*Controller$/'],
             errors: [{message: 'The customers controller should follow this pattern: /[A-Z].*Controller$/'}]
         },
         {
             code: 'app.controller("customersController", function() {});',
-            options: [/[A-Z].*Controller$/],
+            options: ['/[A-Z].*Controller$/'],
             errors: [{message: 'The customersController controller should follow this pattern: /[A-Z].*Controller$/'}]
         }, {
             code: 'app.controller("eslintController", function() {});',
