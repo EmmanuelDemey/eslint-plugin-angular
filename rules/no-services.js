@@ -28,6 +28,10 @@ module.exports = function(context) {
         return Object.prototype.toString.call(item) === '[object Object]';
     }
 
+    if (context.options[0] === undefined) {
+        badServices = ['$http', '$resource', 'Restangular', '$q', '$filter'];
+    }
+
     if (isArray(context.options[0])) {
         badServices = context.options[0];
     }

@@ -90,66 +90,6 @@ Users may use the shareable [eslint-config-angular](https://github.com/dustinspe
     ```
 
 
-
-## Defaults
-
-```yaml
-plugins:
-  - angular
-rules:
-  - angular/angularelement: 0
-  - angular/component-limit: [0, 1]
-  - angular/controller-as: 0
-  - angular/controller-as-route: 0
-  - angular/controller-as-vm: [0, "vm"]
-  - angular/controller-name: 0
-  - angular/deferred: 0
-  - angular/definedundefined: 0
-  - angular/di: [0, "function"]
-  - angular/di-order: 0
-  - angular/di-unused: 0
-  - angular/directive-name: 0
-  - angular/directive-restrict: 0
-  - angular/document-service: 0
-  - angular/dumb-inject: 0
-  - angular/empty-controller: 0
-  - angular/file-name: 0
-  - angular/filter-name: 0
-  - angular/foreach: 0
-  - angular/function-type: 0
-  - angular/interval-service: 0
-  - angular/json-functions: 0
-  - angular/log: 0
-  - angular/module-dependency-order: [0, {"grouped": false, "prefix": null}]
-  - angular/module-getter: 0
-  - angular/module-name: 0
-  - angular/module-setter: 0
-  - angular/no-angular-mock: 0
-  - angular/no-controller: 0
-  - angular/no-cookiestore: 0
-  - angular/no-directive-replace: 0
-  - angular/no-http-callback: 0
-  - angular/no-inline-template: [0, {"allowSimple": true}]
-  - angular/no-jquery-angularelement: 0
-  - angular/no-private-call: 0
-  - angular/no-run-logic: 0
-  - angular/no-services: [0, ["$http", "$resource", "Restangular", "$q", "$filter"]]
-  - angular/no-service-method: 0
-  - angular/on-watch: 0
-  - angular/one-dependency-per-line: 0
-  - angular/rest-service: 0
-  - angular/service-name: 0
-  - angular/timeout-service: 0
-  - angular/typecheck-array: 0
-  - angular/typecheck-date: 0
-  - angular/typecheck-function: 0
-  - angular/typecheck-number: 0
-  - angular/typecheck-object: 0
-  - angular/typecheck-string: 0
-  - angular/watchers-execution: [0, "$digest"]
-  - angular/window-service: 0
-```
-
 ----
 
 
@@ -158,7 +98,7 @@ rules:
 Rules in eslint-plugin-angular are divided into several categories to help you better understand their value.
 
 
-## Possible Errors
+### Possible Errors
 
 The following rules detect patterns that can lead to errors.
 
@@ -166,14 +106,14 @@ The following rules detect patterns that can lead to errors.
  * [module-setter](docs/module-setter.md) - disallow to assign modules to variables (linked to [module-getter](docs/module-getter.md) ([y021](https://github.com/johnpapa/angular-styleguide#style-y021))
  * [no-private-call](docs/no-private-call.md) - disallow use of internal angular properties prefixed with $$
 
-## Best Practices
+### Best Practices
 
 These are rules designed to prevent you from making mistakes. They either prescribe a better way of doing something or help you avoid footguns..
 
  * [component-limit](docs/component-limit.md) - limit the number of angular components per file ([y001](https://github.com/johnpapa/angular-styleguide#style-y001))
- * [controller-as](docs/controller-as.md) - disallow assignments to `$scope` in controllers ([y031](https://github.com/johnpapa/angular-styleguide#style-y031))
  * [controller-as-route](docs/controller-as-route.md) - require the use of controllerAs in routes or states ([y031](https://github.com/johnpapa/angular-styleguide#style-y031))
  * [controller-as-vm](docs/controller-as-vm.md) - require and specify a capture variable for `this` in controllers ([y032](https://github.com/johnpapa/angular-styleguide#style-y032))
+ * [controller-as](docs/controller-as.md) - disallow assignments to `$scope` in controllers ([y031](https://github.com/johnpapa/angular-styleguide#style-y031))
  * [deferred](docs/deferred.md) - use `$q(function(resolve, reject){})` instead of `$q.deferred`
  * [di-unused](docs/di-unused.md) - disallow unused DI parameters
  * [directive-restrict](docs/directive-restrict.md) - disallow any other directive restrict than 'A' or 'E' ([y074](https://github.com/johnpapa/angular-styleguide#style-y074))
@@ -184,7 +124,7 @@ These are rules designed to prevent you from making mistakes. They either prescr
  * [no-services](docs/no-services.md) - disallow DI of specified services for other angular components (`$http` for controllers, filters and directives)
  * [on-watch](docs/on-watch.md) - require `$on` and `$watch` deregistration callbacks to be saved in a variable
 
-## Deprecated Angular Features
+### Deprecated Angular Features
 
 These rules prevent you from using deprecated angular features.
 
@@ -192,7 +132,7 @@ These rules prevent you from using deprecated angular features.
  * [no-directive-replace](docs/no-directive-replace.md) - disallow the deprecated directive replace property
  * [no-http-callback](docs/no-http-callback.md) - disallow the `$http` methods `success()` and `error()`
 
-## Naming
+### Naming
 
 These rules help you to specify several naming conventions.
 
@@ -203,12 +143,12 @@ These rules help you to specify several naming conventions.
  * [module-name](docs/module-name.md) - require and specify a prefix for all module names ([y127](https://github.com/johnpapa/angular-styleguide#style-y127))
  * [service-name](docs/service-name.md) - require and specify a prefix for all service names ([y125](https://github.com/johnpapa/angular-styleguide#style-y125))
 
-## Conventions
+### Conventions
 
 Angular often provide multi ways to to something. These rules help you to define convention for your project.
 
- * [di](docs/di.md) - require a consistent DI syntax
  * [di-order](docs/di-order.md) - require DI parameters to be sorted alphabetically
+ * [di](docs/di.md) - require a consistent DI syntax
  * [dumb-inject](docs/dumb-inject.md) - unittest `inject` functions should only consist of assignments from injected values to describe block variables
  * [function-type](docs/function-type.md) - require and specify a consistent function style for components ('named' or 'anonymous') ([y024](https://github.com/johnpapa/angular-styleguide#style-y024))
  * [module-dependency-order](docs/module-dependency-order.md) - require a consistent order of module dependencies
@@ -217,7 +157,7 @@ Angular often provide multi ways to to something. These rules help you to define
  * [rest-service](docs/rest-service.md) - disallow different rest service and specify one of '$http', '$resource', 'Restangular'
  * [watchers-execution](docs/watchers-execution.md) - require and specify consistent use `$scope.digest()` or `$scope.apply()`
 
-## Angular Wrappers
+### Angular Wrappers
 
 These rules help you to enforce the usage of angular wrappers.
 
@@ -238,6 +178,19 @@ These rules help you to enforce the usage of angular wrappers.
  * [typecheck-object](docs/typecheck-object.md) - use `angular.isObject` instead of `typeof` comparisons
  * [typecheck-string](docs/typecheck-string.md) - use `angular.isString` instead of `typeof` comparisons
  * [window-service](docs/window-service.md) - use `$window` instead of `window` ([y180](https://github.com/johnpapa/angular-styleguide#style-y180))
+
+
+
+## Environments
+
+This plugin enables the use of environments targeted at AngularJS. These environments define the globals each situation respectively.
+
+```yaml
+env:
+    angular/angular: true
+    angular/mocks: true
+    angular/protractor: true
+```
 
 
 ----

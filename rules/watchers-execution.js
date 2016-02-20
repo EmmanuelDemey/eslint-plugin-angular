@@ -10,11 +10,11 @@
 'use strict';
 
 module.exports = function(context) {
+    var method = context.options[0] || '$digest';
     var methods = ['$apply', '$digest'];
     return {
 
         MemberExpression: function(node) {
-            var method = context.options[0];
             var forbiddenMethod = methods.filter(function(m) {
                 return m !== method;
             });
@@ -29,5 +29,5 @@ module.exports = function(context) {
 };
 
 module.exports.schema = [{
-    type: 'string'
+    enum: ['$apply', '$digest']
 }];
