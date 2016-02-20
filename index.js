@@ -6,7 +6,7 @@ rulesConfiguration.addRule('angularelement', 0);
 rulesConfiguration.addRule('component-limit', [0, 1]);
 rulesConfiguration.addRule('controller-as', 0);
 rulesConfiguration.addRule('controller-as-route', 0);
-rulesConfiguration.addRule('controller-as-vm', [0, 'vm']);
+rulesConfiguration.addRule('controller-as-vm', 0);
 rulesConfiguration.addRule('controller-name', 0);
 rulesConfiguration.addRule('deferred', 0);
 rulesConfiguration.addRule('definedundefined', 0);
