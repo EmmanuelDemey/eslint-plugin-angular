@@ -105,7 +105,7 @@ rules:
   - angular/controller-name: 0
   - angular/deferred: 0
   - angular/definedundefined: 0
-  - angular/di: [0, "function"]
+  - angular/di: 0
   - angular/di-order: 0
   - angular/di-unused: 0
   - angular/directive-name: 0

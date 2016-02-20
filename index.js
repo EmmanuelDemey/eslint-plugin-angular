@@ -10,7 +10,7 @@ rulesConfiguration.addRule('controller-as-vm', 0);
 rulesConfiguration.addRule('controller-name', 0);
 rulesConfiguration.addRule('deferred', 0);
 rulesConfiguration.addRule('definedundefined', 0);
-rulesConfiguration.addRule('di', [0, 'function']);
+rulesConfiguration.addRule('di', 0);
 rulesConfiguration.addRule('di-order', 0);
 rulesConfiguration.addRule('di-unused', 0);
 rulesConfiguration.addRule('directive-name', 0);
