@@ -5,6 +5,8 @@
 The number of AngularJS components in one file should be limited.
 The default limit is one.
 
+- The acceptable number of components. (Default: 1)
+
 **Styleguide Reference**
 
 * [y001 by johnpapa - Define 1 component per file](https://github.com/johnpapa/angular-styleguide#style-y001)

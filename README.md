@@ -98,7 +98,7 @@ plugins:
   - angular
 rules:
   - angular/angularelement: 0
-  - angular/component-limit: [0, 1]
+  - angular/component-limit: 0
   - angular/controller-as: 0
   - angular/controller-as-route: 0
   - angular/controller-as-vm: 0

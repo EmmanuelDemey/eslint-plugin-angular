@@ -3,7 +3,7 @@
 var rulesConfiguration = require('./rules/utils/rulesConfiguration.js');
 
 rulesConfiguration.addRule('angularelement', 0);
-rulesConfiguration.addRule('component-limit', [0, 1]);
+rulesConfiguration.addRule('component-limit', 0);
 rulesConfiguration.addRule('controller-as', 0);
 rulesConfiguration.addRule('controller-as-route', 0);
 rulesConfiguration.addRule('controller-as-vm', 0);
