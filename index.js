@@ -34,7 +34,7 @@ rulesConfiguration.addRule('no-controller', 0);
 rulesConfiguration.addRule('no-cookiestore', 0);
 rulesConfiguration.addRule('no-directive-replace', 0);
 rulesConfiguration.addRule('no-http-callback', 0);
-rulesConfiguration.addRule('no-inline-template', [0, {allowSimple: true}]);
+rulesConfiguration.addRule('no-inline-template', 0);
 rulesConfiguration.addRule('no-jquery-angularelement', 0);
 rulesConfiguration.addRule('no-private-call', 0);
 rulesConfiguration.addRule('no-run-logic', 0);

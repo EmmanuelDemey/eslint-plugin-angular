@@ -129,7 +129,7 @@ rules:
   - angular/no-cookiestore: 0
   - angular/no-directive-replace: 0
   - angular/no-http-callback: 0
-  - angular/no-inline-template: [0, {"allowSimple": true}]
+  - angular/no-inline-template: 0
   - angular/no-jquery-angularelement: 0
   - angular/no-private-call: 0
   - angular/no-run-logic: 0
