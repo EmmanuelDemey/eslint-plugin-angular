@@ -98,7 +98,7 @@ Users may use the shareable [eslint-config-angular](https://github.com/dustinspe
 Rules in eslint-plugin-angular are divided into several categories to help you better understand their value.
 
 
-## Possible Errors
+### Possible Errors
 
 The following rules detect patterns that can lead to errors.
 
@@ -106,7 +106,7 @@ The following rules detect patterns that can lead to errors.
  * [module-setter](docs/module-setter.md) - disallow to assign modules to variables (linked to [module-getter](docs/module-getter.md) ([y021](https://github.com/johnpapa/angular-styleguide#style-y021))
  * [no-private-call](docs/no-private-call.md) - disallow use of internal angular properties prefixed with $$
 
-## Best Practices
+### Best Practices
 
 These are rules designed to prevent you from making mistakes. They either prescribe a better way of doing something or help you avoid footguns..
 
@@ -124,7 +124,7 @@ These are rules designed to prevent you from making mistakes. They either prescr
  * [no-services](docs/no-services.md) - disallow DI of specified services for other angular components (`$http` for controllers, filters and directives)
  * [on-watch](docs/on-watch.md) - require `$on` and `$watch` deregistration callbacks to be saved in a variable
 
-## Deprecated Angular Features
+### Deprecated Angular Features
 
 These rules prevent you from using deprecated angular features.
 
@@ -132,7 +132,7 @@ These rules prevent you from using deprecated angular features.
  * [no-directive-replace](docs/no-directive-replace.md) - disallow the deprecated directive replace property
  * [no-http-callback](docs/no-http-callback.md) - disallow the `$http` methods `success()` and `error()`
 
-## Naming
+### Naming
 
 These rules help you to specify several naming conventions.
 
@@ -143,7 +143,7 @@ These rules help you to specify several naming conventions.
  * [module-name](docs/module-name.md) - require and specify a prefix for all module names ([y127](https://github.com/johnpapa/angular-styleguide#style-y127))
  * [service-name](docs/service-name.md) - require and specify a prefix for all service names ([y125](https://github.com/johnpapa/angular-styleguide#style-y125))
 
-## Conventions
+### Conventions
 
 Angular often provide multi ways to to something. These rules help you to define convention for your project.
 
@@ -157,7 +157,7 @@ Angular often provide multi ways to to something. These rules help you to define
  * [rest-service](docs/rest-service.md) - disallow different rest service and specify one of '$http', '$resource', 'Restangular'
  * [watchers-execution](docs/watchers-execution.md) - require and specify consistent use `$scope.digest()` or `$scope.apply()`
 
-## Angular Wrappers
+### Angular Wrappers
 
 These rules help you to enforce the usage of angular wrappers.
 
