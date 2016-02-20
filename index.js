@@ -1,57 +1,18 @@
 'use strict';
 
-var rulesConfiguration = require('./rules/utils/rulesConfiguration.js');
+var fs = require('fs');
+var path = require('path');
 
-rulesConfiguration.addRule('angularelement', 0);
-rulesConfiguration.addRule('component-limit', 0);
-rulesConfiguration.addRule('controller-as', 0);
-rulesConfiguration.addRule('controller-as-route', 0);
-rulesConfiguration.addRule('controller-as-vm', 0);
-rulesConfiguration.addRule('controller-name', 0);
-rulesConfiguration.addRule('deferred', 0);
-rulesConfiguration.addRule('definedundefined', 0);
-rulesConfiguration.addRule('di', 0);
-rulesConfiguration.addRule('di-order', 0);
-rulesConfiguration.addRule('di-unused', 0);
-rulesConfiguration.addRule('directive-name', 0);
-rulesConfiguration.addRule('directive-restrict', 0);
-rulesConfiguration.addRule('document-service', 0);
-rulesConfiguration.addRule('dumb-inject', 0);
-rulesConfiguration.addRule('empty-controller', 0);
-rulesConfiguration.addRule('file-name', 0);
-rulesConfiguration.addRule('filter-name', 0);
-rulesConfiguration.addRule('foreach', 0);
-rulesConfiguration.addRule('function-type', 0);
-rulesConfiguration.addRule('interval-service', 0);
-rulesConfiguration.addRule('json-functions', 0);
-rulesConfiguration.addRule('log', 0);
-rulesConfiguration.addRule('module-dependency-order', 0);
-rulesConfiguration.addRule('module-getter', 0);
-rulesConfiguration.addRule('module-name', 0);
-rulesConfiguration.addRule('module-setter', 0);
-rulesConfiguration.addRule('no-angular-mock', 0);
-rulesConfiguration.addRule('no-controller', 0);
-rulesConfiguration.addRule('no-cookiestore', 0);
-rulesConfiguration.addRule('no-directive-replace', 0);
-rulesConfiguration.addRule('no-http-callback', 0);
-rulesConfiguration.addRule('no-inline-template', 0);
-rulesConfiguration.addRule('no-jquery-angularelement', 0);
-rulesConfiguration.addRule('no-private-call', 0);
-rulesConfiguration.addRule('no-run-logic', 0);
-rulesConfiguration.addRule('no-services', 0);
-rulesConfiguration.addRule('no-service-method', 0);
-rulesConfiguration.addRule('on-watch', 0);
-rulesConfiguration.addRule('one-dependency-per-line', 0);
-rulesConfiguration.addRule('rest-service', 0);
-rulesConfiguration.addRule('service-name', 0);
-rulesConfiguration.addRule('timeout-service', 0);
-rulesConfiguration.addRule('typecheck-array', 0);
-rulesConfiguration.addRule('typecheck-date', 0);
-rulesConfiguration.addRule('typecheck-function', 0);
-rulesConfiguration.addRule('typecheck-number', 0);
-rulesConfiguration.addRule('typecheck-object', 0);
-rulesConfiguration.addRule('typecheck-string', 0);
-rulesConfiguration.addRule('watchers-execution', 0);
-rulesConfiguration.addRule('window-service', 0);
+var rules = {};
+var ruleDir = path.join(__dirname, 'rules');
 
-module.exports = rulesConfiguration.moduleExports();
+fs.readdirSync(ruleDir).forEach(function(name) {
+    var match = name.match(/(.+)\.js$/);
+    if (match) {
+        rules[match[1]] = require(path.join(ruleDir, name));  // eslint-disable-line global-require
+    }
+});
+
+module.exports = {
+    rules: rules
+};
