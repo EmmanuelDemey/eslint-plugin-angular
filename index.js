@@ -1,5 +1,7 @@
 'use strict';
 
+/* eslint-disable global-require */
+
 var fs = require('fs');
 var path = require('path');
 
@@ -9,10 +11,11 @@ var ruleDir = path.join(__dirname, 'rules');
 fs.readdirSync(ruleDir).forEach(function(name) {
     var match = name.match(/(.+)\.js$/);
     if (match) {
-        rules[match[1]] = require(path.join(ruleDir, name));  // eslint-disable-line global-require
+        rules[match[1]] = require(path.join(ruleDir, name));
     }
 });
 
 module.exports = {
-    rules: rules
+    rules: rules,
+    environments: require('./environments')
 };

@@ -180,6 +180,19 @@ These rules help you to enforce the usage of angular wrappers.
  * [window-service](docs/window-service.md) - use `$window` instead of `window` ([y180](https://github.com/johnpapa/angular-styleguide#style-y180))
 
 
+
+## Environments
+
+This plugin enables the use of environments targeted at AngularJS. These environments define the globals each situation respectively.
+
+```yaml
+env:
+    angular/angular: true
+    angular/mocks: true
+    angular/protractor: true
+```
+
+
 ----
 
 
