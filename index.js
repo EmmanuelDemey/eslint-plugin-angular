@@ -38,7 +38,7 @@ rulesConfiguration.addRule('no-inline-template', 0);
 rulesConfiguration.addRule('no-jquery-angularelement', 0);
 rulesConfiguration.addRule('no-private-call', 0);
 rulesConfiguration.addRule('no-run-logic', 0);
-rulesConfiguration.addRule('no-services', [0, ['$http', '$resource', 'Restangular', '$q', '$filter']]);
+rulesConfiguration.addRule('no-services', 0);
 rulesConfiguration.addRule('no-service-method', 0);
 rulesConfiguration.addRule('on-watch', 0);
 rulesConfiguration.addRule('one-dependency-per-line', 0);

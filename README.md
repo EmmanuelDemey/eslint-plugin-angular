@@ -133,7 +133,7 @@ rules:
   - angular/no-jquery-angularelement: 0
   - angular/no-private-call: 0
   - angular/no-run-logic: 0
-  - angular/no-services: [0, ["$http", "$resource", "Restangular", "$q", "$filter"]]
+  - angular/no-services: 0
   - angular/no-service-method: 0
   - angular/on-watch: 0
   - angular/one-dependency-per-line: 0
