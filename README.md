@@ -120,7 +120,7 @@ rules:
   - angular/interval-service: 0
   - angular/json-functions: 0
   - angular/log: 0
-  - angular/module-dependency-order: [0, {"grouped": false, "prefix": null}]
+  - angular/module-dependency-order: 0
   - angular/module-getter: 0
   - angular/module-name: 0
   - angular/module-setter: 0
