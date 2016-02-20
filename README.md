@@ -146,7 +146,7 @@ rules:
   - angular/typecheck-number: 0
   - angular/typecheck-object: 0
   - angular/typecheck-string: 0
-  - angular/watchers-execution: [0, "$digest"]
+  - angular/watchers-execution: 0
   - angular/window-service: 0
 ```
 

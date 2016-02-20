@@ -51,7 +51,7 @@ rulesConfiguration.addRule('typecheck-function', 0);
 rulesConfiguration.addRule('typecheck-number', 0);
 rulesConfiguration.addRule('typecheck-object', 0);
 rulesConfiguration.addRule('typecheck-string', 0);
-rulesConfiguration.addRule('watchers-execution', [0, '$digest']);
+rulesConfiguration.addRule('watchers-execution', 0);
 rulesConfiguration.addRule('window-service', 0);
 
 module.exports = rulesConfiguration.moduleExports();
