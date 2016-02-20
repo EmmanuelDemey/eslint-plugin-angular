@@ -90,66 +90,6 @@ Users may use the shareable [eslint-config-angular](https://github.com/dustinspe
     ```
 
 
-
-## Defaults
-
-```yaml
-plugins:
-  - angular
-rules:
-  - angular/angularelement: 0
-  - angular/component-limit: 0
-  - angular/controller-as: 0
-  - angular/controller-as-route: 0
-  - angular/controller-as-vm: 0
-  - angular/controller-name: 0
-  - angular/deferred: 0
-  - angular/definedundefined: 0
-  - angular/di: 0
-  - angular/di-order: 0
-  - angular/di-unused: 0
-  - angular/directive-name: 0
-  - angular/directive-restrict: 0
-  - angular/document-service: 0
-  - angular/dumb-inject: 0
-  - angular/empty-controller: 0
-  - angular/file-name: 0
-  - angular/filter-name: 0
-  - angular/foreach: 0
-  - angular/function-type: 0
-  - angular/interval-service: 0
-  - angular/json-functions: 0
-  - angular/log: 0
-  - angular/module-dependency-order: 0
-  - angular/module-getter: 0
-  - angular/module-name: 0
-  - angular/module-setter: 0
-  - angular/no-angular-mock: 0
-  - angular/no-controller: 0
-  - angular/no-cookiestore: 0
-  - angular/no-directive-replace: 0
-  - angular/no-http-callback: 0
-  - angular/no-inline-template: 0
-  - angular/no-jquery-angularelement: 0
-  - angular/no-private-call: 0
-  - angular/no-run-logic: 0
-  - angular/no-services: 0
-  - angular/no-service-method: 0
-  - angular/on-watch: 0
-  - angular/one-dependency-per-line: 0
-  - angular/rest-service: 0
-  - angular/service-name: 0
-  - angular/timeout-service: 0
-  - angular/typecheck-array: 0
-  - angular/typecheck-date: 0
-  - angular/typecheck-function: 0
-  - angular/typecheck-number: 0
-  - angular/typecheck-object: 0
-  - angular/typecheck-string: 0
-  - angular/watchers-execution: 0
-  - angular/window-service: 0
-```
-
 ----
 
 
@@ -171,9 +111,9 @@ The following rules detect patterns that can lead to errors.
 These are rules designed to prevent you from making mistakes. They either prescribe a better way of doing something or help you avoid footguns..
 
  * [component-limit](docs/component-limit.md) - limit the number of angular components per file ([y001](https://github.com/johnpapa/angular-styleguide#style-y001))
- * [controller-as](docs/controller-as.md) - disallow assignments to `$scope` in controllers ([y031](https://github.com/johnpapa/angular-styleguide#style-y031))
  * [controller-as-route](docs/controller-as-route.md) - require the use of controllerAs in routes or states ([y031](https://github.com/johnpapa/angular-styleguide#style-y031))
  * [controller-as-vm](docs/controller-as-vm.md) - require and specify a capture variable for `this` in controllers ([y032](https://github.com/johnpapa/angular-styleguide#style-y032))
+ * [controller-as](docs/controller-as.md) - disallow assignments to `$scope` in controllers ([y031](https://github.com/johnpapa/angular-styleguide#style-y031))
  * [deferred](docs/deferred.md) - use `$q(function(resolve, reject){})` instead of `$q.deferred`
  * [di-unused](docs/di-unused.md) - disallow unused DI parameters
  * [directive-restrict](docs/directive-restrict.md) - disallow any other directive restrict than 'A' or 'E' ([y074](https://github.com/johnpapa/angular-styleguide#style-y074))
@@ -207,8 +147,8 @@ These rules help you to specify several naming conventions.
 
 Angular often provide multi ways to to something. These rules help you to define convention for your project.
 
- * [di](docs/di.md) - require a consistent DI syntax
  * [di-order](docs/di-order.md) - require DI parameters to be sorted alphabetically
+ * [di](docs/di.md) - require a consistent DI syntax
  * [dumb-inject](docs/dumb-inject.md) - unittest `inject` functions should only consist of assignments from injected values to describe block variables
  * [function-type](docs/function-type.md) - require and specify a consistent function style for components ('named' or 'anonymous') ([y024](https://github.com/johnpapa/angular-styleguide#style-y024))
  * [module-dependency-order](docs/module-dependency-order.md) - require a consistent order of module dependencies
