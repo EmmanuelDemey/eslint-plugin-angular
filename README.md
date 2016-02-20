@@ -93,65 +93,61 @@ Users may use the shareable [eslint-config-angular](https://github.com/dustinspe
 
 ## Defaults
 
-```json
-{
-    "plugins": [
-        "angular"
-    ],
-    "rules": {
-        "angular/angularelement": 0,
-        "angular/component-limit": [0, 1],
-        "angular/controller-as": 0,
-        "angular/controller-as-route": 0,
-        "angular/controller-as-vm": [0, "vm"],
-        "angular/controller-name": [0, "/[A-Z].*Controller$/"],
-        "angular/deferred": 0,
-        "angular/definedundefined": 0,
-        "angular/di": [0, "function"],
-        "angular/di-order": 0,
-        "angular/di-unused": 0,
-        "angular/directive-name": 0,
-        "angular/directive-restrict": 0,
-        "angular/document-service": 0,
-        "angular/dumb-inject": 0,
-        "angular/empty-controller": 0,
-        "angular/file-name": 0,
-        "angular/filter-name": 0,
-        "angular/foreach": 0,
-        "angular/function-type": 0,
-        "angular/interval-service": 0,
-        "angular/json-functions": 0,
-        "angular/log": 0,
-        "angular/module-dependency-order": [0, {"grouped": false, "prefix": null}],
-        "angular/module-getter": 0,
-        "angular/module-name": 0,
-        "angular/module-setter": 0,
-        "angular/no-angular-mock": 0,
-        "angular/no-controller": 0,
-        "angular/no-cookiestore": 0,
-        "angular/no-directive-replace": 0,
-        "angular/no-http-callback": 0,
-        "angular/no-inline-template": [0, {"allowSimple": true}],
-        "angular/no-jquery-angularelement": 0,
-        "angular/no-private-call": 0,
-        "angular/no-run-logic": 0,
-        "angular/no-services": [0, ["$http", "$resource", "Restangular", "$q", "$filter"]],
-        "angular/no-service-method": 0,
-        "angular/on-watch": 0,
-        "angular/one-dependency-per-line": 0,
-        "angular/rest-service": 0,
-        "angular/service-name": 0,
-        "angular/timeout-service": 0,
-        "angular/typecheck-array": 0,
-        "angular/typecheck-date": 0,
-        "angular/typecheck-function": 0,
-        "angular/typecheck-number": 0,
-        "angular/typecheck-object": 0,
-        "angular/typecheck-string": 0,
-        "angular/watchers-execution": [0, "$digest"],
-        "angular/window-service": 0
-    }
-}
+```yaml
+plugins:
+  - angular
+rules:
+  - angular/angularelement: 0
+  - angular/component-limit: [0, 1]
+  - angular/controller-as: 0
+  - angular/controller-as-route: 0
+  - angular/controller-as-vm: [0, "vm"]
+  - angular/controller-name: [0, "/[A-Z].*Controller$/"]
+  - angular/deferred: 0
+  - angular/definedundefined: 0
+  - angular/di: [0, "function"]
+  - angular/di-order: 0
+  - angular/di-unused: 0
+  - angular/directive-name: 0
+  - angular/directive-restrict: 0
+  - angular/document-service: 0
+  - angular/dumb-inject: 0
+  - angular/empty-controller: 0
+  - angular/file-name: 0
+  - angular/filter-name: 0
+  - angular/foreach: 0
+  - angular/function-type: 0
+  - angular/interval-service: 0
+  - angular/json-functions: 0
+  - angular/log: 0
+  - angular/module-dependency-order: [0, {"grouped": false, "prefix": null}]
+  - angular/module-getter: 0
+  - angular/module-name: 0
+  - angular/module-setter: 0
+  - angular/no-angular-mock: 0
+  - angular/no-controller: 0
+  - angular/no-cookiestore: 0
+  - angular/no-directive-replace: 0
+  - angular/no-http-callback: 0
+  - angular/no-inline-template: [0, {"allowSimple": true}]
+  - angular/no-jquery-angularelement: 0
+  - angular/no-private-call: 0
+  - angular/no-run-logic: 0
+  - angular/no-services: [0, ["$http", "$resource", "Restangular", "$q", "$filter"]]
+  - angular/no-service-method: 0
+  - angular/on-watch: 0
+  - angular/one-dependency-per-line: 0
+  - angular/rest-service: 0
+  - angular/service-name: 0
+  - angular/timeout-service: 0
+  - angular/typecheck-array: 0
+  - angular/typecheck-date: 0
+  - angular/typecheck-function: 0
+  - angular/typecheck-number: 0
+  - angular/typecheck-object: 0
+  - angular/typecheck-string: 0
+  - angular/watchers-execution: [0, "$digest"]
+  - angular/window-service: 0
 ```
 
 ----
@@ -348,12 +344,10 @@ return {
 
 Here is the basic configuration for the rules defined in the ESLint plugin, in order to be compatible with the guideline provided by @johnpapa :
 
-```json
-{
-    "rules": {
-        "no-use-before-define": 0
-    }
-}
+```yaml
+rules:
+    no-use-before-define:
+      - 0
 ```
 
 
