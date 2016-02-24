@@ -24,7 +24,7 @@ The following patterns are **not** considered problems with default config;
     /*eslint angular/module-dependency-order: 2*/
 
     // valid
-    angular.module('myModule', ['app', 'appFilters', 'ngAnimate', 'ngRoute', 'ui.router']);
+    angular.module('myModule', ['ngAnimate', 'ngRoute', 'app', 'appFilters', 'ui.router']);
 
 The following patterns are considered problems when configured `{"grouped":true}`:
 

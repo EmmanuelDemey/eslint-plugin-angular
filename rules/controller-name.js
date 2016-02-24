@@ -18,12 +18,8 @@ module.exports = function(context) {
     return {
 
         CallExpression: function(node) {
-            var prefix = context.options[0];
+            var prefix = context.options[0] || '/[A-Z].*Controller$/';
             var convertedPrefix; // convert string from JSON .eslintrc to regex
-
-            if (prefix === undefined) {
-                return;
-            }
 
             convertedPrefix = utils.convertPrefixToRegex(prefix);
 
@@ -55,3 +51,9 @@ module.exports = function(context) {
         }
     };
 };
+
+module.exports.schema = [
+    {
+        type: 'string'
+    }
+];

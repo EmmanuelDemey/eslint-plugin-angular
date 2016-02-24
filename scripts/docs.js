@@ -50,13 +50,13 @@ function updateReadme(readmePath, cb) {
         return rulesForCategory && rulesForCategory.length > 0;
     });
 
-    var readmeRuleSection = templates.readmeRuleSectionContent(ruleCategories);
     var readmeContent = fs.readFileSync(readmePath).toString();
+    var newRuleSection = templates.readmeRuleSectionContent(ruleCategories);
 
     // use split and join to prevent the replace() and dollar sign problem (http://stackoverflow.com/questions/9423722)
-    var updatedReadmeContent = readmeContent.split(/## Rules[\S\s]*?----\n/).join(readmeRuleSection);
+    readmeContent = readmeContent.split(/## Rules[\S\s]*?----\n/).join(newRuleSection);
 
-    fs.writeFileSync(readmePath, updatedReadmeContent);
+    fs.writeFileSync(readmePath, readmeContent);
     (cb || _.noop)();
 }
 
@@ -93,7 +93,6 @@ function _wrapErrorMessage(errorMessage) {
 }
 
 function _parseExample(exampleSource) {
-    var rule = this;
     var lines = exampleSource.split('\n');
 
     // parse first example line as config
@@ -128,12 +127,6 @@ function _parseExample(exampleSource) {
     // use options for tests or default options of no options are configured
     if (example.options) {
         example.displayOptions = example.options;
-    } else {
-        // set default options for tests
-        var defaultOptions = eslintAngularIndex.rulesConfig[rule.ruleName];
-        if (_.isArray(defaultOptions)) {
-            example.options = defaultOptions.slice(1);
-        }
     }
 
     return example;

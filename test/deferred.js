@@ -18,6 +18,7 @@ eslintTester.run('deferred', rule, {
         '$q(function() {});'
     ].concat(commonFalsePositives),
     invalid: [
-        {code: 'var deferred = $q.defer();', errors: [{message: 'You should not create a new promise with this syntax. Use the $q(function(resolve, reject) {}) syntax.'}]}
+        {code: 'var deferred = $q.defer();', errors: [{message: 'You should not create a new promise with this syntax. Use the $q(function(resolve, reject) {}) syntax.'}]},
+        {code: 'var deferred = _$q_.defer();', errors: [{message: 'You should not create a new promise with this syntax. Use the $q(function(resolve, reject) {}) syntax.'}]}
     ]
 });

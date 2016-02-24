@@ -19,6 +19,12 @@ The following patterns are considered problems;
         controller: 'MyController'
     }) // error: Route "/myroute" should use controllerAs syntax
 
+    // invalid
+    $routeProvider.when('/myroute', {
+        controller: 'MyController as vm',
+        controllerAs: 'vm'
+    }) // error: The controllerAs syntax is defined twice for the route "/myroute"
+
 The following patterns are **not** considered problems;
 
     /*eslint angular/controller-as-route: 2*/
@@ -27,6 +33,11 @@ The following patterns are **not** considered problems;
     $routeProvider.when('/myroute', {
         controller: 'MyController',
         controllerAs: 'vm'
+    });
+
+    // valid
+    $routeProvider.when('/myroute', {
+        controller: 'MyController as vm'
     });
 
 ## Version
