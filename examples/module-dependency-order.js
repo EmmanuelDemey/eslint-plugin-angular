@@ -1,5 +1,5 @@
 // example - valid: true
-angular.module('myModule', ['app', 'appFilters', 'ngAnimate', 'ngRoute', 'ui.router']);
+angular.module('myModule', ['ngAnimate', 'ngRoute', 'app', 'appFilters', 'ui.router']);
 
 // example - valid: false, errorMessage: "ngAnimate should be sorted before ngRoute"
 angular.module('myModule', ['ngRoute', 'ngAnimate']);

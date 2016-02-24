@@ -14,7 +14,7 @@ var angularRule = require('./utils/angular-rule');
 
 
 module.exports = angularRule(function(context) {
-    var syntax = context.options[0];
+    var syntax = context.options[0] || 'function';
 
     function report(node) {
         context.report(node, 'You should use the {{syntax}} syntax for DI', {

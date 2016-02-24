@@ -5,6 +5,10 @@
  * The second parameter specifies the capture variable you want to use in your application.
  * The third parameter can be a Regexp for identifying controller functions (when using something like Browserify)
  *
+ * ### Options
+ *
+ * - The name that should be used for the view model.
+ *
  * @styleguideReference {johnpapa} `y032` controllerAs with vm
  * @version 0.1.0
  * @category bestPractice
@@ -18,6 +22,7 @@ module.exports = function(context) {
     var badCaptureStatements = [];
     var controllerFunctions = [];
 
+    var viewModelName = context.options[0] || 'vm';
     // If your Angular code is written so that controller functions are in
     // separate files from your .controller() calls, you can specify a regex for your controller function names
     var controllerNameMatcher = context.options[1];
@@ -39,7 +44,7 @@ module.exports = function(context) {
                 item.parents.filter(isControllerFunction).forEach(function() {
                     context.report(item.stmt, 'You should assign "this" to a consistent variable across your project: {{capture}}',
                         {
-                            capture: context.options[0]
+                            capture: viewModelName
                         }
                     );
                 });
@@ -48,7 +53,7 @@ module.exports = function(context) {
                 item.parents.filter(isControllerFunction).forEach(function() {
                     context.report(item.stmt, 'You should not use "this" directly. Instead, assign it to a variable called "{{capture}}"',
                         {
-                            capture: context.options[0]
+                            capture: viewModelName
                         }
                     );
                 });
@@ -66,7 +71,7 @@ module.exports = function(context) {
         // statements are checked here for bad uses of $scope
         ThisExpression: function(stmt) {
             if (stmt.parent.type === 'VariableDeclarator') {
-                if (!stmt.parent.id || stmt.parent.id.name !== context.options[0]) {
+                if (!stmt.parent.id || stmt.parent.id.name !== viewModelName) {
                     badCaptureStatements.push({parents: context.getAncestors(), stmt: stmt});
                 }
             } else {
@@ -78,3 +83,9 @@ module.exports = function(context) {
         }
     };
 };
+
+module.exports.schema = [{
+    type: 'string'
+}, {
+    type: 'string'
+}];
