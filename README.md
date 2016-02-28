@@ -20,6 +20,7 @@ Since the 0.0.4 release, some rules defined in [John Papa's Guideline](https://g
 
 - [Usage with shareable config](#usage-with-shareable-config)
 - [Usage without shareable config](#usage-without-shareable-config)
+- [Defaults](#defaults)
 - [Rules](#rules)
 - [Need your help](#need-your-help)
 - [How to create a new rule](#how-to-create-a-new-rule)
