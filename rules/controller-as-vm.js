@@ -80,10 +80,10 @@ module.exports = function(context) {
             if (!isClassDeclaration(parents)) {
                 if (stmt.parent.type === 'VariableDeclarator') {
                     if (!stmt.parent.id || stmt.parent.id.name !== viewModelName) {
-                        badCaptureStatements.push({parents: context.getAncestors(), stmt: stmt});
+                        badCaptureStatements.push({parents: parents, stmt: stmt});
                     }
                 } else {
-                    badStatements.push({parents: context.getAncestors(), stmt: stmt});
+                    badStatements.push({parents: parents, stmt: stmt});
                 }
             }
         },

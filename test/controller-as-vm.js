@@ -7,7 +7,7 @@
 var rule = require('../rules/controller-as-vm');
 var RuleTester = require('eslint').RuleTester;
 var commonFalsePositives = require('./utils/commonFalsePositives');
-require('babel-polyfill');
+
 // ------------------------------------------------------------------------------
 // Tests
 // ------------------------------------------------------------------------------
