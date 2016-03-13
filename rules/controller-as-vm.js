@@ -61,6 +61,12 @@ module.exports = function(context) {
         }
     }
 
+    function isClassDeclaration(ancestors) {
+        return ancestors.findIndex(function(ancestor) {
+            return ancestor.type === 'ClassDeclaration';
+        }) > -1;
+    }
+
     return {
         // Looking for .controller() calls here and getting the associated controller function
         'CallExpression:exit': function(node) {
@@ -70,12 +76,15 @@ module.exports = function(context) {
         },
         // statements are checked here for bad uses of $scope
         ThisExpression: function(stmt) {
-            if (stmt.parent.type === 'VariableDeclarator') {
-                if (!stmt.parent.id || stmt.parent.id.name !== viewModelName) {
-                    badCaptureStatements.push({parents: context.getAncestors(), stmt: stmt});
+            var parents = context.getAncestors();
+            if (!isClassDeclaration(parents)) {
+                if (stmt.parent.type === 'VariableDeclarator') {
+                    if (!stmt.parent.id || stmt.parent.id.name !== viewModelName) {
+                        badCaptureStatements.push({parents: context.getAncestors(), stmt: stmt});
+                    }
+                } else {
+                    badStatements.push({parents: context.getAncestors(), stmt: stmt});
                 }
-            } else {
-                badStatements.push({parents: context.getAncestors(), stmt: stmt});
             }
         },
         'Program:exit': function() {
