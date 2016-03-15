@@ -67,7 +67,7 @@ module.exports = (function() {
             var nameSeparator = separators[nameStyle];
             if (nameSeparator) {
                 var replacement = '$1' + nameSeparator + '$2';
-                name = name.replace(/([a-z])([A-Z])/g, replacement).toLowerCase();
+                name = name.replace(/([a-z0-9])([A-Z])/g, replacement).toLowerCase();
             }
             return name;
         },
