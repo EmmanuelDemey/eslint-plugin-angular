@@ -152,6 +152,22 @@ eslintTester.run('file-name', rule, {
             typeSeparator: 'underscore',
             ignorePrefix: 'st'
         }]
+    }, {
+        // alphanumeric nameStyle dash and typeSeparator dash with service
+        filename: 'src/app/app2-utils-service.js',
+        code: 'app.factory("app2Utils", function() {});',
+        options: [{
+            typeSeparator: 'dash',
+            nameStyle: 'dash'
+        }]
+    }, {
+        // alphanumeric nameStyle underscore and typeSeparator dot with directive
+        filename: 'src/app/my2_tab.directive.js',
+        code: 'app.directive("my2Tab", function() {});',
+        options: [{
+            typeSeparator: 'dot',
+            nameStyle: 'underscore'
+        }]
     }].concat(commonFalsePositives),
     invalid: [{
         filename: 'src/app/filters.js',
@@ -208,5 +224,23 @@ eslintTester.run('file-name', rule, {
             ignorePrefix: 'xp'
         }],
         errors: [{message: 'Filename must be "asset.service.js"'}]
+    }, {
+        // alphanumeric nameStyle dash and typeSeparator dash with service
+        filename: 'src/app/app2utils-service.js',
+        code: 'app.factory("app2Utils", function() {});',
+        options: [{
+            typeSeparator: 'dash',
+            nameStyle: 'dash'
+        }],
+        errors: [{message: 'Filename must be "app2-utils-service.js"'}]
+    }, {
+        // alphanumeric nameStyle underscore and typeSeparator dot with directive
+        filename: 'src/app/my2tab.directive.js',
+        code: 'app.directive("my2Tab", function() {});',
+        options: [{
+            typeSeparator: 'dot',
+            nameStyle: 'underscore'
+        }],
+        errors: [{message: 'Filename must be "my2_tab.directive.js"'}]
     }]
 });
