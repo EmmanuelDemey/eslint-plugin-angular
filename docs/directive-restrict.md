@@ -9,7 +9,7 @@ The default configuration limits the restrictions `AE` and disallows explicitly 
 
 **Styleguide Reference**
 
-* [y074 by johnpapa - Restrict to Elements and Attributes](https://github.com/johnpapa/angular-styleguide#style-y074)
+* [y074 by johnpapa - Restrict to Elements and Attributes](https://github.com/johnpapa/angular-styleguide/blob/master/a1/README.md#style-y074)
 
 ## Examples
 

@@ -6,16 +6,13 @@ Instead of the default document object, you should prefer the AngularJS wrapper 
 
 **Styleguide Reference**
 
-* [y180 by johnpapa - Angular $ Wrapper Services - $document and $window](https://github.com/johnpapa/angular-styleguide#style-y180)
+* [y180 by johnpapa - Angular $ Wrapper Services - $document and $window](https://github.com/johnpapa/angular-styleguide/blob/master/a1/README.md#style-y180)
 
 ## Examples
 
 The following patterns are considered problems;
 
     /*eslint angular/document-service: 2*/
-
-    // invalid
-    document.title // error: You should use the $document service instead of the default document object
 
     // invalid
     document.title // error: You should use the $document service instead of the default document object

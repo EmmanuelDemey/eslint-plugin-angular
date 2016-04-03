@@ -6,7 +6,7 @@ You should use Angular's controllerAs syntax when defining routes or states.
 
 **Styleguide Reference**
 
-* [y031 by johnpapa - controllerAs Controller Syntax](https://github.com/johnpapa/angular-styleguide#style-y031)
+* [y031 by johnpapa - controllerAs Controller Syntax](https://github.com/johnpapa/angular-styleguide/blob/master/a1/README.md#style-y031)
 
 ## Examples
 

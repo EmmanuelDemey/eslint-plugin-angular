@@ -9,7 +9,7 @@ You can not prefix your services by "$" (reserved keyword for AngularJS services
 
 **Styleguide Reference**
 
-* [y125 by johnpapa - Naming - Factory and Service Names](https://github.com/johnpapa/angular-styleguide#style-y125)
+* [y125 by johnpapa - Naming - Factory and Service Names](https://github.com/johnpapa/angular-styleguide/blob/master/a1/README.md#style-y125)
 
 ## Examples
 

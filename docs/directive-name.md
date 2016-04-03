@@ -8,8 +8,8 @@ You can not prefix your directives by "ng" (reserved keyword for AngularJS direc
 
 **Styleguide Reference**
 
-* [y073 by johnpapa - Provide a Unique Directive Prefix](https://github.com/johnpapa/angular-styleguide#style-y073)
-* [y126 by johnpapa - Directive Component Names](https://github.com/johnpapa/angular-styleguide#style-y126)
+* [y073 by johnpapa - Provide a Unique Directive Prefix](https://github.com/johnpapa/angular-styleguide/blob/master/a1/README.md#style-y073)
+* [y126 by johnpapa - Directive Component Names](https://github.com/johnpapa/angular-styleguide/blob/master/a1/README.md#style-y126)
 
 ## Examples
 

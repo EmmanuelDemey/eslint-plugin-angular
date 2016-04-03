@@ -8,8 +8,8 @@ The second parameter can be a Regexp wrapped in quotes.
 
 **Styleguide Reference**
 
-* [y123 by johnpapa - Controller Names](https://github.com/johnpapa/angular-styleguide#style-y123)
-* [y124 by johnpapa - Controller Name Suffix](https://github.com/johnpapa/angular-styleguide#style-y124)
+* [y123 by johnpapa - Controller Names](https://github.com/johnpapa/angular-styleguide/blob/master/a1/README.md#style-y123)
+* [y124 by johnpapa - Controller Name Suffix](https://github.com/johnpapa/angular-styleguide/blob/master/a1/README.md#style-y124)
 
 ## Examples
 

@@ -6,7 +6,7 @@ Initialization logic should be moved into a factory or service. This improves te
 
 **Styleguide Reference**
 
-* [y171 by johnpapa - Run Blocks](https://github.com/johnpapa/angular-styleguide#style-y171)
+* [y171 by johnpapa - Run Blocks](https://github.com/johnpapa/angular-styleguide/blob/master/a1/README.md#style-y171)
 
 ## Examples
 

@@ -6,7 +6,7 @@ You should prefer the factory() method instead of service()
 
 **Styleguide Reference**
 
-* [y040 by johnpapa - Services - Singletons](https://github.com/johnpapa/angular-styleguide#style-y040)
+* [y040 by johnpapa - Services - Singletons](https://github.com/johnpapa/angular-styleguide/blob/master/a1/README.md#style-y040)
 
 ## Examples
 
