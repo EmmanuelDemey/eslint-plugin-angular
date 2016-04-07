@@ -42,6 +42,7 @@ module.exports = {
     isAngularControllerDeclaration: isAngularControllerDeclaration,
     isAngularFilterDeclaration: isAngularFilterDeclaration,
     isAngularDirectiveDeclaration: isAngularDirectiveDeclaration,
+    isAngularComponentDeclaration: isAngularComponentDeclaration,
     isAngularServiceDeclaration: isAngularServiceDeclaration,
     isAngularModuleDeclaration: isAngularModuleDeclaration,
     isAngularModuleGetter: isAngularModuleGetter,
@@ -277,6 +278,18 @@ function isAngularDirectiveDeclaration(node) {
         node.callee.property.name === 'directive';
 }
 
+/**
+ * Check whether a CallExpression node defines an Angular directive.
+ *
+ * @param {Object} node The CallExpression node to check.
+ * @returns {boolean} Whether or not the node defines an Angular directive.
+ */
+function isAngularComponentDeclaration(node) {
+    return isAngularComponent(node) &&
+        isMemberExpression(node.callee) &&
+        node.callee.property.name === 'component';
+}
+ 
 /**
  * Check whether a node defines an Angular service.
  *

@@ -135,6 +135,7 @@ These rules prevent you from using deprecated angular features.
 
 These rules help you to specify several naming conventions.
 
+ * [component-name](docs/component-name.md) - require and specify a prefix for all component names
  * [controller-name](docs/controller-name.md) - require and specify a prefix for all controller names ([y123](https://github.com/johnpapa/angular-styleguide/blob/master/a1/README.md#style-y123), [y124](https://github.com/johnpapa/angular-styleguide/blob/master/a1/README.md#style-y124))
  * [directive-name](docs/directive-name.md) - require and specify a prefix for all directive names ([y073](https://github.com/johnpapa/angular-styleguide/blob/master/a1/README.md#style-y073), [y126](https://github.com/johnpapa/angular-styleguide/blob/master/a1/README.md#style-y126))
  * [file-name](docs/file-name.md) - require and specify a consistent component name pattern ([y120](https://github.com/johnpapa/angular-styleguide/blob/master/a1/README.md#style-y120), [y121](https://github.com/johnpapa/angular-styleguide/blob/master/a1/README.md#style-y121))
