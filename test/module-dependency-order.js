@@ -16,6 +16,7 @@ var eslintTester = new RuleTester();
 eslintTester.run('module-dependency-order', rule, {
     valid: [
         'angular.module("", [])',
+        'angular.module("undefined-dependencies", [,]);',
         'angular.module("")',
         // combined mode
         {
