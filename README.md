@@ -296,7 +296,8 @@ rules:
 - [argo](https://github.com/albertosantini/argo)
 - [generator-gillespie59-angular](https://github.com/Gillespie59/generator-gillespie59-angular/)
 - [generator-ng-poly](https://github.com/dustinspecker/generator-ng-poly)
-
+- [JHipster](http://jhipster.github.io/)
+- [generator-gulp-angular](https://github.com/Swiip/generator-gulp-angular)
 
 
 ## Team
