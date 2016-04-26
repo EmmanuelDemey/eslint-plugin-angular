@@ -12,7 +12,7 @@
 
 This repository will give access to new rules for the ESLint tool. You should use it only if you are developing an AngularJS application.
 
-Since the 0.0.4 release, some rules defined in [John Papa's Guideline](https://github.com/johnpapa/angular-styleguide) have been implemented. In the description below, you will have a link to the corresponding part of the guideline, in order to have more information.
+Since the 0.0.4 release, some rules defined in [John Papa's Guideline](https://github.com/johnpapa/angular-styleguide/blob/master/a1) have been implemented. In the description below, you will have a link to the corresponding part of the guideline, in order to have more information.
 
 
 
