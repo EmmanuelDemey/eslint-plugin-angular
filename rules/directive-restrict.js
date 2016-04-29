@@ -96,7 +96,7 @@ module.exports.schema = [{
     properties: {
         restrict: {
             type: 'string',
-            pattern: '^A|E|(AE)|(EA)$'
+            pattern: '^A|C|E|(AC)|(CA)|(AE)|(EA)|(EC)|(CE)|(AEC)|(ACE)|(EAC)|(CAE)|(ACE)|(AEC)|(CAE)|(ACE)|(AEC)$'
         },
         explicit: {
             enum: ['always', 'never']

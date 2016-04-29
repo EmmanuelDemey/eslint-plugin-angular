@@ -6,7 +6,7 @@ Instead of the default window object, you should prefer the AngularJS wrapper se
 
 **Styleguide Reference**
 
-* [y180 by johnpapa - Angular $ Wrapper Services - $document and $window](https://github.com/johnpapa/angular-styleguide#style-y180)
+* [y180 by johnpapa - Angular $ Wrapper Services - $document and $window](https://github.com/johnpapa/angular-styleguide/blob/master/a1/README.md#style-y180)
 
 ## Examples
 

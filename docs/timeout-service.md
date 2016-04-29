@@ -7,7 +7,7 @@ Instead of the default setTimeout function, you should use the AngularJS wrapper
 
 **Styleguide Reference**
 
-* [y181 by johnpapa - Angular $ Wrapper Services - $timeout and $interval](https://github.com/johnpapa/angular-styleguide#style-y181)
+* [y181 by johnpapa - Angular $ Wrapper Services - $timeout and $interval](https://github.com/johnpapa/angular-styleguide/blob/master/a1/README.md#style-y181)
 
 ## Examples
 

@@ -45,8 +45,11 @@ module.exports = function(context) {
     ];
 
     function checkLiteral(node) {
-        if (node.type !== 'Literal') {
+        if (node && node.type !== 'Literal') {
             context.report(node, 'Unexpected non-literal value');
+            return false;
+        }
+        if (!node) {
             return false;
         }
         return true;

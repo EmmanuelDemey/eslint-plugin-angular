@@ -10,7 +10,7 @@ var templates = {
     styleguide: _.template('[<%= name %> by <%= type %> - <%= description %>](<%= link %>)'),
     styleguideShort: _.template('[<%= name %>](<%= link %>)'),
     styleguideLinks: {
-        johnpapa: _.template('https://github.com/johnpapa/angular-styleguide#style-<%= name %>')
+        johnpapa: _.template('https://github.com/johnpapa/angular-styleguide/blob/master/a1/README.md#style-<%= name %>')
     }
 };
 

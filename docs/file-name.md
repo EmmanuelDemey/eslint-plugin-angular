@@ -9,8 +9,8 @@ The options 'ignoreTypeSuffix' ignores camel cased suffixes like 'someController
 
 **Styleguide Reference**
 
-* [y120 by johnpapa - Naming - Naming Guidelines](https://github.com/johnpapa/angular-styleguide#style-y120)
-* [y121 by johnpapa - Naming - Feature File Names](https://github.com/johnpapa/angular-styleguide#style-y121)
+* [y120 by johnpapa - Naming - Naming Guidelines](https://github.com/johnpapa/angular-styleguide/blob/master/a1/README.md#style-y120)
+* [y121 by johnpapa - Naming - Feature File Names](https://github.com/johnpapa/angular-styleguide/blob/master/a1/README.md#style-y121)
 
 ## Examples
 

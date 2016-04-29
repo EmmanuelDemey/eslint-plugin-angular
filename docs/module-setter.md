@@ -6,7 +6,7 @@ Declare modules without a variable using the setter syntax.
 
 **Styleguide Reference**
 
-* [y021 by johnpapa - Module - Definitions (aka Setters)](https://github.com/johnpapa/angular-styleguide#style-y021)
+* [y021 by johnpapa - Module - Definitions (aka Setters)](https://github.com/johnpapa/angular-styleguide/blob/master/a1/README.md#style-y021)
 
 ## Examples
 

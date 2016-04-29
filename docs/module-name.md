@@ -8,7 +8,7 @@ You can not prefix your modules by "ng" (reserved keyword for AngularJS modules)
 
 **Styleguide Reference**
 
-* [y127 by johnpapa - Naming - Modules](https://github.com/johnpapa/angular-styleguide#style-y127)
+* [y127 by johnpapa - Naming - Modules](https://github.com/johnpapa/angular-styleguide/blob/master/a1/README.md#style-y127)
 
 ## Examples
 

@@ -40,6 +40,12 @@ eslintTester.run('directive-restrict', rule, {
             code: 'app.directive("", function() {return {restrict:"EA"}})',
             options: [{restrict: 'EA', explicit: 'always'}]
         }, {
+            code: 'app.directive("", function() {return {restrict:"AC"}})',
+            options: [{restrict: 'AC', explicit: 'always'}]
+        }, {
+            code: 'app.directive("", function() {return {restrict:"AEC"}})',
+            options: [{restrict: 'AEC', explicit: 'always'}]
+        }, {
             code: 'app.directive("", function() {directive = {restrict:"A"}; return directive})',
             options: [{explicit: 'always'}]
         }, {
@@ -78,6 +84,12 @@ eslintTester.run('directive-restrict', rule, {
             code: 'app.directive("", function() {return {restrict:"EA"}})',
             options: [{restrict: 'AE', explicit: 'always'}],
             errors: [{message: 'Disallowed directive restriction. It must be one of AE in that order'}]
+        },
+        // Disallowed with wrong order
+        {
+            code: 'app.directive("", function() {return {restrict:"CEA"}})',
+            options: [{restrict: 'AEC', explicit: 'always'}],
+            errors: [{message: 'Disallowed directive restriction. It must be one of AEC in that order'}]
         },
         // Disallowed with explicit restrict
         {

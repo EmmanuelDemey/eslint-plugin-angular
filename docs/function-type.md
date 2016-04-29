@@ -8,7 +8,7 @@ The second parameter is an optional list of angular object names.
 
 **Styleguide Reference**
 
-* [y024 by johnpapa - Named vs Anonymous Functions](https://github.com/johnpapa/angular-styleguide#style-y024)
+* [y024 by johnpapa - Named vs Anonymous Functions](https://github.com/johnpapa/angular-styleguide/blob/master/a1/README.md#style-y024)
 
 ## Examples
 
