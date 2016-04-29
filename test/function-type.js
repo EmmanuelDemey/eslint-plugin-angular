@@ -13,6 +13,15 @@ var angularObjectList = ['animation', 'config', 'constant', 'controller', 'direc
 var valid = [];
 var invalid = [];
 
+valid.push({
+    code: 'angular.module("mymodule.constants", []).constant("URL_WHITELIST", ["self","https://someUrl/**"])',
+    options: ['anonymous']
+});
+valid.push({
+    code: 'angular.module("mymodule.constants", []).constant("URL_WHITELIST", ["self","https://someUrl/**"])',
+    options: ['named']
+});
+
 angularObjectList.forEach(function(object) {
     valid.push({
         code: 'app.' + object + '("name", function(Service1) {});',

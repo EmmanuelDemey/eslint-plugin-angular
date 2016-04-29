@@ -46,7 +46,7 @@ module.exports = function(context) {
 
                 if (utils.isArrayType(firstArgument)) {
                     var last = firstArgument.elements[firstArgument.elements.length - 1];
-                    if (checkType(last)) {
+                    if (checkType(last) || (!utils.isFunctionType(last) && !utils.isIdentifierType(last))) {
                         return;
                     }
                 }
