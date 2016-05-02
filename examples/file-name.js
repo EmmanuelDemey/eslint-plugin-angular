@@ -51,3 +51,8 @@ app.directive('userProfileDirective', function() {});
 // example - valid: true, options: [{"typeSeparator":"dot", "ignorePrefix": "ui"}], filename: "src/app/userUtils.service.js"
 angular.factory('uiUserUtils', uiUserUtils)
 
+// example - valid: true, options: [{"typeSeparator":"dot", "ignorePrefix": "ui."}], filename: "src/app/userUtils.service.js"
+angular.factory('ui.UserUtils', uiUserUtils)
+
+// example - valid: true, options: [{"typeSeparator":"dot", "ignorePrefix": "ui."}], filename: "src/app/utils.module.js"
+angular.module('ui.utils', function(){})
