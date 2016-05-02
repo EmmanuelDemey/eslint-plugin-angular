@@ -11,6 +11,9 @@ app.factory('myUtils', function() {});
 // example - valid: true, filename: "src/app/awesomeModule/beautifulDirective.js"
 app.directive('beautifulDirective', function() {});
 
+// example - valid: true, filename: "src/app/awesomeModule/beautifulComponent.js"
+app.component('beautifulComponent', {});
+
 // example - valid: false, filename: "src/app/filters.js", errorMessage: "Filename must be \"usefulFilter.js\""
 app.filter('usefulFilter', function() {});
 

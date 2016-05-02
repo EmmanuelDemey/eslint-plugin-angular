@@ -39,6 +39,10 @@ eslintTester.run('file-name', rule, {
         filename: 'beautifulDirective.js',
         code: 'app.directive("beautifulDirective", function() {});'
     }, {
+        // basic component
+        filename: 'beautifulComponent.js',
+        code: 'app.component("beautifulComponent", {});'
+    }, {
         // typeSeparator dot with filter
         filename: 'src/app/myFilter.filter.js',
         code: 'app.filter("myFilter", function() {});',

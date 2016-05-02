@@ -35,7 +35,8 @@ module.exports = (function() {
         factory: 'service',
         provider: 'service',
         value: 'service',
-        constant: 'constant'
+        constant: 'constant',
+        component: 'component'
     };
 
     var filenameUtil = {
