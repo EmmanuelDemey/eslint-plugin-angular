@@ -42,7 +42,8 @@ module.exports = angularRule(function(context) {
         'angular:filter': checkLimit,
         'angular:provider': checkLimit,
         'angular:run': checkLimit,
-        'angular:service': checkLimit
+        'angular:service': checkLimit,
+        'angular:component': checkLimit
     };
 });
 

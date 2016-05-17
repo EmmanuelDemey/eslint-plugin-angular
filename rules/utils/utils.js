@@ -39,6 +39,7 @@ module.exports = {
     isEmptyFunction: isEmptyFunction,
     isStringRegexp: isStringRegexp,
     isAngularComponent: isAngularComponent,
+    isAngularComponentDeclaration: isAngularComponentDeclaration,
     isAngularControllerDeclaration: isAngularControllerDeclaration,
     isAngularFilterDeclaration: isAngularFilterDeclaration,
     isAngularDirectiveDeclaration: isAngularDirectiveDeclaration,
@@ -239,6 +240,18 @@ function isAngularComponent(node) {
         (isIdentifierType(node.arguments[1]) ||
          isFunctionType(node.arguments[1]) ||
          isArrayType(node.arguments[1]));
+}
+
+/**
+ * Check whether a CallExpression node defines an Angular component.
+ *
+ * @param {Object} node The CallExpression node to check.
+ * @returns {boolean} Whether or not the node defines an Angular component.
+ */
+function isAngularComponentDeclaration(node) {
+    return isAngularComponent(node) &&
+        isMemberExpression(node.callee) &&
+        node.callee.property.name === 'component';
 }
 
 /**
