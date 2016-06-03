@@ -30,6 +30,7 @@ var angularChainableNames = [
  * module.exports = angularRule(function(context) {
  *   return {
  *     'angular:animation': function(configCallee, configFn) {},
+ *     'angular:component': function(componentCallee, componentObj) {},
  *     'angular:config': function(configCallee, configFn) {},
  *     'angular:controller': function(controllerCallee, controllerFn) {},
  *     'angular:directive': function(directiveCallee, directiveFn) {},
@@ -95,6 +96,8 @@ function angularRule(ruleDefinition) {
      *         ^^^^^^
      * .animation('', function() {})
      *  ^^^^^^^^^     ^^^^^^^^^^
+     * .component('', {})
+     *  ^^^^^^^^^
      * .config(function() {})
      *  ^^^^^^ ^^^^^^^^^^
      * .constant()
@@ -243,6 +246,7 @@ function angularRule(ruleDefinition) {
     function assembleArguments(node) {
         switch (node.callExpression.callee.property.name) {
             case 'animation':
+            case 'component':
             case 'config':
             case 'controller':
             case 'directive':
