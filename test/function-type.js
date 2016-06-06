@@ -14,6 +14,12 @@ var valid = [];
 var invalid = [];
 
 valid.push({
+    code: 'angular.module("mymodule.constants", []).constant("EMPTY", [])',
+    options: ['anonymous']
+}, {
+    code: 'angular.module("mymodule.constants", []).constant("EMPTY", [])',
+    options: ['named']
+}, {
     code: 'angular.module("mymodule.constants", []).constant("URL_WHITELIST", ["self","https://someUrl/**"])',
     options: ['anonymous']
 }, {
