@@ -20,7 +20,7 @@ The following patterns are considered problems with default config;
     // invalid
     angular.module('myModule').controller('MyCtrl', function () {
         // ...
-    }); // error: The MyCtrl controller should follow this pattern: /[A-Z].*Controller$/
+    }); // error: The MyCtrl controller should follow this pattern: /^[A-Z][a-zA-Z0-9]*Controller$/
 
 The following patterns are **not** considered problems with default config;
 
