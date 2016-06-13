@@ -16,6 +16,7 @@ var eslintTester = new RuleTester();
 eslintTester.run('component-limit', rule, {
     valid: [
         'angular.module("").animation();',
+        'angular.module("").component();',
         'angular.module("").config();',
         'angular.module("").controller();',
         'angular.module("").directive();',
@@ -42,8 +43,8 @@ eslintTester.run('component-limit', rule, {
         'describe("", function() {it("", function() {});it("", function() {});});',
         'angular.module("").service("", function() {});',
         {
-            code: 'angular.module("").controller("", function() {}).directive("", function() {}).factory("", function() {}).filter("", function() {}).provider("", function() {}).service("", function() {});',
-            options: [6]
+            code: 'angular.module("").component("", {}).controller("", function() {}).directive("", function() {}).factory("", function() {}).filter("", function() {}).provider("", function() {}).service("", function() {});',
+            options: [7]
         }
     ].concat(commonFalsePositives),
     invalid: [
@@ -56,6 +57,17 @@ eslintTester.run('component-limit', rule, {
             errors: [{message: 'There may be at most 1 AngularJS component per file, but found 2'}]
         }, {
             code: 'var app = angular.module(""); app.animation().animation();',
+            errors: [{message: 'There may be at most 1 AngularJS component per file, but found 2'}]
+        },
+        // directive
+        {
+            code: 'angular.module("").component().component();',
+            errors: [{message: 'There may be at most 1 AngularJS component per file, but found 2'}]
+        }, {
+            code: 'var app = angular.module("").component(); app.component();',
+            errors: [{message: 'There may be at most 1 AngularJS component per file, but found 2'}]
+        }, {
+            code: 'var app = angular.module(""); app.component().component();',
             errors: [{message: 'There may be at most 1 AngularJS component per file, but found 2'}]
         },
         // config
@@ -148,10 +160,10 @@ eslintTester.run('component-limit', rule, {
         },
         // Using non-default settings
         {
-            code: 'angular.module("").controller("", function() {}).directive("", function() {}).factory("", function() {}).filter("", function() {}).provider("", function() {}).service("", function() {});',
-            options: [5],
+            code: 'angular.module("").component("", {}).controller("", function() {}).directive("", function() {}).factory("", function() {}).filter("", function() {}).provider("", function() {}).service("", function() {});',
+            options: [6],
             errors: [{
-                message: 'There may be at most 5 AngularJS components per file, but found 6'
+                message: 'There may be at most 6 AngularJS components per file, but found 7'
             }]
         }
     ]
