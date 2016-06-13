@@ -3,7 +3,7 @@ angular.module('myModule').controller('MyController', function () {
    // ...
 });
 
-// example - valid: false, errorMessage: "The MyCtrl controller should follow this pattern\: /[A-Z].*Controller$/"
+// example - valid: false, errorMessage: "The MyCtrl controller should follow this pattern\: /^[A-Z][a-zA-Z0-9]*Controller$/"
 angular.module('myModule').controller('MyCtrl', function () {
     // ...
 });
