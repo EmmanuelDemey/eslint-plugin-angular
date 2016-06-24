@@ -148,7 +148,7 @@ function isArrayType(node) {
  * @returns {boolean} Whether or not the node is an FunctionExpression.
  */
 function isFunctionType(node) {
-    return node !== undefined && node.type === 'FunctionExpression';
+    return node !== undefined && (node.type === 'FunctionExpression' || node.type === 'ArrowFunctionExpression');
 }
 
 /**
