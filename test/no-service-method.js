@@ -33,6 +33,9 @@ eslintTester.run('no-service-method', rule, {
         code: 'app.service("Service", function() {});',
         errors: [{message: 'You should prefer the factory() method instead of service()'}]
     }, {
+        code: 'app.service("Service", require(""));',
+        errors: [{message: 'You should prefer the factory() method instead of service()'}]
+    }, {
         code: 'app.service("Service", [function() {}]);',
         errors: [{message: 'You should prefer the factory() method instead of service()'}]
     }]

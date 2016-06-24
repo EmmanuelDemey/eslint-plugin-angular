@@ -1,6 +1,6 @@
 {
   "name": "eslint-plugin-angular",
-  "version": "1.1.1",
+  "version": "1.2.02.0",
   "description": "ESLint rules for AngularJS projects",
   "main": "index.js",
   "scripts": {
@@ -31,6 +31,7 @@
     "gulp-istanbul": "^0.10.3",
     "gulp-mocha": "^2.2.0",
     "istanbul": "^0.4.2",
+    "lodash": "^4.13.1",
     "mocha": "^2.4.5",
     "parse-comments": "^0.4.3",
     "shelljs": "^0.6.0",
@@ -42,7 +43,5 @@
     "angular",
     "angularjs"
   ],
-  "dependencies": {
-    "lodash": "^4.3.0"
-  }
+  "dependencies": {}
 }
