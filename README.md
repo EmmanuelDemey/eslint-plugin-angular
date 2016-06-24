@@ -121,7 +121,7 @@ These are rules designed to prevent you from making mistakes. They either prescr
  * [no-run-logic](docs/no-run-logic.md) - keep run functions clean and simple ([y171](https://github.com/johnpapa/angular-styleguide/blob/master/a1/README.md#style-y171))
  * [no-services](docs/no-services.md) - disallow DI of specified services for other angular components (`$http` for controllers, filters and directives)
  * [on-watch](docs/on-watch.md) - require `$on` and `$watch` deregistration callbacks to be saved in a variable
- * [prefer-component](docs/prefer-component.md) -
+ * [prefer-component](docs/prefer-component.md) - 
 
 ### Deprecated Angular Features
 
