@@ -165,8 +165,8 @@ These rules help you to enforce the usage of angular wrappers.
  * [definedundefined](docs/definedundefined.md) - use `angular.isDefined` and `angular.isUndefined` instead of other undefined checks
  * [document-service](docs/document-service.md) - use `$document` instead of `document` ([y180](https://github.com/johnpapa/angular-styleguide/blob/master/a1/README.md#style-y180))
  * [foreach](docs/foreach.md) - use `angular.forEach` instead of native `Array.prototype.forEach`
- * [interval-service](docs/interval-service.md) - use `$interval` instead of `setInterval` ([y181](https://github.com/johnpapa/angular-styleguide#style-y181))
- * [json-functions](docs/json-functions.md) - use `angular.fromJson` and `angular.toJson` instead of `JSON.parse` and `JSON.stringify`
+ * [interval-service](docs/interval-service.md) - use `$interval` instead of `setInterval` ([y181](https://github.com/johnpapa/angular-styleguide/blob/master/a1/README.md#style-y181))
+ * [json-functions](docs/json-functions.md) - use `angular.fromJson` and 'angular.toJson' instead of `JSON.parse` and `JSON.stringify`
  * [log](docs/log.md) - use the `$log` service instead of the `console` methods
  * [no-angular-mock](docs/no-angular-mock.md) - require to use `angular.mock` methods directly
  * [no-jquery-angularelement](docs/no-jquery-angularelement.md) - disallow to wrap `angular.element` objects with `jQuery` or `$`
