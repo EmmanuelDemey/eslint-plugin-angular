@@ -9,7 +9,6 @@
 'use strict';
 
 var utils = require('./utils/utils');
-var _ = require('lodash');
 
 module.exports = function(context) {
     var angularObjectList = ['animation', 'config', 'constant', 'controller', 'directive', 'factory', 'filter', 'provider', 'service', 'value', 'decorator'];
@@ -53,19 +52,19 @@ module.exports = function(context) {
     }
 
     function findFunctionDeclarationByDeclaration(body, fName) {
-        return _.find(body, function(item) {
+        return body.find(function(item) {
             return item.type === 'FunctionDeclaration' && item.id.name === fName;
         });
     }
 
     function findFunctionDeclarationByVariableDeclaration(body, fName) {
         var fn;
-        _.forEach(body, function(item) {
+        body.forEach(function(item) {
             if (fn) {
                 return;
             }
             if (item.type === 'VariableDeclaration') {
-                _.forEach(item.declarations, function(declaration) {
+                item.declarations.forEach(function(declaration) {
                     if (declaration.type === 'VariableDeclarator' &&
                         declaration.id &&
                         declaration.id.name === fName &&
