@@ -26,6 +26,9 @@ eslintTester.run('filter-name', rule, {
     }, {
         code: 'app.filter("eslintFilter", function() {});',
         options: ['/^eslint/']
+    }, {
+        code: 'app.filter("eslintFilter", require(""));',
+        options: ['eslint']
     }].concat(commonFalsePositives),
     invalid: [
         {
