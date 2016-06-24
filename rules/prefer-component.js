@@ -8,13 +8,14 @@
  */
 'use strict';
 
-var angularRule = require('./utils/angular-rule');
+let angularRule = require('./utils/angular-rule');
+const allowedProperties = ['compile', 'link', 'multiElement', 'priority', 'templateNamespace', 'terminal'];
 
 module.exports = angularRule(function(context) {
     var potentialReplaceNodes = {};
 
     function addPotentialLinkNode(variableName, node) {
-        var nodeList = potentialReplaceNodes[variableName] || [];
+        let nodeList = potentialReplaceNodes[variableName] || [];
 
         nodeList.push({
             name: variableName,
@@ -41,21 +42,24 @@ module.exports = angularRule(function(context) {
             if (node.left.type !== 'MemberExpression') {
                 return;
             }
-            // Only check setting properties named 'link'.
-            if (node.left.property.name !== 'link') {
+
+            if (allowedProperties.indexOf(node.left.property.name) < 0) {
                 return;
             }
 
             addPotentialLinkNode(node.left.object.name, node);
         },
         Property: function(node) {
-            // This only checks for objects which have defined a literal restrict property.
-            if (node.key.name !== 'link') {
+            if(node.key.name === 'restrict'){
+                if(node.value.raw.indexOf('C') < 0 && node.value.raw.indexOf('A') < 0){
+                  return;
+                }
+            } else if (allowedProperties.indexOf(node.key.name) < 0) {
                 return;
             }
 
             // assumption: Property always belongs to a ObjectExpression
-            var objectExpressionParent = node.parent.parent;
+            let objectExpressionParent = node.parent.parent;
 
             // add to potential link nodes if the object is defined in a variable
             if (objectExpressionParent.type === 'VariableDeclarator') {
