@@ -46,6 +46,24 @@ The following patterns are **not** considered problems with default config;
         // ...
     });
 
+The following patterns are **not** considered problems when configured `true` and `"case_sensitive"`:
+
+    /*eslint angular/di-order: [2,true,"case_sensitive"]*/
+
+    // valid
+    angular.module("").animation("", function(Authentication, analytics) {
+        // ...
+    });
+
+The following patterns are **not** considered problems when configured `true` and `"case_insensitive"`:
+
+    /*eslint angular/di-order: [2,true,"case_insensitive"]*/
+
+    // valid
+    angular.module("").animation("", function(analytics, Authentication) {
+        // ...
+    });
+
 The following patterns are considered problems when configured `true`:
 
     /*eslint angular/di-order: [2,true]*/
