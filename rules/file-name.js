@@ -35,7 +35,8 @@ module.exports = (function() {
         factory: 'service',
         provider: 'service',
         value: 'service',
-        constant: 'constant'
+        constant: 'constant',
+        component: 'component'
     };
 
     var filenameUtil = {
@@ -57,7 +58,9 @@ module.exports = (function() {
             return name;
         },
         removePrefix: function(name, options) {
-            if (new RegExp('^' + options.ignorePrefix + '[A-Z]').test(name)) {
+            var regName = '^' + options.ignorePrefix.replace(/[\.]/g, '\\$&');
+            regName += options.ignorePrefix.indexOf('\.') === -1 ? '[A-Z]' : '[a-zA-z]';
+            if (new RegExp(regName).test(name)) {
                 return this.firstToLower(name.slice(options.ignorePrefix.length));
             }
             return name;
