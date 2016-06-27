@@ -13,6 +13,16 @@ angular.module('myModule').factory('myService', function(CONFIG, URLs, authServi
     // ...
 });
 
+// example - valid: true, options: [true, "case_sensitive"]
+angular.module("").animation("", function(Authentication, analytics) {
+    // ...
+});
+
+// example - valid: true, options: [true, "case_insensitive"]
+angular.module("").animation("", function(analytics, Authentication) {
+    // ...
+});
+
 // example - valid: false, errorMessage: "Injected values should be sorted alphabetically"
 angular.module('myModule').factory('myService', function($q, $http) {
     // ...

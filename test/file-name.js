@@ -39,6 +39,10 @@ eslintTester.run('file-name', rule, {
         filename: 'beautifulDirective.js',
         code: 'app.directive("beautifulDirective", function() {});'
     }, {
+        // basic component
+        filename: 'beautifulComponent.js',
+        code: 'app.component("beautifulComponent", {});'
+    }, {
         // typeSeparator dot with filter
         filename: 'src/app/myFilter.filter.js',
         code: 'app.filter("myFilter", function() {});',
@@ -137,6 +141,33 @@ eslintTester.run('file-name', rule, {
             ignorePrefix: 'xp'
         }]
     }, {
+        // ignorePrefix xp with regex
+        filename: 'src/app/asset.service.js',
+        code: 'angular.factory("xp.AssetService", xpAssetService)',
+        options: [{
+            typeSeparator: 'dot',
+            ignoreTypeSuffix: true,
+            ignorePrefix: 'xp.'
+        }]
+    }, {
+        // ignorePrefix xp in module name
+        filename: 'src/app/core.module.js',
+        code: 'angular.module("xp.core", function(){})',
+        options: [{
+            typeSeparator: 'dot',
+            ignoreTypeSuffix: true,
+            ignorePrefix: 'xp.'
+        }]
+    }, {
+        // ignorePrefix xp in main module name
+        filename: 'src/app/xp.module.js',
+        code: 'angular.module("xp", function(){})',
+        options: [{
+            typeSeparator: 'dot',
+            ignoreTypeSuffix: true,
+            ignorePrefix: 'xp.'
+        }]
+    }, {
         // ignorePrefix st with typeSeparator dash
         filename: 'src/app/appUtils-service.js',
         code: 'angular.factory("stAppUtils", stAppUtils)',
@@ -222,6 +253,16 @@ eslintTester.run('file-name', rule, {
             typeSeparator: 'dot',
             ignoreTypeSuffix: true,
             ignorePrefix: 'xp'
+        }],
+        errors: [{message: 'Filename must be "asset.service.js"'}]
+    }, {
+        // ignorePrefix xp.
+        filename: 'src/app/xpAsset.service.js',
+        code: 'angular.factory("xp.AssetService", xpAssetService)',
+        options: [{
+            typeSeparator: 'dot',
+            ignoreTypeSuffix: true,
+            ignorePrefix: 'xp.'
         }],
         errors: [{message: 'Filename must be "asset.service.js"'}]
     }, {

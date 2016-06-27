@@ -11,20 +11,22 @@
 'use strict';
 
 var angularRule = require('./utils/angular-rule');
-
+var caseSensitive = 'case_sensitive';
 
 module.exports = angularRule(function(context) {
     var stripUnderscores = context.options[0] !== false;
+    var caseSensitiveOpt = (context.options[1] || caseSensitive) === caseSensitive;
 
     function checkOrder(callee, fn) {
         if (!fn || !fn.params) {
             return;
         }
         var args = fn.params.map(function(arg) {
+            var formattedArg = arg.name;
             if (stripUnderscores) {
-                return arg.name.replace(/^_(.+)_$/, '$1');
+                formattedArg = formattedArg.replace(/^_(.+)_$/, '$1');
             }
-            return arg.name;
+            return caseSensitiveOpt ? formattedArg : formattedArg.toLowerCase();
         });
         var sortedArgs = args.slice().sort();
         sortedArgs.some(function(value, index) {

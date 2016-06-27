@@ -38,6 +38,12 @@ eslintTester.run('no-private-call', rule, {
             options: [{
                 allow: ['$$watchers']
             }]
+        },
+        {
+            code: 'node.$$treeLevel',
+            options: [{
+                allow: ['$$treeLevel']
+            }]
         }
 
     ].concat(commonFalsePositives),

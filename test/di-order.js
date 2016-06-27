@@ -41,9 +41,27 @@ eslintTester.run('di-order', rule, {
         {
             code: 'it(inject(function(_$httpBackend_, _$http_) {}));',
             options: [false]
+        },
+        {
+            code: 'angular.module("").animation("", function(Authentication, analytics) {});',
+            options: [true, 'case_sensitive']
+        },
+        {
+            code: 'angular.module("").animation("", function(analytics, Authentication) {});',
+            options: [true, 'case_insensitive']
         }
     ].concat(commonFalsePositives),
     invalid: [
+        {
+            code: 'angular.module("").animation("", function(Authentication, analytics) {});',
+            errors: [{message: 'Injected values should be sorted alphabetically'}],
+            options: [true, 'case_insensitive']
+        },
+        {
+            code: 'angular.module("").animation("", function(analytics, Authentication) {});',
+            errors: [{message: 'Injected values should be sorted alphabetically'}],
+            options: [true, 'case_sensitive']
+        },
         // animation
         {
             code: 'angular.module("").animation("", function($q, $http) {});',

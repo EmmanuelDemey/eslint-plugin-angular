@@ -37,6 +37,9 @@ The following patterns are **not** considered problems with default config;
     // valid with filename: src/app/awesomeModule/beautifulDirective.js
     app.directive('beautifulDirective', function() {});
 
+    // valid with filename: src/app/awesomeModule/beautifulComponent.js
+    app.component('beautifulComponent', {});
+
 The following patterns are considered problems when configured `{"typeSeparator":"dot"}`:
 
     /*eslint angular/file-name: [2,{"typeSeparator":"dot"}]*/
@@ -109,6 +112,16 @@ The following patterns are **not** considered problems when configured `{"typeSe
 
     // valid with filename: src/app/userUtils.service.js
     angular.factory('uiUserUtils', uiUserUtils)
+
+The following patterns are **not** considered problems when configured `{"typeSeparator":"dot","ignorePrefix":"ui."}`:
+
+    /*eslint angular/file-name: [2,{"typeSeparator":"dot","ignorePrefix":"ui."}]*/
+
+    // valid with filename: src/app/userUtils.service.js
+    angular.factory('ui.UserUtils', uiUserUtils)
+
+    // valid with filename: src/app/utils.module.js
+    angular.module('ui.utils', function(){})
 
 ## Version
 
