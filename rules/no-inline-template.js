@@ -30,13 +30,13 @@ module.exports = function(context) {
             if (!allowSimple) {
                 context.report(node, 'Inline templates are not allowed. Use an external template instead');
             }
-            if ((node.value.value.match(regularTagPattern) || []).length > 2) {
+            if ((node.value.value && node.value.value.match(regularTagPattern) || []).length > 2) {
                 return reportComplex(node);
             }
-            if ((node.value.value.match(selfClosingTagPattern) || []).length > 1) {
+            if ((node.value.value && node.value.value.match(selfClosingTagPattern) || []).length > 1) {
                 return reportComplex(node);
             }
-            if (node.value.raw.indexOf('\\') !== -1) {
+            if (node.value && node.value.raw.indexOf('\\') !== -1) {
                 reportComplex(node);
             }
         }
