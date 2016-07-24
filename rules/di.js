@@ -58,7 +58,7 @@ module.exports = angularRule(function(context) {
         }
 
         if (syntax === '$inject') {
-            if (fn.params.length === 0) {
+            if (!fn.params || fn.params.length === 0) {
                 return;
             }
             if (fn && fn.id && utils.isIdentifierType(fn.id)) {
