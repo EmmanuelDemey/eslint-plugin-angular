@@ -7,6 +7,11 @@ The second parameter can be a config object [2, {nameStyle: 'dash', typeSeparato
 Possible values for 'typeSeparator' and 'nameStyle' are 'dot', 'dash' and 'underscore'.
 The options 'ignoreTypeSuffix' ignores camel cased suffixes like 'someController' or 'myService' and 'ignorePrefix' ignores namespace prefixes like 'ui'.
 
+The naming scheme is <componentName><typeSeparator><componentType>.js
+
+The *componentType* for all service types (service, factory, provider, value) is 'service'.
+Since 1.5.0 it is possible to configure custom mappings for the *componentType*: {typeSeparator: 'dot', componentTypeMappings: {factory: 'factory', provider: 'provider'}.
+
 **Styleguide Reference**
 
 * [y120 by johnpapa - Naming - Naming Guidelines](https://github.com/johnpapa/angular-styleguide/blob/master/a1/README.md#style-y120)
@@ -111,17 +116,34 @@ The following patterns are **not** considered problems when configured `{"typeSe
     /*eslint angular/file-name: [2,{"typeSeparator":"dot","ignorePrefix":"ui"}]*/
 
     // valid with filename: src/app/userUtils.service.js
-    angular.factory('uiUserUtils', uiUserUtils)
+    angular.factory('uiUserUtils', uiUserUtils);
 
 The following patterns are **not** considered problems when configured `{"typeSeparator":"dot","ignorePrefix":"ui."}`:
 
     /*eslint angular/file-name: [2,{"typeSeparator":"dot","ignorePrefix":"ui."}]*/
 
     // valid with filename: src/app/userUtils.service.js
-    angular.factory('ui.UserUtils', uiUserUtils)
+    angular.factory('ui.UserUtils', uiUserUtils);
 
     // valid with filename: src/app/utils.module.js
-    angular.module('ui.utils', function(){})
+    angular.module('ui.utils', function(){});
+
+The following patterns are considered problems when configured `{"typeSeparator":"dot","componentTypeMappings":{"factory":"factory","provider":"provider"}}`:
+
+    /*eslint angular/file-name: [2,{"typeSeparator":"dot","componentTypeMappings":{"factory":"factory","provider":"provider"}}]*/
+
+    // invalid with filename: src/app/users.service.js
+    angular.provider('users', function(){}); // error: Filename must be "users.provider.js"
+
+The following patterns are **not** considered problems when configured `{"typeSeparator":"dot","componentTypeMappings":{"factory":"factory","provider":"provider"}}`:
+
+    /*eslint angular/file-name: [2,{"typeSeparator":"dot","componentTypeMappings":{"factory":"factory","provider":"provider"}}]*/
+
+    // valid with filename: src/app/users.factory.js
+    angular.factory('users', function(){});
+
+    // valid with filename: src/app/users.provider.js
+    angular.provider('users', function(){});
 
 ## Version
 

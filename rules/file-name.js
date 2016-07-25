@@ -6,6 +6,11 @@
  * Possible values for 'typeSeparator' and 'nameStyle' are 'dot', 'dash' and 'underscore'.
  * The options 'ignoreTypeSuffix' ignores camel cased suffixes like 'someController' or 'myService' and 'ignorePrefix' ignores namespace prefixes like 'ui'.
  *
+ * The naming scheme is <componentName><typeSeparator><componentType>.js
+ *
+ * The *componentType* for all service types (service, factory, provider, value) is 'service'.
+ * Since 1.5.0 it is possible to configure custom mappings for the *componentType*: {typeSeparator: 'dot', componentTypeMappings: {factory: 'factory', provider: 'provider'}.
+ *
  * @styleguideReference {johnpapa} `y120` Naming - Naming Guidelines
  * @styleguideReference {johnpapa} `y121` Naming - Feature File Names
  * @version 0.7.0
@@ -26,18 +31,22 @@ module.exports = (function() {
         underscore: '_'
     };
 
-    var componentTypeMappings = {
-        module: 'module',
-        controller: 'controller',
-        directive: 'directive',
-        filter: 'filter',
-        service: 'service',
-        factory: 'service',
-        provider: 'service',
-        value: 'service',
-        constant: 'constant',
-        component: 'component'
-    };
+    function createComponentTypeMappings(options) {
+        var componentTypeMappingOptions = options.componentTypeMappings || {};
+
+        return {
+            module: componentTypeMappingOptions.module || 'module',
+            controller: componentTypeMappingOptions.controller || 'controller',
+            directive: componentTypeMappingOptions.directive || 'directive',
+            filter: componentTypeMappingOptions.filter || 'filter',
+            service: componentTypeMappingOptions.service || 'service',
+            factory: componentTypeMappingOptions.factory || 'service',
+            provider: componentTypeMappingOptions.provider || 'service',
+            value: componentTypeMappingOptions.value || 'service',
+            constant: componentTypeMappingOptions.constant || 'constant',
+            component: componentTypeMappingOptions.component || 'component'
+        };
+    }
 
     var filenameUtil = {
         firstToUpper: function(value) {
@@ -96,9 +105,9 @@ module.exports = (function() {
     return function(context) {
         var options = context.options[0] || {};
         var filename = path.basename(context.getFilename());
+        var componentTypeMappings = createComponentTypeMappings(options);
 
         return {
-
             CallExpression: function(node) {
                 if (utils.isAngularComponent(node) && utils.isMemberExpression(node.callee)) {
                     var name = node.arguments[0].value;
