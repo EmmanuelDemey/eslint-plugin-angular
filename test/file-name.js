@@ -199,6 +199,16 @@ eslintTester.run('file-name', rule, {
             typeSeparator: 'dot',
             nameStyle: 'underscore'
         }]
+    }, {
+        // custom componentTypeMappings for factory
+        filename: 'src/app/users.factory.js',
+        code: 'app.factory("users", function() {});',
+        options: [{
+            componentTypeMappings: {
+                factory: 'factory'
+            },
+            typeSeparator: 'dot'
+        }]
     }].concat(commonFalsePositives),
     invalid: [{
         filename: 'src/app/filters.js',
@@ -283,5 +293,16 @@ eslintTester.run('file-name', rule, {
             nameStyle: 'underscore'
         }],
         errors: [{message: 'Filename must be "my2_tab.directive.js"'}]
+    }, {
+        // custom componentTypeMappings for provider
+        filename: 'src/app/users.service.js',
+        code: 'app.provider("users", function() {});',
+        options: [{
+            componentTypeMappings: {
+                provider: 'provider'
+            },
+            typeSeparator: 'dot'
+        }],
+        errors: [{message: 'Filename must be "users.provider.js"'}]
     }]
 });

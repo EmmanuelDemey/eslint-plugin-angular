@@ -52,10 +52,20 @@ app.directive('userProfileDirective', function() {});
 
 
 // example - valid: true, options: [{"typeSeparator":"dot", "ignorePrefix": "ui"}], filename: "src/app/userUtils.service.js"
-angular.factory('uiUserUtils', uiUserUtils)
+angular.factory('uiUserUtils', uiUserUtils);
 
 // example - valid: true, options: [{"typeSeparator":"dot", "ignorePrefix": "ui."}], filename: "src/app/userUtils.service.js"
-angular.factory('ui.UserUtils', uiUserUtils)
+angular.factory('ui.UserUtils', uiUserUtils);
 
 // example - valid: true, options: [{"typeSeparator":"dot", "ignorePrefix": "ui."}], filename: "src/app/utils.module.js"
-angular.module('ui.utils', function(){})
+angular.module('ui.utils', function(){});
+
+
+// example - valid: true, options: [{"typeSeparator":"dot", "componentTypeMappings": {"factory": "factory", "provider": "provider"}}], filename: "src/app/users.factory.js"
+angular.factory('users', function(){});
+
+// example - valid: true, options: [{"typeSeparator":"dot", "componentTypeMappings": {"factory": "factory", "provider": "provider"}}], filename: "src/app/users.provider.js"
+angular.provider('users', function(){});
+
+// example - valid: false, options: [{"typeSeparator":"dot", "componentTypeMappings": {"factory": "factory", "provider": "provider"}}], filename: "src/app/users.service.js", errorMessage: "Filename must be \"users.provider.js\""
+angular.provider('users', function(){});
