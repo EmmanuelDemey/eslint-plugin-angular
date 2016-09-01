@@ -51,7 +51,7 @@ module.exports = angularRule(function(context) {
         },
         Property: function(node) {
             if (node.key.name === 'restrict') {
-                if (node.value.raw.indexOf('C') < 0 && node.value.raw.indexOf('A') < 0) {
+                if (node.value.raw && node.value.raw.indexOf('C') < 0 && node.value.raw.indexOf('A') < 0) {
                     return;
                 }
             } else if (allowedProperties.indexOf(node.key.name) < 0) {

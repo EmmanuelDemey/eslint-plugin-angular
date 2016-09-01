@@ -26,6 +26,7 @@ eslintTester.run('prefer-component', rule, {
         'angular.module("").directive("", function() {return {restrict: "A"}})',
         'angular.module("").directive("", function() {return {restrict: "C"}})',
         'angular.module("").directive("", function() {return {restrict: "AE"}})',
+        'angular.module("").directive("", function() {return {restrict: aVariable}})',
         'angular.module("").directive("", function() { function x() { return {link: function(){}} }; x(); return {}; })',
         'angular.module("").directive("", function() {return {link:function(){}}})',
         'angular.module("").directive("", function() { var def = {link: function(){}}; return def; })',
