@@ -77,6 +77,26 @@ angularObjectList.forEach(function(object) {
         code: 'function myFunction(myService) {} myFunction.$inject=[];angular.module("myModule").' + object + '(myFunction);',
         options: ['$inject'],
         errors: [{message: 'The signature of the method is incorrect'}]
+    }, {
+        code: 'function myFunction() {} myFunction.$inject=["myService"];angular.module("myModule").' + object + '(myFunction);',
+        options: ['$inject'],
+        errors: [{message: 'The signature of the method is incorrect'}]
+    }, {
+        code: 'function myFunction(myService2, myService) {} myFunction.$inject=["myService", "myService2"];angular.module("myModule").' + object + '(myFunction);',
+        options: ['$inject'],
+        errors: [{message: 'You have an error in your DI configuration. Each items of the array should match exactly one function parameter'}]
+    }, {
+        code: 'angular.module("myModule").' + object + '(["$urlRouteProvider", function($urlRouteProvider, $timeout){}])',
+        options: ['array'],
+        errors: [{message: 'The signature of the method is incorrect'}]
+    }, {
+        code: 'angular.module("myModule").' + object + '(["$urlRouteProvider", "$timeout", function($urlRouteProvider){}])',
+        options: ['array'],
+        errors: [{message: 'The signature of the method is incorrect'}]
+    }, {
+        code: 'angular.module("myModule").' + object + '(["$urlRouteProvider", "$timeout", function($timeout, $urlRouteProvider){}])',
+        options: ['array'],
+        errors: [{message: 'You have an error in your DI configuration. Each items of the array should match exactly one function parameter'}]
     });
 });
 
@@ -141,6 +161,30 @@ angularNamedObjectList.forEach(function(object) {
         code: 'function myFunction(myService) {} angular.module("myModule").' + object + '("name", myFunction);',
         options: ['$inject'],
         errors: [{message: 'You should use the $inject syntax for DI'}]
+    }, {
+        code: 'function myFunction(myService) {} myFunction.$inject=[];angular.module("myModule").' + object + '("name", myFunction);',
+        options: ['$inject'],
+        errors: [{message: 'The signature of the method is incorrect'}]
+    }, {
+        code: 'function myFunction() {} myFunction.$inject=["myService"];angular.module("myModule").' + object + '("name", myFunction);',
+        options: ['$inject'],
+        errors: [{message: 'The signature of the method is incorrect'}]
+    }, {
+        code: 'function myFunction(myService2, myService) {} myFunction.$inject=["myService", "myService2"];angular.module("myModule").' + object + '("name", myFunction);',
+        options: ['$inject'],
+        errors: [{message: 'You have an error in your DI configuration. Each items of the array should match exactly one function parameter'}]
+    }, {
+        code: 'angular.module("myModule").' + object + '("name", ["$urlRouteProvider", function($urlRouteProvider, $timeout){}])',
+        options: ['array'],
+        errors: [{message: 'The signature of the method is incorrect'}]
+    }, {
+        code: 'angular.module("myModule").' + object + '("name", ["$urlRouteProvider", "$timeout", function($urlRouteProvider){}])',
+        options: ['array'],
+        errors: [{message: 'The signature of the method is incorrect'}]
+    }, {
+        code: 'angular.module("myModule").' + object + '("name", ["$urlRouteProvider", "$timeout", function($timeout, $urlRouteProvider){}])',
+        options: ['array'],
+        errors: [{message: 'You have an error in your DI configuration. Each items of the array should match exactly one function parameter'}]
     });
 });
 

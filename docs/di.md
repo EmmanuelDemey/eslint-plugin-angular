@@ -24,6 +24,25 @@ The following patterns are **not** considered problems with default config;
        // ...
     });
 
+The following patterns are considered problems when configured `"array"`:
+
+    /*eslint angular/di: [2,"array"]*/
+
+    // invalid
+    angular.module('myModule').factory('myService', ['$http', '$log', 'anotherService', function ($http, $log) {
+        // ...
+    }]); // error: The signature of the method is incorrect
+
+    // invalid
+    angular.module('myModule').factory('myService', ['$http', '$log', function ($log, $http) {
+        // ...
+    }]); // error: You have an error in your DI configuration. Each items of the array should match exactly one function parameter
+
+    // invalid
+    angular.module('myModule').factory('myService', ['$http', function ($http, $log) {
+        // ...
+    }]); // error: The signature of the method is incorrect
+
 The following patterns are **not** considered problems when configured `"array"`:
 
     /*eslint angular/di: [2,"array"]*/
@@ -32,6 +51,31 @@ The following patterns are **not** considered problems when configured `"array"`
     angular.module('myModule').factory('myService', ['$http', '$log', 'anotherService', function ($http, $log, anotherService) {
         // ...
     }]);
+
+The following patterns are considered problems when configured `"$inject"`:
+
+    /*eslint angular/di: [2,"$inject"]*/
+
+    // invalid
+    angular.module('myModule').factory('myService', myServiceFn);
+    myServiceFn.$inject=['$http', '$log', 'anotherService'];
+    function myServiceFn($http, $log) {
+        // ...
+    } // error: The signature of the method is incorrect
+
+    // invalid
+    angular.module('myModule').factory('myService', myServiceFn);
+    myServiceFn.$inject=['$http', '$log'];
+    function myServiceFn($http, $log, anotherService) {
+        // ...
+    } // error: The signature of the method is incorrect
+
+    // invalid
+    angular.module('myModule').factory('myService', myServiceFn);
+    myServiceFn.$inject=['$log', '$http'];
+    function myServiceFn($http, $log) {
+        // ...
+    } // error: You have an error in your DI configuration. Each items of the array should match exactly one function parameter
 
 The following patterns are **not** considered problems when configured `"$inject"`:
 

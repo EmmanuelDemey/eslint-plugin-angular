@@ -43,6 +43,13 @@ module.exports = angularRule(function(context) {
                     context.report(fn, 'The signature of the method is incorrect', {});
                     return;
                 }
+                var invalidArray = fn.params.filter(function(e, i) {
+                    return e.name !== fn.parent.elements[i].value;
+                });
+                if (invalidArray.length > 0) {
+                    context.report(fn, 'You have an error in your DI configuration. Each items of the array should match exactly one function parameter', {});
+                    return;
+                }
             } else {
                 if (fn.params.length === 0) {
                     return;
@@ -58,20 +65,25 @@ module.exports = angularRule(function(context) {
         }
 
         if (syntax === '$inject') {
-            if (!fn.params || fn.params.length === 0) {
-                return;
-            }
             if (fn && fn.id && utils.isIdentifierType(fn.id)) {
                 var $injectArray = $injectProperties[fn.id.name];
+
                 if ($injectArray && utils.isArrayType($injectArray)) {
                     if ($injectArray.elements.length !== fn.params.length) {
                         context.report(fn, 'The signature of the method is incorrect', {});
                         return;
                     }
+                    var invalidInjectArray = fn.params.filter(function(e, i) {
+                        return e.name !== $injectArray.elements[i].value;
+                    });
+                    if (invalidInjectArray.length > 0) {
+                        context.report(fn, 'You have an error in your DI configuration. Each items of the array should match exactly one function parameter', {});
+                        return;
+                    }
                 } else {
                     report(fn);
                 }
-            } else {
+            } else if (fn.params && fn.params.length !== 0) {
                 report(fn);
             }
         }
