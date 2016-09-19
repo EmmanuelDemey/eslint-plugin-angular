@@ -25,6 +25,30 @@ valid.push({
 }, {
     code: '(function () {angular.module("foo", []).constant("bar", []);})();',
     options: ['named']
+}, {
+    code: 'angular.module("foo", []).constant("foo", Symbol())',
+    options: ['named']
+}, {
+    code: 'angular.module("foo", []).constant("foo", Symbol())',
+    options: ['anonymous']
+}, {
+    code: 'angular.module("foo", []).constant("foo", Object.freeze({}))',
+    options: ['named']
+}, {
+    code: 'angular.module("foo", []).constant("foo", Object.freeze({}))',
+    options: ['anonymous']
+}, {
+    code: 'angular.module("foo", []).constant("foo", () => {})',
+    options: ['anonymous'],
+    parserOptions: {ecmaVersion: 6}
+}, {
+    code: 'angular.module("foo", []).constant("foo", (() => {})())',
+    options: ['named'],
+    parserOptions: {ecmaVersion: 6}
+}, {
+    code: 'angular.module("foo", []).constant("foo", (() => {})())',
+    options: ['anonymous'],
+    parserOptions: {ecmaVersion: 6}
 });
 
 

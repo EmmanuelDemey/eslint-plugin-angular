@@ -36,6 +36,7 @@ module.exports = {
     isIdentifierType: isIdentifierType,
     isMemberExpression: isMemberExpression,
     isLiteralType: isLiteralType,
+    isCallExpression: isCallExpression,
     isEmptyFunction: isEmptyFunction,
     isStringRegexp: isStringRegexp,
     isAngularComponent: isAngularComponent,

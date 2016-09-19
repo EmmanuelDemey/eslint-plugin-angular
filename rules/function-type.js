@@ -28,7 +28,8 @@ module.exports = function(context) {
     }
 
     function checkType(arg) {
-        return (configType === 'named' && (utils.isIdentifierType(arg) || utils.isNamedInlineFunction(arg))) ||
+        return utils.isCallExpression(arg) ||
+            (configType === 'named' && (utils.isIdentifierType(arg) || utils.isNamedInlineFunction(arg))) ||
             (configType === 'anonymous' && utils.isFunctionType(arg) && !utils.isNamedInlineFunction(arg));
     }
 
