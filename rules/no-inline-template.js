@@ -7,6 +7,7 @@
  *
  * @version 0.12.0
  * @category bestPractice
+ * @sinceAngularVersion 1.x
  */
 'use strict';
 

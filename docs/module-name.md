@@ -6,6 +6,8 @@ When you create a new module, its name should start with the parameter you can d
 The second parameter can be a Regexp wrapped in quotes.
 You can not prefix your modules by "ng" (reserved keyword for AngularJS modules) ("module-name":  [2, "ng"])
 
+**Rule based on Angular 1.x**
+
 **Styleguide Reference**
 
 * [y127 by johnpapa - Naming - Modules](https://github.com/johnpapa/angular-styleguide/blob/master/a1/README.md#style-y127)

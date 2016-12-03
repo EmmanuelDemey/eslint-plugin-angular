@@ -4,6 +4,8 @@
 
 When using a module, avoid using a variable and instead use chaining with the getter syntax
 
+**Rule based on Angular 1.x**
+
 **Styleguide Reference**
 
 * [y022 by johnpapa - Module - Getters](https://github.com/johnpapa/angular-styleguide/blob/master/a1/README.md#style-y022)

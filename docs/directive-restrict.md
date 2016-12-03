@@ -7,6 +7,8 @@ Also it might be desirable to define default restrictions, or explicitly not.
 The default configuration limits the restrictions `AE` and disallows explicitly specifying a default.
 ("directive-restrict": [0, {"restrict": "AE", "explicit": "never"}])
 
+**Rule based on Angular 1.x**
+
 **Styleguide Reference**
 
 * [y074 by johnpapa - Restrict to Elements and Attributes](https://github.com/johnpapa/angular-styleguide/blob/master/a1/README.md#style-y074)

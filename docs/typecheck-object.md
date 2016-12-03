@@ -4,6 +4,8 @@
 
 You should use the angular.isObject method instead of the default JavaScript implementation (typeof {} === "[object Object]").
 
+**Rule based on Angular 1.x**
+
 ## Examples
 
 The following patterns are considered problems;

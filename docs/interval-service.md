@@ -4,6 +4,8 @@
 
 Instead of the default setInterval function, you should use the AngularJS wrapper service $interval
 
+**Rule based on Angular 1.x**
+
 **Styleguide Reference**
 
 * [y181 by johnpapa - Angular $ Wrapper Services - $timeout and $interval](https://github.com/johnpapa/angular-styleguide/blob/master/a1/README.md#style-y181)

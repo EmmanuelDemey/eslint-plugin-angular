@@ -4,6 +4,8 @@
 
 All your DI should use the same syntax : the Array, function, or $inject syntaxes ("di":  [2, "array, function, or $inject"])
 
+**Rule based on Angular 1.x**
+
 ## Examples
 
 The following patterns are considered problems with default config;

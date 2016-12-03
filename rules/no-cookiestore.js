@@ -6,6 +6,7 @@
  *
  * @version 0.3.0
  * @category deprecatedAngularFeature
+ * @sinceAngularVersion 1.x
  */
 'use strict';
 

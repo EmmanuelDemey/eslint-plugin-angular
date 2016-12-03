@@ -4,6 +4,8 @@
 
 You should use $log service instead of console for the methods 'log', 'debug', 'error', 'info', 'warn'
 
+**Rule based on Angular 1.x**
+
 ## Examples
 
 The following patterns are considered problems;

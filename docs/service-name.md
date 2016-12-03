@@ -7,6 +7,8 @@ The second parameter can be a Regexp wrapped in quotes.
 You can not prefix your services by "$" (reserved keyword for AngularJS services) ("service-name":  [2, "ng"])
 *
 
+**Rule based on Angular 1.x**
+
 **Styleguide Reference**
 
 * [y125 by johnpapa - Naming - Factory and Service Names](https://github.com/johnpapa/angular-styleguide/blob/master/a1/README.md#style-y125)

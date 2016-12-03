@@ -5,6 +5,8 @@
 Since AngularJS 1.5, we can use a new API when creating directives.
 This new API should be use when creating directive without DOM manipulation.
 
+**Rule based on Angular 1.5**
+
 ## Examples
 
 The following patterns are considered problems;

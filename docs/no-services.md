@@ -7,6 +7,8 @@ The second parameter specifies the services.
 The third parameter can be a list of angular objects (controller, factory, etc.).
 Or second parameter can be an object, where keys are angular object names and value is a list of services (like {controller: ['$http'], factory: ['$q']})
 
+**Rule based on Angular 1.x**
+
 ## Examples
 
 The following patterns are considered problems with default config;

@@ -5,6 +5,8 @@
 Disallow the $http success and error function.
 Instead the standard promise API should be used.
 
+**Rule based on Angular 1.x**
+
 ## Examples
 
 The following patterns are considered problems;

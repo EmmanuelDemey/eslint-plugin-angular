@@ -4,6 +4,7 @@
  * It should be $on('$destroy', ...).
  * @version 0.1.0
  * @category misspelling
+ * @sinceAngularVersion 1.x
  */
 'use strict';
 

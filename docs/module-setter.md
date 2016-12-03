@@ -4,6 +4,8 @@
 
 Declare modules without a variable using the setter syntax.
 
+**Rule based on Angular 1.x**
+
 **Styleguide Reference**
 
 * [y021 by johnpapa - Module - Definitions (aka Setters)](https://github.com/johnpapa/angular-styleguide/blob/master/a1/README.md#style-y021)

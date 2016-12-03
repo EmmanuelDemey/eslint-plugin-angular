@@ -4,6 +4,8 @@
 
 You should not wrap angular.element object into jQuery(), because angular.element already return jQLite element
 
+**Rule based on Angular 1.x**
+
 ## Examples
 
 The following patterns are considered problems;

@@ -4,6 +4,7 @@
  * You should not wrap angular.element object into jQuery(), because angular.element already return jQLite element
  * @version 0.1.0
  * @category angularWrapper
+ * @sinceAngularVersion 1.x
  */
 'use strict';
 

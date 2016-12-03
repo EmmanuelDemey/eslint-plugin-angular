@@ -5,6 +5,8 @@
 `inject` functions in unittests should only contain a sorted mapping of injected values to values in the `describe` block with matching names.
 This way the dependency injection setup is separated from the other setup logic, improving readability of the test.
 
+**Rule based on Angular 1.x**
+
 ## Examples
 
 The following patterns are considered problems;

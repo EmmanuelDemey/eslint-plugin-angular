@@ -8,6 +8,8 @@ The third parameter can be a Regexp for identifying controller functions (when u
 
 - The name that should be used for the view model.
 
+**Rule based on Angular 1.x**
+
 **Styleguide Reference**
 
 * [y032 by johnpapa - controllerAs with vm](https://github.com/johnpapa/angular-styleguide/blob/master/a1/README.md#style-y032)

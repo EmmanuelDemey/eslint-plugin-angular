@@ -5,6 +5,7 @@
  * Prefer the new syntax : $q(function(resolve, reject){})
  * @version 0.1.0
  * @category bestPractice
+ * @sinceAngularVersion 1.x
  */
 'use strict';
 

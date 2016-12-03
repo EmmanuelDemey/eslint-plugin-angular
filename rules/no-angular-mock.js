@@ -25,6 +25,8 @@
  *
  * Check here(https://github.com/Gillespie59/eslint-plugin-angular/issues/330)
  * for more information on this topic.
+ *
+ * @sinceAngularVersion 1.x
  */
 'use strict';
 

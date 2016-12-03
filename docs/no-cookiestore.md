@@ -5,6 +5,8 @@
 In Angular 1.4, the $cookieStore service is now deprected.
 Please use the $cookies service instead
 
+**Rule based on Angular 1.x**
+
 ## Examples
 
 The following patterns are considered problems;

@@ -4,6 +4,8 @@
 
 According to the Component-First pattern, we should avoid the use of AngularJS controller.
 
+**Rule based on Angular 1.x**
+
 ## Examples
 
 The following patterns are considered problems;

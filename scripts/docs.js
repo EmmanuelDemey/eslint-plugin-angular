@@ -180,6 +180,7 @@ function _createRule(ruleName) {
     rule.category = mainRuleComment.category || 'uncategorizedRule';
 
     rule.deprecated = !!mainRuleComment.deprecated;
+    rule.sinceAngularVersion = mainRuleComment.sinceAngularVersion;
 
     if (rule.deprecated) {
         rule.deprecationReason = mainRuleComment.deprecated;

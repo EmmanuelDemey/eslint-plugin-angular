@@ -9,6 +9,7 @@
  * @linkDescription disallow DI of specified services for other angular components (`$http` for controllers, filters and directives)
  * @version 0.1.0
  * @category bestPractice
+ * @sinceAngularVersion 1.x
  */
 'use strict';
 
