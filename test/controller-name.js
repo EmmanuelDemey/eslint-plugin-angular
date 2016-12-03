@@ -15,6 +15,9 @@ var commonFalsePositives = require('./utils/commonFalsePositives');
 var eslintTester = new RuleTester();
 eslintTester.run('controller-name', rule, {
     valid: [{
+        code: 'app.controller("loginController", function() {});',
+        options: ['/[a-zA-Z].*Controller$/']
+    }, {
         code: 'app.controller("eslintController", function() {});',
         options: ['eslint']
     }, {
