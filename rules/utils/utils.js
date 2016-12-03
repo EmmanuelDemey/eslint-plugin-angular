@@ -86,7 +86,7 @@ function convertPrefixToRegex(prefix) {
     }
 
     if (prefix[0] === '/' && prefix[prefix.length - 1] === '/') {
-        prefix = prefix.substring(1, prefix.length - 2);
+        prefix = prefix.substring(1, prefix.length - 1);
     }
 
     return new RegExp(prefix + '.*');

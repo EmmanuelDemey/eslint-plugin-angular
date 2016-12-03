@@ -43,6 +43,11 @@ eslintTester.run('controller-name', rule, {
             errors: [{message: 'The Controller controller should be prefixed by eslint'}]
         },
         {
+            code: 'app.controller("PrefixBananaSuffixasdf", function() {});',
+            options: ['/^Prefix[A-Z][a-zA-Z0-9]*Suffix$/'],
+            errors: [{message: 'The PrefixBananaSuffixasdf controller should follow this pattern: /^Prefix[A-Z][a-zA-Z0-9]*Suffix$/'}]
+        },
+        {
             code: 'app.controller("esLintController", function() {});',
             options: ['eslint'],
             errors: [{message: 'The esLintController controller should be prefixed by eslint'}]
