@@ -11,14 +11,46 @@
  */
 'use strict';
 
+
 var utils = require('./utils/utils');
+
+/**
+ * @param {Array.<*>} options
+ * @returns {?string}
+ */
+function getPrefixFromOptions(options) {
+    return options.find(function(option) {
+        return ['String', 'RegExp', 'Null', 'Undefined'].indexOf(utils.getToStringTagType(option)) !== -1;
+    });
+}
+
+/**
+ * @param {Array.<*>} options
+ * @returns {Object}
+ */
+function getConfig(options) {
+    var config = options.find(function(option) {
+        return utils.getToStringTagType(option) === 'Object';
+    });
+
+    config = config || {};
+    if (typeof config.oldBehavior !== 'boolean') {
+        config = Object.assign({
+            oldBehavior: true
+        });
+    }
+
+    return config;
+}
 
 module.exports = function(context) {
     return {
 
         CallExpression: function(node) {
-            var prefix = context.options[0];
+            var config = getConfig(context.options);
+            var prefix = getPrefixFromOptions(context.options);
             var convertedPrefix; // convert string from JSON .eslintrc to regex
+            var isService;
 
             if (prefix === undefined) {
                 return;
@@ -26,7 +58,13 @@ module.exports = function(context) {
 
             convertedPrefix = utils.convertPrefixToRegex(prefix);
 
-            if (utils.isAngularServiceDeclaration(node)) {
+            if (config.oldBehavior) {
+                isService = utils.isAngularServiceDeclarationDeprecated(node);
+            } else {
+                isService = utils.isAngularServiceDeclaration(node);
+            }
+
+            if (isService) {
                 var name = node.arguments[0].value;
 
                 if (name !== undefined && name.indexOf('$') === 0) {
