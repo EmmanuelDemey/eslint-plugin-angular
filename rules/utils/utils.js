@@ -53,7 +53,8 @@ module.exports = {
     isUIRouterStateDefinition: isUIRouterStateDefinition,
     findIdentiferInScope: findIdentiferInScope,
     getControllerDefinition: getControllerDefinition,
-    isAngularServiceImport: isAngularServiceImport
+    isAngularServiceImport: isAngularServiceImport,
+    getToStringTagType: getToStringTagType
 };
 
 
@@ -536,4 +537,15 @@ function getControllerDefinition(context, node) {
 function isAngularServiceImport(parameterName, serviceName) {
     var r = new RegExp('^\_?' + serviceName.replace(/[!@#$%^&*()+=\-[\]\\';,./{}|":<>?~_]/g, '\\$&') + '\_?$', 'i');
     return r.test(parameterName);
+}
+
+/**
+ * Return the value of the given param that retrieved by Object#toString()
+ *
+ * @param {*} obj
+ * @return {string}
+ */
+function getToStringTagType(obj) {
+    return Object.prototype.toString.apply(obj)
+        .match(/^\[object\s(.+)]$/)[1];
 }
