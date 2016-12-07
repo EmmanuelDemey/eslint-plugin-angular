@@ -19,6 +19,9 @@ module.exports = function(context) {
             if ((utils.isAngularControllerDeclaration(node.expression) ||
                     utils.isAngularFilterDeclaration(node.expression) ||
                     utils.isAngularServiceDeclaration(node.expression) ||
+                    utils.isAngularFactoryDeclaration(node.expression) ||
+                    utils.isAngularConstantDeclaration(node.expression) ||
+                    utils.isAngularValueDeclaration(node.expression) ||
                     utils.isAngularDirectiveDeclaration(node.expression) ||
                     utils.isAngularRunSection(node.expression) ||
                     utils.isAngularConfigSection(node.expression)) &&
