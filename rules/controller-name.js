@@ -9,6 +9,7 @@
  * @styleguideReference {johnpapa} `y124` Controller Name Suffix
  * @version 0.1.0
  * @category naming
+ * @sinceAngularVersion 1.x
  */
 'use strict';
 

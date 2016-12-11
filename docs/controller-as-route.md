@@ -4,6 +4,8 @@
 
 You should use Angular's controllerAs syntax when defining routes or states.
 
+**Rule based on Angular 1.x**
+
 **Styleguide Reference**
 
 * [y031 by johnpapa - controllerAs Controller Syntax](https://github.com/johnpapa/angular-styleguide/blob/master/a1/README.md#style-y031)

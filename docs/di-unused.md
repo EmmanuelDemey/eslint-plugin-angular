@@ -4,6 +4,8 @@
 
 Unused dependencies should not be injected.
 
+**Rule based on Angular 1.x**
+
 ## Examples
 
 The following patterns are considered problems;

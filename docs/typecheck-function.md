@@ -4,6 +4,8 @@
 
 You should use the angular.isFunction method instead of the default JavaScript implementation (typeof function(){} ==="[object Function]").
 
+**Rule based on Angular 1.x**
+
 ## Examples
 
 The following patterns are considered problems;

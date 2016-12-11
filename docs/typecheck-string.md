@@ -4,6 +4,8 @@
 
 You should use the angular.isString method instead of the default JavaScript implementation (typeof "" === "[object String]").
 
+**Rule based on Angular 1.x**
+
 ## Examples
 
 The following patterns are considered problems;

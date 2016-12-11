@@ -6,6 +6,8 @@ All scope's properties/methods starting with $$ are used internally by AngularJS
 You should not use them directly.
 Exception can be allowed with this option: {allow:['$$watchers']}
 
+**Rule based on Angular 1.x**
+
 ## Examples
 
 The following patterns are considered problems with default config;

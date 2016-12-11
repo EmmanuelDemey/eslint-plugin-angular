@@ -6,6 +6,8 @@ All your controllers should have a name starting with the parameter you can defi
 The second parameter can be a Regexp wrapped in quotes.
 ("controller-name":  [2, "ng"])
 
+**Rule based on Angular 1.x**
+
 **Styleguide Reference**
 
 * [y123 by johnpapa - Controller Names](https://github.com/johnpapa/angular-styleguide/blob/master/a1/README.md#style-y123)

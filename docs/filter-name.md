@@ -6,6 +6,8 @@ All your filters should have a name starting with the parameter you can define i
 The second parameter can be a Regexp wrapped in quotes.
 ("filter-name":  [2, "ng"])
 
+**Rule based on Angular 1.x**
+
 ## Examples
 
 The following patterns are **not** considered problems when configured `"prefix"`:

@@ -4,6 +4,8 @@
 
 You should use the angular.isNumber method instead of the default JavaScript implementation (typeof 3 === "[object Number]").
 
+**Rule based on Angular 1.x**
+
 ## Examples
 
 The following patterns are considered problems;

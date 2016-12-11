@@ -12,6 +12,7 @@
  * @styleguideReference {johnpapa} `y032` controllerAs with vm
  * @version 0.1.0
  * @category bestPractice
+ * @sinceAngularVersion 1.x
  */
 'use strict';
 

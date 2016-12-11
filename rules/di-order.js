@@ -7,6 +7,7 @@
  *
  * @version 0.6.0
  * @category conventions
+ * @sinceAngularVersion 1.x
  */
 'use strict';
 

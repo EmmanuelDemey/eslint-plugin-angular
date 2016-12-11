@@ -6,6 +6,7 @@
  * @linkDescription use `angular.fromJson` and 'angular.toJson' instead of `JSON.parse` and `JSON.stringify`
  * @version 0.1.0
  * @category angularWrapper
+ * @sinceAngularVersion 1.x
  */
 'use strict';
 

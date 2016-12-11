@@ -15,6 +15,9 @@ var commonFalsePositives = require('./utils/commonFalsePositives');
 var eslintTester = new RuleTester();
 eslintTester.run('controller-name', rule, {
     valid: [{
+        code: 'app.controller("loginController", function() {});',
+        options: ['/[a-zA-Z].*Controller$/']
+    }, {
         code: 'app.controller("eslintController", function() {});',
         options: ['eslint']
     }, {
@@ -38,6 +41,11 @@ eslintTester.run('controller-name', rule, {
             code: 'app.controller("Controller", function() {});',
             options: ['eslint'],
             errors: [{message: 'The Controller controller should be prefixed by eslint'}]
+        },
+        {
+            code: 'app.controller("PrefixBananaSuffixasdf", function() {});',
+            options: ['/^Prefix[A-Z][a-zA-Z0-9]*Suffix$/'],
+            errors: [{message: 'The PrefixBananaSuffixasdf controller should follow this pattern: /^Prefix[A-Z][a-zA-Z0-9]*Suffix$/'}]
         },
         {
             code: 'app.controller("esLintController", function() {});',

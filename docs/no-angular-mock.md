@@ -5,6 +5,8 @@
 All methods defined in the angular.mock object are also available in the object window.
 So you can remove angular.mock from your code
 
+**Rule based on Angular 1.x**
+
 ## Examples
 
 The following patterns are considered problems;

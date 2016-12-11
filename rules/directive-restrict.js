@@ -9,6 +9,7 @@
  * @styleguideReference {johnpapa} `y074` Restrict to Elements and Attributes
  * @version 0.12.0
  * @category bestPractice
+ * @sinceAngularVersion 1.x
  */
 'use strict';
 

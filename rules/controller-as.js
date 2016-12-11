@@ -8,6 +8,7 @@
  * @styleguideReference {johnpapa} `y031` controllerAs Controller Syntax
  * @version 0.1.0
  * @category bestPractice
+ * @sinceAngularVersion 1.x
  */
 'use strict';
 

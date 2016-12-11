@@ -8,6 +8,7 @@
  * @styleguideReference {johnpapa} `y127` Naming - Modules
  * @version 0.1.0
  * @category naming
+ * @sinceAngularVersion 1.x
  */
 'use strict';
 

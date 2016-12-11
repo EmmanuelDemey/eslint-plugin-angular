@@ -86,7 +86,7 @@ function convertPrefixToRegex(prefix) {
     }
 
     if (prefix[0] === '/' && prefix[prefix.length - 1] === '/') {
-        prefix = prefix.substring(1, prefix.length - 2);
+        prefix = prefix.substring(1, prefix.length - 1);
     }
 
     return new RegExp(prefix + '.*');
@@ -263,7 +263,10 @@ function isAngularComponent(node) {
  * @returns {boolean} Whether or not the node defines an Angular component.
  */
 function isAngularComponentDeclaration(node) {
-    return isAngularComponent(node) &&
+    return node.arguments !== undefined &&
+        node.arguments.length === 2 &&
+        isLiteralType(node.arguments[0]) &&
+        node.arguments[1].type === 'ObjectExpression' &&
         isMemberExpression(node.callee) &&
         node.callee.property.name === 'component';
 }

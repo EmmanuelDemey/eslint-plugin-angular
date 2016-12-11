@@ -10,6 +10,8 @@ A prefix can be specified to determine which prefix the custom modules have.
 Without grouped set to `false` all dependencies combined should be sorted alphabetically.
 ('module-dependency-order', [2, {grouped: true, prefix: "app"}])
 
+**Rule based on Angular 1.x**
+
 ## Examples
 
 The following patterns are considered problems with default config;

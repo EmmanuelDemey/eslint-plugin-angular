@@ -4,6 +4,8 @@
 
 All your DI should use the same syntax : the Array, function, or $inject syntaxes ("di":  [2, "array, function, or $inject"])
 
+**Rule based on Angular 1.x**
+
 ## Examples
 
 The following patterns are considered problems with default config;
@@ -52,6 +54,15 @@ The following patterns are **not** considered problems when configured `"array"`
         // ...
     }]);
 
+The following patterns are **not** considered problems when configured `"array"` and `{"matchNames":false}`:
+
+    /*eslint angular/di: [2,"array",{"matchNames":false}]*/
+
+    // valid
+    angular.module('myModule').factory('myService', ['eslintService', function (service) {
+        // ...
+    }]);
+
 The following patterns are considered problems when configured `"$inject"`:
 
     /*eslint angular/di: [2,"$inject"]*/
@@ -85,6 +96,17 @@ The following patterns are **not** considered problems when configured `"$inject
     angular.module('myModule').factory('myService', myServiceFn);
     myServiceFn.$inject=['$http', '$log', 'anotherService'];
     function myServiceFn($http, $log, anotherService) {
+        // ...
+    }
+
+The following patterns are **not** considered problems when configured `"$inject"` and `{"matchNames":false}`:
+
+    /*eslint angular/di: [2,"$inject",{"matchNames":false}]*/
+
+    // valid
+    angular.module('myModule').factory('myService', myServiceFn);
+    myServiceFn.$inject=['eslintService'];
+    function myServiceFn(Service) {
         // ...
     }
 

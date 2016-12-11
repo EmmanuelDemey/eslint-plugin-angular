@@ -7,6 +7,8 @@ The default limit is one.
 
 - The acceptable number of components. (Default: 1)
 
+**Rule based on Angular 1.x**
+
 **Styleguide Reference**
 
 * [y001 by johnpapa - Define 1 component per file](https://github.com/johnpapa/angular-styleguide/blob/master/a1/README.md#style-y001)

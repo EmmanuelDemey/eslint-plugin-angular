@@ -5,6 +5,7 @@
  *
  * @version 0.1.0
  * @category angularWrapper
+ * @sinceAngularVersion 1.x
  */
 'use strict';
 

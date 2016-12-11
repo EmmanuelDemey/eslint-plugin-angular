@@ -13,10 +13,22 @@ angular.module('myModule').factory('myService', ['$http', '$log', 'anotherServic
     // ...
 }]);
 
+// example - valid: true, options: ["array", {matchNames: false}]
+angular.module('myModule').factory('myService', ['eslintService', function (service) {
+    // ...
+}]);
+
 // example - valid: true, options: ["$inject"]
 angular.module('myModule').factory('myService', myServiceFn);
 myServiceFn.$inject=['$http', '$log', 'anotherService'];
 function myServiceFn($http, $log, anotherService) {
+    // ...
+}
+
+// example - valid: true, options: ["$inject", {matchNames: false}]
+angular.module('myModule').factory('myService', myServiceFn);
+myServiceFn.$inject=['eslintService'];
+function myServiceFn(Service) {
     // ...
 }
 

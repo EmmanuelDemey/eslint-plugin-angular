@@ -4,6 +4,8 @@
 
 You should use angular.fromJson or angular.toJson instead of JSON.parse and JSON.stringify
 
+**Rule based on Angular 1.x**
+
 ## Examples
 
 The following patterns are considered problems;

@@ -7,6 +7,8 @@ The replace property of a directive definition object is deprecated since angula
 
 The option `ignoreReplaceFalse` let you ignore directive definitions with replace set to false.
 
+**Rule based on Angular 1.x**
+
 ## Examples
 
 The following patterns are considered problems with default config;

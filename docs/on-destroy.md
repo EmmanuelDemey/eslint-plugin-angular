@@ -4,6 +4,8 @@
 
 It should be $on('$destroy', ...).
 
+**Rule based on Angular 1.x**
+
 ## Examples
 
 The following patterns are considered problems;

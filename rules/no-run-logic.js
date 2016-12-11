@@ -6,6 +6,7 @@
  * @styleguideReference {johnpapa} `y171` Run Blocks
  * @version 0.15.0
  * @category bestPractice
+ * @sinceAngularVersion 1.x
  */
 'use strict';
 

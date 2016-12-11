@@ -7,6 +7,7 @@
  * @styleguideReference {johnpapa} `y022` Module - Getters
  * @version 0.1.0
  * @category possibleError
+ * @sinceAngularVersion 1.x
  */
 'use strict';
 

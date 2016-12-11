@@ -4,6 +4,8 @@
 
 Watch and On methods on the scope object should be assigned to a variable, in order to be deleted in a $destroy event handler
 
+**Rule based on Angular 1.x**
+
 ## Examples
 
 The following patterns are considered problems;

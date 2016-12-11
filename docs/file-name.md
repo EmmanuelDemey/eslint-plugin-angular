@@ -12,6 +12,8 @@ The naming scheme is &lt;componentName&gt;&lt;typeSeparator&gt;&lt;componentType
 The *componentType* for all service types (service, factory, provider, value) is 'service'.
 Since 1.5.0 it is possible to configure custom mappings for the *componentType*: {typeSeparator: 'dot', componentTypeMappings: {factory: 'factory', provider: 'provider'}.
 
+**Rule based on Angular 1.x**
+
 **Styleguide Reference**
 
 * [y120 by johnpapa - Naming - Naming Guidelines](https://github.com/johnpapa/angular-styleguide/blob/master/a1/README.md#style-y120)

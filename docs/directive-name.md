@@ -6,6 +6,8 @@ All your directives should have a name starting with the parameter you can defin
 The second parameter can be a Regexp wrapped in quotes.
 You can not prefix your directives by "ng" (reserved keyword for AngularJS directives) ("directive-name":  [2, "ng"])
 
+**Rule based on Angular 1.x**
+
 **Styleguide Reference**
 
 * [y073 by johnpapa - Provide a Unique Directive Prefix](https://github.com/johnpapa/angular-styleguide/blob/master/a1/README.md#style-y073)

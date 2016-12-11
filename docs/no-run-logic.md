@@ -4,6 +4,8 @@
 
 Initialization logic should be moved into a factory or service. This improves testability.
 
+**Rule based on Angular 1.x**
+
 **Styleguide Reference**
 
 * [y171 by johnpapa - Run Blocks](https://github.com/johnpapa/angular-styleguide/blob/master/a1/README.md#style-y171)

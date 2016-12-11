@@ -8,6 +8,10 @@
 
 <%= description %>
 
+<% if(sinceAngularVersion) { %>
+**Rule based on Angular <%= sinceAngularVersion %>**
+<% } %>
+
 <% if(styleguideReferences.length > 0) { %>
 **Styleguide Reference**
 <% _.each(styleguideReferences, function(styleRef) { %>

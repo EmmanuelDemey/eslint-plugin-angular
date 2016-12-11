@@ -4,6 +4,8 @@
 
 You should use the angular.isDate method instead of the default JavaScript implementation (typeof new Date() === "[object Date]").
 
+**Rule based on Angular 1.x**
+
 ## Examples
 
 The following patterns are considered problems;

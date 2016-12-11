@@ -7,6 +7,7 @@
  *
  * @version 0.1.0
  * @category naming
+ * @sinceAngularVersion 1.x
  */
 'use strict';
 

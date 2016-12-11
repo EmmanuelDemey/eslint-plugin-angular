@@ -5,6 +5,8 @@
 When you want to create a new promise, you should not use the $q.deferred anymore.
 Prefer the new syntax : $q(function(resolve, reject){})
 
+**Rule based on Angular 1.x**
+
 ## Examples
 
 The following patterns are considered problems;

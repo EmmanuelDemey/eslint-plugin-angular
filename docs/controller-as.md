@@ -6,6 +6,8 @@ You should not set properties on $scope in controllers.
 Use controllerAs syntax and add data to 'this'.
 The second parameter can be a Regexp for identifying controller functions (when using something like Browserify)
 
+**Rule based on Angular 1.x**
+
 **Styleguide Reference**
 
 * [y031 by johnpapa - controllerAs Controller Syntax](https://github.com/johnpapa/angular-styleguide/blob/master/a1/README.md#style-y031)

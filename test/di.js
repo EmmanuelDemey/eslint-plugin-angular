@@ -30,6 +30,9 @@ angularObjectList.forEach(function(object) {
         code: 'angular.module("myModule").' + object + '(["Service1", function(Service1) {}]);',
         options: ['array']
     }, {
+        code: 'angular.module("myModule").' + object + '(["slMathPi", function(pi) {}]);',
+        options: ['array', {matchNames: false}]
+    }, {
         code: 'angular.module("myModule").' + object + '(myFunction);function MyFunction() {}',
         options: ['function']
     }, {
@@ -38,6 +41,9 @@ angularObjectList.forEach(function(object) {
     }, {
         code: 'angular.module("myModule").' + object + '(myFunction);myFunction["$inject"]=["myService"];function myFunction(myService) {}',
         options: ['$inject']
+    }, {
+        code: 'angular.module("myModule").' + object + '(myFunction);myFunction["$inject"]=["slMathPi"];function myFunction(pi) {}',
+        options: ['$inject', {matchNames: false}]
     }, {
         code: 'myFunction.$inject=[];function myFunction() {} angular.module("myModule").' + object + '(myFunction);',
         options: ['$inject']

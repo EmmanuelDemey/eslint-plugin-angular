@@ -5,6 +5,7 @@
  *
  * @version 0.1.0
  * @category conventions
+ * @sinceAngularVersion 1.x
  */
 'use strict';
 
@@ -15,6 +16,9 @@ var angularRule = require('./utils/angular-rule');
 
 module.exports = angularRule(function(context) {
     var syntax = context.options[0] || 'function';
+
+    var extra = context.options[1] || {};
+    var matchNames = extra.matchNames !== false;
 
     function report(node) {
         context.report(node, 'You should use the {{syntax}} syntax for DI', {
@@ -27,7 +31,7 @@ module.exports = angularRule(function(context) {
     function maybeNoteInjection(node) {
         if (syntax === '$inject' && node.left && node.left.property &&
             ((utils.isLiteralType(node.left.property) && node.left.property.value === '$inject') ||
-            (utils.isIdentifierType(node.left.property) && node.left.property.name === '$inject'))) {
+                (utils.isIdentifierType(node.left.property) && node.left.property.name === '$inject'))) {
             $injectProperties[node.left.object.name] = node.right;
         }
     }
@@ -43,12 +47,15 @@ module.exports = angularRule(function(context) {
                     context.report(fn, 'The signature of the method is incorrect', {});
                     return;
                 }
-                var invalidArray = fn.params.filter(function(e, i) {
-                    return e.name !== fn.parent.elements[i].value;
-                });
-                if (invalidArray.length > 0) {
-                    context.report(fn, 'You have an error in your DI configuration. Each items of the array should match exactly one function parameter', {});
-                    return;
+
+                if (matchNames) {
+                    var invalidArray = fn.params.filter(function(e, i) {
+                        return e.name !== fn.parent.elements[i].value;
+                    });
+                    if (invalidArray.length > 0) {
+                        context.report(fn, 'You have an error in your DI configuration. Each items of the array should match exactly one function parameter', {});
+                        return;
+                    }
                 }
             } else {
                 if (fn.params.length === 0) {
@@ -73,12 +80,15 @@ module.exports = angularRule(function(context) {
                         context.report(fn, 'The signature of the method is incorrect', {});
                         return;
                     }
-                    var invalidInjectArray = fn.params.filter(function(e, i) {
-                        return e.name !== $injectArray.elements[i].value;
-                    });
-                    if (invalidInjectArray.length > 0) {
-                        context.report(fn, 'You have an error in your DI configuration. Each items of the array should match exactly one function parameter', {});
-                        return;
+
+                    if (matchNames) {
+                        var invalidInjectArray = fn.params.filter(function(e, i) {
+                            return e.name !== $injectArray.elements[i].value;
+                        });
+                        if (invalidInjectArray.length > 0) {
+                            context.report(fn, 'You have an error in your DI configuration. Each items of the array should match exactly one function parameter', {});
+                            return;
+                        }
                     }
                 } else {
                     report(fn);
@@ -115,4 +125,11 @@ module.exports.schema = [{
         'array',
         '$inject'
     ]
+}, {
+    type: 'object',
+    properties: {
+        matchNames: {
+            type: 'boolean'
+        }
+    }
 }];

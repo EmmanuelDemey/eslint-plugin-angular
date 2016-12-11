@@ -4,6 +4,8 @@
 
 Injected dependencies should be written one per line.
 
+**Rule based on Angular 1.x**
+
 ## Examples
 
 The following patterns are considered problems;

@@ -11,6 +11,7 @@
  * @styleguideReference {johnpapa} `y001` Define 1 component per file
  * @version 0.11.0
  * @category bestPractice
+ * @sinceAngularVersion 1.x
  */
 'use strict';
 
