@@ -33,6 +33,9 @@ angularObjectList.forEach(function(object) {
         code: 'angular.module("myModule").' + object + '(["slMathPi", function(pi) {}]);',
         options: ['array', {matchNames: false}]
     }, {
+        code: 'angular.module("myModule").' + object + '(["$log", function($l) {}]);',
+        options: ['array', {matchNames: false}]
+    }, {
         code: 'angular.module("myModule").' + object + '(myFunction);function MyFunction() {}',
         options: ['function']
     }, {
