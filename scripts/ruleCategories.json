@@ -8,7 +8,8 @@
         "angularWrapper",
         "deprecatedRule",
         "removedRule",
-        "uncategorizedRule"
+        "uncategorizedRule",
+        "misspelling"
     ],
     "categories": {
         "possibleError": {
@@ -34,6 +35,10 @@
         "angularWrapper": {
             "headline": "Angular Wrappers",
             "description": "These rules help you to enforce the usage of angular wrappers."
+        },
+        "misspelling": {
+            "headline": "Misspelling",
+            "description": "These rules help you avoiding misspellings."
         },
         "deprecatedRule": {
             "headline": "Deprecated rules",

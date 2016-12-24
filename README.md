@@ -179,6 +179,12 @@ These rules help you to enforce the usage of angular wrappers.
  * [typecheck-string](docs/typecheck-string.md) - use `angular.isString` instead of `typeof` comparisons
  * [window-service](docs/window-service.md) - use `$window` instead of `window` ([y180](https://github.com/johnpapa/angular-styleguide/blob/master/a1/README.md#style-y180))
 
+### Misspelling
+
+These rules help you avoiding misspellings.
+
+ * [on-destroy](docs/on-destroy.md) - Check for common misspelling $on('destroy', ...).
+
 
 ----
 
