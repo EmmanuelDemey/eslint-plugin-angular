@@ -60,6 +60,9 @@ module.exports = function(context) {
 
             if (config.oldBehavior) {
                 isService = utils.isAngularServiceDeclarationDeprecated(node);
+                // Warning that the API is deprecated
+                // eslint-disable-next-line
+                console.warn('The rule `angular/service-name` will be split up to different rules in the next version. Please read the docs for more information');
             } else {
                 isService = utils.isAngularServiceDeclaration(node);
             }
