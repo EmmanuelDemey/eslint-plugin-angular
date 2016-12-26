@@ -4,7 +4,10 @@
 
 All your services should have a name starting with the parameter you can define in your config object.
 The second parameter can be a Regexp wrapped in quotes.
-You can not prefix your services by "$" (reserved keyword for AngularJS services) ("service-name":  [2, "ng"])
+Please note, that the rule will be changed in future version to only support `angular.Module#service()`.
+If you want the new behavior use the flag `{oldBehavior: false}`.
+For factories, providers, constants and values, you can should use their rules. 
+You can not prefix your services by "$" (reserved keyword for AngularJS services) ("service-name":  [2, "ng", {oldBehavior: false}])
 *
 
 **Rule based on Angular 1.x**
@@ -17,37 +20,37 @@ You can not prefix your services by "$" (reserved keyword for AngularJS services
 
 The following patterns are **not** considered problems when configured `"prefix"`:
 
-    /*eslint angular/service-name: [2,"prefix"]*/
+    /*eslint angular/service-name: [2,"prefix",{oldBehavior: false}]*/
 
     // valid
-    angular.module('myModule').factory('prefixService', function () {
+    angular.module('myModule').service('prefixService', function () {
         // ...
     });
 
 The following patterns are considered problems when configured `"/^xyz/"`:
 
-    /*eslint angular/service-name: [2,"/^xyz/"]*/
+    /*eslint angular/service-name: [2,"/^xyz/",{oldBehavior: false}]*/
 
     // invalid
-    angular.module('myModule').factory('otherService', function () {
+    angular.module('myModule').service('otherService', function () {
         // ...
     }); // error: The otherService service should follow this pattern: /^xyz/
 
 The following patterns are **not** considered problems when configured `"/^xyz/"`:
 
-    /*eslint angular/service-name: [2,"/^xyz/"]*/
+    /*eslint angular/service-name: [2,"/^xyz/",{oldBehavior: false}]*/
 
     // valid
-    angular.module('myModule').factory('xyzService', function () {
+    angular.module('myModule').service('xyzService', function () {
         // ...
     });
 
 The following patterns are considered problems when configured `"xyz"`:
 
-    /*eslint angular/service-name: [2,"xyz"]*/
+    /*eslint angular/service-name: [2,"xyz",{oldBehavior: false}]*/
 
     // invalid
-    angular.module('myModule').factory('myService', function () {
+    angular.module('myModule').service('myService', function () {
         // ...
     }); // error: The myService service should be prefixed by xyz
 

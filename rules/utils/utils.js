@@ -44,7 +44,12 @@ module.exports = {
     isAngularControllerDeclaration: isAngularControllerDeclaration,
     isAngularFilterDeclaration: isAngularFilterDeclaration,
     isAngularDirectiveDeclaration: isAngularDirectiveDeclaration,
+    isAngularServiceDeclarationDeprecated: isAngularServiceDeclarationDeprecated,
     isAngularServiceDeclaration: isAngularServiceDeclaration,
+    isAngularProviderDeclaration: isAngularProviderDeclaration,
+    isAngularFactoryDeclaration: isAngularFactoryDeclaration,
+    isAngularConstantDeclaration: isAngularConstantDeclaration,
+    isAngularValueDeclaration: isAngularValueDeclaration,
     isAngularModuleDeclaration: isAngularModuleDeclaration,
     isAngularModuleGetter: isAngularModuleGetter,
     isAngularRunSection: isAngularRunSection,
@@ -53,7 +58,8 @@ module.exports = {
     isUIRouterStateDefinition: isUIRouterStateDefinition,
     findIdentiferInScope: findIdentiferInScope,
     getControllerDefinition: getControllerDefinition,
-    isAngularServiceImport: isAngularServiceImport
+    isAngularServiceImport: isAngularServiceImport,
+    getToStringTagType: getToStringTagType
 };
 
 
@@ -337,7 +343,7 @@ function isAngularDirectiveDeclaration(node) {
  * @param {Object} node The CallExpression node to check.
  * @returns {boolean} Whether or not the node defines an Angular controller.
  */
-function isAngularServiceDeclaration(node) {
+function isAngularServiceDeclarationDeprecated(node) {
     return isAngularComponent(node) &&
         isMemberExpression(node.callee) &&
         node.callee.object.name !== '$provide' &&
@@ -346,6 +352,57 @@ function isAngularServiceDeclaration(node) {
          node.callee.property.name === 'factory' ||
          node.callee.property.name === 'constant' ||
          node.callee.property.name === 'value');
+}
+
+/*
+ * @param {Object}
+ * @returns {boolean}
+ */
+function isAngularServiceDeclaration(node) {
+    return isAngularComponent(node) &&
+        isMemberExpression(node.callee) &&
+        node.callee.object.name !== '$provide' &&
+        node.callee.property.name === 'service';
+}
+
+/*
+ * @param {Object}
+ * @returns {boolean}
+ */
+function isAngularProviderDeclaration(node) {
+    return isAngularComponent(node) &&
+        isMemberExpression(node.callee) &&
+        node.callee.object.name !== '$provide' &&
+        node.callee.property.name === 'provider';
+}
+
+/*
+ * @param {Object}
+ * @returns {boolean}
+ */
+function isAngularFactoryDeclaration(node) {
+    return isAngularComponent(node) &&
+        isMemberExpression(node.callee) &&
+        node.callee.object.name !== '$provide' &&
+        node.callee.property.name === 'factory';
+}
+
+/*
+ * @param {Object}
+ * @returns {boolean}
+ */
+function isAngularConstantDeclaration(node) {
+    return isAngularComponent(node) &&
+        isMemberExpression(node.callee) &&
+        node.callee.object.name !== '$provide' &&
+        node.callee.property.name === 'constant';
+}
+
+function isAngularValueDeclaration(node) {
+    return isAngularComponent(node) &&
+        isMemberExpression(node.callee) &&
+        node.callee.object.name !== '$provide' &&
+        node.callee.property.name === 'value';
 }
 
 /**
@@ -539,4 +596,15 @@ function getControllerDefinition(context, node) {
 function isAngularServiceImport(parameterName, serviceName) {
     var r = new RegExp('^\_?' + serviceName.replace(/[!@#$%^&*()+=\-[\]\\';,./{}|":<>?~_]/g, '\\$&') + '\_?$', 'i');
     return r.test(parameterName);
+}
+
+/**
+ * Return the value of the given param that retrieved by Object#toString()
+ *
+ * @param {*} obj
+ * @return {string}
+ */
+function getToStringTagType(obj) {
+    return Object.prototype.toString.apply(obj)
+        .match(/^\[object\s(.+)]$/)[1];
 }
