@@ -15,39 +15,39 @@ You can not prefix your services by "$" (reserved keyword for AngularJS services
 
 ## Examples
 
-The following patterns are **not** considered problems when configured `"prefix"`:
+The following patterns are **not** considered problems when configured `"prefix"` and `{"oldBehavior":false}`:
 
-    /*eslint angular/service-name: [2,"prefix"]*/
+    /*eslint angular/service-name: [2,"prefix",{"oldBehavior":false}]*/
 
     // valid
-    angular.module('myModule').factory('prefixService', function () {
+    angular.module('myModule').service('prefixService', function () {
         // ...
     });
 
-The following patterns are considered problems when configured `"/^xyz/"`:
+The following patterns are considered problems when configured `"/^xyz/"` and `{"oldBehavior":false}`:
 
-    /*eslint angular/service-name: [2,"/^xyz/"]*/
+    /*eslint angular/service-name: [2,"/^xyz/",{"oldBehavior":false}]*/
 
     // invalid
-    angular.module('myModule').factory('otherService', function () {
+    angular.module('myModule').service('otherService', function () {
         // ...
     }); // error: The otherService service should follow this pattern: /^xyz/
 
-The following patterns are **not** considered problems when configured `"/^xyz/"`:
+The following patterns are **not** considered problems when configured `"/^xyz/"` and `{"oldBehavior":false}`:
 
-    /*eslint angular/service-name: [2,"/^xyz/"]*/
+    /*eslint angular/service-name: [2,"/^xyz/",{"oldBehavior":false}]*/
 
     // valid
-    angular.module('myModule').factory('xyzService', function () {
+    angular.module('myModule').service('xyzService', function () {
         // ...
     });
 
-The following patterns are considered problems when configured `"xyz"`:
+The following patterns are considered problems when configured `"xyz"` and `{"oldBehavior":false}`:
 
-    /*eslint angular/service-name: [2,"xyz"]*/
+    /*eslint angular/service-name: [2,"xyz",{"oldBehavior":false}]*/
 
     // invalid
-    angular.module('myModule').factory('myService', function () {
+    angular.module('myModule').service('myService', function () {
         // ...
     }); // error: The myService service should be prefixed by xyz
 
