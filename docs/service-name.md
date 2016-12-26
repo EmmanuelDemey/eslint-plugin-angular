@@ -4,10 +4,7 @@
 
 All your services should have a name starting with the parameter you can define in your config object.
 The second parameter can be a Regexp wrapped in quotes.
-Please note, that the rule will be changed in future version to only support `angular.Module#service()`.
-If you want the new behavior use the flag `{oldBehavior: false}`.
-For factories, providers, constants and values, you can should use their rules. 
-You can not prefix your services by "$" (reserved keyword for AngularJS services) ("service-name":  [2, "ng", {oldBehavior: false}])
+You can not prefix your services by "$" (reserved keyword for AngularJS services) ("service-name":  [2, "ng"])
 *
 
 **Rule based on Angular 1.x**
@@ -18,36 +15,36 @@ You can not prefix your services by "$" (reserved keyword for AngularJS services
 
 ## Examples
 
-The following patterns are **not** considered problems when configured `"prefix"`:
+The following patterns are **not** considered problems when configured `"prefix"` and `{"oldBehavior":false}`:
 
-    /*eslint angular/service-name: [2,"prefix",{oldBehavior: false}]*/
+    /*eslint angular/service-name: [2,"prefix",{"oldBehavior":false}]*/
 
     // valid
     angular.module('myModule').service('prefixService', function () {
         // ...
     });
 
-The following patterns are considered problems when configured `"/^xyz/"`:
+The following patterns are considered problems when configured `"/^xyz/"` and `{"oldBehavior":false}`:
 
-    /*eslint angular/service-name: [2,"/^xyz/",{oldBehavior: false}]*/
+    /*eslint angular/service-name: [2,"/^xyz/",{"oldBehavior":false}]*/
 
     // invalid
     angular.module('myModule').service('otherService', function () {
         // ...
     }); // error: The otherService service should follow this pattern: /^xyz/
 
-The following patterns are **not** considered problems when configured `"/^xyz/"`:
+The following patterns are **not** considered problems when configured `"/^xyz/"` and `{"oldBehavior":false}`:
 
-    /*eslint angular/service-name: [2,"/^xyz/",{oldBehavior: false}]*/
+    /*eslint angular/service-name: [2,"/^xyz/",{"oldBehavior":false}]*/
 
     // valid
     angular.module('myModule').service('xyzService', function () {
         // ...
     });
 
-The following patterns are considered problems when configured `"xyz"`:
+The following patterns are considered problems when configured `"xyz"` and `{"oldBehavior":false}`:
 
-    /*eslint angular/service-name: [2,"xyz",{oldBehavior: false}]*/
+    /*eslint angular/service-name: [2,"xyz",{"oldBehavior":false}]*/
 
     // invalid
     angular.module('myModule').service('myService', function () {

@@ -51,7 +51,7 @@ The following patterns are considered problems when configured `"xyz"`:
 
 ## Version
 
-This rule was introduced in eslint-plugin-angular 1.4.1
+This rule was introduced in eslint-plugin-angular 0.1.0
 
 ## Links
 

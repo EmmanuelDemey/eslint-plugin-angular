@@ -2,9 +2,9 @@
 
 # factory-name - require and specify a prefix for all factory names
 
-All your factories should have a name starting with the parameter you can define in your config object.
+All your factorys should have a name starting with the parameter you can define in your config object.
 The second parameter can be a Regexp wrapped in quotes.
-You can not prefix your factories by "$" (reserved keyword for AngularJS services) ("factory-name":  [2, "ng"])
+You can not prefix your factorys by "$" (reserved keyword for AngularJS services) ("factory-name":  [2, "ng"])
 *
 
 **Styleguide Reference**
@@ -51,7 +51,7 @@ The following patterns are considered problems when configured `"xyz"`:
 
 ## Version
 
-This rule was introduced in eslint-plugin-angular 1.4.1
+This rule was introduced in eslint-plugin-angular 0.1.0
 
 ## Links
 
