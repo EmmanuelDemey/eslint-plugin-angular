@@ -29,10 +29,10 @@
     "gulp": "^3.9.1",
     "gulp-eslint": "^3.0.1",
     "gulp-istanbul": "^1.0.0",
-    "gulp-mocha": "^2.2.0",
+    "gulp-mocha": "^3.0.1",
     "istanbul": "^0.4.2",
     "lodash": "^4.13.1",
-    "mocha": "^2.4.5",
+    "mocha": "^3.2.0",
     "parse-comments": "^0.4.3",
     "shelljs": "^0.7.1",
     "shelljs-nodecli": "^0.1.1"
