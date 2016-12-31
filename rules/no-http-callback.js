@@ -11,6 +11,9 @@
 'use strict';
 
 module.exports = {
+    meta: {
+        schema: []
+    },
     create: function(context) {
         var httpMethods = [
             'delete',

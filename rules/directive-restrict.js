@@ -16,18 +16,20 @@
 var utils = require('./utils/utils');
 
 module.exports = {
-    schema: [{
-        type: 'object',
-        properties: {
-            restrict: {
-                type: 'string',
-                pattern: '^A|C|E|(AC)|(CA)|(AE)|(EA)|(EC)|(CE)|(AEC)|(ACE)|(EAC)|(CAE)|(ACE)|(AEC)|(CAE)|(ACE)|(AEC)$'
-            },
-            explicit: {
-                enum: ['always', 'never']
+    meta: {
+        schema: [{
+            type: 'object',
+            properties: {
+                restrict: {
+                    type: 'string',
+                    pattern: '^A|C|E|(AC)|(CA)|(AE)|(EA)|(EC)|(CE)|(AEC)|(ACE)|(EAC)|(CAE)|(ACE)|(AEC)|(CAE)|(ACE)|(AEC)$'
+                },
+                explicit: {
+                    enum: ['always', 'never']
+                }
             }
-        }
-    }],
+        }],
+    },
     create: function(context) {
         var options = context.options[0] || {};
         var restrictOpt = options.restrict || 'AE';

@@ -11,7 +11,9 @@
 'use strict';
 
 module.exports = {
-    schema: [],
+    meta: {
+        schema: []
+    },
     create: function(context) {
         var message = 'You should use the $interval service instead of the default window.setInterval method';
 

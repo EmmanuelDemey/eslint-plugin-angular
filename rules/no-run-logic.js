@@ -14,14 +14,16 @@ var angularRule = require('./utils/angular-rule');
 
 
 module.exports = {
-    schema: [{
-        type: 'object',
-        properties: {
-            allowParams: {
-                type: 'boolean'
+    meta: {
+        schema: [{
+            type: 'object',
+            properties: {
+                allowParams: {
+                    type: 'boolean'
+                }
             }
-        }
-    }],
+        }]
+    },
     create: angularRule(function(context) {
         var options = context.options[0] || {};
         var allowParams = options.allowParams !== false;

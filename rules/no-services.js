@@ -16,11 +16,13 @@
 var utils = require('./utils/utils');
 
 module.exports = {
-    schema: [{
-        type: ['array', 'object']
-    }, {
-        type: 'array'
-    }],
+    meta: {
+        schema: [{
+            type: ['array', 'object']
+        }, {
+            type: 'array'
+        }]
+    },
     create: function(context) {
         var angularObjectList = ['controller', 'filter', 'directive'];
         var badServices;

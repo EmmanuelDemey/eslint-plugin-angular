@@ -18,17 +18,19 @@
 var utils = require('./utils/utils');
 
 module.exports = {
-    schema: [{
-        type: 'object',
-        properties: {
-            grouped: {
-                type: 'boolean'
-            },
-            prefix: {
-                type: ['string', 'null']
+    meta: {
+        schema: [{
+            type: 'object',
+            properties: {
+                grouped: {
+                    type: 'boolean'
+                },
+                prefix: {
+                    type: ['string', 'null']
+                }
             }
-        }
-    }],
+        }]
+    },
     create: function(context) {
         var options = context.options[0] || {};
         var groupedMode = options.grouped !== false;

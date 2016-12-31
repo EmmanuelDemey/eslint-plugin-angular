@@ -14,7 +14,9 @@ var utils = require('./utils/utils');
 
 
 module.exports = {
-    schema: [],
+    meta: {
+        schema: []
+    },
     create: function(context) {
         function isCompareOperator(operator) {
             return operator === '===' || operator === '!==' || operator === '==' || operator === '!=';

@@ -24,6 +24,11 @@ var path = require('path');
 var utils = require('./utils/utils');
 
 module.exports = {
+    meta: {
+        schema: [{
+            type: ['object']
+        }]
+    },
     create: (function() {
         var fileEnding = '.js';
 

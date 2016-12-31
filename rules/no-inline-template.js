@@ -12,11 +12,13 @@
 'use strict';
 
 module.exports = {
-    schema: [{
-        allowSimple: {
-            type: 'boolean'
-        }
-    }],
+    meta: {
+        schema: [{
+            allowSimple: {
+                type: 'boolean'
+            }
+        }]
+    },
     create: function(context) {
         // Extracts any HTML tags.
         var regularTagPattern = /<(.+?)>/g;

@@ -11,9 +11,9 @@
 'use strict';
 
 module.exports = {
-    schema: [
-        // JSON Schema for rule options goes here
-    ],
+    meta: {
+        schema: []
+    },
     create: function(context) {
         return {
             MemberExpression: function(node) {

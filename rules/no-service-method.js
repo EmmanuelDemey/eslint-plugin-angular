@@ -13,6 +13,9 @@
 var utils = require('./utils/utils');
 
 module.exports = {
+    meta: {
+        schema: []
+    },
     create: function(context) {
         return {
 

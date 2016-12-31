@@ -13,6 +13,9 @@ var angularRule = require('./utils/angular-rule');
 
 
 module.exports = {
+    meta: {
+        schema: []
+    },
     create: angularRule(function(context) {
         // Keeps track of visited scopes in the collectAngularScopes function to prevent infinite recursion on circular references.
         var visitedScopes = [];

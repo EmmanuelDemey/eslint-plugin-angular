@@ -12,6 +12,9 @@
 var utils = require('./utils/utils');
 
 module.exports = {
+    meta: {
+        schema: []
+    },
     create: function(context) {
         function recordError(node, origin) {
             if (node.type === 'Literal' && node.value === '[object Date]') {

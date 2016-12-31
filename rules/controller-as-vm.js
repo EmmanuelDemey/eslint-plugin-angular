@@ -19,11 +19,13 @@
 var utils = require('./utils/utils');
 
 module.exports = {
-    schema: [{
-        type: 'string'
-    }, {
-        type: 'string'
-    }],
+    meta: {
+        schema: [{
+            type: 'string'
+        }, {
+            type: 'string'
+        }]
+    },
     create: function(context) {
         var badStatements = [];
         var badCaptureStatements = [];

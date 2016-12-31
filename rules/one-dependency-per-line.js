@@ -12,6 +12,9 @@
 var utils = require('./utils/utils');
 
 module.exports = {
+    meta: {
+        schema: []
+    },
     create: function(context) {
         var angularObjectList = ['animation', 'config', 'constant', 'controller', 'directive', 'factory', 'filter', 'provider', 'service', 'value', 'decorator'];
 

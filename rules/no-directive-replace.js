@@ -15,14 +15,16 @@
 var angularRule = require('./utils/angular-rule');
 
 module.exports = {
-    schema: [{
-        type: 'object',
-        properties: {
-            ignoreReplaceFalse: {
-                type: 'boolean'
+    meta: {
+        schema: [{
+            type: 'object',
+            properties: {
+                ignoreReplaceFalse: {
+                    type: 'boolean'
+                }
             }
-        }
-    }],
+        }]
+    },
     create: angularRule(function(context) {
         var options = context.options[0] || {};
         var ignoreReplaceFalse = !!options.ignoreReplaceFalse;

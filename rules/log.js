@@ -9,7 +9,9 @@
 'use strict';
 
 module.exports = {
-    schema: [],
+    meta: {
+        schema: []
+    },
     create: function(context) {
         var method = ['log', 'debug', 'error', 'info', 'warn'];
 

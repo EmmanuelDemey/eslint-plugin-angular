@@ -9,7 +9,9 @@
 'use strict';
 
 module.exports = {
-    schema: [],
+    meta: {
+        schema: []
+    },
     create: function(context) {
         function report(node) {
             context.report(node, 'You probably misspelled $on("$destroy").');

@@ -11,7 +11,9 @@
 'use strict';
 
 module.exports = {
-    scheme: [],
+    meta: {
+        schema: []
+    },
     create: function(context) {
         return {
             CallExpression: function(node) {

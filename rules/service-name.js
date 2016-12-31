@@ -45,6 +45,13 @@ function getConfig(options) {
 }
 
 module.exports = {
+    meta: {
+        schema: [{
+            type: ['string', 'object']
+        }, {
+            type: 'object'
+        }]
+    },
     create: function(context) {
         return {
 

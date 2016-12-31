@@ -14,6 +14,9 @@ var angularRule = require('./utils/angular-rule');
 
 
 module.exports = {
+    meta: {
+        schema: []
+    },
     create: angularRule(function(context) {
         function report(node, name) {
             context.report(node, 'inject functions may only consist of assignments in the form {{name}} = _{{name}}_', {

@@ -12,7 +12,9 @@ var angularRule = require('./utils/angular-rule');
 var allowedProperties = ['compile', 'link', 'multiElement', 'priority', 'templateNamespace', 'terminal'];
 
 module.exports = {
-    schema: [],
+    meta: {
+        schema: []
+    },
     create: angularRule(function(context) {
         var potentialReplaceNodes = {};
 

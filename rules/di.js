@@ -15,20 +15,22 @@ var angularRule = require('./utils/angular-rule');
 
 
 module.exports = {
-    schema: [{
-        enum: [
-            'function',
-            'array',
-            '$inject'
-        ]
-    }, {
-        type: 'object',
-        properties: {
-            matchNames: {
-                type: 'boolean'
+    meta: {
+        schema: [{
+            enum: [
+                'function',
+                'array',
+                '$inject'
+            ]
+        }, {
+            type: 'object',
+            properties: {
+                matchNames: {
+                    type: 'boolean'
+                }
             }
-        }
-    }],
+        }]
+    },
     create: angularRule(function(context) {
         var syntax = context.options[0] || 'function';
 

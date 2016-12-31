@@ -11,7 +11,9 @@
 'use strict';
 
 module.exports = {
-    schema: [],
+    meta: {
+        schema: []
+    },
     create: function(context) {
         var restrict = ['document', 'setInterval', 'setTimeout'];
         return {

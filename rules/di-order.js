@@ -15,6 +15,13 @@ var angularRule = require('./utils/angular-rule');
 var caseSensitive = 'case_sensitive';
 
 module.exports = {
+    meta: {
+        schema: [{
+            type: 'boolean'
+        }, {
+            type: 'string'
+        }]
+    },
     create: angularRule(function(context) {
         var stripUnderscores = context.options[0] !== false;
         var caseSensitiveOpt = (context.options[1] || caseSensitive) === caseSensitive;

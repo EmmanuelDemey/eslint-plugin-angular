@@ -11,9 +11,11 @@
 'use strict';
 
 module.exports = {
-    schema: [{
-        enum: ['$apply', '$digest']
-    }],
+    meta: {
+        schema: [{
+            enum: ['$apply', '$digest']
+        }]
+    },
     create: function(context) {
         var method = context.options[0] || '$digest';
         var methods = ['$apply', '$digest'];

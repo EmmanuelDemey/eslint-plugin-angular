@@ -13,9 +13,9 @@
 var utils = require('./utils/utils');
 
 module.exports = {
-    schema: [
-        // JSON Schema for rule options goes here
-    ],
+    meta: {
+        schema: []
+    },
     create: function(context) {
         function report(node, name) {
             context.report(node, 'The {{ctrl}} controller is useless because empty. You can remove it from your Router configuration or in one of your view', {

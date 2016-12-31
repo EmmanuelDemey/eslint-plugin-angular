@@ -12,20 +12,22 @@
 'use strict';
 
 module.exports = {
-    schema: [
-        {
-            type: 'object',
-            properties: {
-                allow: {
-                    type: 'array',
-                    items: {
-                        type: 'string'
+    meta: {
+        schema: [
+            {
+                type: 'object',
+                properties: {
+                    allow: {
+                        type: 'array',
+                        items: {
+                            type: 'string'
+                        }
                     }
-                }
-            },
-            additionalProperties: false
-        }
-    ],
+                },
+                additionalProperties: false
+            }
+        ]
+    },
     create: function(context) {
         var options = context.options[0] || {};
         var allowed = options.allow || [];

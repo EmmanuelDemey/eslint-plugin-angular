@@ -19,9 +19,11 @@ var angularRule = require('./utils/angular-rule');
 
 
 module.exports = {
-    schema: [{
-        type: 'integer'
-    }],
+    meta: {
+        schema: [{
+            type: 'integer'
+        }]
+    },
     create: angularRule(function(context) {
         var limit = context.options[0] || 1;
         var count = 0;

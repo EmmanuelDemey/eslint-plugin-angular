@@ -16,17 +16,19 @@
 var utils = require('./utils/utils');
 
 module.exports = {
-    schema: [{
-        enum: [
-            'named',
-            'anonymous'
-        ]
-    }, {
-        type: 'array',
-        items: {
-            type: 'string'
-        }
-    }],
+    meta: {
+        schema: [{
+            enum: [
+                'named',
+                'anonymous'
+            ]
+        }, {
+            type: 'array',
+            items: {
+                type: 'string'
+            }
+        }]
+    },
     create: function(context) {
         var angularObjectList = ['animation', 'config', 'constant', 'controller', 'directive', 'factory', 'filter', 'provider', 'service', 'value', 'decorator'];
         var configType = context.options[0] || 'anonymous';
