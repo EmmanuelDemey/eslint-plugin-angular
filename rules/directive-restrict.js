@@ -28,7 +28,7 @@ module.exports = {
                     enum: ['always', 'never']
                 }
             }
-        }],
+        }]
     },
     create: function(context) {
         var options = context.options[0] || {};
