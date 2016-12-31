@@ -15,42 +15,44 @@
 var utils = require('./utils/utils');
 
 
-module.exports = function(context) {
-    return {
+module.exports = {
+    create: function(context) {
+        return {
 
-        CallExpression: function(node) {
-            var prefix = context.options[0];
-            var convertedPrefix; // convert string from JSON .eslintrc to regex
-            var isValue;
+            CallExpression: function(node) {
+                var prefix = context.options[0];
+                var convertedPrefix; // convert string from JSON .eslintrc to regex
+                var isValue;
 
-            if (prefix === undefined) {
-                return;
-            }
+                if (prefix === undefined) {
+                    return;
+                }
 
-            convertedPrefix = utils.convertPrefixToRegex(prefix);
-            isValue = utils.isAngularValueDeclaration(node);
+                convertedPrefix = utils.convertPrefixToRegex(prefix);
+                isValue = utils.isAngularValueDeclaration(node);
 
-            if (isValue) {
-                var name = node.arguments[0].value;
+                if (isValue) {
+                    var name = node.arguments[0].value;
 
-                if (name !== undefined && name.indexOf('$') === 0) {
-                    context.report(node, 'The {{value}} value should not start with "$". This is reserved for AngularJS services', {
-                        value: name
-                    });
-                } else if (name !== undefined && !convertedPrefix.test(name)) {
-                    if (typeof prefix === 'string' && !utils.isStringRegexp(prefix)) {
-                        context.report(node, 'The {{value}} value should be prefixed by {{prefix}}', {
-                            value: name,
-                            prefix: prefix
+                    if (name !== undefined && name.indexOf('$') === 0) {
+                        context.report(node, 'The {{value}} value should not start with "$". This is reserved for AngularJS services', {
+                            value: name
                         });
-                    } else {
-                        context.report(node, 'The {{value}} value should follow this pattern: {{prefix}}', {
-                            value: name,
-                            prefix: prefix.toString()
-                        });
+                    } else if (name !== undefined && !convertedPrefix.test(name)) {
+                        if (typeof prefix === 'string' && !utils.isStringRegexp(prefix)) {
+                            context.report(node, 'The {{value}} value should be prefixed by {{prefix}}', {
+                                value: name,
+                                prefix: prefix
+                            });
+                        } else {
+                            context.report(node, 'The {{value}} value should follow this pattern: {{prefix}}', {
+                                value: name,
+                                prefix: prefix.toString()
+                            });
+                        }
                     }
                 }
             }
-        }
-    };
+        };
+    }
 };

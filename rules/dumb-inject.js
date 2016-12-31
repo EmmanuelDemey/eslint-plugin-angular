@@ -13,60 +13,62 @@
 var angularRule = require('./utils/angular-rule');
 
 
-module.exports = angularRule(function(context) {
-    function report(node, name) {
-        context.report(node, 'inject functions may only consist of assignments in the form {{name}} = _{{name}}_', {
-            name: name || 'myService'
-        });
-    }
-
-    return {
-        'angular:inject': function(callExpression, fn) {
-            if (!fn) {
-                return;
-            }
-            var valid = [];
-            // Report bad statement types
-            fn.body.body.forEach(function(statement) {
-                if (statement.type !== 'ExpressionStatement') {
-                    return report(statement);
-                }
-                if (statement.expression.type !== 'AssignmentExpression') {
-                    return report(statement);
-                }
-                if (statement.expression.right.type !== 'Identifier') {
-                    return report(statement);
-                }
-                // From this point there is more context on what to report.
-                var name = statement.expression.right.name.replace(/^_(.+)_$/, '$1');
-                if (statement.expression.left.type !== 'Identifier') {
-                    return report(statement, name);
-                }
-                if (statement.expression.right.name !== '_' + name + '_') {
-                    return report(statement, name);
-                }
-                if (statement.expression.left.name !== name) {
-                    return report(statement, name);
-                }
-                // Register valid statements for sort order validation
-                valid.push(statement);
-            });
-            // Validate the sorting order
-            var lastValid;
-            valid.forEach(function(statement) {
-                if (!lastValid) {
-                    lastValid = statement.expression.left.name;
-                    return;
-                }
-                if (statement.expression.left.name.localeCompare(lastValid) !== -1) {
-                    lastValid = statement.expression.left.name;
-                    return;
-                }
-                context.report(statement, "'{{current}}' must be sorted before '{{previous}}'", {
-                    current: statement.expression.left.name,
-                    previous: lastValid
-                });
+module.exports = {
+    create: angularRule(function(context) {
+        function report(node, name) {
+            context.report(node, 'inject functions may only consist of assignments in the form {{name}} = _{{name}}_', {
+                name: name || 'myService'
             });
         }
-    };
-});
+
+        return {
+            'angular:inject': function(callExpression, fn) {
+                if (!fn) {
+                    return;
+                }
+                var valid = [];
+                // Report bad statement types
+                fn.body.body.forEach(function(statement) {
+                    if (statement.type !== 'ExpressionStatement') {
+                        return report(statement);
+                    }
+                    if (statement.expression.type !== 'AssignmentExpression') {
+                        return report(statement);
+                    }
+                    if (statement.expression.right.type !== 'Identifier') {
+                        return report(statement);
+                    }
+                    // From this point there is more context on what to report.
+                    var name = statement.expression.right.name.replace(/^_(.+)_$/, '$1');
+                    if (statement.expression.left.type !== 'Identifier') {
+                        return report(statement, name);
+                    }
+                    if (statement.expression.right.name !== '_' + name + '_') {
+                        return report(statement, name);
+                    }
+                    if (statement.expression.left.name !== name) {
+                        return report(statement, name);
+                    }
+                    // Register valid statements for sort order validation
+                    valid.push(statement);
+                });
+                // Validate the sorting order
+                var lastValid;
+                valid.forEach(function(statement) {
+                    if (!lastValid) {
+                        lastValid = statement.expression.left.name;
+                        return;
+                    }
+                    if (statement.expression.left.name.localeCompare(lastValid) !== -1) {
+                        lastValid = statement.expression.left.name;
+                        return;
+                    }
+                    context.report(statement, "'{{current}}' must be sorted before '{{previous}}'", {
+                        current: statement.expression.left.name,
+                        previous: lastValid
+                    });
+                });
+            }
+        };
+    })
+};

@@ -10,25 +10,26 @@
  */
 'use strict';
 
-module.exports = function(context) {
-    var method = context.options[0] || '$digest';
-    var methods = ['$apply', '$digest'];
-    return {
+module.exports = {
+    schema: [{
+        enum: ['$apply', '$digest']
+    }],
+    create: function(context) {
+        var method = context.options[0] || '$digest';
+        var methods = ['$apply', '$digest'];
+        return {
 
-        MemberExpression: function(node) {
-            var forbiddenMethod = methods.filter(function(m) {
-                return m !== method;
-            });
-            if (forbiddenMethod.length > 0 && node.property.type === 'Identifier' && forbiddenMethod.indexOf(node.property.name) >= 0) {
-                context.report(node, 'Instead of using the {{forbidden}}() method, you should prefer {{method}}()', {
-                    forbidden: node.property.name,
-                    method: method
+            MemberExpression: function(node) {
+                var forbiddenMethod = methods.filter(function(m) {
+                    return m !== method;
                 });
+                if (forbiddenMethod.length > 0 && node.property.type === 'Identifier' && forbiddenMethod.indexOf(node.property.name) >= 0) {
+                    context.report(node, 'Instead of using the {{forbidden}}() method, you should prefer {{method}}()', {
+                        forbidden: node.property.name,
+                        method: method
+                    });
+                }
             }
-        }
-    };
+        };
+    }
 };
-
-module.exports.schema = [{
-    enum: ['$apply', '$digest']
-}];

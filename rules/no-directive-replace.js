@@ -14,89 +14,90 @@
 
 var angularRule = require('./utils/angular-rule');
 
-module.exports = angularRule(function(context) {
-    var options = context.options[0] || {};
-    var ignoreReplaceFalse = !!options.ignoreReplaceFalse;
-
-    var potentialReplaceNodes = {};
-
-    function addPotentialReplaceNode(variableName, node) {
-        var nodeList = potentialReplaceNodes[variableName] || [];
-
-        nodeList.push({
-            name: variableName,
-            node: node,
-            block: context.getScope().block.body
-        });
-
-        potentialReplaceNodes[variableName] = nodeList;
-    }
-
-    return {
-        'angular:directive': function(callExpressionNode, fnNode) {
-            if (!fnNode || !fnNode.body) {
-                return;
+module.exports = {
+    schema: [{
+        type: 'object',
+        properties: {
+            ignoreReplaceFalse: {
+                type: 'boolean'
             }
-            fnNode.body.body.forEach(function(statement) {
-                if (statement.type === 'ReturnStatement') {
-                    // get potential replace node by argument name of empty string for object expressions
-                    var potentialNodes = potentialReplaceNodes[statement.argument.name || ''];
-                    if (!potentialNodes) {
-                        return;
-                    }
-                    potentialNodes.forEach(function(report) {
-                        // only reports nodes that belong to the same expression
-                        if (report.block === statement.parent) {
-                            context.report(report.node, 'Directive definition property replace is deprecated.');
-                        }
-                    });
-                }
+        }
+    }],
+    create: angularRule(function(context) {
+        var options = context.options[0] || {};
+        var ignoreReplaceFalse = !!options.ignoreReplaceFalse;
+
+        var potentialReplaceNodes = {};
+
+        function addPotentialReplaceNode(variableName, node) {
+            var nodeList = potentialReplaceNodes[variableName] || [];
+
+            nodeList.push({
+                name: variableName,
+                node: node,
+                block: context.getScope().block.body
             });
-        },
-        AssignmentExpression: function(node) {
-            // Only check for literal member property assignments.
-            if (node.left.type !== 'MemberExpression') {
-                return;
-            }
-            // Only check setting properties named 'replace'.
-            if (node.left.property.name !== 'replace') {
-                return;
-            }
-            if (ignoreReplaceFalse && node.right.value === false) {
-                return;
-            }
-            addPotentialReplaceNode(node.left.object.name, node);
-        },
-        Property: function(node) {
-            // This only checks for objects which have defined a literal restrict property.
-            if (node.key.name !== 'replace') {
-                return;
-            }
-            if (ignoreReplaceFalse === true && node.value.value === false) {
-                return;
-            }
 
-            // assumption: Property always belongs to a ObjectExpression
-            var objectExpressionParent = node.parent.parent;
-
-            // add to potential replace nodes if the object is defined in a variable
-            if (objectExpressionParent.type === 'VariableDeclarator') {
-                addPotentialReplaceNode(objectExpressionParent.id.name, node);
-            }
-
-            // report directly if object is part of a return statement and inside a directive body
-            if (objectExpressionParent.type === 'ReturnStatement') {
-                addPotentialReplaceNode('', node);
-            }
+            potentialReplaceNodes[variableName] = nodeList;
         }
-    };
-});
 
-module.exports.schema = [{
-    type: 'object',
-    properties: {
-        ignoreReplaceFalse: {
-            type: 'boolean'
-        }
-    }
-}];
+        return {
+            'angular:directive': function(callExpressionNode, fnNode) {
+                if (!fnNode || !fnNode.body) {
+                    return;
+                }
+                fnNode.body.body.forEach(function(statement) {
+                    if (statement.type === 'ReturnStatement') {
+                        // get potential replace node by argument name of empty string for object expressions
+                        var potentialNodes = potentialReplaceNodes[statement.argument.name || ''];
+                        if (!potentialNodes) {
+                            return;
+                        }
+                        potentialNodes.forEach(function(report) {
+                            // only reports nodes that belong to the same expression
+                            if (report.block === statement.parent) {
+                                context.report(report.node, 'Directive definition property replace is deprecated.');
+                            }
+                        });
+                    }
+                });
+            },
+            AssignmentExpression: function(node) {
+                // Only check for literal member property assignments.
+                if (node.left.type !== 'MemberExpression') {
+                    return;
+                }
+                // Only check setting properties named 'replace'.
+                if (node.left.property.name !== 'replace') {
+                    return;
+                }
+                if (ignoreReplaceFalse && node.right.value === false) {
+                    return;
+                }
+                addPotentialReplaceNode(node.left.object.name, node);
+            },
+            Property: function(node) {
+                // This only checks for objects which have defined a literal restrict property.
+                if (node.key.name !== 'replace') {
+                    return;
+                }
+                if (ignoreReplaceFalse === true && node.value.value === false) {
+                    return;
+                }
+
+                // assumption: Property always belongs to a ObjectExpression
+                var objectExpressionParent = node.parent.parent;
+
+                // add to potential replace nodes if the object is defined in a variable
+                if (objectExpressionParent.type === 'VariableDeclarator') {
+                    addPotentialReplaceNode(objectExpressionParent.id.name, node);
+                }
+
+                // report directly if object is part of a return statement and inside a directive body
+                if (objectExpressionParent.type === 'ReturnStatement') {
+                    addPotentialReplaceNode('', node);
+                }
+            }
+        };
+    })
+};

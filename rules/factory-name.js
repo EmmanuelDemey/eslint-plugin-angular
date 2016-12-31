@@ -15,42 +15,44 @@
 var utils = require('./utils/utils');
 
 
-module.exports = function(context) {
-    return {
+module.exports = {
+    create: function(context) {
+        return {
 
-        CallExpression: function(node) {
-            var prefix = context.options[0];
-            var convertedPrefix; // convert string from JSON .eslintrc to regex
-            var isFactory;
+            CallExpression: function(node) {
+                var prefix = context.options[0];
+                var convertedPrefix; // convert string from JSON .eslintrc to regex
+                var isFactory;
 
-            if (prefix === undefined) {
-                return;
-            }
+                if (prefix === undefined) {
+                    return;
+                }
 
-            convertedPrefix = utils.convertPrefixToRegex(prefix);
-            isFactory = utils.isAngularFactoryDeclaration(node);
+                convertedPrefix = utils.convertPrefixToRegex(prefix);
+                isFactory = utils.isAngularFactoryDeclaration(node);
 
-            if (isFactory) {
-                var name = node.arguments[0].value;
+                if (isFactory) {
+                    var name = node.arguments[0].value;
 
-                if (name !== undefined && name.indexOf('$') === 0) {
-                    context.report(node, 'The {{factory}} factory should not start with "$". This is reserved for AngularJS services', {
-                        factory: name
-                    });
-                } else if (name !== undefined && !convertedPrefix.test(name)) {
-                    if (typeof prefix === 'string' && !utils.isStringRegexp(prefix)) {
-                        context.report(node, 'The {{factory}} factory should be prefixed by {{prefix}}', {
-                            factory: name,
-                            prefix: prefix
+                    if (name !== undefined && name.indexOf('$') === 0) {
+                        context.report(node, 'The {{factory}} factory should not start with "$". This is reserved for AngularJS services', {
+                            factory: name
                         });
-                    } else {
-                        context.report(node, 'The {{factory}} factory should follow this pattern: {{prefix}}', {
-                            factory: name,
-                            prefix: prefix.toString()
-                        });
+                    } else if (name !== undefined && !convertedPrefix.test(name)) {
+                        if (typeof prefix === 'string' && !utils.isStringRegexp(prefix)) {
+                            context.report(node, 'The {{factory}} factory should be prefixed by {{prefix}}', {
+                                factory: name,
+                                prefix: prefix
+                            });
+                        } else {
+                            context.report(node, 'The {{factory}} factory should follow this pattern: {{prefix}}', {
+                                factory: name,
+                                prefix: prefix.toString()
+                            });
+                        }
                     }
                 }
             }
-        }
-    };
+        };
+    }
 };

@@ -15,42 +15,44 @@
 var utils = require('./utils/utils');
 
 
-module.exports = function(context) {
-    return {
+module.exports = {
+    create: function(context) {
+        return {
 
-        CallExpression: function(node) {
-            var prefix = context.options[0];
-            var convertedPrefix; // convert string from JSON .eslintrc to regex
-            var isProvider;
+            CallExpression: function(node) {
+                var prefix = context.options[0];
+                var convertedPrefix; // convert string from JSON .eslintrc to regex
+                var isProvider;
 
-            if (prefix === undefined) {
-                return;
-            }
+                if (prefix === undefined) {
+                    return;
+                }
 
-            convertedPrefix = utils.convertPrefixToRegex(prefix);
-            isProvider = utils.isAngularProviderDeclaration(node);
+                convertedPrefix = utils.convertPrefixToRegex(prefix);
+                isProvider = utils.isAngularProviderDeclaration(node);
 
-            if (isProvider) {
-                var name = node.arguments[0].value;
+                if (isProvider) {
+                    var name = node.arguments[0].value;
 
-                if (name !== undefined && name.indexOf('$') === 0) {
-                    context.report(node, 'The {{provider}} provider should not start with "$". This is reserved for AngularJS services', {
-                        provider: name
-                    });
-                } else if (name !== undefined && !convertedPrefix.test(name)) {
-                    if (typeof prefix === 'string' && !utils.isStringRegexp(prefix)) {
-                        context.report(node, 'The {{provider}} provider should be prefixed by {{prefix}}', {
-                            provider: name,
-                            prefix: prefix
+                    if (name !== undefined && name.indexOf('$') === 0) {
+                        context.report(node, 'The {{provider}} provider should not start with "$". This is reserved for AngularJS services', {
+                            provider: name
                         });
-                    } else {
-                        context.report(node, 'The {{provider}} provider should follow this pattern: {{prefix}}', {
-                            provider: name,
-                            prefix: prefix.toString()
-                        });
+                    } else if (name !== undefined && !convertedPrefix.test(name)) {
+                        if (typeof prefix === 'string' && !utils.isStringRegexp(prefix)) {
+                            context.report(node, 'The {{provider}} provider should be prefixed by {{prefix}}', {
+                                provider: name,
+                                prefix: prefix
+                            });
+                        } else {
+                            context.report(node, 'The {{provider}} provider should follow this pattern: {{prefix}}', {
+                                provider: name,
+                                prefix: prefix.toString()
+                            });
+                        }
                     }
                 }
             }
-        }
-    };
+        };
+    }
 };

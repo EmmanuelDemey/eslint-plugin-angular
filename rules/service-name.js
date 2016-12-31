@@ -44,51 +44,53 @@ function getConfig(options) {
     return config;
 }
 
-module.exports = function(context) {
-    return {
+module.exports = {
+    create: function(context) {
+        return {
 
-        CallExpression: function(node) {
-            var config = getConfig(context.options);
-            var prefix = getPrefixFromOptions(context.options);
-            var convertedPrefix; // convert string from JSON .eslintrc to regex
-            var isService;
+            CallExpression: function(node) {
+                var config = getConfig(context.options);
+                var prefix = getPrefixFromOptions(context.options);
+                var convertedPrefix; // convert string from JSON .eslintrc to regex
+                var isService;
 
-            if (prefix === undefined) {
-                return;
-            }
+                if (prefix === undefined) {
+                    return;
+                }
 
-            convertedPrefix = utils.convertPrefixToRegex(prefix);
+                convertedPrefix = utils.convertPrefixToRegex(prefix);
 
-            if (config.oldBehavior) {
-                isService = utils.isAngularServiceDeclarationDeprecated(node);
-                // Warning that the API is deprecated
-                // eslint-disable-next-line
-                console.warn('The rule `angular/service-name` will be split up to different rules in the next version. Please read the docs for more information');
-            } else {
-                isService = utils.isAngularServiceDeclaration(node);
-            }
+                if (config.oldBehavior) {
+                    isService = utils.isAngularServiceDeclarationDeprecated(node);
+                    // Warning that the API is deprecated
+                    // eslint-disable-next-line
+                    console.warn('The rule `angular/service-name` will be split up to different rules in the next version. Please read the docs for more information');
+                } else {
+                    isService = utils.isAngularServiceDeclaration(node);
+                }
 
-            if (isService) {
-                var name = node.arguments[0].value;
+                if (isService) {
+                    var name = node.arguments[0].value;
 
-                if (name !== undefined && name.indexOf('$') === 0) {
-                    context.report(node, 'The {{service}} service should not start with "$". This is reserved for AngularJS services', {
-                        service: name
-                    });
-                } else if (name !== undefined && !convertedPrefix.test(name)) {
-                    if (typeof prefix === 'string' && !utils.isStringRegexp(prefix)) {
-                        context.report(node, 'The {{service}} service should be prefixed by {{prefix}}', {
-                            service: name,
-                            prefix: prefix
+                    if (name !== undefined && name.indexOf('$') === 0) {
+                        context.report(node, 'The {{service}} service should not start with "$". This is reserved for AngularJS services', {
+                            service: name
                         });
-                    } else {
-                        context.report(node, 'The {{service}} service should follow this pattern: {{prefix}}', {
-                            service: name,
-                            prefix: prefix.toString()
-                        });
+                    } else if (name !== undefined && !convertedPrefix.test(name)) {
+                        if (typeof prefix === 'string' && !utils.isStringRegexp(prefix)) {
+                            context.report(node, 'The {{service}} service should be prefixed by {{prefix}}', {
+                                service: name,
+                                prefix: prefix
+                            });
+                        } else {
+                            context.report(node, 'The {{service}} service should follow this pattern: {{prefix}}', {
+                                service: name,
+                                prefix: prefix.toString()
+                            });
+                        }
                     }
                 }
             }
-        }
-    };
+        };
+    }
 };
