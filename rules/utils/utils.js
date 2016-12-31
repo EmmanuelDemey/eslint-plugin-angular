@@ -1,5 +1,5 @@
 'use strict';
-
+var falseConfigValues = require('./false-values').config;
 
 var scopeProperties = [
     '$id',
@@ -487,7 +487,8 @@ function isAngularRunSection(node) {
 function isAngularConfigSection(node) {
     return isMemberExpression(node.callee) &&
      node.callee.property.type === 'Identifier' &&
-     node.callee.property.name === 'config';
+     node.callee.property.name === 'config' &&
+     falseConfigValues.indexOf(node.callee.object.name) < 0;
 }
 
 /**
