@@ -19,6 +19,18 @@ eslintTester.run('controller-as', rule, {
         'angular.module("test").controller("Test", function() {doSomething($scope)} )'
     ].concat(commonFalsePositives),
     invalid: [
+        {code : `
+            var controllerId = 'UserController';
+            angular.module('inspinia')
+                .controller(controllerId, UserController);
+
+            UserController.$inject = ['UserService', '$compile', '$scope', '$q', 'CommonEnum', 'CommonService', '$uibModal', 'TenantService'];
+
+            function UserController(UserService, $compile, $scope, $q, CommonEnum, CommonService, $uibModal, TenantService) {
+                $scope.myform = {};
+            }`,
+            errors: [{message: 'You should not set properties on $scope in controllers. Use controllerAs syntax and add data to "this"'}]
+        },
         {code: 'angular.module("test").controller("Test", function() {$scope.name = "test"} );',
             errors: [{message: 'You should not set properties on $scope in controllers. Use controllerAs syntax and add data to "this"'}]},
         {code: 'angular.module("test").controller("Test", function() {var test = function() {$scope.thing = "none"};} );',

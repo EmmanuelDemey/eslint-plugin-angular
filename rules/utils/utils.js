@@ -255,7 +255,7 @@ function isStringRegexp(string) {
 function isAngularComponent(node) {
     return node.arguments !== undefined &&
         node.arguments.length === 2 &&
-        isLiteralType(node.arguments[0]) &&
+        (isLiteralType(node.arguments[0]) || isIdentifierType(node.arguments[0])) &&
         (isIdentifierType(node.arguments[1]) ||
          isFunctionType(node.arguments[1]) ||
          isArrayType(node.arguments[1]) ||
