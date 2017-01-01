@@ -205,7 +205,7 @@ function angularRule(ruleDefinition) {
         if (node.type !== 'Identifier') {
             return;
         }
-        
+
         var func;
         scope.variables.some(function(variable) {
             if (variable.name === node.name) {

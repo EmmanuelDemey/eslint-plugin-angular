@@ -204,7 +204,7 @@ valid.push({
 }, {
     code: 'angular.module("MyModule").value("emptyArray", []);',
     options: ['function']
-},{
+}, {
     code: 'vm.navRoutes = states.filter(x).sort(y);',
     options: ['function']
 }, {
