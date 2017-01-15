@@ -2,39 +2,61 @@
 
 # timeout-service - use `$timeout` instead of `setTimeout`
 
+
+
 Instead of the default setTimeout function, you should use the AngularJS wrapper service $timeout
 *
 
+
 **Rule based on Angular 1.x**
+
+
 
 **Styleguide Reference**
 
 * [y181 by johnpapa - Angular $ Wrapper Services - $timeout and $interval](https://github.com/johnpapa/angular-styleguide/blob/master/a1/README.md#style-y181)
 
+
 ## Examples
+
+
 
 The following patterns are considered problems;
 
     /*eslint angular/timeout-service: 2*/
-
-    // invalid
+    
+    // invalid 
     setTimeout(function() {
         // ...
     }, 1000) // error: You should use the $timeout service instead of the default window.setTimeout method
+    
 
-    // invalid
+    // invalid 
     window.setTimeout(function() {
         // ...
     }, 1000) // error: You should use the $timeout service instead of the default window.setTimeout method
+    
+
+    // invalid 
+    $window.setTimeout(function() {
+        // ...
+    }, 1000) // error: You should use the $timeout service instead of the default window.setTimeout method
+    
+
+
 
 The following patterns are **not** considered problems;
 
     /*eslint angular/timeout-service: 2*/
-
-    // valid
+    
+    // valid 
     $timeout(function() {
         // ...
-    }, 1000)
+    }, 1000) 
+    
+
+
+
 
 ## Version
 

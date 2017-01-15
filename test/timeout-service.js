@@ -14,6 +14,8 @@ var commonFalsePositives = require('./utils/commonFalsePositives');
 
 var eslintTester = new RuleTester();
 
+var message = 'You should use the $timeout service instead of the default window.setTimeout method';
+
 eslintTester.run('timeout-service', rule, {
     valid: [
         '$timeout(function() {})',
@@ -21,9 +23,11 @@ eslintTester.run('timeout-service', rule, {
         '$timeout(function() {}, 1000, true)'
     ].concat(commonFalsePositives),
     invalid: [
-        {code: 'window.setTimeout(function() {}, 1000)', errors: [{message: 'You should use the $timeout service instead of the default window.setTimeout method'}]},
-        {code: 'window.setTimeout(function() {}, 1000, param1)', errors: [{message: 'You should use the $timeout service instead of the default window.setTimeout method'}]},
-        {code: 'setTimeout(function() {}, 1000)', errors: [{message: 'You should use the $timeout service instead of the default window.setTimeout method'}]},
-        {code: 'setTimeout(function() {}, 1000, param1)', errors: [{message: 'You should use the $timeout service instead of the default window.setTimeout method'}]}
+        {code: 'window.setTimeout(function() {}, 1000)', errors: [{message: message}]},
+        {code: 'window.setTimeout(function() {}, 1000, param1)', errors: [{message: message}]},
+        {code: '$window.setTimeout(function() {}, 1000)', errors: [{message: message}]},
+        {code: 'this.$window.setTimeout(function() {}, 1000)', errors: [{message: message}]},
+        {code: 'setTimeout(function() {}, 1000)', errors: [{message: message}]},
+        {code: 'setTimeout(function() {}, 1000, param1)', errors: [{message: message}]}
     ]
 });
