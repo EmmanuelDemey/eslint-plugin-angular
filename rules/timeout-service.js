@@ -24,8 +24,11 @@ module.exports = {
                     return;
                 }
 
-                if (node.object.type === 'Identifier' && (node.object.name === 'window' || node.object.name === '$window')) {
-                    context.report(node, message, {});
+                if (node.object.type === 'Identifier') {
+                    if ((node.object.name === 'window' || node.object.name === '$window')){
+                        context.report(node, message, {});
+                    }
+
                     return;
                 }
 

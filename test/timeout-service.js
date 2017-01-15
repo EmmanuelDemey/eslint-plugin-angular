@@ -20,7 +20,8 @@ eslintTester.run('timeout-service', rule, {
     valid: [
         '$timeout(function() {})',
         '$timeout(function() {}, 1000)',
-        '$timeout(function() {}, 1000, true)'
+        '$timeout(function() {}, 1000, true)',
+        'nonWindowObject.setTimeout(function() {})'
     ].concat(commonFalsePositives),
     invalid: [
         {code: 'window.setTimeout(function() {}, 1000)', errors: [{message: message}]},
