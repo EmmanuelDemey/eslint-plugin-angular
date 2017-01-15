@@ -25,14 +25,14 @@ module.exports = {
                 }
 
                 if (node.object.type === 'Identifier') {
-                    if ((node.object.name === 'window' || node.object.name === '$window')){
+                    if ((node.object.name === 'window' || node.object.name === '$window')) {
                         context.report(node, message, {});
                     }
 
                     return;
                 }
 
-                //Detect expression this.$window.setTimeout which is what we would see in ES6 code when using classes
+                // Detect expression this.$window.setTimeout which is what we would see in ES6 code when using classes
                 var parentNode = node.object;
 
                 if (parentNode.object.type === 'ThisExpression' && parentNode.property.name === '$window') {
