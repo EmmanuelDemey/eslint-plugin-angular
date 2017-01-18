@@ -28,6 +28,11 @@ The following patterns are **not** considered problems with default config;
     // valid
     angular.module('myModule', ['ngAnimate', 'ngRoute', 'app', 'appFilters', 'ui.router']);
 
+    // valid
+    // with ES6 syntax:
+    // import uiRouter from 'angular-ui-router';
+    angular.module('myModule', ['ngAnimate', 'ngRoute', 'app', 'appFilters', uiRouter]);
+
 The following patterns are considered problems when configured `{"grouped":true}`:
 
     /*eslint angular/module-dependency-order: [2,{"grouped":true}]*/
