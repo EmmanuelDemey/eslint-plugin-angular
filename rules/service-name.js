@@ -44,7 +44,35 @@ function getConfig(options) {
     return config;
 }
 
+/**
+ * Used only by `ForDeprecatedBehavior()` for making sure it was run only one time
+ * @type {boolean}
+ */
+var didWarnForDeprecatedBehavior = false;
+
+/**
+ * Warn if API is deprecated
+ * @param {Array.<*>} options
+ */
+function warnForDeprecatedBehavior(options) {
+    if (didWarnForDeprecatedBehavior) {
+        return;
+    }
+    didWarnForDeprecatedBehavior = true;
+
+    var config = getConfig(options);
+
+    /* istanbul ignore if  */
+    if (config.oldBehavior) {
+        // eslint-disable-next-line
+        console.warn('The rule `angular/service-name` will be split up to different rules in the next version. Please read the docs for more information');
+    }
+}
+
 module.exports = function(context) {
+    // Warn if needed for breaking changes in API in new versions
+    warnForDeprecatedBehavior(context.options);
+
     return {
 
         CallExpression: function(node) {
@@ -61,9 +89,6 @@ module.exports = function(context) {
 
             if (config.oldBehavior) {
                 isService = utils.isAngularServiceDeclarationDeprecated(node);
-                // Warning that the API is deprecated
-                // eslint-disable-next-line
-                console.warn('The rule `angular/service-name` will be split up to different rules in the next version. Please read the docs for more information');
             } else {
                 isService = utils.isAngularServiceDeclaration(node);
             }
