@@ -45,9 +45,21 @@ module.exports = function(context) {
         'ngNewRouter'
     ];
 
-    function checkLiteral(node) {
-        if (node && node.type !== 'Literal') {
-            context.report(node, 'Unexpected non-literal value');
+    var moduleName = {
+        Literal: function(node) {
+            return node.value;
+        },
+        Identifier: function(node) {
+            return node.name;
+        }
+    };
+
+    var supportedTypes = Object.keys(moduleName);
+
+    function checkSupportedType(node) {
+        if (node && supportedTypes.indexOf(node.type) === -1) {
+            context.report(node, 'Unexpected node type ' + node.type + '.' +
+                ' Supported node types are: ' + supportedTypes.join(', '));
             return false;
         }
         if (!node) {
@@ -59,10 +71,10 @@ module.exports = function(context) {
     function checkCombined(deps) {
         var lastCorrect;
         deps.elements.forEach(function(node) {
-            if (!checkLiteral(node)) {
+            if (!checkSupportedType(node)) {
                 return;
             }
-            var value = node.value;
+            var value = moduleName[node.type](node);
             if (lastCorrect === undefined || lastCorrect.localeCompare(value) < 0) {
                 lastCorrect = value;
             } else {
@@ -86,10 +98,10 @@ module.exports = function(context) {
         var lastCorrect;
         var group = 'standard';
         deps.elements.forEach(function loop(node) {
-            if (!checkLiteral(node)) {
+            if (!checkSupportedType(node)) {
                 return;
             }
-            var value = node.value;
+            var value = moduleName[node.type](node);
             if (lastCorrect === undefined) {
                 lastCorrect = value;
                 if (isCustomModule(value)) {

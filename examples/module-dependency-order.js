@@ -1,6 +1,11 @@
 // example - valid: true
 angular.module('myModule', ['ngAnimate', 'ngRoute', 'app', 'appFilters', 'ui.router']);
 
+// example - valid: true
+// with ES6 syntax:
+// import uiRouter from 'angular-ui-router';
+angular.module('myModule', ['ngAnimate', 'ngRoute', 'app', 'appFilters', uiRouter]);
+
 // example - valid: false, errorMessage: "ngAnimate should be sorted before ngRoute"
 angular.module('myModule', ['ngRoute', 'ngAnimate']);
 

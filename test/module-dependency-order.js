@@ -18,16 +18,36 @@ eslintTester.run('module-dependency-order', rule, {
         'angular.module("", [])',
         'angular.module("undefined-dependencies", [,]);',
         'angular.module("")',
-        // combined mode
+        // combined mode, literals only
         {
             code: 'angular.module("", ["app.filters","ngCordova","ngMaterial","ui.router"])',
             options: [{grouped: false}]
         },
-        // grouped mode
+        // combined mode, identifiers only
+        {
+            code: 'angular.module("", [appFilters,ngCordova,ngMaterial,uiRouter])',
+            options: [{grouped: false}]
+        },
+        // combined mode, identifiers & literals mixed
+        {
+            code: 'angular.module("", ["app.filters",ngCordova,ngMaterial,"ui.router"])',
+            options: [{grouped: false}]
+        },
+        // grouped mode, literals only
         'angular.module("", ["ng","ngAnimate","ngAria","ngCookies","ngLocale","ngMaterial","ngMessageFormat","ngMessages","ngMock","ngNewRouter","ngResource","ngRoute","ngSanitize","ngTouch"])',
         'angular.module("", ["ngAnimate","ngResource","ngCordova"])',
         {
             code: 'angular.module("", ["ngAnimate","ngResource","ngCordova","app.filters"])',
+            options: [{prefix: 'app'}]
+        },
+        // grouped mode, identifiers & literals mixed
+        {
+            code: 'angular.module("", [ngAnimate,ngResource,ngCordova,"app.filters"])',
+            options: [{prefix: 'app'}]
+        },
+        // grouped mode, identifiers only
+        {
+            code: 'angular.module("", [ngAnimate,ngResource,ngCordova,appFilters])',
             options: [{prefix: 'app'}]
         }
     ].concat(commonFalsePositives),
@@ -40,10 +60,10 @@ eslintTester.run('module-dependency-order', rule, {
         },
         // combined mode
         {
-            code: 'angular.module("", [dep])',
+            code: 'angular.module("", [dep + \'\'])',
             options: [{grouped: false}],
             errors: [
-                {message: 'Unexpected non-literal value'}
+                {message: 'Unexpected node type BinaryExpression. Supported node types are: Literal, Identifier'}
             ]
         },
         {
@@ -57,9 +77,9 @@ eslintTester.run('module-dependency-order', rule, {
         },
         // grouped mode
         {
-            code: 'angular.module("", [dep])',
+            code: 'angular.module("", [dep + \'\'])',
             errors: [
-                {message: 'Unexpected non-literal value'}
+                {message: 'Unexpected node type BinaryExpression. Supported node types are: Literal, Identifier'}
             ]
         },
         {
