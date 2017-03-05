@@ -15,42 +15,51 @@
 var utils = require('./utils/utils');
 
 
-module.exports = function(context) {
-    return {
+module.exports = {
+    meta: {
+        schema: [{
+            type: ['string', 'object']
+        }, {
+            type: 'object'
+        }]
+    },
+    create: function(context) {
+        return {
 
-        CallExpression: function(node) {
-            var prefix = context.options[0];
-            var convertedPrefix; // convert string from JSON .eslintrc to regex
-            var isConstant;
+            CallExpression: function(node) {
+                var prefix = context.options[0];
+                var convertedPrefix; // convert string from JSON .eslintrc to regex
+                var isConstant;
 
-            if (prefix === undefined) {
-                return;
-            }
+                if (prefix === undefined) {
+                    return;
+                }
 
-            convertedPrefix = utils.convertPrefixToRegex(prefix);
-            isConstant = utils.isAngularConstantDeclaration(node);
+                convertedPrefix = utils.convertPrefixToRegex(prefix);
+                isConstant = utils.isAngularConstantDeclaration(node);
 
-            if (isConstant) {
-                var name = node.arguments[0].value;
+                if (isConstant) {
+                    var name = node.arguments[0].value;
 
-                if (name !== undefined && name.indexOf('$') === 0) {
-                    context.report(node, 'The {{constant}} constant should not start with "$". This is reserved for AngularJS services', {
-                        constant: name
-                    });
-                } else if (name !== undefined && !convertedPrefix.test(name)) {
-                    if (typeof prefix === 'string' && !utils.isStringRegexp(prefix)) {
-                        context.report(node, 'The {{constant}} constant should be prefixed by {{prefix}}', {
-                            constant: name,
-                            prefix: prefix
+                    if (name !== undefined && name.indexOf('$') === 0) {
+                        context.report(node, 'The {{constant}} constant should not start with "$". This is reserved for AngularJS services', {
+                            constant: name
                         });
-                    } else {
-                        context.report(node, 'The {{constant}} constant should follow this pattern: {{prefix}}', {
-                            constant: name,
-                            prefix: prefix.toString()
-                        });
+                    } else if (name !== undefined && !convertedPrefix.test(name)) {
+                        if (typeof prefix === 'string' && !utils.isStringRegexp(prefix)) {
+                            context.report(node, 'The {{constant}} constant should be prefixed by {{prefix}}', {
+                                constant: name,
+                                prefix: prefix
+                            });
+                        } else {
+                            context.report(node, 'The {{constant}} constant should follow this pattern: {{prefix}}', {
+                                constant: name,
+                                prefix: prefix.toString()
+                            });
+                        }
                     }
                 }
             }
-        }
-    };
+        };
+    }
 };

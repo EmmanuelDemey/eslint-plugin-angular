@@ -13,44 +13,51 @@
 
 var utils = require('./utils/utils');
 
-module.exports = function(context) {
-    if (context.settings.angular === 2) {
-        return {};
-    }
+module.exports = {
+    meta: {
+        schema: [{
+            type: ['string', 'object']
+        }]
+    },
+    create: function(context) {
+        if (context.settings.angular === 2) {
+            return {};
+        }
 
-    return {
+        return {
 
-        CallExpression: function(node) {
-            var prefix = context.options[0];
-            var convertedPrefix; // convert string from JSON .eslintrc to regex
+            CallExpression: function(node) {
+                var prefix = context.options[0];
+                var convertedPrefix; // convert string from JSON .eslintrc to regex
 
-            if (prefix === undefined) {
-                return;
-            }
+                if (prefix === undefined) {
+                    return;
+                }
 
-            convertedPrefix = utils.convertPrefixToRegex(prefix);
+                convertedPrefix = utils.convertPrefixToRegex(prefix);
 
-            if (utils.isAngularComponentDeclaration(node)) {
-                var name = node.arguments[0].value;
+                if (utils.isAngularComponentDeclaration(node)) {
+                    var name = node.arguments[0].value;
 
-                if (name !== undefined && name.indexOf('ng') === 0) {
-                    context.report(node, 'The {{component}} component should not start with "ng". This is reserved for AngularJS components', {
-                        component: name
-                    });
-                } else if (name !== undefined && !convertedPrefix.test(name)) {
-                    if (typeof prefix === 'string' && !utils.isStringRegexp(prefix)) {
-                        context.report(node, 'The {{component}} component should be prefixed by {{prefix}}', {
-                            component: name,
-                            prefix: prefix
+                    if (name !== undefined && name.indexOf('ng') === 0) {
+                        context.report(node, 'The {{component}} component should not start with "ng". This is reserved for AngularJS components', {
+                            component: name
                         });
-                    } else {
-                        context.report(node, 'The {{component}} component should follow this pattern: {{prefix}}', {
-                            component: name,
-                            prefix: prefix.toString()
-                        });
+                    } else if (name !== undefined && !convertedPrefix.test(name)) {
+                        if (typeof prefix === 'string' && !utils.isStringRegexp(prefix)) {
+                            context.report(node, 'The {{component}} component should be prefixed by {{prefix}}', {
+                                component: name,
+                                prefix: prefix
+                            });
+                        } else {
+                            context.report(node, 'The {{component}} component should follow this pattern: {{prefix}}', {
+                                component: name,
+                                prefix: prefix.toString()
+                            });
+                        }
                     }
                 }
             }
-        }
-    };
+        };
+    }
 };

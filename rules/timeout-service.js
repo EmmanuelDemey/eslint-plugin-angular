@@ -10,25 +10,41 @@
  */
 'use strict';
 
-module.exports = function(context) {
-    var message = 'You should use the $timeout service instead of the default window.setTimeout method';
+module.exports = {
+    meta: {
+        schema: []
+    },
+    create: function(context) {
+        var message = 'You should use the $timeout service instead of the default window.setTimeout method';
 
-    return {
+        return {
 
-        MemberExpression: function(node) {
-            if (node.object.name === 'window' && node.property.name === 'setTimeout') {
-                context.report(node, message, {});
+            MemberExpression: function(node) {
+                if (node.property.name !== 'setTimeout') {
+                    return;
+                }
+
+                if (node.object.type === 'Identifier') {
+                    if ((node.object.name === 'window' || node.object.name === '$window')) {
+                        context.report(node, message, {});
+                    }
+
+                    return;
+                }
+
+                // Detect expression this.$window.setTimeout which is what we would see in ES6 code when using classes
+                var parentNode = node.object;
+
+                if (parentNode.object.type === 'ThisExpression' && parentNode.property.name === '$window') {
+                    context.report(node, message, {});
+                }
+            },
+
+            CallExpression: function(node) {
+                if (node.callee.name === 'setTimeout') {
+                    context.report(node, message, {});
+                }
             }
-        },
-
-        CallExpression: function(node) {
-            if (node.callee.name === 'setTimeout') {
-                context.report(node, message, {});
-            }
-        }
-    };
+        };
+    }
 };
-
-module.exports.schema = [
-    // JSON Schema for rule options goes here
-];

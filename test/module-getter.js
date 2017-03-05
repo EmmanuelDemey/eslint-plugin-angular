@@ -15,6 +15,14 @@ var commonFalsePositives = require('./utils/commonFalsePositives');
 var eslintTester = new RuleTester();
 eslintTester.run('module-getter', rule, {
     valid: [
+        'angular.module("module").config(function(jwtOptionsProvider){' +
+            'jwtOptionsProvider.config({' +
+                'whiteListedDomains: []' +
+            '});' +
+        '})',
+        'angular.module("module").config(function(ngTableHelperProvider){' +
+            'ngTableHelperProvider.config({count: 10}, {});' +
+        '})',
         'angular.module("module").controller("TestCtrl", function() {});',
         'angular.module("module").factory("TestService", function() {});',
         'angular.module("module").service("TestService", function() {});',

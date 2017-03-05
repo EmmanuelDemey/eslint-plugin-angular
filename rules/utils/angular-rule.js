@@ -197,7 +197,7 @@ function angularRule(ruleDefinition) {
             return;
         }
         if (node.type === 'ArrayExpression') {
-            node = node.elements[node.elements.length - 1];
+            node = node.elements[node.elements.length - 1] || {};
         }
         if (node.type === 'FunctionExpression' || node.type === 'FunctionDeclaration') {
             return node;
@@ -205,6 +205,7 @@ function angularRule(ruleDefinition) {
         if (node.type !== 'Identifier') {
             return;
         }
+
         var func;
         scope.variables.some(function(variable) {
             if (variable.name === node.name) {

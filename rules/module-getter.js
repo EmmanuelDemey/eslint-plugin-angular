@@ -13,11 +13,15 @@
 
 var utils = require('./utils/utils');
 
-module.exports = function(context) {
-    return {
+module.exports = {
+    meta: {
+        schema: []
+    },
+    create: function(context) {
+        return {
 
-        ExpressionStatement: function(node) {
-            if ((utils.isAngularControllerDeclaration(node.expression) ||
+            ExpressionStatement: function(node) {
+                if ((utils.isAngularControllerDeclaration(node.expression) ||
                     utils.isAngularFilterDeclaration(node.expression) ||
                     utils.isAngularServiceDeclaration(node.expression) ||
                     utils.isAngularFactoryDeclaration(node.expression) ||
@@ -28,19 +32,16 @@ module.exports = function(context) {
                     utils.isAngularConfigSection(node.expression)) &&
 
                     !utils.isAngularModuleDeclaration(node.expression)) {
-                var calleeObject = node.expression.callee.object;
-                while (calleeObject !== undefined && calleeObject.type === 'CallExpression' && !utils.isAngularModuleGetter(calleeObject)) {
-                    calleeObject = calleeObject.callee.object;
-                }
+                    var calleeObject = node.expression.callee.object;
 
-                if (!(calleeObject !== undefined && calleeObject.type === 'CallExpression' && utils.isAngularModuleGetter(calleeObject))) {
-                    context.report(node, 'Avoid using a variable and instead use chaining with the getter syntax.');
+                    while (calleeObject !== undefined && calleeObject.type === 'CallExpression' && !utils.isAngularModuleGetter(calleeObject)) {
+                        calleeObject = calleeObject.callee.object;
+                    }
+                    if (!(calleeObject !== undefined && calleeObject.type === 'CallExpression' && utils.isAngularModuleGetter(calleeObject))) {
+                        context.report(node, 'Avoid using a variable and instead use chaining with the getter syntax.');
+                    }
                 }
             }
-        }
-    };
+        };
+    }
 };
-
-module.exports.schema = [
-    // JSON Schema for rule options goes here
-];

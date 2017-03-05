@@ -199,6 +199,12 @@ angularNamedObjectList.forEach(function(object) {
 
 
 valid.push({
+    code: 'vngTableHelperProvider.config({count: 10}, {});',
+    options: ['function']
+}, {
+    code: 'angular.module("MyModule").value("emptyArray", []);',
+    options: ['function']
+}, {
     code: 'vm.navRoutes = states.filter(x).sort(y);',
     options: ['function']
 }, {

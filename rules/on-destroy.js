@@ -8,54 +8,55 @@
  */
 'use strict';
 
-module.exports = function(context) {
-    function report(node) {
-        context.report(node, 'You probably misspelled $on("$destroy").');
-    }
-
-    /**
-     * Return true if the given node is a call expression calling a function
-     * named '$on'.
-     */
-    function isOn(node) {
-        var calledFunction = node.callee;
-        if (calledFunction.type !== 'MemberExpression') {
-            return false;
+module.exports = {
+    meta: {
+        schema: []
+    },
+    create: function(context) {
+        function report(node) {
+            context.report(node, 'You probably misspelled $on("$destroy").');
         }
 
-        // can only easily tell what name was used if a simple
-        // identifiers were used to access it.
-        var accessedFunction = calledFunction.property;
-        if (accessedFunction.type !== 'Identifier') {
-            return false;
+        /**
+         * Return true if the given node is a call expression calling a function
+         * named '$on'.
+         */
+        function isOn(node) {
+            var calledFunction = node.callee;
+            if (calledFunction.type !== 'MemberExpression') {
+                return false;
+            }
+
+            // can only easily tell what name was used if a simple
+            // identifiers were used to access it.
+            var accessedFunction = calledFunction.property;
+            if (accessedFunction.type !== 'Identifier') {
+                return false;
+            }
+
+            var functionName = accessedFunction.name;
+
+            return functionName === '$on';
         }
 
-        var functionName = accessedFunction.name;
+        /**
+         * Return true if the given node is a call expression that has a first
+         * argument of the string '$destroy'.
+         */
+        function isFirstArgDestroy(node) {
+            var args = node.arguments;
 
-        return functionName === '$on';
-    }
-
-    /**
-     * Return true if the given node is a call expression that has a first
-     * argument of the string '$destroy'.
-     */
-    function isFirstArgDestroy(node) {
-        var args = node.arguments;
-
-        return (args.length >= 1 &&
+            return (args.length >= 1 &&
                 args[0].type === 'Literal' &&
                 args[0].value === 'destroy');
-    }
-
-    return {
-        CallExpression: function(node) {
-            if (isOn(node) && isFirstArgDestroy(node)) {
-                report(node);
-            }
         }
-    };
-};
 
-module.exports.schema = [
-    // JSON Schema for rule options goes here
-];
+        return {
+            CallExpression: function(node) {
+                if (isOn(node) && isFirstArgDestroy(node)) {
+                    report(node);
+                }
+            }
+        };
+    }
+};
