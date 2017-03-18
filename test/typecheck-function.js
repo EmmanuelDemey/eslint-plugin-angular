@@ -19,6 +19,7 @@ eslintTester.run('typecheck-function', rule, {
     ].concat(commonFalsePositives),
     invalid: [
         {code: 'typeof variable === "function"', errors: [{message: 'You should use the angular.isFunction method'}]},
+        {code: 'function name(){return variable === "function";}', errors: [{message: 'You should use the angular.isFunction method'}]},
         {code: '"function" === typeof variable', errors: [{message: 'You should use the angular.isFunction method'}]},
         {code: 'variable === "function"', errors: [{message: 'You should use the angular.isFunction method'}]},
         {code: '"function" === variable', errors: [{message: 'You should use the angular.isFunction method'}]},

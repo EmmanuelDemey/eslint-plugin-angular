@@ -19,6 +19,7 @@ eslintTester.run('typecheck-string', rule, {
     ].concat(commonFalsePositives),
     invalid: [
         {code: 'Object.prototype.toString.call(variable) === "[object String]"', errors: [{message: 'You should use the angular.isString method'}]},
+        {code: 'function name(){return variable === "[object String]";}', errors: [{message: 'You should use the angular.isString method'}]},
         {code: '"[object String]" === Object.prototype.toString.call(variable)', errors: [{message: 'You should use the angular.isString method'}]},
         {code: 'variable === "[object String]"', errors: [{message: 'You should use the angular.isString method'}]},
         {code: '"[object String]" === variable', errors: [{message: 'You should use the angular.isString method'}]},

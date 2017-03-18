@@ -23,6 +23,7 @@ eslintTester.run('module-getter', rule, {
         'angular.module("module").config(function(ngTableHelperProvider){' +
             'ngTableHelperProvider.config({count: 10}, {});' +
         '})',
+        'angular.module("module").controller("ctrl", function(ReportService) { ReportService.run();});',
         'angular.module("module").controller("TestCtrl", function() {});',
         'angular.module("module").factory("TestService", function() {});',
         'angular.module("module").service("TestService", function() {});',

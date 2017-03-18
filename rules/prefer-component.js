@@ -31,7 +31,7 @@ module.exports = {
         }
 
         return {
-            'angular:directive': function(callExpressionNode, fnNode) {
+            'angular?directive': function(callExpressionNode, fnNode) {
                 if (!fnNode || !fnNode.body) {
                     return;
                 }

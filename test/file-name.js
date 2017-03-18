@@ -16,6 +16,24 @@ var eslintTester = new RuleTester();
 eslintTester.run('file-name', rule, {
     valid: [{
         // basic module
+        filename: 'app.module.js',
+        options: [{
+            typeSeparator: 'dot',
+            ignoreTypeSuffix: true,
+            ignorePrefix: 'fs'
+        }],
+        code: `(function () {
+
+var mod = 'shared.sales';
+
+angular.module(mod + 'shared.sales.core.angular', ['ngCookies', 'ngRoute', 'ngLocale', 'ngResource', 'ngAnimate', 'ngSanitize', 'ngMessages', 'ngIOS9UIWebViewPatch']);
+
+angular.module(mod + 'shared.sales.thirdparty', ['tmh.dynamicLocale', 'gettext', 'ngMaterial', 'md.data.table', 'fixed.table.header', 'as.sortable', 'ngCsv', 'telemetry']);
+
+angular.module(mod, [mod + '.core.angular', mod + '.thirdparty']);
+})();`
+    }, {
+        // basic module
         filename: 'myModule.js',
         code: 'angular.module("myModule", []);'
     }, {

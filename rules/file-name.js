@@ -125,6 +125,9 @@ module.exports = {
                             return;
                         }
 
+                        if (!name) {
+                            return;
+                        }
                         expectedName = filenameUtil.createExpectedName(name, type, options);
 
                         if (expectedName !== filename) {

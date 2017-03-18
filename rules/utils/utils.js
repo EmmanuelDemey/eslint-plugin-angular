@@ -1,5 +1,6 @@
 'use strict';
 var falseConfigValues = require('./false-values').config;
+var falseRunValues = require('./false-values').run;
 
 var scopeProperties = [
     '$id',
@@ -458,8 +459,7 @@ function isAngularRunSection(node) {
     return isMemberExpression(node.callee) &&
         node.callee.property.type === 'Identifier' &&
         node.callee.property.name === 'run' &&
-        (node.callee.object.type === 'Identifier' &&
-         node.callee.object.name !== 'mocha');
+        !falseRunValues.find(pattern => new RegExp(pattern).test(node.callee.object.name));
 }
 
 /**
@@ -488,7 +488,7 @@ function isAngularConfigSection(node) {
     return isMemberExpression(node.callee) &&
      node.callee.property.type === 'Identifier' &&
      node.callee.property.name === 'config' &&
-     falseConfigValues.indexOf(node.callee.object.name) < 0;
+     !falseConfigValues.find(pattern => new RegExp(pattern).test(node.callee.object.name));
 }
 
 /**

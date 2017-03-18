@@ -19,6 +19,7 @@ eslintTester.run('typecheck-object', rule, {
     ].concat(commonFalsePositives),
     invalid: [
         {code: 'typeof variable === "object"', errors: [{message: 'You should use the angular.isObject method'}]},
+        {code: 'function name(){return variable === "object";}', errors: [{message: 'You should use the angular.isObject method'}]},
         {code: '"object" === typeof variable', errors: [{message: 'You should use the angular.isObject method'}]},
         {code: 'variable === "object"', errors: [{message: 'You should use the angular.isObject method'}]},
         {code: '"object" === variable', errors: [{message: 'You should use the angular.isObject method'}]},

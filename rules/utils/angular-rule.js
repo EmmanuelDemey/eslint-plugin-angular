@@ -29,17 +29,17 @@ var angularChainableNames = [
  * ```js
  * module.exports = angularRule(function(context) {
  *   return {
- *     'angular:animation': function(configCallee, configFn) {},
- *     'angular:component': function(componentCallee, componentObj) {},
- *     'angular:config': function(configCallee, configFn) {},
- *     'angular:controller': function(controllerCallee, controllerFn) {},
- *     'angular:directive': function(directiveCallee, directiveFn) {},
- *     'angular:factory': function(factoryCallee, factoryFn) {},
- *     'angular:filter': function(filterCallee, filterFn) {},
- *     'angular:inject': function(injectCallee, injectFn) {},  // inject() calls from angular-mocks
- *     'angular:run': function(runCallee, runFn) {},
- *     'angular:service': function(serviceCallee, serviceFn) {},
- *     'angular:provider': function(providerCallee, providerFn, provider$getFn) {}
+ *     'angular?animation': function(configCallee, configFn) {},
+ *     'angular?component': function(componentCallee, componentObj) {},
+ *     'angular?config': function(configCallee, configFn) {},
+ *     'angular?controller': function(controllerCallee, controllerFn) {},
+ *     'angular?directive': function(directiveCallee, directiveFn) {},
+ *     'angular?factory': function(factoryCallee, factoryFn) {},
+ *     'angular?filter': function(filterCallee, filterFn) {},
+ *     'angular?inject': function(injectCallee, injectFn) {},  // inject() calls from angular-mocks
+ *     'angular?run': function(runCallee, runFn) {},
+ *     'angular?service': function(serviceCallee, serviceFn) {},
+ *     'angular?provider': function(providerCallee, providerFn, provider$getFn) {}
  *   };
  * })
  * ```
@@ -227,13 +227,13 @@ function angularRule(ruleDefinition) {
     function callAngularRules(ruleObject, context) {
         angularComponents.forEach(function(component) {
             var name = component.callExpression.callee.property.name;
-            var fn = ruleObject['angular:' + name];
+            var fn = ruleObject['angular?' + name];
             if (!fn) {
                 return;
             }
             fn.apply(ruleObject, assembleArguments(component, context));
         });
-        var injectRule = ruleObject['angular:inject'];
+        var injectRule = ruleObject['angular?inject'];
         if (injectRule) {
             injectCalls.forEach(function(node) {
                 injectRule.call(ruleObject, node.CallExpression, node.fn);

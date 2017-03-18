@@ -25,7 +25,7 @@ module.exports = {
         }
 
         return {
-            'angular:inject': function(callExpression, fn) {
+            'angular?inject': function(callExpression, fn) {
                 if (!fn) {
                     return;
                 }

@@ -1,5 +1,6 @@
 'use strict';
 
 module.exports = {
-    config: ['jwtOptionsProvider', 'ngTableHelperProvider', '$ocLazyLoadProvider', '$route', '$localForageProvider']
+    config: [/Provider$/, /$route/],
+    run: [/mocha/, /Service$/]
 };

@@ -26,11 +26,11 @@ The following patterns are considered problems;
     window.setTimeout(function() {
         // ...
     }, 1000) // error: You should use the $timeout service instead of the default window.setTimeout method
-    
-    // invalid 
+
+    // invalid
     $window.setTimeout(function() {
         // ...
-    }, 1000) // error: You should use the $timeout service instead of the default window.setTimeout method    
+    }, 1000) // error: You should use the $timeout service instead of the default window.setTimeout method
 
 The following patterns are **not** considered problems;
 

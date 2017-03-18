@@ -117,16 +117,16 @@ module.exports = {
         }
 
         return {
-            'angular:animation': checkDi,
-            'angular:config': checkDi,
-            'angular:controller': checkDi,
-            'angular:directive': checkDi,
-            'angular:factory': checkDi,
-            'angular:filter': checkDi,
-            'angular:inject': checkDi,
-            'angular:run': checkDi,
-            'angular:service': checkDi,
-            'angular:provider': function(callee, providerFn, $get) {
+            'angular?animation': checkDi,
+            'angular?config': checkDi,
+            'angular?controller': checkDi,
+            'angular?directive': checkDi,
+            'angular?factory': checkDi,
+            'angular?filter': checkDi,
+            'angular?inject': checkDi,
+            'angular?run': checkDi,
+            'angular?service': checkDi,
+            'angular?provider': function(callee, providerFn, $get) {
                 checkDi(null, providerFn);
                 checkDi(null, $get);
             },

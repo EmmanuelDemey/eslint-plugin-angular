@@ -41,16 +41,16 @@ module.exports = {
         }
 
         return {
-            'angular:animation': checkLimit,
-            'angular:config': checkLimit,
-            'angular:controller': checkLimit,
-            'angular:directive': checkLimit,
-            'angular:factory': checkLimit,
-            'angular:filter': checkLimit,
-            'angular:provider': checkLimit,
-            'angular:run': checkLimit,
-            'angular:service': checkLimit,
-            'angular:component': checkLimit
+            'angular?animation': checkLimit,
+            'angular?config': checkLimit,
+            'angular?controller': checkLimit,
+            'angular?directive': checkLimit,
+            'angular?factory': checkLimit,
+            'angular?filter': checkLimit,
+            'angular?provider': checkLimit,
+            'angular?run': checkLimit,
+            'angular?service': checkLimit,
+            'angular?component': checkLimit
         };
     })
 };

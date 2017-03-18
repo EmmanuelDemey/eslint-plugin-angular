@@ -33,7 +33,7 @@ module.exports = {
         }
 
         return {
-            'angular:run': function(callExpression, fn) {
+            'angular?run': function(callExpression, fn) {
                 if (!fn) {
                     return;
                 }
