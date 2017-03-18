@@ -1,6 +1,9 @@
 env:
   node: true
 
+parserOptions:
+  ecmaVersion: 6
+
 rules:
   # http://eslint.org/docs/rules/#possible-errors
   comma-dangle:
