@@ -24,7 +24,7 @@
     "chai": "^3.5.0",
     "chai-spies": "^0.7.1",
     "coveralls": "^2.11.6",
-    "eslint": "^3.0.0",
+    "eslint": "^3.18.0",
     "espree": "^3.0.1",
     "gulp": "^3.9.1",
     "gulp-eslint": "^3.0.1",
