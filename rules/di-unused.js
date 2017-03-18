@@ -54,16 +54,16 @@ module.exports = {
         }
 
         return {
-            'angular:animation': reportUnusedVariables,
-            'angular:config': reportUnusedVariables,
-            'angular:controller': reportUnusedVariables,
-            'angular:directive': reportUnusedVariables,
-            'angular:factory': reportUnusedVariables,
-            'angular:filter': reportUnusedVariables,
-            'angular:inject': reportUnusedVariables,
-            'angular:run': reportUnusedVariables,
-            'angular:service': reportUnusedVariables,
-            'angular:provider': function(callee, providerFn, $get) {
+            'angular?animation': reportUnusedVariables,
+            'angular?config': reportUnusedVariables,
+            'angular?controller': reportUnusedVariables,
+            'angular?directive': reportUnusedVariables,
+            'angular?factory': reportUnusedVariables,
+            'angular?filter': reportUnusedVariables,
+            'angular?inject': reportUnusedVariables,
+            'angular?run': reportUnusedVariables,
+            'angular?service': reportUnusedVariables,
+            'angular?provider': function(callee, providerFn, $get) {
                 reportUnusedVariables(null, providerFn);
                 reportUnusedVariables(null, $get);
             },

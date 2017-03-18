@@ -47,16 +47,16 @@ module.exports = {
         }
 
         return {
-            'angular:animation': checkOrder,
-            'angular:config': checkOrder,
-            'angular:controller': checkOrder,
-            'angular:directive': checkOrder,
-            'angular:factory': checkOrder,
-            'angular:filter': checkOrder,
-            'angular:inject': checkOrder,
-            'angular:run': checkOrder,
-            'angular:service': checkOrder,
-            'angular:provider': function(callee, providerFn, $get) {
+            'angular?animation': checkOrder,
+            'angular?config': checkOrder,
+            'angular?controller': checkOrder,
+            'angular?directive': checkOrder,
+            'angular?factory': checkOrder,
+            'angular?filter': checkOrder,
+            'angular?inject': checkOrder,
+            'angular?run': checkOrder,
+            'angular?service': checkOrder,
+            'angular?provider': function(callee, providerFn, $get) {
                 checkOrder(null, providerFn);
                 checkOrder(null, $get);
             }
