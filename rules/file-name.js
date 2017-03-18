@@ -124,8 +124,8 @@ module.exports = {
                         if (type === undefined || (type === 'service' && node.callee.object.name === '$provide')) {
                             return;
                         }
-                        
-                        if(!name){
+
+                        if (!name) {
                             return;
                         }
                         expectedName = filenameUtil.createExpectedName(name, type, options);
