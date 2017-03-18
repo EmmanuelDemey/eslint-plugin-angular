@@ -19,6 +19,7 @@ eslintTester.run('typecheck-array', rule, {
     ].concat(commonFalsePositives),
     invalid: [
         {code: 'Object.prototype.toString.call([]) === "[object Array]"', errors: [{message: 'You should use the angular.isArray method'}]},
+        {code: 'function name(){return variable === "[object Array]";}', errors: [{message: 'You should use the angular.isArray method'}]},
         {code: '"[object Array]" === Object.prototype.toString.call([])', errors: [{message: 'You should use the angular.isArray method'}]},
         {code: 'variable === "[object Array]"', errors: [{message: 'You should use the angular.isArray method'}]},
         {code: '"[object Array]" === variable', errors: [{message: 'You should use the angular.isArray method'}]},

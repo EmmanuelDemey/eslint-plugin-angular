@@ -19,6 +19,7 @@ eslintTester.run('typecheck-number', rule, {
     ].concat(commonFalsePositives),
     invalid: [
         {code: 'Object.prototype.toString.call(variable) === "[object Number]"', errors: [{message: 'You should use the angular.isNumber method'}]},
+        {code: 'function name(){return variable === "[object Number]";}', errors: [{message: 'You should use the angular.isNumber method'}]},
         {code: '"[object Number]" === Object.prototype.toString.call(variable)', errors: [{message: 'You should use the angular.isNumber method'}]},
         {code: 'variable === "[object Number]"', errors: [{message: 'You should use the angular.isNumber method'}]},
         {code: '"[object Number]" === variable', errors: [{message: 'You should use the angular.isNumber method'}]},
