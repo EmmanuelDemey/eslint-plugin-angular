@@ -107,7 +107,7 @@ module.exports = {
                                 return;
                             }
                         }
-                    } else {
+                    } else if (fn.params.length > 0) {
                         report(fn);
                     }
                 } else if (fn.params && fn.params.length !== 0) {

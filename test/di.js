@@ -39,6 +39,9 @@ angularObjectList.forEach(function(object) {
         code: 'angular.module("myModule").' + object + '(myFunction);function MyFunction() {}',
         options: ['function']
     }, {
+        code: 'angular.module("myModule").' + object + '(myFunction);function myFunction() {}',
+        options: ['$inject']
+    }, {
         code: 'angular.module("myModule").' + object + '(myFunction);myFunction.$inject=[];function myFunction() {}',
         options: ['$inject']
     }, {
