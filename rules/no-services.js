@@ -13,7 +13,7 @@
  */
 'use strict';
 
-var utils = require('./utils/utils');
+const utils = require('./utils/utils');
 
 module.exports = {
     meta: {
@@ -24,10 +24,10 @@ module.exports = {
         }]
     },
     create: function(context) {
-        var angularObjectList = ['controller', 'filter', 'directive'];
-        var badServices;
-        var map;
-        var message = 'REST API calls should be implemented in a specific service';
+        let angularObjectList = ['controller', 'filter', 'directive'];
+        let badServices = [];
+        let map;
+        let message = 'REST API calls should be implemented in a specific service';
 
         function isArray(item) {
             return Object.prototype.toString.call(item) === '[object Array]';
@@ -38,7 +38,7 @@ module.exports = {
         }
 
         if (context.options[0] === undefined) {
-            badServices = ['$http', '$resource', 'Restangular', '$q', '$filter'];
+            badServices = ['/\$http/', '/\$resource/', 'Restangular', '/\$q/', '/\$filter/'];
         }
 
         if (isArray(context.options[0])) {
@@ -51,8 +51,9 @@ module.exports = {
 
         if (isObject(context.options[0])) {
             map = context.options[0];
-            var result = [];
-            var prop;
+
+            let result = [];
+            let prop;
 
             for (prop in map) {
                 if (map.hasOwnProperty(prop)) {
@@ -65,15 +66,15 @@ module.exports = {
 
         function isSetBedService(serviceName, angularObjectName) {
             if (map) {
-                return map[angularObjectName].indexOf(serviceName) >= 0;
+                return map[angularObjectName].find(object => utils.convertPrefixToRegex(object).test(serviceName));
             }
-            return badServices.indexOf(serviceName) >= 0;
+            return badServices.find(object => utils.convertPrefixToRegex(object).test(serviceName));
         }
 
         return {
 
             CallExpression: function(node) {
-                var callee = node.callee;
+                let callee = node.callee;
 
                 if (utils.isAngularComponent(node) && callee.type === 'MemberExpression' && angularObjectList.indexOf(callee.property.name) >= 0) {
                     if (utils.isFunctionType(node.arguments[1])) {
