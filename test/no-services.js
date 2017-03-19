@@ -16,10 +16,11 @@ var eslintTester = new RuleTester();
 
 var angularObjectList = ['controller', 'filter', 'directive'];
 var defaultBadService = ['$http', '$resource', 'Restangular', '$q', '$filter'];
+var defaultBadServiceExcaped = [/\$http/, /\$resource/, 'Restangular', /\$q/, /\$filter/];
 var mapAngularObjectToBarServices = {
-    controller: defaultBadService,
-    filter: defaultBadService,
-    directive: defaultBadService
+    controller: defaultBadServiceExcaped,
+    filter: defaultBadServiceExcaped,
+    directive: defaultBadServiceExcaped
 };
 var valid = [];
 var invalid = [];
@@ -39,11 +40,11 @@ angularObjectList.forEach(function(object) {
     defaultBadService.forEach(function(badService) {
         invalid.push({
             code: 'app.' + object + '("name", function(' + badService + ') {});',
-            options: [defaultBadService],
+            options: [defaultBadServiceExcaped],
             errors: [{message: 'REST API calls should be implemented in a specific service (' + badService + ' in ' + object + ')'}]
         }, {
             code: 'app.' + object + '("name", ["' + badService + '", function(' + badService + ') {}]);',
-            options: [defaultBadService],
+            options: [defaultBadServiceExcaped],
             errors: [{message: 'REST API calls should be implemented in a specific service (' + badService + ' in ' + object + ')'}]
         });
     });
@@ -61,11 +62,11 @@ angularObjectList.forEach(function(object) {
     defaultBadService.forEach(function(badService) {
         invalid.push({
             code: 'app.' + object + '("name", function(' + badService + ') {});',
-            options: [defaultBadService, [object]],
+            options: [defaultBadServiceExcaped, [object]],
             errors: [{message: 'REST API calls should be implemented in a specific service (' + badService + ' in ' + object + ')'}]
         }, {
             code: 'app.' + object + '("name", ["' + badService + '", function(' + badService + ') {}]);',
-            options: [defaultBadService, [object]],
+            options: [defaultBadServiceExcaped, [object]],
             errors: [{message: 'REST API calls should be implemented in a specific service (' + badService + ' in ' + object + ')'}]
         });
     });
