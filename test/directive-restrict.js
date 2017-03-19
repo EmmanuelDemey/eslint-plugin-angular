@@ -26,6 +26,15 @@ eslintTester.run('directive-restrict', rule, {
         'app.directive("", function() {return {restrict:"E"}})',
         // Allowed with custom restrict
         {
+            code: `app.directive("snapContainer", [
+                "$injector", "$rootScope", "$rootElement", "$timeout", "ibRoutePathSaver",
+                function($injector, $rootScope, $rootElement, $timeout, ibRoutePathSaver) {
+                    return {
+                        restrict:   "A"
+                    }
+                }])`,
+            options: [{restrict: 'A'}]
+        }, {
             code: 'app.directive("", function() {return {restrict:"A"}})',
             options: [{restrict: 'A'}]
         }, {
