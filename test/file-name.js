@@ -232,34 +232,34 @@ angular.module(mod, [mod + '.core.angular', mod + '.thirdparty']);
         filename: 'src/app/some.controller.js',
         code: 'app.controller("SomeController", function() {});',
         options: [{
-			casing: 'camel',
+            casing: 'camel',
             typeSeparator: 'dot',
-			ignoreTypeSuffix: true
-		}]
-	}, {
+            ignoreTypeSuffix: true
+        }]
+    }, {
         // camel casing
         filename: 'src/app/someController.js',
         code: 'app.controller("SomeController", function() {});',
         options: [{
-			casing: 'camel'
-		}]
-	}, {
+            casing: 'camel'
+        }]
+    }, {
         // pascal casing, dot typeSeparator, ignoreTypeSuffix of true
         filename: 'src/app/Some.controller.js',
         code: 'app.controller("SomeController", function() {});',
         options: [{
-			casing: 'pascal',
+            casing: 'pascal',
             typeSeparator: 'dot',
-			ignoreTypeSuffix: true
-		}]
-	}, {
+            ignoreTypeSuffix: true
+        }]
+    }, {
         // pascal casing
         filename: 'src/app/SomeController.js',
         code: 'app.controller("SomeController", function() {});',
         options: [{
-			casing: 'pascal'
-		}]
-	}].concat(commonFalsePositives),
+            casing: 'pascal'
+        }]
+    }].concat(commonFalsePositives),
     invalid: [{
         filename: 'src/app/filters.js',
         code: 'app.filter("myFilter", function() {});',
@@ -359,36 +359,36 @@ angular.module(mod, [mod + '.core.angular', mod + '.thirdparty']);
         filename: 'src/app/SomeController.js',
         code: 'app.controller("SomeController", function() {});',
         options: [{
-			casing: 'camel',
+            casing: 'camel',
             typeSeparator: 'dot',
-			ignoreTypeSuffix: true
-		}],
-		errors: [{message: 'Filename must be "some.controller.js"'}]
-	}, {
+            ignoreTypeSuffix: true
+        }],
+        errors: [{message: 'Filename must be "some.controller.js"'}]
+    }, {
         // camel casing
         filename: 'src/app/SomeController.js',
         code: 'app.controller("SomeController", function() {});',
         options: [{
-			casing: 'camel'
-		}],
-		errors: [{message: 'Filename must be "someController.js"'}]
-	}, {
+            casing: 'camel'
+        }],
+        errors: [{message: 'Filename must be "someController.js"'}]
+    }, {
         // pascal casing, dot typeSeparator, ignoreTypeSuffix of true
         filename: 'src/app/someController.js',
         code: 'app.controller("SomeController", function() {});',
         options: [{
-			casing: 'pascal',
+            casing: 'pascal',
             typeSeparator: 'dot',
-			ignoreTypeSuffix: true
-		}],
-		errors: [{message: 'Filename must be "Some.controller.js"'}]
-	}, {
+            ignoreTypeSuffix: true
+        }],
+        errors: [{message: 'Filename must be "Some.controller.js"'}]
+    }, {
         // pascal casing
         filename: 'src/app/someController.js',
         code: 'app.controller("SomeController", function() {});',
         options: [{
-			casing: 'pascal'
-		}],
-		errors: [{message: 'Filename must be "SomeController.js"'}]
-	}]
+            casing: 'pascal'
+        }],
+        errors: [{message: 'Filename must be "SomeController.js"'}]
+    }]
 });
