@@ -44,6 +44,31 @@ function getConfig(options) {
     return config;
 }
 
+/**
+ * Used only by `ForDeprecatedBehavior()` for making sure it was run only one time
+ * @type {boolean}
+ */
+var didWarnForDeprecatedBehavior = false;
+
+/**
+ * Warn if API is deprecated
+ * @param {Array.<*>} options
+ */
+function warnForDeprecatedBehavior(options) {
+    if (didWarnForDeprecatedBehavior) {
+        return;
+    }
+    didWarnForDeprecatedBehavior = true;
+
+    var config = getConfig(options);
+
+    /* istanbul ignore if  */
+    if (config.oldBehavior) {
+        // eslint-disable-next-line
+        console.warn('The rule `angular/service-name` will be split up to different rules in the next version. Please read the docs for more information');
+    }
+}
+
 module.exports = {
     meta: {
         schema: [{
@@ -53,6 +78,9 @@ module.exports = {
         }]
     },
     create: function(context) {
+
+        warnForDeprecatedBehavior(context.options);
+
         return {
 
             CallExpression: function(node) {
