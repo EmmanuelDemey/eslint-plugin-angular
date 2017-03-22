@@ -105,6 +105,12 @@ module.exports = {
                 if (typeSeparator !== undefined) {
                     name = name + typeSeparator + type;
                 }
+                if (options.casing === 'camel') {
+                    name = filenameUtil.firstToLower(name);
+                }
+                if (options.casing === 'pascal') {
+                    name = filenameUtil.firstToUpper(name);
+                }
                 return name + fileEnding;
             }
         };
