@@ -65,7 +65,6 @@ module.exports = {
         }
 
         function isSetBedService(serviceName, angularObjectName) {
-            console.log(badServices)
             if (map) {
                 return map[angularObjectName].find(object => utils.convertPrefixToRegex(object).test(serviceName));
             }
