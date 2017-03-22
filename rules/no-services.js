@@ -38,7 +38,7 @@ module.exports = {
         }
 
         if (context.options[0] === undefined) {
-            badServices = ['/\$http/', '/\$resource/', 'Restangular', '/\$q/', '/\$filter/'];
+            badServices = [/\$http/, /\$resource/, /Restangular/, /\$q/, /\$filter/];
         }
 
         if (isArray(context.options[0])) {
@@ -65,6 +65,7 @@ module.exports = {
         }
 
         function isSetBedService(serviceName, angularObjectName) {
+            console.log(badServices)
             if (map) {
                 return map[angularObjectName].find(object => utils.convertPrefixToRegex(object).test(serviceName));
             }
