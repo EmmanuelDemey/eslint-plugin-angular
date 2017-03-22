@@ -78,7 +78,6 @@ module.exports = {
         }]
     },
     create: function(context) {
-
         warnForDeprecatedBehavior(context.options);
 
         return {
