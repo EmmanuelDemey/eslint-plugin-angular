@@ -23,9 +23,19 @@ eslintTester.run('module-dependency-order', rule, {
             code: 'angular.module("", ["app.filters","ngCordova","ngMaterial","ui.router"])',
             options: [{grouped: false}]
         },
+        {
+            code: 'angular.module("", [appFilters,ngCordova,ngMaterial,uiRouter])',
+            options: [{grouped: false}]
+        },
+        {
+            code: 'angular.module("", [appFilters,"ngCordova",ngMaterial,uiRouter])',
+            options: [{grouped: false}]
+        },
         // grouped mode
         'angular.module("", ["ng","ngAnimate","ngAria","ngCookies","ngLocale","ngMaterial","ngMessageFormat","ngMessages","ngMock","ngNewRouter","ngResource","ngRoute","ngSanitize","ngTouch"])',
         'angular.module("", ["ngAnimate","ngResource","ngCordova"])',
+        'angular.module("", [ngAnimate,ngResource,ngCordova])',
+        'angular.module("", [ngAnimate,"ngResource",ngCordova])',
         {
             code: 'angular.module("", ["ngAnimate","ngResource","ngCordova","app.filters"])',
             options: [{prefix: 'app'}]
@@ -38,14 +48,6 @@ eslintTester.run('module-dependency-order', rule, {
                 {message: 'Dependencies should be a literal array'}
             ]
         },
-        // combined mode
-        {
-            code: 'angular.module("", [dep])',
-            options: [{grouped: false}],
-            errors: [
-                {message: 'Unexpected non-literal value'}
-            ]
-        },
         {
             code: 'angular.module("", ["ngCordova","app.filters","app.resources","ngMaterial","app.user","ui.router"])',
             options: [{grouped: false}],
@@ -55,11 +57,13 @@ eslintTester.run('module-dependency-order', rule, {
                 {message: 'app.user should be sorted before ngMaterial'}
             ]
         },
-        // grouped mode
         {
-            code: 'angular.module("", [dep])',
+            code: 'angular.module("", [ngCordova,"app.filters","app.resources",ngMaterial,"app.user","ui.router"])',
+            options: [{grouped: false}],
             errors: [
-                {message: 'Unexpected non-literal value'}
+                {message: 'app.filters should be sorted before ngCordova'},
+                {message: 'app.resources should be sorted before ngCordova'},
+                {message: 'app.user should be sorted before ngMaterial'}
             ]
         },
         {

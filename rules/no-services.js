@@ -38,7 +38,7 @@ module.exports = {
         }
 
         if (context.options[0] === undefined) {
-            badServices = ['/\$http/', '/\$resource/', 'Restangular', '/\$q/', '/\$filter/'];
+            badServices = [/\$http/, /\$resource/, /Restangular/, /\$q/, /\$filter/];
         }
 
         if (isArray(context.options[0])) {
