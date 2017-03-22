@@ -60,8 +60,8 @@ module.exports = {
         ];
 
         function checkLiteral(node) {
-            if (node && node.type !== 'Literal') {
-                context.report(node, 'Unexpected non-literal value');
+            if (node && node.type !== 'Literal' && node.type !== 'Identifier') {
+                context.report(node, 'Unexpected non-literal or identifier value' + node.type);
                 return false;
             }
             if (!node) {
@@ -76,7 +76,7 @@ module.exports = {
                 if (!checkLiteral(node)) {
                     return;
                 }
-                var value = node.value;
+                var value = node.value || node.name;
                 if (lastCorrect === undefined || lastCorrect.localeCompare(value) < 0) {
                     lastCorrect = value;
                 } else {
@@ -103,7 +103,7 @@ module.exports = {
                 if (!checkLiteral(node)) {
                     return;
                 }
-                var value = node.value;
+                var value = node.value || node.name;
                 if (lastCorrect === undefined) {
                     lastCorrect = value;
                     if (isCustomModule(value)) {
