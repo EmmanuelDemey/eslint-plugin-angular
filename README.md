@@ -100,6 +100,7 @@ Rules in eslint-plugin-angular are divided into several categories to help you b
 
 The following rules detect patterns that can lead to errors.
 
+ * [avoid-scope-typos](docs/avoid-scope-typos.md) - Avoid mistakes when naming methods defined on the scope object
  * [module-getter](docs/module-getter.md) - disallow to reference modules with variables and require to use the getter syntax instead `angular.module('myModule')` ([y022](https://github.com/johnpapa/angular-styleguide/blob/master/a1/README.md#style-y022))
  * [module-setter](docs/module-setter.md) - disallow to assign modules to variables (linked to [module-getter](docs/module-getter.md) ([y021](https://github.com/johnpapa/angular-styleguide/blob/master/a1/README.md#style-y021))
  * [no-private-call](docs/no-private-call.md) - disallow use of internal angular properties prefixed with $$
