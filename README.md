@@ -31,8 +31,6 @@ Since the 0.0.4 release, some rules defined in [John Papa's Guideline](https://g
 
 ## Usage with [shareable](http://eslint.org/docs/developer-guide/shareable-configs.html) config
 
-Users may use the shareable [eslint-config-angular](https://github.com/dustinspecker/eslint-config-angular) to quickly setup eslint-plugin-angular. It also marks Angular as a global variable and defines required ESLint rules to use this plugin.
-
 1. Install `eslint` as a dev-dependency:
 
     ```shell
@@ -45,16 +43,10 @@ Users may use the shareable [eslint-config-angular](https://github.com/dustinspe
     npm install --save-dev eslint-plugin-angular
     ```
 
-3. Install `eslint-config-angular` as a dev-dependency:
-
-    ```shell
-    npm install --save-dev eslint-config-angular
-    ```
-
-4. Use the shareable config by adding it to your `.eslintrc`:
+3. Use the shareable config by adding it to your `.eslintrc`:
 
     ```yaml
-    extends: angular
+    extends: plugin:angular/johnpapa
     ```
 
 
@@ -100,6 +92,7 @@ Rules in eslint-plugin-angular are divided into several categories to help you b
 
 The following rules detect patterns that can lead to errors.
 
+ * [avoid-scope-typos](docs/avoid-scope-typos.md) - Avoid mistakes when naming methods defined on the scope object
  * [module-getter](docs/module-getter.md) - disallow to reference modules with variables and require to use the getter syntax instead `angular.module('myModule')` ([y022](https://github.com/johnpapa/angular-styleguide/blob/master/a1/README.md#style-y022))
  * [module-setter](docs/module-setter.md) - disallow to assign modules to variables (linked to [module-getter](docs/module-getter.md) ([y021](https://github.com/johnpapa/angular-styleguide/blob/master/a1/README.md#style-y021))
  * [no-private-call](docs/no-private-call.md) - disallow use of internal angular properties prefixed with $$

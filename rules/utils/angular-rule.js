@@ -199,7 +199,7 @@ function angularRule(ruleDefinition) {
         if (node.type === 'ArrayExpression') {
             node = node.elements[node.elements.length - 1] || {};
         }
-        if (node.type === 'FunctionExpression' || node.type === 'FunctionDeclaration') {
+        if (node.type === 'FunctionExpression' || node.type === 'ArrowFunctionExpression' || node.type === 'FunctionDeclaration') {
             return node;
         }
         if (node.type !== 'Identifier') {
