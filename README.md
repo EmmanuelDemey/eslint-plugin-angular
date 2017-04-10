@@ -31,8 +31,6 @@ Since the 0.0.4 release, some rules defined in [John Papa's Guideline](https://g
 
 ## Usage with [shareable](http://eslint.org/docs/developer-guide/shareable-configs.html) config
 
-Users may use the shareable [eslint-config-angular](https://github.com/dustinspecker/eslint-config-angular) to quickly setup eslint-plugin-angular. It also marks Angular as a global variable and defines required ESLint rules to use this plugin.
-
 1. Install `eslint` as a dev-dependency:
 
     ```shell
@@ -45,16 +43,10 @@ Users may use the shareable [eslint-config-angular](https://github.com/dustinspe
     npm install --save-dev eslint-plugin-angular
     ```
 
-3. Install `eslint-config-angular` as a dev-dependency:
-
-    ```shell
-    npm install --save-dev eslint-config-angular
-    ```
-
-4. Use the shareable config by adding it to your `.eslintrc`:
+3. Use the shareable config by adding it to your `.eslintrc`:
 
     ```yaml
-    extends: angular
+    extends: plugin:angular/johnpapa
     ```
 
 
