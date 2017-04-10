@@ -78,6 +78,16 @@ eslintTester.run('di-unused', rule, {
             code: 'angular.module("").controller("", fn); function fn($q) {}',
             errors: [{message: 'Unused injected value $q'}]
         },
+        {
+            code: 'angular.module("").controller("", ["$q", ($q) => {}]);',
+            parserOptions: {ecmaVersion: 6},
+            errors: [{message: 'Unused injected value $q'}]
+        },
+        {
+            code: 'angular.module("").controller("", ($q) => {});',
+            parserOptions: {ecmaVersion: 6},
+            errors: [{message: 'Unused injected value $q'}]
+        },
         // directive
         {
             code: 'angular.module("").directive("", function($q) {});',
@@ -96,9 +106,18 @@ eslintTester.run('di-unused', rule, {
         {
             code: 'angular.module("").factory("", function($q) {});',
             errors: [{message: 'Unused injected value $q'}]
+        },
+        {
+            code: 'angular.module("").factory("", $q => {});',
+            errors: [{message: 'Unused injected value $q'}],
+            parserOptions: {ecmaVersion: 6}
         }, {
             code: 'angular.module("").factory("", ["q", function($q) {}]);',
             errors: [{message: 'Unused injected value $q'}]
+        }, {
+            code: 'angular.module("").factory("", ["q", $q => {}]);',
+            errors: [{message: 'Unused injected value $q'}],
+            parserOptions: {ecmaVersion: 6}
         }, {
             code: 'var app = angular.module(""); app.factory("", function($q) {});',
             errors: [{message: 'Unused injected value $q'}]
