@@ -14,7 +14,7 @@ var RuleTester = require('eslint').RuleTester;
 var eslintTester = new RuleTester();
 eslintTester.run('no-run-logic', rule, {
     valid: [
-        '\'use strict;\'',
+        'angular.module("").run(function() { \'use strict;\' });',
         'angular.module("").run();',
         'angular.module("").run(function() {});',
         'angular.module("").run(function() {foo()});',

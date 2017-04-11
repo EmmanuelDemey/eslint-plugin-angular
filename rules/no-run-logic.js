@@ -42,6 +42,14 @@ module.exports = {
                         return report(statement);
                     }
                     var expression = statement.expression;
+                    
+                    /**
+                     * issue #466 
+                     */
+                    if (expression.type === 'Literal' && expression.value.indexOf('use strict') >= 0) {
+                        return ;
+                    }
+
                     if (expression.type !== 'CallExpression') {
                         return report(statement);
                     }
@@ -52,7 +60,7 @@ module.exports = {
                         return context.report(expression, 'Run function call expressions may not take any arguments');
                     }
                     expression.arguments.forEach(function(argument) {
-                        if (argument.type !== 'Literal' && argument.type !== 'Identifier') {
+                        if (argument && argument.type !== 'Literal' && argument.type !== 'Identifier') {
                             context.report(argument, 'Run function call expressions may only take simple arguments');
                         }
                     });
