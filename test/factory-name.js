@@ -25,6 +25,10 @@ valid.push({
     code: 'app.factory("eslintFactory", function() {});',
     options: ['eslint']
 }, {
+    code: 'app.factory("eslintFactory", EslintFactory); class EslintFactory {}',
+    options: ['eslint'],
+    parserOptions: {ecmaVersion: 6}
+}, {
     code: 'app.factory("eslintFactory", function() {});',
     options: [/^eslint/]
 }, {
