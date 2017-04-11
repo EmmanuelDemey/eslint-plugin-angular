@@ -42,12 +42,12 @@ module.exports = {
                         return report(statement);
                     }
                     var expression = statement.expression;
-                    
+
                     /**
-                     * issue #466 
+                     * issue #466
                      */
                     if (expression.type === 'Literal' && expression.value.indexOf('use strict') >= 0) {
-                        return ;
+                        return;
                     }
 
                     if (expression.type !== 'CallExpression') {
