@@ -17,6 +17,7 @@ eslintTester.run('no-run-logic', rule, {
         '\'use strict;\'',
         'angular.module("").run();',
         'angular.module("").run(function() {});',
+        'angular.module("").run(function() {\'use strict;\'});',
         'angular.module("").run(function() {foo()});',
         'angular.module("").run(function() {foo.bar()});',
         // valid arguments if params are allowed
