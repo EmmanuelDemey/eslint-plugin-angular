@@ -18,6 +18,7 @@ var message = 'You should use the $timeout service instead of the default window
 
 eslintTester.run('timeout-service', rule, {
     valid: [
+        'jasmine.getGlobal().setTimeout',
         '$timeout(function() {})',
         '$timeout(function() {}, 1000)',
         '$timeout(function() {}, 1000, true)',
