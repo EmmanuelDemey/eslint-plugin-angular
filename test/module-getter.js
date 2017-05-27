@@ -15,6 +15,7 @@ var commonFalsePositives = require('./utils/commonFalsePositives');
 var eslintTester = new RuleTester();
 eslintTester.run('module-getter', rule, {
     valid: [
+        'require.config({});',
         'angular.module("module").config(function(jwtOptionsProvider){' +
             'jwtOptionsProvider.config({' +
                 'whiteListedDomains: []' +
