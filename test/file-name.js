@@ -102,9 +102,9 @@ angular.module(mod, [mod + '.core.angular', mod + '.thirdparty']);
             ignoreTypeSuffix: true
         }]
     }, {
-        // typeSeparator dot with controller and ignored type suffix
-        filename: 'src/app/Avengers.controller.js',
-        code: 'app.controller("AvengersController", function() {});',
+        // typeSeparator dot with component and ignored type suffix
+        filename: 'src/app/Avengers.component.js',
+        code: 'app.component("AvengersComponent", {});',
         options: [{
             typeSeparator: 'dot',
             ignoreTypeSuffix: true
@@ -288,6 +288,14 @@ angular.module(mod, [mod + '.core.angular', mod + '.thirdparty']);
         }],
         errors: [{message: 'Filename must be "AvengersController.controller.js"'}]
     }, {
+        // typeSeparator dot with component, but no ignored type suffix
+        filename: 'src/app/Avengers.component.js',
+        code: 'app.component("AvengersComponent", {});',
+        options: [{
+            typeSeparator: 'dot'
+        }],
+        errors: [{message: 'Filename must be "AvengersComponent.component.js"'}]
+    }, {
         // typeSeparator dot with controller and ignored type suffix
         filename: 'src/app/AvengersController.controller.js',
         code: 'app.controller("AvengersController", function() {});',
@@ -296,6 +304,15 @@ angular.module(mod, [mod + '.core.angular', mod + '.thirdparty']);
             ignoreTypeSuffix: true
         }],
         errors: [{message: 'Filename must be "Avengers.controller.js"'}]
+    }, {
+        // typeSeparator dot with component and ignored type suffix
+        filename: 'src/app/AvengersComponent.component.js',
+        code: 'app.component("AvengersComponent", {});',
+        options: [{
+            typeSeparator: 'dot',
+            ignoreTypeSuffix: true
+        }],
+        errors: [{message: 'Filename must be "Avengers.component.js"'}]
     }, {
         // nameStyle dash and typeSeparator dot with directive
         filename: 'src/app/avangerProfile.directive.js',

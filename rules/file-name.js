@@ -122,7 +122,7 @@ module.exports = {
 
             return {
                 CallExpression: function(node) {
-                    if (utils.isAngularComponent(node) && utils.isMemberExpression(node.callee)) {
+                    if ((utils.isAngularComponent(node) || utils.isAngularComponentDeclaration(node)) && utils.isMemberExpression(node.callee)) {
                         var name = node.arguments[0].value;
                         var type = componentTypeMappings[node.callee.property.name];
                         var expectedName;
