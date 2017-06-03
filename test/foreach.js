@@ -18,6 +18,7 @@ eslintTester.run('foreach', rule, {
         'angular.forEach(variable, function() {})'
     ].concat(commonFalsePositives),
     invalid: [
-        {code: 'variable.forEach(function() {})', errors: [{message: 'You should use the angular.forEach method'}]}
+        {code: 'variable.forEach(function() {})', errors: [{message: 'You should use the angular.forEach method'}]},
+        {code: 'a.b.forEach(function() {})', errors: [{message: 'You should use the angular.forEach method'}]}
     ]
 });
