@@ -14,6 +14,9 @@ var valid = [];
 var invalid = [];
 
 valid.push({
+    code: '_.filter(vm.global, function (n) { return n % 2 === 0; })',
+    options: ['anonymous']
+}, {
     code: 'angular.module("mymodule.constants", []).constant("EMPTY", [])',
     options: ['anonymous']
 }, {

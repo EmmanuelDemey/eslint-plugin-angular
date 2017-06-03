@@ -4,22 +4,25 @@
 // Requirements
 // ------------------------------------------------------------------------------
 
-var rule = require('../rules/rest-service');
-var RuleTester = require('eslint').RuleTester;
-var commonFalsePositives = require('./utils/commonFalsePositives');
+const rule = require('../rules/rest-service');
+const RuleTester = require('eslint').RuleTester;
+const commonFalsePositives = require('./utils/commonFalsePositives');
 
 // ------------------------------------------------------------------------------
 // Tests
 // ------------------------------------------------------------------------------
 
-var eslintTester = new RuleTester();
+const eslintTester = new RuleTester();
 
-var angularObjectList = ['controller', 'filter', 'directive', 'service', 'factory', 'provider'];
-var possibleValues = ['$http', '$resource', 'Restangular'];
-var valid = [];
-var invalid = [];
+const angularObjectList = ['controller', 'filter', 'directive', 'service', 'factory', 'provider'];
+const possibleValues = ['$http', '$resource', 'Restangular'];
+let valid = [];
+let invalid = [];
 
-
+valid.push({
+    code: 'angular.module("name").service("cmnHttpSvc", function($http) {});',
+    options: ['cmnHttpSvc']
+});
 angularObjectList.forEach(function(object) {
     possibleValues.forEach(function(value) {
         valid.push({

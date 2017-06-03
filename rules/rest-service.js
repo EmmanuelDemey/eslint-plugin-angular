@@ -10,7 +10,7 @@
  */
 'use strict';
 
-var utils = require('./utils/utils');
+const utils = require('./utils/utils');
 
 module.exports = {
     meta: {
@@ -19,9 +19,9 @@ module.exports = {
         }]
     },
     create: function(context) {
-        var angularObjectList = ['controller', 'filter', 'directive', 'service', 'factory', 'provider'];
-        var services = ['$http', '$resource', 'Restangular'];
-        var message = 'You should use the same service ({{method}}) for REST API calls';
+        let angularObjectList = ['controller', 'filter', 'directive', 'service', 'factory', 'provider'];
+        let services = ['$http', '$resource', 'Restangular'];
+        let message = 'You should use the same service ({{method}}) for REST API calls';
 
 
         return {
@@ -46,6 +46,10 @@ module.exports = {
                 var callee = node.callee;
 
                 if (utils.isAngularComponent(node) && callee.type === 'MemberExpression' && angularObjectList.indexOf(callee.property.name) >= 0) {
+                    if (context.options[0] === node.arguments[0].value) {
+                        return;
+                    }
+
                     if (utils.isFunctionType(node.arguments[1])) {
                         checkAllElements(node.arguments[1].params);
                     }
