@@ -1,6 +1,6 @@
 {
   "name": "eslint-plugin-angular",
-  "version": "2.4.2",
+  "version": "2.5.0",
   "description": "ESLint rules for AngularJS projects",
   "main": "index.js",
   "scripts": {
