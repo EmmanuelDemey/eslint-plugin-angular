@@ -36,6 +36,12 @@ angularObjectList.forEach(function(object) {
         code: 'angular.module("myModule").' + object + '(["$log", function($l) {}]);',
         options: ['array', {matchNames: false}]
     }, {
+        code: 'angular.module("myModule").' + object + '(["$log", function($log) {}]);',
+        options: ['array', {matchNames: true, stripUnderscores: false}]
+    }, {
+        code: 'angular.module("myModule").' + object + '(["$log", function(_$log_) {}]);',
+        options: ['array', {matchNames: true, stripUnderscores: true}]
+    }, {
         code: 'angular.module("myModule").' + object + '(myFunction);function MyFunction() {}',
         options: ['function']
     }, {
@@ -50,6 +56,9 @@ angularObjectList.forEach(function(object) {
     }, {
         code: 'angular.module("myModule").' + object + '(myFunction);myFunction["$inject"]=["slMathPi"];function myFunction(pi) {}',
         options: ['$inject', {matchNames: false}]
+    }, {
+        code: 'angular.module("myModule").' + object + '(myFunction);myFunction["$inject"]=["slMathPi"];function myFunction(_slMathPi_) {}',
+        options: ['$inject', {matchNames: true, stripUnderscores: true}]
     }, {
         code: 'myFunction.$inject=[];function myFunction() {} angular.module("myModule").' + object + '(myFunction);',
         options: ['$inject']
@@ -108,6 +117,10 @@ angularObjectList.forEach(function(object) {
     }, {
         code: 'angular.module("myModule").' + object + '(["$urlRouteProvider", "$timeout", function($timeout, $urlRouteProvider){}])',
         options: ['array'],
+        errors: [{message: 'You have an error in your DI configuration. Each items of the array should match exactly one function parameter'}]
+    }, {
+        code: 'angular.module("myModule").' + object + '(["$log", function(_$log_) {}]);',
+        options: ['array', {matchNames: true, stripUnderscores: false}],
         errors: [{message: 'You have an error in your DI configuration. Each items of the array should match exactly one function parameter'}]
     });
 });

@@ -27,6 +27,9 @@ module.exports = {
             properties: {
                 matchNames: {
                     type: 'boolean'
+                },
+                stripUnderscores: {
+                    type: 'boolean'
                 }
             }
         }]
@@ -36,6 +39,7 @@ module.exports = {
 
         var extra = context.options[1] || {};
         var matchNames = extra.matchNames !== false;
+        var stripUnderscores = extra.stripUnderscores === true;
 
         function report(node) {
             context.report(node, 'You should use the {{syntax}} syntax for DI', {
@@ -53,6 +57,12 @@ module.exports = {
             }
         }
 
+        function normalizeParameter(param) {
+            return param.replace(/^_(.+)_$/, function(match, p1) {
+                return p1;
+            });
+        }
+
         function checkDi(callee, fn) {
             if (!fn) {
                 return;
@@ -67,7 +77,13 @@ module.exports = {
 
                     if (matchNames) {
                         var invalidArray = fn.params.filter(function(e, i) {
-                            return e.name !== fn.parent.elements[i].value;
+                            var name = e.name;
+
+                            if (stripUnderscores) {
+                                name = normalizeParameter(name);
+                            }
+
+                            return name !== fn.parent.elements[i].value;
                         });
                         if (invalidArray.length > 0) {
                             context.report(fn, 'You have an error in your DI configuration. Each items of the array should match exactly one function parameter', {});
@@ -100,7 +116,13 @@ module.exports = {
 
                         if (matchNames) {
                             var invalidInjectArray = fn.params.filter(function(e, i) {
-                                return e.name !== $injectArray.elements[i].value;
+                                var name = e.name;
+
+                                if (stripUnderscores) {
+                                    name = normalizeParameter(name);
+                                }
+
+                                return name !== $injectArray.elements[i].value;
                             });
                             if (invalidInjectArray.length > 0) {
                                 context.report(fn, 'You have an error in your DI configuration. Each items of the array should match exactly one function parameter', {});
