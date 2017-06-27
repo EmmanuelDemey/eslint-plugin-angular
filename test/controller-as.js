@@ -27,7 +27,7 @@ eslintTester.run('controller-as', rule, {
             'function UserController(UserService, $compile, $scope, $q, CommonEnum, CommonService, $uibModal, TenantService) {' +
                 '$scope.myform = {};' +
             '}',
-            errors: [{message: 'You should not set properties on $scope in controllers. Use controllerAs syntax and add data to "this"'}]
+        errors: [{message: 'You should not set properties on $scope in controllers. Use controllerAs syntax and add data to "this"'}]
         },
         {code: 'angular.module("test").controller("Test", function() {$scope.name = "test"} );',
             errors: [{message: 'You should not set properties on $scope in controllers. Use controllerAs syntax and add data to "this"'}]},

@@ -25,9 +25,9 @@ var templateSettings = {
                 return '';
             }
             return ' (' + rule.styleguideReferences
-                    .map(styleguideReferenceTemplateContext)
-                    .map(templates.styleguideShort).join(', ') +
-                ')';
+                .map(styleguideReferenceTemplateContext)
+                .map(templates.styleguideShort).join(', ') +
+            ')';
         },
         formatConfigAsJson: function(examples) {
             var config = examples[0].displayOptions;
