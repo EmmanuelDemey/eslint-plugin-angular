@@ -53,6 +53,24 @@ module.exports = {
                     return true;
                 }
             });
+
+            if (!directiveNode) {
+                // Try to find an ancestor function used as definition for one of the found directives
+                context.getAncestors().some(function(ancestor) {
+                    if (isFunctionDeclaration(ancestor)) {
+                        var fnName = ancestor.id.name;
+
+                        var correspondingDirective = foundDirectives.find(function(directive) {
+                            var directiveFnName = getDirectiveFunctionName(directive);
+                            return directiveFnName === fnName;
+                        });
+
+                        directiveNode = correspondingDirective;
+                        return true;
+                    }
+                });
+            }
+
             // The restrict property was not defined inside of a directive.
             if (!directiveNode) {
                 return;
@@ -69,6 +87,34 @@ module.exports = {
             }
 
             checkedDirectives.push(directiveNode);
+        }
+
+        function isFunctionDeclaration(node) {
+            return node.type === 'FunctionDeclaration';
+        }
+
+        function getDirectiveFunctionName(node) {
+            var directiveArg = node.arguments[1];
+
+            // Three ways of creating a directive function: function expression,
+            // variable name that references a function, and an array with a function
+            // as the last item
+            if (utils.isFunctionType(directiveArg)) {
+                return directiveArg.id.name;
+            }
+
+            if (utils.isArrayType(directiveArg)) {
+                directiveArg = directiveArg.elements[directiveArg.elements.length - 1];
+
+                if (utils.isIdentifierType(directiveArg)) {
+                    return directiveArg.name;
+                }
+                return directiveArg.id.name;
+            }
+
+            if (utils.isIdentifierType(directiveArg)) {
+                return directiveArg.name;
+            }
         }
 
         return {
