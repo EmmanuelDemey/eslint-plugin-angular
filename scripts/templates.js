@@ -5,7 +5,7 @@ var _ = require('lodash');
 
 var templates = {
     ruleSourcePath: _.template('rules/<%= ruleName %>.js'),
-    ruleDocumentationPath: _.template('docs/<%= ruleName %>.md'),
+    ruleDocumentationPath: _.template('docs/rules/<%= ruleName %>.md'),
     ruleExamplesPath: _.template('examples/<%= ruleName %>.js'),
     styleguide: _.template('[<%= name %> by <%= type %> - <%= description %>](<%= link %>)'),
     styleguideShort: _.template('[<%= name %>](<%= link %>)'),
