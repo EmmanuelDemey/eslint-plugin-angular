@@ -4,7 +4,11 @@
  * All your services should have a name starting with the parameter you can define in your config object.
  * The second parameter can be a Regexp wrapped in quotes.
  * You can not prefix your services by "$" (reserved keyword for AngularJS services) ("service-name":  [2, "ng"])
- **
+ * 
+ * If the oldBehavior is true (default value), this rule will check the name of all services defined with the different methods
+ * provided by the framework : provider, service, factory, ... If this parameter is false, only services defined with the 
+ * service method will be checked. 
+ * 
  * @styleguideReference {johnpapa} `y125` Naming - Factory and Service Names
  * @version 0.1.0
  * @category naming
