@@ -40,7 +40,7 @@ testUtils.detectMissingRuleDefinitionForFiles(testFiles, {
 
 // ----- docs -----
 var docFiles = testUtils.getFiles({
-    basePath: './docs/',
+    basePath: './docs/rules/',
     fileEnding: '.md'
 });
 
