@@ -13,13 +13,15 @@ const bad = ['new', 'watch', 'watchGroup', 'watchCollection',
     'digest', 'destroy', 'eval', 'evalAsync', 'apply',
     'applyAsync', 'on', 'emit', 'broadcast'];
 
+const scope = ['scope', '$scope', '$rootScope'];
+
 module.exports = {
     meta: {
         schema: [ ]
     },
     create: function(context) {
         function check(node, name) {
-            if (bad.indexOf(name) >= 0) {
+            if (bad.indexOf(name) >= 0 && scope.indexOf(node.parent.object.name) >= 0) {
                 context.report(node, `The ${name} method should be replaced by $${name}, or you should rename it in order to avoid confusions`, {});
             }
         }

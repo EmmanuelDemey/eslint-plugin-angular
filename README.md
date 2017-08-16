@@ -92,95 +92,95 @@ Rules in eslint-plugin-angular are divided into several categories to help you b
 
 The following rules detect patterns that can lead to errors.
 
- * [avoid-scope-typos](docs/avoid-scope-typos.md) - Avoid mistakes when naming methods defined on the scope object
- * [module-getter](docs/module-getter.md) - disallow to reference modules with variables and require to use the getter syntax instead `angular.module('myModule')` ([y022](https://github.com/johnpapa/angular-styleguide/blob/master/a1/README.md#style-y022))
- * [module-setter](docs/module-setter.md) - disallow to assign modules to variables (linked to [module-getter](docs/module-getter.md) ([y021](https://github.com/johnpapa/angular-styleguide/blob/master/a1/README.md#style-y021))
- * [no-private-call](docs/no-private-call.md) - disallow use of internal angular properties prefixed with $$
+ * [avoid-scope-typos](docs/rules/avoid-scope-typos.md) - Avoid mistakes when naming methods defined on the scope object
+ * [module-getter](docs/rules/module-getter.md) - disallow to reference modules with variables and require to use the getter syntax instead `angular.module('myModule')` ([y022](https://github.com/johnpapa/angular-styleguide/blob/master/a1/README.md#style-y022))
+ * [module-setter](docs/rules/module-setter.md) - disallow to assign modules to variables (linked to [module-getter](docs/module-getter.md) ([y021](https://github.com/johnpapa/angular-styleguide/blob/master/a1/README.md#style-y021))
+ * [no-private-call](docs/rules/no-private-call.md) - disallow use of internal angular properties prefixed with $$
 
 ### Best Practices
 
 These are rules designed to prevent you from making mistakes. They either prescribe a better way of doing something or help you avoid footguns..
 
- * [component-limit](docs/component-limit.md) - limit the number of angular components per file ([y001](https://github.com/johnpapa/angular-styleguide/blob/master/a1/README.md#style-y001))
- * [controller-as-route](docs/controller-as-route.md) - require the use of controllerAs in routes or states ([y031](https://github.com/johnpapa/angular-styleguide/blob/master/a1/README.md#style-y031))
- * [controller-as-vm](docs/controller-as-vm.md) - require and specify a capture variable for `this` in controllers ([y032](https://github.com/johnpapa/angular-styleguide/blob/master/a1/README.md#style-y032))
- * [controller-as](docs/controller-as.md) - disallow assignments to `$scope` in controllers ([y031](https://github.com/johnpapa/angular-styleguide/blob/master/a1/README.md#style-y031))
- * [deferred](docs/deferred.md) - use `$q(function(resolve, reject){})` instead of `$q.deferred`
- * [di-unused](docs/di-unused.md) - disallow unused DI parameters
- * [directive-restrict](docs/directive-restrict.md) - disallow any other directive restrict than 'A' or 'E' ([y074](https://github.com/johnpapa/angular-styleguide/blob/master/a1/README.md#style-y074))
- * [empty-controller](docs/empty-controller.md) - disallow empty controllers
- * [no-controller](docs/no-controller.md) - disallow use of controllers (according to the component first pattern)
- * [no-inline-template](docs/no-inline-template.md) - disallow the use of inline templates
- * [no-run-logic](docs/no-run-logic.md) - keep run functions clean and simple ([y171](https://github.com/johnpapa/angular-styleguide/blob/master/a1/README.md#style-y171))
- * [no-services](docs/no-services.md) - disallow DI of specified services for other angular components (`$http` for controllers, filters and directives)
- * [on-watch](docs/on-watch.md) - require `$on` and `$watch` deregistration callbacks to be saved in a variable
- * [prefer-component](docs/prefer-component.md) - 
+ * [component-limit](docs/rules/component-limit.md) - limit the number of angular components per file ([y001](https://github.com/johnpapa/angular-styleguide/blob/master/a1/README.md#style-y001))
+ * [controller-as-route](docs/rules/controller-as-route.md) - require the use of controllerAs in routes or states ([y031](https://github.com/johnpapa/angular-styleguide/blob/master/a1/README.md#style-y031))
+ * [controller-as-vm](docs/rules/controller-as-vm.md) - require and specify a capture variable for `this` in controllers ([y032](https://github.com/johnpapa/angular-styleguide/blob/master/a1/README.md#style-y032))
+ * [controller-as](docs/rules/controller-as.md) - disallow assignments to `$scope` in controllers ([y031](https://github.com/johnpapa/angular-styleguide/blob/master/a1/README.md#style-y031))
+ * [deferred](docs/rules/deferred.md) - use `$q(function(resolve, reject){})` instead of `$q.deferred`
+ * [di-unused](docs/rules/di-unused.md) - disallow unused DI parameters
+ * [directive-restrict](docs/rules/directive-restrict.md) - disallow any other directive restrict than 'A' or 'E' ([y074](https://github.com/johnpapa/angular-styleguide/blob/master/a1/README.md#style-y074))
+ * [empty-controller](docs/rules/empty-controller.md) - disallow empty controllers
+ * [no-controller](docs/rules/no-controller.md) - disallow use of controllers (according to the component first pattern)
+ * [no-inline-template](docs/rules/no-inline-template.md) - disallow the use of inline templates
+ * [no-run-logic](docs/rules/no-run-logic.md) - keep run functions clean and simple ([y171](https://github.com/johnpapa/angular-styleguide/blob/master/a1/README.md#style-y171))
+ * [no-services](docs/rules/no-services.md) - disallow DI of specified services for other angular components (`$http` for controllers, filters and directives)
+ * [on-watch](docs/rules/on-watch.md) - require `$on` and `$watch` deregistration callbacks to be saved in a variable
+ * [prefer-component](docs/rules/prefer-component.md) - 
 
 ### Deprecated Angular Features
 
 These rules prevent you from using deprecated angular features.
 
- * [no-cookiestore](docs/no-cookiestore.md) - use `$cookies` instead of `$cookieStore`
- * [no-directive-replace](docs/no-directive-replace.md) - disallow the deprecated directive replace property
- * [no-http-callback](docs/no-http-callback.md) - disallow the `$http` methods `success()` and `error()`
+ * [no-cookiestore](docs/rules/no-cookiestore.md) - use `$cookies` instead of `$cookieStore`
+ * [no-directive-replace](docs/rules/no-directive-replace.md) - disallow the deprecated directive replace property
+ * [no-http-callback](docs/rules/no-http-callback.md) - disallow the `$http` methods `success()` and `error()`
 
 ### Naming
 
 These rules help you to specify several naming conventions.
 
- * [component-name](docs/component-name.md) - require and specify a prefix for all component names
- * [constant-name](docs/constant-name.md) - require and specify a prefix for all constant names ([y125](https://github.com/johnpapa/angular-styleguide/blob/master/a1/README.md#style-y125))
- * [controller-name](docs/controller-name.md) - require and specify a prefix for all controller names ([y123](https://github.com/johnpapa/angular-styleguide/blob/master/a1/README.md#style-y123), [y124](https://github.com/johnpapa/angular-styleguide/blob/master/a1/README.md#style-y124))
- * [directive-name](docs/directive-name.md) - require and specify a prefix for all directive names ([y073](https://github.com/johnpapa/angular-styleguide/blob/master/a1/README.md#style-y073), [y126](https://github.com/johnpapa/angular-styleguide/blob/master/a1/README.md#style-y126))
- * [factory-name](docs/factory-name.md) - require and specify a prefix for all factory names ([y125](https://github.com/johnpapa/angular-styleguide/blob/master/a1/README.md#style-y125))
- * [file-name](docs/file-name.md) - require and specify a consistent component name pattern ([y120](https://github.com/johnpapa/angular-styleguide/blob/master/a1/README.md#style-y120), [y121](https://github.com/johnpapa/angular-styleguide/blob/master/a1/README.md#style-y121))
- * [filter-name](docs/filter-name.md) - require and specify a prefix for all filter names
- * [module-name](docs/module-name.md) - require and specify a prefix for all module names ([y127](https://github.com/johnpapa/angular-styleguide/blob/master/a1/README.md#style-y127))
- * [provider-name](docs/provider-name.md) - require and specify a prefix for all provider names ([y125](https://github.com/johnpapa/angular-styleguide/blob/master/a1/README.md#style-y125))
- * [service-name](docs/service-name.md) - require and specify a prefix for all service names ([y125](https://github.com/johnpapa/angular-styleguide/blob/master/a1/README.md#style-y125))
- * [value-name](docs/value-name.md) - require and specify a prefix for all value names ([y125](https://github.com/johnpapa/angular-styleguide/blob/master/a1/README.md#style-y125))
+ * [component-name](docs/rules/component-name.md) - require and specify a prefix for all component names
+ * [constant-name](docs/rules/constant-name.md) - require and specify a prefix for all constant names ([y125](https://github.com/johnpapa/angular-styleguide/blob/master/a1/README.md#style-y125))
+ * [controller-name](docs/rules/controller-name.md) - require and specify a prefix for all controller names ([y123](https://github.com/johnpapa/angular-styleguide/blob/master/a1/README.md#style-y123), [y124](https://github.com/johnpapa/angular-styleguide/blob/master/a1/README.md#style-y124))
+ * [directive-name](docs/rules/directive-name.md) - require and specify a prefix for all directive names ([y073](https://github.com/johnpapa/angular-styleguide/blob/master/a1/README.md#style-y073), [y126](https://github.com/johnpapa/angular-styleguide/blob/master/a1/README.md#style-y126))
+ * [factory-name](docs/rules/factory-name.md) - require and specify a prefix for all factory names ([y125](https://github.com/johnpapa/angular-styleguide/blob/master/a1/README.md#style-y125))
+ * [file-name](docs/rules/file-name.md) - require and specify a consistent component name pattern ([y120](https://github.com/johnpapa/angular-styleguide/blob/master/a1/README.md#style-y120), [y121](https://github.com/johnpapa/angular-styleguide/blob/master/a1/README.md#style-y121))
+ * [filter-name](docs/rules/filter-name.md) - require and specify a prefix for all filter names
+ * [module-name](docs/rules/module-name.md) - require and specify a prefix for all module names ([y127](https://github.com/johnpapa/angular-styleguide/blob/master/a1/README.md#style-y127))
+ * [provider-name](docs/rules/provider-name.md) - require and specify a prefix for all provider names ([y125](https://github.com/johnpapa/angular-styleguide/blob/master/a1/README.md#style-y125))
+ * [service-name](docs/rules/service-name.md) - require and specify a prefix for all service names ([y125](https://github.com/johnpapa/angular-styleguide/blob/master/a1/README.md#style-y125))
+ * [value-name](docs/rules/value-name.md) - require and specify a prefix for all value names ([y125](https://github.com/johnpapa/angular-styleguide/blob/master/a1/README.md#style-y125))
 
 ### Conventions
 
 Angular often provide multi ways to to something. These rules help you to define convention for your project.
 
- * [di-order](docs/di-order.md) - require DI parameters to be sorted alphabetically
- * [di](docs/di.md) - require a consistent DI syntax
- * [dumb-inject](docs/dumb-inject.md) - unittest `inject` functions should only consist of assignments from injected values to describe block variables
- * [function-type](docs/function-type.md) - require and specify a consistent function style for components ('named' or 'anonymous') ([y024](https://github.com/johnpapa/angular-styleguide/blob/master/a1/README.md#style-y024))
- * [module-dependency-order](docs/module-dependency-order.md) - require a consistent order of module dependencies
- * [no-service-method](docs/no-service-method.md) - use `factory()` instead of `service()` ([y040](https://github.com/johnpapa/angular-styleguide/blob/master/a1/README.md#style-y040))
- * [one-dependency-per-line](docs/one-dependency-per-line.md) - require all DI parameters to be located in their own line
- * [rest-service](docs/rest-service.md) - disallow different rest service and specify one of '$http', '$resource', 'Restangular'
- * [watchers-execution](docs/watchers-execution.md) - require and specify consistent use `$scope.digest()` or `$scope.apply()`
+ * [di-order](docs/rules/di-order.md) - require DI parameters to be sorted alphabetically
+ * [di](docs/rules/di.md) - require a consistent DI syntax
+ * [dumb-inject](docs/rules/dumb-inject.md) - unittest `inject` functions should only consist of assignments from injected values to describe block variables
+ * [function-type](docs/rules/function-type.md) - require and specify a consistent function style for components ('named' or 'anonymous') ([y024](https://github.com/johnpapa/angular-styleguide/blob/master/a1/README.md#style-y024))
+ * [module-dependency-order](docs/rules/module-dependency-order.md) - require a consistent order of module dependencies
+ * [no-service-method](docs/rules/no-service-method.md) - use `factory()` instead of `service()` ([y040](https://github.com/johnpapa/angular-styleguide/blob/master/a1/README.md#style-y040))
+ * [one-dependency-per-line](docs/rules/one-dependency-per-line.md) - require all DI parameters to be located in their own line
+ * [rest-service](docs/rules/rest-service.md) - disallow different rest service and specify one of '$http', '$resource', 'Restangular'
+ * [watchers-execution](docs/rules/watchers-execution.md) - require and specify consistent use `$scope.digest()` or `$scope.apply()`
 
 ### Angular Wrappers
 
 These rules help you to enforce the usage of angular wrappers.
 
- * [angularelement](docs/angularelement.md) - use `angular.element` instead of `$` or `jQuery`
- * [definedundefined](docs/definedundefined.md) - use `angular.isDefined` and `angular.isUndefined` instead of other undefined checks
- * [document-service](docs/document-service.md) - use `$document` instead of `document` ([y180](https://github.com/johnpapa/angular-styleguide/blob/master/a1/README.md#style-y180))
- * [foreach](docs/foreach.md) - use `angular.forEach` instead of native `Array.prototype.forEach`
- * [interval-service](docs/interval-service.md) - use `$interval` instead of `setInterval` ([y181](https://github.com/johnpapa/angular-styleguide/blob/master/a1/README.md#style-y181))
- * [json-functions](docs/json-functions.md) - use `angular.fromJson` and 'angular.toJson' instead of `JSON.parse` and `JSON.stringify`
- * [log](docs/log.md) - use the `$log` service instead of the `console` methods
- * [no-angular-mock](docs/no-angular-mock.md) - require to use `angular.mock` methods directly
- * [no-jquery-angularelement](docs/no-jquery-angularelement.md) - disallow to wrap `angular.element` objects with `jQuery` or `$`
- * [timeout-service](docs/timeout-service.md) - use `$timeout` instead of `setTimeout` ([y181](https://github.com/johnpapa/angular-styleguide/blob/master/a1/README.md#style-y181))
- * [typecheck-array](docs/typecheck-array.md) - use `angular.isArray` instead of `typeof` comparisons
- * [typecheck-date](docs/typecheck-date.md) - use `angular.isDate` instead of `typeof` comparisons
- * [typecheck-function](docs/typecheck-function.md) - use `angular.isFunction` instead of `typeof` comparisons
- * [typecheck-number](docs/typecheck-number.md) - use `angular.isNumber` instead of `typeof` comparisons
- * [typecheck-object](docs/typecheck-object.md) - use `angular.isObject` instead of `typeof` comparisons
- * [typecheck-string](docs/typecheck-string.md) - use `angular.isString` instead of `typeof` comparisons
- * [window-service](docs/window-service.md) - use `$window` instead of `window` ([y180](https://github.com/johnpapa/angular-styleguide/blob/master/a1/README.md#style-y180))
+ * [angularelement](docs/rules/angularelement.md) - use `angular.element` instead of `$` or `jQuery`
+ * [definedundefined](docs/rules/definedundefined.md) - use `angular.isDefined` and `angular.isUndefined` instead of other undefined checks
+ * [document-service](docs/rules/document-service.md) - use `$document` instead of `document` ([y180](https://github.com/johnpapa/angular-styleguide/blob/master/a1/README.md#style-y180))
+ * [foreach](docs/rules/foreach.md) - use `angular.forEach` instead of native `Array.prototype.forEach`
+ * [interval-service](docs/rules/interval-service.md) - use `$interval` instead of `setInterval` ([y181](https://github.com/johnpapa/angular-styleguide/blob/master/a1/README.md#style-y181))
+ * [json-functions](docs/rules/json-functions.md) - use `angular.fromJson` and 'angular.toJson' instead of `JSON.parse` and `JSON.stringify`
+ * [log](docs/rules/log.md) - use the `$log` service instead of the `console` methods
+ * [no-angular-mock](docs/rules/no-angular-mock.md) - require to use `angular.mock` methods directly
+ * [no-jquery-angularelement](docs/rules/no-jquery-angularelement.md) - disallow to wrap `angular.element` objects with `jQuery` or `$`
+ * [timeout-service](docs/rules/timeout-service.md) - use `$timeout` instead of `setTimeout` ([y181](https://github.com/johnpapa/angular-styleguide/blob/master/a1/README.md#style-y181))
+ * [typecheck-array](docs/rules/typecheck-array.md) - use `angular.isArray` instead of `typeof` comparisons
+ * [typecheck-date](docs/rules/typecheck-date.md) - use `angular.isDate` instead of `typeof` comparisons
+ * [typecheck-function](docs/rules/typecheck-function.md) - use `angular.isFunction` instead of `typeof` comparisons
+ * [typecheck-number](docs/rules/typecheck-number.md) - use `angular.isNumber` instead of `typeof` comparisons
+ * [typecheck-object](docs/rules/typecheck-object.md) - use `angular.isObject` instead of `typeof` comparisons
+ * [typecheck-string](docs/rules/typecheck-string.md) - use `angular.isString` instead of `typeof` comparisons
+ * [window-service](docs/rules/window-service.md) - use `$window` instead of `window` ([y180](https://github.com/johnpapa/angular-styleguide/blob/master/a1/README.md#style-y180))
 
 ### Misspelling
 
 These rules help you avoiding misspellings.
 
- * [on-destroy](docs/on-destroy.md) - Check for common misspelling $on('destroy', ...).
+ * [on-destroy](docs/rules/on-destroy.md) - Check for common misspelling $on('destroy', ...).
 
 
 ----
