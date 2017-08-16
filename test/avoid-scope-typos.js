@@ -38,6 +38,11 @@ variables.forEach(function(variable) {
         });
     });
 });
+
+valid.push({
+    code: '$ionicPlatform.on("resume", "blabla")'
+});
+
 eslintTester.run('avoid-scope-typos', rule, {
     valid: valid.concat(commonFalsePositives),
     invalid
