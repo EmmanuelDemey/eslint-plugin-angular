@@ -69,3 +69,14 @@ angular.provider('users', function(){});
 
 // example - valid: false, options: [{"typeSeparator":"dot", "componentTypeMappings": {"factory": "factory", "provider": "provider"}}], filename: "src/app/users.service.js", errorMessage: "Filename must be \"users.provider.js\""
 angular.provider('users', function(){});
+
+
+// example - valid: true, filename: "src/app/SomeOtherController.js"
+var MyCtrl4 = function() {};
+import {MyCtrl1} from 'src/app/SomeController.js';
+import {MyCtrl2} from 'src/app/SomeDirective.js';
+import {MyCtrl3} from 'src/app/SomeService.js';
+app.controller("SomeController", MyCtrl1);
+app.directive("SomeDirective", MyCtrl2);
+app.service("SomeService", MyCtrl3);
+app.controller("SomeOtherController", MyCtrl4);

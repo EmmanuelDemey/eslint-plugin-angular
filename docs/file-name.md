@@ -47,6 +47,16 @@ The following patterns are **not** considered problems with default config;
     // valid with filename: src/app/awesomeModule/beautifulComponent.js
     app.component('beautifulComponent', {});
 
+    // valid with filename: src/app/SomeOtherController.js
+    var MyCtrl4 = function() {};
+    import {MyCtrl1} from 'src/app/SomeController.js';
+    import {MyCtrl2} from 'src/app/SomeDirective.js';
+    import {MyCtrl3} from 'src/app/SomeService.js';
+    app.controller("SomeController", MyCtrl1);
+    app.directive("SomeDirective", MyCtrl2);
+    app.service("SomeService", MyCtrl3);
+    app.controller("SomeOtherController", MyCtrl4);
+
 The following patterns are considered problems when configured `{"typeSeparator":"dot"}`:
 
     /*eslint angular/file-name: [2,{"typeSeparator":"dot"}]*/
