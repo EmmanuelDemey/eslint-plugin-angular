@@ -260,7 +260,7 @@ angular.module(mod, [mod + '.core.angular', mod + '.thirdparty']);
             casing: 'pascal'
         }]
     }, {
-        // webpack import case
+        // import case
         filename: 'src/app/SomeOtherController.js',
         code: `
             var MyCtrl4 = function() {};
@@ -457,20 +457,18 @@ angular.module(mod, [mod + '.core.angular', mod + '.thirdparty']);
         errors: [{
             message: 'Filename must be "SomeController.js"'
         }]
-    }
-    // , {
-    //     // webpack import case
-    //     filename: 'src/app/SomeController.js',
-    //     code: `
-    //         import {MyCtrl} from 'src/app/main.js'
-    //         app.controller("SomeController", MyCtrl);`,
-    //     parserOptions: {
-    //         ecmaVersion: 6,
-    //         sourceType: 'module'
-    //     },
-    //     errors: [{
-    //         message: 'Filename must be "SomeController.js"'
-    //     }]
-    // }
-]
+    }, {
+        // import case
+        filename: 'src/app/SomeController.js',
+        code: `
+            import {MyCtrl} from 'src/app/main.js'
+            app.controller("SomeController", MyCtrl);`,
+        parserOptions: {
+            ecmaVersion: 6,
+            sourceType: 'module'
+        },
+        errors: [{
+            message: 'Filename must be "SomeController.js"'
+        }]
+    }]
 });
