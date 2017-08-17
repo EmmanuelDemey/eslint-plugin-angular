@@ -23,12 +23,36 @@ var path = require('path');
 
 var utils = require('./utils/utils');
 
-function handleWebpackCase(node, context, defaultFilename) {
+/**
+ * The filename is the one for the import statement if we are in a module
+ *
+ * @param {any} node The current node being linted
+ * @param {any} context The context
+ * @param {any} defaultFilename The previous filename
+ * @returns
+ */
+function handleModuleCase(node, context, defaultFilename) {
     if (context.parserOptions.sourceType !== 'module') {
         return defaultFilename;
     }
 
-    return defaultFilename;
+    // Handle the module case.
+    var name = node.arguments[1].name;
+    var globalScope = context.getScope();
+
+    // Retrieve the import instruction.
+    var variable = globalScope.variables.find(function(v) {
+        return v.name === name;
+    });
+
+    // Check that the definition is an import declaration.
+    if (variable.defs[0].parent.type !== 'ImportDeclaration') {
+        return defaultFilename;
+    }
+
+    // Thanks to the chrome devtools to find the path of the filename. :-)
+    var filename = path.basename(variable.defs[0].parent.source.value);
+    return filename;
 }
 
 module.exports = {
@@ -125,7 +149,6 @@ module.exports = {
 
         return function(context) {
             var options = context.options[0] || {};
-            var filename = path.basename(context.getFilename());
             var componentTypeMappings = createComponentTypeMappings(options);
 
             return {
@@ -143,8 +166,8 @@ module.exports = {
                             return;
                         }
                         expectedName = filenameUtil.createExpectedName(name, type, options);
-
-                        filename = handleWebpackCase(node, context, filename);
+                        var filename = path.basename(context.getFilename());
+                        filename = handleModuleCase(node, context, filename);
 
                         if (expectedName !== filename) {
                             context.report(node, 'Filename must be "{{expectedName}}"', {

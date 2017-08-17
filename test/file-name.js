@@ -261,10 +261,16 @@ angular.module(mod, [mod + '.core.angular', mod + '.thirdparty']);
         }]
     }, {
         // webpack import case
-        filename: 'src/app/main.js',
+        filename: 'src/app/SomeOtherController.js',
         code: `
-            import {SomeController} from 'src/app/SomeController.js'
-            app.controller("SomeController", SomeController);`,
+            var MyCtrl4 = function() {};
+            import {MyCtrl1} from 'src/app/SomeController.js';
+            import {MyCtrl2} from 'src/app/SomeDirective.js';
+            import {MyCtrl3} from 'src/app/SomeService.js';
+            app.controller("SomeController", MyCtrl1);
+            app.directive("SomeDirective", MyCtrl2);
+            app.service("SomeService", MyCtrl3);
+            app.controller("SomeOtherController", MyCtrl4);`,
         parserOptions: {
             ecmaVersion: 6,
             sourceType: 'module'
@@ -451,18 +457,20 @@ angular.module(mod, [mod + '.core.angular', mod + '.thirdparty']);
         errors: [{
             message: 'Filename must be "SomeController.js"'
         }]
-    }, {
-        // webpack import case
-        filename: 'src/app/SomeController.js',
-        code: `
-            import {SomeController} from 'src/app/main.js'
-            app.controller("SomeController", SomeController);`,
-        parserOptions: {
-            ecmaVersion: 6,
-            sourceType: 'module'
-        },
-        errors: [{
-            message: 'Filename must be "SomeController.js"'
-        }]
-    }]
+    }
+    // , {
+    //     // webpack import case
+    //     filename: 'src/app/SomeController.js',
+    //     code: `
+    //         import {MyCtrl} from 'src/app/main.js'
+    //         app.controller("SomeController", MyCtrl);`,
+    //     parserOptions: {
+    //         ecmaVersion: 6,
+    //         sourceType: 'module'
+    //     },
+    //     errors: [{
+    //         message: 'Filename must be "SomeController.js"'
+    //     }]
+    // }
+]
 });
