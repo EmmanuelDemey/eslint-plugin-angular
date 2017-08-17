@@ -23,6 +23,14 @@ var path = require('path');
 
 var utils = require('./utils/utils');
 
+function handleWebpackCase(node, context, defaultFilename) {
+    if (context.parserOptions.sourceType !== 'module') {
+        return defaultFilename;
+    }
+
+    return defaultFilename;
+}
+
 module.exports = {
     meta: {
         schema: [{
@@ -135,6 +143,8 @@ module.exports = {
                             return;
                         }
                         expectedName = filenameUtil.createExpectedName(name, type, options);
+
+                        filename = handleWebpackCase(node, context, filename);
 
                         if (expectedName !== filename) {
                             context.report(node, 'Filename must be "{{expectedName}}"', {

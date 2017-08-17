@@ -451,5 +451,18 @@ angular.module(mod, [mod + '.core.angular', mod + '.thirdparty']);
         errors: [{
             message: 'Filename must be "SomeController.js"'
         }]
+    }, {
+        // webpack import case
+        filename: 'src/app/SomeController.js',
+        code: `
+            import {SomeController} from 'src/app/main.js'
+            app.controller("SomeController", SomeController);`,
+        parserOptions: {
+            ecmaVersion: 6,
+            sourceType: 'module'
+        },
+        errors: [{
+            message: 'Filename must be "SomeController.js"'
+        }]
     }]
 });
