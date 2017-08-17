@@ -259,18 +259,32 @@ angular.module(mod, [mod + '.core.angular', mod + '.thirdparty']);
         options: [{
             casing: 'pascal'
         }]
+    }, {
+        // webpack import case
+        filename: 'src/app/main.js',
+        code: `
+            import {SomeController} from 'src/app/SomeController.js'
+            app.controller("SomeController", SomeController);`,
+        parserOptions: {
+            ecmaVersion: 6,
+            sourceType: 'module'
+        }
     }].concat(commonFalsePositives),
     invalid: [{
         filename: 'src/app/filters.js',
         code: 'app.filter("myFilter", function() {});',
-        errors: [{message: 'Filename must be "myFilter.js"'}]
+        errors: [{
+            message: 'Filename must be "myFilter.js"'
+        }]
     }, {
         filename: 'src/app/myFilter.js',
         code: 'app.filter("myFilter", function() {});',
         options: [{
             typeSeparator: 'dot'
         }],
-        errors: [{message: 'Filename must be "myFilter.filter.js"'}]
+        errors: [{
+            message: 'Filename must be "myFilter.filter.js"'
+        }]
     }, {
         // typeSeparator underscore with service
         filename: 'src/someService_controller.js',
@@ -278,7 +292,9 @@ angular.module(mod, [mod + '.core.angular', mod + '.thirdparty']);
         options: [{
             typeSeparator: 'underscore'
         }],
-        errors: [{message: 'Filename must be "someService_service.js"'}]
+        errors: [{
+            message: 'Filename must be "someService_service.js"'
+        }]
     }, {
         // typeSeparator dot with controller, but no ignored type suffix
         filename: 'src/app/Avengers.controller.js',
@@ -286,7 +302,9 @@ angular.module(mod, [mod + '.core.angular', mod + '.thirdparty']);
         options: [{
             typeSeparator: 'dot'
         }],
-        errors: [{message: 'Filename must be "AvengersController.controller.js"'}]
+        errors: [{
+            message: 'Filename must be "AvengersController.controller.js"'
+        }]
     }, {
         // typeSeparator dot with component, but no ignored type suffix
         filename: 'src/app/Avengers.component.js',
@@ -294,7 +312,9 @@ angular.module(mod, [mod + '.core.angular', mod + '.thirdparty']);
         options: [{
             typeSeparator: 'dot'
         }],
-        errors: [{message: 'Filename must be "AvengersComponent.component.js"'}]
+        errors: [{
+            message: 'Filename must be "AvengersComponent.component.js"'
+        }]
     }, {
         // typeSeparator dot with controller and ignored type suffix
         filename: 'src/app/AvengersController.controller.js',
@@ -303,7 +323,9 @@ angular.module(mod, [mod + '.core.angular', mod + '.thirdparty']);
             typeSeparator: 'dot',
             ignoreTypeSuffix: true
         }],
-        errors: [{message: 'Filename must be "Avengers.controller.js"'}]
+        errors: [{
+            message: 'Filename must be "Avengers.controller.js"'
+        }]
     }, {
         // typeSeparator dot with component and ignored type suffix
         filename: 'src/app/AvengersComponent.component.js',
@@ -312,7 +334,9 @@ angular.module(mod, [mod + '.core.angular', mod + '.thirdparty']);
             typeSeparator: 'dot',
             ignoreTypeSuffix: true
         }],
-        errors: [{message: 'Filename must be "Avengers.component.js"'}]
+        errors: [{
+            message: 'Filename must be "Avengers.component.js"'
+        }]
     }, {
         // nameStyle dash and typeSeparator dot with directive
         filename: 'src/app/avangerProfile.directive.js',
@@ -321,7 +345,9 @@ angular.module(mod, [mod + '.core.angular', mod + '.thirdparty']);
             typeSeparator: 'dot',
             nameStyle: 'dash'
         }],
-        errors: [{message: 'Filename must be "avanger-profile.directive.js"'}]
+        errors: [{
+            message: 'Filename must be "avanger-profile.directive.js"'
+        }]
     }, {
         // ignorePrefix xp
         filename: 'src/app/xpAsset.service.js',
@@ -331,7 +357,9 @@ angular.module(mod, [mod + '.core.angular', mod + '.thirdparty']);
             ignoreTypeSuffix: true,
             ignorePrefix: 'xp'
         }],
-        errors: [{message: 'Filename must be "asset.service.js"'}]
+        errors: [{
+            message: 'Filename must be "asset.service.js"'
+        }]
     }, {
         // ignorePrefix xp.
         filename: 'src/app/xpAsset.service.js',
@@ -341,7 +369,9 @@ angular.module(mod, [mod + '.core.angular', mod + '.thirdparty']);
             ignoreTypeSuffix: true,
             ignorePrefix: 'xp.'
         }],
-        errors: [{message: 'Filename must be "asset.service.js"'}]
+        errors: [{
+            message: 'Filename must be "asset.service.js"'
+        }]
     }, {
         // alphanumeric nameStyle dash and typeSeparator dash with service
         filename: 'src/app/app2utils-service.js',
@@ -350,7 +380,9 @@ angular.module(mod, [mod + '.core.angular', mod + '.thirdparty']);
             typeSeparator: 'dash',
             nameStyle: 'dash'
         }],
-        errors: [{message: 'Filename must be "app2-utils-service.js"'}]
+        errors: [{
+            message: 'Filename must be "app2-utils-service.js"'
+        }]
     }, {
         // alphanumeric nameStyle underscore and typeSeparator dot with directive
         filename: 'src/app/my2tab.directive.js',
@@ -359,7 +391,9 @@ angular.module(mod, [mod + '.core.angular', mod + '.thirdparty']);
             typeSeparator: 'dot',
             nameStyle: 'underscore'
         }],
-        errors: [{message: 'Filename must be "my2_tab.directive.js"'}]
+        errors: [{
+            message: 'Filename must be "my2_tab.directive.js"'
+        }]
     }, {
         // custom componentTypeMappings for provider
         filename: 'src/app/users.service.js',
@@ -370,7 +404,9 @@ angular.module(mod, [mod + '.core.angular', mod + '.thirdparty']);
             },
             typeSeparator: 'dot'
         }],
-        errors: [{message: 'Filename must be "users.provider.js"'}]
+        errors: [{
+            message: 'Filename must be "users.provider.js"'
+        }]
     }, {
         // camel casing, dot typeSeparator, ignoreTypeSuffix of true
         filename: 'src/app/SomeController.js',
@@ -380,7 +416,9 @@ angular.module(mod, [mod + '.core.angular', mod + '.thirdparty']);
             typeSeparator: 'dot',
             ignoreTypeSuffix: true
         }],
-        errors: [{message: 'Filename must be "some.controller.js"'}]
+        errors: [{
+            message: 'Filename must be "some.controller.js"'
+        }]
     }, {
         // camel casing
         filename: 'src/app/SomeController.js',
@@ -388,7 +426,9 @@ angular.module(mod, [mod + '.core.angular', mod + '.thirdparty']);
         options: [{
             casing: 'camel'
         }],
-        errors: [{message: 'Filename must be "someController.js"'}]
+        errors: [{
+            message: 'Filename must be "someController.js"'
+        }]
     }, {
         // pascal casing, dot typeSeparator, ignoreTypeSuffix of true
         filename: 'src/app/someController.js',
@@ -398,7 +438,9 @@ angular.module(mod, [mod + '.core.angular', mod + '.thirdparty']);
             typeSeparator: 'dot',
             ignoreTypeSuffix: true
         }],
-        errors: [{message: 'Filename must be "Some.controller.js"'}]
+        errors: [{
+            message: 'Filename must be "Some.controller.js"'
+        }]
     }, {
         // pascal casing
         filename: 'src/app/someController.js',
@@ -406,6 +448,8 @@ angular.module(mod, [mod + '.core.angular', mod + '.thirdparty']);
         options: [{
             casing: 'pascal'
         }],
-        errors: [{message: 'Filename must be "SomeController.js"'}]
+        errors: [{
+            message: 'Filename must be "SomeController.js"'
+        }]
     }]
 });
