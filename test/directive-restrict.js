@@ -40,25 +40,6 @@ eslintTester.run('directive-restrict', rule, {
         }, {
             code: 'app.directive("", function() {return {restrict:"E"}})',
             options: [{restrict: 'EA'}]
-        }, {
-            code: `app.directive("snapContainer", ['$scope', myDirective]);
-                function myDirective($scope) {
-                    return {
-                        restrict:   "A"
-                    }
-                }
-            `,
-            options: [{restrict: 'A'}]
-        }, {
-            code: `app.directive("snapContainer", myDirective);
-                /* @ngInject */
-                function myDirective($rootScope) {
-                    return {
-                        restrict:   "A"
-                    }
-                }
-            `,
-            options: [{restrict: 'A'}]
         },
         // Allowed with explicit restrict
         {
@@ -106,27 +87,6 @@ eslintTester.run('directive-restrict', rule, {
             code: 'app.directive("", function() {return {restrict:"E"}})',
             options: [{restrict: 'A'}],
             errors: [{message: 'Disallowed directive restriction. It must be one of A in that order'}]
-        }, {
-            code: `app.directive("snapContainer", ['$scope', myDirective]);
-                function myDirective($scope) {
-                    return {
-                        restrict:   "A"
-                    }
-                }
-            `,
-            options: [{restrict: 'E'}],
-            errors: [{message: 'Disallowed directive restriction. It must be one of E in that order'}]
-        }, {
-            code: `app.directive("snapContainer", myDirective);
-                /* @ngInject */
-                function myDirective($rootScope) {
-                    return {
-                        restrict:   "A"
-                    }
-                }
-            `,
-            options: [{restrict: 'E'}],
-            errors: [{message: 'Disallowed directive restriction. It must be one of E in that order'}]
         },
         // Disallowed with wrong order
         {
