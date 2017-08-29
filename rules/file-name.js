@@ -46,7 +46,7 @@ function handleModuleCase(node, context, defaultFilename) {
     });
 
     // Check that the definition is an import declaration.
-    if (variable.defs[0].parent.type !== 'ImportDeclaration') {
+    if (!(variable && variable.defs && variable.defs[0] && variable.defs[0].parent && variable.defs[0].parent.type === 'ImportDeclaration')) {
         return defaultFilename;
     }
 
