@@ -58,6 +58,10 @@ module.exports = {
                 // Try to find an ancestor function used as definition for one of the found directives
                 context.getAncestors().some(function(ancestor) {
                     if (isFunctionDeclaration(ancestor)) {
+                        if (!ancestor.id) {
+                            return false;
+                        }
+
                         var fnName = ancestor.id.name;
 
                         var correspondingDirective = foundDirectives.find(function(directive) {
