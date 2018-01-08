@@ -57,6 +57,9 @@ function handleModuleCase(node, context, defaultFilename) {
 
 module.exports = {
     meta: {
+        docs: {
+            url: 'https://github.com/Gillespie59/eslint-plugin-angular/blob/master/docs/rules/file-name.md'
+        },
         schema: [{
             type: ['object']
         }]

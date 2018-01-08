@@ -16,6 +16,9 @@ var caseSensitive = 'case_sensitive';
 
 module.exports = {
     meta: {
+        docs: {
+            url: 'https://github.com/Gillespie59/eslint-plugin-angular/blob/master/docs/rules/di-order.md'
+        },
         schema: [{
             type: 'boolean'
         }, {
