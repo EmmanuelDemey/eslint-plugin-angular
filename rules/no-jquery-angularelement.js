@@ -10,6 +10,9 @@
 
 module.exports = {
     meta: {
+        docs: {
+            url: 'https://github.com/Gillespie59/eslint-plugin-angular/blob/master/docs/rules/no-jquery-angularelement.md'
+        },
         schema: []
     },
     create: function(context) {

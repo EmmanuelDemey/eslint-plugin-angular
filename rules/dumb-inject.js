@@ -15,6 +15,9 @@ var angularRule = require('./utils/angular-rule');
 
 module.exports = {
     meta: {
+        docs: {
+            url: 'https://github.com/Gillespie59/eslint-plugin-angular/blob/master/docs/rules/dumb-inject.md'
+        },
         schema: []
     },
     create: angularRule(function(context) {
