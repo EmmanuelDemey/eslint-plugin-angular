@@ -33,7 +33,7 @@
     "istanbul": "0.4.5",
     "mocha": "3.4.2",
     "parse-comments": "0.4.3",
-    "shelljs": "0.7.8",
+    "shelljs": "0.8.1",
     "shelljs-nodecli": "0.1.1"
   },
   "keywords": [
