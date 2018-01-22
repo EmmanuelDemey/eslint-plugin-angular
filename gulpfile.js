@@ -27,10 +27,11 @@ gulp.task('test', function(cb) {
 });
 
 
-gulp.task('docs', function() {
+gulp.task('docs', function(done) {
     docs.updateReadme('README.md');
     docs.createDocFiles();
     // docs.testDocs(cb);
+    done();
 });
 
-gulp.task('default', ['quality', 'docs', 'test']);
+gulp.task('default', gulp.series('quality', 'docs', 'test'));
