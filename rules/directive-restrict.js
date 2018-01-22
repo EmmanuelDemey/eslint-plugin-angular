@@ -17,6 +17,9 @@ var utils = require('./utils/utils');
 
 module.exports = {
     meta: {
+        docs: {
+            url: 'https://github.com/Gillespie59/eslint-plugin-angular/blob/master/docs/rules/directive-restrict.md'
+        },
         schema: [{
             type: 'object',
             properties: {

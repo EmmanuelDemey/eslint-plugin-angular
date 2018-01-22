@@ -19,6 +19,9 @@ var utils = require('./utils/utils');
 
 module.exports = {
     meta: {
+        docs: {
+            url: 'https://github.com/Gillespie59/eslint-plugin-angular/blob/master/docs/rules/module-dependency-order.md'
+        },
         schema: [{
             type: 'object',
             properties: {

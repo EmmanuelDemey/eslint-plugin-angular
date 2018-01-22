@@ -18,6 +18,9 @@ const SHOULD_NOT_USE_BANG_WITH_ISUNDEFINED = 'Instead of !angular.isUndefined, y
 
 module.exports = {
     meta: {
+        docs: {
+            url: 'https://github.com/Gillespie59/eslint-plugin-angular/blob/master/docs/rules/definedundefined.md'
+        },
         schema: []
     },
     create: function(context) {
