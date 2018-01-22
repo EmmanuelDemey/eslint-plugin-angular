@@ -1,5 +1,7 @@
 # eslint plugin angular [![Npm version](https://img.shields.io/npm/v/eslint-plugin-angular.svg)](https://www.npmjs.com/package/eslint-plugin-angular) [![Npm downloads per month](https://img.shields.io/npm/dm/eslint-plugin-angular.svg)](https://www.npmjs.com/package/eslint-plugin-angular)
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/Gillespie59/eslint-plugin-angular.svg)](https://greenkeeper.io/)
+
 > ESLint rules for your angular project with checks for best-practices, conventions or potential errors.
 
 [![Build Status](https://img.shields.io/travis/Gillespie59/eslint-plugin-angular/master.svg)](https://travis-ci.org/Gillespie59/eslint-plugin-angular)

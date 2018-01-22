@@ -24,7 +24,6 @@ eslintTester.run('directive-name', rule, {
         settings: {angular: 1}
     }, {
         code: 'app.directive("eslintDirective", function() {});',
-        options: [undefined],
         settings: {angular: 1}
     }, {
         code: 'app.directive("eslintDirective", function() {});',
