@@ -75,6 +75,9 @@ function warnForDeprecatedBehavior(options) {
 
 module.exports = {
     meta: {
+        docs: {
+            url: 'https://github.com/Gillespie59/eslint-plugin-angular/blob/master/docs/rules/service-name.md'
+        },
         schema: [{
             type: ['string', 'object']
         }, {

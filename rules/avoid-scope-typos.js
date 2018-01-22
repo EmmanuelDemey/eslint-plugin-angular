@@ -17,6 +17,9 @@ const scope = ['scope', '$scope', '$rootScope'];
 
 module.exports = {
     meta: {
+        docs: {
+            url: 'https://github.com/Gillespie59/eslint-plugin-angular/blob/master/docs/rules/avoid-scope-typos.md'
+        },
         schema: [ ]
     },
     create: function(context) {

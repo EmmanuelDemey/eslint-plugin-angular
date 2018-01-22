@@ -12,6 +12,9 @@
 
 module.exports = {
     meta: {
+        docs: {
+            url: 'https://github.com/Gillespie59/eslint-plugin-angular/blob/master/docs/rules/document-service.md'
+        },
         schema: []
     },
     create: function(context) {
