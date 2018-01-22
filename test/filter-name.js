@@ -21,8 +21,7 @@ eslintTester.run('filter-name', rule, {
         code: 'app.filter("eslintFilter", function() {});',
         options: [/^eslint/]
     }, {
-        code: 'app.filter("eslintFilter", function() {});',
-        options: [undefined]
+        code: 'app.filter("eslintFilter", function() {});'
     }, {
         code: 'app.filter("eslintFilter", function() {});',
         options: ['/^eslint/']

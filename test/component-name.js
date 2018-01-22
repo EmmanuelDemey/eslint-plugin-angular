@@ -24,7 +24,6 @@ eslintTester.run('component-name', rule, {
         settings: {angular: 1}
     }, {
         code: 'app.component("eslintComponent", {});',
-        options: [undefined],
         settings: {angular: 1}
     }, {
         code: 'app.component("eslintComponent", {});',

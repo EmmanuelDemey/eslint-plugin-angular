@@ -27,8 +27,7 @@ eslintTester.run('module-name', rule, {
         code: 'app.module("eslintModule", []);',
         options: ['/^eslint/']
     }, {
-        code: 'app.module("eslintModule", []);',
-        options: [undefined]
+        code: 'app.module("eslintModule", []);'
     }].concat(commonFalsePositives),
     invalid: [
         {

@@ -28,8 +28,7 @@ valid.push({
     code: 'app.service("eslintService", function() {});',
     options: [/^eslint/, {oldBehavior: false}]
 }, {
-    code: 'app.service("eslintService", function() {});',
-    options: [undefined, {oldBehavior: false}]
+    code: 'app.service("eslintService", function() {});'
 }, {
     code: 'app.service("eslintService", function() {});',
     options: ['/^eslint/', {oldBehavior: false}]
@@ -82,8 +81,7 @@ invalid.push({
         code: 'app.' + syntax + '("eslintService", function() {});',
         options: [/^eslint/]
     }, {
-        code: 'app.' + syntax + '("eslintService", function() {});',
-        options: [undefined]
+        code: 'app.' + syntax + '("eslintService", function() {});'
     }, {
         code: 'app.' + syntax + '("eslintService", function() {});',
         options: ['/^eslint/']

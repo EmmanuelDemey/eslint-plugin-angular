@@ -28,8 +28,7 @@ valid.push({
     code: 'app.value("eslintValue", function() {});',
     options: [/^eslint/]
 }, {
-    code: 'app.value("eslintValue", function() {});',
-    options: [undefined]
+    code: 'app.value("eslintValue", function() {});'
 }, {
     code: 'app.value("eslintValue", function() {});',
     options: ['/^eslint/']
