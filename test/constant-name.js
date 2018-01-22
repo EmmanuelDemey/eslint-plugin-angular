@@ -28,8 +28,7 @@ valid.push({
     code: 'app.constant("eslintConstant", function() {});',
     options: [/^eslint/]
 }, {
-    code: 'app.constant("eslintConstant", function() {});',
-    options: [undefined]
+    code: 'app.constant("eslintConstant", function() {});'
 }, {
     code: 'app.constant("eslintConstant", function() {});',
     options: ['/^eslint/']

@@ -32,8 +32,7 @@ valid.push({
     code: 'app.factory("eslintFactory", function() {});',
     options: [/^eslint/]
 }, {
-    code: 'app.factory("eslintFactory", function() {});',
-    options: [undefined]
+    code: 'app.factory("eslintFactory", function() {});'
 }, {
     code: 'app.factory("eslintFactory", function() {});',
     options: ['/^eslint/']

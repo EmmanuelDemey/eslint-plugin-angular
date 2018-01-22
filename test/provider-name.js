@@ -28,8 +28,7 @@ valid.push({
     code: 'app.provider("eslintProvider", function() {});',
     options: [/^eslint/]
 }, {
-    code: 'app.provider("eslintProvider", function() {});',
-    options: [undefined]
+    code: 'app.provider("eslintProvider", function() {});'
 }, {
     code: 'app.provider("eslintProvider", function() {});',
     options: ['/^eslint/']
