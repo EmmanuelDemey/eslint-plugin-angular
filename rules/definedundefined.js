@@ -18,21 +18,18 @@ const SHOULD_NOT_USE_BANG_WITH_ISUNDEFINED = 'Instead of !angular.isUndefined, y
 
 module.exports = {
     meta: {
-        schema: [],
-        fixable: 'code'
+        schema: []
     },
     create: function(context) {
         function isCompareOperator(operator) {
             return operator === '===' || operator === '!==' || operator === '==' || operator === '!=';
         }
-        function reportError(node, message, fix) {
+        function reportError(node, message) {
             context.report({
                 node,
-                message,
-                fix
+                message
             });
         }
-        var sourceCode = context.getSourceCode();
 
         /**
         *    Rule that check if we use angular.is(Un)defined() instead of the undefined keyword
@@ -44,24 +41,22 @@ module.exports = {
                     node.parent.parent !== undefined &&
                     node.parent.parent.operator === '!') {
                     if (node.property.name === 'isDefined') {
-                        reportError(node, SHOULD_NOT_USE_BANG_WITH_ISDEFINED, fixer => fixer.replaceText(node.parent.parent, `angular.isUndefined(${node.parent.arguments[0].name})`));
+                        reportError(node, SHOULD_NOT_USE_BANG_WITH_ISDEFINED);
                     } else if (node.property.name === 'isUndefined') {
-                        reportError(node, SHOULD_NOT_USE_BANG_WITH_ISUNDEFINED, fixer => fixer.replaceText(node.parent.parent, `angular.isDefined(${node.parent.arguments[0].name})`));
+                        reportError(node, SHOULD_NOT_USE_BANG_WITH_ISUNDEFINED);
                     }
                 }
             },
             BinaryExpression: function(node) {
                 if (isCompareOperator(node.operator)) {
-                    let method = (node.operator === '!=' || node.operator === '!==') ? 'isDefined' : 'isUndefined';
-
                     if (utils.isTypeOfStatement(node.left) && node.right.value === 'undefined') {
-                        reportError(node, SHOULD_USE_ISDEFINED_OR_ISUNDEFINED, fixer => fixer.replaceText(node, `angular.${method}(${sourceCode.getText(node.left)})`));
+                        reportError(node, SHOULD_USE_ISDEFINED_OR_ISUNDEFINED);
                     } else if (utils.isTypeOfStatement(node.right) && node.left.value === 'undefined') {
-                        reportError(node, SHOULD_USE_ISDEFINED_OR_ISUNDEFINED, fixer => fixer.replaceText(node, `angular.${method}(${sourceCode.getText(node.right)})`));
+                        reportError(node, SHOULD_USE_ISDEFINED_OR_ISUNDEFINED);
                     } else if (node.left.type === 'Identifier' && node.left.name === 'undefined') {
-                        reportError(node, SHOULD_USE_ISDEFINED_OR_ISUNDEFINED, fixer => fixer.replaceText(node, `angular.${method}(${node.right.name})`));
+                        reportError(node, SHOULD_USE_ISDEFINED_OR_ISUNDEFINED);
                     } else if (node.right.type === 'Identifier' && node.right.name === 'undefined') {
-                        reportError(node, SHOULD_USE_ISDEFINED_OR_ISUNDEFINED, fixer => fixer.replaceText(node, `angular.${method}(${node.left.name})`));
+                        reportError(node, SHOULD_USE_ISDEFINED_OR_ISUNDEFINED);
                     }
                 }
             }
