@@ -67,7 +67,7 @@ module.exports = {
         }
 
         function checkDi(callee, fn) {
-            if (!fn) {
+            if (!fn || !fn.params) {
                 return;
             }
 
