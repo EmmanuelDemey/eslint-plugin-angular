@@ -62,5 +62,5 @@ This rule was introduced in eslint-plugin-angular 0.15.0
 
 ## Links
 
-* [Rule source](../rules/dumb-inject.js)
-* [Example source](../examples/dumb-inject.js)
+* [Rule source](/rules/dumb-inject.js)
+* [Example source](/examples/dumb-inject.js)

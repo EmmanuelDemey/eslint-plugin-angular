@@ -74,5 +74,5 @@ This rule was introduced in eslint-plugin-angular 0.11.0
 
 ## Links
 
-* [Rule source](../rules/component-limit.js)
-* [Example source](../examples/component-limit.js)
+* [Rule source](/rules/component-limit.js)
+* [Example source](/examples/component-limit.js)

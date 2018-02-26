@@ -69,5 +69,5 @@ This rule was introduced in eslint-plugin-angular 0.5.0
 
 ## Links
 
-* [Rule source](../rules/rest-service.js)
-* [Example source](../examples/rest-service.js)
+* [Rule source](/rules/rest-service.js)
+* [Example source](/examples/rest-service.js)

@@ -38,5 +38,5 @@ This rule was introduced in eslint-plugin-angular 2.3.0
 
 ## Links
 
-* [Rule source](../rules/avoid-scope-typos.js)
-* [Example source](../examples/avoid-scope-typos.js)
+* [Rule source](/rules/avoid-scope-typos.js)
+* [Example source](/examples/avoid-scope-typos.js)

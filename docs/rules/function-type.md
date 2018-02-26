@@ -63,5 +63,5 @@ This rule was introduced in eslint-plugin-angular 0.1.0
 
 ## Links
 
-* [Rule source](../rules/function-type.js)
-* [Example source](../examples/function-type.js)
+* [Rule source](/rules/function-type.js)
+* [Example source](/examples/function-type.js)

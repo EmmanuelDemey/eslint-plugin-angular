@@ -45,5 +45,5 @@ This rule was introduced in eslint-plugin-angular 0.16.0
 
 ## Links
 
-* [Rule source](../rules/prefer-component.js)
-* [Example source](../examples/prefer-component.js)
+* [Rule source](/rules/prefer-component.js)
+* [Example source](/examples/prefer-component.js)

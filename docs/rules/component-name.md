@@ -52,5 +52,5 @@ This rule was introduced in eslint-plugin-angular 0.1.0
 
 ## Links
 
-* [Rule source](../rules/component-name.js)
-* [Example source](../examples/component-name.js)
+* [Rule source](/rules/component-name.js)
+* [Example source](/examples/component-name.js)
