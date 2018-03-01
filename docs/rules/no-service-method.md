@@ -41,5 +41,5 @@ This rule was introduced in eslint-plugin-angular 0.1.0
 
 ## Links
 
-* [Rule source](../rules/no-service-method.js)
-* [Example source](../examples/no-service-method.js)
+* [Rule source](/rules/no-service-method.js)
+* [Example source](/examples/no-service-method.js)

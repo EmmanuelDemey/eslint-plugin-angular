@@ -47,5 +47,5 @@ This rule was introduced in eslint-plugin-angular 0.4.0
 
 ## Links
 
-* [Rule source](../rules/watchers-execution.js)
-* [Example source](../examples/watchers-execution.js)
+* [Rule source](/rules/watchers-execution.js)
+* [Example source](/examples/watchers-execution.js)

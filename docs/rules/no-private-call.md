@@ -50,5 +50,5 @@ This rule was introduced in eslint-plugin-angular 0.1.0
 
 ## Links
 
-* [Rule source](../rules/no-private-call.js)
-* [Example source](../examples/no-private-call.js)
+* [Rule source](/rules/no-private-call.js)
+* [Example source](/examples/no-private-call.js)

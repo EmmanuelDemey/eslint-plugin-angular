@@ -41,5 +41,5 @@ This rule was introduced in eslint-plugin-angular <%= version %>
 
 ## Links
 
-* [Rule source](../<%= sourcePath %>)
-* [Example source](../<%= examplesPath %>)
+* [Rule source](/<%= sourcePath %>)
+* [Example source](/<%= examplesPath %>)

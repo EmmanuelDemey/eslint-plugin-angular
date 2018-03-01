@@ -153,5 +153,5 @@ This rule was introduced in eslint-plugin-angular 0.7.0
 
 ## Links
 
-* [Rule source](../rules/file-name.js)
-* [Example source](../examples/file-name.js)
+* [Rule source](/rules/file-name.js)
+* [Example source](/examples/file-name.js)
