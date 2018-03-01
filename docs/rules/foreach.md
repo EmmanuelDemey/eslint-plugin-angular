@@ -32,5 +32,5 @@ This rule was introduced in eslint-plugin-angular 0.1.0
 
 ## Links
 
-* [Rule source](../rules/foreach.js)
-* [Example source](../examples/foreach.js)
+* [Rule source](/rules/foreach.js)
+* [Example source](/examples/foreach.js)

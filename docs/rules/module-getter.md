@@ -36,5 +36,5 @@ This rule was introduced in eslint-plugin-angular 0.1.0
 
 ## Links
 
-* [Rule source](../rules/module-getter.js)
-* [Example source](../examples/module-getter.js)
+* [Rule source](/rules/module-getter.js)
+* [Example source](/examples/module-getter.js)

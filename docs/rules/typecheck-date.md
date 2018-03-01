@@ -28,5 +28,5 @@ This rule was introduced in eslint-plugin-angular 0.1.0
 
 ## Links
 
-* [Rule source](../rules/typecheck-date.js)
-* [Example source](../examples/typecheck-date.js)
+* [Rule source](/rules/typecheck-date.js)
+* [Example source](/examples/typecheck-date.js)

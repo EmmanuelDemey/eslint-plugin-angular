@@ -48,5 +48,5 @@ This rule was introduced in eslint-plugin-angular 0.1.0
 
 ## Links
 
-* [Rule source](../rules/controller-as-route.js)
-* [Example source](../examples/controller-as-route.js)
+* [Rule source](/rules/controller-as-route.js)
+* [Example source](/examples/controller-as-route.js)

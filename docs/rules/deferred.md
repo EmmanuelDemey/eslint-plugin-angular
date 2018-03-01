@@ -34,5 +34,5 @@ This rule was introduced in eslint-plugin-angular 0.1.0
 
 ## Links
 
-* [Rule source](../rules/deferred.js)
-* [Example source](../examples/deferred.js)
+* [Rule source](/rules/deferred.js)
+* [Example source](/examples/deferred.js)

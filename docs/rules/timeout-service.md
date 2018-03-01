@@ -47,5 +47,5 @@ This rule was introduced in eslint-plugin-angular 0.1.0
 
 ## Links
 
-* [Rule source](../rules/timeout-service.js)
-* [Example source](../examples/timeout-service.js)
+* [Rule source](/rules/timeout-service.js)
+* [Example source](/examples/timeout-service.js)

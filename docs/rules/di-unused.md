@@ -34,5 +34,5 @@ This rule was introduced in eslint-plugin-angular 0.8.0
 
 ## Links
 
-* [Rule source](../rules/di-unused.js)
-* [Example source](../examples/di-unused.js)
+* [Rule source](/rules/di-unused.js)
+* [Example source](/examples/di-unused.js)
