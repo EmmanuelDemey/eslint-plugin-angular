@@ -45,5 +45,5 @@ This rule was introduced in eslint-plugin-angular 0.2.0
 
 ## Links
 
-* [Rule source](../rules/no-angular-mock.js)
-* [Example source](../examples/no-angular-mock.js)
+* [Rule source](/rules/no-angular-mock.js)
+* [Example source](/examples/no-angular-mock.js)

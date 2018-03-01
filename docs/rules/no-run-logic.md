@@ -58,5 +58,5 @@ This rule was introduced in eslint-plugin-angular 0.15.0
 
 ## Links
 
-* [Rule source](../rules/no-run-logic.js)
-* [Example source](../examples/no-run-logic.js)
+* [Rule source](/rules/no-run-logic.js)
+* [Example source](/examples/no-run-logic.js)

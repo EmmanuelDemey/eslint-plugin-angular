@@ -90,5 +90,5 @@ This rule was introduced in eslint-plugin-angular 0.14.0
 
 ## Links
 
-* [Rule source](../rules/one-dependency-per-line.js)
-* [Example source](../examples/one-dependency-per-line.js)
+* [Rule source](/rules/one-dependency-per-line.js)
+* [Example source](/examples/one-dependency-per-line.js)

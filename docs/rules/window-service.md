@@ -32,5 +32,5 @@ This rule was introduced in eslint-plugin-angular 0.1.0
 
 ## Links
 
-* [Rule source](../rules/window-service.js)
-* [Example source](../examples/window-service.js)
+* [Rule source](/rules/window-service.js)
+* [Example source](/examples/window-service.js)

@@ -96,5 +96,5 @@ This rule was introduced in eslint-plugin-angular 0.12.0
 
 ## Links
 
-* [Rule source](../rules/no-inline-template.js)
-* [Example source](../examples/no-inline-template.js)
+* [Rule source](/rules/no-inline-template.js)
+* [Example source](/examples/no-inline-template.js)

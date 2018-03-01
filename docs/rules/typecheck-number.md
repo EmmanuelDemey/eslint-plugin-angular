@@ -28,5 +28,5 @@ This rule was introduced in eslint-plugin-angular 0.1.0
 
 ## Links
 
-* [Rule source](../rules/typecheck-number.js)
-* [Example source](../examples/typecheck-number.js)
+* [Rule source](/rules/typecheck-number.js)
+* [Example source](/examples/typecheck-number.js)

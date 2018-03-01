@@ -61,5 +61,5 @@ This rule was introduced in eslint-plugin-angular 0.1.0
 
 ## Links
 
-* [Rule source](../rules/controller-as-vm.js)
-* [Example source](../examples/controller-as-vm.js)
+* [Rule source](/rules/controller-as-vm.js)
+* [Example source](/examples/controller-as-vm.js)

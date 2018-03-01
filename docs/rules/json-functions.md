@@ -38,5 +38,5 @@ This rule was introduced in eslint-plugin-angular 0.1.0
 
 ## Links
 
-* [Rule source](../rules/json-functions.js)
-* [Example source](../examples/json-functions.js)
+* [Rule source](/rules/json-functions.js)
+* [Example source](/examples/json-functions.js)

@@ -40,5 +40,5 @@ This rule was introduced in eslint-plugin-angular 0.12.0
 
 ## Links
 
-* [Rule source](../rules/no-http-callback.js)
-* [Example source](../examples/no-http-callback.js)
+* [Rule source](/rules/no-http-callback.js)
+* [Example source](/examples/no-http-callback.js)

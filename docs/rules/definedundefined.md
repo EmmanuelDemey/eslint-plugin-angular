@@ -41,5 +41,5 @@ This rule was introduced in eslint-plugin-angular 0.1.0
 
 ## Links
 
-* [Rule source](../rules/definedundefined.js)
-* [Example source](../examples/definedundefined.js)
+* [Rule source](/rules/definedundefined.js)
+* [Example source](/examples/definedundefined.js)

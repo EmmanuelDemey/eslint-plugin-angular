@@ -35,5 +35,5 @@ This rule was introduced in eslint-plugin-angular 0.3.0
 
 ## Links
 
-* [Rule source](../rules/no-cookiestore.js)
-* [Example source](../examples/no-cookiestore.js)
+* [Rule source](/rules/no-cookiestore.js)
+* [Example source](/examples/no-cookiestore.js)

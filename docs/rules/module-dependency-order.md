@@ -62,5 +62,5 @@ This rule was introduced in eslint-plugin-angular 0.12.0
 
 ## Links
 
-* [Rule source](../rules/module-dependency-order.js)
-* [Example source](../examples/module-dependency-order.js)
+* [Rule source](/rules/module-dependency-order.js)
+* [Example source](/examples/module-dependency-order.js)
