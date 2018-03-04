@@ -23,7 +23,7 @@ module.exports = {
         // Keeps track of visited scopes in the collectAngularScopes function to prevent infinite recursion on circular references.
         var visitedScopes = [];
 
-        // This collects the variable scopes for the injectible functions which have been collected.
+        // This collects the variable scopes for the injectable functions which have been collected.
         function collectAngularScopes(scope) {
             if (visitedScopes.indexOf(scope) === -1) {
                 visitedScopes.push(scope);
@@ -41,6 +41,11 @@ module.exports = {
                 if (scope.block !== fn) {
                     return;
                 }
+
+                if (scope.type === 'function-expression-name') {
+                    return;
+                }
+
                 scope.variables.forEach(function(variable) {
                     if (variable.name === 'arguments') {
                         return;
@@ -71,7 +76,6 @@ module.exports = {
                 reportUnusedVariables(null, $get);
             },
 
-            // Actually find and report unused injected variables.
             'Program:exit': function() {
                 var globalScope = context.getScope();
                 collectAngularScopes(globalScope);
