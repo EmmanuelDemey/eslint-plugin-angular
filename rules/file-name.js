@@ -5,6 +5,7 @@
  * The second parameter can be a config object [2, {nameStyle: 'dash', typeSeparator: 'dot', ignoreTypeSuffix: true, ignorePrefix: 'ui'}] to match 'avenger-profile.directive.js' or 'avanger-api.service.js'.
  * Possible values for 'typeSeparator' and 'nameStyle' are 'dot', 'dash' and 'underscore'.
  * The options 'ignoreTypeSuffix' ignores camel cased suffixes like 'someController' or 'myService' and 'ignorePrefix' ignores namespace prefixes like 'ui'.
+ * It's possible to specify a regexp for ignorePrefix. Example RegExp: "/^ui./".
  *
  * The naming scheme is &lt;componentName&gt;&lt;typeSeparator&gt;&lt;componentType&gt;.js
  *

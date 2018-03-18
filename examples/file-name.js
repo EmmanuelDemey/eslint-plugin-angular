@@ -60,6 +60,9 @@ angular.factory('ui.UserUtils', uiUserUtils);
 // example - valid: true, options: [{"typeSeparator":"dot", "ignorePrefix": "ui."}], filename: "src/app/utils.module.js"
 angular.module('ui.utils', function(){});
 
+// example - valid: true, options: [{"typeSeparator":"dot", "ignorePrefix": "/^ui./"}], filename: "src/app/utils.module.js"
+angular.module('ui.utils', function(){});
+
 
 // example - valid: true, options: [{"typeSeparator":"dot", "componentTypeMappings": {"factory": "factory", "provider": "provider"}}], filename: "src/app/users.factory.js"
 angular.factory('users', function(){});
