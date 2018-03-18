@@ -109,6 +109,10 @@ module.exports = {
                 return name;
             },
             removePrefix: function(name, options) {
+                if (utils.isStringRegexp(options.ignorePrefix)) {
+                    return this.firstToLower(name.replace(utils.convertStringToRegex(options.ignorePrefix), ''));
+                }
+
                 var regName = '^' + options.ignorePrefix.replace(/[\.]/g, '\\$&');
                 regName += options.ignorePrefix.indexOf('\.') === -1 ? '[A-Z]' : '[a-zA-z]';
                 if (new RegExp(regName).test(name)) {
