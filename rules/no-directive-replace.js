@@ -52,25 +52,21 @@ module.exports = {
                     return;
                 }
 
-                var body = fnNode.type === 'ArrowFunctionExpression' ? [fnNode.body] : fnNode.body.body;
+                var body = fnNode.body.body ? fnNode.body.body : [fnNode.body];
 
                 body.forEach(function(statement) {
                     if (statement.type === 'ReturnStatement' || statement.type === 'ObjectExpression') {
-                        var name = statement.name;
-                        if (statement.type === 'ReturnStatement') {
-                            name = statement.argument.name;
+                        // get potential replace node by argument name of empty string for object expressions
+                        var potentialNodes = potentialReplaceNodes[''];
+                        if (statement.argument) {
+                            potentialNodes = potentialReplaceNodes[statement.argument.name || ''];
                         }
 
-                        // get potential replace node by argument name of empty string for object expressions
-                        var potentialNodes = potentialReplaceNodes[name || ''];
                         if (!potentialNodes) {
                             return;
                         }
                         potentialNodes.forEach(function(report) {
-                            var block = statement.parent;
-                            if (block.type === 'ArrowFunctionExpression') {
-                                block = statement;
-                            }
+                            var block = statement.parent.type === 'ArrowFunctionExpression' ? statement : statement.parent;
 
                             // only reports nodes that belong to the same expression
                             if (report.block === block) {
