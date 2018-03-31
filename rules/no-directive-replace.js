@@ -51,16 +51,29 @@ module.exports = {
                 if (!fnNode || !fnNode.body) {
                     return;
                 }
-                fnNode.body.body.forEach(function(statement) {
-                    if (statement.type === 'ReturnStatement') {
+
+                var body = fnNode.type === 'ArrowFunctionExpression' ? [fnNode.body] : fnNode.body.body;
+
+                body.forEach(function(statement) {
+                    if (statement.type === 'ReturnStatement' || statement.type === 'ObjectExpression') {
+                        var name = statement.name;
+                        if (statement.type === 'ReturnStatement') {
+                            name = statement.argument.name;
+                        }
+
                         // get potential replace node by argument name of empty string for object expressions
-                        var potentialNodes = potentialReplaceNodes[statement.argument.name || ''];
+                        var potentialNodes = potentialReplaceNodes[name || ''];
                         if (!potentialNodes) {
                             return;
                         }
                         potentialNodes.forEach(function(report) {
+                            var block = statement.parent;
+                            if (block.type === 'ArrowFunctionExpression') {
+                                block = statement;
+                            }
+
                             // only reports nodes that belong to the same expression
-                            if (report.block === statement.parent) {
+                            if (report.block === block) {
                                 context.report(report.node, 'Directive definition property replace is deprecated.');
                             }
                         });
@@ -100,6 +113,11 @@ module.exports = {
 
                 // report directly if object is part of a return statement and inside a directive body
                 if (objectExpressionParent.type === 'ReturnStatement') {
+                    addPotentialReplaceNode('', node);
+                }
+
+                // report directly if object is part of a arrow function and inside a directive body
+                if (objectExpressionParent.type === 'ArrowFunctionExpression') {
                     addPotentialReplaceNode('', node);
                 }
             }
