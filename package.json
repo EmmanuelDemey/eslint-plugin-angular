@@ -33,7 +33,7 @@
         "istanbul": "0.4.5",
         "mocha": "5.0.1",
         "parse-comments": "0.4.3",
-        "shelljs": "0.8.1",
+        "shelljs": "0.8.2",
         "shelljs-nodecli": "0.1.1"
     },
     "keywords": ["eslint", "eslintplugin", "angular", "angularjs"],
