@@ -33,6 +33,10 @@ eslintTester.run('component-name', rule, {
         code: 'app.component("Component", {});',
         options: ['eslint'],
         settings: {angular: 2}
+    }, {
+        code: 'var Component = {}; app.component("Component", Component);',
+        options: ['eslint'],
+        settings: {angular: 2}
     }].concat(commonFalsePositives),
     invalid: [
         {
@@ -61,6 +65,10 @@ eslintTester.run('component-name', rule, {
             options: [/^eslint/],
             settings: {angular: 1},
             errors: [{message: 'The ngComponent component should not start with "ng". This is reserved for AngularJS components'}]
+        }, {
+            code: 'var Component = {}; app.component("Component", Component);',
+            options: ['eslint'],
+            errors: [{message: 'The Component component should be prefixed by eslint'}]
         }
     ]
 });

@@ -273,7 +273,7 @@ function isAngularComponentDeclaration(node) {
     return node.arguments !== undefined &&
         node.arguments.length === 2 &&
         isLiteralType(node.arguments[0]) &&
-        node.arguments[1].type === 'ObjectExpression' &&
+        (node.arguments[1].type === 'ObjectExpression' || isIdentifierType(node.arguments[1])) &&
         isMemberExpression(node.callee) &&
         node.callee.property.name === 'component';
 }
