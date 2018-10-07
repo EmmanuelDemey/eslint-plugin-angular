@@ -34,7 +34,7 @@ module.exports = {
     },
     create: function(context) {
         var angularObjectList = ['animation', 'config', 'constant', 'controller', 'directive', 'factory', 'filter', 'provider', 'service', 'value', 'decorator'];
-        var configType = context.options[0] || 'anonymous';
+        var configType = context.options[0] || 'named';
         var messageByConfigType = {
             anonymous: 'Use anonymous functions instead of named function',
             named: 'Use named functions instead of anonymous function'
