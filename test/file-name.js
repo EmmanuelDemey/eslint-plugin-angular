@@ -275,6 +275,15 @@ angular.module(mod, [mod + '.core.angular', mod + '.thirdparty']);
             ecmaVersion: 6,
             sourceType: 'module'
         }
+    }, {
+        // RegExp case
+        filename: 'src/app/regexp.service.js',
+        code: 'app.factory("epaRegexpService", function() {});',
+        options: [{
+            typeSeparator: 'dot',
+            ignoreTypeSuffix: true,
+            ignorePrefix: '/^epa/'
+        }]
     }].concat(commonFalsePositives),
     invalid: [{
         filename: 'src/app/filters.js',
@@ -469,6 +478,18 @@ angular.module(mod, [mod + '.core.angular', mod + '.thirdparty']);
         },
         errors: [{
             message: 'Filename must be "SomeController.js"'
+        }]
+    }, {
+        // RegExp case
+        filename: 'src/app/Regexp.service.js',
+        code: 'app.factory("epaRegexpService", function() {});',
+        options: [{
+            typeSeparator: 'dot',
+            ignoreTypeSuffix: true,
+            ignorePrefix: '/^epa/'
+        }],
+        errors: [{
+            message: 'Filename must be "regexp.service.js"'
         }]
     }]
 });

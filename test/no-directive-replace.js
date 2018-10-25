@@ -12,17 +12,23 @@ var commonFalsePositives = require('./utils/commonFalsePositives');
 // Tests
 // ------------------------------------------------------------------------------
 
-var eslintTester = new RuleTester();
+var eslintTester = new RuleTester({
+    parserOptions: {
+        ecmaVersion: 6
+    }
+});
 eslintTester.run('no-directive-replace', rule, {
     valid: [
         'angular.module("").factory("", function() {return {replace: false}})',
         'angular.module("").directive("")',
         'angular.module("").directive()',
         'angular.module("").directive("", function() {})',
+        'angular.module("").directive("", () => ({}))',
         'angular.module("").directive("", function() {return {anotherProperty:"anotherValue"}})',
         'angular.module("").directive("", function() {return {restrict:"A"}})',
         'angular.module("").directive("", function() { var def = {}; return def; })',
         'angular.module("").directive("", function() { function x() { return {replace: true} }; x(); return {}; })',
+        'angular.module("").directive("", function() { () => ({replace: true}); return {}; })',
 
         'angular.module("").directive("", function() { var def = {}; def.otherProperty = true; return def; })',
         'angular.module("").directive("", function() { var nonDef = {replace: true}; return {}; })',
@@ -40,6 +46,10 @@ eslintTester.run('no-directive-replace', rule, {
         // Disallowed with default configuration
         {
             code: 'angular.module("").directive("", function() {return {replace:true}})',
+            errors: [{message: 'Directive definition property replace is deprecated.'}]
+        },
+        {
+            code: 'angular.module("").directive("", () => ({replace:true}))',
             errors: [{message: 'Directive definition property replace is deprecated.'}]
         },
         {
