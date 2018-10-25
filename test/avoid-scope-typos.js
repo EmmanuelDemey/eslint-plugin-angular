@@ -19,6 +19,10 @@ const bad = ['new', 'watch', 'watchGroup', 'watchCollection',
     'digest', 'destroy', 'eval', 'evalAsync', 'apply',
     'applyAsync', 'on', 'emit', 'broadcast'];
 
+const nonReservedBad = ['watch', 'watchGroup', 'watchCollection',
+    'digest', 'destroy', 'eval', 'evalAsync', 'apply',
+    'applyAsync', 'on', 'emit', 'broadcast'];
+
 var invalid = [];
 var valid = [];
 
@@ -41,6 +45,20 @@ variables.forEach(function(variable) {
 
 valid.push({
     code: '$ionicPlatform.on("resume", "blabla")'
+});
+
+/** Test the usage of the keyword inside an object */
+bad.forEach(function(b) {
+    valid.push({
+        code: '$ctrl.test = {' + b + ':\'test\'}'
+    });
+});
+
+/** Test for using none reserved keywords as a function name */
+nonReservedBad.forEach(function(b) {
+    valid.push({
+        code: 'function ' + b + '(){}'
+    });
 });
 
 eslintTester.run('avoid-scope-typos', rule, {
