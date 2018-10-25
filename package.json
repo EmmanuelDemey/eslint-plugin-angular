@@ -27,7 +27,7 @@
         "eslint": "5.7.0",
         "espree": "3.5.3",
         "gulp": "4.0.0",
-        "gulp-eslint": "4.0.2",
+        "gulp-eslint": "5.0.0",
         "gulp-istanbul": "1.1.3",
         "gulp-mocha": "5.0.0",
         "istanbul": "0.4.5",
