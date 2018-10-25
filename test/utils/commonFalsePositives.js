@@ -11,5 +11,5 @@ module.exports = [
     'mocha.run();',
     'controller = el.controller();',
     {code: 'angular.module("m", [])', filename: 'm.js'},
-    {code: 'angular.module("").factory("s", function () {});', filename: 's.js'}
+    {code: 'var s = function () {};angular.module("").factory("s", s);', filename: 's.js'}
 ];

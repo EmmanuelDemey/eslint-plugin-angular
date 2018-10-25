@@ -58,6 +58,9 @@ valid.push({
     code: 'angular.module("foo", []).constant("foo", (() => {})())',
     options: ['anonymous'],
     parserOptions: {ecmaVersion: 6}
+}, {
+    code: 'var foo = "foo";angular.module("foo", []).constant("foo", foo)',
+    options: ['named']
 });
 
 
