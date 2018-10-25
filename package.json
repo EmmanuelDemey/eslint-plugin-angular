@@ -1,6 +1,6 @@
 {
     "name": "eslint-plugin-angular",
-    "version": "3.3.0",
+    "version": "4.0.0",
     "description": "ESLint rules for AngularJS projects",
     "main": "index.js",
     "scripts": {
@@ -21,17 +21,17 @@
     },
     "homepage": "https://github.com/Gillespie59/eslint-plugin-angularjs",
     "devDependencies": {
-        "chai": "4.1.2",
+        "chai": "4.2.0",
         "chai-spies": "1.0.0",
-        "coveralls": "3.0.0",
+        "coveralls": "3.0.2",
         "eslint": "5.7.0",
-        "espree": "3.5.3",
+        "espree": "4.1.0",
         "gulp": "4.0.0",
         "gulp-eslint": "5.0.0",
         "gulp-istanbul": "1.1.3",
         "gulp-mocha": "6.0.0",
         "istanbul": "0.4.5",
-        "mocha": "5.0.1",
+        "mocha": "5.2.0",
         "parse-comments": "0.4.3",
         "shelljs": "0.8.2",
         "shelljs-nodecli": "0.1.1"
