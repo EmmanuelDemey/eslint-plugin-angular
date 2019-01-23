@@ -141,7 +141,7 @@ function angularRule(ruleDefinition) {
                 // angular.module()
                 //         ^^^^^^
                 angularModuleCalls.push(callExpressionNode);
-            } else if (angularChainableNames.indexOf(callee.property.name !== -1) && (angularModuleCalls.indexOf(callee.object) !== -1 || angularChainables.indexOf(callee.object) !== -1)) {
+            } else if (angularChainableNames.indexOf(callee.property.name) !== -1 && (angularModuleCalls.indexOf(callee.object) !== -1 || angularChainables.indexOf(callee.object) !== -1)) {
                 // angular.module().factory().controller()
                 //                  ^^^^^^^   ^^^^^^^^^^
                 angularChainables.push(callExpressionNode);
