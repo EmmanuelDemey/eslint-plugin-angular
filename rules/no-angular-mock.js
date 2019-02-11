@@ -30,24 +30,106 @@
  */
 'use strict';
 
+const WEBPACK_OPTION = 'webpack-module-support';
+const WEBPACK_OPTION_REPLACEMENT = 'angular.mock.module';
+
+function argumentIsModuleInvocation(arg) {
+    return arg.type === 'CallExpression' && arg.callee.name === 'module';
+}
+
+function getWebpackFixer(node) {
+    return function(fixer) {
+        return fixer.replaceText(node.callee, WEBPACK_OPTION_REPLACEMENT);
+    };
+}
+
+function getCallExpressionHandler(context) {
+    return function(node) {
+        const moduleCalls = node.arguments.filter(arg => argumentIsModuleInvocation(arg));
+
+        return moduleCalls.map(problem => {
+            return context.report({
+                node: problem,
+                messageId: 'useMockModule',
+                fix: getWebpackFixer(problem)
+            });
+        });
+    };
+}
+
+function getExpressionStatmentHandler(context) {
+    return function(node) {
+        const isModuleCall = argumentIsModuleInvocation(node.expression);
+
+        if (!isModuleCall) {
+            return;
+        }
+
+        return context.report({
+            node: node,
+            messageId: 'useMockModule',
+            fix: getWebpackFixer(node.expression)
+        });
+    };
+}
+
 module.exports = {
     meta: {
         docs: {
             url: 'https://github.com/Gillespie59/eslint-plugin-angular/blob/master/docs/rules/no-angular-mock.md'
         },
-        schema: []
+        schema: [{
+            type: 'string'
+        }],
+        fixable: 'code',
+        messages: {
+            useMockModule: 'You should use the "angular.mock.module" method directly.'
+        }
     },
     create: function(context) {
+        const webpackRuleEnabled = context.options && context.options[0] === WEBPACK_OPTION;
+        const sourceCode = context.getSourceCode();
+
         return {
+            CallExpression: webpackRuleEnabled ? getCallExpressionHandler(context) : function() {},
+
+            ExpressionStatement: webpackRuleEnabled ? getExpressionStatmentHandler(context) : function() {},
 
             MemberExpression: function(node) {
-                if (node.object.type === 'Identifier' && node.object.name === 'angular' &&
-                    node.property.type === 'Identifier' && node.property.name === 'mock') {
-                    if (node.parent.type === 'MemberExpression' && node.parent.property.type === 'Identifier') {
-                        context.report(node, 'You should use the "{{method}}" method available in the window object.', {
+                const isAngularMock =
+                    node.object.type === 'Identifier' &&
+                    node.object.name === 'angular' &&
+                    node.property.type === 'Identifier' &&
+                    node.property.name === 'mock' &&
+                    node.parent.type === 'MemberExpression' &&
+                    node.parent.property.type === 'Identifier' &&
+
+                    // If the webpack option is turned on, we only need to check
+                    // for non-"module" mock properties
+                    (webpackRuleEnabled ? node.parent.property.name !== 'module' : true);
+
+                if (isAngularMock) {
+                    context.report({
+                        node: node,
+                        message: 'You should use the "{{method}}" method available in the window object.',
+                        data: {
                             method: node.parent.property.name
-                        });
-                    }
+                        },
+                        fix: (fixer) => {
+                            if (webpackRuleEnabled && node.parent.property.name === 'module') {
+                                return;
+                            }
+
+                            let angularPeriod = sourceCode.getTokenAfter(node.object);
+                            let mockPeriod = sourceCode.getTokenAfter(node.property);
+                            return [
+                                fixer.remove(angularPeriod),
+                                fixer.remove(mockPeriod),
+                                fixer.remove(node.object),
+                                fixer.remove(node.property)
+                            ];
+                        }
+                    });
                 }
             }
         };
