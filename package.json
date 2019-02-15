@@ -24,7 +24,7 @@
         "chai": "4.2.0",
         "chai-spies": "1.0.0",
         "coveralls": "3.0.2",
-        "eslint": "5.7.0",
+        "eslint": "5.14.0",
         "espree": "4.1.0",
         "gulp": "4.0.0",
         "gulp-eslint": "5.0.0",
