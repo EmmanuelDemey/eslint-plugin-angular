@@ -39,6 +39,7 @@
     "keywords": [
         "eslint",
         "eslintplugin",
+        "angular",
         "angularjs"
     ],
     "dependencies": {}
