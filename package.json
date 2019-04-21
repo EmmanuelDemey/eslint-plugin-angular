@@ -26,7 +26,7 @@
         "coveralls": "3.0.2",
         "eslint": "5.7.0",
         "espree": "4.1.0",
-        "gulp": "4.0.0",
+        "gulp": "4.0.1",
         "gulp-eslint": "5.0.0",
         "gulp-istanbul": "1.1.3",
         "gulp-mocha": "6.0.0",
