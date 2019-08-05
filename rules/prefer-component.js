@@ -38,7 +38,10 @@ module.exports = {
                 if (!fnNode || !fnNode.body) {
                     return;
                 }
-                fnNode.body.body.forEach(function(statement) {
+
+                var body = fnNode.body.body ? fnNode.body.body : [fnNode.body];
+
+                body.forEach(function(statement) {
                     if (statement.type === 'ReturnStatement' && !potentialReplaceNodes[statement.argument.name || '']) {
                         context.report(statement, 'Directive should be implemented with the component method.');
                     }
