@@ -42,7 +42,18 @@ module.exports = {
                 var body = fnNode.body.body ? fnNode.body.body : [fnNode.body];
 
                 body.forEach(function(statement) {
-                    if (statement.type === 'ReturnStatement' && !potentialReplaceNodes[statement.argument.name || '']) {
+                    var potentialNodes;
+                    if (statement.argument) {
+                        potentialNodes = potentialReplaceNodes[statement.argument.name || ''];
+                    } else {
+                        potentialNodes = potentialReplaceNodes[''];
+                    }
+
+                    if (potentialNodes) {
+                        return;
+                    }
+
+                    if (statement.type === 'ReturnStatement' || statement.type === 'ObjectExpression' && statement.parent.type === 'ArrowFunctionExpression') {
                         context.report(statement, 'Directive should be implemented with the component method.');
                     }
                 });
@@ -78,6 +89,11 @@ module.exports = {
 
                 // report directly if object is part of a return statement and inside a directive body
                 if (objectExpressionParent.type === 'ReturnStatement') {
+                    addPotentialLinkNode('', node);
+                }
+
+                // report directly if object is part of a arrow function and inside a directive body
+                if (objectExpressionParent.type === 'ArrowFunctionExpression') {
                     addPotentialLinkNode('', node);
                 }
             }
