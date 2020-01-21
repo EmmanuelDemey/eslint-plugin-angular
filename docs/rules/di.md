@@ -54,18 +54,18 @@ The following patterns are **not** considered problems when configured `"array"`
         // ...
     }]);
 
-The following patterns are considered problems when configured `"array"` and `{"allowCamelCaseMatch":true}`:
+The following patterns are considered problems when configured `"array"` and `{"matchNames":true,"allowCamelCaseMatch":true}`:
 
-    /*eslint angular/di: [2,"array",{"allowCamelCaseMatch":true}]*/
+    /*eslint angular/di: [2,"array",{"matchNames":true,"allowCamelCaseMatch":true}]*/
 
     // invalid
     angular.module('myModule').factory('myService', ['$http', '$log', 'AnotherService', function ($log, $http, anotherservice) {
         // ...
     }]); // error: You have an error in your DI configuration. Each items of the array should match exactly one function parameter
 
-The following patterns are **not** considered problems when configured `"array"` and `{"allowCamelCaseMatch":true}`:
+The following patterns are **not** considered problems when configured `"array"` and `{"matchNames":true,"allowCamelCaseMatch":true}`:
 
-    /*eslint angular/di: [2,"array",{"allowCamelCaseMatch":true}]*/
+    /*eslint angular/di: [2,"array",{"matchNames":true,"allowCamelCaseMatch":true}]*/
 
     // valid
     angular.module('myModule').factory('myService', ['$http', '$log', 'AnotherService', function ($http, $log, anotherService) {
@@ -117,9 +117,9 @@ The following patterns are **not** considered problems when configured `"$inject
         // ...
     }
 
-The following patterns are considered problems when configured `"$inject"` and `{"allowCamelCaseMatch":true}`:
+The following patterns are considered problems when configured `"$inject"` and `{"matchNames":true,"allowCamelCaseMatch":true}`:
 
-    /*eslint angular/di: [2,"$inject",{"allowCamelCaseMatch":true}]*/
+    /*eslint angular/di: [2,"$inject",{"matchNames":true,"allowCamelCaseMatch":true}]*/
 
     // invalid
     angular.module('myModule').factory('myService', myServiceFn);
@@ -128,9 +128,9 @@ The following patterns are considered problems when configured `"$inject"` and `
         // ...
     } // error: You have an error in your DI configuration. Each items of the array should match exactly one function parameter
 
-The following patterns are **not** considered problems when configured `"$inject"` and `{"allowCamelCaseMatch":true}`:
+The following patterns are **not** considered problems when configured `"$inject"` and `{"matchNames":true,"allowCamelCaseMatch":true}`:
 
-    /*eslint angular/di: [2,"$inject",{"allowCamelCaseMatch":true}]*/
+    /*eslint angular/di: [2,"$inject",{"matchNames":true,"allowCamelCaseMatch":true}]*/
 
     // valid
     angular.module('myModule').factory('myService', myServiceFn);
