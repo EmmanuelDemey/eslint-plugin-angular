@@ -54,6 +54,24 @@ The following patterns are **not** considered problems when configured `"array"`
         // ...
     }]);
 
+The following patterns are considered problems when configured `"array"` and `{"allowCamelCaseMatch":true}`:
+
+    /*eslint angular/di: [2,"array",{"allowCamelCaseMatch":true}]*/
+
+    // invalid
+    angular.module('myModule').factory('myService', ['$http', '$log', 'AnotherService', function ($log, $http, anotherservice) {
+        // ...
+    }]); // error: You have an error in your DI configuration. Each items of the array should match exactly one function parameter
+
+The following patterns are **not** considered problems when configured `"array"` and `{"allowCamelCaseMatch":true}`:
+
+    /*eslint angular/di: [2,"array",{"allowCamelCaseMatch":true}]*/
+
+    // valid
+    angular.module('myModule').factory('myService', ['$http', '$log', 'AnotherService', function ($http, $log, anotherService) {
+        // ...
+    }]);
+
 The following patterns are **not** considered problems when configured `"array"` and `{"matchNames":false}`:
 
     /*eslint angular/di: [2,"array",{"matchNames":false}]*/
@@ -95,6 +113,28 @@ The following patterns are **not** considered problems when configured `"$inject
     // valid
     angular.module('myModule').factory('myService', myServiceFn);
     myServiceFn.$inject=['$http', '$log', 'anotherService'];
+    function myServiceFn($http, $log, anotherService) {
+        // ...
+    }
+
+The following patterns are considered problems when configured `"$inject"` and `{"allowCamelCaseMatch":true}`:
+
+    /*eslint angular/di: [2,"$inject",{"allowCamelCaseMatch":true}]*/
+
+    // invalid
+    angular.module('myModule').factory('myService', myServiceFn);
+    myServiceFn.$inject=['$log', '$http', 'AnotherService'];
+    function myServiceFn($http, $log, 'anotherservice') {
+        // ...
+    } // error: You have an error in your DI configuration. Each items of the array should match exactly one function parameter
+
+The following patterns are **not** considered problems when configured `"$inject"` and `{"allowCamelCaseMatch":true}`:
+
+    /*eslint angular/di: [2,"$inject",{"allowCamelCaseMatch":true}]*/
+
+    // valid
+    angular.module('myModule').factory('myService', myServiceFn);
+    myServiceFn.$inject=['$http', '$log', 'AnotherService'];
     function myServiceFn($http, $log, anotherService) {
         // ...
     }
