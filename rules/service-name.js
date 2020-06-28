@@ -66,11 +66,11 @@ function warnForDeprecatedBehavior(options) {
 
     var config = getConfig(options);
 
-    /* istanbul ignore if  */
-    if (config.oldBehavior) {
-        // eslint-disable-next-line
-        console.warn('The rule `angular/service-name` will be split up to different rules in the next version. Please read the docs for more information');
-    }
+    // /* istanbul ignore if  */
+    // if (config.oldBehavior) {
+    //     // eslint-disable-next-line
+    //     console.warn('The rule `angular/service-name` will be split up to different rules in the next version. Please read the docs for more information');
+    // }
 }
 
 module.exports = {
