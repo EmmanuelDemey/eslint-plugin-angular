@@ -17,6 +17,12 @@ valid.push({
     code: '_.filter(vm.global, function (n) { return n % 2 === 0; })',
     options: ['anonymous']
 }, {
+    code: '_.filter(vm.global, function (n) { return n % 2 === 0; })',
+    options: ['named']
+}, {
+    code: '_.filter(local, function (n) { return n % 2 === 0; })',
+    options: ['named']
+}, {
     code: 'angular.module("mymodule.constants", []).constant("EMPTY", [])',
     options: ['anonymous']
 }, {
