@@ -34,6 +34,7 @@ module.exports = {
     },
     create: function(context) {
         var angularObjectList = ['animation', 'config', 'constant', 'controller', 'directive', 'factory', 'filter', 'provider', 'service', 'value', 'decorator'];
+        var reservedNameList = ['_'];
         var configType = context.options[0] || 'named';
         var messageByConfigType = {
             anonymous: 'Use anonymous functions instead of named function',
@@ -43,6 +44,10 @@ module.exports = {
 
         if (context.options[1]) {
             angularObjectList = context.options[1];
+        }
+
+        if (context.options[2]) {
+            reservedNameList = context.options[2];
         }
 
         function checkType(arg) {
@@ -59,6 +64,10 @@ module.exports = {
                 var firstArgument = node.arguments[1];
 
                 if (utils.isAngularComponent(node) && callee.type === 'MemberExpression' && angularObjectList.indexOf(angularObjectName) >= 0) {
+                    if (reservedNameList.indexOf(callee.object.name) !== -1) {
+                        return;
+                    }
+
                     if (checkType(firstArgument)) {
                         return;
                     }

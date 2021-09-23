@@ -5,6 +5,7 @@
 Anonymous or named functions inside AngularJS components.
 The first parameter sets which type of function is required and can be 'named' or 'anonymous'.
 The second parameter is an optional list of angular object names.
+The third parameter is an optional list of reserved callee object name, default value is ['_'] to avoid false positive with lodash.
 
 **Rule based on Angular 1.x**
 
