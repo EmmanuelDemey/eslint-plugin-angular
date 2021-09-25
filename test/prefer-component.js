@@ -12,7 +12,11 @@ var commonFalsePositives = require('./utils/commonFalsePositives');
 // Tests
 // ------------------------------------------------------------------------------
 
-var eslintTester = new RuleTester();
+var eslintTester = new RuleTester({
+    parserOptions: {
+        ecmaVersion: 6
+    }
+});
 eslintTester.run('prefer-component', rule, {
     valid: [
         'angular.module("").directive("")',
@@ -32,7 +36,8 @@ eslintTester.run('prefer-component', rule, {
         'angular.module("").directive("", function() { var def = {link: function(){}}; return def; })',
         'angular.module("").directive("", function() { var def = {}; def.link = function(){}; return def; })',
         'angular.module("").directive("", directive); function directive() { return {link:function(){}} };',
-        'angular.module("").directive("", directive); function directive() { var def = {}; def.link = function(){}; return def; };'
+        'angular.module("").directive("", directive); function directive() { var def = {}; def.link = function(){}; return def; };',
+        'angular.module("").directive("", () => ({restrict: "A"}))'
     ].concat(commonFalsePositives),
     invalid: [
         {
@@ -41,6 +46,10 @@ eslintTester.run('prefer-component', rule, {
         },
         {
             code: 'angular.module("").directive("", function() {return {restrict:"E"}})',
+            errors: [{message: 'Directive should be implemented with the component method.'}]
+        },
+        {
+            code: 'angular.module("").directive("", () => ({restrict:"E"}))',
             errors: [{message: 'Directive should be implemented with the component method.'}]
         },
         {
