@@ -35,13 +35,16 @@ eslintTester.run('on-watch', rule, {
 
         // false positive check
         '$on()',
+        'function watchSomething() {return $rootScope.$watch()}',
+        'var variable = [$rootScope.$on(), $rootScope.$watch()]',
+        'var variable = []; variable.push($rootScope.$watch());',
 
         // uncovered edgecase
         '$scope["$on"]()'
 
     ].concat(commonFalsePositives),
     invalid: [
-        {code: '$rootScope.$on()', errors: [{message: 'The "$on" call should be assigned to a variable, in order to be destroyed during the $destroy event'}]},
-        {code: '$rootScope.$watch()', errors: [{message: 'The "$watch" call should be assigned to a variable, in order to be destroyed during the $destroy event'}]}
+        {code: '$rootScope.$on()', errors: [{message: 'The deregistration function returned by "$on" call should not be ignored'}]},
+        {code: '$rootScope.$watch()', errors: [{message: 'The deregistration function returned by "$watch" call should not be ignored'}]}
     ]
 });
