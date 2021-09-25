@@ -9,7 +9,7 @@ So you can remove angular.mock from your code
 
 ## Examples
 
-The following patterns are considered problems;
+The following patterns are considered problems with default config;
 
     /*eslint angular/no-angular-mock: 2*/
 
@@ -24,7 +24,7 @@ The following patterns are considered problems;
     // invalid
     angular.mock.module('myModule'); // error: You should use the "module" method available in the window object.
 
-The following patterns are **not** considered problems;
+The following patterns are **not** considered problems with default config;
 
     /*eslint angular/no-angular-mock: 2*/
 
@@ -38,6 +38,26 @@ The following patterns are **not** considered problems;
 
     // valid
     module('myModule');
+
+The following patterns are considered problems when configured `"webpack-module-support"`:
+
+    /*eslint angular/no-angular-mock: [2,"webpack-module-support"]*/
+
+    // invalid
+    module('myModule'); // error: You should use the "angular.mock.module" method directly.
+
+The following patterns are **not** considered problems when configured `"webpack-module-support"`:
+
+    /*eslint angular/no-angular-mock: [2,"webpack-module-support"]*/
+
+    // valid
+    inject();
+
+    // valid
+    dump();
+
+    // valid
+    angular.mock.module('myModule');
 
 ## Version
 
