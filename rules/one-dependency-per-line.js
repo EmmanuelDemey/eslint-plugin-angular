@@ -22,7 +22,7 @@ module.exports = {
         var angularObjectList = ['animation', 'config', 'constant', 'controller', 'directive', 'factory', 'filter', 'provider', 'service', 'value', 'decorator'];
 
         function checkArgumentPositionInFunction(node) {
-            if (!node.params || node.params.length < 2) {
+            if (!node || !node.params || node.params.length < 2) {
                 return;
             }
 
