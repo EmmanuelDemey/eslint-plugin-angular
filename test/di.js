@@ -139,6 +139,9 @@ angularNamedObjectList.forEach(function(object) {
         code: 'angular.module("myModule").' + object + '("name", ["Service1", function(Service1) {}]);',
         options: ['array']
     }, {
+        code: 'angular.module("myModule").' + object + '("name", ["MyService", function(myService) {}]);',
+        options: ['array', {matchNames: true, allowCamelCaseMatch: true}]
+    }, {
         code: 'angular.module("myModule").' + object + '("name", myFunction);function MyFunction() {}',
         options: ['function']
     }, {
@@ -148,11 +151,14 @@ angularNamedObjectList.forEach(function(object) {
         code: 'angular.module("myModule").' + object + '("name", myFunction);myFunction.$inject=["myService"];function myFunction(myService) {}',
         options: ['$inject']
     }, {
+        code: 'angular.module("myModule").' + object + '("name", myFunction);myFunction.$inject=["myService"];function myFunction(myService) {}',
+        options: ['$inject']
+    }, {
         code: 'myFunction.$inject=["myService"];function myFunction(myService) {} angular.module("myModule").' + object + '("name", myFunction);',
         options: ['$inject']
     }, {
-        code: 'function myFunction(myService) {} myFunction.$inject=["myService"];angular.module("myModule").' + object + '("name", myFunction);',
-        options: ['$inject']
+        code: 'function myFunction(myService) {} myFunction.$inject=["MyService"];angular.module("myModule").' + object + '("name", myFunction);',
+        options: ['$inject', {matchNames: true, allowCamelCaseMatch: true}]
     }, {
         code: 'var myFunction = function(myService) {}; myFunction.$inject=["myService"];angular.module("myModule").' + object + '("name", myFunction);',
         options: ['$inject']
@@ -199,6 +205,10 @@ angularNamedObjectList.forEach(function(object) {
         options: ['$inject'],
         errors: [{message: 'You have an error in your DI configuration. Each items of the array should match exactly one function parameter'}]
     }, {
+        code: 'function myFunction(myService) {} myFunction.$inject=["myservice"];angular.module("myModule").' + object + '("name", myFunction);',
+        options: ['$inject', {matchNames: true, allowCamelCaseMatch: true}],
+        errors: [{message: 'You have an error in your DI configuration. Each items of the array should match exactly one function parameter'}]
+    }, {
         code: 'angular.module("myModule").' + object + '("name", ["$urlRouteProvider", function($urlRouteProvider, $timeout){}])',
         options: ['array'],
         errors: [{message: 'The signature of the method is incorrect'}]
@@ -209,6 +219,10 @@ angularNamedObjectList.forEach(function(object) {
     }, {
         code: 'angular.module("myModule").' + object + '("name", ["$urlRouteProvider", "$timeout", function($timeout, $urlRouteProvider){}])',
         options: ['array'],
+        errors: [{message: 'You have an error in your DI configuration. Each items of the array should match exactly one function parameter'}]
+    }, {
+        code: 'angular.module("myModule").' + object + '("name", ["MyService", function(myservice){}])',
+        options: ['array', {matchNames: true, allowCamelCaseMatch: true}],
         errors: [{message: 'You have an error in your DI configuration. Each items of the array should match exactly one function parameter'}]
     });
 });

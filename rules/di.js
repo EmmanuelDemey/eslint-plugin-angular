@@ -33,6 +33,9 @@ module.exports = {
                 },
                 stripUnderscores: {
                     type: 'boolean'
+                },
+                allowCamelCaseMatch: {
+                    type: 'boolean'
                 }
             }
         }]
@@ -43,6 +46,7 @@ module.exports = {
         var extra = context.options[1] || {};
         var matchNames = extra.matchNames !== false;
         var stripUnderscores = extra.stripUnderscores === true;
+        var allowCamelCaseMatch = extra.allowCamelCaseMatch === true;
 
         function report(node) {
             context.report(node, 'You should use the {{syntax}} syntax for DI', {
@@ -86,6 +90,12 @@ module.exports = {
                                 name = normalizeParameter(name);
                             }
 
+                            if (allowCamelCaseMatch) {
+                                var paramName = fn.parent.elements[i].value;
+                                var camelParamName = paramName.substr(0, 1).toLowerCase() + paramName.substr(1);
+                                return name !== paramName && name !== camelParamName;
+                            }
+
                             return name !== fn.parent.elements[i].value;
                         });
                         if (invalidArray.length > 0) {
@@ -123,6 +133,12 @@ module.exports = {
 
                                 if (stripUnderscores) {
                                     name = normalizeParameter(name);
+                                }
+
+                                if (allowCamelCaseMatch) {
+                                    var paramName = $injectArray.elements[i].value;
+                                    var camelParamName = paramName.substr(0, 1).toLowerCase() + paramName.substr(1);
+                                    return name !== paramName && name !== camelParamName;
                                 }
 
                                 return name !== $injectArray.elements[i].value;
