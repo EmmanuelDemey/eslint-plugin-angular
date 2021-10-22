@@ -1,43 +1,43 @@
 /**
  * require a consistent DI syntax
  *
- * All your DI should use the same syntax : the Array, function, or $inject syntaxes ("di":  [2, "array, function, or $inject"])
+ * All your DI should use the same syntax : the Array, function, or $inject syntaxes ('di':  [2, 'array, function, or $inject'])
  *
  * @version 0.1.0
  * @category conventions
  * @sinceAngularVersion 1.x
  */
-"use strict";
+'use strict';
 
-var utils = require("./utils/utils");
+var utils = require('./utils/utils');
 
-var angularRule = require("./utils/angular-rule");
+var angularRule = require('./utils/angular-rule');
 
 module.exports = {
     meta: {
         docs: {
             url:
-                "https://github.com/Gillespie59/eslint-plugin-angular/blob/master/docs/rules/di.md",
+                'https://github.com/Gillespie59/eslint-plugin-angular/blob/master/docs/rules/di.md',
         },
         schema: [
             {
-                enum: ["function", "array", "$inject"],
+                enum: ['function', 'array', '$inject'],
             },
             {
-                type: "object",
+                type: 'object',
                 properties: {
                     matchNames: {
-                        type: "boolean",
+                        type: 'boolean',
                     },
                     stripUnderscores: {
-                        type: "boolean",
+                        type: 'boolean',
                     },
                 },
             },
         ],
     },
     create: angularRule(function (context) {
-        var syntax = context.options[0] || "function";
+        var syntax = context.options[0] || 'function';
 
         var extra = context.options[1] || {};
         var matchNames = extra.matchNames !== false;
@@ -46,7 +46,7 @@ module.exports = {
         function report(node) {
             context.report(
                 node,
-                "You should use the {{syntax}} syntax for DI",
+                'You should use the {{syntax}} syntax for DI',
                 {
                     syntax: syntax,
                 }
@@ -57,13 +57,13 @@ module.exports = {
 
         function maybeNoteInjection(node) {
             if (
-                syntax === "$inject" &&
+                syntax === '$inject' &&
                 node.left &&
                 node.left.property &&
                 ((utils.isLiteralType(node.left.property) &&
-                    node.left.property.value === "$inject") ||
+                    node.left.property.value === '$inject') ||
                     (utils.isIdentifierType(node.left.property) &&
-                        node.left.property.name === "$inject"))
+                        node.left.property.name === '$inject'))
             ) {
                 $injectProperties[node.left.object.name] = node.right;
             }
@@ -80,12 +80,12 @@ module.exports = {
                 return;
             }
 
-            if (syntax === "array") {
+            if (syntax === 'array') {
                 if (utils.isArrayType(fn.parent)) {
                     if (fn.parent.elements.length - 1 !== fn.params.length) {
                         context.report(
                             fn,
-                            "The signature of the method is incorrect",
+                            'The signature of the method is incorrect',
                             {}
                         );
                         return;
@@ -104,7 +104,7 @@ module.exports = {
                         if (invalidArray.length > 0) {
                             context.report(
                                 fn,
-                                "You have an error in your DI configuration. Each items of the array should match exactly one function parameter",
+                                'You have an error in your DI configuration. Each items of the array should match exactly one function parameter',
                                 {}
                             );
                             return;
@@ -118,13 +118,13 @@ module.exports = {
                 }
             }
 
-            if (syntax === "function") {
+            if (syntax === 'function') {
                 if (utils.isArrayType(fn.parent)) {
                     report(fn);
                 }
             }
 
-            if (syntax === "$inject") {
+            if (syntax === '$inject') {
                 if (fn && fn.id && utils.isIdentifierType(fn.id)) {
                     var $injectArray = $injectProperties[fn.id.name];
 
@@ -132,7 +132,7 @@ module.exports = {
                         if ($injectArray.elements.length !== fn.params.length) {
                             context.report(
                                 fn,
-                                "The signature of the method is incorrect",
+                                'The signature of the method is incorrect',
                                 {}
                             );
                             return;
@@ -154,7 +154,7 @@ module.exports = {
                             if (invalidInjectArray.length > 0) {
                                 context.report(
                                     fn,
-                                    "You have an error in your DI configuration. Each items of the array should match exactly one function parameter",
+                                    'You have an error in your DI configuration. Each items of the array should match exactly one function parameter',
                                     {}
                                 );
                                 return;
@@ -170,20 +170,20 @@ module.exports = {
         }
 
         return {
-            "angular?animation": checkDi,
-            "angular?config": checkDi,
-            "angular?controller": checkDi,
-            "angular?directive": checkDi,
-            "angular?factory": checkDi,
-            "angular?filter": checkDi,
-            "angular?inject": checkDi,
-            "angular?run": checkDi,
-            "angular?service": checkDi,
-            "angular?provider": function (callee, providerFn, $get) {
+            'angular?animation': checkDi,
+            'angular?config': checkDi,
+            'angular?controller': checkDi,
+            'angular?directive': checkDi,
+            'angular?factory': checkDi,
+            'angular?filter': checkDi,
+            'angular?inject': checkDi,
+            'angular?run': checkDi,
+            'angular?service': checkDi,
+            'angular?provider': function (callee, providerFn, $get) {
                 checkDi(null, providerFn);
                 checkDi(null, $get);
             },
-            "angular?component": function (callee) {
+            'angular?component': function (callee) {
                 var routeObject = callee.parent.arguments[1];
 
                 var elementLength = 0;
@@ -192,13 +192,13 @@ module.exports = {
 
                 if (routeObject.properties) {
                     routeObject.properties.forEach(function (prop) {
-                        if (prop.key.name === "controller") {
+                        if (prop.key.name === 'controller') {
                             elements = prop.value.elements;
                             if (elements.length) {
                                 elementLength = elements.length - 1;
                             }
                             prop.value.elements.forEach(function (element) {
-                                if (element.type === "FunctionExpression") {
+                                if (element.type === 'FunctionExpression') {
                                     parameters = element.params;
                                 }
                             });
@@ -209,7 +209,7 @@ module.exports = {
                 if (elementLength !== parameters.length) {
                     context.report(
                         routeObject,
-                        "The signature of the method is incorrect",
+                        'The signature of the method is incorrect',
                         {}
                     );
                     return;
@@ -229,7 +229,7 @@ module.exports = {
                     if (invalidArray.length > 0) {
                         context.report(
                             routeObject,
-                            "You have an error in your DI configuration. Each items of the array should match exactly one function parameter",
+                            'You have an error in your DI configuration. Each items of the array should match exactly one function parameter',
                             {}
                         );
                         return;
