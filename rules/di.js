@@ -17,26 +17,26 @@ module.exports = {
     meta: {
         docs: {
             url:
-                'https://github.com/Gillespie59/eslint-plugin-angular/blob/master/docs/rules/di.md',
+                'https://github.com/Gillespie59/eslint-plugin-angular/blob/master/docs/rules/di.md'
         },
         schema: [
             {
-                enum: ['function', 'array', '$inject'],
+                enum: ['function', 'array', '$inject']
             },
             {
                 type: 'object',
                 properties: {
                     matchNames: {
-                        type: 'boolean',
+                        type: 'boolean'
                     },
                     stripUnderscores: {
-                        type: 'boolean',
-                    },
-                },
-            },
-        ],
+                        type: 'boolean'
+                    }
+                }
+            }
+        ]
     },
-    create: angularRule(function (context) {
+    create: angularRule(function(context) {
         var syntax = context.options[0] || 'function';
 
         var extra = context.options[1] || {};
@@ -48,7 +48,7 @@ module.exports = {
                 node,
                 'You should use the {{syntax}} syntax for DI',
                 {
-                    syntax: syntax,
+                    syntax: syntax
                 }
             );
         }
@@ -70,7 +70,7 @@ module.exports = {
         }
 
         function normalizeParameter(param) {
-            return param.replace(/^_(.+)_$/, function (match, p1) {
+            return param.replace(/^_(.+)_$/, function(match, p1) {
                 return p1;
             });
         }
@@ -92,7 +92,7 @@ module.exports = {
                     }
 
                     if (matchNames) {
-                        var invalidArray = fn.params.filter(function (e, i) {
+                        var invalidArray = fn.params.filter(function(e, i) {
                             var name = e.name;
 
                             if (stripUnderscores) {
@@ -139,7 +139,7 @@ module.exports = {
                         }
 
                         if (matchNames) {
-                            var invalidInjectArray = fn.params.filter(function (
+                            var invalidInjectArray = fn.params.filter(function(
                                 e,
                                 i
                             ) {
@@ -179,11 +179,11 @@ module.exports = {
             'angular?inject': checkDi,
             'angular?run': checkDi,
             'angular?service': checkDi,
-            'angular?provider': function (callee, providerFn, $get) {
+            'angular?provider': function(callee, providerFn, $get) {
                 checkDi(null, providerFn);
                 checkDi(null, $get);
             },
-            'angular?component': function (callee) {
+            'angular?component': function(callee) {
                 var routeObject = callee.parent.arguments[1];
 
                 var elementLength = 0;
@@ -191,13 +191,13 @@ module.exports = {
                 var parameters = null;
 
                 if (routeObject.properties) {
-                    routeObject.properties.forEach(function (prop) {
+                    routeObject.properties.forEach(function(prop) {
                         if (prop.key.name === 'controller') {
                             elements = prop.value.elements;
                             if (elements.length) {
                                 elementLength = elements.length - 1;
                             }
-                            prop.value.elements.forEach(function (element) {
+                            prop.value.elements.forEach(function(element) {
                                 if (element.type === 'FunctionExpression') {
                                     parameters = element.params;
                                 }
@@ -216,7 +216,7 @@ module.exports = {
                 }
 
                 if (matchNames) {
-                    var invalidArray = parameters.filter(function (e, i) {
+                    var invalidArray = parameters.filter(function(e, i) {
                         var name = e.name;
 
                         if (stripUnderscores) {
@@ -236,9 +236,9 @@ module.exports = {
                     }
                 }
             },
-            AssignmentExpression: function (node) {
+            AssignmentExpression: function(node) {
                 maybeNoteInjection(node);
-            },
+            }
         };
-    }),
+    })
 };
