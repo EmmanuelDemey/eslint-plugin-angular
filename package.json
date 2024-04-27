@@ -23,7 +23,7 @@
     "devDependencies": {
         "chai": "4.2.0",
         "eslint": "5.16.0",
-        "espree": "5.0.1",
+        "espree": "^10.0.1",
         "gulp": "4.0.2",
         "gulp-eslint": "5.0.0",
         "gulp-istanbul": "1.1.3",
