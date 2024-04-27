@@ -31,6 +31,9 @@
         "nyc": "^15.1.0",
         "parse-comments": "0.4.3"
     },
+    "peerDependencies": {
+        "eslint": ">=9.0.0"
+    },
     "keywords": [
         "eslint",
         "eslintplugin",
