@@ -50,7 +50,7 @@ module.exports = {
                 return;
             }
             var directiveNode;
-            context.getAncestors().some(function(ancestor) {
+            context.sourceCode.getAncestors(node).some(function(ancestor) {
                 if (utils.isAngularDirectiveDeclaration(ancestor)) {
                     directiveNode = ancestor;
                     return true;
@@ -59,7 +59,7 @@ module.exports = {
 
             if (!directiveNode) {
                 // Try to find an ancestor function used as definition for one of the found directives
-                context.getAncestors().some(function(ancestor) {
+                context.sourceCode.getAncestors(node).some(function(ancestor) {
                     if (isFunctionDeclaration(ancestor)) {
                         if (!ancestor.id) {
                             return false;

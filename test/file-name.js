@@ -271,7 +271,7 @@ angular.module(mod, [mod + '.core.angular', mod + '.thirdparty']);
             app.directive("SomeDirective", MyCtrl2);
             app.service("SomeService", MyCtrl3);
             app.controller("SomeOtherController", MyCtrl4);`,
-        parserOptions: {
+        languageOptions: {
             ecmaVersion: 6,
             sourceType: 'module'
         }
@@ -472,7 +472,7 @@ angular.module(mod, [mod + '.core.angular', mod + '.thirdparty']);
         code: `
             import {MyCtrl} from 'src/app/main.js'
             app.controller("SomeController", MyCtrl);`,
-        parserOptions: {
+        languageOptions: {
             ecmaVersion: 6,
             sourceType: 'module'
         },

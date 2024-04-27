@@ -1,7 +1,7 @@
 'use strict';
 
 /* eslint-env mocha */
-/* eslint-disable no-unused-expressions */
+ 
 
 var espree = require('espree');
 var expect = require('chai').expect;

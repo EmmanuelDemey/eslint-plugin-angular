@@ -218,7 +218,7 @@ There are some useful references for creating new rules. Specificly useful are:
 
 * [The Context Object](http://eslint.org/docs/developer-guide/working-with-rules#the-context-object) - This is the most basic understanding needed for adding or modifying a rule.
 * [Options Schemas](http://eslint.org/docs/developer-guide/working-with-rules#options-schemas) - This is the preferred way for validating configuration options.
-* [Scope](http://estools.github.io/escope/Scope.html) - This is the scope object returned by `context.getScope()`.
+* [Scope](http://estools.github.io/escope/Scope.html) - This is the scope object returned by `context.sourceCode.getScope()`.
 
 ### Files you have to create
 

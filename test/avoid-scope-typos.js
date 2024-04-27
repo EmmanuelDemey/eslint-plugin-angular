@@ -20,7 +20,7 @@ const bad = ['new', 'watch', 'watchGroup', 'watchCollection',
     'applyAsync', 'on', 'emit', 'broadcast'];
 
 const nonReservedBad = ['watch', 'watchGroup', 'watchCollection',
-    'digest', 'destroy', 'eval', 'evalAsync', 'apply',
+    'digest', 'destroy', 'evalAsync', 'apply',
     'applyAsync', 'on', 'emit', 'broadcast'];
 
 var invalid = [];

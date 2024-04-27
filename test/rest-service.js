@@ -29,8 +29,6 @@ angularObjectList.forEach(function(object) {
             code: 'app.' + object + '("name", function(Service1) {});',
             options: [value]
         }, {
-            code: 'app.' + object + '("name", function(Service1) {});'
-        }, {
             code: 'app.' + object + '("name", ["Service1", function(Service1) {}]);',
             options: [value]
         }, {

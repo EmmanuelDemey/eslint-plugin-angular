@@ -196,7 +196,7 @@ function _createRule(ruleName) {
     }
 
     // load rule module for tests
-    rule.module = require('../rules/' + rule.ruleName);// eslint-disable-line global-require
+    rule.module = require('../rules/' + rule.ruleName); 
 
     // load examples, prepare them for the tests and group the for the template
     rule.allExamples = _loadExamples(rule);

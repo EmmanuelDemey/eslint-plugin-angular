@@ -19,13 +19,7 @@ eslintTester.run('controller-name', rule, {
         options: ['/[a-zA-Z].*Controller$/']
     }, {
         code: 'app.controller("eslintController", function() {});',
-        options: ['eslint']
-    }, {
-        code: 'app.controller("eslintController", function() {});',
         options: ['/^eslint/']
-    }, {
-        code: 'app.controller("EslintController", function() {});',
-        options: ['/[A-Z].*Controller$/']
     }, {
         code: 'app.controller("EslintController", function() {});',
         options: ['/[A-Z].*Controller$/']

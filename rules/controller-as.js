@@ -67,12 +67,12 @@ module.exports = {
                     stmt.expression.left.object &&
                     stmt.expression.left.object.name === '$scope' &&
                     utils.scopeProperties.indexOf(stmt.expression.left.property.name) < 0) {
-                    badStatements.push({parents: context.getAncestors(), stmt: stmt});
+                    badStatements.push({parents: context.sourceCode.getAncestors(stmt), stmt: stmt});
                 } else if (stmt.expression.type === 'CallExpression' &&
                     stmt.expression.callee.object &&
                     stmt.expression.callee.object.name === '$scope' &&
                     utils.scopeProperties.indexOf(stmt.expression.callee.property.name) < 0) {
-                    badStatements.push({parents: context.getAncestors(), stmt: stmt});
+                    badStatements.push({parents: context.sourceCode.getAncestors(stmt), stmt: stmt});
                 }
             },
             'Program:exit': function() {

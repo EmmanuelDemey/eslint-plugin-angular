@@ -24,7 +24,7 @@
     "homepage": "https://github.com/Gillespie59/eslint-plugin-angularjs",
     "devDependencies": {
         "chai": "^5.1.0",
-        "eslint": "^8.57.0",
+        "eslint": "^9.1.1",
         "espree": "^10.0.1",
         "lodash": "^4.17.21",
         "mocha": "^10.4.0",

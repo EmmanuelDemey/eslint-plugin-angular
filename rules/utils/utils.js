@@ -545,7 +545,7 @@ function isUIRouterStateDefinition(node) {
  */
 function findIdentiferInScope(context, identifier) {
     var identifierNode = null;
-    context.getScope().variables.forEach(function(variable) {
+    context.sourceCode.getScope(identifier).variables.forEach(function(variable) {
         if (variable.name === identifier.name) {
             identifierNode = variable.defs[0].node;
             if (identifierNode.type === 'VariableDeclarator') {

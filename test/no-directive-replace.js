@@ -13,7 +13,7 @@ var commonFalsePositives = require('./utils/commonFalsePositives');
 // ------------------------------------------------------------------------------
 
 var eslintTester = new RuleTester({
-    parserOptions: {
+    languageOptions: {
         ecmaVersion: 6
     }
 });
