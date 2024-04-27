@@ -17,6 +17,10 @@ var ruleNames = Object.keys(eslintAngularIndex.rules).filter(function(ruleName) 
 // create rule documentation objects from ruleNames
 var rules = ruleNames.map(_createRule);
 
+updateReadme('README.md');
+createDocFiles();
+// testDocs(cb);
+
 module.exports = {
     rules: rules,
     createDocFiles: createDocFiles,
@@ -30,7 +34,7 @@ module.exports = {
  * @param cb callback
  */
 function createDocFiles(cb) {
-    this.rules.forEach(function(rule) {
+    rules.forEach(function(rule) {
         fs.writeFileSync(rule.documentationPath, _trimTrailingSpacesAndMultilineBreaks(templates.ruleDocumentationContent(rule)));
     });
     (cb || _.noop)();
@@ -42,7 +46,7 @@ function createDocFiles(cb) {
  * @param cb callback
  */
 function updateReadme(readmePath, cb) {
-    ruleCategories.rulesByCategory = _.groupBy(this.rules, 'category');
+    ruleCategories.rulesByCategory = _.groupBy(rules, 'category');
 
     // filter categories without rules
     ruleCategories.categoryOrder = ruleCategories.categoryOrder.filter(function(categoryName) {
@@ -66,7 +70,7 @@ function updateReadme(readmePath, cb) {
  * @param cb callback
  */
 function testDocs(cb) {
-    this.rules.forEach(function(rule) {
+    rules.forEach(function(rule) {
         if (rule.examples !== undefined) {
             var eslintTester = new RuleTester();
             eslintTester.run(rule.ruleName, rule.module, rule.examples);

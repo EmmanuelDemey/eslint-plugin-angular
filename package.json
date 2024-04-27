@@ -5,7 +5,7 @@
     "main": "index.js",
     "scripts": {
         "lint": "eslint .",
-        "docs": "gulp docs",
+        "docs": "node scripts/docs.js",
         "test": "nyc mocha"
     },
     "repository": {
@@ -26,7 +26,6 @@
         "chai": "^5.1.0",
         "eslint": "^8.57.0",
         "espree": "^10.0.1",
-        "gulp": "4.0.2",
         "lodash": "^4.17.21",
         "mocha": "^10.4.0",
         "nyc": "^15.1.0",
