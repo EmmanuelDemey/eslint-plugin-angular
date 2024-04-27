@@ -4,6 +4,7 @@
     "description": "ESLint rules for AngularJS projects",
     "main": "index.js",
     "scripts": {
+        "docs": "gulp docs",
         "test": "nyc mocha"
     },
     "repository": {
