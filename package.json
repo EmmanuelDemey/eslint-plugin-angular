@@ -23,7 +23,6 @@
     },
     "homepage": "https://github.com/Gillespie59/eslint-plugin-angularjs",
     "devDependencies": {
-        "@eslint/compat": "1.2.7",
         "chai": "4.2.0",
         "chai-spies": "1.0.0",
         "coveralls": "3.0.3",
@@ -44,5 +43,11 @@
         "eslintplugin",
         "angularjs",
         "flat config"
-    ]
+    ],
+    "dependencies": {
+        "@eslint/compat": "1.2.7"
+    },
+    "peerDependencies": {
+        "eslint": "^9.0.0"
+    }
 }
