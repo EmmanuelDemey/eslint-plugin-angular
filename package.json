@@ -1,7 +1,8 @@
 {
-    "name": "eslint-plugin-angular",
-    "version": "4.1.0",
-    "description": "ESLint rules for AngularJS projects",
+    "name": "eslint-plugin-angular-flat",
+    "version": "0.0.1",
+    "author": "Emmanuel Demey",
+    "description": "eslint-plugin-angular in ESLint flat config",
     "main": "index.js",
     "scripts": {
         "test": "gulp"
@@ -13,7 +14,8 @@
     "contributors": [
         "Emmanuel Demey (http://gillespie59.github.io/)",
         "Tilman Potthof (https://github.com/tilmanpotthof)",
-        "Remco Haszing (https://github.com/remcohaszing)"
+        "Remco Haszing (https://github.com/remcohaszing)",
+        "Alaa Jerbi (https://github.com/alaajerbi)"
     ],
     "license": "MIT",
     "bugs": {
@@ -21,10 +23,11 @@
     },
     "homepage": "https://github.com/Gillespie59/eslint-plugin-angularjs",
     "devDependencies": {
+        "@eslint/compat": "1.2.7",
         "chai": "4.2.0",
         "chai-spies": "1.0.0",
         "coveralls": "3.0.3",
-        "eslint": "5.16.0",
+        "eslint": "^9.10.0",
         "espree": "5.0.1",
         "gulp": "4.0.2",
         "gulp-eslint": "5.0.0",
@@ -39,7 +42,7 @@
     "keywords": [
         "eslint",
         "eslintplugin",
-        "angularjs"
-    ],
-    "dependencies": {}
+        "angularjs",
+        "flat config"
+    ]
 }
