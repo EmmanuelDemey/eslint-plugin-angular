@@ -23,9 +23,10 @@
     "devDependencies": {
         "chai": "5.2.1",
         "chai-spies": "1.1.0",
-        "eslint": "5.16.0",
+        "eslint": "8.57.1",
         "espree": "10.4.0",
         "gulp": "5.0.1",
+        "lodash": "4.17.21",
         "mocha": "11.7.1",
         "nyc": "17.1.0",
         "parse-comments": "0.4.3"
