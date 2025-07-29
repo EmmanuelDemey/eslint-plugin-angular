@@ -1,9 +1,8 @@
 'use strict';
 
+var {spawn} = require('child_process');
 var gulp = require('gulp');
 var eslint = require('gulp-eslint');
-var istanbul = require('gulp-istanbul');
-var mocha = require('gulp-mocha');
 var docs = require('./scripts/docs.js');
 
 
@@ -15,15 +14,13 @@ gulp.task('quality', function() {
 });
 
 gulp.task('test', function(cb) {
-    gulp.src(['index.js', 'rules/**/*.js'])
-        .pipe(istanbul()) // Covering files
-        .pipe(istanbul.hookRequire()) // Force `require` to return covered files
-        .on('finish', function() {
-            gulp.src(['test/**/*.js'])
-                .pipe(mocha())
-                .pipe(istanbul.writeReports()) // Creating the reports after tests runned
-                .on('end', cb);
-        });
+    const cmd = spawn('nyc', [
+        '--reporter=lcov',
+        '--reporter=text',
+        'mocha',
+        'test/**'
+    ], {stdio: 'inherit', shell: true});
+    cmd.on('close', cb);
 });
 
 
