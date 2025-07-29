@@ -2,15 +2,16 @@
 
 var {spawn} = require('child_process');
 var gulp = require('gulp');
-var eslint = require('gulp-eslint');
 var docs = require('./scripts/docs.js');
 
 
-gulp.task('quality', function() {
-    return gulp.src(['*.js', '{rules,test,scripts}/**/*.js'])
-        .pipe(eslint())
-        .pipe(eslint.format())
-        .pipe(eslint.failAfterError());
+gulp.task('quality', function(cb) {
+    const cmd = spawn('npx', [
+        'eslint',
+        '*.js',
+        '{rules,test,scripts}/**/*.js'
+    ], {stdio: 'inherit', shell: true});
+    cmd.on('close', cb);
 });
 
 gulp.task('test', function(cb) {
