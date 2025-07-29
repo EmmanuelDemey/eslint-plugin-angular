@@ -1,12 +1,9 @@
 # eslint plugin angular [![Npm version](https://img.shields.io/npm/v/eslint-plugin-angular.svg)](https://www.npmjs.com/package/eslint-plugin-angular) [![Npm downloads per month](https://img.shields.io/npm/dm/eslint-plugin-angular.svg)](https://www.npmjs.com/package/eslint-plugin-angular)
 
-[![Greenkeeper badge](https://badges.greenkeeper.io/Gillespie59/eslint-plugin-angular.svg)](https://greenkeeper.io/)
-
 > ESLint rules for your angular project with checks for best-practices, conventions or potential errors.
 
-[![Build Status](https://img.shields.io/travis/Gillespie59/eslint-plugin-angular/master.svg)](https://travis-ci.org/Gillespie59/eslint-plugin-angular)
-[![Npm dependencies](https://img.shields.io/david/Gillespie59/eslint-plugin-angular.svg)](https://david-dm.org/Gillespie59/eslint-plugin-angular)
-[![devDependency Status](https://img.shields.io/david/dev/Gillespie59/eslint-plugin-angular.svg)](https://david-dm.org/Gillespie59/eslint-plugin-angular#info=devDependencies)
+[![.github/workflows/main.yml](https://github.com/EmmanuelDemey/eslint-plugin-angular/actions/workflows/main.yml/badge.svg)](https://github.com/EmmanuelDemey/eslint-plugin-angular/actions/workflows/main.yml)
+[![Greenkeeper badge](https://badges.greenkeeper.io/Gillespie59/eslint-plugin-angular.svg)](https://greenkeeper.io/)
 [![Join the chat at https://gitter.im/Gillespie59/eslint-plugin-angular](https://img.shields.io/gitter/room/nwjs/nw.js.svg)](https://gitter.im/Gillespie59/eslint-plugin-angular?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
 ## Summary
