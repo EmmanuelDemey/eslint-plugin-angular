@@ -24,12 +24,13 @@ valid.push({
     options: ['cmnHttpSvc']
 });
 angularObjectList.forEach(function(object) {
+    valid.push({
+        code: 'app.' + object + '("name", function(Service1) {});'
+    });
     possibleValues.forEach(function(value) {
         valid.push({
             code: 'app.' + object + '("name", function(Service1) {});',
             options: [value]
-        }, {
-            code: 'app.' + object + '("name", function(Service1) {});'
         }, {
             code: 'app.' + object + '("name", ["Service1", function(Service1) {}]);',
             options: [value]

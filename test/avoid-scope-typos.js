@@ -12,7 +12,11 @@ const commonFalsePositives = require('./utils/commonFalsePositives');
 // Tests
 // ------------------------------------------------------------------------------
 
-const eslintTester = new RuleTester();
+const eslintTester = new RuleTester({
+    languageOptions: {
+        sourceType: 'script' // Allow binding eval()
+    }
+});
 
 const variables = ['$scope', '$rootScope'];
 const bad = ['new', 'watch', 'watchGroup', 'watchCollection',

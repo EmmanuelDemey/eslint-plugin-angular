@@ -230,9 +230,6 @@ valid.push({
     code: 'mocha.run();',
     options: ['array']
 }, {
-    code: 'mocha.run();',
-    options: ['array']
-}, {
     // value false positive with function
     code: 'angular.module("") .value("", function () {});',
     options: ['array']

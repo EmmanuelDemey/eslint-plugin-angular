@@ -41,10 +41,19 @@ Since the 0.0.4 release, some rules defined in [John Papa's Guideline](https://g
     npm install --save-dev eslint-plugin-angular
     ```
 
-3. Use the shareable config by adding it to your `.eslintrc`:
+3. Use the shareable config by adding it to your `eslintrc.config.mjs`:
 
-    ```yaml
-    extends: plugin:angular/johnpapa
+    ```javascript
+    import angular from "eslint-plugin-angular";
+
+    export default defineConfig([{
+      plugins: {
+        angular
+      },
+      rules: {
+        ...angular.configs.johnpapa.rules
+      }
+    }]);
     ```
 
 
@@ -63,19 +72,30 @@ Since the 0.0.4 release, some rules defined in [John Papa's Guideline](https://g
     npm install --save-dev eslint-plugin-angular
     ```
 
-3. Enable the plugin by adding it to your `.eslintrc`:
+3. Enable the plugin by adding it to your `eslint.config.mjs`:
 
-    ```yaml
-    plugins:
-      - angular
+    ```javascript
+    import angular from "eslint-plugin-angular";
+
+    export default defineConfig([{
+      plugins: {
+        angular
+      }
+    }]);
     ```
-4. You can also configure these rules in your `.eslintrc`. All rules defined in this plugin have to be prefixed by 'angular/'
+4. You can also configure these rules in your `eslint.config.mjs`. All rules defined in this plugin have to be prefixed by 'angular/'
 
-    ```yaml
-    plugins:
-      - angular
-    rules:
-      - angular/controller_name: 0
+    ```javascript
+    import angular from "eslint-plugin-angular";
+
+    export default defineConfig([{
+      plugins: {
+        angular
+      },
+      rules: {
+        "angular/controller-name": "error"
+      }
+    }]);
     ```
 
 ----
@@ -248,20 +268,28 @@ There are some useful references for creating new rules. Specificly useful are:
 
 We can use a property, defined in the ESLint configuration file, in order to know which version is used : Angular 1 or Angular 2. based on this property, you can create rules for each version.
 
-```yaml
-plugins:
-  - angular
+```javascript
+import angular from "eslint-plugin-angular";
 
-rules:
-    angular/controller-name:
-      - 2
-      - '/[A-Z].*Controller$/'
-
-globals:
-    angular: true
-
-settings:
-    angular: 2
+export default defineConfig([
+  {
+    files: ["**/*.js"],
+    plugins: {
+      angular
+    },
+    languageOptions: {
+      globals: {
+        angular: true
+      }
+    },
+    settings: {
+      angular: 2
+    },
+    rules: {
+      "angular/controller-name": ["error", "/[A-Z].*Controller$/"]
+    }
+  }
+]);
 ```
 
 And in your rule, you can access to this property thanks to the `context` object :
@@ -285,10 +313,10 @@ return {
 
 Here is the basic configuration for the rules defined in the ESLint plugin, in order to be compatible with the guideline provided by @johnpapa :
 
-```yaml
-rules:
-    no-use-before-define:
-      - 0
+```javascript
+rules: {
+  "no-use-before-define": "off"
+}
 ```
 
 

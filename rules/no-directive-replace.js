@@ -40,7 +40,7 @@ module.exports = {
             nodeList.push({
                 name: variableName,
                 node: node,
-                block: context.getScope().block.body
+                block: context.sourceCode.getScope(node).block.body
             });
 
             potentialReplaceNodes[variableName] = nodeList;

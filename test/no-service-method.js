@@ -19,10 +19,6 @@ var valid = [];
 ['factory', 'provider', 'constant', 'value'].forEach(function(syntax) {
     valid.push({
         code: 'app.' + syntax + '("eslintService", function() {});'
-    }, {
-        code: 'app.' + syntax + '("eslintService", function() {});'
-    }, {
-        code: 'app.' + syntax + '("eslintService", function() {});'
     });
 });
 

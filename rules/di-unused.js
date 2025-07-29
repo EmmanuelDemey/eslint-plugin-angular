@@ -76,8 +76,8 @@ module.exports = {
                 reportUnusedVariables(null, $get);
             },
 
-            'Program:exit': function() {
-                var globalScope = context.getScope();
+            'Program:exit': function(node) {
+                var globalScope = context.sourceCode.getScope(node);
                 collectAngularScopes(globalScope);
             }
         };

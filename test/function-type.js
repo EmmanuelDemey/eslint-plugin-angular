@@ -55,15 +55,15 @@ valid.push({
 }, {
     code: 'angular.module("foo", []).constant("foo", () => {})',
     options: ['anonymous'],
-    parserOptions: {ecmaVersion: 6}
+    languageOptions: {ecmaVersion: 6}
 }, {
     code: 'angular.module("foo", []).constant("foo", (() => {})())',
     options: ['named'],
-    parserOptions: {ecmaVersion: 6}
+    languageOptions: {ecmaVersion: 6}
 }, {
     code: 'angular.module("foo", []).constant("foo", (() => {})())',
     options: ['anonymous'],
-    parserOptions: {ecmaVersion: 6}
+    languageOptions: {ecmaVersion: 6}
 }, {
     code: 'var foo = "foo";angular.module("foo", []).constant("foo", foo)',
     options: ['named']
