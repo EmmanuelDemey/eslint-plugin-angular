@@ -33,7 +33,6 @@ eslintTester.run('on-destroy', rule, {
         '$scope.$on()',
         '$scope.$watch()',
         'scope.$on("$destroy")',
-        '$rootScope.$on("$destroy")',
 
         // false positive check
         '$on()',

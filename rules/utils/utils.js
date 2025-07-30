@@ -543,9 +543,9 @@ function isUIRouterStateDefinition(node) {
  *
  * @returns {Object} The node declaring the identifier.
  */
-function findIdentiferInScope(context, identifier) {
+function findIdentiferInScope(context, identifier, node) {
     var identifierNode = null;
-    context.getScope().variables.forEach(function(variable) {
+    context.sourceCode.getScope(node).variables.forEach(function(variable) {
         if (variable.name === identifier.name) {
             identifierNode = variable.defs[0].node;
             if (identifierNode.type === 'VariableDeclarator') {
@@ -577,12 +577,12 @@ function getControllerDefinition(context, node) {
         controllerArg = controllerArg.elements[controllerArg.elements.length - 1];
 
         if (isIdentifierType(controllerArg)) {
-            return findIdentiferInScope(context, controllerArg);
+            return findIdentiferInScope(context, controllerArg, node);
         }
         return controllerArg;
     }
     if (isIdentifierType(controllerArg)) {
-        return findIdentiferInScope(context, controllerArg);
+        return findIdentiferInScope(context, controllerArg, node);
     }
 }
 

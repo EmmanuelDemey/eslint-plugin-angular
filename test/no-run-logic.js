@@ -34,7 +34,6 @@ eslintTester.run('no-run-logic', rule, {
         'angular.module("").factory();',
         'angular.module("").filter();',
         'angular.module("").provider();',
-        'angular.module("").run();',
         'angular.module("").service();'
     ],
     invalid: [

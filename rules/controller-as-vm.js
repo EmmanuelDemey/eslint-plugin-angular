@@ -88,7 +88,7 @@ module.exports = {
             },
             // statements are checked here for bad uses of $scope
             ThisExpression: function(stmt) {
-                var parents = context.getAncestors();
+                var parents = context.sourceCode.getAncestors(stmt);
                 if (!isClassDeclaration(parents)) {
                     if (stmt.parent.type === 'VariableDeclarator') {
                         if (!stmt.parent.id || stmt.parent.id.name !== viewModelName) {

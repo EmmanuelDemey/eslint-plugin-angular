@@ -131,7 +131,7 @@ function angularRule(ruleDefinition) {
                 // ^^^^^^
                 injectCalls.push({
                     callExpression: callExpressionNode,
-                    fn: findFunctionByNode(callExpressionNode, context.getScope())
+                    fn: findFunctionByNode(callExpressionNode, context.sourceCode.getScope(callExpressionNode))
                 });
             }
             return;
@@ -147,12 +147,12 @@ function angularRule(ruleDefinition) {
                 angularChainables.push(callExpressionNode);
                 angularComponents.push({
                     callExpression: callExpressionNode,
-                    fn: findFunctionByNode(callExpressionNode, context.getScope())
+                    fn: findFunctionByNode(callExpressionNode, context.sourceCode.getScope(callExpressionNode))
                 });
             } else if (callee.object.type === 'Identifier') {
                 // var app = angular.module(); app.factory()
                 //                                 ^^^^^^^
-                var scope = context.getScope();
+                var scope = context.sourceCode.getScope(callExpressionNode);
                 var isAngularModule = scope.variables.some(function(variable) {
                     if (callee.object.name !== variable.name) {
                         return false;
@@ -165,7 +165,7 @@ function angularRule(ruleDefinition) {
                     angularChainables.push(callExpressionNode);
                     angularComponents.push({
                         callExpression: callExpressionNode,
-                        fn: findFunctionByNode(callExpressionNode, context.getScope())
+                        fn: findFunctionByNode(callExpressionNode, context.sourceCode.getScope(callExpressionNode))
                     });
                 } else {
                     return;

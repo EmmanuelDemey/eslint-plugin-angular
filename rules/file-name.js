@@ -33,13 +33,13 @@ var utils = require('./utils/utils');
  * @returns
  */
 function handleModuleCase(node, context, defaultFilename) {
-    if (context.parserOptions.sourceType !== 'module') {
+    if (context.languageOptions.sourceType !== 'module') {
         return defaultFilename;
     }
 
     // Handle the module case.
     var name = node.arguments[1].name;
-    var globalScope = context.getScope();
+    var globalScope = context.sourceCode.getScope(node);
 
     // Retrieve the import instruction.
     var variable = globalScope.variables.find(function(v) {

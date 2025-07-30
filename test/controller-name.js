@@ -27,9 +27,6 @@ eslintTester.run('controller-name', rule, {
         code: 'app.controller("EslintController", function() {});',
         options: ['/[A-Z].*Controller$/']
     }, {
-        code: 'app.controller("EslintController", function() {});',
-        options: ['/[A-Z].*Controller$/']
-    }, {
         code: 'controller = el.controller();',
         options: ['/[A-Z].*Controller$/']
     }, {

@@ -28,8 +28,6 @@ valid.push({
     code: 'app.service("eslintService", function() {});',
     options: [/^eslint/, {oldBehavior: false}]
 }, {
-    code: 'app.service("eslintService", function() {});'
-}, {
     code: 'app.service("eslintService", function() {});',
     options: ['/^eslint/', {oldBehavior: false}]
 }, {

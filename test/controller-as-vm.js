@@ -22,11 +22,11 @@ eslintTester.run('controller-as-vm', rule, {
         {code: 'angular.module("test").controller("Test", function() {var vm = this; vm.test();} )',
             options: ['vm']},
         {code: 'angular.module("test").controller("Test", class {constructor(){this.x = 0;}} )',
-            options: ['vm'], parserOptions: {ecmaVersion: 6}},
+            options: ['vm'], languageOptions: {ecmaVersion: 6}},
         {code: 'angular.module("test").service("Test", function() {this.doSomething();} )',
             options: ['vm']},
         {code: 'angular.module("test").service("Test", class {constructor(){this.x = 0;}} )',
-            options: ['vm'], parserOptions: {ecmaVersion: 6}}
+            options: ['vm'], languageOptions: {ecmaVersion: 6}}
     ].concat(commonFalsePositives),
     invalid: [
         {code: 'function controllerFunc() {this.test = "test";} angular.module("test").controller("Test", controllerFunc )',
