@@ -1,6 +1,6 @@
 {
     "name": "eslint-plugin-angular",
-    "version": "4.1.0",
+    "version": "5.0.0",
     "description": "ESLint rules for AngularJS projects",
     "main": "index.js",
     "scripts": {
@@ -32,7 +32,7 @@
         "parse-comments": "0.4.3"
     },
     "peerDependencies": {
-      "eslint": "^9.32.0"
+        "eslint": "^9.32.0"
     },
     "keywords": [
         "eslint",
