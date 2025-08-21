@@ -15,7 +15,8 @@ gulp.task('quality', function(cb) {
 });
 
 gulp.task('test', function(cb) {
-    const cmd = spawn('nyc', [
+    const cmd = spawn('npx', [
+        'nyc',
         '--reporter=lcov',
         '--reporter=text',
         'mocha',
