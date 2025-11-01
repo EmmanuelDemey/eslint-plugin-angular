@@ -38,6 +38,7 @@ module.exports = {
                 'angular/filter-name': 2,
                 'angular/function-type': 2,
                 'angular/interval-service': 2,
+                'angular/module-configuration-file': 2,
                 'angular/module-getter': 2,
                 'angular/module-name': 2,
                 'angular/module-setter': 2,
