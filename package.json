@@ -4,7 +4,10 @@
     "description": "ESLint rules for AngularJS projects",
     "main": "index.js",
     "scripts": {
-        "test": "gulp"
+        "lint": "eslint \"*.js\" \"{rules,test,scripts}/**/*.js\"",
+        "test:run": "nyc --reporter=lcov --reporter=text mocha test/**",
+        "docs": "node scripts/docs.js",
+        "test": "npm run lint && npm run docs && npm run test:run"
     },
     "repository": {
         "type": "git",
@@ -25,7 +28,6 @@
         "chai-spies": "1.1.0",
         "eslint": "^9.32.0",
         "espree": "10.4.0",
-        "gulp": "5.0.1",
         "lodash": "4.17.21",
         "mocha": "11.7.1",
         "nyc": "17.1.0",
