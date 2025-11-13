@@ -5,7 +5,7 @@
     "main": "index.js",
     "scripts": {
         "lint": "oxlint",
-        "test:run": "nyc --reporter=lcov --reporter=text mocha test/**",
+        "test:run": "vitest run --coverage",
         "docs": "node scripts/docs.js",
         "test": "pnpm lint && pnpm docs && pnpm test:run"
     },
@@ -24,15 +24,15 @@
     },
     "homepage": "https://github.com/Gillespie59/eslint-plugin-angularjs",
     "devDependencies": {
+        "@vitest/coverage-v8": "^4.0.8",
         "chai": "5.2.1",
         "chai-spies": "1.1.0",
         "eslint": "^9.39.1",
         "espree": "10.4.0",
         "lodash": "4.17.21",
-        "mocha": "11.7.1",
-        "nyc": "17.1.0",
         "oxlint": "^1.28.0",
-        "parse-comments": "0.4.3"
+        "parse-comments": "0.4.3",
+        "vitest": "^4.0.8"
     },
     "peerDependencies": {
         "eslint": "^9.32.0"

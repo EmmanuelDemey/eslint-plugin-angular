@@ -15,7 +15,7 @@ describe('convertPrefixToRegex', function() {
         expect(utils.convertPrefixToRegex(obj) === obj).to.be.true;
     });
 
-    xit('should not convert a string ending and starting with a / to a Regex', function() {
+    it.skip('should not convert a string ending and starting with a / to a Regex', function() {
         expect(utils.convertPrefixToRegex('/app/'.source)).to.equal('app.*');
     });
 
@@ -25,7 +25,7 @@ describe('convertPrefixToRegex', function() {
 });
 
 describe('convertStringToRegex', function() {
-    xit('should not convert a string ending and starting with a / to a Regex', function() {
+    it.skip('should not convert a string ending and starting with a / to a Regex', function() {
         expect(utils.convertStringToRegex('/app/'.source)).to.equal('app');
     });
 
@@ -45,7 +45,7 @@ describe('isAngularControllerDeclaration', function() {
         expect(utils.isAngularControllerDeclaration(ast.body[0].expression)).to.be.true;
     });
 
-    xit('should return false if a controller function from some variable is called', function() {
+    it.skip('should return false if a controller function from some variable is called', function() {
         var ast = espree.parse('app.controller("", function() {});');
         expect(utils.isAngularControllerDeclaration(ast.body[0].expression)).to.be.false;
     });
@@ -74,7 +74,7 @@ describe('isAngularModuleDeclaration', function() {
 });
 
 describe('isAngularModuleGetter', function() {
-    xit('should return false for an Angular module declaration', function() {
+    it.skip('should return false for an Angular module declaration', function() {
         var ast = espree.parse('angular.module("", []);');
         expect(utils.isAngularModuleGetter(ast.body[0].expression)).to.be.false;
     });
@@ -86,12 +86,12 @@ describe('isAngularModuleGetter', function() {
 });
 
 describe('isAngularRunSection', function() {
-    xit('should return true if the call defines a run function', function() {
+    it.skip('should return true if the call defines a run function', function() {
         var ast = espree.parse('angular.module("").run(function() {});');
         expect(utils.isAngularRunSection(ast.body[0].expression)).to.be.true;
     });
 
-    xit('should return false is a run is called on a random object', function() {
+    it.skip('should return false is a run is called on a random object', function() {
         var ast = espree.parse('app.run();');
         expect(utils.isAngularRunSection(ast.body[0].expression)).to.be.false;
     });
