@@ -595,7 +595,7 @@ function getControllerDefinition(context, node) {
  * @returns {boolean} True if the service use on of these previous syntaxes.
  */
 function isAngularServiceImport(parameterName, serviceName) {
-    var r = new RegExp('^\_?' + serviceName.replace(/[!@#$%^&*()+=\-[\]\\';,./{}|":<>?~_]/g, '\\$&') + '\_?$', 'i');
+    var r = new RegExp('^_?' + serviceName.replace(/[!@#$%^&*()+=\-[\]\\';,./{}|":<>?~_]/g, '\\$&') + '_?$', 'i');
     return r.test(parameterName);
 }
 

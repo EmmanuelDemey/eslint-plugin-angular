@@ -114,8 +114,8 @@ module.exports = {
                     return this.firstToLower(name.replace(utils.convertStringToRegex(options.ignorePrefix), ''));
                 }
 
-                var regName = '^' + options.ignorePrefix.replace(/[\.]/g, '\\$&');
-                regName += options.ignorePrefix.indexOf('\.') === -1 ? '[A-Z]' : '[a-zA-z]';
+                var regName = '^' + options.ignorePrefix.replace(/[.]/g, '\\$&');
+                regName += options.ignorePrefix.indexOf('.') === -1 ? '[A-Z]' : '[a-zA-z]';
                 if (new RegExp(regName).test(name)) {
                     return this.firstToLower(name.slice(options.ignorePrefix.length));
                 }
