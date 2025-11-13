@@ -7,7 +7,7 @@
         "lint": "oxlint",
         "test:run": "nyc --reporter=lcov --reporter=text mocha test/**",
         "docs": "node scripts/docs.js",
-        "test": "npm run lint && npm run docs && npm run test:run"
+        "test": "pnpm lint && pnpm docs && pnpm test:run"
     },
     "repository": {
         "type": "git",
