@@ -34,12 +34,16 @@ Since the 0.0.4 release, some rules defined in [John Papa's Guideline](https://g
 
     ```shell
     npm install --save-dev eslint
+    # or with pnpm
+    pnpm add -D eslint
     ```
 
 2. Install `eslint-plugin-angular` as a dev-dependency:
 
     ```shell
     npm install --save-dev eslint-plugin-angular
+    # or with pnpm
+    pnpm add -D eslint-plugin-angular
     ```
 
 3. Use the shareable config by adding it to your `eslintrc.config.mjs`:
@@ -65,12 +69,16 @@ Since the 0.0.4 release, some rules defined in [John Papa's Guideline](https://g
 
     ```shell
     npm install --save-dev eslint
+    # or with pnpm
+    pnpm add -D eslint
     ```
 
 2. Install `eslint-plugin-angular` as a dev-dependency:
 
     ```shell
     npm install --save-dev eslint-plugin-angular
+    # or with pnpm
+    pnpm add -D eslint-plugin-angular
     ```
 
 3. Enable the plugin by adding it to your `eslint.config.mjs`:
@@ -104,26 +112,41 @@ Since the 0.0.4 release, some rules defined in [John Papa's Guideline](https://g
 
 ## Development Commands
 
-This project uses npm scripts for all build and development tasks. No additional build tools are required.
+This project uses pnpm for package management and npm scripts for all build and development tasks.
+
+### Prerequisites
+
+Install pnpm globally if not already installed:
+
+```bash
+npm install -g pnpm
+```
+
+Or use corepack (recommended for Node.js >= 16.13):
+
+```bash
+corepack enable
+corepack prepare pnpm@latest --activate
+```
 
 ### Available Commands
 
-* **`npm run lint`** - Run Oxlint on all JavaScript files
+* **`pnpm run lint`** - Run Oxlint on all JavaScript files
   * Fast code quality checks using OXC (Rust-based linter)
   * Checks code quality and style across the entire project
   * Exit code 0 on success, 1 on lint errors
 
-* **`npm run docs`** - Generate documentation
+* **`pnpm run docs`** - Generate documentation
   * Updates README.md with rule descriptions
   * Creates individual markdown files in docs/rules/ for each rule
   * Run this after adding or modifying rules
 
-* **`npm run test:run`** - Run test suite with coverage
+* **`pnpm run test:run`** - Run test suite with coverage
   * Executes all 2141+ tests using Mocha
   * Generates coverage reports (LCOV and text formats)
   * Coverage reports available in coverage/lcov-report/index.html
 
-* **`npm test`** - Run complete build pipeline
+* **`pnpm test`** - Run complete build pipeline
   * Executes lint → docs → test:run sequentially
   * Stops immediately if any step fails (fail-fast)
   * This is what CI runs - ensure it passes before committing
@@ -132,10 +155,11 @@ This project uses npm scripts for all build and development tasks. No additional
 
 When working on the project:
 
-1. Run `npm test` before committing to ensure all checks pass
-2. Run `npm run docs` after modifying rule documentation
-3. Check `npm run lint` if you encounter style issues
-4. Run `npm run test:run` to execute tests with coverage
+1. Install dependencies: `pnpm install`
+2. Run `pnpm test` before committing to ensure all checks pass
+3. Run `pnpm run docs` after modifying rule documentation
+4. Check `pnpm run lint` if you encounter style issues
+5. Run `pnpm run test:run` to execute tests with coverage
 
 ----
 
