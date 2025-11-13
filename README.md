@@ -108,7 +108,8 @@ This project uses npm scripts for all build and development tasks. No additional
 
 ### Available Commands
 
-* **`npm run lint`** - Run ESLint on all JavaScript files
+* **`npm run lint`** - Run Oxlint on all JavaScript files
+  * Fast code quality checks using OXC (Rust-based linter)
   * Checks code quality and style across the entire project
   * Exit code 0 on success, 1 on lint errors
 

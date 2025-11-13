@@ -1,0 +1,5 @@
+{
+  "plugins": ["oxc"],
+  "rules": {},
+  "ignorePatterns": ["node_modules/", ".git/", "examples/", "coverage/", ".nyc_output/"]
+}

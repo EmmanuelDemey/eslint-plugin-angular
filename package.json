@@ -4,7 +4,7 @@
     "description": "ESLint rules for AngularJS projects",
     "main": "index.js",
     "scripts": {
-        "lint": "eslint \"*.js\" \"{rules,test,scripts}/**/*.js\"",
+        "lint": "oxlint",
         "test:run": "nyc --reporter=lcov --reporter=text mocha test/**",
         "docs": "node scripts/docs.js",
         "test": "npm run lint && npm run docs && npm run test:run"
@@ -26,11 +26,12 @@
     "devDependencies": {
         "chai": "5.2.1",
         "chai-spies": "1.1.0",
-        "eslint": "^9.32.0",
+        "eslint": "^9.39.1",
         "espree": "10.4.0",
         "lodash": "4.17.21",
         "mocha": "11.7.1",
         "nyc": "17.1.0",
+        "oxlint": "^1.28.0",
         "parse-comments": "0.4.3"
     },
     "peerDependencies": {
