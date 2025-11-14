@@ -11,5 +11,5 @@ jobs:
       with:
         node-version: '20'
         cache: 'pnpm'
-    - run: pnpm install
+    - run: pnpm install --ignore-scripts
     - run: pnpm test
