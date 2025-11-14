@@ -6,8 +6,8 @@
     "scripts": {
         "lint": "oxlint",
         "test:run": "vitest run --coverage",
-        "docs": "node scripts/docs.js",
-        "test": "pnpm lint && pnpm docs && pnpm test:run"
+        "generate:docs": "node scripts/docs.js",
+        "test": "pnpm lint && pnpm generate:docs && pnpm test:run"
     },
     "repository": {
         "type": "git",
