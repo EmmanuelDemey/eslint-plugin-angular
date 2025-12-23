@@ -1,8 +1,9 @@
 <!-- WARNING: Generated documentation. Edit docs and examples in the rule and examples file ('rules/on-watch.js', 'examples/on-watch.js'). -->
 
-# on-watch - require `$on` and `$watch` deregistration callbacks to be saved in a variable
+# on-watch - require `$on` and `$watch` deregistration callbacks not to be ignored
 
-Watch and On methods on the scope object should be assigned to a variable, in order to be deleted in a $destroy event handler
+Deregistration functions returned by Watch and On methods on the scope object should not be ignored, in order to be deleted in a $destroy event handler.
+They should be assigned to a variable, returned from a function, put in an array or passed to a function as an argument.
 
 **Rule based on Angular 1.x**
 
@@ -15,7 +16,7 @@ The following patterns are considered problems;
     // invalid
     $rootScope.$on('event', function () {
         // ...
-    }); // error: The "$on" call should be assigned to a variable, in order to be destroyed during the $destroy event
+    }); // error: The deregistration function returned by "$on" call call should not be ignored
 
 The following patterns are **not** considered problems;
 
@@ -27,9 +28,27 @@ The following patterns are **not** considered problems;
     });
 
     // valid
-    var unregister = $rootScope.$on('event', function () {
+    var deregister = $rootScope.$on('event', function () {
         // ...
     });
+
+    // valid
+    function watchLocalVariable(callback) {
+        return $rootScope.$watch(function() {
+            return watchLocalVariable;
+        }, callback);
+    }
+
+    // valid
+    var deregisterFns = [
+        $rootScope.$on('event', eventHandler),
+        $rootScope.$watch('expression', watcherHandler)
+    ];
+
+    // valid
+    deregisterFns.push($rootScope.$on('event', function() {
+        // ...
+    }));
 
 ## Version
 

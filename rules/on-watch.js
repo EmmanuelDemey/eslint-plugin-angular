@@ -1,7 +1,8 @@
 /**
- * require `$on` and `$watch` deregistration callbacks to be saved in a variable
+ * require `$on` and `$watch` deregistration callbacks not to be ignored
  *
- * Watch and On methods on the scope object should be assigned to a variable, in order to be deleted in a $destroy event handler
+ * Deregistration functions returned by Watch and On methods on the scope object should not be ignored, in order to be deleted in a $destroy event handler.
+ * They should be assigned to a variable, returned from a function, put in an array or passed to a function as an argument.
  * @version 0.1.0
  * @category bestPractice
  * @sinceAngularVersion 1.x
@@ -17,17 +18,16 @@ module.exports = {
     },
     create: function(context) {
         function report(node, method) {
-            context.report(node, 'The "{{method}}" call should be assigned to a variable, in order to be destroyed during the $destroy event', {
+            context.report(node, 'The deregistration function returned by "{{method}}" call should not be ignored', {
                 method: method
             });
         }
 
         /**
          * Return true if the given node is a call expression calling a function
-         * named '$on' or '$watch' on an object named '$scope', '$rootScope' or
-         * 'scope'.
+         * named '$on' or '$watch' on an object named '$rootScope'.
          */
-        function isScopeOnOrWatch(node, scopes) {
+        function isRootScopeOnOrWatch(node) {
             if (node.type !== 'CallExpression') {
                 return false;
             }
@@ -52,7 +52,7 @@ module.exports = {
             var objectName = parentObject.name;
             var functionName = accessedFunction.name;
 
-            return scopes.indexOf(objectName) >= 0 && (functionName === '$on' ||
+            return objectName === '$rootScope' && (functionName === '$on' ||
                 functionName === '$watch');
         }
 
@@ -71,11 +71,12 @@ module.exports = {
         return {
 
             CallExpression: function(node) {
-                if (isScopeOnOrWatch(node, ['$rootScope']) && !isFirstArgDestroy(node)) {
+                if (isRootScopeOnOrWatch(node) && !isFirstArgDestroy(node)) {
                     if (node.parent.type !== 'VariableDeclarator' &&
                         node.parent.type !== 'AssignmentExpression' &&
-                        !(isScopeOnOrWatch(node.parent, ['$rootScope', '$scope', 'scope']) &&
-                            isFirstArgDestroy(node.parent))) {
+                        node.parent.type !== 'ReturnStatement' &&
+                        node.parent.type !== 'CallExpression' &&
+                        node.parent.type !== 'ArrayExpression') {
                         report(node, node.callee.property.name);
                     }
                 }
