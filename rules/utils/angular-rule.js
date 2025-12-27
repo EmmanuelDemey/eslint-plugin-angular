@@ -202,6 +202,22 @@ function angularRule(ruleDefinition) {
         if (node.type === 'FunctionExpression' || node.type === 'ArrowFunctionExpression' || node.type === 'FunctionDeclaration') {
             return node;
         }
+
+        if (node.type === 'ObjectExpression') {
+            var controller;
+            node.properties.forEach(function(property) {
+                if (property.key.name === 'controller') {
+                    if (property.value.type === 'FunctionExpression' || property.value.type === 'ArrowFunctionExpression') {
+                        controller = property.value;
+                    }
+                    if (property.value.type === 'ArrayExpression') {
+                        controller = property.value.elements[property.value.elements.length - 1];
+                    }
+                }
+            });
+            return controller;
+        }
+
         if (node.type !== 'Identifier') {
             return;
         }
@@ -250,7 +266,6 @@ function angularRule(ruleDefinition) {
             case 'component':
             case 'config':
             case 'controller':
-            case 'directive':
             case 'factory':
             case 'filter':
             case 'run':
@@ -258,6 +273,8 @@ function angularRule(ruleDefinition) {
                 return [node.callExpression.callee, node.fn];
             case 'provider':
                 return assembleProviderArguments(node);
+            case 'directive':
+                return assembleDirectiveArguments(node);
         }
     }
 
@@ -268,6 +285,49 @@ function angularRule(ruleDefinition) {
      */
     function assembleProviderArguments(node) {
         return [node.callExpression, node.fn, findProviderGet(node.fn)];
+    }
+
+    function assembleDirectiveArguments(node) {
+        return [node.callExpression, node.fn, findDirectiveFunction(node.fn)];
+    }
+
+    function findDirectiveFunction(directiveFn) {
+        if (!directiveFn) {
+            return;
+        }
+
+        var controllerFn;
+        var returnFn;
+        if (directiveFn.body.type !== 'BlockStatement') {
+            returnFn = directiveFn.body.properties;
+            returnFn.forEach(function(arg) {
+                if (arg.key.name === 'controller' && (arg.value.type === 'FunctionExpression' || arg.value.type === 'ArrowFunctionExpression')) {
+                    controllerFn = arg.value;
+                }
+                if (arg.value.type === 'ArrayExpression') {
+                    controllerFn = arg.value.elements[arg.value.elements.length - 1];
+                }
+            });
+            return controllerFn;
+        }
+
+        directiveFn.body.body.forEach(function(statement) {
+            if (statement.type === 'ReturnStatement' && statement.argument.type === 'ObjectExpression') {
+                returnFn = statement.argument.properties;
+                returnFn.forEach(function(arg) {
+                    if (arg.key.name === 'controller') {
+                        if (arg.value.type === 'FunctionExpression' || arg.value.type === 'ArrowFunctionExpression') {
+                            controllerFn = arg.value;
+                        }
+                        if (arg.value.type === 'ArrayExpression') {
+                            controllerFn = arg.value.elements[arg.value.elements.length - 1];
+                        }
+                    }
+                });
+            }
+        });
+
+        return controllerFn;
     }
 
     /**
