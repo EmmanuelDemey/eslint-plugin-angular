@@ -1,2 +1,6 @@
 allowBuilds:
   esbuild: false
+
+overrides:
+  lodash: 4.18.1
+  vite: 7.3.6
