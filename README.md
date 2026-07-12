@@ -3,7 +3,6 @@
 > ESLint rules for your angular project with checks for best-practices, conventions or potential errors.
 
 [![.github/workflows/main.yml](https://github.com/EmmanuelDemey/eslint-plugin-angular/actions/workflows/main.yml/badge.svg)](https://github.com/EmmanuelDemey/eslint-plugin-angular/actions/workflows/main.yml)
-[![Greenkeeper badge](https://badges.greenkeeper.io/Gillespie59/eslint-plugin-angular.svg)](https://greenkeeper.io/)
 [![Join the chat at https://gitter.im/Gillespie59/eslint-plugin-angular](https://img.shields.io/gitter/room/nwjs/nw.js.svg)](https://gitter.im/Gillespie59/eslint-plugin-angular?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
 ## Summary
@@ -48,9 +47,10 @@ Since the 0.0.4 release, some rules defined in [John Papa's Guideline](https://g
     pnpm add -D eslint-plugin-angular
     ```
 
-3. Use the shareable config by adding it to your `eslintrc.config.mjs`:
+3. Use the shareable config by adding it to your `eslint.config.mjs`:
 
     ```javascript
+    import { defineConfig } from "eslint/config";
     import angular from "eslint-plugin-angular";
 
     export default defineConfig([{
@@ -86,6 +86,7 @@ Since the 0.0.4 release, some rules defined in [John Papa's Guideline](https://g
 3. Enable the plugin by adding it to your `eslint.config.mjs`:
 
     ```javascript
+    import { defineConfig } from "eslint/config";
     import angular from "eslint-plugin-angular";
 
     export default defineConfig([{
@@ -97,6 +98,7 @@ Since the 0.0.4 release, some rules defined in [John Papa's Guideline](https://g
 4. You can also configure these rules in your `eslint.config.mjs`. All rules defined in this plugin have to be prefixed by 'angular/'
 
     ```javascript
+    import { defineConfig } from "eslint/config";
     import angular from "eslint-plugin-angular";
 
     export default defineConfig([{
@@ -140,7 +142,7 @@ corepack install --global pnpm@11.12.0
   * Checks code quality and style across the entire project
   * Exit code 0 on success, 1 on lint errors
 
-* **`pnpm run docs`** - Generate documentation
+* **`pnpm generate:docs`** - Generate documentation
   * Updates README.md with rule descriptions
   * Creates individual markdown files in docs/rules/ for each rule
   * Run this after adding or modifying rules
@@ -161,7 +163,7 @@ When working on the project:
 
 1. Install dependencies: `pnpm install`
 2. Run `pnpm test` before committing to ensure all checks pass
-3. Run `pnpm run docs` after modifying rule documentation
+3. Run `pnpm generate:docs` after modifying rule documentation
 4. Check `pnpm run lint` if you encounter style issues
 5. Run `pnpm run test:run` to execute tests with coverage
 
@@ -179,7 +181,7 @@ The following rules detect patterns that can lead to errors.
 
  * [avoid-scope-typos](docs/rules/avoid-scope-typos.md) - Avoid mistakes when naming methods defined on the scope object
  * [module-getter](docs/rules/module-getter.md) - disallow to reference modules with variables and require to use the getter syntax instead `angular.module('myModule')` ([y022](https://github.com/johnpapa/angular-styleguide/blob/master/a1/README.md#style-y022))
- * [module-setter](docs/rules/module-setter.md) - disallow to assign modules to variables (linked to [module-getter](docs/module-getter.md) ([y021](https://github.com/johnpapa/angular-styleguide/blob/master/a1/README.md#style-y021))
+ * [module-setter](docs/rules/module-setter.md) - disallow to assign modules to variables (linked to [module-getter](docs/rules/module-getter.md)) ([y021](https://github.com/johnpapa/angular-styleguide/blob/master/a1/README.md#style-y021))
  * [no-private-call](docs/rules/no-private-call.md) - disallow use of internal angular properties prefixed with $$
 
 ### Best Practices
@@ -190,7 +192,7 @@ These are rules designed to prevent you from making mistakes. They either prescr
  * [controller-as-route](docs/rules/controller-as-route.md) - require the use of controllerAs in routes or states ([y031](https://github.com/johnpapa/angular-styleguide/blob/master/a1/README.md#style-y031))
  * [controller-as-vm](docs/rules/controller-as-vm.md) - require and specify a capture variable for `this` in controllers ([y032](https://github.com/johnpapa/angular-styleguide/blob/master/a1/README.md#style-y032))
  * [controller-as](docs/rules/controller-as.md) - disallow assignments to `$scope` in controllers ([y031](https://github.com/johnpapa/angular-styleguide/blob/master/a1/README.md#style-y031))
- * [deferred](docs/rules/deferred.md) - use `$q(function(resolve, reject){})` instead of `$q.deferred`
+ * [deferred](docs/rules/deferred.md) - use `$q(function(resolve, reject){})` instead of `$q.defer()`
  * [di-unused](docs/rules/di-unused.md) - disallow unused DI parameters
  * [directive-restrict](docs/rules/directive-restrict.md) - disallow any other directive restrict than 'A' or 'E' ([y074](https://github.com/johnpapa/angular-styleguide/blob/master/a1/README.md#style-y074))
  * [empty-controller](docs/rules/empty-controller.md) - disallow empty controllers
@@ -282,9 +284,9 @@ It is an opensource project. Any help will be very useful. You can :
 - Improve the quality
 - Reply to issues
 
-All development happens on the `development` branch. This means all pull requests should be made to the `development` branch.
+All development happens on the `master` branch. This means all pull requests should be made to the `master` branch.
 
-If it is time to release, @Gillespie59 will bump the version in `package.json`, create a Git tag and merge the `development` branch into `master`. @Gillespie59 will then publish the new release to the npm registry.
+If it is time to release, @Gillespie59 will bump the version in `package.json` and create a Git tag. @Gillespie59 will then publish the new release to the npm registry.
 
 
 
@@ -310,32 +312,28 @@ There are some useful references for creating new rules. Specificly useful are:
     * JavaScript file with the new rule
     * The filename `<your-rule>` is exactly the usage name in eslint configs `angular/<your-rule>`
     * Have a look at the `angularRule` wrapper and the `utils` (both in `rules/utils/`) - they probably make things easier for you
-    * Add a documentation comment to generate a markdown documentation with the `npm run docs` task
+    * Add a documentation comment to generate a markdown documentation with the `pnpm generate:docs` task
 * `test/<your-rule>.js`
     * Write some tests and execute them with `npm run test:run`
     * Have a look at the coverage reports `coverage/lcov-report/index.html`
 * `examples/<your-rule>.js`
     * Add some examples for the documentation
-    * Run the `npm run docs` task to test the examples and update the markdown documentation
-* `docs/<your-rule>.md`
-    * Generated by the `npm run docs` task
-
-### Files you have to touch
-
-* `index.js`
-   * Add your rule `rulesConfiguration.addRule('<your-rule>', [0, {someConfig: 'someValue'}])`
+    * Run the `pnpm generate:docs` task to test the examples and update the markdown documentation
+* `docs/rules/<your-rule>.md`
+    * Generated by the `pnpm generate:docs` task
 
 ### Before you open your PR
 
 * Check that the `npm test` task is working
-* Commit generated changes in `README.md` and `docs/<your-rule>.md`
-* Open your PR to the `development` branch NOT `master`
+* Commit generated changes in `README.md` and `docs/rules/<your-rule>.md`
+* Open your PR to the `master` branch
 
 ### Rules specific for Angular 1 or 2
 
 We can use a property, defined in the ESLint configuration file, in order to know which version is used : Angular 1 or Angular 2. based on this property, you can create rules for each version.
 
 ```javascript
+import { defineConfig } from "eslint/config";
 import angular from "eslint-plugin-angular";
 
 export default defineConfig([
