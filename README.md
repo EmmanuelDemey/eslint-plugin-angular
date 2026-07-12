@@ -116,17 +116,19 @@ This project uses pnpm for package management and npm scripts for all build and 
 
 ### Prerequisites
 
+Use Node.js 24.18.0 and pnpm 11.12.0 for development.
+
 Install pnpm globally if not already installed:
 
 ```bash
-npm install -g pnpm
+npm install -g pnpm@11.12.0
 ```
 
-Or use corepack (recommended for Node.js >= 16.13):
+Or use Corepack:
 
 ```bash
 corepack enable
-corepack prepare pnpm@latest --activate
+corepack install --global pnpm@11.12.0
 ```
 
 ### Available Commands
