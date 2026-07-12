@@ -29,7 +29,7 @@
         "chai": "6.2.2",
         "chai-spies": "1.1.0",
         "eslint": "^10.7.0",
-        "espree": "10.4.0",
+        "espree": "11.2.0",
         "lodash": "4.18.1",
         "oxlint": "^1.73.0",
         "parse-comments": "0.4.3",
