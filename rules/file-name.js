@@ -174,7 +174,7 @@ module.exports = {
                             return;
                         }
                         expectedName = filenameUtil.createExpectedName(name, type, options);
-                        var filename = path.basename(context.getFilename());
+                        var filename = path.basename(context.filename);
                         filename = handleModuleCase(node, context, filename);
 
                         if (expectedName !== filename) {
