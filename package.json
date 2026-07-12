@@ -12,7 +12,7 @@
     },
     "repository": {
         "type": "git",
-        "url": "https://github.com/Gillespie59/eslint-plugin-angularjs.git"
+        "url": "https://github.com/EmmanuelDemey/eslint-plugin-angular.git"
     },
     "contributors": [
         "Emmanuel Demey (http://gillespie59.github.io/)",
@@ -21,9 +21,9 @@
     ],
     "license": "MIT",
     "bugs": {
-        "url": "https://github.com/Gillespie59/eslint-plugin-angularjs/issues"
+        "url": "https://github.com/EmmanuelDemey/eslint-plugin-angular/issues"
     },
-    "homepage": "https://github.com/Gillespie59/eslint-plugin-angularjs",
+    "homepage": "https://github.com/EmmanuelDemey/eslint-plugin-angular#readme",
     "devDependencies": {
         "@vitest/coverage-v8": "^4.1.10",
         "chai": "6.2.2",
