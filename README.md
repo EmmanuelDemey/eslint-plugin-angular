@@ -144,7 +144,7 @@ corepack install --global pnpm@11.12.0
   * Run this after adding or modifying rules
 
 * **`pnpm run test:run`** - Run test suite with coverage
-  * Executes all 2141+ tests using Mocha
+  * Executes all 2141+ tests using Vitest
   * Generates coverage reports (LCOV and text formats)
   * Coverage reports available in coverage/lcov-report/index.html
 
